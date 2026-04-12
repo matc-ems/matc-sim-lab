@@ -1,0 +1,177 @@
+{
+  "scenarioId": "resp-peds-croup-severe-001",
+  "scenarioName": "Severe Pediatric Croup with Impending Respiratory Failure",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 20,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "2-year-old previously healthy male with 2 days of URI symptoms (rhinorrhea, low-grade fever) who developed a barking cough last night. Parents tried a steamy bathroom treatment and running a humidifier with no improvement. The child has gotten progressively worse throughout the night, now with audible stridor even at rest and becoming lethargic. Parents called 911 when he stopped responding to them normally.",
+    "discussion": "Apply the MATC Pediatric Croup protocol with nebulized epinephrine and dexamethasone. Manage a severe croup patient with minimal agitation. Recognize impending respiratory failure in a pediatric patient. Prepare appropriately for pediatric airway management with subglottic narrowing. Understand why every child who receives nebulized epinephrine must be transported",
+    "course": "Arrival — Severe Croup with Early Respiratory Failure Signs: This is severe croup. Lethargy is a pre-arrest sign — a previously fighting child who is now too tired to resist is worrisome. The biggest risk is agitating the child, which will worsen laryngospasm. All treatment must be delivered gently, ideally while the child remains in the parent's arms. → Responding to Nebulized Epinephrine: Within 10-15 minutes, the nebulized epinephrine and dexamethasone are taking effect. Stridor less pronounced, retractions improving, child more interactive. Must still transport for observation — rebound worsening after epinephrine wears off is possible."
+  },
+  "patientInformation": {
+    "patientName": "Eli Thornton",
+    "patientCondition": "Barking cough and progressively worsening stridor",
+    "patientAge": 2,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 1,
+    "patientSex": 1,
+    "patientHeight": 88,
+    "patientWeight": 13,
+    "patientPhotoId": 3,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival — Severe Croup with Early Respiratory Failure Signs",
+      "description": "This is severe croup. Lethargy is a pre-arrest sign — a previously fighting child who is now too tired to resist is worrisome. The biggest risk is agitating the child, which will worsen laryngospasm. All treatment must be delivered gently, ideally while the child remains in the parent's arms.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 168,
+        "bpSys": 92,
+        "bpDia": 58,
+        "respRate": 48,
+        "spo2": 89,
+        "etco2": 42,
+        "temp": 38.1,
+        "obstruction": 70,
+        "custMeasure1": 94,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Responding to Nebulized Epinephrine",
+      "description": "Within 10-15 minutes, the nebulized epinephrine and dexamethasone are taking effect. Stridor less pronounced, retractions improving, child more interactive. Must still transport for observation — rebound worsening after epinephrine wears off is possible.",
+      "monitorType": 0,
+      "trendTime": 600,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 142,
+        "bpSys": 96,
+        "bpDia": 58,
+        "respRate": 36,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 38.1,
+        "obstruction": 30,
+        "custMeasure1": 94,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Keep child calm; leave in parent's arms",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer blow-by oxygen held by parent",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Nebulized Epinephrine 5 mg (5 mL of 1 mg/mL) via parent-held mask",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Dexamethasone 0.6 mg/kg IM or PO (7.8 mg for this 13 kg patient)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Defer IV access if possible to avoid agitation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Prepare pediatric airway equipment including smaller-than-calculated ETT",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport with parent holding child",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continuous reassessment for rebound worsening after epinephrine",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If deterioration: pediatric BVM with PEEP, repeat nebulized epi, prepare for RSI",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT use mist therapy",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT separate child from parent unless absolutely necessary",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Gentle SpO2 monitoring",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Pediatric ED notification",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

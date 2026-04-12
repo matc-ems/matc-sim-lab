@@ -1,0 +1,283 @@
+{
+  "meta": {
+    "id": "rsi-polypharm-od-001",
+    "name": "Poly-Pharmacy Overdose — Airway Protection",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Toxicology",
+    "protocols": ["tox-poisoning-overdose-universal", "tox-opioid-poisoning-overdose", "resp-airway-management"],
+    "totalTimeSeconds": 1500,
+    "tags": ["RSI", "overdose", "benzodiazepine", "aspiration", "airway protection"]
+  },
+  "patient": {
+    "name": "Harper Nguyen",
+    "age": 22,
+    "ageUnit": "years",
+    "sex": "female",
+    "weight": 65,
+    "height": 165,
+    "chiefComplaint": "Unresponsive after suspected polypharmacy overdose",
+    "history": {
+      "hpi": "22-year-old female found by her roommate surrounded by empty bottles of prescription benzodiazepines and an empty fifth of vodka. Roommate returned from work and found the patient unresponsive on the couch. Time of ingestion unknown but likely within the past 2-3 hours based on roommate leaving at 15:00.",
+      "pastMedical": ["Anxiety", "Depression", "Prior suicide attempt (2 years ago, medication overdose)"],
+      "medications": ["Alprazolam 1 mg PO BID PRN", "Sertraline 100 mg PO daily"],
+      "allergies": ["Penicillin (rash)"],
+      "lastOralIntake": "Unknown timing; empty pill bottles and vodka bottle at scene",
+      "events": "Roommate found patient unresponsive on couch, called 911. Bystander (roommate) administered naloxone 4 mg IN from her workplace kit with no effect. Police on scene confirmed no obvious signs of trauma."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 9, respond code 3 to 815 College Heights Drive apartment 2, for a 22-year-old female, unresponsive, possible overdose. Police on scene.",
+    "location": "Second-floor college apartment. Patient supine on the living room couch with an arm hanging off. Access is straightforward.",
+    "time": "Tuesday, 18:05",
+    "safety": "Scene secured by police. Note unsecured prescription bottles. Consider BSI for possible vomitus.",
+    "bystanders": "Roommate is distraught but providing information. Hands the crew the empty pill bottles and vodka. Police officer present.",
+    "visualCues": [
+      "Young adult female supine on couch, unresponsive",
+      "Two empty alprazolam bottles (1 mg tabs, original fill of 60)",
+      "Empty fifth of vodka on the floor",
+      "Vomitus on the couch cushion and on the patient's shirt",
+      "Gurgling respirations audible from the doorway",
+      "Pinpoint pupils — likely artifact of alprazolam, not opioid",
+      "Spent intranasal naloxone device on coffee table"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival — Unresponsive with Soiled Airway",
+      "description": "Crew finds an unresponsive young woman with critical airway compromise from emesis pooling and lost protective reflexes. Narcan has been given bystander without effect — consistent with non-opioid toxidrome. Respirations are slow and shallow, SpO2 is 82%, and the patient has no gag reflex. This is an airway protection case.",
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 2, "motor": 3},
+        "airway": "Gurgling respirations with emesis pooling in the posterior oropharynx; no gag reflex; jaw relaxed",
+        "breathing": "Slow, shallow respirations at 6/min; minimal tidal volume; no accessory muscle use",
+        "circulation": "Weak but palpable radial pulse; cool peripheries",
+        "skin": {"color": "pale with cyanotic lips", "temperature": "cool", "moisture": "moist from emesis"},
+        "pupils": "Small (2 mm), minimally reactive — consistent with sedative-hypnotic, not pathognomonic of opioid",
+        "motorFunction": "Flaccid with occasional localized withdrawal to deep noxious stimulus",
+        "otherFindings": [
+          "Two empty alprazolam bottles at the scene (roughly 120 tablets)",
+          "Empty vodka bottle (750 mL)",
+          "Sedative-hypnotic toxidrome: CNS depression + hypoventilation, normal BP",
+          "Bystander naloxone already administered with no effect"
+        ],
+        "patientSpeech": "Occasional moan to painful stimuli"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 74,
+        "bpSys": 96,
+        "bpDia": 58,
+        "respRate": 6,
+        "spo2": 82,
+        "etco2": 62,
+        "temp": 35.8,
+        "obstruction": 50,
+        "glucose": 88,
+        "trendTimeSeconds": 0,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "bsi-scene", "action": "BSI/PPE with attention to vomitus; confirm scene safe with law enforcement", "priority": "critical"},
+        {"id": "suction", "action": "Aggressive oropharyngeal suctioning with Yankauer; have suction available throughout", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "position", "action": "Place patient in left-lateral recovery position temporarily while preparing for definitive airway", "priority": "critical"},
+        {"id": "opa-bvm", "action": "Place oropharyngeal airway (absent gag reflex) and begin 2-person BVM with PEEP 5 cmH2O", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "glucose", "action": "Check blood glucose", "priority": "critical", "protocolReference": "MATC: Poisoning/Overdose Universal Care"},
+        {"id": "identify-agents", "action": "Identify agents: alprazolam (benzodiazepine) and ethanol — sedative-hypnotic toxidrome. Collect all pill bottles to bring to ED.", "priority": "critical", "protocolReference": "MATC: Poisoning/Overdose Universal Care"},
+        {"id": "no-flumazenil", "action": "Do NOT administer flumazenil — contraindicated in mixed ingestion and may precipitate seizures in benzo-dependent patients", "priority": "critical", "protocolReference": "MATC: Poisoning/Overdose Universal Care"},
+        {"id": "narcan-futile", "action": "Recognize that additional naloxone will not help — pupils are not opioid-pattern and bystander naloxone had no effect. Do not chase it further.", "priority": "important", "protocolReference": "MATC: Opioid Poisoning/Overdose"},
+        {"id": "monitor", "action": "Apply cardiac monitor, SpO2, waveform capnography, 12-lead EKG (look for widened QRS from SSRI/other sodium channel effect)", "priority": "important", "protocolReference": "MATC: Poisoning/Overdose Universal Care"},
+        {"id": "iv", "action": "Establish IV access", "priority": "critical"}
+      ]
+    },
+    {
+      "id": "rsi-airway-protection",
+      "name": "RSI for Airway Protection",
+      "description": "Despite BVM and suction, patient has recurrent emesis and cannot protect her airway. GCS remains 6. Definitive airway is indicated for airway protection from aspiration, not because BVM cannot oxygenate. RSI is appropriate even with relatively stable hemodynamics.",
+      "triggerCondition": "Recurrent emesis, inability to protect airway, GCS ≤8",
+      "isDefault": true,
+      "transitions": [
+        {"targetPhaseId": "post-rsi", "condition": "Successful RSI with confirmed tube placement", "conditionType": "action_taken", "triggerActionIds": ["rsi-induct", "intubate"]},
+        {"targetPhaseId": "aspiration-branch", "condition": "Failure to secure airway promptly leads to aspiration pneumonitis", "conditionType": "action_not_taken", "timeoutSeconds": 600, "triggerActionIds": ["intubate"]}
+      ],
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 2, "motor": 3},
+        "airway": "OPA in place; recurrent emesis despite suctioning",
+        "breathing": "BVM-assisted, SpO2 improving slowly",
+        "circulation": "Weak but present",
+        "skin": {"color": "pale with improving central pink", "temperature": "cool", "moisture": "moist"},
+        "pupils": "2 mm",
+        "motorFunction": "Flaccid",
+        "otherFindings": ["SpO2 has risen to 92% on BVM but remains borderline", "EtCO2 trending down from 62 with assisted ventilation"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 82,
+        "bpSys": 94,
+        "bpDia": 58,
+        "respRate": 12,
+        "spo2": 92,
+        "etco2": 48,
+        "temp": 35.8,
+        "obstruction": 35,
+        "glucose": 88,
+        "trendTimeSeconds": 180,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "rsi-plan", "action": "Verbalize RSI plan with awareness of aspiration risk — have suction immediately accessible", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "fluid-prep", "action": "Administer NS bolus 500 mL prior to induction to pre-load hemodynamics (hypotension risk from sedatives + ethanol on board)", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "preox", "action": "Continue 2-person BVM preoxygenation + PEEP 5 cmH2O with apneic oxygenation NC 15 LPM", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "rsi-induct", "action": "Administer Ketamine 1-2 mg/kg IV push (100 mg for 65 kg patient) as induction agent; ketamine preferred over midazolam which would add to existing benzo load", "priority": "critical", "rationale": "Patient has already taken significant benzodiazepines. Additional midazolam for induction would worsen hemodynamics and compound sedation. Etomidate 0.2-0.3 mg/kg (13-20 mg) is also reasonable.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "rsi-paralytic", "action": "Administer Rocuronium 1 mg/kg IV push (65 mg for 65 kg patient)", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "intubate", "action": "Video laryngoscopy with SALAD technique (suction-assisted) to manage ongoing secretions; 7.0-7.5 mm ETT", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "confirm", "action": "Confirm tube placement with waveform capnography, bilateral breath sounds, absent epigastric sounds", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    },
+    {
+      "id": "post-rsi",
+      "name": "Post-Intubation Supportive Care",
+      "description": "Tube confirmed. Supportive care for sedative-hypnotic overdose: ventilation, gastric decompression, fluid resuscitation if needed, and prompt transport. Poison control contact recommended.",
+      "triggerCondition": "Successful RSI",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 1},
+        "airway": "7.0 mm ETT at 21 cm, cuff inflated, secured",
+        "breathing": "Ventilated with symmetric chest rise",
+        "circulation": "Perfusing after NS bolus",
+        "skin": {"color": "pink", "temperature": "cool", "moisture": "drying"},
+        "pupils": "2 mm",
+        "motorFunction": "Flaccid from paralytic",
+        "otherFindings": ["EtCO2 normalizing to 40", "Core temperature low-normal; keep warm"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 88,
+        "bpSys": 108,
+        "bpDia": 66,
+        "respRate": 12,
+        "spo2": 98,
+        "etco2": 40,
+        "temp": 36.0,
+        "obstruction": 10,
+        "glucose": 88,
+        "trendTimeSeconds": 120,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "sedation", "action": "Minimal post-intubation sedation: Fentanyl 1 mcg/kg (65 mcg) IV for analgesia; avoid additional benzodiazepines given ingestion", "priority": "critical", "rationale": "Patient already has significant benzodiazepine load — additional midazolam is not needed for sedation and would worsen hypotension risk.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "vent", "action": "Ventilate at 12 breaths/min, 6-8 mL/kg IBW, EtCO2 target 35-45 mmHg", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "ogt", "action": "Place orogastric tube for gastric decompression", "priority": "important", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "warm", "action": "Apply warm blankets — core temperature borderline and sedatives impair thermoregulation", "priority": "important"},
+        {"id": "bring-bottles", "action": "Bring all pill bottles and the vodka bottle to the ED for toxicology", "priority": "important", "protocolReference": "MATC: Poisoning/Overdose Universal Care"},
+        {"id": "poison-control", "action": "Contact Poison Control (1-800-222-1222) en route for guidance on mixed ingestion", "priority": "important", "protocolReference": "MATC: Poisoning/Overdose Universal Care"},
+        {"id": "transport", "action": "Transport to appropriate ED with early notification", "priority": "critical"}
+      ]
+    },
+    {
+      "id": "aspiration-branch",
+      "name": "Branch: Aspiration Pneumonitis from Delayed Intubation",
+      "description": "Crew chooses to continue BVM and defer intubation. Repeated vomiting leads to aspiration. The patient develops hypoxemia despite BVM and now has a soiled lower airway requiring intubation in a compromised state.",
+      "triggerCondition": "Witnessed aspiration with BVM-refractory hypoxemia",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 2},
+        "airway": "Gurgling with gastric contents in posterior pharynx despite intermittent suction",
+        "breathing": "BVM-assisted but with rhonchi and decreased compliance",
+        "circulation": "Tachycardic, BP maintained",
+        "skin": {"color": "cyanotic", "temperature": "cool", "moisture": "moist"},
+        "pupils": "2 mm",
+        "motorFunction": "Flaccid",
+        "otherFindings": ["Witnessed aspiration event", "Rhonchi now present bilaterally", "Significant decrease in BVM compliance"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 116,
+        "bpSys": 92,
+        "bpDia": 56,
+        "respRate": 14,
+        "spo2": 78,
+        "etco2": 58,
+        "temp": 35.8,
+        "obstruction": 60,
+        "glucose": 88,
+        "trendTimeSeconds": 120,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "emergent-intubation", "action": "Proceed with emergent RSI using SALAD technique; anticipate difficult visualization due to gastric contents", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "aspirate-suction", "action": "Deep endotracheal suctioning after tube placement", "priority": "critical"},
+        {"id": "recognize", "action": "Recognize that earlier RSI would have prevented aspiration — this is the teachable moment", "priority": "critical"}
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Recognize sedative-hypnotic toxidrome distinct from opioid overdose (naloxone won't work)",
+      "Aggressive oropharyngeal suctioning with Yankauer",
+      "Place OPA and begin 2-person BVM with PEEP",
+      "Check blood glucose",
+      "Do NOT administer flumazenil",
+      "Establish IV access",
+      "Administer NS bolus pre-induction to mitigate hypotension risk",
+      "Perform RSI with Ketamine 1-2 mg/kg (100 mg) + Rocuronium 1 mg/kg (65 mg)",
+      "Use SALAD technique during laryngoscopy",
+      "Confirm tube placement with waveform capnography",
+      "Minimal sedation post-intubation given on-board sedative load"
+    ],
+    "expectedActions": [
+      "Collect pill bottles and agents for the ED",
+      "Place OG tube after intubation",
+      "12-lead EKG to screen for sodium channel effects",
+      "Contact Poison Control",
+      "Keep patient warm"
+    ],
+    "bonusActions": [
+      "Articulate why flumazenil is contraindicated",
+      "Articulate why additional naloxone is unhelpful",
+      "Choose ketamine over benzodiazepine-based induction in this patient"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Differentiate sedative-hypnotic toxidrome from opioid toxidrome",
+      "Apply airway protection principles in overdose with intact hemodynamics but lost reflexes",
+      "Understand contraindications for flumazenil in mixed ingestion",
+      "Anticipate and mitigate aspiration risk during RSI",
+      "Choose appropriate induction and paralytic agents in a patient with on-board sedatives"
+    ],
+    "discussionQuestions": [
+      "Why was flumazenil not administered even though the primary agent is a benzodiazepine?",
+      "Naloxone was given by a bystander with no effect — what did that tell you about the toxidrome?",
+      "How does SALAD technique change your approach to intubating a soiled airway?",
+      "Why might you choose ketamine over etomidate or midazolam in this patient?",
+      "How do you decide whether to intubate an overdose patient who is 'holding her own' on BVM?"
+    ],
+    "commonPitfalls": [
+      "Giving more naloxone because 'the pupils are pinpoint' without recognizing the sedative-hypnotic toxidrome",
+      "Considering flumazenil in a polypharmacy ingestion",
+      "Failing to bolus fluids pre-induction and causing post-sedative hypotension",
+      "Using midazolam for post-intubation sedation in an already benzo-overdosed patient",
+      "Delaying intubation because 'BVM is working' in a patient who cannot protect her airway"
+    ],
+    "keyTakeaways": [
+      "Airway protection is a distinct indication for intubation — not everyone who needs a tube is hypoxic",
+      "Flumazenil is not for prehospital use in mixed ingestions",
+      "The goal is supportive care until the drugs clear; don't get distracted chasing antidotes that don't apply",
+      "SALAD technique is essential for soiled airways"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 20,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

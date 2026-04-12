@@ -1,0 +1,283 @@
+{
+  "meta": {
+    "id": "rsi-anaphylaxis-airway-001",
+    "name": "Refractory Anaphylaxis — Closing Airway, Go/No-Go",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Medical",
+    "protocols": ["medical-anaphylaxis-allergic-reaction", "resp-airway-management"],
+    "totalTimeSeconds": 1500,
+    "tags": ["RSI", "anaphylaxis", "difficult airway", "surgical airway"]
+  },
+  "patient": {
+    "name": "Anika Patel",
+    "age": 42,
+    "ageUnit": "years",
+    "sex": "female",
+    "weight": 68,
+    "height": 163,
+    "chiefComplaint": "Severe allergic reaction with airway swelling after shellfish exposure",
+    "history": {
+      "hpi": "42-year-old female at a seafood restaurant for a birthday dinner. Took a bite of a shared appetizer not realizing it contained shrimp paste. Known severe shellfish allergy with prior ED visits. Within minutes developed tongue swelling, throat tightness, and urticaria. Administered two doses of her own 0.3 mg epinephrine auto-injector 5 minutes apart with minimal improvement. Her husband called 911.",
+      "pastMedical": ["Severe shellfish allergy with anaphylaxis (2 prior ED visits)", "Mild asthma", "Hypertension"],
+      "medications": ["Epinephrine auto-injector 0.3 mg (2 used)", "Albuterol MDI PRN", "Losartan 50 mg PO daily"],
+      "allergies": ["Shellfish — anaphylaxis"],
+      "lastOralIntake": "Single bite of shrimp paste dumpling approximately 10 minutes before EMS arrival",
+      "events": "Ate one bite of shared appetizer containing hidden shellfish. Rapid onset of throat tightness, tongue swelling, and hives. Self-administered 2 epi auto-injectors. Symptoms progressed despite treatment."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 4, respond code 3 to Fortune Palace Restaurant at 2100 Grand Avenue, for a 42-year-old female with severe allergic reaction, difficulty breathing.",
+    "location": "Crowded restaurant dining room. Patient seated at a table near the center of the room with a large birthday party. Close-quarters working environment.",
+    "time": "Friday, 19:30",
+    "safety": "Scene safe. Need to clear tables and move patient to a wider space or extricate to the ambulance promptly.",
+    "bystanders": "Husband and birthday party guests present. Husband is calm and informative, hands over both used auto-injectors and confirms timing and dose.",
+    "visualCues": [
+      "Patient sitting forward, visibly struggling to breathe, gripping the table",
+      "Massive tongue swelling protruding from the mouth",
+      "Dramatic facial and periorbital edema",
+      "Audible high-pitched stridor with each inspiration",
+      "Diffuse urticaria on the chest, arms, and face",
+      "Two spent EpiPen auto-injectors on the table",
+      "Lips dusky-cyanotic"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival — Refractory Anaphylaxis with Closing Airway",
+      "description": "Crew arrives to a dramatic airway emergency. Massive angioedema with obvious tongue and facial swelling. Stridor barely audible — air movement is critically limited. SpO2 is 74%. Two IM epi doses from the patient's own auto-injectors have not halted progression. Time to definitive airway is measured in minutes.",
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {"eye": 3, "verbal": 3, "motor": 6},
+        "airway": "Massive tongue edema protruding from mouth; audible inspiratory stridor; minimal air movement",
+        "breathing": "Rapid shallow respirations with obvious tripoding; accessory muscle use; unable to speak sentences",
+        "circulation": "Weak radial pulse, tachycardic",
+        "skin": {"color": "dusky cyanosis of lips, diffuse urticaria on trunk and face", "temperature": "warm", "moisture": "diaphoretic"},
+        "pupils": "Pupils 4 mm bilaterally, reactive",
+        "motorFunction": "Anxious, purposeful movements, gripping the table",
+        "otherFindings": [
+          "Massive lip, tongue, and periorbital edema",
+          "Diffuse hives on chest, arms, face",
+          "Stridor so severe that each breath is visible as neck retraction"
+        ],
+        "patientSpeech": "Single-word responses only — 'can't breathe'"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 142,
+        "bpSys": 82,
+        "bpDia": 48,
+        "respRate": 36,
+        "spo2": 74,
+        "etco2": 28,
+        "temp": 37.0,
+        "obstruction": 80,
+        "glucose": 118,
+        "trendTimeSeconds": 0,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "position", "action": "Allow patient to remain in position of comfort (upright, tripod)", "priority": "critical", "protocolReference": "MATC: Anaphylaxis and Allergic Reaction"},
+        {"id": "im-epi", "action": "Administer Epinephrine 1 mg/mL (1:1,000) 0.3 mg IM in the lateral thigh immediately — do not wait for IV access", "priority": "critical", "rationale": "IM epi is first-line in anaphylaxis; a third dose is appropriate despite the patient's two prior doses, which may have been subtherapeutic or poorly delivered.", "protocolReference": "MATC: Anaphylaxis and Allergic Reaction"},
+        {"id": "o2-nrb", "action": "Apply high-flow oxygen via non-rebreather at 15 LPM while preparing airway equipment", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "neb-epi", "action": "Administer nebulized Epinephrine 1 mg/mL, 5 mL via nebulizer mask for stridor", "priority": "critical", "protocolReference": "MATC: Anaphylaxis and Allergic Reaction"},
+        {"id": "iv-access", "action": "Establish two large-bore IVs; one for fluid, one for medications", "priority": "critical"},
+        {"id": "fluid-bolus", "action": "Administer 20 mL/kg isotonic fluid bolus (normal saline, 1360 mL for 68 kg patient) rapidly over 15 minutes", "priority": "critical", "protocolReference": "MATC: Anaphylaxis and Allergic Reaction"},
+        {"id": "diphen", "action": "Administer Diphenhydramine 1 mg/kg IV (68 mg for 68 kg patient, max 50 mg — so give 50 mg) IV push", "priority": "important", "protocolReference": "MATC: Anaphylaxis and Allergic Reaction"},
+        {"id": "steroid", "action": "Administer Methylprednisolone 125 mg IV OR Dexamethasone 10 mg IV push", "priority": "important", "protocolReference": "MATC: Anaphylaxis and Allergic Reaction"},
+        {"id": "monitor", "action": "Apply cardiac monitor, SpO2, waveform capnography", "priority": "critical"}
+      ]
+    },
+    {
+      "id": "go-no-go",
+      "name": "Go/No-Go Airway Decision",
+      "description": "A third IM epi has been given. Despite maximal medical therapy, swelling continues to progress. The crew now faces a critical decision: is the airway still passable with an endotracheal tube via video laryngoscopy, or has it progressed to the point where the ETT will not pass and a surgical airway is the primary plan? The crew must commit to a double-setup: simultaneous preparation for both attempts.",
+      "triggerCondition": "Stridor worsening or SpO2 not improving despite third IM epi",
+      "isDefault": true,
+      "transitions": [
+        {"targetPhaseId": "successful-ett", "condition": "Crew decides to attempt ETT and visualizes cords with video laryngoscope", "conditionType": "action_taken", "triggerActionIds": ["intubate"]},
+        {"targetPhaseId": "surgical-airway", "condition": "Airway cannot be visualized; surgical airway is indicated", "conditionType": "action_taken", "triggerActionIds": ["crich"]}
+      ],
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {"eye": 3, "verbal": 2, "motor": 5},
+        "airway": "Tongue edema worsening, stridor now nearly silent — critical loss of air movement",
+        "breathing": "Agonal",
+        "circulation": "Weak thready pulse, BP trending down despite IM epi",
+        "skin": {"color": "deeply cyanotic", "temperature": "warm", "moisture": "profusely diaphoretic"},
+        "pupils": "Pupils 5 mm reactive",
+        "motorFunction": "Beginning to lose purposeful movement, head bobbing",
+        "otherFindings": [
+          "Airway is visibly swollen externally with distorted landmarks",
+          "Cricothyroid membrane is palpable but surrounded by edema"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 152,
+        "bpSys": 74,
+        "bpDia": 42,
+        "respRate": 30,
+        "spo2": 70,
+        "etco2": 22,
+        "temp": 37.0,
+        "obstruction": 90,
+        "glucose": 118,
+        "trendTimeSeconds": 180,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "third-epi", "action": "Administer third Epinephrine 0.3 mg IM in the lateral thigh (or 0.1 mg IV push if code situation)", "priority": "critical", "protocolReference": "MATC: Anaphylaxis and Allergic Reaction"},
+        {"id": "epi-drip", "action": "Prepare Epinephrine IV drip at 0.5 mcg/kg/min (34 mcg/min for 68 kg patient) given cardiovascular collapse despite multiple IM doses", "priority": "critical", "protocolReference": "MATC: Anaphylaxis and Allergic Reaction"},
+        {"id": "double-setup", "action": "Double-setup: assign one provider to prepare RSI drugs and VL equipment while a second provider preps cricothyrotomy kit and marks the cricothyroid membrane", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "smaller-tube", "action": "Prepare smaller-than-usual ETT (6.0 mm) anticipating edematous airway", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "preox", "action": "Continue preoxygenation with BVM + PEEP and apneic oxygenation NC 15 LPM", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "induction", "action": "Administer Ketamine 1-2 mg/kg IV push (100 mg for 68 kg patient); ketamine preserves respiratory drive and hemodynamics", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "paralytic", "action": "Administer Rocuronium 1 mg/kg IV push (68 mg for 68 kg patient); use longer-acting paralytic to avoid re-paralysis if multiple attempts required", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "intubate", "action": "Attempt single best-effort video laryngoscopy intubation with 6.0 mm ETT and bougie; limit attempt to single pass", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "crich", "action": "If cords cannot be visualized or tube cannot be passed, proceed immediately to surgical cricothyrotomy without additional attempts", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    },
+    {
+      "id": "successful-ett",
+      "name": "Successful Endotracheal Intubation",
+      "description": "A single video laryngoscopy attempt with a small ETT and bougie succeeds. Tube confirmed. Ventilation improves dramatically. Ongoing anaphylaxis treatment continues.",
+      "triggerCondition": "ETT successfully placed with confirmed waveform capnography",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 1},
+        "airway": "6.0 mm ETT in place at 21 cm, cuff inflated, secured",
+        "breathing": "Ventilated via BVM with symmetric chest rise",
+        "circulation": "Perfusing with ongoing epi drip and fluids",
+        "skin": {"color": "improving from cyanosis", "temperature": "warm", "moisture": "diaphoretic"},
+        "pupils": "5 mm reactive",
+        "motorFunction": "Flaccid from paralytic",
+        "otherFindings": ["EtCO2 climbing toward normal range", "Facial edema unchanged externally but airway is bypassed"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 128,
+        "bpSys": 96,
+        "bpDia": 58,
+        "respRate": 12,
+        "spo2": 96,
+        "etco2": 42,
+        "temp": 37.0,
+        "obstruction": 10,
+        "glucose": 118,
+        "trendTimeSeconds": 120,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "confirm", "action": "Confirm tube placement with waveform capnography, bilateral breath sounds, absent epigastric sounds", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "continue-epi", "action": "Continue Epinephrine IV drip at 0.5 mcg/kg/min (titrate to MAP 65); titrate down as patient stabilizes", "priority": "critical", "protocolReference": "MATC: Anaphylaxis and Allergic Reaction"},
+        {"id": "fluids", "action": "Continue isotonic fluid boluses up to 60 mL/kg (4,080 mL total) for ongoing distributive shock", "priority": "critical", "protocolReference": "MATC: Anaphylaxis and Allergic Reaction"},
+        {"id": "sedation", "action": "Post-intubation sedation: Ketamine 0.5-1 mg/kg IV (34-68 mg) for maintenance; continued analgesia with fentanyl", "priority": "important", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "vent", "action": "Ventilate at 12 breaths/min, 6-8 mL/kg IBW, EtCO2 target 35-45", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "transport", "action": "Emergent transport to closest appropriate ED with early notification", "priority": "critical"}
+      ]
+    },
+    {
+      "id": "surgical-airway",
+      "name": "Branch: Surgical Cricothyrotomy",
+      "description": "Attempt at video laryngoscopy reveals that the airway is completely obliterated by edema. The provider commits immediately to surgical cricothyrotomy through the already-marked cricothyroid membrane.",
+      "triggerCondition": "Laryngoscopy reveals no identifiable cords or tube cannot be passed",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 1},
+        "airway": "6.0 mm cuffed tube placed through cricothyroid membrane, secured",
+        "breathing": "Ventilated via BVM through surgical airway",
+        "circulation": "Tenuous with ongoing epi infusion",
+        "skin": {"color": "improving", "temperature": "warm", "moisture": "diaphoretic"},
+        "pupils": "5 mm reactive",
+        "motorFunction": "Flaccid",
+        "otherFindings": ["Small amount of bleeding at surgical site controlled with direct pressure", "Waveform capnography confirms placement"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 132,
+        "bpSys": 92,
+        "bpDia": 56,
+        "respRate": 12,
+        "spo2": 94,
+        "etco2": 40,
+        "temp": 37.0,
+        "obstruction": 10,
+        "glucose": 118,
+        "trendTimeSeconds": 120,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "confirm-crich", "action": "Confirm cricothyrotomy placement with waveform capnography, symmetric chest rise, bilateral breath sounds", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "secure-crich", "action": "Secure surgical airway carefully — it is more prone to dislodgement than ETT", "priority": "critical"},
+        {"id": "continue-tx", "action": "Continue epinephrine drip and fluid resuscitation", "priority": "critical", "protocolReference": "MATC: Anaphylaxis and Allergic Reaction"},
+        {"id": "notify", "action": "Notify receiving ED of surgical airway — ENT/trauma team should meet the ambulance", "priority": "critical"}
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Administer Epinephrine 0.3 mg IM (1 mg/mL) immediately on recognition despite two prior patient-administered doses",
+      "Nebulized Epinephrine 5 mL of 1 mg/mL for stridor",
+      "Establish IV access and begin 20 mL/kg NS bolus",
+      "High-flow oxygen preparation for imminent airway management",
+      "Recognize refractory anaphylaxis and initiate Epinephrine IV drip 0.5 mcg/kg/min",
+      "Double-setup for definitive airway: prepare ETT (smaller size) AND cricothyrotomy kit simultaneously",
+      "Perform RSI with Ketamine 1-2 mg/kg + Rocuronium 1 mg/kg",
+      "If ETT not possible, commit to surgical cricothyrotomy",
+      "Confirm advanced airway with waveform capnography"
+    ],
+    "expectedActions": [
+      "Diphenhydramine 50 mg IV",
+      "Methylprednisolone 125 mg IV or Dexamethasone 10 mg IV",
+      "Mark cricothyroid membrane prior to RSI attempt",
+      "Early ED notification for ENT/trauma resources"
+    ],
+    "bonusActions": [
+      "Articulate double-setup rationale in front-line team",
+      "Choose smaller ETT (6.0 mm) anticipating edema",
+      "Use bougie as adjunct for difficult airway"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Recognize and treat refractory anaphylaxis",
+      "Apply the MATC Anaphylaxis protocol including IM epi, nebulized epi, fluids, and IV epi drip progression",
+      "Manage a rapidly progressing difficult airway with a double-setup approach",
+      "Decide when to commit to surgical airway",
+      "Understand indications for IV epinephrine infusion in anaphylaxis"
+    ],
+    "discussionQuestions": [
+      "Why might the patient's own auto-injector doses have been subtherapeutic?",
+      "When do you transition from IM to IV epinephrine in anaphylaxis?",
+      "What is a 'double-setup' and why is it appropriate here?",
+      "How do you decide between a smaller ETT and going straight to cricothyrotomy?",
+      "What features of the airway examination would push you toward surgical airway over ETT attempt?"
+    ],
+    "commonPitfalls": [
+      "Withholding additional epinephrine because the patient has already received doses",
+      "Delaying RSI preparation while waiting to see if medical therapy works",
+      "Multiple unsuccessful intubation attempts instead of committing to surgical airway",
+      "Using a standard-sized ETT in an edematous airway",
+      "Failing to resuscitate fluid status before RSI induction causes post-induction hypotension"
+    ],
+    "keyTakeaways": [
+      "Epinephrine is the primary treatment — dose it early, repeat it, escalate to drip",
+      "Airway progression in anaphylaxis is measured in minutes; plan for surgical airway from the start",
+      "A double-setup is good medicine, not an admission of failure",
+      "One best-effort attempt at ETT; if it fails, surgical airway is the answer"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 20,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

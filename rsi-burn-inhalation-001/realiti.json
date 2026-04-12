@@ -1,0 +1,226 @@
+{
+  "scenarioId": "rsi-burn-inhalation-001",
+  "scenarioName": "Burn with Inhalation Injury — Preemptive RSI",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 20,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "50-year-old male pulled from a one-story house fire by an engine crew after being trapped in a back bedroom for an estimated 8-10 minutes. He was found prone on the floor, conscious. Now complaining of a sore throat and difficulty swallowing. Voice quality has been worsening since extraction.",
+    "discussion": "Identify sentinel signs of airway burn and the rationale for preemptive intubation. Apply the MATC Burns protocol including TBSA estimation and Rule of 10 fluid resuscitation. Recognize that SpO2 is unreliable in CO poisoning. Manage concurrent thermal, inhalation, and chemical (CO/CN) injuries. Coordinate transport destination based on burn severity and airway involvement",
+    "course": "Arrival — Conscious with Inhalation Injury Signs: Crew arrives to a conscious, talking patient with multiple sentinel signs of airway burn: carbonaceous sputum, hoarse voice, singed nasal hairs, and developing stridor. He is currently maintaining his own airway but the trajectory is concerning. Pulse oximetry reads 96% which may be falsely reassuring given probable CO exposure. → Preemptive RSI Before Airway Closes: Voice is now markedly more hoarse. Stridor is continuous at rest. The window for easy intubation is closing. Crew commits to RSI now, while the patient is still cooperative and the airway anatomy is still recognizable. → Post-Intubation and Burn Resuscitation: Tube confirmed. Crew initiates fluid resuscitation per Rule of 10, continues 100% oxygen for CO exposure, and arranges transport to the most appropriate burn/trauma center with ED notification."
+  },
+  "patientInformation": {
+    "patientName": "Marcus Reese",
+    "patientCondition": "Burns and smoke inhalation after structure fire rescue",
+    "patientAge": 50,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 180,
+    "patientWeight": 95,
+    "patientPhotoId": 60,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival — Conscious with Inhalation Injury Signs",
+      "description": "Crew arrives to a conscious, talking patient with multiple sentinel signs of airway burn: carbonaceous sputum, hoarse voice, singed nasal hairs, and developing stridor. He is currently maintaining his own airway but the trajectory is concerning. Pulse oximetry reads 96% which may be falsely reassuring given probable CO exposure.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 148,
+        "bpDia": 88,
+        "respRate": 26,
+        "spo2": 96,
+        "etco2": 34,
+        "temp": 36.8,
+        "obstruction": 45,
+        "custMeasure1": 128,
+        "custMeasureLabel1": "mg/dL",
+        "custMeasure2": 18,
+        "custMeasureLabel2": "SpCO (%)",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Estimate TBSA using Rule of 9s",
+        "Remove smoldering clothing and jewelry"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Preemptive RSI Before Airway Closes",
+      "description": "Voice is now markedly more hoarse. Stridor is continuous at rest. The window for easy intubation is closing. Crew commits to RSI now, while the patient is still cooperative and the airway anatomy is still recognizable.",
+      "monitorType": 0,
+      "trendTime": 300,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 126,
+        "bpSys": 152,
+        "bpDia": 90,
+        "respRate": 30,
+        "spo2": 94,
+        "etco2": 36,
+        "temp": 36.8,
+        "obstruction": 60,
+        "custMeasure1": 128,
+        "custMeasureLabel1": "mg/dL",
+        "custMeasure2": 18,
+        "custMeasureLabel2": "SpCO (%)",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Confirm tube placement with waveform capnography"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Post-Intubation and Burn Resuscitation",
+      "description": "Tube confirmed. Crew initiates fluid resuscitation per Rule of 10, continues 100% oxygen for CO exposure, and arranges transport to the most appropriate burn/trauma center with ED notification.",
+      "monitorType": 0,
+      "trendTime": 120,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 132,
+        "bpDia": 78,
+        "respRate": 12,
+        "spo2": 99,
+        "etco2": 40,
+        "temp": 36.8,
+        "obstruction": 15,
+        "custMeasure1": 128,
+        "custMeasureLabel1": "mg/dL",
+        "custMeasure2": 18,
+        "custMeasureLabel2": "SpCO (%)",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Recognize sentinel signs of airway burn and commit to preemptive RSI",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "100% oxygen via NRB to treat presumed CO toxicity (SpO2 unreliable)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Estimate TBSA using Rule of 9s",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish two large-bore IVs avoiding burned skin",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Perform RSI with Ketamine 1-2 mg/kg + Rocuronium 1 mg/kg, using smaller ETT with bougie",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm tube placement with waveform capnography",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Initiate Rule of 10 LR fluid resuscitation (200 mL/hr for this patient)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Post-intubation sedation with Midazolam + Fentanyl",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cover burns with dry sterile dressings and prevent hypothermia",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to burn center with early notification",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Fentanyl for pain management during preparation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Monitor for cyanide toxicity in an enclosed-space fire victim",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Remove smoldering clothing and jewelry",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "12-lead EKG for cardiac screening",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

@@ -1,0 +1,247 @@
+{
+  "meta": {
+    "id": "resp-ohs-decomp-001",
+    "name": "Obesity Hypoventilation Syndrome — Acute Decompensation",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Respiratory",
+    "protocols": ["resp-respiratory-distress", "resp-airway-management"],
+    "totalTimeSeconds": 1500,
+    "tags": ["OHS", "obesity", "BiPAP", "difficult airway", "CO2 narcosis"]
+  },
+  "patient": {
+    "name": "Brandon Peretti",
+    "age": 48,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 181,
+    "height": 178,
+    "chiefComplaint": "Increasing somnolence and altered mental status over the past 24 hours",
+    "history": {
+      "hpi": "48-year-old male, approximately 400 lbs (181 kg), with obesity hypoventilation syndrome (OHS) and severe obstructive sleep apnea. Prescribed home BiPAP but rarely uses it. Over the past 24 hours his family reports he has been increasingly sleepy, difficult to rouse, with slurred speech. This morning he is arousable only to painful stimuli. No fever, no chest pain.",
+      "pastMedical": ["Morbid obesity (BMI ~57)", "Obesity hypoventilation syndrome", "Obstructive sleep apnea (non-compliant with BiPAP)", "Hypertension", "Type 2 diabetes", "Chronic heart failure with preserved EF"],
+      "medications": ["Metformin 1000 mg PO BID", "Lisinopril 40 mg PO daily", "Furosemide 40 mg PO daily"],
+      "allergies": ["No known drug allergies"],
+      "lastOralIntake": "Snacks yesterday evening",
+      "events": "Progressive somnolence over 24 hours. Family attempted to keep him awake with limited success. Now arousable only to pain."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 9, respond code 3 to 2210 Pleasant Valley Road for a 48-year-old male, altered mental status, bariatric patient.",
+    "location": "Single-family home, main floor bedroom. Patient on a reinforced hospital-style bed in the living room (unable to climb stairs). Home BiPAP machine visible but unplugged.",
+    "time": "Tuesday, 09:15",
+    "safety": "Scene safe. Bariatric extrication and lifting will be required — call for bariatric transport and additional personnel.",
+    "bystanders": "Wife and adult son present, both knowledgeable about the patient's history and BiPAP equipment",
+    "visualCues": [
+      "Morbidly obese male, approximately 400 lbs, supine in bed",
+      "Loud snoring respirations",
+      "Minimally responsive, difficult to rouse",
+      "Large neck circumference, short mandible — difficult airway predictors",
+      "Home BiPAP mask and machine on the nightstand, unplugged",
+      "Oxygen concentrator present but not running",
+      "Bed is a reinforced bariatric bed — patient cannot be moved to a standard stretcher easily",
+      "Daily medication organizer with some doses missed"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival — Acute Hypercapnic Respiratory Failure",
+      "description": "Morbidly obese patient with likely acute-on-chronic hypercapnic respiratory failure (OHS decompensation) from BiPAP non-compliance. Mental status is driven by CO2 narcosis. This patient has multiple difficult airway predictors — plan accordingly BEFORE you need to intubate.",
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": {"eye": 2, "verbal": 2, "motor": 4},
+        "airway": "Patent but with loud snoring respirations; large tongue and redundant pharyngeal tissue; jaw thrust improves",
+        "breathing": "Slow at 8/min, shallow; symmetric chest rise; clear or mildly diminished breath sounds bilaterally",
+        "circulation": "Strong pulses, mildly hypertensive",
+        "skin": {"color": "pink with central cyanosis around lips", "temperature": "warm", "moisture": "mildly diaphoretic"},
+        "pupils": "4 mm sluggish",
+        "motorFunction": "Withdraws to pain, no purposeful movement",
+        "otherFindings": [
+          "Multiple difficult airway predictors: morbid obesity, large neck circumference, Mallampati IV, short thyromental distance, limited mouth opening",
+          "BiPAP machine home but unused",
+          "Logistically difficult positioning and transport",
+          "Presumed CO2 narcosis driving mental status",
+          "No signs of stroke or head trauma"
+        ],
+        "patientSpeech": "No verbal output"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 94,
+        "bpSys": 158,
+        "bpDia": 92,
+        "respRate": 8,
+        "spo2": 78,
+        "etco2": 82,
+        "temp": 36.8,
+        "obstruction": 40,
+        "glucose": 198,
+        "trendTimeSeconds": 0,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "bariatric-resources", "action": "Request bariatric transport and additional personnel; plan positioning and movement carefully", "priority": "critical"},
+        {"id": "position", "action": "Position patient in ramped/sitting position with head elevated (reverse Trendelenburg ~30 degrees) — improves ventilation AND airway view if intubation becomes necessary", "priority": "critical", "rationale": "The ramped position is essential in obese patients — it relieves airway obstruction, improves FRC, and aligns the ear to sternal notch for laryngoscopy.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "jaw-thrust-npa", "action": "Jaw thrust with oropharyngeal airway (or NPA if gag intact); open the redundant pharyngeal soft tissue", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "bvm", "action": "Begin 2-person BVM with PEEP valve at 5-10 cmH2O; ventilate at 12 breaths/min to normalize CO2", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "bipap-assess", "action": "Assess patient's ability to cooperate with BiPAP — if minimally rousable and respiratory effort exists, attempt BiPAP (IPAP 12/EPAP 5) as a trial; if no improvement in 5-10 minutes, prepare for RSI", "priority": "critical", "rationale": "BiPAP can dramatically reverse CO2 narcosis in OHS — but only if the patient has enough drive to cooperate. Worth a short trial before committing to RSI.", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "iv-access", "action": "Establish IV access — may be difficult in a morbidly obese patient; have IO backup ready", "priority": "critical"},
+        {"id": "glucose-check", "action": "Check blood glucose to rule out alternate cause of AMS", "priority": "critical", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "monitor", "action": "Apply cardiac monitor, SpO2, waveform capnography", "priority": "critical"},
+        {"id": "difficult-airway-plan", "action": "Verbalize a difficult airway plan BEFORE needing it: primary VL attempt in ramped position, bougie, supraglottic airway backup, surgical airway kit at bedside, adequate preoxygenation", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    },
+    {
+      "id": "bipap-trial",
+      "name": "BiPAP Trial",
+      "description": "Patient tolerates BiPAP with some improvement in mental status and ventilation. BiPAP is continued with intensive monitoring during transport. If mental status continues to improve, intubation is avoided.",
+      "triggerCondition": "Patient can tolerate BiPAP with respiratory effort preserved",
+      "isDefault": true,
+      "transitions": [
+        {"targetPhaseId": "rsi-bariatric", "condition": "Mental status continues to decline on BiPAP", "conditionType": "action_not_taken"}
+      ],
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {"eye": 3, "verbal": 3, "motor": 5},
+        "airway": "Patent with BiPAP mask; snoring resolved",
+        "breathing": "BiPAP delivering consistent tidal volumes; respiratory rate normalizing",
+        "circulation": "Stable",
+        "skin": {"color": "pink", "temperature": "warm", "moisture": "dry"},
+        "pupils": "4 mm reactive",
+        "motorFunction": "Becoming more responsive",
+        "otherFindings": ["EtCO2 trending down — slowly", "Patient beginning to follow simple commands"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 88,
+        "bpSys": 148,
+        "bpDia": 86,
+        "respRate": 16,
+        "spo2": 93,
+        "etco2": 62,
+        "temp": 36.8,
+        "obstruction": 15,
+        "glucose": 198,
+        "trendTimeSeconds": 600,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "titrate-bipap", "action": "Titrate BiPAP settings as needed; target gradual CO2 decrease and improving mental status", "priority": "critical", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "maintain-ramp", "action": "Maintain ramped position during transport", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "continuous-monitor", "action": "Continuous mental status, SpO2, EtCO2 monitoring — be prepared to escalate if BiPAP fails", "priority": "critical", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "transport", "action": "Transport to ED with bariatric capability; early notification", "priority": "critical"},
+        {"id": "avoid-sedation", "action": "Do NOT administer sedatives for BiPAP anxiety — this patient's drive is already compromised", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    },
+    {
+      "id": "rsi-bariatric",
+      "name": "Branch: Difficult Airway RSI",
+      "description": "BiPAP fails or the patient cannot cooperate. RSI is required despite multiple difficult airway predictors. Ramped position, video laryngoscopy, and backup plans are essential.",
+      "triggerCondition": "BiPAP fails or patient cannot cooperate",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 3},
+        "airway": "Snoring with OPA, BVM difficult due to body habitus",
+        "breathing": "Apneic or agonal, BVM-assisted",
+        "circulation": "Maintained",
+        "skin": {"color": "cyanotic", "temperature": "warm", "moisture": "diaphoretic"},
+        "pupils": "4 mm sluggish",
+        "motorFunction": "Flaccid",
+        "otherFindings": [
+          "Poor BVM seal due to body habitus",
+          "Preoxygenation limited due to FRC issues — expect rapid desaturation",
+          "Multiple difficult airway predictors"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 96,
+        "bpSys": 152,
+        "bpDia": 88,
+        "respRate": 6,
+        "spo2": 76,
+        "etco2": 88,
+        "temp": 36.8,
+        "obstruction": 50,
+        "glucose": 198,
+        "trendTimeSeconds": 300,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "ramped-position", "action": "Confirm ramped position — head elevated with shoulders and occiput aligned; ear-to-sternal-notch alignment", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "preox", "action": "Aggressive preoxygenation with BiPAP or 2-person BVM with PEEP 10 cmH2O for at least 3-5 minutes; apneic oxygenation via NC at 15 LPM", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "rsi-induct", "action": "Administer Ketamine 1-2 mg/kg IV (dose based on IDEAL body weight ~72 kg, so 100-140 mg) — dosing on IBW in obese patients prevents overdose", "priority": "critical", "rationale": "Induction agents should be dosed on IBW or adjusted body weight in obesity, not total body weight, to avoid excessive effect.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "rsi-paralytic", "action": "Administer Rocuronium 1 mg/kg IV dosed on TOTAL body weight (181 kg → 180 mg rounded to available dose) — paralytics are dosed on TBW", "priority": "critical", "rationale": "Unlike induction agents, paralytics are dosed on total body weight to ensure adequate paralysis in the highly perfused obese patient.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "video-laryng", "action": "Perform video laryngoscopy; have bougie in-hand and supraglottic airway/cric kit ready; single best-effort attempt, then rescue with SGA if unsuccessful", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "confirm", "action": "Confirm tube placement with waveform capnography, bilateral breath sounds, chest rise", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "post-vent", "action": "Post-intubation ventilation with PEEP 10+ cmH2O, tidal volume 6-8 mL/kg IBW (not TBW), gradual CO2 correction", "priority": "critical", "rationale": "Rapid normalization of chronically elevated CO2 can cause alkalosis, seizures, and cerebral vasoconstriction. Correct slowly.", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Request bariatric resources early",
+      "Position patient in ramped (head elevated) position",
+      "Jaw thrust with OPA/NPA",
+      "2-person BVM with PEEP",
+      "Trial BiPAP if patient retains respiratory drive and cooperation",
+      "Do NOT sedate for BiPAP anxiety",
+      "Check blood glucose",
+      "Establish IV access",
+      "Verbalize difficult airway plan with backups BEFORE needing it",
+      "If RSI: ramped position, induction on IBW, paralytic on TBW, video laryngoscopy with bougie, SGA and surgical airway as backup",
+      "Post-intubation: gradual CO2 correction, PEEP 10+, TV on IBW",
+      "Transport to bariatric-capable ED"
+    ],
+    "expectedActions": [
+      "Apneic oxygenation during intubation",
+      "Continuous mental status monitoring during BiPAP trial",
+      "Early ED notification",
+      "IV versus IO access planning"
+    ],
+    "bonusActions": [
+      "Articulate why induction and paralytic agents are dosed differently in obesity",
+      "Articulate the physiology of rapid CO2 correction complications",
+      "Recognize multiple difficult airway predictors and prepare accordingly"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Recognize OHS acute decompensation and CO2 narcosis",
+      "Apply a trial of NIV before committing to RSI in a cooperative patient",
+      "Understand the ramped position and its importance in obese patients",
+      "Dose induction agents on IBW and paralytics on TBW",
+      "Plan for a difficult airway before intubation is needed"
+    ],
+    "discussionQuestions": [
+      "Why is the ramped position so important in obese airway management?",
+      "How do you dose induction agents versus paralytics in obese patients?",
+      "What is CO2 narcosis and why does rapid correction cause harm?",
+      "Would BiPAP at home have prevented this decompensation?",
+      "When is it appropriate to give a trial of NIV in an obtunded patient?"
+    ],
+    "commonPitfalls": [
+      "Laying the patient flat and losing airway patency",
+      "Under-dosing paralytic in a large patient leading to inadequate paralysis",
+      "Over-dosing induction agents by using total body weight",
+      "Rushing to hyperventilate and causing cerebral vasoconstriction",
+      "Administering sedatives to improve BiPAP tolerance"
+    ],
+    "keyTakeaways": [
+      "Ramped position is the single most important intervention for the obese airway",
+      "NIV is worth a trial when the patient retains drive and cooperation",
+      "IBW for induction, TBW for paralytic",
+      "Correct chronic hypercapnia gradually"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 20,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "scenarioId": "rsi-combative-tbi-001",
+  "scenarioName": "Combative Head Injury — Chemical Sedation and RSI",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 20,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "38-year-old male involved in a single-vehicle motorcycle crash on a highway ramp. Lost control of the bike and struck a guardrail at approximately 50 mph. Helmet came off during the slide. Found combative, swinging at fire crew on arrival. Unable to give history.",
+    "discussion": "Distinguish medical/traumatic agitation from primary behavioral emergencies. Apply IM ketamine as a bridge to definitive airway management in the combative trauma patient. Coordinate rapid transition from chemical sedation to RSI. Apply MATC Head Injury protocol principles once control is achieved. Avoid physical restraint alone in the head-injured patient",
+    "course": "Arrival — Combative Head Injury: Crew arrives to find patient agitated to the point where any assessment, oxygenation, or bleeding control is impossible. SpO2 reads 84% when briefly captured. Clearly head-injured with facial trauma and blood in the airway. Agitation is presumed to be from hypoxia and head injury (per MATC Behavioral protocol exclusion criteria, medical/traumatic causes must be treated medically, not behaviorally). Crew must use chemical sedation — specifically Ketamine — to gain control so they can actually treat him. → Dissociated — Rapid Assessment and RSI Preparation: IM ketamine has taken effect. The patient is dissociated — eyes open, not following commands, no purposeful movement. Respiratory drive preserved. Crew can now perform a meaningful assessment, apply high-flow oxygen, control bleeding, and establish IV access while preparing for definitive airway. → Post-Intubation Neuroprotective Management: Tube confirmed. Crew manages per Head Injury protocol: maintain normocapnia, SBP ≥110, head of bed elevated, and expedited trauma center transport. Post-intubation sedation with additional ketamine for maintenance."
+  },
+  "patientInformation": {
+    "patientName": "Jordan Reeves",
+    "patientCondition": "Combative and hypoxic after motorcycle vs. guardrail MVC with helmet ejection",
+    "patientAge": 38,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 183,
+    "patientWeight": 90,
+    "patientPhotoId": 46,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival — Combative Head Injury",
+      "description": "Crew arrives to find patient agitated to the point where any assessment, oxygenation, or bleeding control is impossible. SpO2 reads 84% when briefly captured. Clearly head-injured with facial trauma and blood in the airway. Agitation is presumed to be from hypoxia and head injury (per MATC Behavioral protocol exclusion criteria, medical/traumatic causes must be treated medically, not behaviorally). Crew must use chemical sedation — specifically Ketamine — to gain control so they can actually treat him.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 138,
+        "bpSys": 168,
+        "bpDia": 98,
+        "respRate": 32,
+        "spo2": 84,
+        "etco2": 32,
+        "temp": 36.6,
+        "obstruction": 40,
+        "custMeasure1": 112,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": false,
+        "rrVisible": true,
+        "etco2Visible": false,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Dissociated — Rapid Assessment and RSI Preparation",
+      "description": "IM ketamine has taken effect. The patient is dissociated — eyes open, not following commands, no purposeful movement. Respiratory drive preserved. Crew can now perform a meaningful assessment, apply high-flow oxygen, control bleeding, and establish IV access while preparing for definitive airway.",
+      "monitorType": 0,
+      "trendTime": 300,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 132,
+        "bpSys": 172,
+        "bpDia": 96,
+        "respRate": 20,
+        "spo2": 94,
+        "etco2": 38,
+        "temp": 36.6,
+        "obstruction": 20,
+        "custMeasure1": 112,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Confirm tube placement with waveform capnography"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Post-Intubation Neuroprotective Management",
+      "description": "Tube confirmed. Crew manages per Head Injury protocol: maintain normocapnia, SBP ≥110, head of bed elevated, and expedited trauma center transport. Post-intubation sedation with additional ketamine for maintenance.",
+      "monitorType": 0,
+      "trendTime": 120,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 112,
+        "bpSys": 148,
+        "bpDia": 88,
+        "respRate": 10,
+        "spo2": 99,
+        "etco2": 40,
+        "temp": 36.6,
+        "obstruction": 10,
+        "custMeasure1": 112,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Transport to Level I trauma center",
+        "Pressure dressing to scalp laceration",
+        "Serial neuro reassessment"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Recognize that agitation in a trauma patient is a medical sign (hypoxia, TBI) — NOT behavioral",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Coordinate scene safety with law enforcement for drug administration",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Ketamine 4 mg/kg IM (360 mg) for dissociation and rapid control",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Use the dissociation window to apply C-collar, suction, apply O2, establish IVs, control bleeding",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reassess neuro status (GCS, pupils, motor) once dissociated",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Preoxygenate with BVM + PEEP and apneic oxygenation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Rocuronium 1 mg/kg IV (90 mg) to convert dissociation to intubating conditions",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Perform video laryngoscopy intubation with in-line stabilization and SALAD for blood",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm tube placement with waveform capnography",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Maintain SBP ≥110 and EtCO2 35-45",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to Level I trauma center",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Pressure dressing to scalp laceration",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Post-intubation sedation with ketamine maintenance + fentanyl",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Head of bed elevation 30 degrees",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Serial neuro reassessment",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

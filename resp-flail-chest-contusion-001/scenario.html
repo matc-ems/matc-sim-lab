@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Flail Chest with Pulmonary Contusion</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#f4f3f0;--card:#fff;--card-border:#e8e6e1;--text:#1c1917;--text-secondary:#57534e;--text-muted:#a8a29e;--green:#16a34a;--green-light:#f0fdf4;--green-border:#bbf7d0;--red:#dc2626;--red-light:#fef2f2;--red-border:#fecaca;--orange:#ea580c;--orange-light:#fff7ed;--orange-border:#fed7aa;--blue:#2563eb;--blue-light:#eff6ff;--purple:#7c3aed;--cyan:#0891b2;--yellow:#ca8a04;--radius:14px;--radius-sm:10px;--shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100dvh;overflow-x:hidden}
+.top-bar{background:var(--card);padding:16px 20px 0;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--card-border)}
+.scenario-name{font-size:17px;font-weight:700;margin-bottom:4px}
+.scenario-tags{display:flex;gap:6px;margin-bottom:14px}
+.tag{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px}
+.tag-difficulty{background:var(--orange-light);color:var(--orange)}
+.tag-category{background:var(--blue-light);color:var(--blue)}
+.tag-time{background:#f5f5f4;color:var(--text-muted)}
+.phase-strip{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}
+.phase-strip::-webkit-scrollbar{display:none}
+.phase-tab{flex-shrink:0;font-size:13px;font-weight:600;padding:10px 16px;color:var(--text-muted);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;position:relative}
+.phase-tab.active{color:var(--text);border-bottom-color:var(--text)}
+.phase-tab.branch{color:var(--red);opacity:.5}
+.phase-tab.branch.active{opacity:1;border-bottom-color:var(--red)}
+.phase-tab .hint-dot{display:none;width:7px;height:7px;border-radius:50%;position:absolute;top:6px;right:4px}
+.phase-tab.hint-next .hint-dot{display:block;background:var(--green);animation:pulse-hint 1.5s infinite}
+.phase-tab.hint-branch .hint-dot{display:block;background:var(--red);animation:pulse-hint 1s infinite}
+@keyframes pulse-hint{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.content{padding:16px;max-width:600px;margin:0 auto}
+.panel{display:none}.panel.active{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);padding:14px 16px 10px}
+.card-content{padding:0 16px 16px}
+.accordion{cursor:pointer;user-select:none}
+.accordion .card-title{display:flex;justify-content:space-between;align-items:center;padding:16px}
+.accordion .card-title::after{content:'＋';font-size:16px;color:var(--text-muted)}
+.accordion.open .card-title::after{content:'−'}
+.accordion .accordion-body{display:none;padding:0 16px 16px}
+.accordion.open .accordion-body{display:block}
+.scene-row{padding:8px 0;border-bottom:1px solid #f5f5f4}.scene-row:last-child{border-bottom:none}
+.scene-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.scene-value{font-size:14px;color:var(--text-secondary)}
+.cue-list{list-style:none}.cue-list li{font-size:14px;color:var(--text-secondary);padding:4px 0 4px 16px;position:relative}.cue-list li::before{content:'→';position:absolute;left:0;color:var(--text-muted);font-size:12px}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.sample-cell{background:var(--card);padding:12px}.sample-cell.full{grid-column:1/-1}
+.sample-letter{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--green);margin-right:4px}
+.sample-name{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:4px}
+.sample-text{font-size:13px;color:var(--text-secondary);line-height:1.4}
+.patient-chips{display:flex;flex-wrap:wrap;gap:8px}
+.patient-chip{font-size:13px;padding:6px 12px;background:#f5f5f4;border-radius:8px;color:var(--text-secondary)}
+.patient-chip strong{color:var(--text);font-weight:600}
+.phase-card{border-left:4px solid var(--text)}.phase-card.branch-card{border-left-color:var(--red)}
+.phase-card .card-content{padding:16px}
+.phase-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.phase-trigger{font-family:'DM Mono',monospace;font-size:11px;color:var(--yellow);margin-bottom:8px}
+.phase-desc{font-size:14px;color:var(--text-secondary);line-height:1.5}
+.vitals-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.vital-cell{background:var(--card);padding:10px 8px;text-align:center}.vital-cell.full-width{grid-column:1/-1}
+.vital-name{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.vital-val{font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:var(--text);line-height:1.1}
+.vital-unit{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted)}
+.vital-cell.alert .vital-val{color:var(--red)}.vital-cell.alert .vital-name{color:var(--red)}.vital-cell.alert{background:var(--red-light)}
+.vital-cell.warn .vital-val{color:var(--orange)}.vital-cell.warn .vital-name{color:var(--orange)}.vital-cell.warn{background:var(--orange-light)}
+.ecg-label{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-secondary);padding:8px 12px;background:#fafaf9;border-bottom:1px solid #f0efec;border-radius:var(--radius-sm) var(--radius-sm) 0 0}
+.avpu-bar{display:flex;border-radius:8px;overflow:hidden;margin-bottom:12px;border:1px solid var(--card-border)}
+.avpu-seg{flex:1;text-align:center;padding:8px 4px;font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--text-muted);background:#fafaf9}
+.avpu-seg.sel-a{background:var(--green-light);color:var(--green);border:1px solid var(--green-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-v{background:var(--orange-light);color:var(--yellow);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-p{background:var(--orange-light);color:var(--orange);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-u{background:var(--red-light);color:var(--red);border:1px solid var(--red-border);margin:-1px;border-radius:8px}
+.gcs-row{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-secondary);margin-bottom:14px;text-align:center}
+.gcs-total{font-size:18px;font-weight:700;color:var(--text)}
+.finding-row{padding:10px 0;border-bottom:1px solid #f5f5f4}.finding-row:last-child{border-bottom:none}
+.finding-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:3px}
+.finding-value{font-size:14px;color:var(--text-secondary)}.finding-value.danger{color:var(--red);font-weight:600}.finding-value.improving{color:var(--green)}.finding-value.speech{font-style:italic;color:var(--text-muted)}
+.skin-chips{display:flex;gap:6px;flex-wrap:wrap}
+.skin-chip{font-size:12px;padding:3px 10px;border-radius:6px;background:#f5f5f4;color:var(--text-secondary)}.skin-chip.warn{background:var(--red-light);color:var(--red)}
+.findings-notes{list-style:none}.findings-notes li{font-size:13px;color:var(--text-secondary);padding:3px 0 3px 14px;position:relative}.findings-notes li::before{content:'·';position:absolute;left:2px;font-weight:700;color:var(--text-muted)}.findings-notes li.danger{color:var(--red)}
+.action-card{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4}.action-card:last-child{border-bottom:none}
+.action-check{width:18px;height:18px;flex-shrink:0;cursor:pointer;accent-color:var(--green)}
+.action-body{flex:1}
+.action-priority{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.p-critical{color:var(--red)}.p-important{color:var(--orange)}
+.action-text{font-size:14px;color:var(--text);font-weight:500}
+.action-chevron{color:var(--text-muted);font-size:14px;transition:transform .2s;flex-shrink:0}
+.action-card.open .action-chevron{transform:rotate(90deg)}
+.action-detail{display:none;padding:0 14px 14px 46px}.action-card.open .action-detail{display:block}
+.action-rationale{font-size:13px;color:var(--text-secondary);line-height:1.5;padding:10px 12px;background:#fafaf9;border-radius:8px;border-left:3px solid var(--card-border)}
+.action-ref{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);margin-top:6px}
+.branch-alert{background:var(--red-light);border:1px solid var(--red-border);border-radius:var(--radius);padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
+.branch-alert-icon{font-size:18px;flex-shrink:0}
+.branch-alert-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:2px}
+.branch-alert-text{font-size:13px;color:var(--text-secondary)}
+.assess-group-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:10px 16px}
+.assess-critical .assess-group-title{color:var(--red)}.assess-expected .assess-group-title{color:var(--orange)}
+.assess-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);cursor:pointer}
+.assess-check{width:22px;height:22px;border:2px solid #d6d3d1;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.assess-check.done{background:var(--green);border-color:var(--green)}.assess-check.done::after{content:'✓';font-size:12px;color:#fff;font-weight:700}
+.debrief-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:14px 16px 10px}
+.debrief-item{padding:10px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);line-height:1.5;display:flex;gap:10px}
+.debrief-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--text-muted);flex-shrink:0;min-width:20px;padding-top:2px}
+.bottom-spacer{height:80px}
+@media print{.top-bar{position:static}.panel{display:flex!important;flex-direction:column;gap:12px;page-break-inside:avoid;margin-bottom:20px}.accordion .accordion-body{display:block!important}.action-detail{display:block!important}}
+
+.action-priority{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+.priority-critical{background:var(--red-light,#fef2f2);color:var(--red,#dc2626)}
+.priority-important{background:var(--orange-light,#fff7ed);color:var(--orange,#ea580c)}
+.priority-supplemental{background:#f5f5f4;color:var(--text-muted,#a8a29e)}
+.action-check{width:18px;height:18px;flex-shrink:0}
+.top-bar-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.timer-widget{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+#timer-display{font-family:'DM Mono',monospace;font-size:20px;font-weight:700;color:var(--text-muted,#a8a29e);font-variant-numeric:tabular-nums;line-height:1}
+.timer-controls{display:flex;gap:4px}
+.timer-btn{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;border:1px solid var(--card-border,#e8e6e1);background:var(--card,#fff);color:var(--text-secondary,#57534e);cursor:pointer;line-height:1.4}
+.timer-btn:hover{background:#f5f5f4}
+.timer-btn-stop{border-color:var(--red-border,#fecaca);color:var(--red,#dc2626)}
+.timer-btn-stop:hover{background:var(--red-light,#fef2f2)}
+#timer-display.timer-warn{color:var(--orange,#ea580c)}
+#timer-display.timer-danger{color:var(--red,#dc2626)}
+.debrief-phase-card{overflow:hidden}
+.debrief-phase-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px}
+.debrief-phase-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score.score-perfect{color:var(--green,#16a34a)}
+.debrief-phase-score.score-none{color:var(--red,#dc2626)}
+.debrief-phase-body{padding:0 16px 14px}
+.debrief-done-section{background:var(--green-light,#f0fdf4);border:1px solid var(--green-border,#bbf7d0);border-radius:var(--radius-sm,10px);padding:6px 12px;margin-bottom:10px}
+.debrief-done-row{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px;color:var(--green,#16a34a)}
+.debrief-done-icon{font-weight:700;flex-shrink:0;font-size:12px}
+.debrief-done-text{color:var(--text-secondary,#57534e)}
+.debrief-missed-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red,#dc2626);padding:4px 0 8px}
+.debrief-missed-row{background:var(--red-light,#fef2f2);border:1px solid var(--red-border,#fecaca);border-radius:var(--radius-sm,10px);padding:10px 12px;margin-bottom:6px}
+.debrief-missed-row:last-child{margin-bottom:0}
+.debrief-missed-top{display:flex;align-items:center;gap:8px}
+.debrief-missed-text{font-size:14px;font-weight:600;color:var(--text,#1c1917)}
+.debrief-missed-detail{padding:6px 0 0 0;margin-top:6px;border-top:1px solid var(--red-border,#fecaca)}
+.debrief-missed-rationale{font-size:12px;color:var(--text-secondary,#57534e);line-height:1.4}
+.debrief-missed-protocol{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue,#2563eb);margin-top:2px}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-header">
+    <div>
+      <div class="scenario-name">Flail Chest with Pulmonary Contusion</div>
+      <div class="scenario-tags">
+        <span class="tag tag-difficulty">advanced</span>
+        <span class="tag tag-category">Trauma</span>
+      </div>
+    </div>
+    <div class="timer-widget" id="scenario-timer" data-total="1500">
+      <span id="timer-display">25:00</span>
+      <div class="timer-controls">
+        <button id="timer-start" class="timer-btn" onclick="timerStart()">start</button>
+        <button id="timer-pause" class="timer-btn" onclick="timerPause()" style="display:none">pause</button>
+        <button id="timer-stop" class="timer-btn timer-btn-stop" onclick="timerStop()" style="display:none">stop</button>
+        <button id="timer-reset" class="timer-btn" onclick="timerReset()" style="display:none">reset</button>
+      </div>
+    </div>
+  </div>
+  <div class="phase-strip">
+    <div class="phase-tab active" data-panel="scene" onclick="showPanel(this, 'scene')">Scene</div>
+    <div class="phase-tab" data-panel="phase-initial" onclick="showPanel(this, 'phase-initial')">Arrival — Flail Chest with Respiratory Compromise</div>
+    <div class="phase-tab" data-panel="phase-improving" onclick="showPanel(this, 'phase-improving')">Default — Improvement with Analgesia and CPAP</div>
+    <div class="phase-tab branch" data-panel="phase-tension-ptx-branch" onclick="showPanel(this, 'phase-tension-ptx-branch')">Branch: Tension Pneumothorax Development</div>
+    <div class="phase-tab" data-panel="debrief" onclick="showPanel(this, 'debrief')">Debrief</div>
+  </div>
+</div>
+<div class="content">
+  
+<div class="panel active" id="panel-scene">
+  <div class="card">
+    <div class="card-title">Dispatch</div>
+    <div class="card-content" style="font-size:14px;color:var(--text-secondary)">Medic 3, respond code 3 to eastbound I-43 milepost 72 for a single-vehicle MVC, driver trapped, chest injury.</div>
+  </div>
+  <div class="card accordion open" onclick="this.classList.toggle('open')">
+    <div class="card-title">Scene Setup</div>
+    <div class="accordion-body">
+      <div class="scene-row"><div class="scene-label">Location</div><div class="scene-value">Highway shoulder. Driver extricated onto a backboard next to a crumpled passenger vehicle.</div></div>
+      <div class="scene-row"><div class="scene-label">Time</div><div class="scene-value">Thursday, 14:15</div></div>
+      <div class="scene-row"><div class="scene-label">Safety</div><div class="scene-value">Lanes closed by law enforcement. Fire on scene. Fuel spill controlled.</div></div>
+      <div class="scene-row"><div class="scene-label">Bystanders</div><div class="scene-value">Fire crew with extrication complete; witness who saw the impact is being interviewed by police</div></div>
+      <div class="scene-row"><div class="scene-label">Visual Cues</div><ul class="cue-list"><li>Middle-aged male supine on a backboard, obviously in pain</li><li>Visible chest wall deformity on the left with paradoxical movement during each breath</li><li>Speaking in short phrases, splinting with every breath</li><li>Abrasions across the anterior chest from the steering wheel</li><li>Breath sounds diminished on the left</li><li>Pale, diaphoretic</li><li>Extrication complete — patient on long board with c-collar</li></ul></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Patient Information</div>
+    <div class="card-content">
+      <div class="patient-chips">
+        <div class="patient-chip"><strong>Victor Lazzaro</strong></div>
+        <div class="patient-chip">55 years</div>
+        <div class="patient-chip">male</div>
+        <div class="patient-chip">92kg</div>
+        <div class="patient-chip">180cm</div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-phase-initial">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Arrival — Flail Chest with Respiratory Compromise</div>
+      
+      <div class="phase-desc">Flail chest is visually dramatic but the underlying pulmonary contusion is the real killer — it's an evolving inflammatory injury that will worsen over the next 24 hours. Positive pressure ventilation and aggressive pain management to allow deeper breathing are the priorities. Avoid heavy fluid resuscitation which will worsen contusion edema.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Rapid shallow at 32/min with obvious paradoxical chest wall movement on the left anterior chest (segment moves inward with inspiration); decreased breath sounds on the left; crepitus palpable over the flail segment</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Tachycardic, BP compensating</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-row">GCS: E4 V4 M6 = <span class="gcs-total">14</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">122</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">110/72</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">32</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">91</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">34</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">36.6</div><div class="vital-unit">°C</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">128</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pale, central cyanosis</span><span class="skin-chip">cool</span><span class="skin-chip">diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">4 mm reactive</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Splinting with every breath, very uncomfortable</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'Can't... take a... deep breath... hurts'"</div></div>
+      <ul class="findings-notes"><li>Paradoxical flail segment on left anterior chest</li><li>Subcutaneous crepitus over the flail segment</li><li>Underlying pulmonary contusion — the real threat</li><li>Patient is splinting, which worsens atelectasis</li><li>Left chest rise diminished</li></ul>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">SAMPLE History</div>
+    <div class="card-content">
+      <div class="sample-grid">
+        <div class="sample-cell full"><span class="sample-letter">S</span><div class="sample-name">Signs/Symptoms</div><div class="sample-text">Severe chest pain and shortness of breath after high-speed MVC, struck chest on steering wheel</div></div>
+        <div class="sample-cell"><span class="sample-letter">A</span><div class="sample-name">Allergies</div><div class="sample-text">No known drug allergies</div></div>
+        <div class="sample-cell"><span class="sample-letter">M</span><div class="sample-name">Medications</div><div class="sample-text">Lisinopril 20 mg PO daily, Atorvastatin 40 mg PO daily</div></div>
+        <div class="sample-cell"><span class="sample-letter">P</span><div class="sample-name">Past Medical</div><div class="sample-text">Hypertension, Hypercholesterolemia, Former smoker</div></div>
+        <div class="sample-cell"><span class="sample-letter">L</span><div class="sample-name">Last Oral Intake</div><div class="sample-text">Lunch approximately 2 hours ago</div></div>
+        <div class="sample-cell full"><span class="sample-letter">E</span><div class="sample-name">Events</div><div class="sample-text">High-speed MVC, front-end collision, unrestrained driver, chest impact with steering wheel. Extricated by fire from the driver's seat.</div></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="march" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Apply MARCH primary survey; no massive hemorrhage noted</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="spinal" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Maintain cervical collar and long board immobilization (mechanism)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="o2" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Apply high-flow oxygen via non-rebreather; target SpO2 ≥94%</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="breath-sounds" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Auscultate breath sounds bilaterally and monitor for tension pneumothorax — be ready with needle decompression equipment on the left</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="iv" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Establish two large-bore IVs</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="fluid-careful" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer permissive hypotensive fluid strategy (target SBP 90 mmHg, palpable radial): only bolus if SBP &lt;90 or HR &gt;120 with signs of hypoperfusion; start with 500 mL</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="pain-fent" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Fentanyl 1-2 mcg/kg IV (92-184 mcg for 92 kg patient) for pain; titrate to effect; may repeat</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="cpap" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Consider CPAP starting at 5 cmH2O — provides an internal 'splint' for the flail segment and treats underlying contusion atelectasis</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="no-taping" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Do NOT tape or pad the flail segment externally — causes restriction and worsens ventilation</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="monitor" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Apply cardiac monitor, SpO2, waveform capnography</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-improving">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Default — Improvement with Analgesia and CPAP</div>
+      <div class="phase-trigger">Stabilization after pain control and CPAP</div>
+      <div class="phase-desc">With adequate fentanyl and CPAP, the patient is able to take deeper breaths, SpO2 improves, and splinting decreases. Rapid transport to trauma center continues. Vigilance for tension pneumothorax remains.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">CPAP in place, slower respiratory rate, deeper tidal volumes, less splinting</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">HR decreasing with pain control</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-row">GCS: E4 V5 M6 = <span class="gcs-total">15</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">108</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">118/76</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">22</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">96</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">38</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">36.6</div><div class="vital-unit">°C</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">128</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">improved pink</span><span class="skin-chip">warming</span><span class="skin-chip">less diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">4 mm reactive</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">More comfortable, can tolerate assessment</div></div>
+      
+      <ul class="findings-notes"><li>Flail segment still paradoxical but less dramatic with CPAP</li><li>Pain 5/10 from 10/10</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="continue-cpap" data-phase-id="improving">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Maintain CPAP without breaking the seal</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="ongoing-pain" data-phase-id="improving">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Continue titration of fentanyl for ongoing pain</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="transport" data-phase-id="improving">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Expedited transport to Level I trauma center; scene time &lt;10 minutes</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reassess-breath" data-phase-id="improving">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Reassess breath sounds frequently for developing tension pneumothorax or hemothorax</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-tension-ptx-branch">
+  <div class="card phase-card branch-card">
+    <div class="card-content">
+      <div class="phase-title">Branch: Tension Pneumothorax Development</div>
+      <div class="phase-trigger">Sudden hemodynamic or respiratory deterioration</div>
+      <div class="phase-desc">During transport the patient deteriorates with sudden hypotension, absent left breath sounds, and tracheal deviation. Classic tension pneumothorax from the rib fractures and underlying lung injury. Needle decompression is indicated.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Absent breath sounds on the left, tracheal deviation to the right, jugular venous distention</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Hypotensive with weak pulses</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg">A</div><div class="avpu-seg sel-v">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-row">GCS: E3 V4 M5 = <span class="gcs-total">12</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">142</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">76/48</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">36</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">82</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">26</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">36.6</div><div class="vital-unit">°C</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">128</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pale with worsening cyanosis</span><span class="skin-chip">cool</span><span class="skin-chip">diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">4 mm reactive</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Anxious, distressed</div></div>
+      
+      <ul class="findings-notes"><li>Classic tension pneumothorax presentation — act immediately, don't wait for confirmation</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="decompress" data-phase-id="tension-ptx-branch">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Perform needle decompression on the left — 4th or 5th intercostal space at the anterior axillary line (preferred) with a large-bore needle/catheter</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reassess-decomp" data-phase-id="tension-ptx-branch">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Reassess breath sounds and hemodynamics after decompression; be prepared for a second decompression if symptoms recur</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="transport-emerg" data-phase-id="tension-ptx-branch">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Expedited transport continues with crew prepared for further interventions</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-debrief">
+  
+  <div class="card accordion" onclick="this.classList.toggle('open')">
+    <div class="card-title">Learning Objectives</div>
+    <div class="accordion-body"><ul class="findings-notes"><li>Apply MATC General Trauma Management MARCH approach</li><li>Manage flail chest with CPAP and aggressive analgesia</li><li>Understand that pulmonary contusion is the underlying injury</li><li>Avoid over-fluid-loading contusion patients</li><li>Recognize and treat tension pneumothorax</li></ul></div>
+  </div>
+  <div id="debrief-actions" style="display:flex;flex-direction:column;gap:12px"></div>
+</div>
+</div>
+<script>
+
+var phaseActionData = [{"phaseId":"initial","phaseName":"Arrival — Flail Chest with Respiratory Compromise","actions":[{"id":"march","action":"Apply MARCH primary survey; no massive hemorrhage noted","priority":"critical","rationale":"","protocolReference":"MATC: General Trauma Management"},{"id":"spinal","action":"Maintain cervical collar and long board immobilization (mechanism)","priority":"critical","rationale":"","protocolReference":"MATC: Spinal Care"},{"id":"o2","action":"Apply high-flow oxygen via non-rebreather; target SpO2 ≥94%","priority":"critical","rationale":"","protocolReference":"MATC: Respiratory Distress"},{"id":"breath-sounds","action":"Auscultate breath sounds bilaterally and monitor for tension pneumothorax — be ready with needle decompression equipment on the left","priority":"critical","rationale":"","protocolReference":"MATC: General Trauma Management"},{"id":"iv","action":"Establish two large-bore IVs","priority":"critical","rationale":"","protocolReference":"MATC: General Trauma Management"},{"id":"fluid-careful","action":"Administer permissive hypotensive fluid strategy (target SBP 90 mmHg, palpable radial): only bolus if SBP <90 or HR >120 with signs of hypoperfusion; start with 500 mL","priority":"critical","rationale":"Aggressive fluid worsens pulmonary contusion edema. Permissive hypotension is appropriate in isolated chest trauma without head injury.","protocolReference":"MATC: General Trauma Management"},{"id":"pain-fent","action":"Administer Fentanyl 1-2 mcg/kg IV (92-184 mcg for 92 kg patient) for pain; titrate to effect; may repeat","priority":"critical","rationale":"Aggressive analgesia is the most important intervention — allows deeper breathing and reduces splinting/atelectasis.","protocolReference":"MATC: Pain Management"},{"id":"cpap","action":"Consider CPAP starting at 5 cmH2O — provides an internal 'splint' for the flail segment and treats underlying contusion atelectasis","priority":"critical","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"no-taping","action":"Do NOT tape or pad the flail segment externally — causes restriction and worsens ventilation","priority":"important","rationale":"","protocolReference":"MATC: General Trauma Management"},{"id":"monitor","action":"Apply cardiac monitor, SpO2, waveform capnography","priority":"critical","rationale":"","protocolReference":""}]},{"phaseId":"improving","phaseName":"Default — Improvement with Analgesia and CPAP","actions":[{"id":"continue-cpap","action":"Maintain CPAP without breaking the seal","priority":"critical","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"ongoing-pain","action":"Continue titration of fentanyl for ongoing pain","priority":"critical","rationale":"","protocolReference":"MATC: Pain Management"},{"id":"transport","action":"Expedited transport to Level I trauma center; scene time <10 minutes","priority":"critical","rationale":"","protocolReference":"MATC: General Trauma Management"},{"id":"reassess-breath","action":"Reassess breath sounds frequently for developing tension pneumothorax or hemothorax","priority":"critical","rationale":"","protocolReference":"MATC: General Trauma Management"}]},{"phaseId":"tension-ptx-branch","phaseName":"Branch: Tension Pneumothorax Development","actions":[{"id":"decompress","action":"Perform needle decompression on the left — 4th or 5th intercostal space at the anterior axillary line (preferred) with a large-bore needle/catheter","priority":"critical","rationale":"Anterior axillary line at 4th/5th ICS has better success than 2nd ICS midclavicular due to chest wall thickness.","protocolReference":"MATC: General Trauma Management"},{"id":"reassess-decomp","action":"Reassess breath sounds and hemodynamics after decompression; be prepared for a second decompression if symptoms recur","priority":"critical","rationale":"","protocolReference":"MATC: General Trauma Management"},{"id":"transport-emerg","action":"Expedited transport continues with crew prepared for further interventions","priority":"critical","rationale":"","protocolReference":""}]}];
+var firstPhaseId = "initial";
+
+function showPanel(tab, panelId) {
+  document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  var panel = document.getElementById('panel-' + panelId);
+  if (panel) panel.classList.add('active');
+  if (panelId === 'debrief') buildDebriefActions();
+}
+
+function buildDebriefActions() {
+  var container = document.getElementById('debrief-actions');
+  if (!container) return;
+  container.innerHTML = '';
+  phaseActionData.forEach(function(phase) {
+    var isFirst = phase.phaseId === firstPhaseId;
+    var checkboxes = phase.actions.map(function(a) {
+      return document.querySelector('[data-action-id="' + a.id + '"][data-phase-id="' + phase.phaseId + '"]');
+    });
+    var anyChecked = checkboxes.some(function(cb) { return cb && cb.checked; });
+    if (!isFirst && !anyChecked) return;
+    var doneActions = [], missedActions = [];
+    phase.actions.forEach(function(a, i) {
+      var cb = checkboxes[i];
+      if (cb && cb.checked) doneActions.push(a); else missedActions.push(a);
+    });
+    var total = phase.actions.length, doneCount = doneActions.length;
+    var card = document.createElement('div');
+    card.className = 'card debrief-phase-card';
+    var header = document.createElement('div');
+    header.className = 'debrief-phase-header';
+    var hLeft = document.createElement('div');
+    hLeft.className = 'debrief-phase-name';
+    hLeft.textContent = phase.phaseName;
+    var hRight = document.createElement('div');
+    hRight.className = 'debrief-phase-score';
+    if (doneCount === total) hRight.classList.add('score-perfect');
+    else if (doneCount === 0) hRight.classList.add('score-none');
+    hRight.textContent = doneCount + '/' + total;
+    header.appendChild(hLeft); header.appendChild(hRight);
+    card.appendChild(header);
+    var body = document.createElement('div');
+    body.className = 'debrief-phase-body';
+    if (doneActions.length) {
+      var doneSection = document.createElement('div');
+      doneSection.className = 'debrief-done-section';
+      doneActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-done-row';
+        row.innerHTML = '<span class="debrief-done-icon">\u2713</span><span class="debrief-done-text">' + a.action + '</span>';
+        doneSection.appendChild(row);
+      });
+      body.appendChild(doneSection);
+    }
+    if (missedActions.length) {
+      var missLabel = document.createElement('div');
+      missLabel.className = 'debrief-missed-label';
+      missLabel.textContent = 'MISSED';
+      body.appendChild(missLabel);
+      missedActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-missed-row';
+        var top = document.createElement('div');
+        top.className = 'debrief-missed-top';
+        var badge = document.createElement('span');
+        badge.className = 'action-priority priority-' + a.priority;
+        badge.textContent = a.priority.toUpperCase();
+        var text = document.createElement('span');
+        text.className = 'debrief-missed-text';
+        text.textContent = a.action;
+        top.appendChild(badge); top.appendChild(text);
+        row.appendChild(top);
+        if (a.rationale || a.protocolReference) {
+          var detail = document.createElement('div');
+          detail.className = 'debrief-missed-detail';
+          if (a.rationale) { var reason = document.createElement('div'); reason.className = 'debrief-missed-rationale'; reason.textContent = a.rationale; detail.appendChild(reason); }
+          if (a.protocolReference) { var proto = document.createElement('div'); proto.className = 'debrief-missed-protocol'; proto.textContent = 'Protocol: ' + a.protocolReference; detail.appendChild(proto); }
+          row.appendChild(detail);
+        }
+        body.appendChild(row);
+      });
+    }
+    card.appendChild(body); container.appendChild(card);
+  });
+}
+
+// Timer
+var timerEl = document.getElementById('scenario-timer');
+var timerTotal = timerEl ? parseInt(timerEl.getAttribute('data-total')) : 0;
+var timerRemaining = timerTotal;
+var timerInterval = null;
+function timerFormat(s) { var m = Math.floor(s/60); var sec = s%60; return m+':'+(sec<10?'0':'')+sec; }
+function timerUpdate() {
+  var d = document.getElementById('timer-display'); if(!d) return;
+  d.textContent = timerFormat(timerRemaining);
+  d.classList.remove('timer-warn','timer-danger');
+  if(timerRemaining<=60) d.classList.add('timer-danger');
+  else if(timerRemaining<=timerTotal*0.25) d.classList.add('timer-warn');
+}
+function timerStart() {
+  document.getElementById('timer-start').style.display='none';
+  document.getElementById('timer-pause').style.display='';
+  document.getElementById('timer-stop').style.display='';
+  document.getElementById('timer-reset').style.display='none';
+  timerInterval=setInterval(function(){timerRemaining--;timerUpdate();if(timerRemaining<=0){timerRemaining=0;timerStop();}},1000);
+}
+function timerPause() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-pause').style.display='none';document.getElementById('timer-start').style.display=''; }
+function timerStop() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-start').style.display='none';document.getElementById('timer-pause').style.display='none';document.getElementById('timer-stop').style.display='none';document.getElementById('timer-reset').style.display=''; }
+function timerReset() { timerRemaining=timerTotal;timerUpdate();document.getElementById('timer-reset').style.display='none';document.getElementById('timer-start').style.display=''; }
+
+</script>
+</body>
+</html>

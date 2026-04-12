@@ -1,0 +1,237 @@
+{
+  "meta": {
+    "id": "resp-smoke-inhalation-001",
+    "name": "Smoke Inhalation without Burns — CO Exposure",
+    "version": 1,
+    "difficulty": "intermediate",
+    "category": "Toxicology",
+    "protocols": ["tox-carbon-monoxide-smoke-inhalation", "resp-airway-management", "tox-cyanide-exposure"],
+    "totalTimeSeconds": 1500,
+    "tags": ["CO poisoning", "smoke inhalation", "firefighter", "hyperbaric"]
+  },
+  "patient": {
+    "name": "Alicia Reyes",
+    "age": 45,
+    "ageUnit": "years",
+    "sex": "female",
+    "weight": 70,
+    "height": 170,
+    "chiefComplaint": "Cough, chest tightness, dyspnea after firefighting interior operation",
+    "history": {
+      "hpi": "45-year-old female firefighter pulled out of an interior attack by her RIT team when her SCBA alarm ran low during an aggressive interior operation. She was inside for approximately 20 minutes. No burns and no direct thermal injury, but she has a persistent cough, chest tightness, and progressive shortness of breath since removing her mask.",
+      "pastMedical": ["Mild exercise-induced asthma"],
+      "medications": ["Albuterol MDI PRN"],
+      "allergies": ["No known drug allergies"],
+      "lastOralIntake": "Lunch before shift change",
+      "events": "Interior attack operation. SCBA low-air alarm activated. RIT extraction. Removed mask outside. Symptoms developed over 10-15 minutes since extraction."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 7, respond to active fire scene at 420 Industrial Way for firefighter rehab, one member with respiratory symptoms after interior operation.",
+    "location": "Warehouse fire scene, rehab sector set up 100 feet from the structure. Firefighter seated in rehab chair, still in bunker pants.",
+    "time": "Monday, 13:40",
+    "safety": "Rehab sector clear of smoke, upwind from the structure. Fire still active.",
+    "bystanders": "Other firefighters and safety officer present; incident commander coordinating",
+    "visualCues": [
+      "Middle-aged female in firefighter uniform, seated in rehab",
+      "Soot on face, neck, and bunker gear",
+      "No visible burns or singed hair",
+      "Persistent cough that brings up gray-black sputum",
+      "Talking in short phrases, voice slightly hoarse",
+      "Pulse oximeter on the forefinger reads 99% — potentially misleading",
+      "Firefighter appears more ill than the SpO2 suggests"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival — Post-Fire Exposure Respiratory Symptoms",
+      "description": "Firefighter with smoke inhalation and likely CO exposure. Classic clinical finding: patient LOOKS sick but SpO2 is normal. Pulse oximeter cannot distinguish carboxyhemoglobin from oxyhemoglobin. Treat presumptively for CO with 100% oxygen via NRB. Also consider cyanide in severe cases with hemodynamic/neurologic compromise.",
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {"eye": 4, "verbal": 5, "motor": 6},
+        "airway": "Patent; voice slightly hoarse but audible",
+        "breathing": "Mildly tachypneic at 22/min; mild wheezing bilaterally; productive cough with carbonaceous sputum",
+        "circulation": "Tachycardic from exertion and possible CO",
+        "skin": {"color": "NOT cherry red (this is a myth); mild pallor", "temperature": "warm from bunker gear", "moisture": "diaphoretic"},
+        "pupils": "4 mm reactive",
+        "motorFunction": "Purposeful, cooperative",
+        "otherFindings": [
+          "Soot on face and in nostrils",
+          "Carbonaceous sputum",
+          "No external burns",
+          "No singed facial hair",
+          "Headache, nausea, feeling 'off' — classic CO symptoms",
+          "SpO2 reads 99% — FALSELY REASSURING in CO exposure"
+        ],
+        "patientSpeech": "'I feel terrible... bad headache... chest feels tight'"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 134,
+        "bpDia": 82,
+        "respRate": 22,
+        "spo2": 99,
+        "etco2": 38,
+        "temp": 37.6,
+        "obstruction": 20,
+        "glucose": 108,
+        "customMeasures": [{"label": "SpCO (%)", "value": 28}],
+        "trendTimeSeconds": 0,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "remove-gear", "action": "Remove bunker gear and move to rehab sector; continue assessment in a clean-air environment", "priority": "critical", "protocolReference": "MATC: Carbon Monoxide/Smoke Inhalation"},
+        {"id": "high-flow-o2", "action": "Apply 100% oxygen via non-rebreather mask at 15 LPM; treat presumptively for CO regardless of SpO2 reading", "priority": "critical", "rationale": "CO has an affinity for hemoglobin ~240x greater than oxygen. High FiO2 shortens the half-life of carboxyhemoglobin from 4 hours (room air) to ~80 minutes (100% O2).", "protocolReference": "MATC: Carbon Monoxide/Smoke Inhalation"},
+        {"id": "spco", "action": "Use CO-oximeter (SpCO) if available for quantitative CO exposure — 28% is moderate-severe; note that SpO2 standard pulse oximetry is unreliable", "priority": "critical", "protocolReference": "MATC: Carbon Monoxide/Smoke Inhalation"},
+        {"id": "airway-assess", "action": "Assess airway for thermal injury signs (hoarseness, stridor, facial burns, singed hair, carbonaceous sputum) — monitor for progression to airway edema over the next hours", "priority": "critical", "protocolReference": "MATC: Burns"},
+        {"id": "iv", "action": "Establish IV access", "priority": "important"},
+        {"id": "12-lead", "action": "Obtain 12-lead EKG — CO can precipitate ischemia at lower thresholds", "priority": "important", "protocolReference": "MATC: Carbon Monoxide/Smoke Inhalation"},
+        {"id": "glucose", "action": "Check blood glucose", "priority": "important", "protocolReference": "MATC: Carbon Monoxide/Smoke Inhalation"},
+        {"id": "consider-cn", "action": "Consider cyanide toxicity if hemodynamic or neurologic compromise develops in an enclosed-space fire exposure; Hydroxocobalamin 5 g IV over 15 minutes if available and indicated", "priority": "important", "protocolReference": "MATC: Cyanide Exposure"},
+        {"id": "nebulizer", "action": "Administer Albuterol 5 mg + Ipratropium 0.5 mg nebulized if wheezing from chemical bronchitis", "priority": "important", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "monitor", "action": "Apply cardiac monitor, SpO2, waveform capnography", "priority": "important"}
+      ]
+    },
+    {
+      "id": "transport-hyperbaric",
+      "name": "Transport Decision — Hyperbaric Candidacy",
+      "description": "Patient is stable for transport but has moderate CO exposure (SpCO 28%). Consider hyperbaric oxygen facility for definitive treatment. Criteria typically include SpCO >25%, any neurologic symptoms, any cardiac symptoms, pregnancy, or loss of consciousness at scene.",
+      "triggerCondition": "Stabilization with high-flow O2",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {"eye": 4, "verbal": 5, "motor": 6},
+        "airway": "Patent, voice still hoarse",
+        "breathing": "Decreased cough and wheezing with oxygen and nebulizer",
+        "circulation": "HR decreasing",
+        "skin": {"color": "pink", "temperature": "normal", "moisture": "drying"},
+        "pupils": "4 mm reactive",
+        "motorFunction": "Purposeful, cooperative",
+        "otherFindings": ["Headache improving slightly with 100% O2", "Still symptomatic — needs definitive care"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 102,
+        "bpSys": 128,
+        "bpDia": 78,
+        "respRate": 18,
+        "spo2": 99,
+        "etco2": 38,
+        "temp": 37.2,
+        "obstruction": 10,
+        "glucose": 108,
+        "customMeasures": [{"label": "SpCO (%)", "value": 22}],
+        "trendTimeSeconds": 600,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "continue-o2", "action": "Continue 100% O2 via NRB throughout transport", "priority": "critical", "protocolReference": "MATC: Carbon Monoxide/Smoke Inhalation"},
+        {"id": "hyperbaric-consult", "action": "Consider hyperbaric oxygen facility for definitive treatment if feasible — SpCO >25%, neurologic symptoms, cardiac changes, or loss of consciousness support HBO therapy", "priority": "critical", "protocolReference": "MATC: Carbon Monoxide/Smoke Inhalation"},
+        {"id": "watch-airway", "action": "Monitor for delayed airway edema — voice change, stridor progression — over the transport window", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "transport", "action": "Transport to hyperbaric-capable center if within reasonable time; otherwise to nearest ED", "priority": "critical"},
+        {"id": "notify", "action": "Notify receiving hospital of CO exposure, SpCO level, and symptoms", "priority": "critical", "protocolReference": "MATC: Carbon Monoxide/Smoke Inhalation"}
+      ]
+    },
+    {
+      "id": "delayed-airway-branch",
+      "name": "Branch: Delayed Airway Edema",
+      "description": "During transport the patient's voice becomes progressively hoarser, mild stridor develops. Delayed airway edema from smoke inhalation can present 4-24 hours later. Crew must recognize the trajectory and escalate airway management.",
+      "triggerCondition": "Progressive voice change or stridor during transport",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {"eye": 4, "verbal": 4, "motor": 6},
+        "airway": "Increasing hoarseness, beginning mild stridor",
+        "breathing": "Increasing work of breathing",
+        "circulation": "Compensating",
+        "skin": {"color": "pink", "temperature": "warm", "moisture": "diaphoretic"},
+        "pupils": "4 mm reactive",
+        "motorFunction": "Anxious about throat tightness",
+        "otherFindings": ["Delayed airway edema developing; time to reassess intubation decision"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 132,
+        "bpDia": 82,
+        "respRate": 24,
+        "spo2": 96,
+        "etco2": 34,
+        "temp": 37.2,
+        "obstruction": 45,
+        "glucose": 108,
+        "customMeasures": [{"label": "SpCO (%)", "value": 18}],
+        "trendTimeSeconds": 300,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "recognize-edema", "action": "Recognize developing airway edema and discuss preemptive intubation with online medical control if transport time is long", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "neb-epi", "action": "Consider nebulized Epinephrine 5 mg (5 mL of 1 mg/mL) for supraglottic edema as a temporizing measure", "priority": "important", "protocolReference": "MATC: Burns"},
+        {"id": "notify-upgrade", "action": "Upgrade ED notification — patient may need ED-based airway management on arrival", "priority": "critical"}
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Apply 100% oxygen via NRB regardless of SpO2 reading",
+      "Recognize that SpO2 is unreliable in CO exposure",
+      "Use CO-oximeter (SpCO) if available",
+      "Assess airway for signs of thermal injury and monitor for delayed edema",
+      "Establish IV access",
+      "Obtain 12-lead EKG",
+      "Consider cyanide toxicity in enclosed-space fires with hemodynamic or neurologic compromise",
+      "Transport to hyperbaric-capable facility if SpCO >25% or neurologic symptoms",
+      "Early ED notification"
+    ],
+    "expectedActions": [
+      "Remove bunker gear for clean-air assessment",
+      "Administer nebulized bronchodilators for wheezing",
+      "Serial reassessment for airway progression",
+      "Document SpCO and symptoms for hyperbaric decision-making"
+    ],
+    "bonusActions": [
+      "Articulate why SpO2 is unreliable in CO",
+      "Recognize delayed airway edema trajectory",
+      "Identify hyperbaric criteria"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Treat CO exposure with 100% oxygen regardless of SpO2",
+      "Understand the limitations of standard pulse oximetry in CO exposure",
+      "Consider cyanide toxicity in enclosed-space fires",
+      "Recognize delayed airway edema trajectory",
+      "Identify hyperbaric oxygen therapy candidates"
+    ],
+    "discussionQuestions": [
+      "Why does SpO2 read normal in CO exposure?",
+      "What are the criteria for hyperbaric oxygen therapy in CO poisoning?",
+      "When should you consider cyanide toxicity and how is it treated?",
+      "How long after a smoke inhalation exposure can airway edema develop?",
+      "Why don't CO patients typically present with 'cherry red' skin?"
+    ],
+    "commonPitfalls": [
+      "Being reassured by SpO2 99%",
+      "Using nasal cannula instead of NRB for CO exposure",
+      "Transporting to a non-hyperbaric facility when a nearby option exists",
+      "Failing to monitor for delayed airway edema after arrival at the hospital",
+      "Missing the option to treat cyanide toxicity"
+    ],
+    "keyTakeaways": [
+      "100% O2 via NRB for all suspected CO exposure — SpO2 lies",
+      "SpCO is the real measurement",
+      "Delayed airway edema is a real risk — watch voice and stridor",
+      "Hyperbaric is definitive for moderate-severe CO"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 20,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

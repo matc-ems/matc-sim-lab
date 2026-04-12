@@ -1,0 +1,186 @@
+{
+  "scenarioId": "resp-chf-flash-pulm-edema-001",
+  "scenarioName": "Flash Pulmonary Edema — Hypertensive CHF",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 20,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "72-year-old male with known CHF (EF 25%), awoke at about 02:30 with sudden severe shortness of breath. Unable to lie flat. Wife states he has been non-compliant with his fluid restriction for the past week. No chest pain, no fever, no recent medication changes. Blood pressure 'has been high' per wife's home cuff.",
+    "discussion": "Recognize and treat hypertensive flash pulmonary edema. Apply CPAP as first-line therapy, coaching for tolerance. Use high-dose nitroglycerin for afterload reduction in CHF. Understand why furosemide is not prehospital-indicated. Resist premature intubation when medical therapy is working",
+    "course": "Arrival — Hypertensive Flash Pulmonary Edema: Classic hypertensive flash pulmonary edema. This is a problem of volume DISTRIBUTION (afterload) more than total body fluid overload. Treatment centerpiece: CPAP for positive pressure ventilation to redistribute fluid, and aggressive nitroglycerin for afterload reduction. Do NOT rush to intubate — medical therapy works quickly. → Responding to CPAP and Nitroglycerin: Within 10-15 minutes of CPAP and repeated nitroglycerin, the patient's condition improves markedly. SpO2 climbs, respiratory rate decreases, speaks in longer phrases, and BP begins to normalize. Classic rapid response to afterload reduction."
+  },
+  "patientInformation": {
+    "patientName": "Walter Kowalski",
+    "patientCondition": "Acute shortness of breath, woke up unable to breathe",
+    "patientAge": 72,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 178,
+    "patientWeight": 95,
+    "patientPhotoId": 87,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival — Hypertensive Flash Pulmonary Edema",
+      "description": "Classic hypertensive flash pulmonary edema. This is a problem of volume DISTRIBUTION (afterload) more than total body fluid overload. Treatment centerpiece: CPAP for positive pressure ventilation to redistribute fluid, and aggressive nitroglycerin for afterload reduction. Do NOT rush to intubate — medical therapy works quickly.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 220,
+        "bpDia": 130,
+        "respRate": 32,
+        "spo2": 84,
+        "etco2": 30,
+        "temp": 36.8,
+        "obstruction": 20,
+        "custMeasure1": 164,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Do NOT administer furosemide",
+        "Establish IV access"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Responding to CPAP and Nitroglycerin",
+      "description": "Within 10-15 minutes of CPAP and repeated nitroglycerin, the patient's condition improves markedly. SpO2 climbs, respiratory rate decreases, speaks in longer phrases, and BP begins to normalize. Classic rapid response to afterload reduction.",
+      "monitorType": 0,
+      "trendTime": 600,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 104,
+        "bpSys": 168,
+        "bpDia": 98,
+        "respRate": 24,
+        "spo2": 94,
+        "etco2": 36,
+        "temp": 36.8,
+        "obstruction": 10,
+        "custMeasure1": 164,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Recognize hypertensive flash pulmonary edema (BP, JVD, crackles, pink frothy sputum)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Keep patient upright",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply CPAP with good coaching, starting 5 cmH2O and titrating up",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Nitroglycerin 0.8 mg SL given SBP >160, repeat q5min for SBP >100",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm no PDE-5 inhibitor use prior to nitroglycerin",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Obtain 12-lead EKG to rule out STEMI precipitant",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT discontinue CPAP in transit",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT administer furosemide",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT intubate as first-line — medical therapy works quickly",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Serial BP monitoring after each nitro dose",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reassess lung sounds and work of breathing",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Consider IV nitroglycerin infusion if available",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to cath-capable ED",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

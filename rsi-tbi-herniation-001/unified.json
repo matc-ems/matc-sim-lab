@@ -1,0 +1,291 @@
+{
+  "meta": {
+    "id": "rsi-tbi-herniation-001",
+    "name": "Severe TBI with Herniation — Neuroprotective RSI",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Trauma",
+    "protocols": ["trauma-head-injury", "resp-airway-management", "trauma-general", "trauma-spinal-care"],
+    "totalTimeSeconds": 1500,
+    "tags": ["RSI", "TBI", "herniation", "trauma", "airway"]
+  },
+  "patient": {
+    "name": "Tyler Brennan",
+    "age": 28,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 80,
+    "height": 183,
+    "chiefComplaint": "Unresponsive after approximately 20-foot fall from rock climbing wall",
+    "history": {
+      "hpi": "28-year-old male outdoor climber found unresponsive at the base of a bolted sport route by his climbing partner. Estimated 20-foot ground fall. Partner states he was belaying when the anchor failed. No helmet.",
+      "pastMedical": ["None reported"],
+      "medications": ["None"],
+      "allergies": ["No known drug allergies"],
+      "lastOralIntake": "Gatorade and granola bar approximately 2 hours prior",
+      "events": "Lead climber took an uncontrolled ground fall from approximately 20 feet after anchor failure. Brief seizure-like activity witnessed immediately after impact per partner. Vomited once. Has not regained consciousness."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 7, respond to Eagle Bluff Crag, trail access via Ridge Road, for a 28-year-old male, fall victim, unresponsive. Wilderness rescue team en route.",
+    "location": "Outdoor climbing area, base of a cliff on packed dirt and small boulders. Approximately 200 yards from the road via a mild uphill trail. Patient at base of route with climbing rope and hardware around him.",
+    "time": "Saturday, 14:20, warm and sunny",
+    "safety": "Scene cleared by partner — no further rockfall risk. Uneven terrain for working area. Rescue rope team will assist with litter carry-out.",
+    "bystanders": "Climbing partner present, witnessed the fall, provides mechanism and timeline. Two other climbers assisting with scene access.",
+    "visualCues": [
+      "Young adult male supine on the dirt, unresponsive",
+      "Obvious large left parietal scalp hematoma with oozing",
+      "Left pupil dilated and non-reactive",
+      "Bilateral arm flexion toward chest (decorticate posturing) with painful stimuli",
+      "Vomitus around mouth and on left cheek",
+      "Loud sonorous respirations audible from several feet away",
+      "Climbing helmet is NOT on patient — still clipped to harness",
+      "Deformity of the left forearm"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival — Severe TBI with Herniation Signs",
+      "description": "Crew arrives to find patient with obvious severe head injury. Unequal pupils and decorticate posturing signal impending herniation. Sonorous airway with vomitus pooling. Spinal precautions required. Crew must recognize this as a neuroprotective RSI case and manage aggressively to prevent secondary brain injury.",
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 3},
+        "airway": "Sonorous respirations with vomitus pooling in oropharynx; airway patent only with jaw thrust",
+        "breathing": "Irregular, deep respirations (Cushing response pattern) at 10/min; symmetric chest rise",
+        "circulation": "Bounding radial pulse; widened pulse pressure",
+        "skin": {"color": "pink centrally, pale peripherally", "temperature": "cool", "moisture": "dry"},
+        "pupils": "LEFT pupil 6 mm, fixed and non-reactive; RIGHT pupil 3 mm, sluggishly reactive",
+        "motorFunction": "Decorticate posturing (bilateral arm flexion) to painful stimulus; lower extremities extend; M3 on GCS motor",
+        "otherFindings": [
+          "Large left parietal boggy hematoma with overlying laceration",
+          "Battle's sign not yet apparent",
+          "Left forearm deformity suggestive of radius/ulna fracture",
+          "Cushing triad: HR 52, BP 188/110, irregular respirations"
+        ],
+        "patientSpeech": "No verbal output"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 52,
+        "bpSys": 188,
+        "bpDia": 110,
+        "respRate": 10,
+        "spo2": 91,
+        "etco2": 48,
+        "temp": 36.4,
+        "obstruction": 25,
+        "glucose": 108,
+        "trendTimeSeconds": 0,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "cspine", "action": "Manual cervical stabilization with in-line immobilization throughout airway management", "priority": "critical", "protocolReference": "MATC: Spinal Care"},
+        {"id": "suction", "action": "Aggressive oropharyngeal suctioning with Yankauer to clear vomitus", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "jaw-thrust", "action": "Jaw thrust airway maneuver (no head tilt) with OPA placement", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "bvm", "action": "2-person BVM at 10 breaths/min with PEEP 5 cmH2O and high-flow oxygen; target SpO2 ≥94% and EtCO2 35-45 mmHg", "priority": "critical", "rationale": "Avoid both hypoxemia and hyperventilation — both worsen secondary brain injury.", "protocolReference": "MATC: Head Injury"},
+        {"id": "no-npa", "action": "Do NOT place nasopharyngeal airway given risk of basilar skull fracture", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "hob", "action": "Elevate head of spine board 30 degrees (reverse Trendelenburg) to reduce ICP", "priority": "important", "protocolReference": "MATC: Head Injury"},
+        {"id": "monitor", "action": "Apply monitor, SpO2, waveform capnography, frequent BP (every 3 minutes)", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "iv-access", "action": "Establish two large-bore IVs; draw blood for destination hospital", "priority": "important"},
+        {"id": "glucose", "action": "Check blood glucose to rule out alternate cause of AMS", "priority": "important", "protocolReference": "MATC: Head Injury"}
+      ]
+    },
+    {
+      "id": "rsi-decision",
+      "name": "Decision and Preparation for Neuroprotective RSI",
+      "description": "Despite OPA and BVM, airway remains compromised by recurrent vomitus and the patient cannot protect his own airway. SpO2 is borderline. Crew prepares for neuroprotective RSI, verbalizing the plan, optimizing hemodynamics, and organizing the team for a controlled intubation.",
+      "triggerCondition": "Persistent airway compromise with GCS ≤8 and signs of herniation",
+      "isDefault": true,
+      "transitions": [
+        {"targetPhaseId": "post-rsi", "condition": "RSI performed with confirmed tube placement and SBP maintained", "conditionType": "action_taken", "triggerActionIds": ["rsi-induct", "rsi-paralytic", "intubate"]},
+        {"targetPhaseId": "herniation-progression", "condition": "Significant hyperventilation or hypotension during intubation", "conditionType": "action_taken"}
+      ],
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 2},
+        "airway": "OPA in place, jaw thrust maintained, recurrent emesis suctioned",
+        "breathing": "BVM-assisted 10/min",
+        "circulation": "Bradycardic, hypertensive — Cushing response",
+        "skin": {"color": "pink with BVM", "temperature": "cool", "moisture": "dry"},
+        "pupils": "LEFT pupil remains 6 mm fixed; RIGHT 4 mm sluggish",
+        "motorFunction": "M2 (extension) — motor score has worsened from M3 indicating progression",
+        "otherFindings": ["Progressive motor deterioration (M3 → M2) indicates continued herniation", "Spontaneous respiratory effort decreasing"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 48,
+        "bpSys": 196,
+        "bpDia": 114,
+        "respRate": 10,
+        "spo2": 94,
+        "etco2": 42,
+        "temp": 36.4,
+        "obstruction": 15,
+        "glucose": 108,
+        "trendTimeSeconds": 180,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "rsi-plan", "action": "Verbalize structured RSI plan including roles, equipment check, primary and backup airway strategies, and hemodynamic targets", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "preox", "action": "Preoxygenate with 2-person BVM + PEEP 5 cmH2O for at least 3 minutes; apply apneic oxygenation via NC at 15 LPM", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "sbp-target", "action": "Maintain SBP ≥110 mmHg with normal saline bolus as needed; check BP immediately prior to induction (hypertension currently protective)", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "fentanyl-premed", "action": "Administer Fentanyl 1 mcg/kg (80 mcg) IV push 2-3 minutes prior to intubation to blunt ICP response to laryngoscopy", "priority": "important", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "rsi-induct", "action": "Administer Ketamine 1-2 mg/kg IV push (120 mg for 80 kg patient) as induction agent; ketamine preserves hemodynamics and is appropriate in TBI", "priority": "critical", "rationale": "Contemporary evidence supports ketamine in TBI — its presumed ICP elevation is outweighed by hemodynamic stability. Etomidate 0.2-0.3 mg/kg (16-24 mg) is also acceptable.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "rsi-paralytic", "action": "Administer Rocuronium 1 mg/kg IV push (80 mg for 80 kg patient) as paralytic", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "intubate", "action": "Perform endotracheal intubation with video laryngoscopy while maintaining in-line cervical stabilization; 8.0 mm cuffed ETT; limit attempt to 15 seconds or SpO2 <90%", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "confirm", "action": "Confirm tube placement with waveform capnography, bilateral breath sounds, absent epigastric sounds; secure at the teeth", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    },
+    {
+      "id": "post-rsi",
+      "name": "Post-Intubation Neuroprotective Management",
+      "description": "Tube confirmed. Patient paralyzed and sedated. Crew must ventilate precisely to avoid both hypoventilation (worsened ICP from hypercapnia) and hyperventilation (cerebral vasoconstriction and ischemia). Target EtCO2 40 mmHg, SBP ≥110, head of bed elevated, emergent transport to a trauma center.",
+      "triggerCondition": "Successful RSI with confirmed tube placement",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 1},
+        "airway": "ETT in place, cuff inflated, secured",
+        "breathing": "Ventilated at 10 breaths/min, symmetric chest rise",
+        "circulation": "Perfusing",
+        "skin": {"color": "pink", "temperature": "cool", "moisture": "dry"},
+        "pupils": "LEFT 6 mm fixed, RIGHT 4 mm sluggish — unchanged; indicates ongoing herniation",
+        "motorFunction": "Flaccid from paralytic",
+        "otherFindings": [
+          "EtCO2 trending toward target 40 mmHg",
+          "Head of spine board elevated 30 degrees",
+          "Cushing response softening — HR climbing, BP slightly decreasing after induction"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 58,
+        "bpSys": 148,
+        "bpDia": 88,
+        "respRate": 10,
+        "spo2": 99,
+        "etco2": 40,
+        "temp": 36.4,
+        "obstruction": 10,
+        "glucose": 108,
+        "trendTimeSeconds": 180,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "etco2-target", "action": "Ventilate at 10 breaths/min, 6-8 mL/kg ideal body weight, titrated to EtCO2 35-45 mmHg (target 40); do NOT hyperventilate despite herniation signs", "priority": "critical", "rationale": "Prior guidance recommended hyperventilation for herniation — current evidence shows hyperventilation worsens outcome via cerebral vasoconstriction. Maintain normocapnia.", "protocolReference": "MATC: Head Injury"},
+        {"id": "sedation", "action": "Post-intubation sedation: Midazolam 0.02 mg/kg (1.6 mg) IV AND Fentanyl 1-2 mcg/kg (80-160 mcg) IV; titrate to RASS -3 to -4", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "maintain-sbp", "action": "Maintain SBP ≥110 mmHg — bolus NS 500 mL if SBP trends toward threshold", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "hob", "action": "Maintain 30-degree head-of-bed elevation (reverse Trendelenburg on spine board)", "priority": "important", "protocolReference": "MATC: Head Injury"},
+        {"id": "transport", "action": "Expedited transport to Level I trauma center; early trauma activation and neurosurgical notification", "priority": "critical"},
+        {"id": "reassess-pupils", "action": "Serial pupil and motor reassessment every 5 minutes; document any changes", "priority": "important", "protocolReference": "MATC: Head Injury"},
+        {"id": "splint", "action": "Splint left forearm fracture during transport if time permits — low priority compared to airway and brain", "priority": "supplemental"}
+      ]
+    },
+    {
+      "id": "herniation-progression",
+      "name": "Branch: Secondary Injury from Hyperventilation or Hypotension",
+      "description": "Crew inadvertently hyperventilates the patient (respiratory rate 20+, EtCO2 drops below 30) and/or allows transient hypotension during induction. Cerebral perfusion suffers. The patient progresses toward complete herniation.",
+      "triggerCondition": "Hyperventilation (EtCO2 <30) OR SBP drops <110 during or after induction",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 1},
+        "airway": "ETT in place",
+        "breathing": "Being ventilated",
+        "circulation": "Hypotensive or normotensive depending on precipitant",
+        "skin": {"color": "pale", "temperature": "cool", "moisture": "dry"},
+        "pupils": "Both pupils now 6 mm, fixed and dilated bilaterally",
+        "motorFunction": "Flaccid",
+        "otherFindings": [
+          "Bilateral fixed dilated pupils indicate progression to full herniation",
+          "Cushing response has collapsed — HR rising, BP falling (terminal pattern)"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 124,
+        "bpSys": 82,
+        "bpDia": 48,
+        "respRate": 22,
+        "spo2": 99,
+        "etco2": 26,
+        "temp": 36.0,
+        "obstruction": 10,
+        "glucose": 108,
+        "trendTimeSeconds": 120,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "correct-vent", "action": "Slow ventilation rate to 10/min and adjust tidal volume to return EtCO2 to 40 mmHg", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "correct-bp", "action": "Aggressive fluid resuscitation with NS to restore SBP ≥110 mmHg", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "recognize", "action": "Recognize that bilateral fixed pupils with loss of Cushing response indicates severe progression and expedite transport", "priority": "critical"}
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Maintain cervical spine immobilization throughout airway management",
+      "Jaw thrust with OPA (no NPA due to basilar skull fracture risk)",
+      "Aggressive suctioning of vomitus",
+      "2-person BVM with PEEP at 10 breaths/min, target SpO2 ≥94% and EtCO2 35-45",
+      "Do NOT hyperventilate despite herniation signs",
+      "Maintain SBP ≥110 mmHg",
+      "Perform RSI with Ketamine 1-2 mg/kg (120 mg) + Rocuronium 1 mg/kg (80 mg)",
+      "Confirm tube placement with waveform capnography",
+      "Post-intubation sedation with Midazolam 0.02 mg/kg + Fentanyl 1-2 mcg/kg",
+      "Head of bed elevated 30 degrees",
+      "Transport to Level I trauma center with early activation"
+    ],
+    "expectedActions": [
+      "Fentanyl 1 mcg/kg premedication to blunt ICP response",
+      "Apneic oxygenation via NC 15 LPM during RSI",
+      "Two large-bore IVs",
+      "Serial pupillary and motor reassessment",
+      "Blood glucose check"
+    ],
+    "bonusActions": [
+      "Recognize Cushing triad and its clinical significance",
+      "Articulate why hyperventilation worsens TBI outcomes despite intuition to lower ICP",
+      "Prepare fluids pre-induction to prevent post-sedative hypotension"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Recognize signs of impending cerebral herniation (unilateral blown pupil, posturing, Cushing triad)",
+      "Apply the MATC Head Injury protocol to prevent secondary brain injury",
+      "Execute neuroprotective RSI with attention to hemodynamics and ventilation targets",
+      "Understand why hyperventilation is contraindicated in TBI despite herniation signs",
+      "Coordinate airway management with spinal precautions"
+    ],
+    "discussionQuestions": [
+      "What are the three components of the Cushing response and what do they tell you?",
+      "Why is hyperventilation harmful in TBI when it seems like it would lower ICP?",
+      "How would your induction agent choice change if this patient were hypotensive?",
+      "What is the rationale for avoiding NPAs in patients with potential basilar skull fractures?",
+      "How do you balance transport time against thorough scene care in a TBI patient?"
+    ],
+    "commonPitfalls": [
+      "Hyperventilating the patient to 'treat' herniation",
+      "Allowing peri-intubation hypotension which devastates cerebral perfusion",
+      "Placing an NPA in a patient with basilar skull fracture findings",
+      "Forgetting cervical immobilization during laryngoscopy",
+      "Under-sedating post-intubation because the patient 'looks' comfortable on paralytic"
+    ],
+    "keyTakeaways": [
+      "The two deadliest enemies in TBI are hypoxia and hypotension — prevent both",
+      "Normocapnia (EtCO2 35-45) is the target; hyperventilation causes cerebral ischemia",
+      "Cerebral perfusion pressure depends on MAP — keep SBP ≥110",
+      "Paralytic provides a calm intubation but does nothing for the underlying brain injury"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 20,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

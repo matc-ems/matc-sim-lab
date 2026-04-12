@@ -1,0 +1,185 @@
+{
+  "scenarioId": "resp-smoke-inhalation-001",
+  "scenarioName": "Smoke Inhalation without Burns — CO Exposure",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 20,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "45-year-old female firefighter pulled out of an interior attack by her RIT team when her SCBA alarm ran low during an aggressive interior operation. She was inside for approximately 20 minutes. No burns and no direct thermal injury, but she has a persistent cough, chest tightness, and progressive shortness of breath since removing her mask.",
+    "discussion": "Treat CO exposure with 100% oxygen regardless of SpO2. Understand the limitations of standard pulse oximetry in CO exposure. Consider cyanide toxicity in enclosed-space fires. Recognize delayed airway edema trajectory. Identify hyperbaric oxygen therapy candidates",
+    "course": "Arrival — Post-Fire Exposure Respiratory Symptoms: Firefighter with smoke inhalation and likely CO exposure. Classic clinical finding: patient LOOKS sick but SpO2 is normal. Pulse oximeter cannot distinguish carboxyhemoglobin from oxyhemoglobin. Treat presumptively for CO with 100% oxygen via NRB. Also consider cyanide in severe cases with hemodynamic/neurologic compromise. → Transport Decision — Hyperbaric Candidacy: Patient is stable for transport but has moderate CO exposure (SpCO 28%). Consider hyperbaric oxygen facility for definitive treatment. Criteria typically include SpCO >25%, any neurologic symptoms, any cardiac symptoms, pregnancy, or loss of consciousness at scene."
+  },
+  "patientInformation": {
+    "patientName": "Alicia Reyes",
+    "patientCondition": "Cough, chest tightness, dyspnea after firefighting interior operation",
+    "patientAge": 45,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 170,
+    "patientWeight": 70,
+    "patientPhotoId": 54,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival — Post-Fire Exposure Respiratory Symptoms",
+      "description": "Firefighter with smoke inhalation and likely CO exposure. Classic clinical finding: patient LOOKS sick but SpO2 is normal. Pulse oximeter cannot distinguish carboxyhemoglobin from oxyhemoglobin. Treat presumptively for CO with 100% oxygen via NRB. Also consider cyanide in severe cases with hemodynamic/neurologic compromise.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 134,
+        "bpDia": 82,
+        "respRate": 22,
+        "spo2": 99,
+        "etco2": 38,
+        "temp": 37.6,
+        "obstruction": 20,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "custMeasure2": 28,
+        "custMeasureLabel2": "SpCO (%)",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Use CO-oximeter (SpCO) if available",
+        "Establish IV access",
+        "Obtain 12-lead EKG"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Transport Decision — Hyperbaric Candidacy",
+      "description": "Patient is stable for transport but has moderate CO exposure (SpCO 28%). Consider hyperbaric oxygen facility for definitive treatment. Criteria typically include SpCO >25%, any neurologic symptoms, any cardiac symptoms, pregnancy, or loss of consciousness at scene.",
+      "monitorType": 0,
+      "trendTime": 600,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 102,
+        "bpSys": 128,
+        "bpDia": 78,
+        "respRate": 18,
+        "spo2": 99,
+        "etco2": 38,
+        "temp": 37.2,
+        "obstruction": 10,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "custMeasure2": 22,
+        "custMeasureLabel2": "SpCO (%)",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Apply 100% oxygen via NRB regardless of SpO2 reading",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize that SpO2 is unreliable in CO exposure",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Use CO-oximeter (SpCO) if available",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Assess airway for signs of thermal injury and monitor for delayed edema",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Obtain 12-lead EKG",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Consider cyanide toxicity in enclosed-space fires with hemodynamic or neurologic compromise",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to hyperbaric-capable facility if SpCO >25% or neurologic symptoms",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early ED notification",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Remove bunker gear for clean-air assessment",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer nebulized bronchodilators for wheezing",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Serial reassessment for airway progression",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document SpCO and symptoms for hyperbaric decision-making",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

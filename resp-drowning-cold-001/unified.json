@@ -1,0 +1,234 @@
+{
+  "meta": {
+    "id": "resp-drowning-cold-001",
+    "name": "Cold Water Drowning — Submersion Rescue",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Environmental",
+    "protocols": ["env-drowning", "env-hypothermia-cold-exposure", "resp-airway-management", "trauma-spinal-care"],
+    "totalTimeSeconds": 1500,
+    "tags": ["drowning", "cold water", "hypothermia", "pediatric/adolescent", "ABC not CAB"]
+  },
+  "patient": {
+    "name": "Connor Walsh",
+    "age": 17,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 68,
+    "height": 178,
+    "chiefComplaint": "Pulled from a lake after estimated 4-6 minute submersion",
+    "history": {
+      "hpi": "17-year-old male pulled from Lake Harmon by his friends after an estimated 4-6 minutes of submersion in cold water. Group of teenagers were jumping off a dock into the lake. Witnesses report he hit the water and did not resurface. Friends pulled him out after approximately 5 minutes. Water temperature is approximately 12°C (54°F). Bystanders started rescue breaths on shore.",
+      "pastMedical": ["Unknown — high school student", "No known medical problems"],
+      "medications": ["None known"],
+      "allergies": ["Unknown"],
+      "lastOralIntake": "Food/snacks on the dock before jumping (approximate)",
+      "events": "Teenager jumped from dock into cold lake, did not resurface, pulled out after estimated 4-6 minutes of submersion. Rescue breathing initiated on shore by friends."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 15, respond code 3 to Lake Harmon public dock on Beach Road, for a 17-year-old male, submersion, now on shore.",
+    "location": "Public swimming dock at a lake. Patient on the dock, wet, on a towel. Ambulance can pull up to the parking lot 50 feet away.",
+    "time": "Saturday, 15:20, cool day",
+    "safety": "Scene safe now that patient is on shore. Crowd of teenagers, parent arriving.",
+    "bystanders": "Multiple teenage friends, one performing rescue breaths. Witnesses report 4-6 minute submersion.",
+    "visualCues": [
+      "Adolescent male supine on a towel on the dock, soaking wet",
+      "Cyanotic around the mouth",
+      "Coughing and sputtering water",
+      "Labored gasping respirations",
+      "Shivering",
+      "No obvious neck injury, did not dive head-first per witnesses",
+      "Friends distraught but cooperative"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival — Submersion Victim with Gasping Respirations",
+      "description": "Adolescent drowning victim. ABC approach (not CAB) is critical in drowning — airway and breathing come first because the primary insult is hypoxic. The patient has spontaneous gasping respirations and a pulse but is hypoxic and bradycardic. Cold water exposure adds hypothermia to manage. Mechanism (jumping, not diving) makes c-spine injury less likely but should still be considered.",
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": {"eye": 2, "verbal": 2, "motor": 4},
+        "airway": "Patent but with coughing and water in the oropharynx",
+        "breathing": "Labored gasping at 12/min with poor tidal volume",
+        "circulation": "Bradycardic with weak pulses",
+        "skin": {"color": "cyanotic centrally and peripherally", "temperature": "cold (hypothermic)", "moisture": "wet"},
+        "pupils": "4 mm sluggish",
+        "motorFunction": "Withdrawing to pain, shivering",
+        "otherFindings": [
+          "Mechanism (jumping, not diving) makes c-spine injury less likely but should be assessed",
+          "Cold water submersion with hypothermia — core temperature approximately 33°C",
+          "Witnessed submersion time 4-6 minutes — survivable range",
+          "Bystander rescue breaths initiated on shore — good prognostic sign"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 44,
+        "bpSys": 88,
+        "bpDia": 54,
+        "respRate": 12,
+        "spo2": 70,
+        "etco2": 52,
+        "temp": 33.0,
+        "obstruction": 25,
+        "glucose": 104,
+        "trendTimeSeconds": 0,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "abc-approach", "action": "Use ABC approach (airway → breathing → circulation), not CAB — drowning is a hypoxic insult that requires prompt oxygenation and ventilation", "priority": "critical", "rationale": "Drowning pathophysiology is primary hypoxia. Starting with ventilation (ABC) is standard even during rescue breathing on scene.", "protocolReference": "MATC: Drowning"},
+        {"id": "suction-airway", "action": "Suction airway of water and secretions; do NOT attempt to expel water with abdominal thrusts or positioning — risks aspiration", "priority": "critical", "protocolReference": "MATC: Drowning"},
+        {"id": "bvm", "action": "Begin 2-person BVM with PEEP 5 cmH2O and 100% oxygen to correct profound hypoxemia; support spontaneous respirations", "priority": "critical", "protocolReference": "MATC: Drowning"},
+        {"id": "cspine-consider", "action": "Mechanism was jumping (not diving), so c-spine injury is less likely; assess for any posterior tenderness or deformity and use clinical judgment — provide manual stabilization if uncertain", "priority": "important", "protocolReference": "MATC: Drowning"},
+        {"id": "remove-wet", "action": "Remove wet clothing, dry the patient, and apply warm blankets to limit ongoing heat loss", "priority": "critical", "protocolReference": "MATC: Hypothermia/Cold Exposure"},
+        {"id": "temp", "action": "Obtain core temperature (rectal if available) to guide hypothermia management", "priority": "critical", "protocolReference": "MATC: Hypothermia/Cold Exposure"},
+        {"id": "monitor", "action": "Apply cardiac monitor — hypothermic myocardium is prone to dysrhythmia with rough handling", "priority": "critical", "protocolReference": "MATC: Hypothermia/Cold Exposure"},
+        {"id": "handle-gently", "action": "Move the patient gently — hypothermic myocardium can be precipitated into VF by jostling", "priority": "critical", "protocolReference": "MATC: Hypothermia/Cold Exposure"}
+      ]
+    },
+    {
+      "id": "responding-bvm",
+      "name": "Default Path — Improvement with Oxygenation and Warming",
+      "description": "With aggressive BVM support, drying, and warming, the patient's SpO2 climbs, HR comes up, and consciousness improves. He may be able to be managed with high-flow oxygen or CPAP instead of continued BVM. Still requires transport for observation.",
+      "triggerCondition": "Clinical improvement with oxygenation and warming",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {"eye": 3, "verbal": 4, "motor": 5},
+        "airway": "Patent, maintaining own airway with protective cough",
+        "breathing": "Improved — spontaneous respirations at 22/min with some rales on auscultation (early water exposure)",
+        "circulation": "HR climbing with warming",
+        "skin": {"color": "improving — central pink, still peripherally cool", "temperature": "cold but warming", "moisture": "drying"},
+        "pupils": "4 mm reactive",
+        "motorFunction": "Responding to voice, groggy",
+        "otherFindings": [
+          "Rales suggest some water aspiration — set up for possible post-immersion pulmonary edema",
+          "Patient warming slowly"
+        ],
+        "patientSpeech": "Confused, asking where he is"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 58,
+        "bpSys": 102,
+        "bpDia": 64,
+        "respRate": 22,
+        "spo2": 93,
+        "etco2": 40,
+        "temp": 33.8,
+        "obstruction": 15,
+        "glucose": 104,
+        "trendTimeSeconds": 600,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "cpap-consider", "action": "Consider CPAP starting at 5 cmH2O to treat immersion pulmonary edema if patient tolerates and mental status permits", "priority": "critical", "protocolReference": "MATC: Drowning"},
+        {"id": "continue-warming", "action": "Continue passive warming — warm blankets, heat on in ambulance; avoid aggressive rewarming in the field", "priority": "critical", "protocolReference": "MATC: Hypothermia/Cold Exposure"},
+        {"id": "iv", "action": "Establish IV access", "priority": "important"},
+        {"id": "monitor-dysrhythmia", "action": "Watch cardiac monitor for hypothermic dysrhythmias (J-waves, AFib, bradycardia, VF risk)", "priority": "critical", "protocolReference": "MATC: Hypothermia/Cold Exposure"},
+        {"id": "transport", "action": "Transport to ED — all drowning victims must be transported even if they look okay (delayed pulmonary edema, secondary drowning)", "priority": "critical", "protocolReference": "MATC: Drowning"}
+      ]
+    },
+    {
+      "id": "deterioration-branch",
+      "name": "Branch: Deterioration Requiring RSI",
+      "description": "Patient fails to improve with BVM and develops worsening hypoxemia from aspiration/pulmonary edema. Mental status deteriorates. Crew must escalate to RSI, being mindful of the cold myocardium.",
+      "triggerCondition": "Failure to improve with aggressive BVM and supportive care",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 2},
+        "airway": "Patent with OPA",
+        "breathing": "Apneic, being BVM-assisted",
+        "circulation": "Bradycardic, hypotensive",
+        "skin": {"color": "cyanotic", "temperature": "cold", "moisture": "wet"},
+        "pupils": "4 mm sluggish",
+        "motorFunction": "Flaccid",
+        "otherFindings": ["Worsening pulmonary edema with pink frothy sputum on BVM", "Core temperature still 33°C"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 42,
+        "bpSys": 78,
+        "bpDia": 48,
+        "respRate": 0,
+        "spo2": 72,
+        "etco2": 38,
+        "temp": 33.0,
+        "obstruction": 40,
+        "glucose": 104,
+        "trendTimeSeconds": 300,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "rsi-cold", "action": "Perform RSI with Ketamine 1-2 mg/kg IV (100 mg for 68 kg patient) + Rocuronium 1 mg/kg (68 mg); be gentle during laryngoscopy to avoid precipitating VF in the cold myocardium", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "confirm", "action": "Confirm tube placement with waveform capnography, bilateral breath sounds", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "peep", "action": "Ventilate with PEEP 5-8 cmH2O to treat immersion pulmonary edema", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "transport-emergency", "action": "Emergent transport to closest appropriate ED", "priority": "critical"}
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Use ABC approach (Airway-Breathing-Circulation), not CAB, for drowning",
+      "Suction airway of water without abdominal thrusts",
+      "Begin 2-person BVM with PEEP and high-flow oxygen",
+      "Remove wet clothing and apply warm blankets",
+      "Obtain core temperature",
+      "Handle the hypothermic patient gently to avoid precipitating VF",
+      "Apply cardiac monitor and watch for hypothermic dysrhythmias",
+      "Consider CPAP for immersion pulmonary edema if mental status permits",
+      "Transport all drowning victims for observation"
+    ],
+    "expectedActions": [
+      "Consider c-spine precautions based on mechanism",
+      "Establish IV access",
+      "Passive rewarming in the field",
+      "Document submersion time and water temperature"
+    ],
+    "bonusActions": [
+      "Recognize that bradycardia + cold patient should not be treated with atropine (physiologic response to hypothermia)",
+      "Anticipate delayed pulmonary edema ('secondary drowning')",
+      "Articulate the ABC-not-CAB rationale clearly"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Apply MATC Drowning protocol including ABC approach",
+      "Manage the hypothermic drowning patient without precipitating VF",
+      "Recognize immersion pulmonary edema and use CPAP as treatment",
+      "Understand when c-spine precautions are indicated in drowning",
+      "Document submersion time and water temperature for termination-of-resuscitation decisions"
+    ],
+    "discussionQuestions": [
+      "Why is the approach to drowning ABC instead of CAB?",
+      "Why are abdominal thrusts harmful in a drowning victim?",
+      "How does cold water affect survival and resuscitation decisions?",
+      "When do you immobilize the c-spine in a drowning victim?",
+      "What is 'secondary drowning' and why do we transport apparently well patients?"
+    ],
+    "commonPitfalls": [
+      "Starting with compressions (CAB) instead of ventilation in arrest",
+      "Attempting to expel water with abdominal thrusts",
+      "Rough handling of a hypothermic patient precipitating VF",
+      "Over-aggressive rewarming in the field",
+      "Releasing apparently well patients without transport"
+    ],
+    "keyTakeaways": [
+      "Drowning is a hypoxic problem — fix the airway first",
+      "Handle the cold heart gently",
+      "All drowning victims transport — secondary edema is real",
+      "Submersion time and water temperature drive termination decisions"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 20,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "scenarioId": "resp-copd-fatigue-001",
+  "scenarioName": "COPD Exacerbation with Respiratory Fatigue",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 20,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "68-year-old female with severe COPD (GOLD stage 4) on 2L home oxygen at baseline. Her dyspnea has been worsening over three days with a productive green cough. Prescribed a rescue prednisone pack by her primary care doctor yesterday but has only taken one dose. Called EMS today because she can no longer walk to the bathroom without stopping to catch her breath.",
+    "discussion": "Understand oxygen titration in chronic CO2 retainers (target 88-92%). Apply NIV as first-line therapy in severe COPD exacerbation. Recognize CO2 narcosis as an indication for escalation. Apply MATC Respiratory Distress protocol for COPD. Differentiate CPAP and BiPAP indications",
+    "course": "Arrival — COPD Exacerbation with Borderline Respiratory Failure: Classic severe COPD exacerbation. Important nuance: oxygen must be titrated — a chronic COPD patient retains CO2 and depends partly on hypoxic drive. Over-oxygenation can precipitate CO2 narcosis. Target saturation is 88-92%, not 94-98%. CPAP/BiPAP with in-line bronchodilators is the mainstay. → Responding to NIV and Bronchodilators: With CPAP and aggressive nebulizers, the patient's work of breathing reduces noticeably. SpO2 holds at 90%, EtCO2 trending down, mental status intact. Continue therapy and transport to the ED for admission."
+  },
+  "patientInformation": {
+    "patientName": "Dorothy Whitman",
+    "patientCondition": "Worsening shortness of breath and productive cough over three days",
+    "patientAge": 68,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 160,
+    "patientWeight": 62,
+    "patientPhotoId": 82,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival — COPD Exacerbation with Borderline Respiratory Failure",
+      "description": "Classic severe COPD exacerbation. Important nuance: oxygen must be titrated — a chronic COPD patient retains CO2 and depends partly on hypoxic drive. Over-oxygenation can precipitate CO2 narcosis. Target saturation is 88-92%, not 94-98%. CPAP/BiPAP with in-line bronchodilators is the mainstay.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 114,
+        "bpSys": 142,
+        "bpDia": 82,
+        "respRate": 30,
+        "spo2": 84,
+        "etco2": 56,
+        "temp": 37.4,
+        "obstruction": 55,
+        "custMeasure1": 138,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Coach the patient through mask application",
+        "Establish IV access"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Responding to NIV and Bronchodilators",
+      "description": "With CPAP and aggressive nebulizers, the patient's work of breathing reduces noticeably. SpO2 holds at 90%, EtCO2 trending down, mental status intact. Continue therapy and transport to the ED for admission.",
+      "monitorType": 0,
+      "trendTime": 600,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 104,
+        "bpSys": 138,
+        "bpDia": 78,
+        "respRate": 24,
+        "spo2": 90,
+        "etco2": 48,
+        "temp": 37.4,
+        "obstruction": 35,
+        "custMeasure1": 138,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Titrate oxygen to target SpO2 88-92% in chronic COPD (not 94-98%)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Albuterol 5 mg + Ipratropium 0.5 mg nebulized with repetition",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer IV steroids (Dexamethasone 16 mg OR Methylprednisolone 125 mg)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply CPAP or BiPAP with in-line bronchodilators",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Coach the patient through mask application",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continuous mental status monitoring for CO2 narcosis",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do not discontinue NIV until ED bedside",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Waveform capnography monitoring",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Keep patient in position of comfort",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport with ED notification",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

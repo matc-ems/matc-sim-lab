@@ -1,0 +1,217 @@
+{
+  "scenarioId": "rsi-status-epilepticus-001",
+  "scenarioName": "Status Epilepticus — RSI for Refractory Seizure",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 20,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "34-year-old male with known epilepsy seizing continuously for over 20 minutes per family. Wife administered two doses of rectal diazepam from his home supply with no effect. Generalized tonic-clonic activity has never resolved. No preceding trauma, fever, or illness. Known recent non-compliance with levetiracetam due to prescription lapse.",
+    "discussion": "Recognize refractory status epilepticus as an indication for RSI. Apply MATC Seizures protocol dosing for bystander and prehospital benzodiazepines. Execute RSI per MATC Airway Management protocol including induction and paralytic selection. Understand post-intubation sedation requirements in a paralyzed seizure patient. Avoid peri-intubation hypoxia through aggressive preoxygenation and apneic oxygenation",
+    "course": "Arrival — Active Status Epilepticus: Crew arrives to find patient in generalized tonic-clonic seizure. Clenched jaw prevents OPA placement. SpO2 in the low 80s despite apparent air movement with seizure activity. Bystander benzodiazepines have failed. Vascular access not yet established. → Refractory Despite IM Benzodiazepine: Several minutes after IM midazolam, seizure activity continues unchanged. Patient remains hypoxic despite BVM attempts which are difficult due to trismus and ongoing tonic-clonic activity. Crew recognizes this is refractory status epilepticus requiring definitive airway management with RSI. → Post-Intubation Management: Tube placement confirmed. Paralytic has masked visible seizure activity but underlying electrical seizure may continue. Crew must provide ongoing sedation, post-intubation ventilation targeting normocapnia, and transport."
+  },
+  "patientInformation": {
+    "patientName": "Daniel Ortiz",
+    "patientCondition": "Prolonged seizure activity, not responding to bystander benzodiazepines",
+    "patientAge": 34,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 178,
+    "patientWeight": 85,
+    "patientPhotoId": 41,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival — Active Status Epilepticus",
+      "description": "Crew arrives to find patient in generalized tonic-clonic seizure. Clenched jaw prevents OPA placement. SpO2 in the low 80s despite apparent air movement with seizure activity. Bystander benzodiazepines have failed. Vascular access not yet established.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 138,
+        "bpSys": 168,
+        "bpDia": 96,
+        "respRate": 28,
+        "spo2": 82,
+        "etco2": 58,
+        "temp": 38.2,
+        "obstruction": 30,
+        "custMeasure1": 94,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Refractory Despite IM Benzodiazepine",
+      "description": "Several minutes after IM midazolam, seizure activity continues unchanged. Patient remains hypoxic despite BVM attempts which are difficult due to trismus and ongoing tonic-clonic activity. Crew recognizes this is refractory status epilepticus requiring definitive airway management with RSI.",
+      "monitorType": 0,
+      "trendTime": 180,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 148,
+        "bpSys": 172,
+        "bpDia": 98,
+        "respRate": 30,
+        "spo2": 84,
+        "etco2": 64,
+        "temp": 38.6,
+        "obstruction": 40,
+        "custMeasure1": 92,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Post-Intubation Management",
+      "description": "Tube placement confirmed. Paralytic has masked visible seizure activity but underlying electrical seizure may continue. Crew must provide ongoing sedation, post-intubation ventilation targeting normocapnia, and transport.",
+      "monitorType": 0,
+      "trendTime": 120,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 144,
+        "bpDia": 86,
+        "respRate": 10,
+        "spo2": 98,
+        "etco2": 42,
+        "temp": 38.6,
+        "obstruction": 10,
+        "custMeasure1": 92,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Orogastric tube for gastric decompression"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Recognize refractory status epilepticus after failed bystander benzodiazepines",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Place NPA and initiate 2-person BVM with PEEP to correct hypoxemia",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Midazolam 0.2 mg/kg IM (max 10 mg) given absence of IV access",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV/IO access and proceed with RSI using Ketamine 1-2 mg/kg + Rocuronium 1 mg/kg",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm endotracheal tube placement with waveform capnography",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Provide post-intubation sedation with Midazolam 0.02 mg/kg + Fentanyl 1-2 mcg/kg",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Ventilate to EtCO2 35-45 mmHg (avoid hyperventilation)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Verbalize difficult airway plan (trismus, secretions, aspiration risk)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apneic oxygenation via NC at 15 LPM during RSI",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Fentanyl 1 mcg/kg pre-medication to blunt sympathetic response",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Orogastric tube for gastric decompression",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Passive cooling for hyperthermia",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early ED notification",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

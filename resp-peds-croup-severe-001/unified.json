@@ -1,0 +1,235 @@
+{
+  "meta": {
+    "id": "resp-peds-croup-severe-001",
+    "name": "Severe Pediatric Croup with Impending Respiratory Failure",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Pediatric",
+    "protocols": ["peds-resp-distress-croup", "resp-airway-management"],
+    "totalTimeSeconds": 1500,
+    "tags": ["pediatric", "croup", "stridor", "nebulized epinephrine", "dexamethasone"]
+  },
+  "patient": {
+    "name": "Eli Thornton",
+    "age": 2,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 13,
+    "height": 88,
+    "chiefComplaint": "Barking cough and progressively worsening stridor",
+    "history": {
+      "hpi": "2-year-old previously healthy male with 2 days of URI symptoms (rhinorrhea, low-grade fever) who developed a barking cough last night. Parents tried a steamy bathroom treatment and running a humidifier with no improvement. The child has gotten progressively worse throughout the night, now with audible stridor even at rest and becoming lethargic. Parents called 911 when he stopped responding to them normally.",
+      "pastMedical": ["Full-term, otherwise healthy", "No prior episodes of croup", "Up to date on immunizations"],
+      "medications": ["Acetaminophen PRN for fever"],
+      "allergies": ["No known drug allergies"],
+      "lastOralIntake": "Small amount of juice a few hours ago — refusing food",
+      "events": "Two days of URI. Barking cough last night. Stridor progressed throughout the night despite home measures. Becoming lethargic this morning."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 10, respond code 3 to 756 Elm Street, for a 2-year-old male with difficulty breathing and cough.",
+    "location": "Residential home, upstairs bedroom. Child is in mother's lap.",
+    "time": "Sunday, 06:45",
+    "safety": "Scene safe. Approach the child calmly; avoid agitating him, which will worsen obstruction.",
+    "bystanders": "Both parents present, mother is holding child; father provides history",
+    "visualCues": [
+      "Toddler in mother's arms, leaning forward with head slightly tilted back",
+      "Audible inspiratory stridor with EVERY breath",
+      "Intercostal, subcostal, and suprasternal retractions",
+      "Pale with dusky lips",
+      "Unusually quiet and still (lethargic) — not fighting the assessment",
+      "Drooling is absent — helps rule out epiglottitis",
+      "Humidifier visible in the room (not helping)"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival — Severe Croup with Early Respiratory Failure Signs",
+      "description": "This is severe croup. Lethargy is a pre-arrest sign — a previously fighting child who is now too tired to resist is worrisome. The biggest risk is agitating the child, which will worsen laryngospasm. All treatment must be delivered gently, ideally while the child remains in the parent's arms.",
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {"eye": 3, "verbal": 4, "motor": 5},
+        "airway": "Inspiratory stridor at rest; partial upper airway obstruction at the subglottic level",
+        "breathing": "Labored with retractions, tachypneic; decreased breath sounds bilaterally suggesting poor air movement",
+        "circulation": "Tachycardic",
+        "skin": {"color": "pale with dusky lips, mottled", "temperature": "warm", "moisture": "mildly diaphoretic"},
+        "pupils": "3 mm reactive",
+        "motorFunction": "Listless — lethargy is concerning for impending failure",
+        "otherFindings": [
+          "Barking cough heard earlier, now less forceful",
+          "Stridor at rest (severe)",
+          "Retractions becoming less visible as the child tires (bad sign)",
+          "Weight approximately 13 kg (standard 2-year-old)",
+          "No drooling (not epiglottitis)",
+          "Keep the child in the parent's arms — DO NOT separate"
+        ],
+        "patientSpeech": "Weakened cry, not interactive"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 168,
+        "bpSys": 92,
+        "bpDia": 58,
+        "respRate": 48,
+        "spo2": 89,
+        "etco2": 42,
+        "temp": 38.1,
+        "obstruction": 70,
+        "glucose": 94,
+        "trendTimeSeconds": 0,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "calm", "action": "Keep child in parent's arms — do not separate for assessment or treatment; agitation worsens airway obstruction", "priority": "critical", "protocolReference": "MATC: Pediatric Respiratory Distress (Croup)"},
+        {"id": "o2-blow", "action": "Apply blow-by oxygen held by the parent if child will not tolerate a mask; target SpO2 94-98%", "priority": "critical", "protocolReference": "MATC: Pediatric Respiratory Distress (Croup)"},
+        {"id": "neb-epi", "action": "Administer Epinephrine 5 mg (5 mL of 1 mg/mL 1:1000 solution) nebulized via pediatric mask held by parent; may repeat in 20 minutes", "priority": "critical", "rationale": "Nebulized epinephrine reduces subglottic edema by alpha-mediated vasoconstriction. This is the first-line rescue therapy.", "protocolReference": "MATC: Pediatric Respiratory Distress (Croup)"},
+        {"id": "dex", "action": "Administer Dexamethasone 0.6 mg/kg (7.8 mg for 13 kg child, max 16 mg) PO, IM, or IV — IM preferred if IV not needed for other reasons to avoid agitating the child", "priority": "critical", "protocolReference": "MATC: Pediatric Respiratory Distress (Croup)"},
+        {"id": "no-mist", "action": "Do NOT use mist or humidified oxygen — no evidence of benefit in croup", "priority": "important", "protocolReference": "MATC: Pediatric Respiratory Distress (Croup)"},
+        {"id": "defer-iv", "action": "Defer IV access if at all possible — agitation worsens obstruction. Only place IV if needed for IV medications", "priority": "critical", "protocolReference": "MATC: Pediatric Respiratory Distress (Croup)"},
+        {"id": "monitor", "action": "Apply SpO2 monitor gently; cardiac monitor if tolerated", "priority": "important"},
+        {"id": "prepare-bvm", "action": "Prepare pediatric BVM, appropriately sized mask, suction, pediatric airway equipment including a smaller-than-expected ETT (3.5 or 4.0 mm cuffed) in case of deterioration", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    },
+    {
+      "id": "responding",
+      "name": "Responding to Nebulized Epinephrine",
+      "description": "Within 10-15 minutes, the nebulized epinephrine and dexamethasone are taking effect. Stridor less pronounced, retractions improving, child more interactive. Must still transport for observation — rebound worsening after epinephrine wears off is possible.",
+      "triggerCondition": "Improvement after nebulized epinephrine + dexamethasone",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {"eye": 4, "verbal": 5, "motor": 6},
+        "airway": "Stridor now only on crying or agitation, not at rest",
+        "breathing": "Decreased retractions, better air entry bilaterally",
+        "circulation": "HR improving with resolving hypoxia",
+        "skin": {"color": "pink improving", "temperature": "warm", "moisture": "dry"},
+        "pupils": "3 mm reactive",
+        "motorFunction": "Interactive, looking around, reaching for mother",
+        "otherFindings": ["Increased alertness is the key improvement marker", "Any child who has received nebulized epi MUST be transported for observation"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 142,
+        "bpSys": 96,
+        "bpDia": 58,
+        "respRate": 36,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 38.1,
+        "obstruction": 30,
+        "glucose": 94,
+        "trendTimeSeconds": 600,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "transport-calm", "action": "Transport with the parent in the captain's chair holding the child; no lights and sirens required now that child is stable (avoid agitation)", "priority": "critical", "protocolReference": "MATC: Pediatric Respiratory Distress (Croup)"},
+        {"id": "repeat-epi-ready", "action": "Have second dose of nebulized epinephrine ready — may repeat at 20 minutes for recurrence or ongoing severe distress", "priority": "critical", "protocolReference": "MATC: Pediatric Respiratory Distress (Croup)"},
+        {"id": "monitor-rebound", "action": "Watch for rebound — nebulized epi effect wears off in 1-2 hours", "priority": "critical", "protocolReference": "MATC: Pediatric Respiratory Distress (Croup)"},
+        {"id": "notify", "action": "Notify pediatric ED of incoming patient with severe croup requiring nebulized epinephrine", "priority": "important"}
+      ]
+    },
+    {
+      "id": "decompensation-branch",
+      "name": "Branch: Progression to Respiratory Failure Requiring Intubation",
+      "description": "Child deteriorates despite nebulized epinephrine, becoming obtunded. BVM becomes necessary, and the crew must make the difficult call to intubate with a smaller-than-expected ETT. This is one of the most technically difficult pediatric airways.",
+      "triggerCondition": "Worsening mental status despite 2 doses of nebulized epinephrine",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 2, "motor": 3},
+        "airway": "Minimal air entry with severe stridor, obtunded",
+        "breathing": "Slow, ineffective",
+        "circulation": "Bradycardic (ominous in children)",
+        "skin": {"color": "cyanotic", "temperature": "cool", "moisture": "clammy"},
+        "pupils": "3 mm sluggish",
+        "motorFunction": "Flaccid",
+        "otherFindings": ["Bradycardia in a child is a pre-arrest sign", "Severe subglottic edema will require smaller-than-expected ETT"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 54,
+        "bpSys": 78,
+        "bpDia": 44,
+        "respRate": 14,
+        "spo2": 74,
+        "etco2": 62,
+        "temp": 38.1,
+        "obstruction": 90,
+        "glucose": 94,
+        "trendTimeSeconds": 300,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "bvm-peds", "action": "Begin 2-person pediatric BVM at 20-30 breaths/min with pediatric mask and pediatric-sized bag; apply PEEP", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "repeat-epi", "action": "Administer repeat nebulized epinephrine 5 mg via in-line nebulizer", "priority": "critical", "protocolReference": "MATC: Pediatric Respiratory Distress (Croup)"},
+        {"id": "smaller-ett", "action": "Prepare a smaller-than-calculated ETT (3.5 mm cuffed instead of typical 4.0 for age 2) — expect significant subglottic narrowing", "priority": "critical", "rationale": "Subglottic edema is the pathology; a standard-sized tube will not fit. Go 0.5 mm smaller.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "induction-peds", "action": "Induction: Ketamine 1-2 mg/kg IV (13-26 mg for 13 kg child) preserves respiratory drive and hemodynamics in pediatric intubation", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "paralytic-peds", "action": "Rocuronium 1 mg/kg IV (13 mg) for paralysis", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "video-laryng", "action": "Video laryngoscopy preferred; single best-effort attempt", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "confirm", "action": "Confirm with waveform capnography, bilateral breath sounds", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Keep child calm; leave in parent's arms",
+      "Administer blow-by oxygen held by parent",
+      "Nebulized Epinephrine 5 mg (5 mL of 1 mg/mL) via parent-held mask",
+      "Dexamethasone 0.6 mg/kg IM or PO (7.8 mg for this 13 kg patient)",
+      "Defer IV access if possible to avoid agitation",
+      "Prepare pediatric airway equipment including smaller-than-calculated ETT",
+      "Transport with parent holding child",
+      "Continuous reassessment for rebound worsening after epinephrine",
+      "If deterioration: pediatric BVM with PEEP, repeat nebulized epi, prepare for RSI"
+    ],
+    "expectedActions": [
+      "Do NOT use mist therapy",
+      "Do NOT separate child from parent unless absolutely necessary",
+      "Gentle SpO2 monitoring",
+      "Pediatric ED notification"
+    ],
+    "bonusActions": [
+      "Articulate that the child who 'stops fighting' is decompensating, not improving",
+      "Choose a smaller ETT than calculated for age",
+      "Articulate why sending home is not appropriate after nebulized epi"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Apply the MATC Pediatric Croup protocol with nebulized epinephrine and dexamethasone",
+      "Manage a severe croup patient with minimal agitation",
+      "Recognize impending respiratory failure in a pediatric patient",
+      "Prepare appropriately for pediatric airway management with subglottic narrowing",
+      "Understand why every child who receives nebulized epinephrine must be transported"
+    ],
+    "discussionQuestions": [
+      "Why is agitation so dangerous in croup?",
+      "What are the signs of impending respiratory failure in a pediatric patient?",
+      "Why do we choose a smaller-than-calculated ETT in severe croup?",
+      "Why is mist therapy no longer recommended?",
+      "What is the role of dexamethasone if the nebulized epi works so quickly?"
+    ],
+    "commonPitfalls": [
+      "Separating the child from the parent for assessment",
+      "Forcing an oxygen mask on a struggling child",
+      "Attempting IV access and causing decompensation from crying",
+      "Using a standard-sized ETT during subglottic edema",
+      "Sending the child home or not transporting after nebulized epinephrine"
+    ],
+    "keyTakeaways": [
+      "Don't agitate — it can kill this patient",
+      "Nebulized epi works fast but wears off; dex is the long-term fix",
+      "Lethargy and decreased retractions are bad, not better",
+      "Smaller ETT, video laryngoscopy, and gentle technique"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 20,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

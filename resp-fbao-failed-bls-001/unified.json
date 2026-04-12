@@ -1,0 +1,310 @@
+{
+  "meta": {
+    "id": "resp-fbao-failed-bls-001",
+    "name": "Foreign Body Airway Obstruction — Failed BLS",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Respiratory",
+    "protocols": ["resp-airway-management", "resus-cardiac-arrest"],
+    "totalTimeSeconds": 1200,
+    "tags": ["FBAO", "airway obstruction", "Magill forceps", "surgical airway"]
+  },
+  "patient": {
+    "name": "Frank Delgado",
+    "age": 58,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 100,
+    "height": 180,
+    "chiefComplaint": "Choking on food, unconscious",
+    "history": {
+      "hpi": "58-year-old male at a backyard BBQ who was eating a rare steak when he suddenly grabbed his throat and made the universal choking sign. Bystanders immediately initiated abdominal thrusts but were unsuccessful after multiple attempts. Patient became unconscious and was placed supine on the grass. Bystander CPR started.",
+      "pastMedical": ["Hypertension", "Dentures (partial upper)"],
+      "medications": ["Lisinopril 10 mg PO daily"],
+      "allergies": ["No known drug allergies"],
+      "lastOralIntake": "Currently eating — steak and beer",
+      "events": "Choking event during eating. Bystander abdominal thrusts unsuccessful. Now unconscious."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 11, respond code 3 to 842 Maple Lane, for a 58-year-old male choking, now unconscious, CPR in progress by bystanders.",
+    "location": "Backyard of a private residence. Patient supine on the grass next to a picnic table. BBQ still going nearby.",
+    "time": "Saturday, 17:30",
+    "safety": "Scene safe. BBQ flame nearby; move patient if safer working space exists.",
+    "bystanders": "Multiple bystanders, one is performing chest compressions. The host witnessed the choking event.",
+    "visualCues": [
+      "Adult male supine on the lawn, cyanotic",
+      "Bystander performing chest compressions",
+      "Visible food particles around the mouth",
+      "No air movement observed during compressions",
+      "Partial upper denture visible in the oral cavity",
+      "Steak and paper plate next to the patient"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival — Complete Airway Obstruction, Unconscious",
+      "description": "Unconscious FBAO with no air movement. Protocol algorithm shifts at unconsciousness: chest compressions (which generate airway pressure similar to Heimlich), then look-in-mouth between compressions, direct laryngoscopy with Magill forceps to retrieve the object under visualization. If retrieval fails and the object cannot be removed or advanced, cricothyrotomy is the final answer.",
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 1},
+        "airway": "Complete obstruction — no air movement with BVM attempts; obstruction presumed below cords",
+        "breathing": "Apneic",
+        "circulation": "Bradycardic pulse present but weakening; CPR in progress",
+        "skin": {"color": "deeply cyanotic", "temperature": "warm", "moisture": "dry"},
+        "pupils": "Dilating",
+        "motorFunction": "Flaccid",
+        "otherFindings": [
+          "Meat bolus suspected based on history",
+          "Partial upper denture in place",
+          "No air entry with BVM — zero chest rise",
+          "EtCO2 reads zero confirming no ventilation"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 42,
+        "bpSys": 72,
+        "bpDia": 40,
+        "respRate": 0,
+        "spo2": 62,
+        "etco2": 0,
+        "temp": 36.6,
+        "obstruction": 100,
+        "glucose": 132,
+        "trendTimeSeconds": 0,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "confirm-obstruction", "action": "Attempt BVM with head tilt/jaw thrust — confirm NO chest rise and no EtCO2 waveform consistent with complete obstruction", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "remove-denture", "action": "Remove the partial upper denture before any airway instrumentation", "priority": "critical"},
+        {"id": "compressions", "action": "Continue chest compressions — generate intrathoracic pressure that may dislodge the object (functional equivalent of Heimlich in unconscious patient)", "priority": "critical", "protocolReference": "MATC: Cardiac Arrest"},
+        {"id": "dl-magill", "action": "Perform direct laryngoscopy between compression cycles and use Magill forceps to grasp and remove the visualized food bolus", "priority": "critical", "rationale": "With the airway open, DL with Magill forceps is the standard for visualized foreign bodies above or at the cords.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "suction", "action": "Continuous suction available with large-bore Yankauer", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "monitor", "action": "Apply cardiac monitor, pads (anticipate cardiac arrest)", "priority": "critical"}
+      ]
+    },
+    {
+      "id": "dl-decision",
+      "name": "Laryngoscopy Decision Point",
+      "description": "Direct laryngoscopy is performed. The obstruction is either visualized above the cords (retrievable with Magill) or cannot be visualized because it has passed through the cords and is now subglottic. This is the critical decision point — the crew must commit to retrieval, to right mainstem advancement with an ETT, or to surgical airway.",
+      "triggerCondition": "Direct laryngoscopy performed",
+      "isDefault": true,
+      "transitions": [
+        {"targetPhaseId": "retrieval-success", "condition": "Object visualized and removed with Magill forceps", "conditionType": "action_taken", "triggerActionIds": ["magill-retrieve"]},
+        {"targetPhaseId": "advance-intubate", "condition": "Object is subglottic and cannot be retrieved", "conditionType": "action_taken", "triggerActionIds": ["force-down"]},
+        {"targetPhaseId": "crich", "condition": "Object cannot be advanced or retrieved", "conditionType": "action_taken", "triggerActionIds": ["crich-airway"]}
+      ],
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 1},
+        "airway": "Laryngoscopy in progress; visibility improving with suction",
+        "breathing": "Apneic",
+        "circulation": "PEA-like picture, pulse fading",
+        "skin": {"color": "deeply cyanotic", "temperature": "warm", "moisture": "dry"},
+        "pupils": "Dilated",
+        "motorFunction": "Flaccid",
+        "otherFindings": ["Meat bolus visualized at or just below the cords"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 38,
+        "bpSys": 68,
+        "bpDia": 36,
+        "respRate": 0,
+        "spo2": 58,
+        "etco2": 0,
+        "temp": 36.6,
+        "obstruction": 100,
+        "glucose": 132,
+        "trendTimeSeconds": 60,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "magill-retrieve", "action": "If object is visible above or at the cords, grasp it with Magill forceps and remove under direct vision", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "force-down", "action": "If object cannot be retrieved and is subglottic, advance an endotracheal tube into the right mainstem bronchus to push the object distally, then withdraw tube to mid-trachea for single-lung ventilation of the left lung", "priority": "critical", "rationale": "When retrieval fails, force the object into one mainstem bronchus and ventilate the other lung — a recognized rescue technique.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "crich-airway", "action": "If the obstruction is at the cords and cannot be advanced or retrieved, proceed with emergent cricothyrotomy", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "continue-cpr", "action": "Continue CPR throughout attempts", "priority": "critical", "protocolReference": "MATC: Cardiac Arrest"}
+      ]
+    },
+    {
+      "id": "retrieval-success",
+      "name": "Default Path — Successful Magill Retrieval",
+      "description": "Large meat bolus retrieved from above the cords with Magill forceps. Immediate air movement returns with BVM. Patient regains pulse and pinks up rapidly. Manage as post-arrest with careful airway observation for aspiration and glottic edema.",
+      "triggerCondition": "Successful foreign body retrieval",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": {"eye": 2, "verbal": 1, "motor": 4},
+        "airway": "Patent with OPA in place",
+        "breathing": "BVM-assisted with easy compliance, symmetric chest rise",
+        "circulation": "Pulse returning with chest compressions halted; ROSC",
+        "skin": {"color": "pink", "temperature": "warm", "moisture": "diaphoretic"},
+        "pupils": "4 mm sluggish",
+        "motorFunction": "Withdrawing from pain",
+        "otherFindings": ["Waveform capnography returning to baseline", "Patient may regain consciousness — prepare for confusion"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 124,
+        "bpDia": 72,
+        "respRate": 12,
+        "spo2": 92,
+        "etco2": 38,
+        "temp": 36.6,
+        "obstruction": 15,
+        "glucose": 132,
+        "trendTimeSeconds": 120,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "secure-airway", "action": "Keep OPA in place and support ventilation; prepare to intubate if patient does not protect airway", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "o2", "action": "Continue high-flow oxygen via BVM", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "post-arrest", "action": "Manage as post-arrest if sustained ROSC — watch for re-arrest and hypotension", "priority": "critical", "protocolReference": "MATC: Cardiac Arrest"},
+        {"id": "transport", "action": "Transport to ED with early notification for ENT evaluation of glottic trauma and aspiration", "priority": "critical"}
+      ]
+    },
+    {
+      "id": "advance-intubate",
+      "name": "Branch: Single-Lung Ventilation After Forced Advancement",
+      "description": "Object cannot be retrieved. Crew advances ETT deliberately into the right mainstem bronchus to push the obstruction distally, then withdraws tube to mid-trachea. Patient is ventilated through the left lung only while the obstructed right lung is bypassed until hospital bronchoscopy.",
+      "triggerCondition": "Object cannot be retrieved; advancement chosen",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 1},
+        "airway": "ETT now at 20 cm at the teeth (withdrawn after mainstem advance)",
+        "breathing": "Single-lung ventilation — breath sounds on the left only",
+        "circulation": "Tenuous, ROSC borderline",
+        "skin": {"color": "improving slowly", "temperature": "warm", "moisture": "dry"},
+        "pupils": "Dilated, sluggish",
+        "motorFunction": "Flaccid",
+        "otherFindings": [
+          "Absent breath sounds on the right (obstructed)",
+          "Clear breath sounds on the left",
+          "EtCO2 waveform returns, lower than expected",
+          "Oxygenation suboptimal due to V/Q mismatch"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 126,
+        "bpSys": 94,
+        "bpDia": 58,
+        "respRate": 12,
+        "spo2": 84,
+        "etco2": 32,
+        "temp": 36.6,
+        "obstruction": 50,
+        "glucose": 132,
+        "trendTimeSeconds": 120,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "confirm-single", "action": "Confirm single-lung ventilation with capnography and unilateral breath sounds; document approach", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "transport-bronch", "action": "Emergent transport to a facility with ED bronchoscopy or OR access; early notification", "priority": "critical"},
+        {"id": "ventilate-careful", "action": "Ventilate gently to avoid barotrauma on the single lung", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    },
+    {
+      "id": "crich",
+      "name": "Branch: Surgical Cricothyrotomy",
+      "description": "Object is at the cords, cannot be retrieved, cannot be advanced, and ventilation is impossible from above. Crich is the only remaining option.",
+      "triggerCondition": "Can't remove, can't advance, can't ventilate",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 1},
+        "airway": "Surgical cricothyrotomy in place with 6.0 mm cuffed tube",
+        "breathing": "Ventilated via surgical airway",
+        "circulation": "Tenuous ROSC",
+        "skin": {"color": "improving", "temperature": "warm", "moisture": "moist"},
+        "pupils": "Dilated sluggish",
+        "motorFunction": "Flaccid",
+        "otherFindings": ["Minor bleeding at surgical site, controlled with gauze pressure", "EtCO2 returning with ventilation"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 132,
+        "bpSys": 96,
+        "bpDia": 58,
+        "respRate": 12,
+        "spo2": 88,
+        "etco2": 36,
+        "temp": 36.6,
+        "obstruction": 15,
+        "glucose": 132,
+        "trendTimeSeconds": 120,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "confirm-crich", "action": "Confirm cricothyrotomy placement with waveform capnography and bilateral breath sounds", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "transport-or", "action": "Transport emergently to a facility with ENT or general surgery for definitive airway management", "priority": "critical"}
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Recognize complete airway obstruction in an unconscious patient",
+      "Remove dentures before instrumentation",
+      "Perform direct laryngoscopy with Magill forceps to attempt retrieval",
+      "Continue chest compressions throughout (they generate airway pressure)",
+      "If Magill retrieval fails: choose between advancing ETT to right mainstem OR surgical cricothyrotomy based on visualization",
+      "If obstruction is at the cords and cannot be moved: commit to cricothyrotomy without delay",
+      "Confirm airway with waveform capnography",
+      "Transport emergently to appropriate facility"
+    ],
+    "expectedActions": [
+      "Apply cardiac monitor and pads",
+      "Establish IV access once airway is secured",
+      "Manage post-arrest care if ROSC is achieved",
+      "Early ED notification"
+    ],
+    "bonusActions": [
+      "Articulate the rationale for single-lung ventilation via forced advancement",
+      "Use SALAD technique if blood or vomitus present",
+      "Document time to decisive action at each phase"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Apply the unconscious FBAO algorithm",
+      "Use direct laryngoscopy and Magill forceps to retrieve a visualized obstruction",
+      "Understand the rationale for forced distal advancement when retrieval fails",
+      "Identify when to commit to surgical airway",
+      "Avoid algorithm paralysis in a time-critical airway"
+    ],
+    "discussionQuestions": [
+      "Why is pushing the object distal with an ETT a reasonable rescue maneuver?",
+      "How do you decide between advancement and cricothyrotomy?",
+      "What are the consequences of single-lung ventilation during transport?",
+      "What role do chest compressions play in an unconscious FBAO?",
+      "How would your approach differ if this patient had known laryngeal cancer?"
+    ],
+    "commonPitfalls": [
+      "Continuing abdominal thrusts in an unconscious patient instead of starting compressions",
+      "Failing to remove dentures before laryngoscopy",
+      "Multiple unsuccessful Magill attempts instead of committing to an alternate strategy",
+      "Hesitating to perform cricothyrotomy in a can't-ventilate scenario",
+      "Forgetting that chest compressions substitute for abdominal thrusts in the unconscious patient"
+    ],
+    "keyTakeaways": [
+      "Magill forceps under DL is the first-line tool for visualized FBAO",
+      "When retrieval fails, forced advancement or cricothyrotomy are both acceptable",
+      "Every second counts — commit, don't deliberate",
+      "Compressions + DL + Magill is the unconscious FBAO rhythm"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 20,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

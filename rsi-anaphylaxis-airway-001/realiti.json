@@ -1,0 +1,211 @@
+{
+  "scenarioId": "rsi-anaphylaxis-airway-001",
+  "scenarioName": "Refractory Anaphylaxis — Closing Airway, Go/No-Go",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 20,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "42-year-old female at a seafood restaurant for a birthday dinner. Took a bite of a shared appetizer not realizing it contained shrimp paste. Known severe shellfish allergy with prior ED visits. Within minutes developed tongue swelling, throat tightness, and urticaria. Administered two doses of her own 0.3 mg epinephrine auto-injector 5 minutes apart with minimal improvement. Her husband called 911.",
+    "discussion": "Recognize and treat refractory anaphylaxis. Apply the MATC Anaphylaxis protocol including IM epi, nebulized epi, fluids, and IV epi drip progression. Manage a rapidly progressing difficult airway with a double-setup approach. Decide when to commit to surgical airway. Understand indications for IV epinephrine infusion in anaphylaxis",
+    "course": "Arrival — Refractory Anaphylaxis with Closing Airway: Crew arrives to a dramatic airway emergency. Massive angioedema with obvious tongue and facial swelling. Stridor barely audible — air movement is critically limited. SpO2 is 74%. Two IM epi doses from the patient's own auto-injectors have not halted progression. Time to definitive airway is measured in minutes. → Go/No-Go Airway Decision: A third IM epi has been given. Despite maximal medical therapy, swelling continues to progress. The crew now faces a critical decision: is the airway still passable with an endotracheal tube via video laryngoscopy, or has it progressed to the point where the ETT will not pass and a surgical airway is the primary plan? The crew must commit to a double-setup: simultaneous preparation for both attempts. → Successful Endotracheal Intubation: A single video laryngoscopy attempt with a small ETT and bougie succeeds. Tube confirmed. Ventilation improves dramatically. Ongoing anaphylaxis treatment continues."
+  },
+  "patientInformation": {
+    "patientName": "Anika Patel",
+    "patientCondition": "Severe allergic reaction with airway swelling after shellfish exposure",
+    "patientAge": 42,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 163,
+    "patientWeight": 68,
+    "patientPhotoId": 51,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival — Refractory Anaphylaxis with Closing Airway",
+      "description": "Crew arrives to a dramatic airway emergency. Massive angioedema with obvious tongue and facial swelling. Stridor barely audible — air movement is critically limited. SpO2 is 74%. Two IM epi doses from the patient's own auto-injectors have not halted progression. Time to definitive airway is measured in minutes.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 142,
+        "bpSys": 82,
+        "bpDia": 48,
+        "respRate": 36,
+        "spo2": 74,
+        "etco2": 28,
+        "temp": 37,
+        "obstruction": 80,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Methylprednisolone 125 mg IV or Dexamethasone 10 mg IV"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Go/No-Go Airway Decision",
+      "description": "A third IM epi has been given. Despite maximal medical therapy, swelling continues to progress. The crew now faces a critical decision: is the airway still passable with an endotracheal tube via video laryngoscopy, or has it progressed to the point where the ETT will not pass and a surgical airway is the primary plan? The crew must commit to a double-setup: simultaneous preparation for both attempts.",
+      "monitorType": 0,
+      "trendTime": 180,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 152,
+        "bpSys": 74,
+        "bpDia": 42,
+        "respRate": 30,
+        "spo2": 70,
+        "etco2": 22,
+        "temp": 37,
+        "obstruction": 90,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Successful Endotracheal Intubation",
+      "description": "A single video laryngoscopy attempt with a small ETT and bougie succeeds. Tube confirmed. Ventilation improves dramatically. Ongoing anaphylaxis treatment continues.",
+      "monitorType": 0,
+      "trendTime": 120,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 128,
+        "bpSys": 96,
+        "bpDia": 58,
+        "respRate": 12,
+        "spo2": 96,
+        "etco2": 42,
+        "temp": 37,
+        "obstruction": 10,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Administer Epinephrine 0.3 mg IM (1 mg/mL) immediately on recognition despite two prior patient-administered doses",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Nebulized Epinephrine 5 mL of 1 mg/mL for stridor",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access and begin 20 mL/kg NS bolus",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "High-flow oxygen preparation for imminent airway management",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize refractory anaphylaxis and initiate Epinephrine IV drip 0.5 mcg/kg/min",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Double-setup for definitive airway: prepare ETT (smaller size) AND cricothyrotomy kit simultaneously",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Perform RSI with Ketamine 1-2 mg/kg + Rocuronium 1 mg/kg",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If ETT not possible, commit to surgical cricothyrotomy",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm advanced airway with waveform capnography",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Diphenhydramine 50 mg IV",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Methylprednisolone 125 mg IV or Dexamethasone 10 mg IV",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Mark cricothyroid membrane prior to RSI attempt",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early ED notification for ENT/trauma resources",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

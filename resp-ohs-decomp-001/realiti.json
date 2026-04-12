@@ -1,0 +1,199 @@
+{
+  "scenarioId": "resp-ohs-decomp-001",
+  "scenarioName": "Obesity Hypoventilation Syndrome — Acute Decompensation",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 20,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "48-year-old male, approximately 400 lbs (181 kg), with obesity hypoventilation syndrome (OHS) and severe obstructive sleep apnea. Prescribed home BiPAP but rarely uses it. Over the past 24 hours his family reports he has been increasingly sleepy, difficult to rouse, with slurred speech. This morning he is arousable only to painful stimuli. No fever, no chest pain.",
+    "discussion": "Recognize OHS acute decompensation and CO2 narcosis. Apply a trial of NIV before committing to RSI in a cooperative patient. Understand the ramped position and its importance in obese patients. Dose induction agents on IBW and paralytics on TBW. Plan for a difficult airway before intubation is needed",
+    "course": "Arrival — Acute Hypercapnic Respiratory Failure: Morbidly obese patient with likely acute-on-chronic hypercapnic respiratory failure (OHS decompensation) from BiPAP non-compliance. Mental status is driven by CO2 narcosis. This patient has multiple difficult airway predictors — plan accordingly BEFORE you need to intubate. → BiPAP Trial: Patient tolerates BiPAP with some improvement in mental status and ventilation. BiPAP is continued with intensive monitoring during transport. If mental status continues to improve, intubation is avoided."
+  },
+  "patientInformation": {
+    "patientName": "Brandon Peretti",
+    "patientCondition": "Increasing somnolence and altered mental status over the past 24 hours",
+    "patientAge": 48,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 178,
+    "patientWeight": 181,
+    "patientPhotoId": 58,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival — Acute Hypercapnic Respiratory Failure",
+      "description": "Morbidly obese patient with likely acute-on-chronic hypercapnic respiratory failure (OHS decompensation) from BiPAP non-compliance. Mental status is driven by CO2 narcosis. This patient has multiple difficult airway predictors — plan accordingly BEFORE you need to intubate.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 94,
+        "bpSys": 158,
+        "bpDia": 92,
+        "respRate": 8,
+        "spo2": 78,
+        "etco2": 82,
+        "temp": 36.8,
+        "obstruction": 40,
+        "custMeasure1": 198,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "2-person BVM with PEEP",
+        "Check blood glucose",
+        "Establish IV access"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "BiPAP Trial",
+      "description": "Patient tolerates BiPAP with some improvement in mental status and ventilation. BiPAP is continued with intensive monitoring during transport. If mental status continues to improve, intubation is avoided.",
+      "monitorType": 0,
+      "trendTime": 600,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 88,
+        "bpSys": 148,
+        "bpDia": 86,
+        "respRate": 16,
+        "spo2": 93,
+        "etco2": 62,
+        "temp": 36.8,
+        "obstruction": 15,
+        "custMeasure1": 198,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Request bariatric resources early",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Position patient in ramped (head elevated) position",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Jaw thrust with OPA/NPA",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "2-person BVM with PEEP",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Trial BiPAP if patient retains respiratory drive and cooperation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT sedate for BiPAP anxiety",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Verbalize difficult airway plan with backups BEFORE needing it",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If RSI: ramped position, induction on IBW, paralytic on TBW, video laryngoscopy with bougie, SGA and surgical airway as backup",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Post-intubation: gradual CO2 correction, PEEP 10+, TV on IBW",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to bariatric-capable ED",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apneic oxygenation during intubation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continuous mental status monitoring during BiPAP trial",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early ED notification",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "IV versus IO access planning",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

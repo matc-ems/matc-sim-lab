@@ -1,0 +1,181 @@
+{
+  "scenarioId": "resp-flail-chest-contusion-001",
+  "scenarioName": "Flail Chest with Pulmonary Contusion",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 20,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "55-year-old male, unrestrained driver in a high-speed (estimated 55 mph) front-end collision with a fixed object. Driver's airbag did NOT deploy (older vehicle). Hit the steering wheel with his chest. Found at the scene with difficulty breathing and obvious chest wall deformity. Complains of severe left-sided chest pain with every breath.",
+    "discussion": "Apply MATC General Trauma Management MARCH approach. Manage flail chest with CPAP and aggressive analgesia. Understand that pulmonary contusion is the underlying injury. Avoid over-fluid-loading contusion patients. Recognize and treat tension pneumothorax",
+    "course": "Arrival — Flail Chest with Respiratory Compromise: Flail chest is visually dramatic but the underlying pulmonary contusion is the real killer — it's an evolving inflammatory injury that will worsen over the next 24 hours. Positive pressure ventilation and aggressive pain management to allow deeper breathing are the priorities. Avoid heavy fluid resuscitation which will worsen contusion edema. → Default — Improvement with Analgesia and CPAP: With adequate fentanyl and CPAP, the patient is able to take deeper breaths, SpO2 improves, and splinting decreases. Rapid transport to trauma center continues. Vigilance for tension pneumothorax remains."
+  },
+  "patientInformation": {
+    "patientName": "Victor Lazzaro",
+    "patientCondition": "Severe chest pain and shortness of breath after high-speed MVC, struck chest on steering wheel",
+    "patientAge": 55,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 180,
+    "patientWeight": 92,
+    "patientPhotoId": 66,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival — Flail Chest with Respiratory Compromise",
+      "description": "Flail chest is visually dramatic but the underlying pulmonary contusion is the real killer — it's an evolving inflammatory injury that will worsen over the next 24 hours. Positive pressure ventilation and aggressive pain management to allow deeper breathing are the priorities. Avoid heavy fluid resuscitation which will worsen contusion edema.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 122,
+        "bpSys": 110,
+        "bpDia": 72,
+        "respRate": 32,
+        "spo2": 91,
+        "etco2": 34,
+        "temp": 36.6,
+        "obstruction": 15,
+        "custMeasure1": 128,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Apply MARCH primary survey",
+        "Establish two large-bore IVs",
+        "Do NOT tape or pad the flail segment externally"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Default — Improvement with Analgesia and CPAP",
+      "description": "With adequate fentanyl and CPAP, the patient is able to take deeper breaths, SpO2 improves, and splinting decreases. Rapid transport to trauma center continues. Vigilance for tension pneumothorax remains.",
+      "monitorType": 0,
+      "trendTime": 300,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 118,
+        "bpDia": 76,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.6,
+        "obstruction": 10,
+        "custMeasure1": 128,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Apply MARCH primary survey",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Maintain spinal precautions",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "High-flow oxygen, target SpO2 ≥94%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish two large-bore IVs",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Permissive hypotensive resuscitation — avoid over-fluid loading",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Aggressive pain management with Fentanyl 1-2 mcg/kg IV, titrated",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply CPAP as an internal splint for the flail segment",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT tape or pad the flail segment externally",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reassess breath sounds continuously for tension pneumothorax",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Expedited transport to Level I trauma center with scene time <10 min",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Have needle decompression equipment immediately accessible",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continuous waveform capnography",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "AT-MIST handoff to trauma team",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

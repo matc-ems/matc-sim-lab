@@ -1,0 +1,232 @@
+{
+  "meta": {
+    "id": "resp-flail-chest-contusion-001",
+    "name": "Flail Chest with Pulmonary Contusion",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Trauma",
+    "protocols": ["trauma-general", "medical-pain-management", "resp-airway-management"],
+    "totalTimeSeconds": 1500,
+    "tags": ["flail chest", "pulmonary contusion", "pain management", "positive pressure"]
+  },
+  "patient": {
+    "name": "Victor Lazzaro",
+    "age": 55,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 92,
+    "height": 180,
+    "chiefComplaint": "Severe chest pain and shortness of breath after high-speed MVC, struck chest on steering wheel",
+    "history": {
+      "hpi": "55-year-old male, unrestrained driver in a high-speed (estimated 55 mph) front-end collision with a fixed object. Driver's airbag did NOT deploy (older vehicle). Hit the steering wheel with his chest. Found at the scene with difficulty breathing and obvious chest wall deformity. Complains of severe left-sided chest pain with every breath.",
+      "pastMedical": ["Hypertension", "Hypercholesterolemia", "Former smoker"],
+      "medications": ["Lisinopril 20 mg PO daily", "Atorvastatin 40 mg PO daily"],
+      "allergies": ["No known drug allergies"],
+      "lastOralIntake": "Lunch approximately 2 hours ago",
+      "events": "High-speed MVC, front-end collision, unrestrained driver, chest impact with steering wheel. Extricated by fire from the driver's seat."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 3, respond code 3 to eastbound I-43 milepost 72 for a single-vehicle MVC, driver trapped, chest injury.",
+    "location": "Highway shoulder. Driver extricated onto a backboard next to a crumpled passenger vehicle.",
+    "time": "Thursday, 14:15",
+    "safety": "Lanes closed by law enforcement. Fire on scene. Fuel spill controlled.",
+    "bystanders": "Fire crew with extrication complete; witness who saw the impact is being interviewed by police",
+    "visualCues": [
+      "Middle-aged male supine on a backboard, obviously in pain",
+      "Visible chest wall deformity on the left with paradoxical movement during each breath",
+      "Speaking in short phrases, splinting with every breath",
+      "Abrasions across the anterior chest from the steering wheel",
+      "Breath sounds diminished on the left",
+      "Pale, diaphoretic",
+      "Extrication complete — patient on long board with c-collar"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival — Flail Chest with Respiratory Compromise",
+      "description": "Flail chest is visually dramatic but the underlying pulmonary contusion is the real killer — it's an evolving inflammatory injury that will worsen over the next 24 hours. Positive pressure ventilation and aggressive pain management to allow deeper breathing are the priorities. Avoid heavy fluid resuscitation which will worsen contusion edema.",
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {"eye": 4, "verbal": 4, "motor": 6},
+        "airway": "Patent",
+        "breathing": "Rapid shallow at 32/min with obvious paradoxical chest wall movement on the left anterior chest (segment moves inward with inspiration); decreased breath sounds on the left; crepitus palpable over the flail segment",
+        "circulation": "Tachycardic, BP compensating",
+        "skin": {"color": "pale, central cyanosis", "temperature": "cool", "moisture": "diaphoretic"},
+        "pupils": "4 mm reactive",
+        "motorFunction": "Splinting with every breath, very uncomfortable",
+        "otherFindings": [
+          "Paradoxical flail segment on left anterior chest",
+          "Subcutaneous crepitus over the flail segment",
+          "Underlying pulmonary contusion — the real threat",
+          "Patient is splinting, which worsens atelectasis",
+          "Left chest rise diminished"
+        ],
+        "patientSpeech": "'Can't... take a... deep breath... hurts'"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 122,
+        "bpSys": 110,
+        "bpDia": 72,
+        "respRate": 32,
+        "spo2": 91,
+        "etco2": 34,
+        "temp": 36.6,
+        "obstruction": 15,
+        "glucose": 128,
+        "trendTimeSeconds": 0,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "march", "action": "Apply MARCH primary survey; no massive hemorrhage noted", "priority": "critical", "protocolReference": "MATC: General Trauma Management"},
+        {"id": "spinal", "action": "Maintain cervical collar and long board immobilization (mechanism)", "priority": "critical", "protocolReference": "MATC: Spinal Care"},
+        {"id": "o2", "action": "Apply high-flow oxygen via non-rebreather; target SpO2 ≥94%", "priority": "critical", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "breath-sounds", "action": "Auscultate breath sounds bilaterally and monitor for tension pneumothorax — be ready with needle decompression equipment on the left", "priority": "critical", "protocolReference": "MATC: General Trauma Management"},
+        {"id": "iv", "action": "Establish two large-bore IVs", "priority": "critical", "protocolReference": "MATC: General Trauma Management"},
+        {"id": "fluid-careful", "action": "Administer permissive hypotensive fluid strategy (target SBP 90 mmHg, palpable radial): only bolus if SBP <90 or HR >120 with signs of hypoperfusion; start with 500 mL", "priority": "critical", "rationale": "Aggressive fluid worsens pulmonary contusion edema. Permissive hypotension is appropriate in isolated chest trauma without head injury.", "protocolReference": "MATC: General Trauma Management"},
+        {"id": "pain-fent", "action": "Administer Fentanyl 1-2 mcg/kg IV (92-184 mcg for 92 kg patient) for pain; titrate to effect; may repeat", "priority": "critical", "rationale": "Aggressive analgesia is the most important intervention — allows deeper breathing and reduces splinting/atelectasis.", "protocolReference": "MATC: Pain Management"},
+        {"id": "cpap", "action": "Consider CPAP starting at 5 cmH2O — provides an internal 'splint' for the flail segment and treats underlying contusion atelectasis", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "no-taping", "action": "Do NOT tape or pad the flail segment externally — causes restriction and worsens ventilation", "priority": "important", "protocolReference": "MATC: General Trauma Management"},
+        {"id": "monitor", "action": "Apply cardiac monitor, SpO2, waveform capnography", "priority": "critical"}
+      ]
+    },
+    {
+      "id": "improving",
+      "name": "Default — Improvement with Analgesia and CPAP",
+      "description": "With adequate fentanyl and CPAP, the patient is able to take deeper breaths, SpO2 improves, and splinting decreases. Rapid transport to trauma center continues. Vigilance for tension pneumothorax remains.",
+      "triggerCondition": "Stabilization after pain control and CPAP",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {"eye": 4, "verbal": 5, "motor": 6},
+        "airway": "Patent",
+        "breathing": "CPAP in place, slower respiratory rate, deeper tidal volumes, less splinting",
+        "circulation": "HR decreasing with pain control",
+        "skin": {"color": "improved pink", "temperature": "warming", "moisture": "less diaphoretic"},
+        "pupils": "4 mm reactive",
+        "motorFunction": "More comfortable, can tolerate assessment",
+        "otherFindings": ["Flail segment still paradoxical but less dramatic with CPAP", "Pain 5/10 from 10/10"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 118,
+        "bpDia": 76,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.6,
+        "obstruction": 10,
+        "glucose": 128,
+        "trendTimeSeconds": 300,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "continue-cpap", "action": "Maintain CPAP without breaking the seal", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "ongoing-pain", "action": "Continue titration of fentanyl for ongoing pain", "priority": "critical", "protocolReference": "MATC: Pain Management"},
+        {"id": "transport", "action": "Expedited transport to Level I trauma center; scene time <10 minutes", "priority": "critical", "protocolReference": "MATC: General Trauma Management"},
+        {"id": "reassess-breath", "action": "Reassess breath sounds frequently for developing tension pneumothorax or hemothorax", "priority": "critical", "protocolReference": "MATC: General Trauma Management"}
+      ]
+    },
+    {
+      "id": "tension-ptx-branch",
+      "name": "Branch: Tension Pneumothorax Development",
+      "description": "During transport the patient deteriorates with sudden hypotension, absent left breath sounds, and tracheal deviation. Classic tension pneumothorax from the rib fractures and underlying lung injury. Needle decompression is indicated.",
+      "triggerCondition": "Sudden hemodynamic or respiratory deterioration",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {"eye": 3, "verbal": 4, "motor": 5},
+        "airway": "Patent",
+        "breathing": "Absent breath sounds on the left, tracheal deviation to the right, jugular venous distention",
+        "circulation": "Hypotensive with weak pulses",
+        "skin": {"color": "pale with worsening cyanosis", "temperature": "cool", "moisture": "diaphoretic"},
+        "pupils": "4 mm reactive",
+        "motorFunction": "Anxious, distressed",
+        "otherFindings": ["Classic tension pneumothorax presentation — act immediately, don't wait for confirmation"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 142,
+        "bpSys": 76,
+        "bpDia": 48,
+        "respRate": 36,
+        "spo2": 82,
+        "etco2": 26,
+        "temp": 36.6,
+        "obstruction": 70,
+        "glucose": 128,
+        "trendTimeSeconds": 120,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "decompress", "action": "Perform needle decompression on the left — 4th or 5th intercostal space at the anterior axillary line (preferred) with a large-bore needle/catheter", "priority": "critical", "rationale": "Anterior axillary line at 4th/5th ICS has better success than 2nd ICS midclavicular due to chest wall thickness.", "protocolReference": "MATC: General Trauma Management"},
+        {"id": "reassess-decomp", "action": "Reassess breath sounds and hemodynamics after decompression; be prepared for a second decompression if symptoms recur", "priority": "critical", "protocolReference": "MATC: General Trauma Management"},
+        {"id": "transport-emerg", "action": "Expedited transport continues with crew prepared for further interventions", "priority": "critical"}
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Apply MARCH primary survey",
+      "Maintain spinal precautions",
+      "High-flow oxygen, target SpO2 ≥94%",
+      "Establish two large-bore IVs",
+      "Permissive hypotensive resuscitation — avoid over-fluid loading",
+      "Aggressive pain management with Fentanyl 1-2 mcg/kg IV, titrated",
+      "Apply CPAP as an internal splint for the flail segment",
+      "Do NOT tape or pad the flail segment externally",
+      "Reassess breath sounds continuously for tension pneumothorax",
+      "Expedited transport to Level I trauma center with scene time <10 min"
+    ],
+    "expectedActions": [
+      "Have needle decompression equipment immediately accessible",
+      "Continuous waveform capnography",
+      "AT-MIST handoff to trauma team"
+    ],
+    "bonusActions": [
+      "Articulate that pulmonary contusion is the real threat, not the flail segment",
+      "Choose CPAP over intubation when mental status permits",
+      "Know the preferred needle decompression location (4th-5th ICS AAL)"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Apply MATC General Trauma Management MARCH approach",
+      "Manage flail chest with CPAP and aggressive analgesia",
+      "Understand that pulmonary contusion is the underlying injury",
+      "Avoid over-fluid-loading contusion patients",
+      "Recognize and treat tension pneumothorax"
+    ],
+    "discussionQuestions": [
+      "Why is CPAP effective in flail chest?",
+      "Why do we NOT tape or pad the flail segment externally?",
+      "How does pulmonary contusion evolve over time and why is transport timing critical?",
+      "What are the hemodynamic signs of tension pneumothorax and where do you decompress?",
+      "How does pain management improve respiratory mechanics in chest trauma?"
+    ],
+    "commonPitfalls": [
+      "Underdosing analgesia because 'respiratory depression' is feared",
+      "Over-resuscitating with crystalloid and worsening contusion edema",
+      "Delaying needle decompression until classic signs are 'definite'",
+      "Taping the flail segment and worsening ventilation",
+      "Intubating instead of trying CPAP first"
+    ],
+    "keyTakeaways": [
+      "The flail is visible; the contusion is what kills",
+      "Pain control is ventilator support in chest trauma",
+      "CPAP stabilizes the flail from the inside",
+      "Permissive hypotension protects the contusion from worsening"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 20,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

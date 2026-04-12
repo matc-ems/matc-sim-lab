@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Burn with Inhalation Injury — Preemptive RSI</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#f4f3f0;--card:#fff;--card-border:#e8e6e1;--text:#1c1917;--text-secondary:#57534e;--text-muted:#a8a29e;--green:#16a34a;--green-light:#f0fdf4;--green-border:#bbf7d0;--red:#dc2626;--red-light:#fef2f2;--red-border:#fecaca;--orange:#ea580c;--orange-light:#fff7ed;--orange-border:#fed7aa;--blue:#2563eb;--blue-light:#eff6ff;--purple:#7c3aed;--cyan:#0891b2;--yellow:#ca8a04;--radius:14px;--radius-sm:10px;--shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100dvh;overflow-x:hidden}
+.top-bar{background:var(--card);padding:16px 20px 0;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--card-border)}
+.scenario-name{font-size:17px;font-weight:700;margin-bottom:4px}
+.scenario-tags{display:flex;gap:6px;margin-bottom:14px}
+.tag{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px}
+.tag-difficulty{background:var(--orange-light);color:var(--orange)}
+.tag-category{background:var(--blue-light);color:var(--blue)}
+.tag-time{background:#f5f5f4;color:var(--text-muted)}
+.phase-strip{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}
+.phase-strip::-webkit-scrollbar{display:none}
+.phase-tab{flex-shrink:0;font-size:13px;font-weight:600;padding:10px 16px;color:var(--text-muted);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;position:relative}
+.phase-tab.active{color:var(--text);border-bottom-color:var(--text)}
+.phase-tab.branch{color:var(--red);opacity:.5}
+.phase-tab.branch.active{opacity:1;border-bottom-color:var(--red)}
+.phase-tab .hint-dot{display:none;width:7px;height:7px;border-radius:50%;position:absolute;top:6px;right:4px}
+.phase-tab.hint-next .hint-dot{display:block;background:var(--green);animation:pulse-hint 1.5s infinite}
+.phase-tab.hint-branch .hint-dot{display:block;background:var(--red);animation:pulse-hint 1s infinite}
+@keyframes pulse-hint{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.content{padding:16px;max-width:600px;margin:0 auto}
+.panel{display:none}.panel.active{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);padding:14px 16px 10px}
+.card-content{padding:0 16px 16px}
+.accordion{cursor:pointer;user-select:none}
+.accordion .card-title{display:flex;justify-content:space-between;align-items:center;padding:16px}
+.accordion .card-title::after{content:'＋';font-size:16px;color:var(--text-muted)}
+.accordion.open .card-title::after{content:'−'}
+.accordion .accordion-body{display:none;padding:0 16px 16px}
+.accordion.open .accordion-body{display:block}
+.scene-row{padding:8px 0;border-bottom:1px solid #f5f5f4}.scene-row:last-child{border-bottom:none}
+.scene-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.scene-value{font-size:14px;color:var(--text-secondary)}
+.cue-list{list-style:none}.cue-list li{font-size:14px;color:var(--text-secondary);padding:4px 0 4px 16px;position:relative}.cue-list li::before{content:'→';position:absolute;left:0;color:var(--text-muted);font-size:12px}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.sample-cell{background:var(--card);padding:12px}.sample-cell.full{grid-column:1/-1}
+.sample-letter{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--green);margin-right:4px}
+.sample-name{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:4px}
+.sample-text{font-size:13px;color:var(--text-secondary);line-height:1.4}
+.patient-chips{display:flex;flex-wrap:wrap;gap:8px}
+.patient-chip{font-size:13px;padding:6px 12px;background:#f5f5f4;border-radius:8px;color:var(--text-secondary)}
+.patient-chip strong{color:var(--text);font-weight:600}
+.phase-card{border-left:4px solid var(--text)}.phase-card.branch-card{border-left-color:var(--red)}
+.phase-card .card-content{padding:16px}
+.phase-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.phase-trigger{font-family:'DM Mono',monospace;font-size:11px;color:var(--yellow);margin-bottom:8px}
+.phase-desc{font-size:14px;color:var(--text-secondary);line-height:1.5}
+.vitals-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.vital-cell{background:var(--card);padding:10px 8px;text-align:center}.vital-cell.full-width{grid-column:1/-1}
+.vital-name{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.vital-val{font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:var(--text);line-height:1.1}
+.vital-unit{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted)}
+.vital-cell.alert .vital-val{color:var(--red)}.vital-cell.alert .vital-name{color:var(--red)}.vital-cell.alert{background:var(--red-light)}
+.vital-cell.warn .vital-val{color:var(--orange)}.vital-cell.warn .vital-name{color:var(--orange)}.vital-cell.warn{background:var(--orange-light)}
+.ecg-label{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-secondary);padding:8px 12px;background:#fafaf9;border-bottom:1px solid #f0efec;border-radius:var(--radius-sm) var(--radius-sm) 0 0}
+.avpu-bar{display:flex;border-radius:8px;overflow:hidden;margin-bottom:12px;border:1px solid var(--card-border)}
+.avpu-seg{flex:1;text-align:center;padding:8px 4px;font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--text-muted);background:#fafaf9}
+.avpu-seg.sel-a{background:var(--green-light);color:var(--green);border:1px solid var(--green-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-v{background:var(--orange-light);color:var(--yellow);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-p{background:var(--orange-light);color:var(--orange);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-u{background:var(--red-light);color:var(--red);border:1px solid var(--red-border);margin:-1px;border-radius:8px}
+.gcs-row{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-secondary);margin-bottom:14px;text-align:center}
+.gcs-total{font-size:18px;font-weight:700;color:var(--text)}
+.finding-row{padding:10px 0;border-bottom:1px solid #f5f5f4}.finding-row:last-child{border-bottom:none}
+.finding-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:3px}
+.finding-value{font-size:14px;color:var(--text-secondary)}.finding-value.danger{color:var(--red);font-weight:600}.finding-value.improving{color:var(--green)}.finding-value.speech{font-style:italic;color:var(--text-muted)}
+.skin-chips{display:flex;gap:6px;flex-wrap:wrap}
+.skin-chip{font-size:12px;padding:3px 10px;border-radius:6px;background:#f5f5f4;color:var(--text-secondary)}.skin-chip.warn{background:var(--red-light);color:var(--red)}
+.findings-notes{list-style:none}.findings-notes li{font-size:13px;color:var(--text-secondary);padding:3px 0 3px 14px;position:relative}.findings-notes li::before{content:'·';position:absolute;left:2px;font-weight:700;color:var(--text-muted)}.findings-notes li.danger{color:var(--red)}
+.action-card{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4}.action-card:last-child{border-bottom:none}
+.action-check{width:18px;height:18px;flex-shrink:0;cursor:pointer;accent-color:var(--green)}
+.action-body{flex:1}
+.action-priority{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.p-critical{color:var(--red)}.p-important{color:var(--orange)}
+.action-text{font-size:14px;color:var(--text);font-weight:500}
+.action-chevron{color:var(--text-muted);font-size:14px;transition:transform .2s;flex-shrink:0}
+.action-card.open .action-chevron{transform:rotate(90deg)}
+.action-detail{display:none;padding:0 14px 14px 46px}.action-card.open .action-detail{display:block}
+.action-rationale{font-size:13px;color:var(--text-secondary);line-height:1.5;padding:10px 12px;background:#fafaf9;border-radius:8px;border-left:3px solid var(--card-border)}
+.action-ref{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);margin-top:6px}
+.branch-alert{background:var(--red-light);border:1px solid var(--red-border);border-radius:var(--radius);padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
+.branch-alert-icon{font-size:18px;flex-shrink:0}
+.branch-alert-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:2px}
+.branch-alert-text{font-size:13px;color:var(--text-secondary)}
+.assess-group-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:10px 16px}
+.assess-critical .assess-group-title{color:var(--red)}.assess-expected .assess-group-title{color:var(--orange)}
+.assess-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);cursor:pointer}
+.assess-check{width:22px;height:22px;border:2px solid #d6d3d1;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.assess-check.done{background:var(--green);border-color:var(--green)}.assess-check.done::after{content:'✓';font-size:12px;color:#fff;font-weight:700}
+.debrief-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:14px 16px 10px}
+.debrief-item{padding:10px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);line-height:1.5;display:flex;gap:10px}
+.debrief-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--text-muted);flex-shrink:0;min-width:20px;padding-top:2px}
+.bottom-spacer{height:80px}
+@media print{.top-bar{position:static}.panel{display:flex!important;flex-direction:column;gap:12px;page-break-inside:avoid;margin-bottom:20px}.accordion .accordion-body{display:block!important}.action-detail{display:block!important}}
+
+.action-priority{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+.priority-critical{background:var(--red-light,#fef2f2);color:var(--red,#dc2626)}
+.priority-important{background:var(--orange-light,#fff7ed);color:var(--orange,#ea580c)}
+.priority-supplemental{background:#f5f5f4;color:var(--text-muted,#a8a29e)}
+.action-check{width:18px;height:18px;flex-shrink:0}
+.top-bar-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.timer-widget{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+#timer-display{font-family:'DM Mono',monospace;font-size:20px;font-weight:700;color:var(--text-muted,#a8a29e);font-variant-numeric:tabular-nums;line-height:1}
+.timer-controls{display:flex;gap:4px}
+.timer-btn{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;border:1px solid var(--card-border,#e8e6e1);background:var(--card,#fff);color:var(--text-secondary,#57534e);cursor:pointer;line-height:1.4}
+.timer-btn:hover{background:#f5f5f4}
+.timer-btn-stop{border-color:var(--red-border,#fecaca);color:var(--red,#dc2626)}
+.timer-btn-stop:hover{background:var(--red-light,#fef2f2)}
+#timer-display.timer-warn{color:var(--orange,#ea580c)}
+#timer-display.timer-danger{color:var(--red,#dc2626)}
+.debrief-phase-card{overflow:hidden}
+.debrief-phase-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px}
+.debrief-phase-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score.score-perfect{color:var(--green,#16a34a)}
+.debrief-phase-score.score-none{color:var(--red,#dc2626)}
+.debrief-phase-body{padding:0 16px 14px}
+.debrief-done-section{background:var(--green-light,#f0fdf4);border:1px solid var(--green-border,#bbf7d0);border-radius:var(--radius-sm,10px);padding:6px 12px;margin-bottom:10px}
+.debrief-done-row{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px;color:var(--green,#16a34a)}
+.debrief-done-icon{font-weight:700;flex-shrink:0;font-size:12px}
+.debrief-done-text{color:var(--text-secondary,#57534e)}
+.debrief-missed-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red,#dc2626);padding:4px 0 8px}
+.debrief-missed-row{background:var(--red-light,#fef2f2);border:1px solid var(--red-border,#fecaca);border-radius:var(--radius-sm,10px);padding:10px 12px;margin-bottom:6px}
+.debrief-missed-row:last-child{margin-bottom:0}
+.debrief-missed-top{display:flex;align-items:center;gap:8px}
+.debrief-missed-text{font-size:14px;font-weight:600;color:var(--text,#1c1917)}
+.debrief-missed-detail{padding:6px 0 0 0;margin-top:6px;border-top:1px solid var(--red-border,#fecaca)}
+.debrief-missed-rationale{font-size:12px;color:var(--text-secondary,#57534e);line-height:1.4}
+.debrief-missed-protocol{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue,#2563eb);margin-top:2px}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-header">
+    <div>
+      <div class="scenario-name">Burn with Inhalation Injury — Preemptive RSI</div>
+      <div class="scenario-tags">
+        <span class="tag tag-difficulty">advanced</span>
+        <span class="tag tag-category">Trauma</span>
+      </div>
+    </div>
+    <div class="timer-widget" id="scenario-timer" data-total="1500">
+      <span id="timer-display">25:00</span>
+      <div class="timer-controls">
+        <button id="timer-start" class="timer-btn" onclick="timerStart()">start</button>
+        <button id="timer-pause" class="timer-btn" onclick="timerPause()" style="display:none">pause</button>
+        <button id="timer-stop" class="timer-btn timer-btn-stop" onclick="timerStop()" style="display:none">stop</button>
+        <button id="timer-reset" class="timer-btn" onclick="timerReset()" style="display:none">reset</button>
+      </div>
+    </div>
+  </div>
+  <div class="phase-strip">
+    <div class="phase-tab active" data-panel="scene" onclick="showPanel(this, 'scene')">Scene</div>
+    <div class="phase-tab" data-panel="phase-initial" onclick="showPanel(this, 'phase-initial')">Arrival — Conscious with Inhalation Injury Signs</div>
+    <div class="phase-tab" data-panel="phase-rsi-preemptive" onclick="showPanel(this, 'phase-rsi-preemptive')">Preemptive RSI Before Airway Closes</div>
+    <div class="phase-tab" data-panel="phase-post-rsi" onclick="showPanel(this, 'phase-post-rsi')">Post-Intubation and Burn Resuscitation</div>
+    <div class="phase-tab branch" data-panel="phase-delayed-airway" onclick="showPanel(this, 'phase-delayed-airway')">Branch: Delayed Intubation with Complete Airway Closure</div>
+    <div class="phase-tab" data-panel="debrief" onclick="showPanel(this, 'debrief')">Debrief</div>
+  </div>
+</div>
+<div class="content">
+  
+<div class="panel active" id="panel-scene">
+  <div class="card">
+    <div class="card-title">Dispatch</div>
+    <div class="card-content" style="font-size:14px;color:var(--text-secondary)">Medic 3, respond code 3 to 4412 Birchwood Lane for a 50-year-old male, victim of a structure fire, rescued by fire crew, conscious at this time.</div>
+  </div>
+  <div class="card accordion open" onclick="this.classList.toggle('open')">
+    <div class="card-title">Scene Setup</div>
+    <div class="accordion-body">
+      <div class="scene-row"><div class="scene-label">Location</div><div class="scene-value">In front of the patient's home. Structure fire ongoing with suppression in progress. Patient on a tarp at the command post, approximately 100 feet from the structure.</div></div>
+      <div class="scene-row"><div class="scene-label">Time</div><div class="scene-value">Wednesday, 03:17, cool night</div></div>
+      <div class="scene-row"><div class="scene-label">Safety</div><div class="scene-value">Scene controlled by fire department. Stage upwind of the structure. Air quality acceptable at the command post.</div></div>
+      <div class="scene-row"><div class="scene-label">Bystanders</div><div class="scene-value">Fire captain provides report of entrapment time and location; patient's neighbor is present</div></div>
+      <div class="scene-row"><div class="scene-label">Visual Cues</div><ul class="cue-list"><li>Adult male seated upright on a tarp, looking anxious</li><li>Facial soot and superficial partial-thickness burns to face and neck (~5% TBSA)</li><li>Singed eyebrows and nasal vibrissae</li><li>Carbonaceous (black) sputum at the lips when he coughs</li><li>Hoarse, raspy voice — progressively worse over the past few minutes</li><li>Beginning audible stridor on deeper breaths</li><li>Burns to bilateral anterior forearms (~4% TBSA partial-thickness)</li><li>No obvious trauma otherwise</li></ul></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Patient Information</div>
+    <div class="card-content">
+      <div class="patient-chips">
+        <div class="patient-chip"><strong>Marcus Reese</strong></div>
+        <div class="patient-chip">50 years</div>
+        <div class="patient-chip">male</div>
+        <div class="patient-chip">95kg</div>
+        <div class="patient-chip">180cm</div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-phase-initial">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Arrival — Conscious with Inhalation Injury Signs</div>
+      
+      <div class="phase-desc">Crew arrives to a conscious, talking patient with multiple sentinel signs of airway burn: carbonaceous sputum, hoarse voice, singed nasal hairs, and developing stridor. He is currently maintaining his own airway but the trajectory is concerning. Pulse oximetry reads 96% which may be falsely reassuring given probable CO exposure.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent currently; hoarse voice; audible inspiratory stridor on deeper breaths; carbonaceous sputum at mouth</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Mildly tachypneic, using accessory muscles modestly; symmetric chest rise; clear lungs</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Strong radial pulses, warm</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-row">GCS: E4 V4 M6 = <span class="gcs-total">14</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">118</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">148/88</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">26</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">96</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">34</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">36.8</div><div class="vital-unit">°C</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">128</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">face sooty with superficial burns; no central cyanosis</span><span class="skin-chip">warm</span><span class="skin-chip">moist from burn exudate</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Pupils 4 mm reactive</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Purposeful, cooperative</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"Able to speak sentences but with rough, raspy voice; 'My throat really hurts and I feel like I can't breathe as good'"</div></div>
+      <ul class="findings-notes"><li>Approximately 9% TBSA partial-thickness burns (face 5%, both forearms 4%)</li><li>Singed nasal vibrissae and eyebrows</li><li>Hoarse voice getting audibly worse between sentences</li><li>Mild stridor with deeper inspiration</li><li>SpO2 reads 96% — unreliable due to carboxyhemoglobin</li></ul>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">SAMPLE History</div>
+    <div class="card-content">
+      <div class="sample-grid">
+        <div class="sample-cell full"><span class="sample-letter">S</span><div class="sample-name">Signs/Symptoms</div><div class="sample-text">Burns and smoke inhalation after structure fire rescue</div></div>
+        <div class="sample-cell"><span class="sample-letter">A</span><div class="sample-name">Allergies</div><div class="sample-text">No known drug allergies</div></div>
+        <div class="sample-cell"><span class="sample-letter">M</span><div class="sample-name">Medications</div><div class="sample-text">Amlodipine 10 mg PO daily</div></div>
+        <div class="sample-cell"><span class="sample-letter">P</span><div class="sample-name">Past Medical</div><div class="sample-text">Hypertension, Former smoker (quit 5 years ago)</div></div>
+        <div class="sample-cell"><span class="sample-letter">L</span><div class="sample-name">Last Oral Intake</div><div class="sample-text">Dinner approximately 4 hours prior</div></div>
+        <div class="sample-cell full"><span class="sample-letter">E</span><div class="sample-name">Events</div><div class="sample-text">Structure fire in a single-family home. Patient was asleep when fire started in the adjacent kitchen. Attempted to exit but became disoriented in smoke, trapped until engine crew located and extracted him.</div></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="o2-nrb" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Apply high-flow oxygen 100% via non-rebreather mask — do not rely on SpO2 reading; treat presumptively for CO exposure</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="recognize-trajectory" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Recognize sentinel signs of airway burn: hoarse voice, stridor, carbonaceous sputum, singed nasal hairs, facial burns — this is a preemptive RSI indication</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="tbsa" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Estimate TBSA using Rule of 9s — approximately 9% partial thickness (face 5%, both forearms 4%)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="stop-burn" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Remove smoldering clothing and jewelry; leave blisters intact; do not apply gels</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="dry-dressing" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Cover burns with dry sterile dressings or clean sheet; keep patient warm to prevent hypothermia</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="iv" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Establish two large-bore IVs (avoid burned skin when possible)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="monitor" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Apply cardiac monitor, SpO2, waveform capnography, 12-lead EKG</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="pain-mgmt" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Administer Fentanyl 1 mcg/kg (95 mcg for 95 kg patient) IV for pain; titrate to effect</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-rsi-preemptive">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Preemptive RSI Before Airway Closes</div>
+      <div class="phase-trigger">Progressive airway symptoms during preparation phase</div>
+      <div class="phase-desc">Voice is now markedly more hoarse. Stridor is continuous at rest. The window for easy intubation is closing. Crew commits to RSI now, while the patient is still cooperative and the airway anatomy is still recognizable.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Worsening stridor at rest, visible accessory muscle use; voice barely audible</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Increasing work of breathing</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Tachycardic but perfusing</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-row">GCS: E4 V4 M6 = <span class="gcs-total">14</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">126</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">152/90</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">30</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">94</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">36.8</div><div class="vital-unit">°C</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">128</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">facial burns; central pink</span><span class="skin-chip">warm</span><span class="skin-chip">moist</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">4 mm reactive</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Anxious but cooperative</div></div>
+      
+      <ul class="findings-notes"><li>Stridor now audible across the room</li><li>Patient able to lie supine briefly for procedure</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="rsi-plan" data-phase-id="rsi-preemptive">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Verbalize RSI plan with backup (SGA and surgical airway ready); anticipate difficult airway from edema</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="preox" data-phase-id="rsi-preemptive">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Preoxygenate with BVM + PEEP 5 cmH2O and apneic oxygenation NC at 15 LPM</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="smaller-ett" data-phase-id="rsi-preemptive">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Prepare smaller ETT (6.5-7.0 mm) and bougie due to anticipated airway edema</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="fentanyl-premed" data-phase-id="rsi-preemptive">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Fentanyl 1 mcg/kg (95 mcg) IV premedication if not already given</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="rsi-induct" data-phase-id="rsi-preemptive">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Ketamine 1-2 mg/kg IV push (150 mg for 95 kg patient) as induction agent</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="rsi-paralytic" data-phase-id="rsi-preemptive">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Rocuronium 1 mg/kg IV push (95 mg for 95 kg patient) as paralytic</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="intubate" data-phase-id="rsi-preemptive">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Perform video laryngoscopy intubation; use bougie-first technique; single best-effort attempt</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="confirm" data-phase-id="rsi-preemptive">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Confirm tube placement with waveform capnography, bilateral breath sounds, absent epigastric sounds</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-post-rsi">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Post-Intubation and Burn Resuscitation</div>
+      <div class="phase-trigger">Successful RSI with confirmed placement</div>
+      <div class="phase-desc">Tube confirmed. Crew initiates fluid resuscitation per Rule of 10, continues 100% oxygen for CO exposure, and arranges transport to the most appropriate burn/trauma center with ED notification.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">6.5 mm ETT at 22 cm, cuff inflated, secured</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Ventilated with 100% FiO2, symmetric chest rise</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Perfusing</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg sel-u">U</div>
+      </div>
+      <div class="gcs-row">GCS: E1 V1 M1 = <span class="gcs-total">3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">108</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">132/78</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">12</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">99</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">40</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">36.8</div><div class="vital-unit">°C</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">128</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pink with burns</span><span class="skin-chip">warm</span><span class="skin-chip">moist</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">4 mm reactive</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Flaccid from paralytic</div></div>
+      
+      <ul class="findings-notes"><li>EtCO2 trending normal</li><li>SpO2 climbing on 100% O2</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="sedation" data-phase-id="post-rsi">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Post-intubation sedation: Midazolam 0.02 mg/kg (1.9 mg) IV + Fentanyl 1-2 mcg/kg (95-190 mcg) IV; titrate RASS -3 to -4</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="vent" data-phase-id="post-rsi">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Ventilate at 10-12 breaths/min on 100% FiO2; target EtCO2 35-45 mmHg; continue 100% oxygen for CO toxicity</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="fluids-rule10" data-phase-id="post-rsi">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Initiate LR fluid resuscitation using Rule of 10: 10% TBSA × 10 = 100 mL/hr, plus 100 mL/hr for 10 kg over 80 kg = 200 mL/hr total infusion rate</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="consider-cyanide" data-phase-id="post-rsi">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Consider cyanide toxicity given enclosed-space fire with hemodynamic/neurologic involvement; Hydroxocobalamin 5 g IV over 15 minutes if clinical suspicion and available</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="cover-burns" data-phase-id="post-rsi">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Cover burns with dry sterile dressings; keep patient warm — hypothermia risk is significant</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="transport" data-phase-id="post-rsi">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Transport to burn center if criteria met (TBSA &gt;10%, face/airway, hands) — notify ED early for trauma/burn team and hyperbaric consideration</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-delayed-airway">
+  <div class="card phase-card branch-card">
+    <div class="card-content">
+      <div class="phase-title">Branch: Delayed Intubation with Complete Airway Closure</div>
+      <div class="phase-trigger">Intubation delayed beyond 10 minutes with progression to complete obstruction</div>
+      <div class="phase-desc">The crew chooses to transport and reassess instead of proactively intubating. En route the airway rapidly edematizes and closes. The patient cannot be intubated, cannot be ventilated with BVM, and a cricothyrotomy through facial burns is now the only option.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Complete upper airway obstruction from edema; unable to pass ETT; unable to BVM effectively</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Agonal</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Bradycardic, deteriorating</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg sel-u">U</div>
+      </div>
+      <div class="gcs-row">GCS: E1 V1 M1 = <span class="gcs-total">3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">42</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">68/38</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">6</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">62</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">18</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">36.8</div><div class="vital-unit">°C</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">128</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Bradycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">cyanotic</span><span class="skin-chip">warm</span><span class="skin-chip">moist</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Dilating</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Flaccid</div></div>
+      
+      <ul class="findings-notes"><li>Surgical cricothyrotomy through burned skin required</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="surgical-airway" data-phase-id="delayed-airway">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Perform emergent surgical cricothyrotomy through burned skin — no alternative remains</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="recognize-error" data-phase-id="delayed-airway">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Recognize that preemptive intubation would have prevented this crisis</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-debrief">
+  
+  <div class="card accordion" onclick="this.classList.toggle('open')">
+    <div class="card-title">Learning Objectives</div>
+    <div class="accordion-body"><ul class="findings-notes"><li>Identify sentinel signs of airway burn and the rationale for preemptive intubation</li><li>Apply the MATC Burns protocol including TBSA estimation and Rule of 10 fluid resuscitation</li><li>Recognize that SpO2 is unreliable in CO poisoning</li><li>Manage concurrent thermal, inhalation, and chemical (CO/CN) injuries</li><li>Coordinate transport destination based on burn severity and airway involvement</li></ul></div>
+  </div>
+  <div id="debrief-actions" style="display:flex;flex-direction:column;gap:12px"></div>
+</div>
+</div>
+<script>
+
+var phaseActionData = [{"phaseId":"initial","phaseName":"Arrival — Conscious with Inhalation Injury Signs","actions":[{"id":"o2-nrb","action":"Apply high-flow oxygen 100% via non-rebreather mask — do not rely on SpO2 reading; treat presumptively for CO exposure","priority":"critical","rationale":"","protocolReference":"MATC: Carbon Monoxide/Smoke Inhalation"},{"id":"recognize-trajectory","action":"Recognize sentinel signs of airway burn: hoarse voice, stridor, carbonaceous sputum, singed nasal hairs, facial burns — this is a preemptive RSI indication","priority":"critical","rationale":"Airway burns progress rapidly. Intubation is easier before edema distorts landmarks.","protocolReference":"MATC: Burns"},{"id":"tbsa","action":"Estimate TBSA using Rule of 9s — approximately 9% partial thickness (face 5%, both forearms 4%)","priority":"critical","rationale":"","protocolReference":"MATC: Burns"},{"id":"stop-burn","action":"Remove smoldering clothing and jewelry; leave blisters intact; do not apply gels","priority":"critical","rationale":"","protocolReference":"MATC: Burns"},{"id":"dry-dressing","action":"Cover burns with dry sterile dressings or clean sheet; keep patient warm to prevent hypothermia","priority":"important","rationale":"","protocolReference":"MATC: Burns"},{"id":"iv","action":"Establish two large-bore IVs (avoid burned skin when possible)","priority":"critical","rationale":"","protocolReference":"MATC: Burns"},{"id":"monitor","action":"Apply cardiac monitor, SpO2, waveform capnography, 12-lead EKG","priority":"important","rationale":"","protocolReference":"MATC: Burns"},{"id":"pain-mgmt","action":"Administer Fentanyl 1 mcg/kg (95 mcg for 95 kg patient) IV for pain; titrate to effect","priority":"important","rationale":"","protocolReference":"MATC: Pain Management"}]},{"phaseId":"rsi-preemptive","phaseName":"Preemptive RSI Before Airway Closes","actions":[{"id":"rsi-plan","action":"Verbalize RSI plan with backup (SGA and surgical airway ready); anticipate difficult airway from edema","priority":"critical","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"preox","action":"Preoxygenate with BVM + PEEP 5 cmH2O and apneic oxygenation NC at 15 LPM","priority":"critical","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"smaller-ett","action":"Prepare smaller ETT (6.5-7.0 mm) and bougie due to anticipated airway edema","priority":"critical","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"fentanyl-premed","action":"Fentanyl 1 mcg/kg (95 mcg) IV premedication if not already given","priority":"important","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"rsi-induct","action":"Administer Ketamine 1-2 mg/kg IV push (150 mg for 95 kg patient) as induction agent","priority":"critical","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"rsi-paralytic","action":"Administer Rocuronium 1 mg/kg IV push (95 mg for 95 kg patient) as paralytic","priority":"critical","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"intubate","action":"Perform video laryngoscopy intubation; use bougie-first technique; single best-effort attempt","priority":"critical","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"confirm","action":"Confirm tube placement with waveform capnography, bilateral breath sounds, absent epigastric sounds","priority":"critical","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"}]},{"phaseId":"post-rsi","phaseName":"Post-Intubation and Burn Resuscitation","actions":[{"id":"sedation","action":"Post-intubation sedation: Midazolam 0.02 mg/kg (1.9 mg) IV + Fentanyl 1-2 mcg/kg (95-190 mcg) IV; titrate RASS -3 to -4","priority":"critical","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"vent","action":"Ventilate at 10-12 breaths/min on 100% FiO2; target EtCO2 35-45 mmHg; continue 100% oxygen for CO toxicity","priority":"critical","rationale":"","protocolReference":"MATC: Carbon Monoxide/Smoke Inhalation"},{"id":"fluids-rule10","action":"Initiate LR fluid resuscitation using Rule of 10: 10% TBSA × 10 = 100 mL/hr, plus 100 mL/hr for 10 kg over 80 kg = 200 mL/hr total infusion rate","priority":"critical","rationale":"Rule of 10: TBSA (round to 10) × 10 = initial mL/hr for 40-80 kg; add 100 mL/hr per 10 kg over 80 kg. TBSA rounded to 10% × 10 = 100, + 100 (for 10 kg over 80) = 200 mL/hr.","protocolReference":"MATC: Burns"},{"id":"consider-cyanide","action":"Consider cyanide toxicity given enclosed-space fire with hemodynamic/neurologic involvement; Hydroxocobalamin 5 g IV over 15 minutes if clinical suspicion and available","priority":"important","rationale":"","protocolReference":"MATC: Burns"},{"id":"cover-burns","action":"Cover burns with dry sterile dressings; keep patient warm — hypothermia risk is significant","priority":"important","rationale":"","protocolReference":"MATC: Burns"},{"id":"transport","action":"Transport to burn center if criteria met (TBSA >10%, face/airway, hands) — notify ED early for trauma/burn team and hyperbaric consideration","priority":"critical","rationale":"","protocolReference":"MATC: Burns"}]},{"phaseId":"delayed-airway","phaseName":"Branch: Delayed Intubation with Complete Airway Closure","actions":[{"id":"surgical-airway","action":"Perform emergent surgical cricothyrotomy through burned skin — no alternative remains","priority":"critical","rationale":"","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"recognize-error","action":"Recognize that preemptive intubation would have prevented this crisis","priority":"critical","rationale":"","protocolReference":""}]}];
+var firstPhaseId = "initial";
+
+function showPanel(tab, panelId) {
+  document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  var panel = document.getElementById('panel-' + panelId);
+  if (panel) panel.classList.add('active');
+  if (panelId === 'debrief') buildDebriefActions();
+}
+
+function buildDebriefActions() {
+  var container = document.getElementById('debrief-actions');
+  if (!container) return;
+  container.innerHTML = '';
+  phaseActionData.forEach(function(phase) {
+    var isFirst = phase.phaseId === firstPhaseId;
+    var checkboxes = phase.actions.map(function(a) {
+      return document.querySelector('[data-action-id="' + a.id + '"][data-phase-id="' + phase.phaseId + '"]');
+    });
+    var anyChecked = checkboxes.some(function(cb) { return cb && cb.checked; });
+    if (!isFirst && !anyChecked) return;
+    var doneActions = [], missedActions = [];
+    phase.actions.forEach(function(a, i) {
+      var cb = checkboxes[i];
+      if (cb && cb.checked) doneActions.push(a); else missedActions.push(a);
+    });
+    var total = phase.actions.length, doneCount = doneActions.length;
+    var card = document.createElement('div');
+    card.className = 'card debrief-phase-card';
+    var header = document.createElement('div');
+    header.className = 'debrief-phase-header';
+    var hLeft = document.createElement('div');
+    hLeft.className = 'debrief-phase-name';
+    hLeft.textContent = phase.phaseName;
+    var hRight = document.createElement('div');
+    hRight.className = 'debrief-phase-score';
+    if (doneCount === total) hRight.classList.add('score-perfect');
+    else if (doneCount === 0) hRight.classList.add('score-none');
+    hRight.textContent = doneCount + '/' + total;
+    header.appendChild(hLeft); header.appendChild(hRight);
+    card.appendChild(header);
+    var body = document.createElement('div');
+    body.className = 'debrief-phase-body';
+    if (doneActions.length) {
+      var doneSection = document.createElement('div');
+      doneSection.className = 'debrief-done-section';
+      doneActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-done-row';
+        row.innerHTML = '<span class="debrief-done-icon">\u2713</span><span class="debrief-done-text">' + a.action + '</span>';
+        doneSection.appendChild(row);
+      });
+      body.appendChild(doneSection);
+    }
+    if (missedActions.length) {
+      var missLabel = document.createElement('div');
+      missLabel.className = 'debrief-missed-label';
+      missLabel.textContent = 'MISSED';
+      body.appendChild(missLabel);
+      missedActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-missed-row';
+        var top = document.createElement('div');
+        top.className = 'debrief-missed-top';
+        var badge = document.createElement('span');
+        badge.className = 'action-priority priority-' + a.priority;
+        badge.textContent = a.priority.toUpperCase();
+        var text = document.createElement('span');
+        text.className = 'debrief-missed-text';
+        text.textContent = a.action;
+        top.appendChild(badge); top.appendChild(text);
+        row.appendChild(top);
+        if (a.rationale || a.protocolReference) {
+          var detail = document.createElement('div');
+          detail.className = 'debrief-missed-detail';
+          if (a.rationale) { var reason = document.createElement('div'); reason.className = 'debrief-missed-rationale'; reason.textContent = a.rationale; detail.appendChild(reason); }
+          if (a.protocolReference) { var proto = document.createElement('div'); proto.className = 'debrief-missed-protocol'; proto.textContent = 'Protocol: ' + a.protocolReference; detail.appendChild(proto); }
+          row.appendChild(detail);
+        }
+        body.appendChild(row);
+      });
+    }
+    card.appendChild(body); container.appendChild(card);
+  });
+}
+
+// Timer
+var timerEl = document.getElementById('scenario-timer');
+var timerTotal = timerEl ? parseInt(timerEl.getAttribute('data-total')) : 0;
+var timerRemaining = timerTotal;
+var timerInterval = null;
+function timerFormat(s) { var m = Math.floor(s/60); var sec = s%60; return m+':'+(sec<10?'0':'')+sec; }
+function timerUpdate() {
+  var d = document.getElementById('timer-display'); if(!d) return;
+  d.textContent = timerFormat(timerRemaining);
+  d.classList.remove('timer-warn','timer-danger');
+  if(timerRemaining<=60) d.classList.add('timer-danger');
+  else if(timerRemaining<=timerTotal*0.25) d.classList.add('timer-warn');
+}
+function timerStart() {
+  document.getElementById('timer-start').style.display='none';
+  document.getElementById('timer-pause').style.display='';
+  document.getElementById('timer-stop').style.display='';
+  document.getElementById('timer-reset').style.display='none';
+  timerInterval=setInterval(function(){timerRemaining--;timerUpdate();if(timerRemaining<=0){timerRemaining=0;timerStop();}},1000);
+}
+function timerPause() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-pause').style.display='none';document.getElementById('timer-start').style.display=''; }
+function timerStop() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-start').style.display='none';document.getElementById('timer-pause').style.display='none';document.getElementById('timer-stop').style.display='none';document.getElementById('timer-reset').style.display=''; }
+function timerReset() { timerRemaining=timerTotal;timerUpdate();document.getElementById('timer-reset').style.display='none';document.getElementById('timer-start').style.display=''; }
+
+</script>
+</body>
+</html>

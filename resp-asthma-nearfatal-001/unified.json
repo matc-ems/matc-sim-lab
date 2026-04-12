@@ -1,0 +1,288 @@
+{
+  "meta": {
+    "id": "resp-asthma-nearfatal-001",
+    "name": "Near-Fatal Asthma — Silent Chest",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Respiratory",
+    "protocols": ["resp-respiratory-distress", "resp-airway-management"],
+    "totalTimeSeconds": 1500,
+    "tags": ["asthma", "near-fatal", "silent chest", "CPAP", "magnesium"]
+  },
+  "patient": {
+    "name": "Emily Chen",
+    "age": 19,
+    "ageUnit": "years",
+    "sex": "female",
+    "weight": 60,
+    "height": 165,
+    "chiefComplaint": "Severe asthma exacerbation unresponsive to rescue inhaler",
+    "history": {
+      "hpi": "19-year-old female college student found in her dorm room by her roommate, tripoding on the edge of the bed in severe respiratory distress. Over an hour of repeated rescue inhaler use with no relief. Has had worsening symptoms for three days after a viral URI. Two prior hospitalizations for asthma this year including one ICU admission with intubation six months ago.",
+      "pastMedical": ["Severe persistent asthma", "Prior ICU admission with intubation (6 months ago)", "Eczema", "Seasonal allergies"],
+      "medications": ["Fluticasone/salmeterol inhaler daily (non-compliant during exams)", "Albuterol HFA rescue inhaler", "Montelukast 10 mg PO nightly"],
+      "allergies": ["No known drug allergies"],
+      "lastOralIntake": "Water; no solid food in 24 hours due to dyspnea",
+      "events": "Started with mild wheeze three days ago. Symptoms progressed over the evening. Used rescue inhaler repeatedly for the past hour with no improvement. Roommate called 911 when she could no longer speak."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 5, respond code 3 to Westfield Residence Hall room 308, for a 19-year-old female with severe asthma, difficulty breathing.",
+    "location": "College dormitory room, third floor, accessed via hallway and elevator. Narrow room with bunk beds. Patient on the edge of the bottom bunk, tripoding.",
+    "time": "Thursday, 23:15",
+    "safety": "Scene safe. Keep the roommate present to help keep the patient calm.",
+    "bystanders": "Roommate is present, has the patient's medication list on her phone, and confirms the prior ICU admission/intubation history",
+    "visualCues": [
+      "Young adult female tripoding on the edge of the bunk, leaning forward with both hands on her knees",
+      "Visibly exhausted, pale with perioral cyanosis",
+      "Accessory muscle use prominent — strap muscles and intercostals",
+      "Empty albuterol HFA on the nightstand",
+      "Unable to complete a sentence — single words only",
+      "Minimal air movement audible on breathing; no wheezing heard from across the room (silent chest)"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival — Silent Chest, Exhausted Patient",
+      "description": "Near-fatal asthma presentation. Silent chest bilaterally is NOT reassurance — it signals critical airflow obstruction with no air moving. Prior ICU/intubation history and recent rescue inhaler abuse are risk factors for death. Patient is fatiguing and may tire out to respiratory arrest if not aggressively treated.",
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {"eye": 4, "verbal": 4, "motor": 6},
+        "airway": "Patent; no upper airway obstruction; speaking single words only",
+        "breathing": "Rapid shallow respirations at 36/min; prominent accessory muscle use; intercostal retractions; silent chest bilaterally on auscultation (NO wheezing heard)",
+        "circulation": "Tachycardic with pulsus paradoxus palpable; warm peripheries",
+        "skin": {"color": "pale with perioral cyanosis", "temperature": "cool", "moisture": "diaphoretic"},
+        "pupils": "4 mm reactive",
+        "motorFunction": "Purposeful but exhausted; gripping the edge of the bed",
+        "otherFindings": [
+          "Tripod position, refuses to lie back",
+          "Speaks single words: 'can't... breathe'",
+          "Prior near-fatal asthma (ICU/intubation) is the strongest predictor of death in this episode",
+          "Silent chest = severe airflow obstruction, not improvement"
+        ],
+        "patientSpeech": "Single-word responses only"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 138,
+        "bpSys": 146,
+        "bpDia": 88,
+        "respRate": 36,
+        "spo2": 86,
+        "etco2": 48,
+        "temp": 37.2,
+        "obstruction": 85,
+        "glucose": 118,
+        "trendTimeSeconds": 0,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "position", "action": "Allow patient to remain in position of comfort (tripod, upright)", "priority": "critical", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "o2-neb", "action": "Apply oxygen with combination Albuterol 5 mg + Ipratropium 0.5 mg nebulized via mask; repeat albuterol at unlimited frequency for ongoing distress", "priority": "critical", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "iv-access", "action": "Establish IV access", "priority": "critical"},
+        {"id": "steroid", "action": "Administer Methylprednisolone 2 mg/kg IV (120 mg for 60 kg patient, max 125 mg) — patient is critically ill, use IV route", "priority": "critical", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "magnesium", "action": "Administer Magnesium sulfate 40 mg/kg IV (2400 mg, capped at max 2 g) in 100 mL NS infused over 10-15 minutes; watch for hypotension", "priority": "critical", "rationale": "Magnesium is specifically indicated for severe bronchoconstriction with impending respiratory failure. A silent chest patient with fatigue qualifies.", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "monitor", "action": "Apply cardiac monitor, SpO2, waveform capnography (expect shark-fin waveform)", "priority": "critical", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "cpap", "action": "Prepare to apply CPAP (starting 5 cmH2O PEEP) with in-line nebulizer if patient tolerates the mask and remains conscious", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "coach", "action": "Actively coach the patient through the CPAP mask application to improve tolerance — anxiety here is physiologic, not psychological", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    },
+    {
+      "id": "responding",
+      "name": "Default Path — Responding to Treatment",
+      "description": "After 10-15 minutes of aggressive treatment (bronchodilators, steroid, magnesium, CPAP), the patient starts to improve. Air movement returns — now audibly wheezing (an IMPROVEMENT from silent chest). SpO2 climbing, RR decreasing, speaking short phrases. Continue therapy and transport.",
+      "triggerCondition": "Clinical improvement after magnesium, nebulizers, and CPAP",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {"eye": 4, "verbal": 5, "motor": 6},
+        "airway": "Patent; now audibly wheezing (improvement — air moving)",
+        "breathing": "CPAP in progress with in-line albuterol; accessory muscle use decreasing; expiratory phase prolonged",
+        "circulation": "Tachycardic from beta agonists",
+        "skin": {"color": "improving — less cyanosis", "temperature": "warm", "moisture": "less diaphoretic"},
+        "pupils": "4 mm reactive",
+        "motorFunction": "Less rigid, able to relax shoulders",
+        "otherFindings": [
+          "Waveform capnography still shows shark-fin shape but less pronounced",
+          "Patient speaking in 3-4 word phrases",
+          "EtCO2 trending down as minute ventilation improves"
+        ],
+        "patientSpeech": "'Feeling... a little... better'"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 132,
+        "bpSys": 132,
+        "bpDia": 78,
+        "respRate": 28,
+        "spo2": 94,
+        "etco2": 40,
+        "temp": 37.2,
+        "obstruction": 60,
+        "glucose": 118,
+        "trendTimeSeconds": 600,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "continue-neb", "action": "Continue back-to-back Albuterol 5 mg nebulized via CPAP circuit", "priority": "critical", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "maintain-cpap", "action": "DO NOT discontinue CPAP until arrival at ED bedside with replacement ready", "priority": "critical", "rationale": "Breaking the mask seal causes atelectasis and sudden decompensation.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "transport", "action": "Transport to ED with early notification that this is a near-fatal asthma patient", "priority": "critical"},
+        {"id": "reassess", "action": "Continuous reassessment — watch for re-deterioration and fatigue", "priority": "important", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "fluids", "action": "NS fluid bolus 500 mL if BP trends down from magnesium or beta-agonist-related vasodilation", "priority": "important", "protocolReference": "MATC: Respiratory Distress"}
+      ]
+    },
+    {
+      "id": "fatigue-arrest-branch",
+      "name": "Branch: Tiring Out — Peri-Arrest Requiring RSI",
+      "description": "Patient fatigues before bronchodilators and magnesium take effect. Mental status deteriorates, CPAP is no longer tolerated, and respiratory arrest is imminent. Crew must transition to BVM and then RSI while the bronchospasm is still present. This is the worst airway in EMS: high airway pressures, air trapping, high pneumothorax risk.",
+      "triggerCondition": "Deteriorating mental status, SpO2 falling, or loss of respiratory drive during treatment",
+      "isDefault": false,
+      "transitions": [
+        {"targetPhaseId": "post-rsi-asthma", "condition": "RSI performed to secure airway", "conditionType": "action_taken", "triggerActionIds": ["rsi-induct", "intubate"]}
+      ],
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {"eye": 2, "verbal": 2, "motor": 5},
+        "airway": "Patent but no longer cooperating with CPAP",
+        "breathing": "Slowing respiratory rate (ominous) with agonal pattern; silent chest again",
+        "circulation": "Tachycardic, BP falling",
+        "skin": {"color": "cyanotic", "temperature": "cool", "moisture": "profusely diaphoretic"},
+        "pupils": "4 mm, sluggish",
+        "motorFunction": "Losing purposeful movement, becoming lethargic",
+        "otherFindings": ["Decreasing respiratory rate in a severe asthmatic is a pre-arrest sign — don't be reassured", "CPAP mask pulled off by fatiguing patient"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 142,
+        "bpSys": 98,
+        "bpDia": 58,
+        "respRate": 12,
+        "spo2": 78,
+        "etco2": 64,
+        "temp": 37.2,
+        "obstruction": 90,
+        "glucose": 118,
+        "trendTimeSeconds": 240,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "im-epi", "action": "Administer Epinephrine 0.3 mg IM (1 mg/mL) in the lateral thigh — rescue therapy for impending respiratory failure despite max nebulizer and IV therapy", "priority": "critical", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "bvm", "action": "Begin 2-person BVM with PEEP 5 cmH2O — ventilate SLOWLY (6-8 breaths/min) with long exhalation to prevent breath stacking and pneumothorax", "priority": "critical", "rationale": "Asthmatic airway physiology: the danger is air trapping. Slow rate + long exhalation (I:E ratio 1:4 or 1:5) is mandatory.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "preox-asthma", "action": "Preoxygenate as best as possible recognizing severe V/Q mismatch", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "rsi-induct", "action": "Administer Ketamine 1-2 mg/kg IV push (90 mg for 60 kg patient) as induction agent — ketamine has bronchodilator properties and is the preferred induction agent for asthma intubation", "priority": "critical", "rationale": "Ketamine is the induction agent of choice in status asthmaticus for its bronchodilator properties.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "rsi-paralytic", "action": "Administer Rocuronium 1 mg/kg IV push (60 mg for 60 kg patient)", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "intubate", "action": "Perform video laryngoscopy intubation; 7.5 mm ETT", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "confirm", "action": "Confirm tube placement with waveform capnography", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    },
+    {
+      "id": "post-rsi-asthma",
+      "name": "Post-Intubation Ventilation Strategy",
+      "description": "Tube confirmed. The hard part is ventilating — high airway pressures, severe air trapping, and risk of pneumothorax. Low rate, long exhalation, small tidal volumes, and permissive hypercapnia are the rules. If the patient decompensates suddenly after intubation, disconnect the circuit and let them exhale.",
+      "triggerCondition": "Successful RSI with tube placement",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 1},
+        "airway": "7.5 mm ETT at 21 cm, cuff inflated, secured",
+        "breathing": "Manually ventilated at 6-8 breaths/min with prolonged expiratory phase",
+        "circulation": "Tachycardic, BP low-normal (watch for air-trapping-induced hypotension)",
+        "skin": {"color": "improving pink", "temperature": "warm", "moisture": "diaphoretic"},
+        "pupils": "4 mm sluggish",
+        "motorFunction": "Flaccid from paralytic",
+        "otherFindings": [
+          "High BVM/vent airway pressures",
+          "EtCO2 still elevated — permissive hypercapnia accepted to avoid barotrauma",
+          "Monitor for sudden decompensation suggesting pneumothorax"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 128,
+        "bpSys": 108,
+        "bpDia": 64,
+        "respRate": 8,
+        "spo2": 93,
+        "etco2": 58,
+        "temp": 37.2,
+        "obstruction": 75,
+        "glucose": 118,
+        "trendTimeSeconds": 120,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "slow-vent", "action": "Ventilate at 6-8 breaths/min with long exhalation (I:E 1:4-1:5); accept permissive hypercapnia (EtCO2 up to 60-70 acceptable in asthma)", "priority": "critical", "rationale": "Standard ventilation rates cause breath stacking and pneumothorax in severe asthma.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "tv", "action": "Low tidal volumes 6 mL/kg IBW", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "sedation", "action": "Post-intubation sedation with Ketamine 0.5-1 mg/kg IV maintenance infusion or boluses (30-60 mg) + Fentanyl 1-2 mcg/kg IV", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "continue-nebs", "action": "Continue in-line albuterol nebulizer through the ETT circuit", "priority": "critical", "protocolReference": "MATC: Respiratory Distress"},
+        {"id": "decomp-plan", "action": "If sudden hypotension/desaturation post-intubation: disconnect circuit to allow exhalation; assess for pneumothorax (DOPE: displacement, obstruction, pneumothorax, equipment)", "priority": "critical", "rationale": "Breath stacking and pneumothorax are the common post-intubation killers in asthma.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "transport", "action": "Emergent transport to ED with early notification", "priority": "critical"}
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Recognize silent chest as a SEVERE finding, not improvement",
+      "Recognize prior intubation history as the strongest risk factor for death",
+      "Administer combination Albuterol 5 mg + Ipratropium 0.5 mg nebulized with unlimited repetition",
+      "Administer IV Methylprednisolone 2 mg/kg (max 125 mg) OR Dexamethasone 0.6 mg/kg (max 16 mg)",
+      "Administer Magnesium sulfate 2 g IV over 10-15 minutes",
+      "Apply CPAP with in-line nebulizer and coach the patient to tolerate it",
+      "IM Epinephrine 0.3 mg for impending respiratory failure despite optimal nebulizer therapy",
+      "If respiratory failure: RSI with Ketamine + Rocuronium",
+      "Post-intubation: SLOW ventilation (6-8/min) with long exhalation to prevent air trapping",
+      "Permissive hypercapnia accepted"
+    ],
+    "expectedActions": [
+      "Continuous reassessment for fatigue",
+      "Early ED notification",
+      "IV access for magnesium and rescue medications",
+      "Waveform capnography (shark fin)",
+      "Fluid bolus for magnesium-related hypotension"
+    ],
+    "bonusActions": [
+      "Recognize shark-fin capnography as obstructive physiology",
+      "Articulate DOPE mnemonic for post-intubation deterioration",
+      "Consider disconnecting circuit for apneic exhalation if breath stacking is suspected"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Recognize near-fatal asthma and apply MATC Respiratory Distress protocol aggressively",
+      "Use CPAP with in-line bronchodilators to avoid intubation",
+      "Understand magnesium sulfate as a rescue therapy in severe bronchoconstriction",
+      "Apply a modified ventilation strategy to avoid breath stacking in asthma",
+      "Use ketamine as the induction agent of choice in status asthmaticus"
+    ],
+    "discussionQuestions": [
+      "Why is a silent chest more concerning than loud wheezing?",
+      "How does magnesium sulfate work in severe asthma?",
+      "When do you give IM epinephrine in asthma, and how is it different from the anaphylaxis dose?",
+      "What is 'breath stacking' and how do you prevent it?",
+      "What does the DOPE mnemonic stand for and when do you use it?"
+    ],
+    "commonPitfalls": [
+      "Being falsely reassured by a silent chest or a decreasing respiratory rate",
+      "Ventilating intubated asthmatics at 'normal' rates and causing pneumothorax",
+      "Removing CPAP in the ambulance when the patient improves",
+      "Under-dosing magnesium or omitting it entirely",
+      "Choosing etomidate over ketamine for induction when bronchodilator effect would help"
+    ],
+    "keyTakeaways": [
+      "Silent chest = imminent arrest",
+      "CPAP + aggressive medical therapy is the goal; intubation is a last resort",
+      "Ventilation strategy in intubated asthma: slow, low volume, long exhalation, tolerate hypercapnia",
+      "Prior intubation is the best predictor of death — take the history seriously"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 20,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

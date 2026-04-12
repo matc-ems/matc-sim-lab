@@ -1,0 +1,287 @@
+{
+  "meta": {
+    "id": "rsi-combative-tbi-001",
+    "name": "Combative Head Injury — Chemical Sedation and RSI",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Trauma",
+    "protocols": ["trauma-head-injury", "medical-agitated-violent-behavioral", "resp-airway-management", "trauma-general"],
+    "totalTimeSeconds": 1500,
+    "tags": ["RSI", "combative", "TBI", "ketamine", "trauma"]
+  },
+  "patient": {
+    "name": "Jordan Reeves",
+    "age": 38,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 90,
+    "height": 183,
+    "chiefComplaint": "Combative and hypoxic after motorcycle vs. guardrail MVC with helmet ejection",
+    "history": {
+      "hpi": "38-year-old male involved in a single-vehicle motorcycle crash on a highway ramp. Lost control of the bike and struck a guardrail at approximately 50 mph. Helmet came off during the slide. Found combative, swinging at fire crew on arrival. Unable to give history.",
+      "pastMedical": ["Unknown — patient unable to cooperate"],
+      "medications": ["Unknown"],
+      "allergies": ["Unknown"],
+      "lastOralIntake": "Unknown",
+      "events": "Single-vehicle motorcycle MVC with helmet ejection. Obvious head injury and scalp laceration. Became progressively more agitated and combative after fire crew made contact."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 2, respond code 3 to I-94 eastbound, milepost 297, for a motorcycle MVC with guardrail. 38-year-old male, combative, fire on scene.",
+    "location": "Highway ramp shoulder. Motorcycle on its side approximately 30 feet from the guardrail impact point. Patient sitting on the grass beyond the guardrail, fire crew attempting to control him.",
+    "time": "Saturday, 16:50, clear weather",
+    "safety": "Lane partially closed by law enforcement. Patient is combative — ensure multiple providers and police are in position before approach. Broken motorcycle parts, leaking fuel.",
+    "bystanders": "Fire crew on scene; bystander called 911 and witnessed the crash; state trooper present",
+    "visualCues": [
+      "Adult male sitting upright in the grass, swinging his arms at responders",
+      "Large scalp laceration above the left ear with active bright red bleeding",
+      "Helmet lying 20 feet away on the road",
+      "Obvious facial trauma with blood around the mouth and nose",
+      "Blood-stained teeth, possible loose teeth",
+      "Patient is loudly moaning and yelling incoherently",
+      "Not following any commands; any approach results in swinging arms",
+      "Motorcycle on its side, leather jacket partially shredded"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival — Combative Head Injury",
+      "description": "Crew arrives to find patient agitated to the point where any assessment, oxygenation, or bleeding control is impossible. SpO2 reads 84% when briefly captured. Clearly head-injured with facial trauma and blood in the airway. Agitation is presumed to be from hypoxia and head injury (per MATC Behavioral protocol exclusion criteria, medical/traumatic causes must be treated medically, not behaviorally). Crew must use chemical sedation — specifically Ketamine — to gain control so they can actually treat him.",
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {"eye": 3, "verbal": 3, "motor": 5},
+        "airway": "Blood in mouth, impossible to suction or place OPA due to combativeness",
+        "breathing": "Rapid, shallow; accessory muscle use intermittently visible",
+        "circulation": "Strong pulses, tachycardic",
+        "skin": {"color": "flushed, cyanotic lips when glimpsed", "temperature": "warm", "moisture": "diaphoretic"},
+        "pupils": "Cannot reliably assess due to agitation; appear unequal on brief glimpse",
+        "motorFunction": "Swinging extremities, purposeful but uncoordinated, resisting all contact",
+        "otherFindings": [
+          "Large left parietal scalp laceration with pulsatile bleeding",
+          "Facial trauma with possible midface instability",
+          "Blood in oropharynx",
+          "Agitation presumed due to hypoxia and TBI — NOT primary behavioral",
+          "Unable to obtain accurate vitals in this state"
+        ],
+        "patientSpeech": "Yelling incoherent profanity, not following commands"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 138,
+        "bpSys": 168,
+        "bpDia": 98,
+        "respRate": 32,
+        "spo2": 84,
+        "etco2": 32,
+        "temp": 36.6,
+        "obstruction": 40,
+        "glucose": 112,
+        "trendTimeSeconds": 0,
+        "visibility": {"spo2Visible": true, "spo2Attached": false, "rrVisible": true, "etco2Visible": false, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "scene-safety", "action": "Ensure scene safety with law enforcement and fire crew assistance for physical containment during drug administration", "priority": "critical"},
+        {"id": "cspine-manual", "action": "Attempt manual cervical stabilization as feasible — not possible until patient is sedated", "priority": "critical", "protocolReference": "MATC: Spinal Care"},
+        {"id": "recognize-medical", "action": "Recognize that this agitation is from hypoxia + head injury, NOT a primary behavioral emergency — treat per Head Injury protocol", "priority": "critical", "rationale": "The Agitated/Violent Behavioral protocol explicitly excludes head injury and metabolic causes. This is medical agitation requiring medical treatment.", "protocolReference": "MATC: Agitated or Violent Patient/Behavioral Emergency"},
+        {"id": "ketamine-im", "action": "Administer Ketamine 4 mg/kg IM (360 mg for 90 kg patient) in the lateral thigh to achieve dissociative sedation; 3-5 minute onset", "priority": "critical", "rationale": "IM ketamine is the fastest way to gain chemical control when IV access is impossible. Dissociative dose will allow assessment and airway management while preserving respiratory drive and hemodynamics.", "protocolReference": "MATC: Agitated or Violent Patient/Behavioral Emergency"},
+        {"id": "hold-pressure", "action": "Apply direct pressure to scalp laceration (use the moment of sedation onset) — avoid NPA due to facial trauma", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "prepare-rsi", "action": "Prepare RSI equipment and team during the 3-5 minute onset window — this is a bridge, not a destination", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    },
+    {
+      "id": "dissociated-assessment",
+      "name": "Dissociated — Rapid Assessment and RSI Preparation",
+      "description": "IM ketamine has taken effect. The patient is dissociated — eyes open, not following commands, no purposeful movement. Respiratory drive preserved. Crew can now perform a meaningful assessment, apply high-flow oxygen, control bleeding, and establish IV access while preparing for definitive airway.",
+      "triggerCondition": "Dissociation achieved approximately 3-5 minutes after IM ketamine",
+      "isDefault": true,
+      "transitions": [
+        {"targetPhaseId": "post-rsi", "condition": "Successful RSI with confirmed tube placement", "conditionType": "action_taken", "triggerActionIds": ["rsi-paralytic", "intubate"]}
+      ],
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": {"eye": 4, "verbal": 1, "motor": 4},
+        "airway": "Now able to suction blood and secretions; jaw relaxed; no gag",
+        "breathing": "Spontaneous, adequate rate and depth with ketamine (respiratory drive preserved)",
+        "circulation": "Tachycardic, BP slightly elevated from ketamine sympathomimetic effect",
+        "skin": {"color": "pink on NRB", "temperature": "warm", "moisture": "diaphoretic"},
+        "pupils": "LEFT pupil 6 mm sluggishly reactive, RIGHT 4 mm reactive — now assessable; concerning for herniation",
+        "motorFunction": "Dissociated — eyes open, not following, no purposeful movement",
+        "otherFindings": [
+          "Now possible to assess: GCS pre-dissociation was likely ~11-12, with motor component resisting",
+          "Unequal pupils with left dilation concerning for ipsilateral mass effect",
+          "Scalp hemorrhage controlled with direct pressure",
+          "C-collar applied"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 132,
+        "bpSys": 172,
+        "bpDia": 96,
+        "respRate": 20,
+        "spo2": 94,
+        "etco2": 38,
+        "temp": 36.6,
+        "obstruction": 20,
+        "glucose": 112,
+        "trendTimeSeconds": 300,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "cspine", "action": "Apply cervical collar and in-line stabilization now possible", "priority": "critical", "protocolReference": "MATC: Spinal Care"},
+        {"id": "o2", "action": "Apply high-flow oxygen via NRB; target SpO2 ≥94%", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "suction", "action": "Suction blood and secretions from oropharynx", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "bleeding", "action": "Maintain direct pressure on scalp laceration; consider pressure dressing; no tourniquet for scalp", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "iv-access", "action": "Establish two large-bore IVs; draw blood for destination", "priority": "critical"},
+        {"id": "reassess", "action": "Re-assess neurologic status: GCS, pupils, motor — document pre-intubation baseline", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "sbp-target", "action": "Maintain SBP ≥110 mmHg per TBI protocol", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "preox", "action": "Preoxygenate with BVM + PEEP 5 cmH2O and apneic oxygenation NC 15 LPM", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "rsi-paralytic", "action": "Administer Rocuronium 1 mg/kg IV push (90 mg for 90 kg patient) — additional induction not needed since ketamine is already on board for dissociation", "priority": "critical", "rationale": "The 360 mg IM ketamine provides more than enough induction. Paralytic alone is what's needed to convert the dissociated state into intubating conditions.", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "intubate", "action": "Perform video laryngoscopy intubation with in-line cervical stabilization; 8.0 mm cuffed ETT; use SALAD for blood in airway", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "confirm", "action": "Confirm tube placement with waveform capnography, bilateral breath sounds, absent epigastric sounds", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    },
+    {
+      "id": "post-rsi",
+      "name": "Post-Intubation Neuroprotective Management",
+      "description": "Tube confirmed. Crew manages per Head Injury protocol: maintain normocapnia, SBP ≥110, head of bed elevated, and expedited trauma center transport. Post-intubation sedation with additional ketamine for maintenance.",
+      "triggerCondition": "Successful RSI with confirmed tube placement",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 1},
+        "airway": "8.0 mm ETT at 23 cm, cuff inflated, secured",
+        "breathing": "Ventilated with PEEP 5, symmetric chest rise",
+        "circulation": "Perfusing",
+        "skin": {"color": "pink", "temperature": "warm", "moisture": "diaphoretic"},
+        "pupils": "LEFT 6 mm sluggish, RIGHT 4 mm sluggish (post-paralytic reference)",
+        "motorFunction": "Flaccid from paralytic",
+        "otherFindings": ["EtCO2 trending to 40", "Scalp hemorrhage controlled", "C-spine immobilized"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 112,
+        "bpSys": 148,
+        "bpDia": 88,
+        "respRate": 10,
+        "spo2": 99,
+        "etco2": 40,
+        "temp": 36.6,
+        "obstruction": 10,
+        "glucose": 112,
+        "trendTimeSeconds": 120,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "vent-target", "action": "Ventilate at 10 breaths/min, 6-8 mL/kg IBW, target EtCO2 35-45 mmHg (aim 40); do NOT hyperventilate despite unequal pupils", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "sedation", "action": "Post-intubation sedation: Ketamine 0.5-1 mg/kg IV (45-90 mg) for maintenance + Fentanyl 1-2 mcg/kg (90-180 mcg) IV for analgesia", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"},
+        {"id": "sbp-support", "action": "Maintain SBP ≥110 mmHg with NS bolus as needed", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "hob", "action": "Elevate head of spine board 30 degrees (reverse Trendelenburg)", "priority": "important", "protocolReference": "MATC: Head Injury"},
+        {"id": "pressure-dressing", "action": "Apply pressure dressing to scalp laceration", "priority": "important", "protocolReference": "MATC: Head Injury"},
+        {"id": "transport", "action": "Expedited transport to Level I trauma center; early trauma team activation", "priority": "critical"},
+        {"id": "reassess", "action": "Serial neuro reassessment (pupils) every 5 minutes", "priority": "important", "protocolReference": "MATC: Head Injury"}
+      ]
+    },
+    {
+      "id": "restraint-failure",
+      "name": "Branch: Failure to Recognize Medical Agitation",
+      "description": "Crew treats agitation as a behavioral emergency and attempts physical restraint without chemical sedation, or uses a dose of haloperidol. Without addressing hypoxia, the patient continues to deteriorate. This branch teaches that agitation in trauma is a medical sign, not a behavior.",
+      "triggerCondition": "Attempted physical restraint without chemical sedation OR use of antipsychotic without addressing hypoxia",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {"eye": 1, "verbal": 1, "motor": 2},
+        "airway": "Blood in airway, snoring respirations",
+        "breathing": "Slow, irregular, ineffective",
+        "circulation": "Bradycardic, hypertensive (decompensating)",
+        "skin": {"color": "cyanotic", "temperature": "cool", "moisture": "diaphoretic"},
+        "pupils": "LEFT 7 mm fixed, RIGHT 4 mm sluggish — progression",
+        "motorFunction": "Decorticate posturing",
+        "otherFindings": ["Progressive motor deterioration", "Worsening Cushing response", "Blood in airway now pooled"]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 48,
+        "bpSys": 196,
+        "bpDia": 108,
+        "respRate": 8,
+        "spo2": 74,
+        "etco2": 52,
+        "temp": 36.6,
+        "obstruction": 60,
+        "glucose": 112,
+        "trendTimeSeconds": 300,
+        "visibility": {"spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false}
+      },
+      "expectedActions": [
+        {"id": "recognize", "action": "Immediately escalate to ketamine-facilitated RSI; treat as severe TBI with herniation signs", "priority": "critical", "protocolReference": "MATC: Head Injury"},
+        {"id": "emergent-rsi", "action": "Administer Ketamine 2 mg/kg IV (180 mg) + Rocuronium 1 mg/kg (90 mg) and intubate immediately", "priority": "critical", "protocolReference": "MATC: Airway Management (Includes RSI)"}
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Recognize that agitation in a trauma patient is a medical sign (hypoxia, TBI) — NOT behavioral",
+      "Coordinate scene safety with law enforcement for drug administration",
+      "Administer Ketamine 4 mg/kg IM (360 mg) for dissociation and rapid control",
+      "Use the dissociation window to apply C-collar, suction, apply O2, establish IVs, control bleeding",
+      "Reassess neuro status (GCS, pupils, motor) once dissociated",
+      "Preoxygenate with BVM + PEEP and apneic oxygenation",
+      "Administer Rocuronium 1 mg/kg IV (90 mg) to convert dissociation to intubating conditions",
+      "Perform video laryngoscopy intubation with in-line stabilization and SALAD for blood",
+      "Confirm tube placement with waveform capnography",
+      "Maintain SBP ≥110 and EtCO2 35-45",
+      "Transport to Level I trauma center"
+    ],
+    "expectedActions": [
+      "Pressure dressing to scalp laceration",
+      "Post-intubation sedation with ketamine maintenance + fentanyl",
+      "Head of bed elevation 30 degrees",
+      "Serial neuro reassessment"
+    ],
+    "bonusActions": [
+      "Articulate that IM ketamine provides sedation plus induction for RSI in one step",
+      "Avoid additional induction agent on top of IM ketamine — paralytic alone is sufficient",
+      "Avoid NPA due to facial trauma and possible basilar fracture"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Distinguish medical/traumatic agitation from primary behavioral emergencies",
+      "Apply IM ketamine as a bridge to definitive airway management in the combative trauma patient",
+      "Coordinate rapid transition from chemical sedation to RSI",
+      "Apply MATC Head Injury protocol principles once control is achieved",
+      "Avoid physical restraint alone in the head-injured patient"
+    ],
+    "discussionQuestions": [
+      "Why does the MATC Behavioral protocol explicitly exclude head injury patients?",
+      "What made ketamine the right choice over haloperidol or droperidol here?",
+      "If ketamine provided the induction, why do you still need a paralytic?",
+      "What are the risks of NPA placement in this patient?",
+      "How would you document this encounter to show your clinical reasoning?"
+    ],
+    "commonPitfalls": [
+      "Treating the patient as a behavioral emergency and missing the head injury",
+      "Giving haloperidol or droperidol without addressing hypoxia",
+      "Failing to transition from chemical sedation to definitive airway",
+      "Placing an NPA in a patient with possible basilar skull fracture",
+      "Overdosing induction agents when IM ketamine already dissociated the patient"
+    ],
+    "keyTakeaways": [
+      "Agitation in trauma is hypoxia or head injury until proven otherwise",
+      "Ketamine IM is the bridge — RSI is the destination",
+      "Chemical sedation should always precede physical restraint in the head-injured patient",
+      "Don't stack sedatives unnecessarily; dissociation + paralytic is the formula"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 20,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

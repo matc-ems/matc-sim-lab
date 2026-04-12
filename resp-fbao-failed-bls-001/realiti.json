@@ -1,0 +1,203 @@
+{
+  "scenarioId": "resp-fbao-failed-bls-001",
+  "scenarioName": "Foreign Body Airway Obstruction — Failed BLS",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1200,
+  "scenarioMonitorType": 20,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "58-year-old male at a backyard BBQ who was eating a rare steak when he suddenly grabbed his throat and made the universal choking sign. Bystanders immediately initiated abdominal thrusts but were unsuccessful after multiple attempts. Patient became unconscious and was placed supine on the grass. Bystander CPR started.",
+    "discussion": "Apply the unconscious FBAO algorithm. Use direct laryngoscopy and Magill forceps to retrieve a visualized obstruction. Understand the rationale for forced distal advancement when retrieval fails. Identify when to commit to surgical airway. Avoid algorithm paralysis in a time-critical airway",
+    "course": "Arrival — Complete Airway Obstruction, Unconscious: Unconscious FBAO with no air movement. Protocol algorithm shifts at unconsciousness: chest compressions (which generate airway pressure similar to Heimlich), then look-in-mouth between compressions, direct laryngoscopy with Magill forceps to retrieve the object under visualization. If retrieval fails and the object cannot be removed or advanced, cricothyrotomy is the final answer. → Laryngoscopy Decision Point: Direct laryngoscopy is performed. The obstruction is either visualized above the cords (retrievable with Magill) or cannot be visualized because it has passed through the cords and is now subglottic. This is the critical decision point — the crew must commit to retrieval, to right mainstem advancement with an ETT, or to surgical airway. → Default Path — Successful Magill Retrieval: Large meat bolus retrieved from above the cords with Magill forceps. Immediate air movement returns with BVM. Patient regains pulse and pinks up rapidly. Manage as post-arrest with careful airway observation for aspiration and glottic edema."
+  },
+  "patientInformation": {
+    "patientName": "Frank Delgado",
+    "patientCondition": "Choking on food, unconscious",
+    "patientAge": 58,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 180,
+    "patientWeight": 100,
+    "patientPhotoId": 70,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival — Complete Airway Obstruction, Unconscious",
+      "description": "Unconscious FBAO with no air movement. Protocol algorithm shifts at unconsciousness: chest compressions (which generate airway pressure similar to Heimlich), then look-in-mouth between compressions, direct laryngoscopy with Magill forceps to retrieve the object under visualization. If retrieval fails and the object cannot be removed or advanced, cricothyrotomy is the final answer.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 42,
+        "bpSys": 72,
+        "bpDia": 40,
+        "respRate": 0,
+        "spo2": 62,
+        "etco2": 0,
+        "temp": 36.6,
+        "obstruction": 100,
+        "custMeasure1": 132,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Laryngoscopy Decision Point",
+      "description": "Direct laryngoscopy is performed. The obstruction is either visualized above the cords (retrievable with Magill) or cannot be visualized because it has passed through the cords and is now subglottic. This is the critical decision point — the crew must commit to retrieval, to right mainstem advancement with an ETT, or to surgical airway.",
+      "monitorType": 0,
+      "trendTime": 60,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 38,
+        "bpSys": 68,
+        "bpDia": 36,
+        "respRate": 0,
+        "spo2": 58,
+        "etco2": 0,
+        "temp": 36.6,
+        "obstruction": 100,
+        "custMeasure1": 132,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Default Path — Successful Magill Retrieval",
+      "description": "Large meat bolus retrieved from above the cords with Magill forceps. Immediate air movement returns with BVM. Patient regains pulse and pinks up rapidly. Manage as post-arrest with careful airway observation for aspiration and glottic edema.",
+      "monitorType": 0,
+      "trendTime": 120,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 124,
+        "bpDia": 72,
+        "respRate": 12,
+        "spo2": 92,
+        "etco2": 38,
+        "temp": 36.6,
+        "obstruction": 15,
+        "custMeasure1": 132,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Recognize complete airway obstruction in an unconscious patient",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Remove dentures before instrumentation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Perform direct laryngoscopy with Magill forceps to attempt retrieval",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continue chest compressions throughout (they generate airway pressure)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If Magill retrieval fails: choose between advancing ETT to right mainstem OR surgical cricothyrotomy based on visualization",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If obstruction is at the cords and cannot be moved: commit to cricothyrotomy without delay",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm airway with waveform capnography",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport emergently to appropriate facility",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply cardiac monitor and pads",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access once airway is secured",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Manage post-arrest care if ROSC is achieved",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early ED notification",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}
