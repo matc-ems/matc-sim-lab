@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Acute Pulmonary Edema - CPAP and Nitroglycerin Response</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#f4f3f0;--card:#fff;--card-border:#e8e6e1;--text:#1c1917;--text-secondary:#57534e;--text-muted:#a8a29e;--green:#16a34a;--green-light:#f0fdf4;--green-border:#bbf7d0;--red:#dc2626;--red-light:#fef2f2;--red-border:#fecaca;--orange:#ea580c;--orange-light:#fff7ed;--orange-border:#fed7aa;--blue:#2563eb;--blue-light:#eff6ff;--purple:#7c3aed;--cyan:#0891b2;--yellow:#ca8a04;--radius:14px;--radius-sm:10px;--shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100dvh;overflow-x:hidden}
+.top-bar{background:var(--card);padding:16px 20px 0;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--card-border)}
+.scenario-name{font-size:17px;font-weight:700;margin-bottom:4px}
+.scenario-tags{display:flex;gap:6px;margin-bottom:14px}
+.tag{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px}
+.tag-difficulty{background:var(--orange-light);color:var(--orange)}
+.tag-category{background:var(--blue-light);color:var(--blue)}
+.tag-time{background:#f5f5f4;color:var(--text-muted)}
+.phase-strip{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}
+.phase-strip::-webkit-scrollbar{display:none}
+.phase-tab{flex-shrink:0;font-size:13px;font-weight:600;padding:10px 16px;color:var(--text-muted);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;position:relative}
+.phase-tab.active{color:var(--text);border-bottom-color:var(--text)}
+.phase-tab.branch{color:var(--red);opacity:.5}
+.phase-tab.branch.active{opacity:1;border-bottom-color:var(--red)}
+.phase-tab .hint-dot{display:none;width:7px;height:7px;border-radius:50%;position:absolute;top:6px;right:4px}
+.phase-tab.hint-next .hint-dot{display:block;background:var(--green);animation:pulse-hint 1.5s infinite}
+.phase-tab.hint-branch .hint-dot{display:block;background:var(--red);animation:pulse-hint 1s infinite}
+@keyframes pulse-hint{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.content{padding:16px;max-width:600px;margin:0 auto}
+.panel{display:none}.panel.active{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);padding:14px 16px 10px}
+.card-content{padding:0 16px 16px}
+.accordion{cursor:pointer;user-select:none}
+.accordion .card-title{display:flex;justify-content:space-between;align-items:center;padding:16px}
+.accordion .card-title::after{content:'＋';font-size:16px;color:var(--text-muted)}
+.accordion.open .card-title::after{content:'−'}
+.accordion .accordion-body{display:none;padding:0 16px 16px}
+.accordion.open .accordion-body{display:block}
+.scene-row{padding:8px 0;border-bottom:1px solid #f5f5f4}.scene-row:last-child{border-bottom:none}
+.scene-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.scene-value{font-size:14px;color:var(--text-secondary)}
+.cue-list{list-style:none}.cue-list li{font-size:14px;color:var(--text-secondary);padding:4px 0 4px 16px;position:relative}.cue-list li::before{content:'→';position:absolute;left:0;color:var(--text-muted);font-size:12px}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.sample-cell{background:var(--card);padding:12px}.sample-cell.full{grid-column:1/-1}
+.sample-letter{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--green);margin-right:4px}
+.sample-name{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:4px}
+.sample-text{font-size:13px;color:var(--text-secondary);line-height:1.4}
+.patient-chips{display:flex;flex-wrap:wrap;gap:8px}
+.patient-chip{font-size:13px;padding:6px 12px;background:#f5f5f4;border-radius:8px;color:var(--text-secondary)}
+.patient-chip strong{color:var(--text);font-weight:600}
+.phase-card{border-left:4px solid var(--text)}.phase-card.branch-card{border-left-color:var(--red)}
+.phase-card .card-content{padding:16px}
+.phase-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.phase-trigger{font-family:'DM Mono',monospace;font-size:11px;color:var(--yellow);margin-bottom:8px}
+.phase-desc{font-size:14px;color:var(--text-secondary);line-height:1.5}
+.vitals-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.vital-cell{background:var(--card);padding:10px 8px;text-align:center}.vital-cell.full-width{grid-column:1/-1}
+.vital-name{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.vital-val{font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:var(--text);line-height:1.1}
+.vital-unit{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted)}
+.vital-cell.alert .vital-val{color:var(--red)}.vital-cell.alert .vital-name{color:var(--red)}.vital-cell.alert{background:var(--red-light)}
+.vital-cell.warn .vital-val{color:var(--orange)}.vital-cell.warn .vital-name{color:var(--orange)}.vital-cell.warn{background:var(--orange-light)}
+.ecg-label{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-secondary);padding:8px 12px;background:#fafaf9;border-bottom:1px solid #f0efec;border-radius:var(--radius-sm) var(--radius-sm) 0 0}
+.avpu-bar{display:flex;border-radius:8px;overflow:hidden;margin-bottom:12px;border:1px solid var(--card-border)}
+.avpu-seg{flex:1;text-align:center;padding:8px 4px;font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--text-muted);background:#fafaf9}
+.avpu-seg.sel-a{background:var(--green-light);color:var(--green);border:1px solid var(--green-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-v{background:var(--orange-light);color:var(--yellow);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-p{background:var(--orange-light);color:var(--orange);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-u{background:var(--red-light);color:var(--red);border:1px solid var(--red-border);margin:-1px;border-radius:8px}
+.gcs-row{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-secondary);margin-bottom:14px;text-align:center}
+.gcs-total{font-size:18px;font-weight:700;color:var(--text)}
+.finding-row{padding:10px 0;border-bottom:1px solid #f5f5f4}.finding-row:last-child{border-bottom:none}
+.finding-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:3px}
+.finding-value{font-size:14px;color:var(--text-secondary)}.finding-value.danger{color:var(--red);font-weight:600}.finding-value.improving{color:var(--green)}.finding-value.speech{font-style:italic;color:var(--text-muted)}
+.skin-chips{display:flex;gap:6px;flex-wrap:wrap}
+.skin-chip{font-size:12px;padding:3px 10px;border-radius:6px;background:#f5f5f4;color:var(--text-secondary)}.skin-chip.warn{background:var(--red-light);color:var(--red)}
+.findings-notes{list-style:none}.findings-notes li{font-size:13px;color:var(--text-secondary);padding:3px 0 3px 14px;position:relative}.findings-notes li::before{content:'·';position:absolute;left:2px;font-weight:700;color:var(--text-muted)}.findings-notes li.danger{color:var(--red)}
+.action-card{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4}.action-card:last-child{border-bottom:none}
+.action-check{width:18px;height:18px;flex-shrink:0;cursor:pointer;accent-color:var(--green)}
+.action-body{flex:1}
+.action-priority{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.p-critical{color:var(--red)}.p-important{color:var(--orange)}
+.action-text{font-size:14px;color:var(--text);font-weight:500}
+.action-chevron{color:var(--text-muted);font-size:14px;transition:transform .2s;flex-shrink:0}
+.action-card.open .action-chevron{transform:rotate(90deg)}
+.action-detail{display:none;padding:0 14px 14px 46px}.action-card.open .action-detail{display:block}
+.action-rationale{font-size:13px;color:var(--text-secondary);line-height:1.5;padding:10px 12px;background:#fafaf9;border-radius:8px;border-left:3px solid var(--card-border)}
+.action-ref{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);margin-top:6px}
+.branch-alert{background:var(--red-light);border:1px solid var(--red-border);border-radius:var(--radius);padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
+.branch-alert-icon{font-size:18px;flex-shrink:0}
+.branch-alert-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:2px}
+.branch-alert-text{font-size:13px;color:var(--text-secondary)}
+.assess-group-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:10px 16px}
+.assess-critical .assess-group-title{color:var(--red)}.assess-expected .assess-group-title{color:var(--orange)}
+.assess-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);cursor:pointer}
+.assess-check{width:22px;height:22px;border:2px solid #d6d3d1;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.assess-check.done{background:var(--green);border-color:var(--green)}.assess-check.done::after{content:'✓';font-size:12px;color:#fff;font-weight:700}
+.debrief-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:14px 16px 10px}
+.debrief-item{padding:10px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);line-height:1.5;display:flex;gap:10px}
+.debrief-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--text-muted);flex-shrink:0;min-width:20px;padding-top:2px}
+.bottom-spacer{height:80px}
+@media print{.top-bar{position:static}.panel{display:flex!important;flex-direction:column;gap:12px;page-break-inside:avoid;margin-bottom:20px}.accordion .accordion-body{display:block!important}.action-detail{display:block!important}}
+
+.action-priority{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+.priority-critical{background:var(--red-light,#fef2f2);color:var(--red,#dc2626)}
+.priority-important{background:var(--orange-light,#fff7ed);color:var(--orange,#ea580c)}
+.priority-supplemental{background:#f5f5f4;color:var(--text-muted,#a8a29e)}
+.action-check{width:18px;height:18px;flex-shrink:0}
+.top-bar-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.timer-widget{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+#timer-display{font-family:'DM Mono',monospace;font-size:20px;font-weight:700;color:var(--text-muted,#a8a29e);font-variant-numeric:tabular-nums;line-height:1}
+.timer-controls{display:flex;gap:4px}
+.timer-btn{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;border:1px solid var(--card-border,#e8e6e1);background:var(--card,#fff);color:var(--text-secondary,#57534e);cursor:pointer;line-height:1.4}
+.timer-btn:hover{background:#f5f5f4}
+.timer-btn-stop{border-color:var(--red-border,#fecaca);color:var(--red,#dc2626)}
+.timer-btn-stop:hover{background:var(--red-light,#fef2f2)}
+.timer-btn-restart{border-color:var(--blue,#2563eb);color:var(--blue,#2563eb)}
+.timer-btn-restart:hover{background:var(--blue-light,#eff6ff)}
+.gcs-detail{margin-top:10px}
+.gcs-item{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid #f5f5f4}
+.gcs-item:last-of-type{border-bottom:none}
+.gcs-part{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted,#a8a29e);min-width:52px;flex-shrink:0}
+.gcs-desc{flex:1;font-size:13px;color:var(--text-secondary,#57534e)}
+.gcs-score{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--text,#1c1917);min-width:20px;text-align:right;flex-shrink:0}
+.gcs-total-row{display:flex;justify-content:flex-end;align-items:baseline;gap:8px;padding-top:10px;margin-top:6px;border-top:1px solid var(--card-border,#e8e6e1);font-family:'DM Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted,#a8a29e)}
+.gcs-total-row .gcs-total{font-family:'DM Mono',monospace;font-size:18px;font-weight:700;color:var(--text,#1c1917)}
+#timer-display.timer-warn{color:var(--orange,#ea580c)}
+#timer-display.timer-danger{color:var(--red,#dc2626)}
+.debrief-phase-card{overflow:hidden}
+.debrief-phase-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px}
+.debrief-phase-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score.score-perfect{color:var(--green,#16a34a)}
+.debrief-phase-score.score-none{color:var(--red,#dc2626)}
+.debrief-phase-body{padding:0 16px 14px}
+.debrief-done-section{background:var(--green-light,#f0fdf4);border:1px solid var(--green-border,#bbf7d0);border-radius:var(--radius-sm,10px);padding:6px 12px;margin-bottom:10px}
+.debrief-done-row{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px;color:var(--green,#16a34a)}
+.debrief-done-icon{font-weight:700;flex-shrink:0;font-size:12px}
+.debrief-done-text{color:var(--text-secondary,#57534e)}
+.debrief-missed-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red,#dc2626);padding:4px 0 8px}
+.debrief-missed-row{background:var(--red-light,#fef2f2);border:1px solid var(--red-border,#fecaca);border-radius:var(--radius-sm,10px);padding:10px 12px;margin-bottom:6px}
+.debrief-missed-row:last-child{margin-bottom:0}
+.debrief-missed-top{display:flex;align-items:center;gap:8px}
+.debrief-missed-text{font-size:14px;font-weight:600;color:var(--text,#1c1917)}
+.debrief-missed-detail{padding:6px 0 0 0;margin-top:6px;border-top:1px solid var(--red-border,#fecaca)}
+.debrief-missed-rationale{font-size:12px;color:var(--text-secondary,#57534e);line-height:1.4}
+.debrief-missed-protocol{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue,#2563eb);margin-top:2px}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-header">
+    <div>
+      <div class="scenario-name">Acute Pulmonary Edema - CPAP and Nitroglycerin Response</div>
+      <div class="scenario-tags">
+        <span class="tag tag-difficulty">intermediate</span>
+        <span class="tag tag-category">Respiratory</span>
+      </div>
+    </div>
+    <div class="timer-widget" id="scenario-timer" data-total="1800">
+      <span id="timer-display">30:00</span>
+      <div class="timer-controls">
+        <button id="timer-start" class="timer-btn" onclick="timerStart()">start</button>
+        <button id="timer-pause" class="timer-btn" onclick="timerPause()" style="display:none">pause</button>
+        <button id="timer-stop" class="timer-btn timer-btn-stop" onclick="timerStop()" style="display:none">stop</button>
+        <button id="timer-reset" class="timer-btn" onclick="timerReset()" style="display:none">reset</button>
+        <button class="timer-btn timer-btn-restart" onclick="scenarioRestart()" title="Restart scenario — clears checkboxes and timer">↻ restart</button>
+      </div>
+    </div>
+  </div>
+  <div class="phase-strip">
+    <div class="phase-tab active" data-panel="scene" onclick="showPanel(this, 'scene')">Scene</div>
+    <div class="phase-tab" data-panel="phase-initial" onclick="showPanel(this, 'phase-initial')">Initial Presentation - Severe Acute Pulmonary Edema</div>
+    <div class="phase-tab" data-panel="phase-post-ntg-1" onclick="showPanel(this, 'phase-post-ntg-1')">Post First NTG Dose - Partial Response</div>
+    <div class="phase-tab" data-panel="phase-on-cpap-ntg-repeat" onclick="showPanel(this, 'phase-on-cpap-ntg-repeat')">On CPAP with Repeat NTG - Significant Improvement</div>
+    <div class="phase-tab" data-panel="phase-stable-for-transport" onclick="showPanel(this, 'phase-stable-for-transport')">Stable on CPAP - Transport Phase</div>
+    <div class="phase-tab branch" data-panel="phase-branch-no-ntg-deterioration" onclick="showPanel(this, 'phase-branch-no-ntg-deterioration')">Branch - CPAP Alone Without Preload Reduction - Deterioration</div>
+    <div class="phase-tab" data-panel="debrief" onclick="showPanel(this, 'debrief')">Debrief</div>
+  </div>
+</div>
+<div class="content">
+  
+<div class="panel active" id="panel-scene">
+  <div class="card">
+    <div class="card-title">Dispatch</div>
+    <div class="card-content" style="font-size:14px;color:var(--text-secondary)">Respond priority 1 to a private residence for a 68-year-old male having trouble breathing. Family is very concerned. Patient is awake.</div>
+  </div>
+  <div class="card accordion open" onclick="this.classList.toggle('open')">
+    <div class="card-title">Scene Setup</div>
+    <div class="accordion-body">
+      <div class="scene-row"><div class="scene-label">Location</div><div class="scene-value">Single-story private residence, master bedroom. Patient is in a cloth recliner in the corner of the bedroom. Adequate lighting once lamp is on. Normal room temperature.</div></div>
+      <div class="scene-row"><div class="scene-label">Time</div><div class="scene-value">0207 hours, Tuesday</div></div>
+      <div class="scene-row"><div class="scene-label">Safety</div><div class="scene-value">Scene is safe. No pets, no weapons, no environmental hazards. Narrow hallway will require stair-chair or stretcher positioning consideration for extrication.</div></div>
+      <div class="scene-row"><div class="scene-label">Bystanders</div><div class="scene-value">Wife (primary caregiver) is at bedside, anxious but cooperative and an excellent historian. She has the patient's medication list printed from his last cardiology visit and knows his ejection fraction.</div></div>
+      <div class="scene-row"><div class="scene-label">Visual Cues</div><ul class="cue-list"><li>Patient bolt upright in recliner, tripoding with hands braced on arm rests</li><li>Stack of three pillows behind the patient from nights of orthopnea</li><li>Pink-tinged frothy sputum visible on a used tissue on the end table</li><li>Pitting edema of both lower extremities visible to mid-calf (+3)</li><li>Home blood pressure cuff and bathroom scale nearby; scale has a note showing 8 lb weight gain over 4 days</li><li>Visible accessory muscle use at the neck and supraclavicular retractions</li><li>Patient is diaphoretic with an ashen complexion</li><li>Visible JVD with patient upright</li></ul></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Patient Information</div>
+    <div class="card-content">
+      <div class="patient-chips">
+        <div class="patient-chip"><strong>Walter Janowski</strong></div>
+        <div class="patient-chip">68 years</div>
+        <div class="patient-chip">male</div>
+        <div class="patient-chip">209 lbs (95 kg)</div>
+        <div class="patient-chip">5'11"</div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-phase-initial">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Initial Presentation - Severe Acute Pulmonary Edema</div>
+      
+      <div class="phase-desc">On arrival the patient is in severe respiratory distress, bolt upright, tripoding, with clear signs of fluid-overload pulmonary edema. He is markedly hypertensive and hypoxic. The clinical picture (JVD, bilateral rales to mid-lung fields, pink frothy sputum, peripheral edema, orthopnea history) points strongly to acute decompensated heart failure. The crew must recognize acute pulmonary edema, begin high-flow oxygen, obtain a 12-lead to screen for STEMI, establish IV access, screen for PDE5 inhibitors, and prepare for NTG + CPAP.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent and self-maintained. No stridor, no foreign body. Audible gurgling/crackles from upper airway with coughing.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Severe respiratory distress. RR ~32, labored, with obvious accessory muscle use, supraclavicular and intercostal retractions. Bilateral wet inspiratory rales/crackles heard to mid-lung fields posteriorly. Coarse rhonchi with coughing. Pink-tinged frothy sputum. Speaks in 3-4 word sentences only.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Radial pulses present bilaterally, rapid and irregularly irregular. Skin cool, pale, markedly diaphoretic. Capillary refill ~3 seconds in fingertips. JVD prominent with patient at 90 degrees. +3 pitting edema bilateral lower extremities to mid-calf.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">115</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">198/110</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">32</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">84</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">30</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">142</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pale/ashen</span><span class="skin-chip">cool</span><span class="skin-chip">markedly diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm bilaterally.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Moves all 4 extremities on command. Grip strength symmetric. No focal deficits.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'Can't... breathe... drowning...'  Speaks 3-4 words then must pause to breathe."</div></div>
+      <ul class="findings-notes"><li>Tripod position with hands on arm rests of recliner</li><li>Visible use of sternocleidomastoid and scalene muscles</li><li>JVD ~10 cm above sternal angle at 90 degrees</li><li>Pink frothy sputum on tissue</li><li>Peripheral edema +3 to mid-calf bilaterally</li><li>Anxious, appears frightened, repeatedly looking to wife</li></ul>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">SAMPLE History</div>
+    <div class="card-content">
+      <div class="sample-grid">
+        <div class="sample-cell full"><span class="sample-letter">S</span><div class="sample-name">Signs/Symptoms</div><div class="sample-text">Severe shortness of breath, cannot catch breath even sitting upright</div></div>
+        <div class="sample-cell"><span class="sample-letter">A</span><div class="sample-name">Allergies</div><div class="sample-text">NKDA</div></div>
+        <div class="sample-cell"><span class="sample-letter">M</span><div class="sample-name">Medications</div><div class="sample-text">Furosemide 40 mg PO BID, Metoprolol tartrate 50 mg PO BID, Lisinopril 20 mg PO daily, Warfarin 5 mg PO daily, Atorvastatin 40 mg PO at bedtime, Metformin 1000 mg PO BID, Aspirin 81 mg PO daily</div></div>
+        <div class="sample-cell"><span class="sample-letter">P</span><div class="sample-name">Past Medical</div><div class="sample-text">Congestive heart failure with reduced ejection fraction (EF 30%), Hypertension, Atrial fibrillation (on warfarin, INR monitored), Coronary artery disease, status post CABG x3 (2018), Type 2 diabetes mellitus</div></div>
+        <div class="sample-cell"><span class="sample-letter">L</span><div class="sample-name">Last Oral Intake</div><div class="sample-text">Light dinner at 1800 previous evening; water sips overnight</div></div>
+        <div class="sample-cell full"><span class="sample-letter">E</span><div class="sample-name">Events</div><div class="sample-text">Wife states patient went to bed in recliner around 2230 and seemed okay. Around 0200 she heard him gasping and coughing. She found him bolt upright, unable to speak full sentences, with pink frothy sputum on a tissue. She called 911 stating, 'He can't catch his breath.'</div></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="scene-bsi" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Perform scene size-up and BSI; confirm scene safety; note bedroom environment and number of rescuers required for extrication</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="primary-survey" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Complete primary survey (airway, breathing, circulation, disability, exposure); recognize severe respiratory distress with fluid-overload signs (JVD, rales, pink frothy sputum, peripheral edema)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="position-upright" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Maintain the patient in a full upright seated position (Fowler's / legs dependent) - do NOT lay supine</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="o2-nrb" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Apply oxygen via non-rebreather mask at 15 L/min, titrated to target SpO2 94-98%</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="capnography" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Place continuous waveform capnography (nasal cannula sampling line under NRB); document baseline EtCO2 and waveform shape</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="cardiac-monitor" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Apply 4-lead cardiac monitor; note sinus tachycardia at 115</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="12-lead" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Acquire a 12-lead ECG within 10 minutes of contact; screen for STEMI/ischemia as ACS is a common precipitant of acute pulmonary edema</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="iv-access" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Establish two large-bore IV lines (18 gauge preferred); draw blood samples per local protocol</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="pde5-screen" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Explicitly screen patient and wife for phosphodiesterase inhibitor use (sildenafil / Viagra, tadalafil / Cialis, vardenafil / Levitra) within the past 48 hours, and for IV epoprostenol or treprostinil for pulmonary hypertension, BEFORE administering nitroglycerin</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="focused-hx" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Obtain focused SAMPLE history; confirm CHF with EF 30%, dietary indiscretion, 8 lb weight gain in 4 days, 3 nights of orthopnea, no chest pain</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="withhold-lasix" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Do NOT administer furosemide (Lasix) in the prehospital setting; verbalize that APE is a fluid-distribution problem rather than total-body volume overload and that prehospital diuretics can cause harm</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="prepare-cpap-ntg" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Prepare CPAP device (10 cmH2O, full face mask) and nitroglycerin (0.4 mg tablets or metered spray) for immediate use</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-post-ntg-1">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Post First NTG Dose - Partial Response</div>
+      <div class="phase-trigger">Nitroglycerin 0.8 mg SL administered (SBP &gt;= 160 mmHg dose per Respiratory Distress Protocol, pulmonary edema section) after PDE5 inhibitor screen</div>
+      <div class="phase-desc">After the first 0.8 mg SL nitroglycerin dose, preload drops and the patient reports feeling slightly less 'tight'. Blood pressure is beginning to decrease but remains hypertensive. Work of breathing is mildly improved but rales are still audible to mid-lung fields. This is the window to apply CPAP concurrently and continue NTG q 5 minutes per protocol.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent, self-maintained. Less gurgling noted.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Still tachypneic but slightly less labored. RR 30. Accessory muscle use persists. Rales to mid-lung fields bilaterally, now slightly less coarse. Continues to produce pink-tinged sputum but less voluminous.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Radial pulses rapid and irregularly irregular. Skin still cool and diaphoretic but not worsening. JVD still present but slightly decreased. Edema unchanged.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">110</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">176/96</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">30</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">86</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">32</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">142</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pale</span><span class="skin-chip">cool</span><span class="skin-chip">diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Moves all extremities on command.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'Still...hard to breathe...but better.'  4-5 word sentences."</div></div>
+      <ul class="findings-notes"><li>Patient states he feels 'a little looser' in the chest</li><li>Still tripoding but head held slightly more upright</li><li>Accessory muscle use continues</li><li>No mental status change</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reassess-bp-pre-cpap" data-phase-id="post-ntg-1">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Reassess blood pressure, mental status, and work of breathing; SBP remains &gt; 100 mmHg so NTG may be continued</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="apply-cpap" data-phase-id="post-ntg-1">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Apply CPAP via full face mask at 10 cmH2O with supplemental O2 to maintain SpO2 94-98%; coach the patient through first 60 seconds and maintain mask seal</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="ntg-repeat" data-phase-id="post-ntg-1">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Nitroglycerin 0.4 mg SL (1 tablet or 1 metered spray) every 5 minutes as long as SBP &gt; 100 mmHg; reassess BP before each dose</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="consider-ntg-infusion" data-phase-id="post-ntg-1">
+        <span class="action-priority priority-supplemental">SUPPLEMENTAL</span>
+        <span class="action-text">If available and within scope, consider initiating IV Nitroglycerin infusion starting at 5 mcg/min IV, titrated up by 5 mcg/min every 3-5 minutes to clinical response (usual range 5-200 mcg/min); hold / decrease for SBP &lt; 100 mmHg</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="continuous-monitor" data-phase-id="post-ntg-1">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Continuous cardiac monitoring, continuous SpO2, continuous waveform capnography; reassess full vital signs every 5 minutes and after each intervention</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reconfirm-no-pde5" data-phase-id="post-ntg-1">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Before each repeat NTG dose, briefly confirm the PDE5 inhibitor history has not changed (wife may recall after initial question)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-on-cpap-ntg-repeat">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">On CPAP with Repeat NTG - Significant Improvement</div>
+      <div class="phase-trigger">CPAP 10 cmH2O maintained with good mask seal AND NTG 0.4 mg SL repeated q 5 minutes per protocol</div>
+      <div class="phase-desc">With CPAP at 10 cmH2O and repeat nitroglycerin dosing every 5 minutes, the patient demonstrates significant clinical improvement. Work of breathing is noticeably reduced, rales are fewer and lower in the lung fields, and oxygenation has normalized. Blood pressure has come down into a more acceptable range. This is the expected 'responder' trajectory for cardiogenic pulmonary edema treated appropriately.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent, mask seal maintained. No secretions in upper airway.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Markedly less labored. RR 22, accessory muscle use minimal. Rales now only at bases bilaterally. Pink sputum has resolved. Speaking in full sentences under the mask.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pulses strong and irregularly irregular. Skin warming and drying. JVD decreased (~6 cm). Edema unchanged (slow to resolve).</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">100</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">148/86</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">22</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">94</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">142</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Rhythm</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pink</span><span class="skin-chip">warming</span><span class="skin-chip">drying</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Moves all extremities on command; grip symmetric.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'Oh man - I can actually breathe. Thank you.'  Full sentences."</div></div>
+      <ul class="findings-notes"><li>Patient tolerating CPAP mask well after initial coaching</li><li>Markedly less anxious</li><li>Able to participate in conversation</li><li>Rales lower in lung fields and less coarse</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="maintain-cpap-seal" data-phase-id="on-cpap-ntg-repeat">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Maintain continuous CPAP mask seal at 10 cmH2O; do NOT remove mask to reassess lung sounds or to let the patient speak - auscultate over the mask</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reassess-full-vs" data-phase-id="on-cpap-ntg-repeat">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Reassess full vital signs (HR, BP, RR, SpO2, EtCO2, mental status, lung sounds) every 5 minutes and after each intervention</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="titrate-ntg" data-phase-id="on-cpap-ntg-repeat">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Continue Nitroglycerin 0.4 mg SL every 5 minutes as long as SBP remains &gt; 100 mmHg; hold if SBP drops below 100 mmHg or patient develops symptomatic hypotension</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="coaching" data-phase-id="on-cpap-ntg-repeat">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Provide continuous verbal coaching and reassurance to the patient - most patients tolerate CPAP better when talked through the sensation of exhaling against pressure</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="serial-12-lead" data-phase-id="on-cpap-ntg-repeat">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Repeat 12-lead ECG if there is any chest pain, diaphoresis worsening, or new rhythm change; transmit to receiving facility if STEMI identified</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="early-notify" data-phase-id="on-cpap-ntg-repeat">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Early notification to the receiving facility: acute pulmonary edema on CPAP with repeat NTG, improving, request CPAP ready at bedside</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-stable-for-transport">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Stable on CPAP - Transport Phase</div>
+      <div class="phase-trigger">Patient clinically stable on CPAP with resolving symptoms: RR &lt; 24, SpO2 &gt;= 94% on CPAP, normotensive, mentating well</div>
+      <div class="phase-desc">Patient is now well-compensated on CPAP with continuing NTG. He reports breathing is much easier. The crew must resist the urge to wean CPAP during transport; the mask stays on until hospital CPAP is at the bedside. Continue close monitoring, maintain IV access, and prepare for smooth handoff.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent, mask seal maintained.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Calm, unlabored under the CPAP mask. RR 18. Rales only at bases. No accessory muscle use.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pulses strong, irregular (chronic A-fib baseline). Skin warm, pink, dry. JVD minimal.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">92</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">138/80</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">18</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">96</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">38</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">142</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Rhythm</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pink</span><span class="skin-chip">warm</span><span class="skin-chip">dry</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Moves all extremities on command; grip symmetric and strong.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'Breathing is much easier. Thank you.' Full sentences, normal cadence."</div></div>
+      <ul class="findings-notes"><li>Tolerating CPAP without issue</li><li>Calm, engaged with crew</li><li>Edema persists but not progressing</li><li>Patient asks about his wife - able to converse with her through the mask</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="keep-cpap-on" data-phase-id="stable-for-transport">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Maintain CPAP at 10 cmH2O until transfer to hospital CPAP/BiPAP circuit at the ED bedside; do NOT discontinue during transport, moving, or handoff</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="hold-ntg-if-hypotensive" data-phase-id="stable-for-transport">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Hold Nitroglycerin 0.4 mg SL doses if SBP drops &lt; 100 mmHg; if symptomatic hypotension develops, give 250-500 mL IV normal saline bolus and reassess</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="ongoing-vs" data-phase-id="stable-for-transport">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Continue full vital signs (HR, BP, RR, SpO2, EtCO2) every 5 minutes during transport; document response to each intervention</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="smooth-handoff" data-phase-id="stable-for-transport">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">At ED bedside, give structured SBAR handoff; do not remove CPAP mask until hospital circuit is connected and positive pressure is re-established</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="no-weaning" data-phase-id="stable-for-transport">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Do NOT attempt to wean CPAP in the field regardless of how well the patient appears to be doing</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-branch-no-ntg-deterioration">
+  <div class="card phase-card branch-card">
+    <div class="card-content">
+      <div class="phase-title">Branch - CPAP Alone Without Preload Reduction - Deterioration</div>
+      <div class="phase-trigger">CPAP applied without NTG, OR NTG withheld &gt; 5 minutes despite SBP &gt;= 160 mmHg</div>
+      <div class="phase-desc">CPAP was applied but nitroglycerin was either never given or was withheld for more than 5 minutes despite SBP &gt;= 160 mmHg. Without preload reduction, continued fluid shift overwhelms alveolar recruitment from CPAP alone. The patient deteriorates: worsening hypoxia, climbing EtCO2, fatigue, and declining mental status progressing toward frank respiratory failure. Crew must now escalate airway management (RSI) and give NTG emergently.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent but at risk; patient is tiring and unable to maintain work of breathing indefinitely.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Initially severely tachypneic (RR ~36) then paradoxically slowing with fatigue (RR ~12 at end of phase). Rales now to the apices bilaterally. Pink frothy sputum increased and visible at the mask. Accessory muscle use extreme then waning as patient fatigues.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Tachycardic, irregular. Skin cool, very diaphoretic, becoming mottled. JVD prominent. Peripheral edema unchanged.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg">A</div><div class="avpu-seg sel-v">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">To speech</span><span class="gcs-score">3</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Confused</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Localizes pain</span><span class="gcs-score">5</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">12</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">130</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">184/108</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">12</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">78</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">55</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">142</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">mottled/cyanotic at lips and fingertips</span><span class="skin-chip">cool</span><span class="skin-chip">markedly diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm but slightly sluggish.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Localizes to pain; no longer follows complex commands.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"Unable to speak coherently; moans, garbled single words."</div></div>
+      <ul class="findings-notes"><li>Mental status has declined - confused, not following commands reliably</li><li>Rising EtCO2 with tachypnea is an indicator of impending respiratory failure (normal EtCO2 with tachypnea per protocol safety note #1)</li><li>Fatigue pattern - RR slowing is ominous, not reassuring</li><li>Pink frothy sputum has increased</li><li>Lips and nail beds cyanotic</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="recognize-failure" data-phase-id="branch-no-ntg-deterioration">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Recognize impending respiratory failure: declining mental status (GCS 12, Verbal), rising EtCO2 (55), falling SpO2 (78%) despite CPAP, RR dropping with fatigue</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="give-ntg-now" data-phase-id="branch-no-ntg-deterioration">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Nitroglycerin 0.8 mg SL (2 tablets or 2 metered sprays) immediately for SBP &gt;= 160 mmHg; repeat 0.4 mg SL every 5 minutes while SBP &gt; 100 mmHg</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="consider-ntg-iv-emergent" data-phase-id="branch-no-ntg-deterioration">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">If available, initiate IV Nitroglycerin infusion 10-20 mcg/min starting dose, titrate up by 5-10 mcg/min every 3-5 minutes to clinical response (range 5-200 mcg/min), hold for SBP &lt; 100 mmHg</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="prepare-rsi" data-phase-id="branch-no-ntg-deterioration">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Prepare for Rapid Sequence Intubation: two experienced airway clinicians, preoxygenate via BVM with PEEP 5 cmH2O and apneic oxygenation via NC at 15 L/min, size 8.0 ETT, bougie, video laryngoscopy if available, backup SGA</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="rsi-premedication" data-phase-id="branch-no-ntg-deterioration">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Consider pre-medication with Fentanyl 1 mcg/kg (95 mcg for this 95 kg patient) IV push 2-3 minutes prior to intubation attempt</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="rsi-induction" data-phase-id="branch-no-ntg-deterioration">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer induction sedative: Ketamine 1-2 mg/kg (95-190 mg for 95 kg patient) IV push OR Etomidate 0.2-0.3 mg/kg (19-28.5 mg for 95 kg patient) IV push</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="rsi-paralytic" data-phase-id="branch-no-ntg-deterioration">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer paralytic: Rocuronium 1 mg/kg (95 mg for 95 kg patient) IV push OR Succinylcholine 1-2 mg/kg (95-190 mg for 95 kg patient) IV push</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="post-intubation-sedation" data-phase-id="branch-no-ntg-deterioration">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Post-intubation, maintain sedation with Fentanyl 1-2 mcg/kg (95-190 mcg for 95 kg patient) IV AND Midazolam 0.02 mg/kg (~2 mg for 95 kg patient) IV, or Ketamine 0.5-1 mg/kg (47.5-95 mg for 95 kg patient) IV; titrate to RASS target</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="confirm-ett" data-phase-id="branch-no-ntg-deterioration">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Confirm endotracheal tube placement with continuous waveform capnography (most reliable), bilateral breath sounds, and absent gastric sounds; secure tube; document depth at incisors</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="still-no-lasix" data-phase-id="branch-no-ntg-deterioration">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Even in this deterioration scenario, do NOT administer prehospital furosemide - the fluid-distribution physiology has not changed</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-debrief">
+  
+  <div class="card accordion" onclick="this.classList.toggle('open')">
+    <div class="card-title">Learning Objectives</div>
+    <div class="accordion-body"><ul class="findings-notes"><li>Identify the clinical features that distinguish acute cardiogenic pulmonary edema from COPD exacerbation, pneumonia, and asthma</li><li>Describe the pathophysiology of acute pulmonary edema - elevated LV filling pressures cause fluid to move into the alveoli; it is a distribution problem, not total-body fluid overload</li><li>Apply the Respiratory Distress protocol nitroglycerin dose-scaling rule: 0.4 mg SL for SBP &lt; 160 mmHg and 0.8 mg SL for SBP &gt;= 160 mmHg or MAP &gt; 120</li><li>Verbalize the absolute contraindication to nitrates within 48 hours of phosphodiesterase-5 inhibitors (sildenafil, tadalafil, vardenafil) and with IV epoprostenol or treprostinil</li><li>Explain why CPAP works in APE - it is not just oxygenation; positive pressure decreases venous return / preload, redistributes lung water, and recruits partially collapsed alveoli</li><li>Explain why prehospital furosemide is contraindicated per protocol Note #6 - APE is a distribution problem, and inappropriate diuresis can cause harm, especially in mimicking conditions like pneumonia or sepsis</li><li>Describe the critical rule of CPAP continuity - do NOT break the mask seal until the hospital circuit is ready at the bedside</li><li>Recognize impending respiratory failure patterns - rising EtCO2 with tachypnea, declining mental status, fatigue with slowing RR - and escalate to RSI</li></ul></div>
+  </div>
+  <div id="debrief-actions" style="display:flex;flex-direction:column;gap:12px"></div>
+</div>
+</div>
+<script>
+
+var phaseActionData = [{"phaseId":"initial","phaseName":"Initial Presentation - Severe Acute Pulmonary Edema","actions":[{"id":"scene-bsi","action":"Perform scene size-up and BSI; confirm scene safety; note bedroom environment and number of rescuers required for extrication","priority":"critical","rationale":"Universal first step.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"primary-survey","action":"Complete primary survey (airway, breathing, circulation, disability, exposure); recognize severe respiratory distress with fluid-overload signs (JVD, rales, pink frothy sputum, peripheral edema)","priority":"critical","rationale":"Early identification of CHF/APE physiology rather than bronchospasm directs therapy toward NTG + CPAP instead of bronchodilators.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"position-upright","action":"Maintain the patient in a full upright seated position (Fowler's / legs dependent) - do NOT lay supine","priority":"critical","rationale":"Upright positioning reduces venous return to the thorax and improves lung mechanics in pulmonary edema.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"o2-nrb","action":"Apply oxygen via non-rebreather mask at 15 L/min, titrated to target SpO2 94-98%","priority":"critical","rationale":"Hypoxia (SpO2 84%) requires immediate supplemental oxygen; NRB bridges to CPAP.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"capnography","action":"Place continuous waveform capnography (nasal cannula sampling line under NRB); document baseline EtCO2 and waveform shape","priority":"important","rationale":"EtCO2 ~30 with tachypnea suggests respiratory compensation; in APE the waveform is typically normal (not shark-fin), helping differentiate from bronchospasm.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"cardiac-monitor","action":"Apply 4-lead cardiac monitor; note sinus tachycardia at 115","priority":"critical","rationale":"Continuous rhythm monitoring required for any suspected cardiac cause of respiratory distress.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"12-lead","action":"Acquire a 12-lead ECG within 10 minutes of contact; screen for STEMI/ischemia as ACS is a common precipitant of acute pulmonary edema","priority":"critical","rationale":"Acute coronary syndrome can precipitate APE; a STEMI changes destination and medication decisions.","protocolReference":"MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"},{"id":"iv-access","action":"Establish two large-bore IV lines (18 gauge preferred); draw blood samples per local protocol","priority":"important","rationale":"IV access is required for potential NTG infusion, vasopressors if BP drops, or RSI medications if deterioration.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"pde5-screen","action":"Explicitly screen patient and wife for phosphodiesterase inhibitor use (sildenafil / Viagra, tadalafil / Cialis, vardenafil / Levitra) within the past 48 hours, and for IV epoprostenol or treprostinil for pulmonary hypertension, BEFORE administering nitroglycerin","priority":"critical","rationale":"Nitrates are contraindicated within 48 hours of PDE5 inhibitors due to risk of profound refractory hypotension. This screen is a non-negotiable safety check before NTG.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"focused-hx","action":"Obtain focused SAMPLE history; confirm CHF with EF 30%, dietary indiscretion, 8 lb weight gain in 4 days, 3 nights of orthopnea, no chest pain","priority":"important","rationale":"History confirms fluid-overload APE rather than bronchospasm or pneumonia.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"withhold-lasix","action":"Do NOT administer furosemide (Lasix) in the prehospital setting; verbalize that APE is a fluid-distribution problem rather than total-body volume overload and that prehospital diuretics can cause harm","priority":"critical","rationale":"Protocol Note #6 explicitly states that prehospital diuretics provide no immediate benefit and can cause significant harm, including inducing inappropriate diuresis in conditions like pneumonia or sepsis that mimic APE.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"prepare-cpap-ntg","action":"Prepare CPAP device (10 cmH2O, full face mask) and nitroglycerin (0.4 mg tablets or metered spray) for immediate use","priority":"important","rationale":"Early equipment preparation minimizes time to therapy.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"}]},{"phaseId":"post-ntg-1","phaseName":"Post First NTG Dose - Partial Response","actions":[{"id":"reassess-bp-pre-cpap","action":"Reassess blood pressure, mental status, and work of breathing; SBP remains > 100 mmHg so NTG may be continued","priority":"critical","rationale":"Blood pressure must be checked before each NTG repeat dose per protocol.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"apply-cpap","action":"Apply CPAP via full face mask at 10 cmH2O with supplemental O2 to maintain SpO2 94-98%; coach the patient through first 60 seconds and maintain mask seal","priority":"critical","rationale":"CPAP decreases preload and improves oxygenation and ventilation; recruitment of partially collapsed alveoli is the mechanism. Coaching is essential for tolerance.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"ntg-repeat","action":"Administer Nitroglycerin 0.4 mg SL (1 tablet or 1 metered spray) every 5 minutes as long as SBP > 100 mmHg; reassess BP before each dose","priority":"critical","rationale":"Repeat NTG dosing continues preload reduction and, at higher cumulative doses, adds afterload reduction for continued improvement.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"consider-ntg-infusion","action":"If available and within scope, consider initiating IV Nitroglycerin infusion starting at 5 mcg/min IV, titrated up by 5 mcg/min every 3-5 minutes to clinical response (usual range 5-200 mcg/min); hold / decrease for SBP < 100 mmHg","priority":"supplemental","rationale":"Continuous IV NTG provides smoother preload/afterload reduction than intermittent SL dosing.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"continuous-monitor","action":"Continuous cardiac monitoring, continuous SpO2, continuous waveform capnography; reassess full vital signs every 5 minutes and after each intervention","priority":"important","rationale":"Close reassessment is required whenever nitrates are being titrated.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"reconfirm-no-pde5","action":"Before each repeat NTG dose, briefly confirm the PDE5 inhibitor history has not changed (wife may recall after initial question)","priority":"important","rationale":"New information from family is common; safety check is low-cost, high-value.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"}]},{"phaseId":"on-cpap-ntg-repeat","phaseName":"On CPAP with Repeat NTG - Significant Improvement","actions":[{"id":"maintain-cpap-seal","action":"Maintain continuous CPAP mask seal at 10 cmH2O; do NOT remove mask to reassess lung sounds or to let the patient speak - auscultate over the mask","priority":"critical","rationale":"Breaking the seal causes abrupt loss of PEEP and rapid alveolar collapse. Protocol explicitly warns against mid-transport discontinuation.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"reassess-full-vs","action":"Reassess full vital signs (HR, BP, RR, SpO2, EtCO2, mental status, lung sounds) every 5 minutes and after each intervention","priority":"critical","rationale":"Documentation and response to therapy is a key performance measure.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"titrate-ntg","action":"Continue Nitroglycerin 0.4 mg SL every 5 minutes as long as SBP remains > 100 mmHg; hold if SBP drops below 100 mmHg or patient develops symptomatic hypotension","priority":"critical","rationale":"Clinical improvement is driven by ongoing preload reduction; premature discontinuation risks rebound pulmonary edema.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"coaching","action":"Provide continuous verbal coaching and reassurance to the patient - most patients tolerate CPAP better when talked through the sensation of exhaling against pressure","priority":"important","rationale":"Anxiety on NIV should be managed with coaching, not routine sedation.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"serial-12-lead","action":"Repeat 12-lead ECG if there is any chest pain, diaphoresis worsening, or new rhythm change; transmit to receiving facility if STEMI identified","priority":"important","rationale":"Serial 12-leads catch evolving ischemia that may have precipitated the APE.","protocolReference":"MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"},{"id":"early-notify","action":"Early notification to the receiving facility: acute pulmonary edema on CPAP with repeat NTG, improving, request CPAP ready at bedside","priority":"important","rationale":"Hospital must have CPAP ready so the field circuit can be switched over without breaking the mask seal.","protocolReference":"MATC: Airway Management (Includes RSI)"}]},{"phaseId":"stable-for-transport","phaseName":"Stable on CPAP - Transport Phase","actions":[{"id":"keep-cpap-on","action":"Maintain CPAP at 10 cmH2O until transfer to hospital CPAP/BiPAP circuit at the ED bedside; do NOT discontinue during transport, moving, or handoff","priority":"critical","rationale":"Protocol explicitly warns that breaking the mask seal causes abrupt decompensation from atelectasis and alveolar collapse.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"hold-ntg-if-hypotensive","action":"Hold Nitroglycerin 0.4 mg SL doses if SBP drops < 100 mmHg; if symptomatic hypotension develops, give 250-500 mL IV normal saline bolus and reassess","priority":"critical","rationale":"Cumulative NTG can produce hypotension; protocol allows small IV fluid boluses in the setting of SBP < 100 with APE.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"ongoing-vs","action":"Continue full vital signs (HR, BP, RR, SpO2, EtCO2) every 5 minutes during transport; document response to each intervention","priority":"important","rationale":"Documentation of blood pressure reassessment during nitrate therapy is a performance measure.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"smooth-handoff","action":"At ED bedside, give structured SBAR handoff; do not remove CPAP mask until hospital circuit is connected and positive pressure is re-established","priority":"critical","rationale":"Seamless transition of positive-pressure therapy prevents decompensation during the handoff window.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"no-weaning","action":"Do NOT attempt to wean CPAP in the field regardless of how well the patient appears to be doing","priority":"critical","rationale":"Field weaning frequently results in rebound pulmonary edema before hospital arrival.","protocolReference":"MATC: Airway Management (Includes RSI)"}]},{"phaseId":"branch-no-ntg-deterioration","phaseName":"Branch - CPAP Alone Without Preload Reduction - Deterioration","actions":[{"id":"recognize-failure","action":"Recognize impending respiratory failure: declining mental status (GCS 12, Verbal), rising EtCO2 (55), falling SpO2 (78%) despite CPAP, RR dropping with fatigue","priority":"critical","rationale":"Classic pattern of impending respiratory failure in APE - patient can no longer sustain the work of breathing.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"give-ntg-now","action":"Administer Nitroglycerin 0.8 mg SL (2 tablets or 2 metered sprays) immediately for SBP >= 160 mmHg; repeat 0.4 mg SL every 5 minutes while SBP > 100 mmHg","priority":"critical","rationale":"Preload reduction is the therapy that unloads the failing left ventricle; withholding it was the error that led to deterioration.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"consider-ntg-iv-emergent","action":"If available, initiate IV Nitroglycerin infusion 10-20 mcg/min starting dose, titrate up by 5-10 mcg/min every 3-5 minutes to clinical response (range 5-200 mcg/min), hold for SBP < 100 mmHg","priority":"important","rationale":"Infusion provides continuous afterload and preload reduction that SL dosing cannot match in a crashing patient.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"prepare-rsi","action":"Prepare for Rapid Sequence Intubation: two experienced airway clinicians, preoxygenate via BVM with PEEP 5 cmH2O and apneic oxygenation via NC at 15 L/min, size 8.0 ETT, bougie, video laryngoscopy if available, backup SGA","priority":"critical","rationale":"When NIV fails and respiratory failure is imminent, escalation to intubation is indicated per Airway Management Guideline.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"rsi-premedication","action":"Consider pre-medication with Fentanyl 1 mcg/kg (95 mcg for this 95 kg patient) IV push 2-3 minutes prior to intubation attempt","priority":"important","rationale":"Blunts sympathetic response to laryngoscopy; optional but often helpful.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"rsi-induction","action":"Administer induction sedative: Ketamine 1-2 mg/kg (95-190 mg for 95 kg patient) IV push OR Etomidate 0.2-0.3 mg/kg (19-28.5 mg for 95 kg patient) IV push","priority":"critical","rationale":"Induction sedation is required component of RSI.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"rsi-paralytic","action":"Administer paralytic: Rocuronium 1 mg/kg (95 mg for 95 kg patient) IV push OR Succinylcholine 1-2 mg/kg (95-190 mg for 95 kg patient) IV push","priority":"critical","rationale":"Paralysis completes the RSI sequence; rocuronium preferred in patients with questionable hyperkalemia or renal issues.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"post-intubation-sedation","action":"Post-intubation, maintain sedation with Fentanyl 1-2 mcg/kg (95-190 mcg for 95 kg patient) IV AND Midazolam 0.02 mg/kg (~2 mg for 95 kg patient) IV, or Ketamine 0.5-1 mg/kg (47.5-95 mg for 95 kg patient) IV; titrate to RASS target","priority":"critical","rationale":"Intubated patients must not be left awake and paralyzed; continuous sedation is mandatory.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"confirm-ett","action":"Confirm endotracheal tube placement with continuous waveform capnography (most reliable), bilateral breath sounds, and absent gastric sounds; secure tube; document depth at incisors","priority":"critical","rationale":"Waveform capnography is the gold standard for airway confirmation.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"still-no-lasix","action":"Even in this deterioration scenario, do NOT administer prehospital furosemide - the fluid-distribution physiology has not changed","priority":"critical","rationale":"Crew sometimes reach for Lasix when patient worsens; the protocol still prohibits it prehospital.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"}]}];
+var firstPhaseId = "initial";
+
+function showPanel(tab, panelId) {
+  document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  var panel = document.getElementById('panel-' + panelId);
+  if (panel) panel.classList.add('active');
+  if (panelId === 'debrief') buildDebriefActions();
+}
+
+function buildDebriefActions() {
+  var container = document.getElementById('debrief-actions');
+  if (!container) return;
+  container.innerHTML = '';
+  phaseActionData.forEach(function(phase) {
+    var isFirst = phase.phaseId === firstPhaseId;
+    var checkboxes = phase.actions.map(function(a) {
+      return document.querySelector('[data-action-id="' + a.id + '"][data-phase-id="' + phase.phaseId + '"]');
+    });
+    var anyChecked = checkboxes.some(function(cb) { return cb && cb.checked; });
+    if (!isFirst && !anyChecked) return;
+    var doneActions = [], missedActions = [];
+    phase.actions.forEach(function(a, i) {
+      var cb = checkboxes[i];
+      if (cb && cb.checked) doneActions.push(a); else missedActions.push(a);
+    });
+    var total = phase.actions.length, doneCount = doneActions.length;
+    var card = document.createElement('div');
+    card.className = 'card debrief-phase-card';
+    var header = document.createElement('div');
+    header.className = 'debrief-phase-header';
+    var hLeft = document.createElement('div');
+    hLeft.className = 'debrief-phase-name';
+    hLeft.textContent = phase.phaseName;
+    var hRight = document.createElement('div');
+    hRight.className = 'debrief-phase-score';
+    if (doneCount === total) hRight.classList.add('score-perfect');
+    else if (doneCount === 0) hRight.classList.add('score-none');
+    hRight.textContent = doneCount + '/' + total;
+    header.appendChild(hLeft); header.appendChild(hRight);
+    card.appendChild(header);
+    var body = document.createElement('div');
+    body.className = 'debrief-phase-body';
+    if (doneActions.length) {
+      var doneSection = document.createElement('div');
+      doneSection.className = 'debrief-done-section';
+      doneActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-done-row';
+        row.innerHTML = '<span class="debrief-done-icon">\u2713</span><span class="debrief-done-text">' + a.action + '</span>';
+        doneSection.appendChild(row);
+      });
+      body.appendChild(doneSection);
+    }
+    if (missedActions.length) {
+      var missLabel = document.createElement('div');
+      missLabel.className = 'debrief-missed-label';
+      missLabel.textContent = 'MISSED';
+      body.appendChild(missLabel);
+      missedActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-missed-row';
+        var top = document.createElement('div');
+        top.className = 'debrief-missed-top';
+        var badge = document.createElement('span');
+        badge.className = 'action-priority priority-' + a.priority;
+        badge.textContent = a.priority.toUpperCase();
+        var text = document.createElement('span');
+        text.className = 'debrief-missed-text';
+        text.textContent = a.action;
+        top.appendChild(badge); top.appendChild(text);
+        row.appendChild(top);
+        if (a.rationale || a.protocolReference) {
+          var detail = document.createElement('div');
+          detail.className = 'debrief-missed-detail';
+          if (a.rationale) { var reason = document.createElement('div'); reason.className = 'debrief-missed-rationale'; reason.textContent = a.rationale; detail.appendChild(reason); }
+          if (a.protocolReference) { var proto = document.createElement('div'); proto.className = 'debrief-missed-protocol'; proto.textContent = 'Protocol: ' + a.protocolReference; detail.appendChild(proto); }
+          row.appendChild(detail);
+        }
+        body.appendChild(row);
+      });
+    }
+    card.appendChild(body); container.appendChild(card);
+  });
+}
+
+// Timer
+var timerEl = document.getElementById('scenario-timer');
+var timerTotal = timerEl ? parseInt(timerEl.getAttribute('data-total')) : 0;
+var timerRemaining = timerTotal;
+var timerInterval = null;
+function timerFormat(s) { var m = Math.floor(s/60); var sec = s%60; return m+':'+(sec<10?'0':'')+sec; }
+function timerUpdate() {
+  var d = document.getElementById('timer-display'); if(!d) return;
+  d.textContent = timerFormat(timerRemaining);
+  d.classList.remove('timer-warn','timer-danger');
+  if(timerRemaining<=60) d.classList.add('timer-danger');
+  else if(timerRemaining<=timerTotal*0.25) d.classList.add('timer-warn');
+}
+function timerStart() {
+  document.getElementById('timer-start').style.display='none';
+  document.getElementById('timer-pause').style.display='';
+  document.getElementById('timer-stop').style.display='';
+  document.getElementById('timer-reset').style.display='none';
+  timerInterval=setInterval(function(){timerRemaining--;timerUpdate();if(timerRemaining<=0){timerRemaining=0;timerStop();}},1000);
+}
+function timerPause() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-pause').style.display='none';document.getElementById('timer-start').style.display=''; }
+function timerStop() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-start').style.display='none';document.getElementById('timer-pause').style.display='none';document.getElementById('timer-stop').style.display='none';document.getElementById('timer-reset').style.display=''; }
+function timerReset() { timerRemaining=timerTotal;timerUpdate();document.getElementById('timer-reset').style.display='none';document.getElementById('timer-start').style.display=''; }
+function scenarioRestart() { if(confirm('Restart scenario? This clears all checkboxes and resets the timer.'))location.reload(); }
+
+</script>
+</body>
+</html>

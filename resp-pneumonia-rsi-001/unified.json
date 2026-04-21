@@ -1,0 +1,728 @@
+{
+  "meta": {
+    "id": "resp-pneumonia-rsi-001",
+    "name": "Geriatric Pneumonia — Septic with Airway Compromise",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Respiratory",
+    "protocols": [
+      "resp-respiratory-distress",
+      "resp-airway-management",
+      "medical-shock"
+    ],
+    "totalTimeSeconds": 2100,
+    "createdAt": "2026-04-21T00:00:00Z",
+    "tags": ["respiratory", "sepsis", "pneumonia", "RSI", "CPAP", "geriatric", "MATC 915"]
+  },
+  "patient": {
+    "name": "Eleanor Whitfield",
+    "age": 78,
+    "ageUnit": "years",
+    "sex": "female",
+    "weight": 62,
+    "height": 160,
+    "chiefComplaint": "Weakness and difficulty breathing",
+    "history": {
+      "hpi": "Three days of progressive productive cough with yellow-green sputum, subjective fevers, worsening fatigue, and poor PO intake. Family/staff report she has been increasingly withdrawn, sleeping more than usual, and has not completed meals for 48 hours. This morning staff found her lethargic in bed with labored, rapid breathing and called EMS. She typically uses 2 L/min home oxygen via nasal cannula at night for comfort but is not prescribed continuous O2.",
+      "pastMedical": [
+        "Congestive heart failure (HFrEF, EF 35%)",
+        "Type 2 Diabetes Mellitus",
+        "Hypertension",
+        "Former smoker (quit 15 years ago, 40 pack-year history)",
+        "Mild chronic kidney disease (Stage 2)"
+      ],
+      "medications": [
+        "Furosemide 40 mg PO daily",
+        "Metoprolol succinate 50 mg PO daily",
+        "Lisinopril 10 mg PO daily",
+        "Metformin 500 mg PO BID",
+        "Atorvastatin 40 mg PO nightly",
+        "Aspirin 81 mg PO daily"
+      ],
+      "allergies": ["NKDA"],
+      "lastOralIntake": "Half-eaten breakfast at 0730 today (toast, a few bites of eggs, sips of coffee) — has eaten poorly for 2-3 days.",
+      "events": "Assisted living staff performed routine afternoon check at approximately 1400 and found the patient in bed, drowsy but rousable, with labored breathing and diaphoresis. Staff state she was alert and oriented yesterday afternoon. 911 was called for 'weakness and trouble breathing.'"
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 14, respond priority 1 to 4820 Sunset Lane, Sunset Grove Assisted Living, Apartment 12B, for a 78-year-old female, weakness and trouble breathing. Staff on scene.",
+    "location": "Second-floor one-bedroom apartment in an assisted living facility. Patient is supine in a twin bed with the head raised approximately 20 degrees. Bedside table has a half-eaten breakfast plate, a glass of water, a tissue with yellow-green sputum, a weekly pill organizer with today's slots unfilled, and a small home nasal-cannula oxygen concentrator (OFF, tubing draped over the headboard but not on the patient).",
+    "time": "Weekday, approximately 1410 hours.",
+    "safety": "Scene safe. Staff cooperative. Narrow hallway and stairwell may complicate stair-chair/stretcher egress — plan route early. Adequate lighting.",
+    "bystanders": "Facility nursing aide (the staff member who found her) and the on-duty LPN are present. LPN has the patient's medication list, code status (FULL CODE), and emergency contact for daughter (POA). LPN reports patient was at baseline yesterday, has been coughing more over the past 3 days, and did not take her morning medications today because she 'wouldn't wake up enough to swallow.'",
+    "visualCues": [
+      "Patient in bed, diaphoretic with flushed, warm face",
+      "Accessory muscle use, audible congested breathing from doorway",
+      "Yellow-green purulent sputum visible on tissue at bedside",
+      "Home oxygen concentrator present but OFF, nasal cannula tubing draped over headboard (not being used)",
+      "Pill organizer with today's morning slot still full (medications not taken)",
+      "Half-eaten breakfast and nearly-full water glass on bedside table",
+      "Walker at bedside (baseline mobility aid)",
+      "Framed photos of family on dresser — appears to live alone"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Initial Presentation — Septic Pneumonia with Respiratory Failure",
+      "description": "Moderate-to-severe respiratory distress with signs of early septic shock. Patient is drowsy but rousable to voice, febrile, tachypneic, hypoxic, with focal crackles/rhonchi RLL greater than LLL and hypotension concerning for sepsis. Classic SIRS + hypotension + infectious source = septic shock.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": { "eye": 3, "verbal": 4, "motor": 6 },
+        "airway": "Patent, self-maintained. No stridor. Small amount of thin clear secretions at lips; requires occasional suctioning. No vomitus.",
+        "breathing": "Rapid, labored breathing at ~32/min. Accessory muscle use with intercostal retractions. Coarse rhonchi with crackles RLL > LLL; diminished air movement at bases. No wheezing. Productive cough with thick yellow-green sputum.",
+        "circulation": "Radial pulse rapid and weak, regular. Capillary refill ~3 seconds at fingertips. Peripheral pulses present but thready.",
+        "skin": { "color": "Flushed (face and chest); pale/mottled extremities", "temperature": "Warm centrally, cool peripherally", "moisture": "Diaphoretic" },
+        "pupils": "PERRL 3 mm bilaterally, sluggish",
+        "motorFunction": "Moves all 4 extremities to voice/stimulation. Withdraws purposefully. Mild generalized weakness.",
+        "otherFindings": [
+          "Dry mucous membranes, poor skin turgor (volume depleted)",
+          "No JVD. No peripheral edema. Abdomen soft, non-tender.",
+          "Speech slurred, short 2-3 word phrases before catching breath",
+          "Oriented to self only; knows she 'feels awful' but cannot state date or location confidently"
+        ],
+        "patientSpeech": "(Drowsy, eyes half-open) 'Can't... catch... my breath... so tired...'"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 96,
+        "bpDia": 58,
+        "respRate": 32,
+        "spo2": 86,
+        "etco2": 30,
+        "temp": 39.2,
+        "obstruction": 0,
+        "glucose": 172,
+        "trendTimeSeconds": 0,
+        "visibility": { "spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false }
+      },
+      "expectedActions": [
+        {
+          "id": "scene-bsi",
+          "action": "Perform scene size-up and don appropriate BSI/PPE (gloves, eye protection, N95 given productive cough and undifferentiated febrile illness).",
+          "priority": "critical",
+          "rationale": "Infectious respiratory source with productive sputum — airborne/droplet precautions protect crew and other patients.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "primary-survey",
+          "action": "Complete primary survey (ABC + disability). Identify respiratory failure in evolution (SpO2 86%, RR 32, AMS) and hypoperfusion (BP 96/58, flushed centrally, cool peripherally).",
+          "priority": "critical",
+          "rationale": "Rapid recognition of the 'sick' patient; establishes parallel airway and shock pathways early.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "position-upright",
+          "action": "Position patient upright (head of bed/stretcher 30-45 degrees) to optimize respiratory mechanics and limit aspiration risk.",
+          "priority": "critical",
+          "rationale": "Upright positioning improves V/Q matching, reduces work of breathing, and reduces aspiration risk in drowsy patient.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "o2-nrb",
+          "action": "Apply Oxygen 15 L/min via non-rebreather mask with reservoir (target SpO2 94-98%).",
+          "priority": "critical",
+          "rationale": "Severe hypoxia (SpO2 86%); escalate from nasal cannula directly to NRB given severity.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "monitor-capno",
+          "action": "Apply cardiac monitor, continuous pulse oximetry, and waveform capnography.",
+          "priority": "critical",
+          "rationale": "EtCO2 of 30 with RR 32 represents compensatory hyperventilation for metabolic acidosis (sepsis); capnography trend is the earliest indicator of impending respiratory failure.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "twelve-lead",
+          "action": "Obtain 12-lead EKG to evaluate for ischemia, dysrhythmia, or S1Q3T3 pattern.",
+          "priority": "important",
+          "rationale": "Elderly female with dyspnea — rule out ACS, PE, CHF contributors. Document baseline sinus tach.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "iv-access",
+          "action": "Establish two large-bore IV lines (18-gauge) — if unable within 2 attempts or 90 seconds, place IO.",
+          "priority": "critical",
+          "rationale": "Anticipate fluid resuscitation, antibiotics, and RSI medications. Two access points mandatory for septic shock.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "check-glucose",
+          "action": "Check blood glucose (172 mg/dL — no correction needed).",
+          "priority": "important",
+          "rationale": "Rule out hypoglycemia as cause of AMS; required shock workup.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "temperature",
+          "action": "Measure core temperature (oral/temporal/tympanic).",
+          "priority": "critical",
+          "rationale": "Temp 39.2°C + HR >90 + RR >20 = meets SIRS criteria; combined with hypotension confirms septic shock.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "sepsis-recognition",
+          "action": "Verbally identify septic shock: SIRS criteria met (fever, HR >90, RR >20) PLUS hypotension (MAP ~70, SBP 96) PLUS suspected infectious source (pneumonia) = septic shock.",
+          "priority": "critical",
+          "rationale": "Recognition drives aggressive resuscitation, early antibiotics consideration, and hospital prenotification.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "focused-hx",
+          "action": "Obtain SAMPLE history from staff and review medication list, allergies (NKDA), code status (Full Code), and last known well.",
+          "priority": "important",
+          "rationale": "Establishes baseline mental status, identifies CHF as comorbidity (impacts fluid strategy), and confirms no advance directive restricting RSI.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "prenotify",
+          "action": "Provide early advance notification to receiving ED (sepsis/respiratory failure alert).",
+          "priority": "important",
+          "rationale": "Allows ED to prepare critical care bed, broad-spectrum antibiotics, and potential ICU admission.",
+          "protocolReference": "MATC: Shock"
+        }
+      ]
+    },
+    {
+      "id": "on-oxygen-fluids",
+      "name": "Oxygen + Initial Fluid Bolus — Mild Improvement",
+      "description": "After NRB oxygen and initiation of IV fluid bolus, the patient shows mild improvement in oxygenation and blood pressure. Still tachypneic and labored but temporarily stable. This is the window to reassess and plan next steps (CPAP vs BVM vs RSI).",
+      "triggerCondition": "O2 applied via NRB AND IV fluid bolus initiated (Normal Saline 500 mL rapid infusion started).",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": { "eye": 3, "verbal": 4, "motor": 6 },
+        "airway": "Patent, self-maintained. Mild pooling of oral secretions.",
+        "breathing": "Still tachypneic but slightly less labored. Rhonchi/crackles persist RLL > LLL. Speaking in short phrases now rather than word-at-a-time.",
+        "circulation": "Radial pulse stronger, still rapid. Capillary refill improving to ~2 seconds.",
+        "skin": { "color": "Less flushed, skin color improving", "temperature": "Warm centrally, peripheries warming", "moisture": "Still diaphoretic" },
+        "pupils": "PERRL 3 mm, reactive",
+        "motorFunction": "Moves all 4, purposeful withdrawal, follows simple commands ('squeeze my hand').",
+        "otherFindings": [
+          "Patient appears slightly more engaged, eyes open to voice",
+          "Fluid administration ongoing — first 500 mL bolus approximately 40-50% infused",
+          "Cough persists with productive sputum"
+        ],
+        "patientSpeech": "'That mask... is helping... a little...'"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 112,
+        "bpSys": 102,
+        "bpDia": 62,
+        "respRate": 30,
+        "spo2": 91,
+        "etco2": 32,
+        "temp": 39.1,
+        "obstruction": 0,
+        "glucose": 170,
+        "trendTimeSeconds": 25,
+        "visibility": { "spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false }
+      },
+      "expectedActions": [
+        {
+          "id": "fluid-bolus-1",
+          "action": "Administer Normal Saline (0.9% NaCl) 500 mL IV bolus via pressure infusion, reassess after infusion. Target MAP ≥65 mmHg; total goal up to 30 mL/kg (1860 mL for 62 kg patient) unless pulmonary edema develops.",
+          "priority": "critical",
+          "rationale": "Septic shock fluid resuscitation per MATC Shock. Bolus in 500 mL aliquots allows reassessment against risk of precipitating pulmonary edema in CHF patient.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "reassess-lungs",
+          "action": "Reassess lung sounds and work of breathing after each 500 mL bolus; watch for worsening rales, increasing dyspnea, or dropping SpO2 signaling fluid overload.",
+          "priority": "critical",
+          "rationale": "Patient has known HFrEF (EF 35%). Aggressive fluids can precipitate cardiogenic pulmonary edema; must balance septic resuscitation against CHF.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "reassess-vitals",
+          "action": "Reassess vitals q5 minutes (BP, HR, RR, SpO2, EtCO2, LOC). Document trend.",
+          "priority": "critical",
+          "rationale": "Trending vitals guides escalation decisions. EtCO2 rising with falling LOC is the key warning sign for respiratory failure.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "consider-abx",
+          "action": "Consider empiric antibiotics per regional protocol IF transport time is prolonged AND hospital coordination exists (e.g., Ceftriaxone 2 g IV over 30 minutes).",
+          "priority": "supplemental",
+          "rationale": "Early antibiotics improve sepsis survival; only if regional EMS program supports prehospital antibiotic administration.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "prep-niv-rsi",
+          "action": "Prepare RSI equipment (BVM with PEEP valve, ETT 7.5 with stylet, 7.0 backup, functioning suction with Yankauer, video laryngoscope, bougie, end-tidal CO2 detector, syringes and labeled induction/paralytic/sedation medications) in anticipation of possible deterioration.",
+          "priority": "important",
+          "rationale": "Preparation during stable window dramatically improves first-pass success and reduces peri-intubation hypoxia. Plan B (SGA) must also be ready.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "cpap-trial-failing",
+          "condition": "Provider elects to trial CPAP despite borderline mental status.",
+          "conditionType": "action_taken"
+        },
+        {
+          "targetPhaseId": "branch-aspiration-arrest",
+          "condition": "Provider continues or initiates CPAP despite depressed LOC without removing it; patient vomits and aspirates.",
+          "conditionType": "action_not_taken"
+        }
+      ]
+    },
+    {
+      "id": "cpap-trial-failing",
+      "name": "CPAP Trial — Failing (Depressed LOC, Rising EtCO2)",
+      "description": "A CPAP trial is attempted but the patient tolerates it poorly. Her depressed mental status (a relative contraindication to CPAP) prevents effective mask seal and safe tolerance. Over 2-3 minutes, she becomes progressively drowsier, EtCO2 climbs (compensation is failing), and SpO2 is no better than on NRB. This is the recognition point: CPAP is NOT working and must be removed.",
+      "triggerCondition": "CPAP (5-10 cmH2O) applied due to ongoing respiratory distress.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": { "eye": 2, "verbal": 3, "motor": 5 },
+        "airway": "Patent but with increased oral secretions pooling. Patient fighting the CPAP mask intermittently, reducing seal. Gag reflex blunted.",
+        "breathing": "Tachypneic at 30/min but shallow. Mask seal inconsistent due to agitation and drowsiness. Crackles/rhonchi unchanged.",
+        "circulation": "HR 115, BP 100/60 (fluids holding).",
+        "skin": { "color": "Flushed centrally, pale extremities", "temperature": "Warm, febrile", "moisture": "Diaphoretic" },
+        "pupils": "PERRL 3 mm, sluggish",
+        "motorFunction": "Weakly localizes to painful stimulus. Not following commands consistently. Intermittently pulls at CPAP mask.",
+        "otherFindings": [
+          "CPAP mask fogging intermittently (poor seal)",
+          "Patient no longer verbally responsive to simple questions; moans to voice",
+          "EtCO2 waveform showing rising baseline — compensation is failing",
+          "Key teaching moment: depressed LOC is a relative contraindication to CPAP/BiPAP per MATC Airway Management protocol — 'If patient deteriorates on CPAP/BiPAP (worsened mental status, increasing EtCO2, vomiting), remove CPAP/BiPAP and escalate airway management.'"
+        ],
+        "patientSpeech": "Moans and mumbled, unintelligible sounds only."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 100,
+        "bpDia": 60,
+        "respRate": 30,
+        "spo2": 89,
+        "etco2": 45,
+        "temp": 39.1,
+        "obstruction": 0,
+        "glucose": 170,
+        "trendTimeSeconds": 40,
+        "visibility": { "spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false }
+      },
+      "expectedActions": [
+        {
+          "id": "recognize-cpap-failure",
+          "action": "Recognize CPAP failure: declining mental status (GCS 13 → 10), rising EtCO2 (32 → 45 mmHg), SpO2 not improving, poor mask tolerance.",
+          "priority": "critical",
+          "rationale": "Early recognition of CPAP failure prevents progression to aspiration and cardiac arrest. This is the teaching core of this scenario.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "remove-cpap",
+          "action": "Remove CPAP immediately upon recognizing deterioration (worsening LOC and rising EtCO2).",
+          "priority": "critical",
+          "rationale": "Per MATC Airway Management: 'If patient deteriorates on CPAP/BiPAP (e.g., worsened mental status, increasing EtCO2, vomiting), remove CPAP/BiPAP and escalate airway management options.' Continuing CPAP increases aspiration risk.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "suction-ready",
+          "action": "Have Yankauer suction on and immediately available at the head of the patient.",
+          "priority": "critical",
+          "rationale": "Depressed LOC + pooled secretions + risk of vomiting = high aspiration risk; suction must be ready at the airway before any further manipulation.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "plan-rsi",
+          "action": "Declare RSI plan out loud: two-person BVM with PEEP for preoxygenation → RSI with ketamine + rocuronium → ETT 7.5 → post-intubation sedation plan.",
+          "priority": "critical",
+          "rationale": "Closed-loop communication and a stated plan reduce peri-intubation errors and prepare the team for the next 10 minutes.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "bvm-preoxygenation",
+          "condition": "CPAP failure recognized; CPAP removed; preparing RSI with BVM preoxygenation.",
+          "conditionType": "action_taken"
+        },
+        {
+          "targetPhaseId": "branch-aspiration-arrest",
+          "condition": "CPAP left in place despite deteriorating LOC; patient vomits and aspirates.",
+          "conditionType": "action_not_taken"
+        }
+      ]
+    },
+    {
+      "id": "bvm-preoxygenation",
+      "name": "BVM Preoxygenation with PEEP — RSI Preparation",
+      "description": "CPAP removed. Two-person BVM ventilation with PEEP valve (5 cmH2O) applied for preoxygenation. OPA placed (gag reflex blunted). SpO2 rises to 93%. Team prepares, labels, and announces induction and paralytic medications. Apneic oxygenation with NC at 15 LPM under the BVM mask adds additional safety window.",
+      "triggerCondition": "CPAP failure recognized AND CPAP removed AND two-person BVM ventilation with PEEP valve 5 cmH2O initiated to preoxygenate for RSI.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": { "eye": 2, "verbal": 3, "motor": 5 },
+        "airway": "OPA in place (tolerated — gag reflex absent). Airway clear after suctioning. Two-person BVM with good mask seal, visible chest rise.",
+        "breathing": "BVM assisting at 10-12/min with tidal volume ~6-8 mL/kg IBW (~400 mL). PEEP valve set to 5 cmH2O. EtCO2 waveform present. Rhonchi still audible but BVM delivery good.",
+        "circulation": "HR 115, BP 98/60. Radial pulse present. Positive pressure ventilation risks further drop in BP — anticipate.",
+        "skin": { "color": "Pink centrally, pale extremities", "temperature": "Warm, febrile", "moisture": "Diaphoretic" },
+        "pupils": "PERRL 3 mm, sluggish",
+        "motorFunction": "Localizes only to pain; not moving spontaneously.",
+        "otherFindings": [
+          "Nasal cannula at 15 LPM under the BVM mask (apneic oxygenation)",
+          "RSI medications drawn up, labeled, and at bedside",
+          "Video laryngoscope powered on and ready; bougie and 7.5 ETT with 7.0 backup at hand",
+          "Suction on and in provider's dominant hand",
+          "Team verbalizes roles: Medic 1 = intubator; Medic 2 = drug push + monitor; EMT = cricoid/BURP if requested + timing"
+        ],
+        "patientSpeech": "None — obtunded."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 115,
+        "bpSys": 98,
+        "bpDia": 60,
+        "respRate": 12,
+        "spo2": 93,
+        "etco2": 40,
+        "temp": 39.0,
+        "obstruction": 0,
+        "glucose": 170,
+        "trendTimeSeconds": 20,
+        "visibility": { "spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false }
+      },
+      "expectedActions": [
+        {
+          "id": "two-person-bvm",
+          "action": "Perform two-person, two-thumbs-up BVM ventilation with OPA in place, PEEP valve at 5 cmH2O, rate 10-12 breaths/min, tidal volume just enough for visible chest rise (~6-8 mL/kg IBW, approximately 400 mL for this patient).",
+          "priority": "critical",
+          "rationale": "Two-person BVM improves mask seal and effective ventilation. PEEP recruits alveoli and improves preoxygenation prior to RSI.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "opa-placement",
+          "action": "Place oropharyngeal airway (OPA) — gag reflex is absent.",
+          "priority": "critical",
+          "rationale": "OPA improves BVM effectiveness in unresponsive patients without gag reflex; NPA would be chosen if gag reflex preserved.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "apneic-oxygenation",
+          "action": "Apply nasal cannula at 15 L/min under the BVM mask to provide apneic oxygenation during the intubation attempt.",
+          "priority": "important",
+          "rationale": "Apneic oxygenation extends the safe apnea time and reduces peri-intubation hypoxia.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "preoxygenate-2min",
+          "action": "Preoxygenate with BVM + PEEP for a minimum of 2 minutes; target SpO2 ≥94% before apneic attempt.",
+          "priority": "critical",
+          "rationale": "Denitrogenation/preoxygenation is the single most effective action to prevent peri-intubation hypoxia.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "premed-fentanyl",
+          "action": "Administer Fentanyl 1 mcg/kg (62 mcg, rounded to 60 mcg) slow IV push 2-3 minutes before intubation attempt as a pre-induction analgesic. (Concentration 50 mcg/mL; max single dose per protocol.)",
+          "priority": "important",
+          "rationale": "Pre-medication blunts sympathetic response to laryngoscopy; slow push because this patient is hypotensive-leaning.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "induction-ketamine",
+          "action": "Administer Ketamine 1.5 mg/kg (93 mg, round to 90-100 mg) IV push as induction agent. (Concentration 100 mg/mL; dilute if desired. Single dose for induction; repeat 0.5 mg/kg if additional sedation needed post-intubation.)",
+          "priority": "critical",
+          "rationale": "Ketamine preferred over etomidate in septic shock: preserves sympathetic tone, supports hemodynamics, and avoids etomidate-associated adrenal suppression (though protocol permits etomidate 0.2-0.3 mg/kg as an alternative).",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "paralytic-roc",
+          "action": "Administer Rocuronium 1 mg/kg (62 mg, round to 60 mg) IV push as paralytic agent. (Concentration 10 mg/mL; 6 mL.) Wait ~45-60 seconds for full paralysis before attempting intubation.",
+          "priority": "critical",
+          "rationale": "Rocuronium provides 30-60 minute paralysis — appropriate for transport. Succinylcholine 1-2 mg/kg is protocol-approved alternative but relatively contraindicated if hyperkalemia suspected in a septic/volume-depleted patient.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "setup-check",
+          "action": "Verify all backup plans: SGA appropriately sized and at bedside, cricothyrotomy kit accessible, capnography attached to ETT circuit, ETT cuff tested.",
+          "priority": "critical",
+          "rationale": "Plan-A-and-B thinking: if intubation fails twice, escalate to SGA or surgical airway per protocol.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "post-rsi",
+          "condition": "RSI performed successfully and ETT confirmed with waveform capnography.",
+          "conditionType": "action_taken"
+        }
+      ]
+    },
+    {
+      "id": "post-rsi",
+      "name": "Post-Intubation — Hypotension Watch & Sedation",
+      "description": "Successful first-pass intubation with 7.5 ETT at 22 cm at the teeth. Waveform capnography confirms placement with sustained square-wave morphology. Patient is paralyzed and sedated. Watch for the classic post-intubation 'HOP killers' — Hypotension (positive pressure decreases preload + residual sepsis), Hypoxia, and pH issues (over/under ventilation). Mild post-intubation hypotension evident — anticipate with fluids and/or norepinephrine.",
+      "triggerCondition": "RSI performed; ETT placed and confirmed with waveform capnography and bilateral breath sounds.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": { "eye": 1, "verbal": 1, "motor": 1 },
+        "airway": "7.5 ETT at 22 cm at teeth, cuff inflated to ~20 cmH2O, commercial tube holder in place. Waveform capnography with sustained square morphology. Bilateral breath sounds present post-intubation, equal. No gastric sounds.",
+        "breathing": "Manually ventilated via BVM at 10/min with PEEP 5 cmH2O, tidal volume ~400 mL (6-8 mL/kg IBW). Capnograph waveform normal morphology.",
+        "circulation": "HR 108, BP dropped modestly to 92/58 (expected post-intubation hypotension from positive pressure ventilation + residual sepsis). Distal pulses present, weak.",
+        "skin": { "color": "Pink centrally, pale extremities", "temperature": "Warm, febrile", "moisture": "Diaphoretic" },
+        "pupils": "PERRL 3 mm, sluggish (ketamine-dissociated)",
+        "motorFunction": "Flaccid (paralyzed).",
+        "otherFindings": [
+          "ETT depth documented — re-check at each patient movement",
+          "Post-intubation hypotension is the classic 'H' of the HOP killers — act before the number drops further",
+          "Consider orogastric decompression to improve ventilation and reduce aspiration risk",
+          "Secondary survey complete: no new findings"
+        ],
+        "patientSpeech": "None — paralyzed and sedated."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 92,
+        "bpDia": 58,
+        "respRate": 10,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 39.1,
+        "obstruction": 0,
+        "glucose": 168,
+        "trendTimeSeconds": 30,
+        "visibility": { "spo2Visible": true, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false }
+      },
+      "expectedActions": [
+        {
+          "id": "confirm-ett",
+          "action": "Confirm ETT placement with sustained square-wave waveform capnography (6+ waveforms), bilateral breath sounds, absent epigastric sounds. Document tube depth at teeth (22 cm for 7.5 ETT in adult female).",
+          "priority": "critical",
+          "rationale": "Waveform capnography is the gold standard for ETT confirmation. Must be re-checked after every patient movement.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "secure-tube",
+          "action": "Secure ETT with commercial tube holder; apply cervical collar to limit head movement during transport.",
+          "priority": "critical",
+          "rationale": "Tube displacement is a leading cause of peri-intubation adverse events.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "ventilation-goals",
+          "action": "Set ventilation goals: rate 10/min, tidal volume 6-8 mL/kg IBW (~400 mL), PEEP 5 cmH2O, titrate to EtCO2 35-40 mmHg. Continuous waveform capnography.",
+          "priority": "critical",
+          "rationale": "Avoid over-ventilation (decreases preload, worsens hypotension) and under-ventilation (worsens acidosis in sepsis).",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "treat-hypotension",
+          "action": "Manage post-intubation hypotension: Continue isotonic fluid boluses up to 30 mL/kg total (1860 mL for 62 kg patient). If BP remains <90 SBP or MAP <65 despite fluids, start Norepinephrine 0.05-0.5 mcg/kg/min IV infusion (start 0.05 mcg/kg/min = ~3 mcg/min for this patient), titrate to MAP ≥65 mmHg. Concentration commonly 4 mg in 250 mL D5W = 16 mcg/mL.",
+          "priority": "critical",
+          "rationale": "Post-intubation hypotension in the septic patient is expected — anticipate and treat. Norepinephrine is first-line pressor for distributive/septic shock per MATC Shock protocol.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "post-sedation",
+          "action": "Provide post-intubation sedation: Fentanyl 1-2 mcg/kg (62-124 mcg, round to 100 mcg) IV AND Midazolam 0.02 mg/kg (1.24 mg, round to 1 mg) IV. Alternative: Ketamine 0.5-1 mg/kg (31-62 mg) IV push for both analgesia and sedation — preferred in the hypotensive patient. Re-dose as needed.",
+          "priority": "critical",
+          "rationale": "Post-intubation patients MUST be sedated; anxiety/awareness during paralysis is harmful. Ketamine re-dosing is preferred if hemodynamically fragile.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "og-decompression",
+          "action": "Place orogastric tube for gastric decompression.",
+          "priority": "important",
+          "rationale": "Gastric decompression improves ventilation and reduces aspiration risk in intubated patients with positive pressure ventilation.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "transport",
+          "action": "Transport emergently to appropriate receiving facility with ICU capability. Provide advance notification of septic shock + intubated respiratory failure.",
+          "priority": "critical",
+          "rationale": "Definitive care (cultures, broad-spectrum antibiotics, source control, ICU) is in the hospital. Prenotification allows critical care bed assignment.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "reassess-en-route",
+          "action": "Reassess ETT placement, EtCO2 morphology, breath sounds, vitals, and pupils every 5 minutes and after every patient movement en route.",
+          "priority": "critical",
+          "rationale": "Continuous reassessment catches tube displacement, developing pneumothorax, or hemodynamic deterioration early.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        }
+      ]
+    },
+    {
+      "id": "branch-aspiration-arrest",
+      "name": "BRANCH — CPAP Continued Despite Depressed LOC → Aspiration → PEA Arrest",
+      "description": "CPAP was initiated or continued despite the patient's progressive depression of mental status. Under positive pressure with a blunted gag reflex, she vomited into the mask, aspirated large-volume gastric contents, and rapidly decompensated into PEA cardiac arrest. This is the consequence branch teaching the core lesson: depressed LOC is a contraindication to CPAP; missing this recognition kills patients.",
+      "triggerCondition": "CPAP continued or reapplied despite depressed LOC; patient vomits under the mask and aspirates.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": { "eye": 1, "verbal": 1, "motor": 1 },
+        "airway": "CRITICAL — large volume yellow-green emesis mixed with gastric contents in oropharynx, pooled around ETT insertion area. Airway obstructed. Gurgling. Requires immediate aggressive suctioning (SALAD technique).",
+        "breathing": "No spontaneous respirations. Chest rise absent.",
+        "circulation": "No palpable pulses. No spontaneous circulation. CPR in progress.",
+        "skin": { "color": "Cyanotic centrally and peripherally, mottled", "temperature": "Cool, clammy", "moisture": "Diaphoretic" },
+        "pupils": "Fixed, dilated, non-reactive",
+        "motorFunction": "Flaccid. No response.",
+        "otherFindings": [
+          "Monitor shows organized electrical activity (PEA) without pulse",
+          "EtCO2 waveform severely diminished, ~10 mmHg during CPR (poor perfusion, confirmed arrest)",
+          "Large-volume aspiration will require aggressive suctioning before any airway attempt",
+          "This is the teaching moment: the preventable death. Debrief — what were the warning signs?"
+        ],
+        "patientSpeech": "None."
+      },
+      "monitorState": {
+        "ecgRhythm": "Pulseless Electrical Activity (PEA)",
+        "ecgWaveform": 9,
+        "hr": 40,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 10,
+        "temp": 39.0,
+        "obstruction": 70,
+        "glucose": 168,
+        "trendTimeSeconds": 30,
+        "visibility": { "spo2Visible": false, "spo2Attached": true, "rrVisible": true, "etco2Visible": true, "cvpVisible": false }
+      },
+      "expectedActions": [
+        {
+          "id": "arrest-recognition",
+          "action": "Recognize cardiac arrest (pulseless, apneic, PEA on monitor) and begin high-quality CPR at 100-120 compressions/min, depth 5-6 cm.",
+          "priority": "critical",
+          "rationale": "Early high-quality CPR is the single most important intervention in cardiac arrest.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "aggressive-suction",
+          "action": "Immediately remove CPAP mask and perform aggressive suctioning with Yankauer, consider SALAD (Suction Assisted Laryngoscopy Airway Decontamination) technique.",
+          "priority": "critical",
+          "rationale": "Airway is obstructed with vomitus; no ventilation will be effective until cleared.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "epi-arrest",
+          "action": "Administer Epinephrine 1:10,000 (0.1 mg/mL) 1 mg IV/IO push every 3-5 minutes during arrest. (10 mL of 0.1 mg/mL solution per dose.)",
+          "priority": "critical",
+          "rationale": "Standard adult cardiac arrest dosing.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "fluid-arrest",
+          "action": "Give Normal Saline 1 L IV/IO wide open — consider reversible causes (H's and T's). Hypovolemia (sepsis/dehydration) and Hypoxia are the top causes here.",
+          "priority": "critical",
+          "rationale": "PEA with suspected septic/hypovolemic driver benefits from aggressive volume; hypoxia correction via airway clearance is equally urgent.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "secure-airway-arrest",
+          "action": "Once airway is adequately suctioned, place ETT or SGA to protect the airway and deliver effective ventilation. Confirm with waveform capnography.",
+          "priority": "critical",
+          "rationale": "Definitive airway in cardiac arrest with heavy aspiration protects against ongoing soiling and enables effective ventilation.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "reversible-causes",
+          "action": "Address reversible causes (H's & T's): Hypoxia (airway/ventilation), Hypovolemia (fluids), Hypo/hyperkalemia, Hydrogen ion (acidosis — bicarbonate controversial), Hypothermia, Tension pneumothorax, Tamponade, Toxins, Thrombosis (PE/coronary).",
+          "priority": "critical",
+          "rationale": "PEA is almost always due to a reversible cause; finding and fixing it is the only path to ROSC.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "prenotify-arrest",
+          "action": "Provide code notification to receiving hospital; transport emergently with ongoing CPR.",
+          "priority": "critical",
+          "rationale": "Hospital must prepare resuscitation bay for incoming arrest.",
+          "protocolReference": "MATC: Shock"
+        }
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Recognize septic shock: SIRS criteria + hypotension + infectious source (pneumonia)",
+      "Apply Oxygen 15 L/min via non-rebreather to correct hypoxia (SpO2 target 94-98%)",
+      "Establish two large-bore IV lines and begin isotonic fluid resuscitation with Normal Saline 500 mL boluses up to 30 mL/kg (1860 mL for 62 kg patient) titrated to MAP ≥65 mmHg, while watching for pulmonary edema in this CHF patient",
+      "Recognize CPAP contraindication in this patient (depressed LOC) — if CPAP is trialed, recognize failure (declining LOC, rising EtCO2) and REMOVE promptly",
+      "Escalate to two-person BVM ventilation with OPA and PEEP valve 5 cmH2O for preoxygenation prior to RSI",
+      "Perform RSI with: Fentanyl 1 mcg/kg (62 mcg) IV premed → Ketamine 1.5 mg/kg (93 mg) IV induction (preferred over etomidate in sepsis) → Rocuronium 1 mg/kg (62 mg) IV paralytic → ETT 7.5 → confirm with waveform capnography",
+      "Anticipate and treat post-intubation hypotension with continued fluids and Norepinephrine 0.05-0.5 mcg/kg/min IV infusion (start ~3 mcg/min) titrated to MAP ≥65 mmHg",
+      "Provide post-intubation sedation with Fentanyl 1-2 mcg/kg (100 mcg) IV + Midazolam 0.02 mg/kg (1 mg) IV OR Ketamine 0.5-1 mg/kg (31-62 mg) IV",
+      "Provide early hospital prenotification for sepsis + intubated respiratory failure"
+    ],
+    "expectedActions": [
+      "BSI/PPE including N95 for productive cough",
+      "Upright positioning to optimize respiratory mechanics and reduce aspiration",
+      "Continuous cardiac monitor, pulse oximetry, and waveform capnography",
+      "12-lead EKG to evaluate for ischemia, PE pattern, or dysrhythmia",
+      "Core temperature measurement",
+      "Blood glucose check (172 mg/dL — no correction)",
+      "SAMPLE history with focus on code status, medications, and baseline mental status",
+      "Reassess lung sounds after each fluid bolus to detect precipitated pulmonary edema",
+      "Orogastric decompression after intubation",
+      "Frequent ETT depth/waveform capnography reassessment after each patient movement"
+    ],
+    "bonusActions": [
+      "Verbalize rationale for Ketamine over Etomidate in sepsis (avoids adrenal suppression, preserves sympathetic tone)",
+      "Consider empiric prehospital antibiotics (e.g., Ceftriaxone 2 g IV over 30 min) if regional protocol supports it",
+      "Use apneic oxygenation (15 L/min NC under BVM mask) during preoxygenation",
+      "Declare explicit airway plan A and plan B (SGA) prior to first laryngoscopy attempt",
+      "Use video laryngoscopy and bougie on first attempt",
+      "Identify and discuss the 'HOP killers' (Hypotension, Hypoxia, pH) before they occur"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Recognize septic shock from SIRS criteria + hypotension + infectious source",
+      "Apply MATC Shock protocol with attention to fluid resuscitation strategy in a patient with known HFrEF",
+      "Identify absolute and relative contraindications to CPAP/BiPAP (depressed LOC, hemodynamic instability, vomiting risk)",
+      "Recognize NIV failure early: declining mental status, rising EtCO2, poor mask tolerance, no improvement in SpO2",
+      "Execute a structured RSI sequence with protocol-appropriate medication doses and clear team roles",
+      "Select induction agents thoughtfully in septic patients (ketamine preferred over etomidate; both protocol-permitted)",
+      "Anticipate post-intubation hypotension (the 'HOP killers': Hypotension, Hypoxia, pH issues) and treat proactively",
+      "Apply MATC Shock vasopressor guidance: Norepinephrine as first-line in distributive/septic shock"
+    ],
+    "discussionQuestions": [
+      "What specific findings in the initial assessment should have triggered septic shock recognition? How many minutes into the call did your team identify it?",
+      "This patient has CHF with an EF of 35% — how did that alter your fluid resuscitation strategy? Where would you stop bolusing?",
+      "What is your explicit decision rule for CPAP candidacy in an acutely ill patient with evolving mental status change?",
+      "Walk through why ketamine may be preferred over etomidate in the septic patient, and when would you still choose etomidate?",
+      "What is your team's cognitive and verbal 'playbook' for the 60 seconds following successful ETT placement?",
+      "If your first intubation attempt had failed, what was your plan B? Plan C? Was the SGA sized and at the bedside before induction?",
+      "How did you balance time on scene vs. en route for each intervention (IV access, CPAP trial, RSI prep, intubation)?"
+    ],
+    "commonPitfalls": [
+      "Anchoring on 'CHF exacerbation' because of the history and giving nitrates/furosemide — missing sepsis",
+      "Applying CPAP without re-assessing mental status; continuing CPAP after the patient becomes drowsier",
+      "Under-resuscitating with fluid because of fear of CHF (septic shock needs volume; 30 mL/kg is the target unless pulmonary edema develops)",
+      "Rushing to intubate without adequate preoxygenation — causing peri-intubation hypoxia",
+      "Choosing etomidate reflexively in a septic patient without considering its adrenal-suppression footprint",
+      "Forgetting to anticipate post-intubation hypotension — the patient crashes 2 minutes after a 'successful' intubation",
+      "Failing to provide post-intubation sedation — leaving a paralyzed patient aware",
+      "Not re-confirming ETT depth and capnography waveform after every patient movement (stairs, stretcher, ambulance)"
+    ],
+    "keyTakeaways": [
+      "Sepsis is a time-critical diagnosis. Vital sign pattern recognition saves lives.",
+      "Depressed LOC is a relative contraindication to CPAP. If the patient's LOC worsens or EtCO2 rises on CPAP — pull the mask, don't push harder.",
+      "In septic shock, Ketamine is the friendlier induction agent — preserves sympathetic tone, avoids adrenal suppression associated with etomidate.",
+      "Every successful RSI has a 3-minute window afterwards where the 'HOP killers' (Hypotension, Hypoxia, pH) can crash your patient. Anticipate with fluids, pressors ready, ventilator targets set.",
+      "Two-person BVM with PEEP is the preoxygenation standard — not 'squeeze harder.'",
+      "Post-intubation sedation is mandatory. Paralysis without sedation is torture and increases sympathetic demand.",
+      "Confirm ETT with waveform capnography and re-confirm after every single patient movement."
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

@@ -1,0 +1,341 @@
+{
+  "scenarioId": "resp-pneumonia-rsi-001",
+  "scenarioName": "Geriatric Pneumonia — Septic with Airway Compromise",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 2100,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "Three days of progressive productive cough with yellow-green sputum, subjective fevers, worsening fatigue, and poor PO intake. Family/staff report she has been increasingly withdrawn, sleeping more than usual, and has not completed meals for 48 hours. This morning staff found her lethargic in bed with labored, rapid breathing and called EMS. She typically uses 2 L/min home oxygen via nasal cannula at night for comfort but is not prescribed continuous O2.",
+    "discussion": "Recognize septic shock from SIRS criteria + hypotension + infectious source. Apply MATC Shock protocol with attention to fluid resuscitation strategy in a patient with known HFrEF. Identify absolute and relative contraindications to CPAP/BiPAP (depressed LOC, hemodynamic instability, vomiting risk). Recognize NIV failure early: declining mental status, rising EtCO2, poor mask tolerance, no improvement in SpO2. Execute a structured RSI sequence with protocol-appropriate medication doses and clear team roles. Select induction agents thoughtfully in septic patients (ketamine preferred over etomidate; both protocol-permitted). Anticipate post-intubation hypotension (the 'HOP killers': Hypotension, Hypoxia, pH issues) and treat proactively. Apply MATC Shock vasopressor guidance: Norepinephrine as first-line in distributive/septic shock",
+    "course": "Initial Presentation — Septic Pneumonia with Respiratory Failure: Moderate-to-severe respiratory distress with signs of early septic shock. Patient is drowsy but rousable to voice, febrile, tachypneic, hypoxic, with focal crackles/rhonchi RLL greater than LLL and hypotension concerning for sepsis. Classic SIRS + hypotension + infectious source = septic shock. → Oxygen + Initial Fluid Bolus — Mild Improvement: After NRB oxygen and initiation of IV fluid bolus, the patient shows mild improvement in oxygenation and blood pressure. Still tachypneic and labored but temporarily stable. This is the window to reassess and plan next steps (CPAP vs BVM vs RSI). → CPAP Trial — Failing (Depressed LOC, Rising EtCO2): A CPAP trial is attempted but the patient tolerates it poorly. Her depressed mental status (a relative contraindication to CPAP) prevents effective mask seal and safe tolerance. Over 2-3 minutes, she becomes progressively drowsier, EtCO2 climbs (compensation is failing), and SpO2 is no better than on NRB. This is the recognition point: CPAP is NOT working and must be removed. → BVM Preoxygenation with PEEP — RSI Preparation: CPAP removed. Two-person BVM ventilation with PEEP valve (5 cmH2O) applied for preoxygenation. OPA placed (gag reflex blunted). SpO2 rises to 93%. Team prepares, labels, and announces induction and paralytic medications. Apneic oxygenation with NC at 15 LPM under the BVM mask adds additional safety window. → Post-Intubation — Hypotension Watch & Sedation: Successful first-pass intubation with 7.5 ETT at 22 cm at the teeth. Waveform capnography confirms placement with sustained square-wave morphology. Patient is paralyzed and sedated. Watch for the classic post-intubation 'HOP killers' — Hypotension (positive pressure decreases preload + residual sepsis), Hypoxia, and pH issues (over/under ventilation). Mild post-intubation hypotension evident — anticipate with fluids and/or norepinephrine."
+  },
+  "patientInformation": {
+    "patientName": "Eleanor Whitfield",
+    "patientCondition": "Weakness and difficulty breathing",
+    "patientAge": 78,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 160,
+    "patientWeight": 62,
+    "patientPhotoId": 94,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Presentation — Septic Pneumonia with Respiratory Failure",
+      "description": "Moderate-to-severe respiratory distress with signs of early septic shock. Patient is drowsy but rousable to voice, febrile, tachypneic, hypoxic, with focal crackles/rhonchi RLL greater than LLL and hypotension concerning for sepsis. Classic SIRS + hypotension + infectious source = septic shock.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 96,
+        "bpDia": 58,
+        "respRate": 32,
+        "spo2": 86,
+        "etco2": 30,
+        "temp": 39.2,
+        "obstruction": 0,
+        "custMeasure1": 172,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Oxygen + Initial Fluid Bolus — Mild Improvement",
+      "description": "After NRB oxygen and initiation of IV fluid bolus, the patient shows mild improvement in oxygenation and blood pressure. Still tachypneic and labored but temporarily stable. This is the window to reassess and plan next steps (CPAP vs BVM vs RSI).",
+      "monitorType": 0,
+      "trendTime": 25,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 112,
+        "bpSys": 102,
+        "bpDia": 62,
+        "respRate": 30,
+        "spo2": 91,
+        "etco2": 32,
+        "temp": 39.1,
+        "obstruction": 0,
+        "custMeasure1": 170,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "CPAP Trial — Failing (Depressed LOC, Rising EtCO2)",
+      "description": "A CPAP trial is attempted but the patient tolerates it poorly. Her depressed mental status (a relative contraindication to CPAP) prevents effective mask seal and safe tolerance. Over 2-3 minutes, she becomes progressively drowsier, EtCO2 climbs (compensation is failing), and SpO2 is no better than on NRB. This is the recognition point: CPAP is NOT working and must be removed.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 100,
+        "bpDia": 60,
+        "respRate": 30,
+        "spo2": 89,
+        "etco2": 45,
+        "temp": 39.1,
+        "obstruction": 0,
+        "custMeasure1": 170,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "BVM Preoxygenation with PEEP — RSI Preparation",
+      "description": "CPAP removed. Two-person BVM ventilation with PEEP valve (5 cmH2O) applied for preoxygenation. OPA placed (gag reflex blunted). SpO2 rises to 93%. Team prepares, labels, and announces induction and paralytic medications. Apneic oxygenation with NC at 15 LPM under the BVM mask adds additional safety window.",
+      "monitorType": 0,
+      "trendTime": 20,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 115,
+        "bpSys": 98,
+        "bpDia": 60,
+        "respRate": 12,
+        "spo2": 93,
+        "etco2": 40,
+        "temp": 39,
+        "obstruction": 0,
+        "custMeasure1": 170,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Post-Intubation — Hypotension Watch & Sedation",
+      "description": "Successful first-pass intubation with 7.5 ETT at 22 cm at the teeth. Waveform capnography confirms placement with sustained square-wave morphology. Patient is paralyzed and sedated. Watch for the classic post-intubation 'HOP killers' — Hypotension (positive pressure decreases preload + residual sepsis), Hypoxia, and pH issues (over/under ventilation). Mild post-intubation hypotension evident — anticipate with fluids and/or norepinephrine.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 92,
+        "bpDia": 58,
+        "respRate": 10,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 39.1,
+        "obstruction": 0,
+        "custMeasure1": 168,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "BRANCH — CPAP Continued Despite Depressed LOC → Aspiration → PEA Arrest",
+      "description": "CPAP was initiated or continued despite the patient's progressive depression of mental status. Under positive pressure with a blunted gag reflex, she vomited into the mask, aspirated large-volume gastric contents, and rapidly decompensated into PEA cardiac arrest. This is the consequence branch teaching the core lesson: depressed LOC is a contraindication to CPAP; missing this recognition kills patients.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 40,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 10,
+        "temp": 39,
+        "obstruction": 70,
+        "custMeasure1": 168,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": false,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Recognize septic shock: SIRS criteria + hypotension + infectious source (pneumonia)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply Oxygen 15 L/min via non-rebreather to correct hypoxia (SpO2 target 94-98%)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish two large-bore IV lines and begin isotonic fluid resuscitation with Normal Saline 500 mL boluses up to 30 mL/kg (1860 mL for 62 kg patient) titrated to MAP ≥65 mmHg, while watching for pulmonary edema in this CHF patient",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize CPAP contraindication in this patient (depressed LOC) — if CPAP is trialed, recognize failure (declining LOC, rising EtCO2) and REMOVE promptly",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Escalate to two-person BVM ventilation with OPA and PEEP valve 5 cmH2O for preoxygenation prior to RSI",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Perform RSI with: Fentanyl 1 mcg/kg (62 mcg) IV premed → Ketamine 1.5 mg/kg (93 mg) IV induction (preferred over etomidate in sepsis) → Rocuronium 1 mg/kg (62 mg) IV paralytic → ETT 7.5 → confirm with waveform capnography",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Anticipate and treat post-intubation hypotension with continued fluids and Norepinephrine 0.05-0.5 mcg/kg/min IV infusion (start ~3 mcg/min) titrated to MAP ≥65 mmHg",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Provide post-intubation sedation with Fentanyl 1-2 mcg/kg (100 mcg) IV + Midazolam 0.02 mg/kg (1 mg) IV OR Ketamine 0.5-1 mg/kg (31-62 mg) IV",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Provide early hospital prenotification for sepsis + intubated respiratory failure",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "BSI/PPE including N95 for productive cough",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Upright positioning to optimize respiratory mechanics and reduce aspiration",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continuous cardiac monitor, pulse oximetry, and waveform capnography",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "12-lead EKG to evaluate for ischemia, PE pattern, or dysrhythmia",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Core temperature measurement",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Blood glucose check (172 mg/dL — no correction)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "SAMPLE history with focus on code status, medications, and baseline mental status",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reassess lung sounds after each fluid bolus to detect precipitated pulmonary edema",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Orogastric decompression after intubation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Frequent ETT depth/waveform capnography reassessment after each patient movement",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

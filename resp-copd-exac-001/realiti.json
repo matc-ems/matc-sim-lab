@@ -1,0 +1,329 @@
+{
+  "scenarioId": "resp-copd-exac-001",
+  "scenarioName": "COPD Exacerbation — Non-Invasive Ventilation Failure",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1800,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "72-year-old male with known severe COPD on home oxygen (2 L/min nasal cannula) reports progressive shortness of breath over the last 48 hours following a recent upper respiratory infection. Productive cough with thickened yellow-green sputum. States his albuterol MDI ran out several days ago and he has not been able to refill it. Denies chest pain, fever measured at home, hemoptysis, or leg swelling. Wife reports he is markedly worse than his usual baseline and is struggling to get words out.",
+    "discussion": "Recognize severe COPD exacerbation and impending respiratory failure from history, physical findings, and waveform capnography (shark fin). Escalate airway and ventilatory support in a protocol-driven stepwise fashion: NC → NRB → nebulized bronchodilators → CPAP → BVM with PEEP → RSI. Identify objective signs of NIV failure (rising EtCO2, declining mental status, paradoxical slowing of respiratory rate) and act decisively. Safely perform RSI in a bronchospastic patient: preoxygenation, premedication, induction (ketamine preferred for bronchodilation), paralysis, and confirmation with waveform capnography. Manage the intubated bronchospastic patient with lung-protective ventilation, prolonged expiratory time, in-line bronchodilators, and adequate post-intubation sedation",
+    "course": "Initial Presentation — Severe Respiratory Distress: Patient is in severe respiratory distress with audible diffuse wheezing and prolonged expiration. He is tripoded, diaphoretic, and able to speak only 2-3 words at a time. SpO2 is profoundly low on his home 2 L NC and he is markedly tachypneic and tachycardic. Waveform capnography shows a classic 'shark-fin' pattern consistent with obstructive physiology. → On Duoneb — Minimal Improvement: After one round of albuterol/ipratropium the patient shows only minimal improvement. SpO2 has drifted up to 88% with the nebulizer mask and high-flow O2, but he remains in severe distress with persistent wheezing, accessory muscle use, and rising EtCO2. Mental status is subtly worsening — he is drowsier and slower to answer questions. → CPAP In Place — NIV Failure Developing: Despite CPAP at 5 cmH2O with in-line albuterol, the patient is clinically fatiguing. Mental status is deteriorating (now responds only to voice), he is more diaphoretic, EtCO2 is climbing despite maintained SpO2, and respiratory rate is paradoxically slowing from exhaustion. This is NIV failure — the crew must recognize it and escalate to BVM with PEEP and prepare for RSI. → BVM + PEEP Bridging to RSI: Two-person BVM with PEEP 5 and OPA is successfully augmenting the patient's oxygenation and offloading his work of breathing. SpO2 improves to 92%, EtCO2 is trending down toward 60. This is a temporizing bridge while the team performs final RSI preparation and denitrogenation. → Post-RSI — Intubated, Sedated, Ventilated: Patient is successfully intubated with an 8.0 cuffed ETT, confirmed by waveform capnography. He is now sedated with post-intubation sedation/analgesia, PEEP 5, mechanically or manually ventilated at 10-12 bpm with slow I:E to avoid breath-stacking. Hemodynamics have improved, SpO2 is 96%, EtCO2 has normalized toward 42, and the patient is stable for transport to the ED."
+  },
+  "patientInformation": {
+    "patientName": "Harold Kowalski",
+    "patientCondition": "Severe shortness of breath worsening over 2 days",
+    "patientAge": 72,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 178,
+    "patientWeight": 78,
+    "patientPhotoId": 87,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Presentation — Severe Respiratory Distress",
+      "description": "Patient is in severe respiratory distress with audible diffuse wheezing and prolonged expiration. He is tripoded, diaphoretic, and able to speak only 2-3 words at a time. SpO2 is profoundly low on his home 2 L NC and he is markedly tachypneic and tachycardic. Waveform capnography shows a classic 'shark-fin' pattern consistent with obstructive physiology.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 122,
+        "bpSys": 168,
+        "bpDia": 98,
+        "respRate": 34,
+        "spo2": 85,
+        "etco2": 58,
+        "temp": 37.2,
+        "obstruction": 50,
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "On Duoneb — Minimal Improvement",
+      "description": "After one round of albuterol/ipratropium the patient shows only minimal improvement. SpO2 has drifted up to 88% with the nebulizer mask and high-flow O2, but he remains in severe distress with persistent wheezing, accessory muscle use, and rising EtCO2. Mental status is subtly worsening — he is drowsier and slower to answer questions.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 162,
+        "bpDia": 94,
+        "respRate": 32,
+        "spo2": 88,
+        "etco2": 56,
+        "temp": 37.2,
+        "obstruction": 50,
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "CPAP In Place — NIV Failure Developing",
+      "description": "Despite CPAP at 5 cmH2O with in-line albuterol, the patient is clinically fatiguing. Mental status is deteriorating (now responds only to voice), he is more diaphoretic, EtCO2 is climbing despite maintained SpO2, and respiratory rate is paradoxically slowing from exhaustion. This is NIV failure — the crew must recognize it and escalate to BVM with PEEP and prepare for RSI.",
+      "monitorType": 0,
+      "trendTime": 50,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 110,
+        "bpSys": 152,
+        "bpDia": 90,
+        "respRate": 28,
+        "spo2": 90,
+        "etco2": 65,
+        "temp": 37.3,
+        "obstruction": 55,
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "BVM + PEEP Bridging to RSI",
+      "description": "Two-person BVM with PEEP 5 and OPA is successfully augmenting the patient's oxygenation and offloading his work of breathing. SpO2 improves to 92%, EtCO2 is trending down toward 60. This is a temporizing bridge while the team performs final RSI preparation and denitrogenation.",
+      "monitorType": 0,
+      "trendTime": 20,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 148,
+        "bpDia": 88,
+        "respRate": 12,
+        "spo2": 92,
+        "etco2": 60,
+        "temp": 37.3,
+        "obstruction": 50,
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Post-RSI — Intubated, Sedated, Ventilated",
+      "description": "Patient is successfully intubated with an 8.0 cuffed ETT, confirmed by waveform capnography. He is now sedated with post-intubation sedation/analgesia, PEEP 5, mechanically or manually ventilated at 10-12 bpm with slow I:E to avoid breath-stacking. Hemodynamics have improved, SpO2 is 96%, EtCO2 has normalized toward 42, and the patient is stable for transport to the ED.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 95,
+        "bpSys": 138,
+        "bpDia": 82,
+        "respRate": 14,
+        "spo2": 96,
+        "etco2": 42,
+        "temp": 37.2,
+        "obstruction": 30,
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Branch — Respiratory then Cardiac Arrest (PEA)",
+      "description": "CPAP was continued beyond the point of failure without escalation. The patient decompensates through respiratory arrest into pulseless electrical activity from profound hypoxemia and hypercarbia. He is now unresponsive, apneic (or agonal), with a narrow-complex rhythm on the monitor but no palpable pulse and no blood pressure. This is the teaching branch showing the consequence of failing to recognize NIV failure.",
+      "monitorType": 0,
+      "trendTime": 45,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 32,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 18,
+        "temp": 37.1,
+        "obstruction": 60,
+        "spo2Visible": false,
+        "spo2Attached": false,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Perform rapid primary survey and recognize severe respiratory distress / impending respiratory failure",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Keep patient in position of comfort (tripod) — do not force supine",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply supplemental oxygen titrated to target SpO2 94-98% (permissive ≥ 90% acceptable in COPD)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Place continuous pulse oximetry, cardiac monitoring, and waveform capnography; identify shark-fin waveform of bronchospasm",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access and administer Albuterol 5 mg + Ipratropium 0.5 mg nebulized (repeat albuterol unlimited)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer IV steroid — Methylprednisolone 2 mg/kg IV (max 125 mg for 78 kg patient) OR Dexamethasone 0.6 mg/kg IV (max 16 mg for 78 kg patient)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply CPAP 5 cmH2O with in-line albuterol for severe distress/impending failure and coach patient",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize NIV failure (rising EtCO2, worsening mental status, paradoxical RR drop) and escalate to two-person BVM with PEEP 5 + OPA/NPA",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Perform RSI: preoxygenate, premedicate with Fentanyl 1 mcg/kg (78 mcg for 78 kg patient) IV, induce with Ketamine 1.5 mg/kg (117 mg for 78 kg patient) IV OR Etomidate 0.3 mg/kg (23 mg for 78 kg patient) IV, paralyze with Rocuronium 1 mg/kg (78 mg for 78 kg patient) IV OR Succinylcholine 1.5 mg/kg (117 mg for 78 kg patient) IV",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Place 8.0 cuffed ETT and confirm placement with continuous waveform capnography",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Provide post-intubation analgesia and sedation: Fentanyl 1-2 mcg/kg (78-156 mcg for 78 kg patient) IV + Midazolam 0.02 mg/kg (1.56 mg for 78 kg patient) IV OR Ketamine 0.5-1 mg/kg (39-78 mg for 78 kg patient) IV",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Set lung-protective ventilation: 10-12 bpm, 6-8 mL/kg IBW (~500 mL), PEEP 5, long I:E to avoid air trapping",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Obtain focused history including prior intubation, recent steroids, sick contacts, and medication compliance",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire 12-lead ECG to screen for ischemia/dysrhythmia",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Consider Magnesium Sulfate 1 g IV in 100 mL NS over 10-15 minutes (reduced geriatric dose; protocol allows 40 mg/kg up to 2 g)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continue in-line nebulized Albuterol 5 mg through BVM/ETT circuit as needed",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Place OG tube for gastric decompression after intubation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Provide early pre-arrival notification to receiving ED with RSI handoff details",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document interventions, ETT depth, cuff pressure, and waveform capnography with each patient movement",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

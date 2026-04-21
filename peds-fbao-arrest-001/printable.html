@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pediatric Foreign Body Airway Obstruction — Unconscious — Printable</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--card:#fff;--card-border:#d6d3d1;--text:#1c1917;--text-secondary:#44403c;--text-muted:#78716c;--green:#166534;--red:#b91c1c;--red-light:#fef2f2;--red-border:#fecaca;--orange:#c2410c;--yellow:#a16207;--blue:#1e40af;--radius:8px;--radius-sm:6px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;background:#f5f5f4;color:var(--text);line-height:1.5;padding:24px;font-size:12pt}
+.sheet{max-width:800px;margin:0 auto;background:#fff;padding:28px 32px;box-shadow:0 1px 4px rgba(0,0,0,.08);border-radius:10px}
+.scenario-name{font-size:11pt;color:var(--text-secondary)}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;break-inside:avoid}
+.card-title{font-size:9pt;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:10px 14px 6px;border-bottom:1px solid #f5f5f4}
+.card-content{padding:10px 14px 12px}
+.scene-row{padding:6px 0;border-bottom:1px solid #f5f5f4;display:grid;grid-template-columns:110px 1fr;gap:10px}
+.scene-row:last-child{border-bottom:none}
+.scene-label{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.scene-value{font-size:11pt;color:var(--text-secondary)}
+.cue-list{list-style:none;margin:0}
+.cue-list li{font-size:11pt;color:var(--text-secondary);padding:3px 0 3px 14px;position:relative}
+.cue-list li::before{content:'→';position:absolute;left:0;color:var(--text-muted);font-size:10pt}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e7e5e4}
+.sample-cell{background:#fff;padding:9px 12px}
+.sample-cell:nth-child(1),.sample-cell:nth-child(6){grid-column:1/-1}
+.sample-letter{font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--green);margin-right:4px}
+.sample-name{font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:3px}
+.sample-text{font-size:10.5pt;color:var(--text-secondary);line-height:1.45}
+.patient-chips{display:flex;gap:8px;flex-wrap:wrap}
+.patient-chip{font-size:10pt;padding:4px 10px;background:#f5f5f4;border-radius:6px;color:var(--text-secondary)}
+.patient-chip strong{color:var(--text);font-weight:700}
+.phase-section{break-before:auto;page-break-before:auto;margin-top:12px}
+.phase-section .phase-card{break-after:avoid;page-break-after:avoid}
+.phase-card{border-left:4px solid var(--text)}
+.phase-card-branch{border-left-color:var(--red)}
+.branch-tag{display:inline-block;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);background:var(--red-light);padding:2px 8px;border-radius:4px;margin-bottom:6px}
+.phase-title{font-size:16pt;font-weight:700;margin-bottom:4px}
+.phase-trigger{font-family:'DM Mono',ui-monospace,monospace;font-size:9pt;color:var(--yellow);margin-bottom:6px}
+.phase-desc{font-size:11pt;color:var(--text-secondary);line-height:1.5}
+.ecg-label{font-family:'DM Mono',ui-monospace,monospace;font-size:10pt;color:var(--text-secondary);padding:8px 12px;background:#fafaf9;border-bottom:1px solid #f0efec}
+.vitals-grid{display:flex;flex-wrap:wrap;gap:4px 18px;padding:8px 14px}
+.vital-cell{background:transparent;padding:0;text-align:left;display:flex;align-items:baseline;gap:4px}
+.vital-cell.full-width{grid-column:auto}
+.vital-name{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.vital-val{font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--text);line-height:1.1}
+.vital-unit{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;color:var(--text-muted)}
+.loc-block{margin-bottom:10px}
+.avpu-bar{display:flex;border:1px solid var(--card-border);border-radius:6px;overflow:hidden;margin-bottom:10px}
+.avpu-seg{flex:1;text-align:center;padding:6px 4px;font-family:'DM Mono',ui-monospace,monospace;font-size:10pt;font-weight:700;color:var(--text-muted);background:#fafaf9}
+.avpu-seg.sel-a{background:#ecfccb;color:var(--green)}
+.avpu-seg.sel-v{background:#fef3c7;color:var(--yellow)}
+.avpu-seg.sel-p{background:#ffedd5;color:var(--orange)}
+.avpu-seg.sel-u{background:var(--red-light);color:var(--red)}
+.gcs-detail{display:flex;flex-wrap:wrap;gap:6px 16px;padding:8px 14px;border:1px solid var(--card-border);border-radius:6px;margin-bottom:10px;align-items:baseline}
+.gcs-item{display:flex;align-items:baseline;gap:4px;padding:0;border:none}
+.gcs-item:last-of-type{border-bottom:none}
+.gcs-part{order:1;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.gcs-score{order:2;font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--text)}
+.gcs-desc{order:3;font-size:9.5pt;color:var(--text-muted);font-style:italic}
+.gcs-desc::before{content:'('}
+.gcs-desc::after{content:')'}
+.gcs-total-row{display:flex;align-items:baseline;gap:4px;order:-1;padding:0;margin:0;border:none;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.gcs-total-row .gcs-total{font-family:'DM Mono',ui-monospace,monospace;font-size:12pt;font-weight:700;color:var(--text)}
+.finding-row{padding:6px 0;border-bottom:1px solid #f5f5f4;display:grid;grid-template-columns:100px 1fr;gap:10px}
+.finding-row:last-child{border-bottom:none}
+.finding-label{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.finding-value{font-size:10.5pt;color:var(--text-secondary)}
+.finding-speech{font-style:italic;color:var(--text-muted)}
+.findings-notes{list-style:none;margin:0}
+.findings-notes li{font-size:10pt;color:var(--text-secondary);padding:2px 0 2px 12px;position:relative}
+.findings-notes li::before{content:'·';position:absolute;left:2px;font-weight:700;color:var(--text-muted)}
+.action-row{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #f5f5f4;break-inside:avoid}
+.action-row:last-child{border-bottom:none}
+.action-box{width:14px;height:14px;border:1.5px solid var(--text-muted);border-radius:3px;flex-shrink:0;margin-top:3px}
+.action-body{flex:1;min-width:0}
+.action-head{display:flex;align-items:flex-start;gap:8px;margin-bottom:4px}
+.action-priority{display:inline-block;font-family:'DM Mono',ui-monospace,monospace;font-size:7.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 6px;border-radius:3px;flex-shrink:0;margin-top:2px}
+.p-critical{background:var(--red-light);color:var(--red)}
+.p-important{background:#fff7ed;color:var(--orange)}
+.p-supp{background:#f5f5f4;color:var(--text-muted)}
+.action-text{font-size:11pt;font-weight:600;color:var(--text);line-height:1.35}
+.action-rationale,.action-ref{display:none}
+.action-head{margin-bottom:0}
+.action-row{padding:6px 0}
+@media print{
+  body{background:#fff;padding:0;font-size:10pt}
+  .sheet{box-shadow:none;max-width:none;padding:0.4in;border-radius:0}
+  .card{break-inside:avoid;margin-bottom:8px}
+  .card-title{padding:6px 10px 3px}
+  .card-content{padding:6px 10px 8px}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="card"><div class="card-title">Scenario</div><div class="card-content"><div class="scenario-name">Pediatric Foreign Body Airway Obstruction — Unconscious</div></div></div>
+  <div class="card"><div class="card-title">Patient</div><div class="card-content"><div class="patient-chips"><span class="patient-chip"><strong>Lucas Chen</strong></span><span class="patient-chip">4 years male</span><span class="patient-chip">35 lbs (16 kg)</span><span class="patient-chip">3'3"</span><span class="patient-chip">CC: Choking while eating, now unresponsive and not breathing</span></div></div></div>
+  <div class="card"><div class="card-title">Scene</div><div class="card-content">
+    <div class="scene-row"><div class="scene-label">Dispatch</div><div class="scene-value">Medic 7, respond code 3 to 1428 Maplewood Lane for a 4-year-old male choking, now reported unresponsive with CPR in progress per caller. Time out 15:12.</div></div>
+    <div class="scene-row"><div class="scene-label">Location</div><div class="scene-value">Suburban single-family home, backyard with patio and grass. Gate open, clear access from driveway to backyard through side yard.</div></div>
+    <div class="scene-row"><div class="scene-label">Time</div><div class="scene-value">Saturday mid-afternoon, approximately 15:15. Warm, sunny, mild breeze.</div></div>
+    <div class="scene-row"><div class="scene-label">Safety</div><div class="scene-value">Scene safe. No hazards noted. Emotional family members — assign a crew member to coach the father to step back and allow EMS to take over. Pets secured.</div></div>
+    <div class="scene-row"><div class="scene-label">Bystanders</div><div class="scene-value">Father kneeling over child on the grass, crying and still attempting back blows. Mother on the phone with 911 dispatcher near the patio. Two older siblings (approximately 7 and 9 years old) visibly upset, standing nearby. Neighbor attempting to comfort the siblings.</div></div>
+  </div></div><div class="card"><div class="card-title">Visual Cues on Arrival</div><div class="card-content"><ul class="cue-list"><li>Child lying limp on the grass, face bluish-grey with visibly cyanotic lips</li><li>Half-eaten hot dog on a paper plate on the picnic table</li><li>Overturned child-sized plate and spilled juice box on the grass nearby</li><li>Father actively delivering back blows to the limp child as crew arrives</li><li>No spontaneous chest rise visible</li><li>Ambient grill nearby, shut off; no smoke</li></ul></div></div>
+  <div class="card">
+    <div class="card-title">SAMPLE History</div>
+    <div class="card-content" style="padding:0">
+      <div class="sample-grid">
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">S</span> Signs &amp; Symptoms</div><div class="sample-text">Previously healthy 4-year-old male eating a hot dog at a backyard BBQ. Approximately 4 minutes prior to EMS arrival, the child began choking suddenly with silent cough and inability to speak. Father (untrained) initiated back blows and abdominal thrusts without success. Approximately 60 seconds before EMS arrival the child became limp and unresponsive. Father continues to attempt back blows on the limp child.</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">A</span> Allergies</div><div class="sample-text">NKDA</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">M</span> Medications</div><div class="sample-text">None</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">P</span> Past Medical</div><div class="sample-text">None — previously healthy, Fully immunized per parents, No prior choking episodes</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">L</span> Last Intake</div><div class="sample-text">Hot dog and juice at the BBQ (choking event)</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">E</span> Events</div><div class="sample-text">Family gathering at backyard BBQ. Child eating hot dog when sudden choking episode began. Dad performed back blows and abdominal thrusts. Child went limp approximately 1 minute before EMS arrival. Mom on 911 call reported child unresponsive.</div></div>
+      </div>
+    </div>
+  </div>
+  <section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Initial Contact — Unresponsive FBAO</div>
+        
+        <div class="phase-desc">On arrival, the child is unresponsive, centrally and peripherally cyanotic, apneic, with a weak slow carotid pulse. Father is frantically delivering back blows. Complete airway obstruction is presumed. No spontaneous respirations. This patient is NOT fully pulseless (weak carotid present) — this is profound hypoxia-induced bradycardia, not cardiac arrest yet. Providers must stop the father, move the child to a firm supine surface, and immediately transition to CPR per AHA FBAO-in-unresponsive-patient algorithm.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Sinus Bradycardia</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">52</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">60/40</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">62%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">0</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">60</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.6°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">110</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg sel-u">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">3</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Complete obstruction suspected — no audible air movement, no cough, no cry. Mouth partially open, no visible foreign body on external inspection. No stridor (complete obstruction = silent).</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Apneic. No spontaneous chest rise. BVM attempt by crew meets resistance with minimal chest rise.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Weak, slow carotid pulse palpable (~50/min). Radial pulse not palpable. Skin cold, mottled, centrally cyanotic with marked perioral and lip cyanosis. Capillary refill &gt;4 seconds.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">central cyanosis, grey-blue lips and face, mottled extremities · cool · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">4 mm bilaterally, sluggishly reactive to light</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Flaccid. No response to voice or painful stimulus.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"None — patient is unresponsive."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>No obvious trauma</li><li>Abdomen soft, no distension</li><li>Father still attempting back blows — must be stopped and reassured</li><li>No visible foreign body on external oropharyngeal inspection</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Immediately stop the father from continuing back blows/abdominal thrusts on the unresponsive child. Per AHA: once an FBAO patient becomes unresponsive, back blows and abdominal thrusts are replaced by CPR. Calmly coach father to step back.</div></div>
+        <div class="action-rationale">Continuing back blows on a limp child delays CPR and effective compressions, which generate intrathoracic pressure that may help dislodge the obstruction. Family coaching preserves scene control.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Perform rapid primary survey: confirm unresponsiveness, no breathing, check carotid pulse for no more than 10 seconds. Recognize weak slow pulse with apnea and cyanosis = pre-arrest from hypoxia, not yet pulseless.</div></div>
+        <div class="action-rationale">The weak bradycardic pulse (~50) plus apnea in a child indicates imminent cardiac arrest from hypoxia. Rapid recognition drives immediate CPR/ventilation rather than delaying for other assessments.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Move child to a firm, flat surface supine. Expose chest. Prepare for CPR and airway visualization.</div></div>
+        <div class="action-rationale">Effective compressions require a firm surface. Exposing the chest allows depth monitoring and pad placement if needed.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Open airway with head-tilt/chin-lift. Directly inspect oropharynx with good lighting for visible foreign body. DO NOT perform blind finger sweeps — protocol is explicit that blind sweeps may push the object deeper.</div></div>
+        <div class="action-rationale">Visible foreign bodies can be removed; blind sweeps are contraindicated because they can worsen the obstruction.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Apply cardiac monitor, SpO2, waveform capnography, and pediatric defibrillation pads. Select pediatric energy setting (2 J/kg = 32 J; 4 J/kg = 64 J) for availability if arrest develops.</div></div>
+        <div class="action-rationale">Monitoring guides response and prepares for defibrillation if a shockable rhythm develops during the hypoxic cascade.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Confirm ALS resources on scene or request additional ALS/supervisor response if not yet available. Announce 'pediatric unresponsive FBAO, initiating CPR' on the radio.</div></div>
+        <div class="action-rationale">Pediatric arrests benefit from additional hands for simultaneous compressions, airway, IO access, and medication preparation.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Pre-stage pediatric laryngoscope (Miller 1 or 2), pediatric Magill forceps, appropriately sized OPA, suction, and BVM with pediatric mask and reservoir on high-flow O2.</div></div>
+        <div class="action-rationale">Immediate availability of direct laryngoscopy and Magill forceps is critical for removing a visualized foreign body during the first compression pause.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">CPR Initiated — Direct Laryngoscopy Reveals Obstruction</div>
+        <div class="phase-trigger">Trigger: Child laid supine on firm surface, two-rescuer CPR started at 15:2 with BVM, and direct laryngoscopy attempted during compression pause to visualize the airway</div>
+        <div class="phase-desc">Child is supine on a firm surface. Two-rescuer pediatric CPR begun at 15:2 compression-to-ventilation ratio. Compressions at 100-120/min, depth approximately one-third AP chest diameter (~5 cm). BVM attempts produce only partial chest rise (resistance from obstruction). During the first compression pause for ventilation, a rescuer performs direct laryngoscopy and identifies a piece of hot dog lodged at the vocal cords. Magill forceps are being retrieved.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Sinus Bradycardia</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">50</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">50/30</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">55%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">0</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">55</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.6°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">110</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg sel-u">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">3</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Piece of hot dog visible at vocal cords on direct laryngoscopy. No passage of BVM breaths beyond obstruction — only minimal chest rise with high-pressure ventilation attempts.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Apneic. BVM ventilations during 15:2 pause produce poor chest rise with audible airway resistance.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Compressions generating weak femoral pulse. Intrinsic rhythm bradycardic (~48-50) when briefly paused for rhythm check. Central cyanosis persists.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">persistent central cyanosis, cool mottled extremities · cool · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">4 mm, sluggish</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Flaccid</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"None."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Direct laryngoscopy with Miller 2 blade reveals a pink-grey chunk of hot dog wedged at the vocal cords, partially occluding the glottis</li><li>No blood in airway</li><li>No vomitus</li><li>Father now standing back, coached by a family liaison crew member</li><li>Compressions at 110/min with adequate depth per CPR feedback device</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Begin two-rescuer pediatric CPR at 15:2 compression-to-ventilation ratio. Compression rate 100-120/min, depth one-third AP chest diameter (~5 cm for a 4-year-old/16 kg child), full chest recoil, minimize interruptions. Each time the airway is opened for breaths, LOOK for foreign body — NO blind finger sweeps.</div></div>
+        <div class="action-rationale">Per protocol, multi-rescuer pediatric CPR uses 15:2. Compressions generate intrathoracic pressure that can help dislodge FBAO while maintaining cerebral/coronary perfusion.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">During a compression pause for ventilation, perform direct laryngoscopy with a Miller 1 or 2 blade to visualize the glottis and identify the foreign body. Limit the pause to &lt;10 seconds. Suction any secretions with a rigid Yankauer.</div></div>
+        <div class="action-rationale">Direct visualization is required before any instrumented removal attempt. Blind attempts can push the object into the trachea.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Use pediatric Magill forceps under direct laryngoscopy to grasp and gently remove the visualized hot dog fragment. Inspect the airway after removal for residual debris. Suction as needed.</div></div>
+        <div class="action-rationale">Magill forceps removal of a visualized foreign body is the definitive prehospital maneuver for FBAO not relieved by CPR/BVM.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Insert appropriately sized oropharyngeal airway (OPA — measure corner of mouth to angle of jaw, approximately size 1 or 2 for this patient) since patient has no gag. Perform two-person BVM with pediatric mask on high-flow O2 with reservoir; use just enough volume to see chest rise.</div></div>
+        <div class="action-rationale">OPA optimizes BVM seal and patency. Two-person BVM is preferred per protocol. Before obstruction removal, chest rise will be poor — this is a diagnostic cue.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Explicitly verbalize 'no blind finger sweeps' as a team callout. Only remove objects that are directly visualized.</div></div>
+        <div class="action-rationale">Protocol and AHA guidance explicitly prohibit blind finger sweeps due to risk of driving the object deeper.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Maintain continuous waveform capnography. Use EtCO2 as a quality-of-CPR marker (target &gt;10 mmHg during compressions) and as an early indicator of ROSC (sudden rise of 10-15 mmHg).</div></div>
+        <div class="action-rationale">EtCO2 is the best real-time measure of CPR effectiveness and a sensitive early indicator of ROSC.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Establish IO access at proximal tibia (preferred pediatric site per protocol) using a pediatric IO needle. Flush with 5-10 mL normal saline. Have Epinephrine 0.01 mg/kg (0.16 mg = 1.6 mL of 0.1 mg/mL) drawn up and labeled in case patient becomes pulseless.</div></div>
+        <div class="action-rationale">Tibial IO is the preferred pediatric access per protocol. Early preparation of epinephrine ensures rapid administration if arrest develops.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Obstruction Cleared — Rapid Physiologic Recovery</div>
+        <div class="phase-trigger">Trigger: Magill forceps used to remove the hot dog fragment under direct laryngoscopy; airway patent and effective BVM ventilations now producing good chest rise</div>
+        <div class="phase-desc">Hot dog fragment has been removed with Magill forceps under direct laryngoscopy. The airway is now patent. BVM ventilations at 20-30/min (1 breath every 2-3 seconds) for apnea produce excellent chest rise. Over 30-60 seconds oxygenation rapidly improves. Heart rate climbs from the 40s-50s toward 90, BP begins to recover, SpO2 climbs from the 70s into the 90s on BVM with high-flow O2. EtCO2 normalizes as perfusion and ventilation improve. Patient remains unresponsive with no spontaneous respirations yet; CPR compressions discontinued as HR and perfusion improve — re-assess pulse.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Sinus Rhythm</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">90</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">80/50</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">88%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">0</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">48</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.6°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">110</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg sel-u">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">3</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent. No foreign body visible on repeat oropharyngeal inspection. OPA in place.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Apneic (no spontaneous respirations yet). BVM ventilations now produce clear, symmetric chest rise. Equal bilateral breath sounds on auscultation after removal.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Strong central pulse now palpable, returning peripheral pulses. Cyanosis visibly receding — lips and face pinking up over 30-60 seconds. Compressions paused as HR/perfusion improve.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">improving from cyanotic to pale-pink, perioral cyanosis resolving · cool but warming · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">4 mm, now briskly reactive</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Flaccid — no spontaneous movement yet</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"None."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Hot dog fragment retrieved and placed in a specimen bag for hospital</li><li>No blood or trauma to oropharynx from removal</li><li>Symmetric chest rise with BVM</li><li>EtCO2 waveform normalizing</li><li>Crew transitioning mindset from arrest to post-resuscitation/ROSC-equivalent care</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Deliver effective BVM ventilations at 1 breath every 2-3 seconds (20-30/min) for pediatric apnea per airway protocol. Use just enough volume to see chest rise (approximately 6-8 mL/kg ideal body weight). Continue 100% O2 with reservoir. Avoid overventilation.</div></div>
+        <div class="action-rationale">Pediatric apneic patients require 20-30 breaths/min per protocol. Overventilation causes gastric insufflation, decreased venous return, and worsens outcomes.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Reassess central (carotid or femoral) pulse for quality, rate, and regularity. Confirm HR &gt;60 with adequate perfusion before discontinuing chest compressions. Per pediatric protocol, continue CPR if HR &lt;60 with poor perfusion despite adequate oxygenation.</div></div>
+        <div class="action-rationale">Pediatric bradycardia (HR &lt;60) with poor perfusion is an indication to continue CPR even with a palpable pulse. Verify true hemodynamic recovery before stopping compressions.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Re-inspect oropharynx with laryngoscope to confirm no residual foreign material. Suction any secretions with Yankauer.</div></div>
+        <div class="action-rationale">Residual particles could cause re-obstruction. Confirming a clean airway protects the recovering patient.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Titrate FiO2 to maintain SpO2 94-98% once oxygenation is re-established. Avoid hyperoxia — do NOT leave on 100% after saturations have recovered.</div></div>
+        <div class="action-rationale">Per airway and post-ROSC guidance, hyperoxia is harmful. Target 94-98% once the patient has stabilized.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Epinephrine 0.01 mg/kg (0.16 mg = 1.6 mL of 0.1 mg/mL solution) IV/IO is indicated if the patient remains pulseless or profoundly bradycardic with poor perfusion despite effective oxygenation and ventilation. In this scenario HR recovered with oxygenation — administration not required if HR &gt;60 with perfusion. Continue to have it drawn up in case of re-arrest.</div></div>
+        <div class="action-rationale">Pediatric arrest epinephrine dose per protocol is 0.01 mg/kg IV/IO (max 1 mg). Restoration of oxygenation often corrects hypoxic bradycardia without epinephrine.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Monitor waveform capnography for sudden EtCO2 rise (10-15 mmHg), a classic early indicator of return of perfusion. Document the trend.</div></div>
+        <div class="action-rationale">EtCO2 is the most sensitive early marker of ROSC or return of effective circulation.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">ROSC-Equivalent — Post-Obstruction Stabilization</div>
+        <div class="phase-trigger">Trigger: Spontaneous respiratory effort returning and strong pulses palpable with improving mental status</div>
+        <div class="phase-desc">Patient has achieved effective spontaneous circulation (ROSC-equivalent — was never fully pulseless but was near-arrest). Spontaneous shallow respirations have returned. HR is in sinus tachycardia range (appropriate for this age/stress). BP normalizing. SpO2 95% on BVM with supplemental O2. AVPU has improved to Pain (groans and shows posturing to painful stimulus). Continue BVM-assisted ventilation to augment the shallow spontaneous effort; monitor closely for re-arrest.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Sinus Tachycardia</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">118</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">98/60</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">95%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">14</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">42</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.6°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">110</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg sel-p">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Incomprehensible sounds</span><span class="gcs-score">2</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Flexion (decorticate)</span><span class="gcs-score">3</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">6</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent. OPA may need to be removed if gag reflex returns. No foreign body.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Shallow spontaneous respirations at approximately 14/min with some chest rise. Continuing BVM-assisted ventilation synchronized with patient effort. Clear bilateral breath sounds.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Strong central and peripheral pulses. Capillary refill &lt;2 seconds. Warm well-perfused extremities.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pink, no cyanosis, lips normal color · warming · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">3-4 mm, briskly reactive bilaterally</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Decorticate-type flexion posturing to sternal rub with low-pitched moaning. No purposeful movement yet.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"Incomprehensible low moan to painful stimulus only."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Cyanosis resolved</li><li>Father calmer, standing with mother at edge of scene</li><li>EtCO2 waveform normal shape</li><li>No seizure activity</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Continue BVM-assisted ventilation synchronized with patient's shallow spontaneous respirations to augment minute ventilation. Target EtCO2 35-40 mmHg. Titrate FiO2 to SpO2 94-98%.</div></div>
+        <div class="action-rationale">Post-arrest patients commonly have inadequate spontaneous respiratory effort and require assisted ventilation. Avoid both hyperventilation and hyperoxia.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Maintain continuous cardiac monitoring, SpO2, waveform capnography, and frequent BP. Watch for recurrent arrest, arrhythmia, or deterioration in mental status.</div></div>
+        <div class="action-rationale">A significant percentage of post-ROSC patients re-arrest. Continuous monitoring is essential.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Confirm patency of IO access (or establish IV if not already placed). Start pediatric maintenance isotonic fluids cautiously; avoid fluid overload unless hypotension develops.</div></div>
+        <div class="action-rationale">IV/IO access is essential for medication administration if re-arrest occurs. Judicious fluid administration supports perfusion without overload.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Per pediatric airway protocol, BVM ventilation is preferred over endotracheal intubation in children in the prehospital setting given low ET success rates and higher complication rates. Consider an appropriately sized supraglottic airway (SGA) as a secondary adjunct if prolonged BVM is needed; avoid routine prehospital intubation.</div></div>
+        <div class="action-rationale">Protocol notes that pediatric prehospital ETI has unclear benefit, and BVM/SGA are reasonable primary and secondary adjuncts. Intubation attempts risk hypoxia/bradycardia.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Obtain pediatric 12-lead EKG to assess for reversible causes and post-arrest changes (e.g., electrolyte derangement). Plan serial 12-leads en route.</div></div>
+        <div class="action-rationale">Per post-ROSC protocol, serial 12-leads assess for reversible causes such as STEMI or electrolyte derangement.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Check blood glucose. Treat hypoglycemia per hypoglycemia guideline if indicated; notify receiving hospital of hyperglycemia.</div></div>
+        <div class="action-rationale">Hypoglycemia is a reversible contributor to altered mental status post-arrest and must be ruled out.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-supp">supplemental</span><div class="action-text">Assign crew member to communicate with parents: current status, next steps, destination. Briefly allow parent contact if operationally safe.</div></div>
+        <div class="action-rationale">Clear family communication reduces scene chaos and supports parental coping in pediatric emergencies.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Transport — Post-ROSC Monitoring and Definitive Care</div>
+        <div class="phase-trigger">Trigger: Patient packaged for transport with BVM support, cardiac monitoring, and IV/IO established; moving to ambulance and en route</div>
+        <div class="phase-desc">Patient is packaged and en route to a pediatric receiving facility (preferably one with pediatric critical care/post-resuscitation capability). Continuing BVM-assisted ventilation (with increasing spontaneous effort), cardiac monitoring, IO access patent, serial 12-leads, glucose checked, avoiding hyperoxia and hyperventilation. Mental status continues to improve slowly. The crew monitors for re-arrest and communicates a full report to the receiving facility.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Sinus Tachycardia</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">124</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">102/64</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">96%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">18</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">40</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.6°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">108</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg sel-p">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">To pain</span><span class="gcs-score">2</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Incomprehensible sounds</span><span class="gcs-score">2</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Withdraws from pain</span><span class="gcs-score">4</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">8</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent. OPA removed if gag returned; NPA considered if needed. BVM seal good.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Improving spontaneous respirations approximately 18/min with better chest rise. BVM assistance synchronized and tapering.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Strong pulses, warm well-perfused. Capillary refill &lt;2 seconds. Strong regular rhythm on monitor.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pink · warm · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">3 mm, briskly reactive</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Withdraws from painful stimulus; occasional spontaneous non-purposeful movement.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"Occasional moaning, no intelligible words."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>12-lead: sinus tachycardia without acute ischemic changes</li><li>Glucose 108 mg/dL</li><li>EtCO2 waveform normal at 40 mmHg</li><li>Parents riding in front of ambulance with permission of crew</li><li>ETA to pediatric receiving facility: ~12 minutes</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Maintain SpO2 94-98% by titrating FiO2 downward as tolerated. Do NOT hyperoxygenate.</div></div>
+        <div class="action-rationale">Hyperoxia in the post-arrest period is associated with worse outcomes. Protocol explicitly targets 94-98%.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Maintain EtCO2 35-40 mmHg. Ventilate at a pediatric rate of 1 breath every 3-5 seconds (12-20/min) if an advanced airway is in place; otherwise assist shallow spontaneous respirations as needed. Do NOT hyperventilate.</div></div>
+        <div class="action-rationale">Hyperventilation is a significant cause of hypotension and re-arrest post-ROSC.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Continuous cardiac monitor, waveform capnography, pulse oximetry, and BP every 3-5 minutes. Maintain defibrillator pads in place in case of re-arrest.</div></div>
+        <div class="action-rationale">Post-ROSC re-arrest is common. Pads in place allow immediate defibrillation if a shockable rhythm develops.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Perform serial 12-lead EKGs en route looking for evolving changes, electrolyte derangement, or arrhythmia.</div></div>
+        <div class="action-rationale">Per protocol, serial 12-leads help identify reversible causes post-arrest.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Avoid hyperthermia (&gt;37.5°C). Remove warm blankets if temperature rising. Prehospital initiation of targeted temperature management is NOT routinely recommended.</div></div>
+        <div class="action-rationale">Post-arrest hyperthermia worsens neurologic outcomes. Passive temperature regulation is appropriate in the prehospital setting.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Administer normal saline 10-20 mL/kg (160-320 mL) IV/IO bolus only if hypotensive (SBP &lt;70 + 2×age = &lt;78 mmHg for a 4yo). Reassess after each bolus. Avoid routine fluid overload.</div></div>
+        <div class="action-rationale">Judicious pediatric fluid resuscitation supports perfusion without pulmonary overload or worsening ventilation.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Transport to a pediatric-capable receiving facility with post-resuscitation/critical care capability. Provide early notification with age, weight, clinical story, current vitals, interventions, and ETA.</div></div>
+        <div class="action-rationale">Specialized post-resuscitation care is associated with improved survival and neurologic outcomes.</div>
+        <div class="action-ref">↳ MATC: Post-ROSC Care</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-supp">supplemental</span><div class="action-text">If BVM becomes ineffective or prolonged, consider placement of an appropriately sized pediatric supraglottic airway (SGA) rather than endotracheal intubation, per pediatric airway protocol.</div></div>
+        <div class="action-rationale">SGA is a reasonable secondary adjunct in children and avoids the complications of prehospital pediatric ETI.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card phase-card-branch">
+      <div class="card-content">
+        <div class="branch-tag">Improper Care Branch</div>
+        <div class="phase-title">BRANCH — Continued Back Blows, Delayed CPR → Full Arrest (Asystole)</div>
+        <div class="phase-trigger">Trigger: Providers continue back blows/abdominal thrusts on the unresponsive child without initiating CPR, and no direct laryngoscopy is performed within 3 minutes of arrival</div>
+        <div class="phase-desc">Providers fail to recognize the transition from responsive to unresponsive FBAO algorithm. They continue back blows on the limp child without starting CPR. No direct laryngoscopy is performed. After more than 3 minutes of ongoing profound hypoxia, the child progresses from hypoxic bradycardia to full cardiac arrest in asystole. The obstruction remains in place; EtCO2 is very low from absent perfusion.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Asystole</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">0</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">0/0</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">0%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">0</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">8</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.6°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">110</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg sel-u">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">3</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Complete obstruction persists. No air movement. No visible foreign body without instrumentation.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Apneic. No chest rise with any maneuver.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pulseless. No carotid, no femoral. Full cardiac arrest.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">profound central cyanosis, mottled, grey-blue face and extremities · cool · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Fixed and dilated bilaterally (6 mm)</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Flaccid</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"None."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Father distraught, now being physically moved back by family liaison</li><li>Obstruction remains in airway — has not been visualized or removed</li><li>EtCO2 waveform flat at ~8 mmHg indicating no perfusion</li><li>Rhythm: flatline on monitor</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Immediately stop back blows and start pediatric CPR at 15:2 (two-rescuer) or 30:2 (single-rescuer). Compression rate 100-120/min, depth one-third AP chest (~5 cm). Recognize this as cardiac arrest requiring full ACLS/PALS resuscitation.</div></div>
+        <div class="action-rationale">Corrective action — the team must recognize progression to full arrest and pivot immediately to CPR.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">During a compression pause, perform direct laryngoscopy and use pediatric Magill forceps to remove the visualized foreign body. DO NOT perform blind finger sweeps.</div></div>
+        <div class="action-rationale">The obstruction is still the driver of arrest; removal under direct visualization is essential to any chance of ROSC.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Establish IO access (proximal tibia) and administer Epinephrine 0.01 mg/kg (0.16 mg = 1.6 mL of 0.1 mg/mL solution) IV/IO during the first or second compression cycle. Repeat every 3-5 minutes. Maximum single dose 1 mg.</div></div>
+        <div class="action-rationale">Per pediatric arrest protocol, epinephrine 0.01 mg/kg IV/IO is administered in the first or second round of compressions and repeated every 3-5 minutes. Prioritized early for non-shockable rhythms (asystole).</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Once obstruction is removed, provide BVM ventilation at 15:2 ratio during CPR. If advanced airway placed (SGA preferred over ETI in pediatrics), ventilate 1 breath every 3-5 seconds (12-20/min) without interrupting compressions.</div></div>
+        <div class="action-rationale">Adequate ventilation is essential in pediatric hypoxic arrest. Protocol specifies 15:2 two-rescuer pediatric CPR and 12-20 breaths/min with advanced airway.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Consider and address reversible causes (Hs and Ts): hypoxia (primary — obstruction), hypovolemia, hypoglycemia, hypothermia, hyperkalemia, tension pneumothorax, tamponade, toxins, thrombosis.</div></div>
+        <div class="action-rationale">Identifying and addressing reversible causes is central to arrest management. Hypoxia from FBAO is the primary reversible cause here.</div>
+        <div class="action-ref">↳ MATC: Cardiac Arrest (VF/VT/Asystole/PEA)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-supp">supplemental</span><div class="action-text">Debrief the delay immediately post-call: once a choking patient becomes unresponsive, back blows/abdominal thrusts are REPLACED by CPR — continuing them delays definitive care and leads to arrest.</div></div>
+        <div class="action-rationale">Teaching callout for the simulation debrief — the branch exists specifically to illustrate this decision point.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div></div>
+  </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,306 @@
+{
+  "scenarioId": "resp-pulm-edema-cpap-001",
+  "scenarioName": "Acute Pulmonary Edema - CPAP and Nitroglycerin Response",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1800,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "68-year-old male with progressive dyspnea over the past 3 nights, now acutely worse. Has been sleeping upright in his recliner (three-pillow orthopnea) for several nights. Wife reports increasing fatigue, cough with pink-tinged sputum in the past hour, and inability to speak in full sentences. Attended a church buffet Sunday with significant sodium intake. Home scale shows 8-pound weight gain over 4 days. No chest pain, no fever, no recent illness. Denies use of erectile-dysfunction or pulmonary hypertension medications (sildenafil, tadalafil, vardenafil) in the past 48 hours.",
+    "discussion": "Identify the clinical features that distinguish acute cardiogenic pulmonary edema from COPD exacerbation, pneumonia, and asthma. Describe the pathophysiology of acute pulmonary edema - elevated LV filling pressures cause fluid to move into the alveoli; it is a distribution problem, not total-body fluid overload. Apply the Respiratory Distress protocol nitroglycerin dose-scaling rule: 0.4 mg SL for SBP < 160 mmHg and 0.8 mg SL for SBP >= 160 mmHg or MAP > 120. Verbalize the absolute contraindication to nitrates within 48 hours of phosphodiesterase-5 inhibitors (sildenafil, tadalafil, vardenafil) and with IV epoprostenol or treprostinil. Explain why CPAP works in APE - it is not just oxygenation; positive pressure decreases venous return / preload, redistributes lung water, and recruits partially collapsed alveoli. Explain why prehospital furosemide is contraindicated per protocol Note #6 - APE is a distribution problem, and inappropriate diuresis can cause harm, especially in mimicking conditions like pneumonia or sepsis. Describe the critical rule of CPAP continuity - do NOT break the mask seal until the hospital circuit is ready at the bedside. Recognize impending respiratory failure patterns - rising EtCO2 with tachypnea, declining mental status, fatigue with slowing RR - and escalate to RSI",
+    "course": "Initial Presentation - Severe Acute Pulmonary Edema: On arrival the patient is in severe respiratory distress, bolt upright, tripoding, with clear signs of fluid-overload pulmonary edema. He is markedly hypertensive and hypoxic. The clinical picture (JVD, bilateral rales to mid-lung fields, pink frothy sputum, peripheral edema, orthopnea history) points strongly to acute decompensated heart failure. The crew must recognize acute pulmonary edema, begin high-flow oxygen, obtain a 12-lead to screen for STEMI, establish IV access, screen for PDE5 inhibitors, and prepare for NTG + CPAP. → Post First NTG Dose - Partial Response: After the first 0.8 mg SL nitroglycerin dose, preload drops and the patient reports feeling slightly less 'tight'. Blood pressure is beginning to decrease but remains hypertensive. Work of breathing is mildly improved but rales are still audible to mid-lung fields. This is the window to apply CPAP concurrently and continue NTG q 5 minutes per protocol. → On CPAP with Repeat NTG - Significant Improvement: With CPAP at 10 cmH2O and repeat nitroglycerin dosing every 5 minutes, the patient demonstrates significant clinical improvement. Work of breathing is noticeably reduced, rales are fewer and lower in the lung fields, and oxygenation has normalized. Blood pressure has come down into a more acceptable range. This is the expected 'responder' trajectory for cardiogenic pulmonary edema treated appropriately. → Stable on CPAP - Transport Phase: Patient is now well-compensated on CPAP with continuing NTG. He reports breathing is much easier. The crew must resist the urge to wean CPAP during transport; the mask stays on until hospital CPAP is at the bedside. Continue close monitoring, maintain IV access, and prepare for smooth handoff."
+  },
+  "patientInformation": {
+    "patientName": "Walter Janowski",
+    "patientCondition": "Severe shortness of breath, cannot catch breath even sitting upright",
+    "patientAge": 68,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 180,
+    "patientWeight": 95,
+    "patientPhotoId": 82,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Presentation - Severe Acute Pulmonary Edema",
+      "description": "On arrival the patient is in severe respiratory distress, bolt upright, tripoding, with clear signs of fluid-overload pulmonary edema. He is markedly hypertensive and hypoxic. The clinical picture (JVD, bilateral rales to mid-lung fields, pink frothy sputum, peripheral edema, orthopnea history) points strongly to acute decompensated heart failure. The crew must recognize acute pulmonary edema, begin high-flow oxygen, obtain a 12-lead to screen for STEMI, establish IV access, screen for PDE5 inhibitors, and prepare for NTG + CPAP.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 115,
+        "bpSys": 198,
+        "bpDia": 110,
+        "respRate": 32,
+        "spo2": 84,
+        "etco2": 30,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Establish two large-bore IV lines",
+        "Place continuous waveform capnography"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Post First NTG Dose - Partial Response",
+      "description": "After the first 0.8 mg SL nitroglycerin dose, preload drops and the patient reports feeling slightly less 'tight'. Blood pressure is beginning to decrease but remains hypertensive. Work of breathing is mildly improved but rales are still audible to mid-lung fields. This is the window to apply CPAP concurrently and continue NTG q 5 minutes per protocol.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 110,
+        "bpSys": 176,
+        "bpDia": 96,
+        "respRate": 30,
+        "spo2": 86,
+        "etco2": 32,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "On CPAP with Repeat NTG - Significant Improvement",
+      "description": "With CPAP at 10 cmH2O and repeat nitroglycerin dosing every 5 minutes, the patient demonstrates significant clinical improvement. Work of breathing is noticeably reduced, rales are fewer and lower in the lung fields, and oxygenation has normalized. Blood pressure has come down into a more acceptable range. This is the expected 'responder' trajectory for cardiogenic pulmonary edema treated appropriately.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 100,
+        "bpSys": 148,
+        "bpDia": 86,
+        "respRate": 22,
+        "spo2": 94,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Stable on CPAP - Transport Phase",
+      "description": "Patient is now well-compensated on CPAP with continuing NTG. He reports breathing is much easier. The crew must resist the urge to wean CPAP during transport; the mask stays on until hospital CPAP is at the bedside. Continue close monitoring, maintain IV access, and prepare for smooth handoff.",
+      "monitorType": 0,
+      "trendTime": 35,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 92,
+        "bpSys": 138,
+        "bpDia": 80,
+        "respRate": 18,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Branch - CPAP Alone Without Preload Reduction - Deterioration",
+      "description": "CPAP was applied but nitroglycerin was either never given or was withheld for more than 5 minutes despite SBP >= 160 mmHg. Without preload reduction, continued fluid shift overwhelms alveolar recruitment from CPAP alone. The patient deteriorates: worsening hypoxia, climbing EtCO2, fatigue, and declining mental status progressing toward frank respiratory failure. Crew must now escalate airway management (RSI) and give NTG emergently.",
+      "monitorType": 0,
+      "trendTime": 45,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 130,
+        "bpSys": 184,
+        "bpDia": 108,
+        "respRate": 12,
+        "spo2": 78,
+        "etco2": 55,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Recognize acute pulmonary edema based on JVD, bilateral rales, pink frothy sputum, peripheral edema, and orthopnea history",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Keep the patient in a full upright seated position and apply high-flow oxygen via NRB at 15 L/min titrated to SpO2 94-98%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Screen explicitly for phosphodiesterase inhibitor use (sildenafil, tadalafil, vardenafil) within the past 48 hours, and for IV epoprostenol/treprostinil, BEFORE administering nitroglycerin",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Nitroglycerin 0.8 mg SL for SBP >= 160 mmHg, then 0.4 mg SL every 5 minutes while SBP > 100 mmHg per Respiratory Distress pulmonary edema section",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply CPAP at 10 cmH2O with full face mask and maintain mask seal",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire a 12-lead ECG within 10 minutes to screen for STEMI/ACS as precipitant",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Withhold furosemide prehospital per protocol Note #6",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Maintain CPAP continuously until transfer to hospital CPAP circuit at the ED bedside - do NOT discontinue mid-transport",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reassess blood pressure before each nitroglycerin dose and document response",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If patient deteriorates on NIV despite correct therapy, escalate to RSI with appropriate induction and paralytic dosing",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish two large-bore IV lines",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Place continuous waveform capnography",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply continuous cardiac monitoring",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Obtain complete SAMPLE history with attention to weight gain, dietary indiscretion, orthopnea, ejection fraction",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Provide verbal coaching to the patient for CPAP tolerance",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early notification to the receiving facility with request for bedside CPAP",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Serial 12-leads if there is any new chest pain, diaphoresis, or rhythm change",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Consider IV nitroglycerin infusion 5-200 mcg/min titrated to blood pressure if available and within scope",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Pediatric Severe Asthma — Near-Fatal Exacerbation</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#f4f3f0;--card:#fff;--card-border:#e8e6e1;--text:#1c1917;--text-secondary:#57534e;--text-muted:#a8a29e;--green:#16a34a;--green-light:#f0fdf4;--green-border:#bbf7d0;--red:#dc2626;--red-light:#fef2f2;--red-border:#fecaca;--orange:#ea580c;--orange-light:#fff7ed;--orange-border:#fed7aa;--blue:#2563eb;--blue-light:#eff6ff;--purple:#7c3aed;--cyan:#0891b2;--yellow:#ca8a04;--radius:14px;--radius-sm:10px;--shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100dvh;overflow-x:hidden}
+.top-bar{background:var(--card);padding:16px 20px 0;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--card-border)}
+.scenario-name{font-size:17px;font-weight:700;margin-bottom:4px}
+.scenario-tags{display:flex;gap:6px;margin-bottom:14px}
+.tag{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px}
+.tag-difficulty{background:var(--orange-light);color:var(--orange)}
+.tag-category{background:var(--blue-light);color:var(--blue)}
+.tag-time{background:#f5f5f4;color:var(--text-muted)}
+.phase-strip{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}
+.phase-strip::-webkit-scrollbar{display:none}
+.phase-tab{flex-shrink:0;font-size:13px;font-weight:600;padding:10px 16px;color:var(--text-muted);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;position:relative}
+.phase-tab.active{color:var(--text);border-bottom-color:var(--text)}
+.phase-tab.branch{color:var(--red);opacity:.5}
+.phase-tab.branch.active{opacity:1;border-bottom-color:var(--red)}
+.phase-tab .hint-dot{display:none;width:7px;height:7px;border-radius:50%;position:absolute;top:6px;right:4px}
+.phase-tab.hint-next .hint-dot{display:block;background:var(--green);animation:pulse-hint 1.5s infinite}
+.phase-tab.hint-branch .hint-dot{display:block;background:var(--red);animation:pulse-hint 1s infinite}
+@keyframes pulse-hint{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.content{padding:16px;max-width:600px;margin:0 auto}
+.panel{display:none}.panel.active{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);padding:14px 16px 10px}
+.card-content{padding:0 16px 16px}
+.accordion{cursor:pointer;user-select:none}
+.accordion .card-title{display:flex;justify-content:space-between;align-items:center;padding:16px}
+.accordion .card-title::after{content:'＋';font-size:16px;color:var(--text-muted)}
+.accordion.open .card-title::after{content:'−'}
+.accordion .accordion-body{display:none;padding:0 16px 16px}
+.accordion.open .accordion-body{display:block}
+.scene-row{padding:8px 0;border-bottom:1px solid #f5f5f4}.scene-row:last-child{border-bottom:none}
+.scene-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.scene-value{font-size:14px;color:var(--text-secondary)}
+.cue-list{list-style:none}.cue-list li{font-size:14px;color:var(--text-secondary);padding:4px 0 4px 16px;position:relative}.cue-list li::before{content:'→';position:absolute;left:0;color:var(--text-muted);font-size:12px}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.sample-cell{background:var(--card);padding:12px}.sample-cell.full{grid-column:1/-1}
+.sample-letter{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--green);margin-right:4px}
+.sample-name{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:4px}
+.sample-text{font-size:13px;color:var(--text-secondary);line-height:1.4}
+.patient-chips{display:flex;flex-wrap:wrap;gap:8px}
+.patient-chip{font-size:13px;padding:6px 12px;background:#f5f5f4;border-radius:8px;color:var(--text-secondary)}
+.patient-chip strong{color:var(--text);font-weight:600}
+.phase-card{border-left:4px solid var(--text)}.phase-card.branch-card{border-left-color:var(--red)}
+.phase-card .card-content{padding:16px}
+.phase-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.phase-trigger{font-family:'DM Mono',monospace;font-size:11px;color:var(--yellow);margin-bottom:8px}
+.phase-desc{font-size:14px;color:var(--text-secondary);line-height:1.5}
+.vitals-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.vital-cell{background:var(--card);padding:10px 8px;text-align:center}.vital-cell.full-width{grid-column:1/-1}
+.vital-name{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.vital-val{font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:var(--text);line-height:1.1}
+.vital-unit{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted)}
+.vital-cell.alert .vital-val{color:var(--red)}.vital-cell.alert .vital-name{color:var(--red)}.vital-cell.alert{background:var(--red-light)}
+.vital-cell.warn .vital-val{color:var(--orange)}.vital-cell.warn .vital-name{color:var(--orange)}.vital-cell.warn{background:var(--orange-light)}
+.ecg-label{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-secondary);padding:8px 12px;background:#fafaf9;border-bottom:1px solid #f0efec;border-radius:var(--radius-sm) var(--radius-sm) 0 0}
+.avpu-bar{display:flex;border-radius:8px;overflow:hidden;margin-bottom:12px;border:1px solid var(--card-border)}
+.avpu-seg{flex:1;text-align:center;padding:8px 4px;font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--text-muted);background:#fafaf9}
+.avpu-seg.sel-a{background:var(--green-light);color:var(--green);border:1px solid var(--green-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-v{background:var(--orange-light);color:var(--yellow);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-p{background:var(--orange-light);color:var(--orange);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-u{background:var(--red-light);color:var(--red);border:1px solid var(--red-border);margin:-1px;border-radius:8px}
+.gcs-row{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-secondary);margin-bottom:14px;text-align:center}
+.gcs-total{font-size:18px;font-weight:700;color:var(--text)}
+.finding-row{padding:10px 0;border-bottom:1px solid #f5f5f4}.finding-row:last-child{border-bottom:none}
+.finding-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:3px}
+.finding-value{font-size:14px;color:var(--text-secondary)}.finding-value.danger{color:var(--red);font-weight:600}.finding-value.improving{color:var(--green)}.finding-value.speech{font-style:italic;color:var(--text-muted)}
+.skin-chips{display:flex;gap:6px;flex-wrap:wrap}
+.skin-chip{font-size:12px;padding:3px 10px;border-radius:6px;background:#f5f5f4;color:var(--text-secondary)}.skin-chip.warn{background:var(--red-light);color:var(--red)}
+.findings-notes{list-style:none}.findings-notes li{font-size:13px;color:var(--text-secondary);padding:3px 0 3px 14px;position:relative}.findings-notes li::before{content:'·';position:absolute;left:2px;font-weight:700;color:var(--text-muted)}.findings-notes li.danger{color:var(--red)}
+.action-card{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4}.action-card:last-child{border-bottom:none}
+.action-check{width:18px;height:18px;flex-shrink:0;cursor:pointer;accent-color:var(--green)}
+.action-body{flex:1}
+.action-priority{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.p-critical{color:var(--red)}.p-important{color:var(--orange)}
+.action-text{font-size:14px;color:var(--text);font-weight:500}
+.action-chevron{color:var(--text-muted);font-size:14px;transition:transform .2s;flex-shrink:0}
+.action-card.open .action-chevron{transform:rotate(90deg)}
+.action-detail{display:none;padding:0 14px 14px 46px}.action-card.open .action-detail{display:block}
+.action-rationale{font-size:13px;color:var(--text-secondary);line-height:1.5;padding:10px 12px;background:#fafaf9;border-radius:8px;border-left:3px solid var(--card-border)}
+.action-ref{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);margin-top:6px}
+.branch-alert{background:var(--red-light);border:1px solid var(--red-border);border-radius:var(--radius);padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
+.branch-alert-icon{font-size:18px;flex-shrink:0}
+.branch-alert-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:2px}
+.branch-alert-text{font-size:13px;color:var(--text-secondary)}
+.assess-group-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:10px 16px}
+.assess-critical .assess-group-title{color:var(--red)}.assess-expected .assess-group-title{color:var(--orange)}
+.assess-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);cursor:pointer}
+.assess-check{width:22px;height:22px;border:2px solid #d6d3d1;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.assess-check.done{background:var(--green);border-color:var(--green)}.assess-check.done::after{content:'✓';font-size:12px;color:#fff;font-weight:700}
+.debrief-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:14px 16px 10px}
+.debrief-item{padding:10px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);line-height:1.5;display:flex;gap:10px}
+.debrief-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--text-muted);flex-shrink:0;min-width:20px;padding-top:2px}
+.bottom-spacer{height:80px}
+@media print{.top-bar{position:static}.panel{display:flex!important;flex-direction:column;gap:12px;page-break-inside:avoid;margin-bottom:20px}.accordion .accordion-body{display:block!important}.action-detail{display:block!important}}
+
+.action-priority{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+.priority-critical{background:var(--red-light,#fef2f2);color:var(--red,#dc2626)}
+.priority-important{background:var(--orange-light,#fff7ed);color:var(--orange,#ea580c)}
+.priority-supplemental{background:#f5f5f4;color:var(--text-muted,#a8a29e)}
+.action-check{width:18px;height:18px;flex-shrink:0}
+.top-bar-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.timer-widget{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+#timer-display{font-family:'DM Mono',monospace;font-size:20px;font-weight:700;color:var(--text-muted,#a8a29e);font-variant-numeric:tabular-nums;line-height:1}
+.timer-controls{display:flex;gap:4px}
+.timer-btn{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;border:1px solid var(--card-border,#e8e6e1);background:var(--card,#fff);color:var(--text-secondary,#57534e);cursor:pointer;line-height:1.4}
+.timer-btn:hover{background:#f5f5f4}
+.timer-btn-stop{border-color:var(--red-border,#fecaca);color:var(--red,#dc2626)}
+.timer-btn-stop:hover{background:var(--red-light,#fef2f2)}
+.timer-btn-restart{border-color:var(--blue,#2563eb);color:var(--blue,#2563eb)}
+.timer-btn-restart:hover{background:var(--blue-light,#eff6ff)}
+.gcs-detail{margin-top:10px}
+.gcs-item{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid #f5f5f4}
+.gcs-item:last-of-type{border-bottom:none}
+.gcs-part{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted,#a8a29e);min-width:52px;flex-shrink:0}
+.gcs-desc{flex:1;font-size:13px;color:var(--text-secondary,#57534e)}
+.gcs-score{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--text,#1c1917);min-width:20px;text-align:right;flex-shrink:0}
+.gcs-total-row{display:flex;justify-content:flex-end;align-items:baseline;gap:8px;padding-top:10px;margin-top:6px;border-top:1px solid var(--card-border,#e8e6e1);font-family:'DM Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted,#a8a29e)}
+.gcs-total-row .gcs-total{font-family:'DM Mono',monospace;font-size:18px;font-weight:700;color:var(--text,#1c1917)}
+#timer-display.timer-warn{color:var(--orange,#ea580c)}
+#timer-display.timer-danger{color:var(--red,#dc2626)}
+.debrief-phase-card{overflow:hidden}
+.debrief-phase-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px}
+.debrief-phase-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score.score-perfect{color:var(--green,#16a34a)}
+.debrief-phase-score.score-none{color:var(--red,#dc2626)}
+.debrief-phase-body{padding:0 16px 14px}
+.debrief-done-section{background:var(--green-light,#f0fdf4);border:1px solid var(--green-border,#bbf7d0);border-radius:var(--radius-sm,10px);padding:6px 12px;margin-bottom:10px}
+.debrief-done-row{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px;color:var(--green,#16a34a)}
+.debrief-done-icon{font-weight:700;flex-shrink:0;font-size:12px}
+.debrief-done-text{color:var(--text-secondary,#57534e)}
+.debrief-missed-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red,#dc2626);padding:4px 0 8px}
+.debrief-missed-row{background:var(--red-light,#fef2f2);border:1px solid var(--red-border,#fecaca);border-radius:var(--radius-sm,10px);padding:10px 12px;margin-bottom:6px}
+.debrief-missed-row:last-child{margin-bottom:0}
+.debrief-missed-top{display:flex;align-items:center;gap:8px}
+.debrief-missed-text{font-size:14px;font-weight:600;color:var(--text,#1c1917)}
+.debrief-missed-detail{padding:6px 0 0 0;margin-top:6px;border-top:1px solid var(--red-border,#fecaca)}
+.debrief-missed-rationale{font-size:12px;color:var(--text-secondary,#57534e);line-height:1.4}
+.debrief-missed-protocol{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue,#2563eb);margin-top:2px}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-header">
+    <div>
+      <div class="scenario-name">Pediatric Severe Asthma — Near-Fatal Exacerbation</div>
+      <div class="scenario-tags">
+        <span class="tag tag-difficulty">advanced</span>
+        <span class="tag tag-category">Respiratory / Pediatric</span>
+      </div>
+    </div>
+    <div class="timer-widget" id="scenario-timer" data-total="1800">
+      <span id="timer-display">30:00</span>
+      <div class="timer-controls">
+        <button id="timer-start" class="timer-btn" onclick="timerStart()">start</button>
+        <button id="timer-pause" class="timer-btn" onclick="timerPause()" style="display:none">pause</button>
+        <button id="timer-stop" class="timer-btn timer-btn-stop" onclick="timerStop()" style="display:none">stop</button>
+        <button id="timer-reset" class="timer-btn" onclick="timerReset()" style="display:none">reset</button>
+        <button class="timer-btn timer-btn-restart" onclick="scenarioRestart()" title="Restart scenario — clears checkboxes and timer">↻ restart</button>
+      </div>
+    </div>
+  </div>
+  <div class="phase-strip">
+    <div class="phase-tab active" data-panel="scene" onclick="showPanel(this, 'scene')">Scene</div>
+    <div class="phase-tab" data-panel="phase-initial" onclick="showPanel(this, 'phase-initial')">Initial Contact — Severe Asthma with Silent Chest</div>
+    <div class="phase-tab" data-panel="phase-on-duoneb" onclick="showPanel(this, 'phase-on-duoneb')">On Duoneb — Minimal Improvement</div>
+    <div class="phase-tab" data-panel="phase-post-im-epi" onclick="showPanel(this, 'phase-post-im-epi')">Post IM Epinephrine — Dramatic Improvement</div>
+    <div class="phase-tab" data-panel="phase-on-steroids-and-mag" onclick="showPanel(this, 'phase-on-steroids-and-mag')">IV Steroid + Magnesium Sulfate Onboard</div>
+    <div class="phase-tab" data-panel="phase-stable-for-transport" onclick="showPanel(this, 'phase-stable-for-transport')">Stable for Transport — Continuous Neb En Route</div>
+    <div class="phase-tab branch" data-panel="phase-branch-respiratory-arrest" onclick="showPanel(this, 'phase-branch-respiratory-arrest')">BRANCH: Respiratory Failure → Hypoxic PEA Arrest</div>
+    <div class="phase-tab" data-panel="debrief" onclick="showPanel(this, 'debrief')">Debrief</div>
+  </div>
+</div>
+<div class="content">
+  
+<div class="panel active" id="panel-scene">
+  <div class="card">
+    <div class="card-title">Dispatch</div>
+    <div class="card-content" style="font-size:14px;color:var(--text-secondary)">8-year-old male, trouble breathing at the elementary school on 14th Street, nurse's office, priority one.</div>
+  </div>
+  <div class="card accordion open" onclick="this.classList.toggle('open')">
+    <div class="card-title">Scene Setup</div>
+    <div class="accordion-body">
+      <div class="scene-row"><div class="scene-label">Location</div><div class="scene-value">Elementary school nurse's office, mid-morning. Small office with an exam table, desk, and wall-mounted first aid supplies. Patient is on the floor in the corner, tripoded and leaning against the wall.</div></div>
+      <div class="scene-row"><div class="scene-label">Time</div><div class="scene-value">Weekday, approximately 10:05, mid-morning. Outdoor temperature cold, recent cold snap.</div></div>
+      <div class="scene-row"><div class="scene-label">Safety</div><div class="scene-value">Scene is safe. Well-lit, indoor, controlled environment. Single patient. School nurse present and cooperative. Standard BSI/PPE appropriate (consider surgical mask over nebulizer for droplet control).</div></div>
+      <div class="scene-row"><div class="scene-label">Bystanders</div><div class="scene-value">School nurse (RN) at patient's side — provides history of interventions already attempted. Principal at the office doorway keeping other students away. Mother is en route, ETA ~10 minutes.</div></div>
+      <div class="scene-row"><div class="scene-label">Visual Cues</div><ul class="cue-list"><li>Patient tripoded on floor leaning against wall, visibly distressed</li><li>Spacer and albuterol HFA inhaler sitting used on the counter</li><li>Pediatric jet nebulizer machine running on the desk with empty albuterol unit-dose vial next to it</li><li>Pediatric BVM with mask visible on top of the desk</li><li>Visible supraclavicular and intercostal retractions with nasal flaring</li><li>Cyanotic lips and perioral dusky color</li><li>Diaphoretic forehead and hair matted with sweat</li></ul></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Patient Information</div>
+    <div class="card-content">
+      <div class="patient-chips">
+        <div class="patient-chip"><strong>Ethan Moreno</strong></div>
+        <div class="patient-chip">8 years</div>
+        <div class="patient-chip">male</div>
+        <div class="patient-chip">55 lbs (25 kg)</div>
+        <div class="patient-chip">4'2"</div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-phase-initial">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Initial Contact — Severe Asthma with Silent Chest</div>
+      
+      <div class="phase-desc">Patient in severe respiratory distress with impending respiratory failure. Tripoded, retractions in all three muscle groups, nasal flaring, speaking only 1–2 words between breaths. Auscultation reveals a 'quiet chest' / 'silent chest' — minimal wheezing audible despite obvious severe bronchospasm. This is a near-fatal asthma presentation.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent but patient is working very hard. No stridor, no foreign body. Oral mucosa dry.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Severe respiratory distress. Prolonged expiratory phase. Intercostal, subcostal, and supraclavicular retractions. Nasal flaring. Accessory muscle use (SCM). Breath sounds: QUIET CHEST / SILENT CHEST — minimal wheezing audible bilaterally despite severe distress. Poor air entry throughout. No crackles or rales.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Tachycardic, strong central pulse, weak peripheral. Cap refill 3 seconds. No JVD. No peripheral edema.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Confused</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">14</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">148</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">108/68</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">42</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">86</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">50</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">100</div><div class="vital-unit">°F</div></div>
+        
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">Cyanotic lips and perioral area; pale elsewhere</span><span class="skin-chip">Warm</span><span class="skin-chip">Diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 4mm bilaterally</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Moves all extremities, no focal deficit; grip weak bilaterally from fatigue</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"1–2 word sentences only: 'Can't... breathe...' 'Help... me...'"</div></div>
+      <ul class="findings-notes"><li>QUIET CHEST / SILENT CHEST — near-fatal asthma sign per protocol; minimal wheezing heard despite severe bronchospasm</li><li>Capnography shows classic SHARK-FIN waveform — obstructive/bronchospastic pattern</li><li>EtCO2 ~50 mmHg with tachypnea — concerning for impending respiratory failure (normal EtCO2 with tachypnea is a red flag; rising EtCO2 is worse)</li><li>Tripoded position, leaning against wall</li><li>Risk factors for fatal asthma all present: prior ICU admission, prior intubation, frequent ED visits, medication noncompliance</li></ul>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">SAMPLE History</div>
+    <div class="card-content">
+      <div class="sample-grid">
+        <div class="sample-cell full"><span class="sample-letter">S</span><div class="sample-name">Signs/Symptoms</div><div class="sample-text">Severe difficulty breathing at school, not improving with home inhaler or nebulizer</div></div>
+        <div class="sample-cell"><span class="sample-letter">A</span><div class="sample-name">Allergies</div><div class="sample-text">NKDA</div></div>
+        <div class="sample-cell"><span class="sample-letter">M</span><div class="sample-name">Medications</div><div class="sample-text">Fluticasone/salmeterol 100/50 DPI — 1 inhalation BID (parent reports poor compliance), Albuterol HFA 90 mcg — 2 puffs PRN rescue, Montelukast 5 mg PO daily</div></div>
+        <div class="sample-cell"><span class="sample-letter">P</span><div class="sample-name">Past Medical</div><div class="sample-text">Severe persistent asthma (diagnosed age 3), Two prior pediatric ICU admissions — most recent age 6 required endotracheal intubation and mechanical ventilation, Frequent ED visits (4 in the past 12 months), Eczema, Seasonal allergic rhinitis</div></div>
+        <div class="sample-cell"><span class="sample-letter">L</span><div class="sample-name">Last Oral Intake</div><div class="sample-text">Breakfast — cereal and juice at 07:00 (~2.5 hours ago)</div></div>
+        <div class="sample-cell full"><span class="sample-letter">E</span><div class="sample-name">Events</div><div class="sample-text">Attending school normally this morning. Developed increased work of breathing during first period. Walked himself to the nurse's office at approximately 09:45. Nurse gave nebulized albuterol followed by rescue inhaler with no improvement. Nurse then called 911. Mother has been notified and is en route to the school.</div></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="primary-survey" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Perform rapid primary survey (ABC), recognize severe respiratory distress and impending respiratory failure based on tripoded posture, retractions, nasal flaring, 1–2 word speech, cyanosis, and SpO2 86%</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="position-of-comfort" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Allow patient to remain in the tripod / position of comfort; do NOT force supine</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="high-flow-o2" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Apply high-flow oxygen via pediatric non-rebreather mask at 15 L/min; target SpO2 94–98%</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="capnography" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Place waveform capnography (nasal/mask sampling); interpret shark-fin waveform as bronchospasm and monitor EtCO2 trend</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="monitor-iv-prep" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Place cardiac monitor, pulse oximetry, and prepare for IV/IO access (22g or 24g, saline lock); anticipate need for IV steroids and magnesium</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="recognize-silent-chest" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Recognize QUIET CHEST / SILENT CHEST as a near-fatal asthma sign; anticipate need for IM epinephrine if no rapid response to nebulized bronchodilators</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="history-risk-factors" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Obtain focused history from school nurse and (when mother arrives) confirm risk factors for fatal asthma: prior ICU admission, prior intubation, frequent ED visits, medication noncompliance</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-on-duoneb">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">On Duoneb — Minimal Improvement</div>
+      <div class="phase-trigger">Albuterol 5 mg + Ipratropium 0.5 mg nebulized started</div>
+      <div class="phase-desc">Duoneb (albuterol + ipratropium) initiated via pediatric mask. Patient remains in severe distress — breath sounds still quiet, fatigue worsening, SpO2 creeping up only slightly. This is the window where the provider must recognize non-response and escalate to IM epinephrine.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent. Nebulizer mask in place.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Still severe distress. Breath sounds remain QUIET — minimal new wheezing despite neb treatment. Prolonged expiratory phase. Retractions persist. Patient visibly fatiguing — effort beginning to decrease.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Tachycardic (slightly worse from beta-agonist effect). Peripheral pulses remain weak.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Confused</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">14</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">152</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">106/66</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">38</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">88</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">48</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">100</div><div class="vital-unit">°F</div></div>
+        
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">Persistent perioral cyanosis</span><span class="skin-chip">Warm</span><span class="skin-chip">Diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 4mm</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Decreased spontaneous movement — fatiguing</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"Single words only: 'Tired...' 'Sleep...'"</div></div>
+      <ul class="findings-notes"><li>Silent chest persists — MINIMAL improvement despite full-dose duoneb</li><li>Shark-fin capnography waveform continues</li><li>Mental status trending down slightly (GCS 13) — drowsy from CO2 retention and fatigue</li><li>This is the inflection point: non-response to duoneb in a silent-chest patient = indication for IM epinephrine</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="duoneb" data-phase-id="on-duoneb">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Albuterol 5 mg + Ipratropium 0.5 mg nebulized via pediatric mask at 6–8 L/min O2; albuterol may be repeated at 5 mg with unlimited frequency for ongoing respiratory distress, ipratropium up to 3 total doses</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="recognize-nonresponse" data-phase-id="on-duoneb">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Reassess after 2–5 minutes on duoneb; recognize lack of clinical improvement (persistent silent chest, rising/normal EtCO2 with tachypnea, decreasing mental status) as IMPENDING RESPIRATORY FAILURE and trigger to escalate to IM epinephrine</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="prepare-epi" data-phase-id="on-duoneb">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Draw up Epinephrine 1 mg/mL (1:1,000) — 0.01 mg/kg = 0.25 mg (0.25 mL) for this 25 kg patient; have IM needle (21–23g, 1 inch) ready for lateral thigh administration</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="continue-o2" data-phase-id="on-duoneb">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Continue supplemental oxygen with nebulizer (6–8 L/min driving nebulizer); maintain SpO2 target 94–98%</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="avoid-invasive-airway" data-phase-id="on-duoneb">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Do NOT proceed to supraglottic airway or endotracheal intubation at this time — invasive airway does not improve bronchospasm and risks air trapping, pneumothorax, and cardiovascular collapse. Continue to support with BVM only if ventilation fails.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-post-im-epi">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Post IM Epinephrine — Dramatic Improvement</div>
+      <div class="phase-trigger">IM Epinephrine 1:1000 given after recognition of impending respiratory failure</div>
+      <div class="phase-desc">Within 1–2 minutes of IM epinephrine, bronchospasm begins to break. Air movement improves — paradoxically MORE wheezing is now audible because air is actually moving through the airways. Work of breathing decreases. Patient starts speaking in short sentences. Brief HR bump from epinephrine is expected.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent, self-maintaining.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Markedly decreased work of breathing. Retractions still present but less prominent. Expiratory phase still prolonged but air is moving. Breath sounds: diffuse expiratory wheezing now clearly audible bilaterally — improvement from silent chest (air entry restored).</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Tachycardic, expected post-epinephrine bump; central and peripheral pulses strong. Cap refill 2 seconds.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">160</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">118/72</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">28</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">92</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">44</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">100</div><div class="vital-unit">°F</div></div>
+        
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">Pink lips — cyanosis resolving; mild flushing from epinephrine</span><span class="skin-chip">Warm</span><span class="skin-chip">Still diaphoretic but improving</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 4mm</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Normal strength, moves all extremities purposefully</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'I feel... a little better.' 'My chest... still hurts.'"</div></div>
+      <ul class="findings-notes"><li>Audible wheezing now present — GOOD sign, indicates air movement has been restored</li><li>Shark-fin capnograph softening — EtCO2 trending down toward normal</li><li>Patient able to speak in short 3–4 word sentences</li><li>Teaching point: the transition from silent chest to audible wheeze after IM epinephrine confirms the mechanism — air entry was the limiting factor, not wheeze</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="give-im-epi" data-phase-id="post-im-epi">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Epinephrine 1 mg/mL (1:1,000) 0.01 mg/kg IM (0.25 mg = 0.25 mL for 25 kg patient; protocol maximum 0.3 mg) into the lateral thigh (vastus lateralis) using a 21–23g 1-inch needle; document time of administration</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reassess-post-epi" data-phase-id="post-im-epi">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Reassess within 1–2 minutes: auscultate chest for new wheezing (return of air entry), reassess work of breathing, SpO2, EtCO2, capnograph shape, and mental status; document response</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="continue-neb" data-phase-id="post-im-epi">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Continue nebulized Albuterol 5 mg (repeat with unlimited frequency) ± Ipratropium 0.5 mg (up to 3 total doses) via pediatric mask while patient responds</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="iv-io-access" data-phase-id="post-im-epi">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Obtain IV access (preferred: 22g or 24g antecubital or hand) or IO (proximal tibia) if IV fails; saline lock or slow maintenance</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-on-steroids-and-mag">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">IV Steroid + Magnesium Sulfate Onboard</div>
+      <div class="phase-trigger">IV access with Methylprednisolone 2 mg/kg + Magnesium sulfate 40 mg/kg over 10-15 min</div>
+      <div class="phase-desc">IV access obtained. Methylprednisolone and magnesium sulfate administered. Steroid onset is slow (hours) but critical for sustained improvement; magnesium sulfate provides adjunctive bronchial smooth muscle relaxation over 10–15 minutes. Clinical picture continues to improve.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent, self-maintaining.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Significant continued improvement. Retractions minimal. Expiratory phase still slightly prolonged. Bronchial breath sounds with mild expiratory wheezing bilaterally. Air movement good.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Heart rate settling as epinephrine effect wanes; BP within normal range for age. Cap refill 2 seconds.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">138</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">112/70</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">24</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">95</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">42</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">99.9</div><div class="vital-unit">°F</div></div>
+        
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">Pink, no cyanosis</span><span class="skin-chip">Warm</span><span class="skin-chip">Mild diaphoresis resolving</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 4mm</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Normal</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'My chest doesn't hurt as much.' 'I'm really tired.'"</div></div>
+      <ul class="findings-notes"><li>Capnograph waveform shape normalizing — less shark-fin</li><li>Patient speaking in full short sentences</li><li>Watch for transient hypotension from magnesium sulfate — responds to fluid bolus if it occurs</li><li>Steroid onset is delayed (hours); IV steroid now prevents late deterioration</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="methylprednisolone" data-phase-id="on-steroids-and-mag">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Administer Methylprednisolone 2 mg/kg IV (50 mg for 25 kg patient; protocol maximum 125 mg) IV push over 1–2 minutes. Alternative: Dexamethasone 0.6 mg/kg IV/IM (15 mg for this 25 kg patient; protocol maximum 16 mg).</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="magnesium-sulfate" data-phase-id="on-steroids-and-mag">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Administer Magnesium sulfate 40 mg/kg IV (1,000 mg = 1 g for 25 kg patient; protocol maximum 2 g) diluted in 50–100 mL NS, infused over 10–15 minutes. Monitor blood pressure — hypotension is usually responsive to a fluid bolus.</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="continuous-neb" data-phase-id="on-steroids-and-mag">
+        <span class="action-priority priority-supplemental">SUPPLEMENTAL</span>
+        <span class="action-text">Consider continuous nebulized Albuterol 10–15 mg/hour via pediatric mask as bridging bronchodilator therapy during transport</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="monitor-mag-bp" data-phase-id="on-steroids-and-mag">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Reassess blood pressure every 3–5 minutes during magnesium infusion; if SBP drops, pause infusion and administer 10–20 mL/kg NS bolus (250–500 mL for this patient)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="document-response" data-phase-id="on-steroids-and-mag">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Document interval vital signs, breath sounds, mental status, and capnography waveform after each intervention</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-stable-for-transport">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Stable for Transport — Continuous Neb En Route</div>
+      <div class="phase-trigger">Transitioning patient to ambulance cot, ongoing neb</div>
+      <div class="phase-desc">Patient transitioned to ambulance cot, continuous nebulizer running, oxygen supplementation in place. Hemodynamics stable, work of breathing minimal, air entry clearly improved. Ongoing reassessment during transport to the pediatric emergency department.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent, self-maintaining; nebulizer mask in place.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Minimal work of breathing. No accessory muscle use. Expiratory phase near normal. Breath sounds: mild scattered wheezing, good air entry bilaterally.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Heart rate settling, normotensive for age, good peripheral perfusion.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">125</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">108/68</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">22</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">96</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">40</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">99.7</div><div class="vital-unit">°F</div></div>
+        
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">Pink</span><span class="skin-chip">Warm</span><span class="skin-chip">Dry</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 4mm</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Normal; sitting upright on cot in semi-Fowler's</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'Feeling better.' 'My mom is coming?' Full short sentences."</div></div>
+      <ul class="findings-notes"><li>Continuous albuterol neb running</li><li>Capnograph waveform normal morphology with EtCO2 in normal range</li><li>Mother riding in ambulance cab with permission</li><li>Destination: pediatric emergency department</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="transport-pediatric-ed" data-phase-id="stable-for-transport">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Transport to the closest appropriate pediatric-capable emergency department; provide early notification so team can prepare for a post-near-fatal asthma admission</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reassess-enroute" data-phase-id="stable-for-transport">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Reassess vitals, breath sounds, capnography, and mental status every 5 minutes during transport; continue oxygen and continuous nebulizer</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="handoff" data-phase-id="stable-for-transport">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Provide a structured handoff to the receiving team including: risk factors for fatal asthma, timeline of interventions (duoneb, IM epi, steroid, magnesium), current vitals, ongoing therapies</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-branch-respiratory-arrest">
+  <div class="card phase-card branch-card">
+    <div class="card-content">
+      <div class="phase-title">BRANCH: Respiratory Failure → Hypoxic PEA Arrest</div>
+      <div class="phase-trigger">Duoneb continued &gt;10 min without IM epi despite silent chest and rising EtCO2</div>
+      <div class="phase-desc">Patient was left on duoneb alone for &gt;10 minutes without escalation to IM epinephrine despite silent chest and rising EtCO2. Patient fatigues completely, respiratory effort ceases, and progresses within minutes to hypoxic cardiac arrest with pulseless electrical activity. This branch illustrates the consequence of failure to recognize near-fatal asthma and the dangers of invasive airway placement in severe bronchospasm.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent but no spontaneous respiratory effort. Risk of air trapping if aggressive positive pressure applied.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Apneic. Requires BVM ventilation with SLOW, LOW-VOLUME breaths and LONG EXPIRATORY TIME to avoid breath stacking.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">No palpable central pulse. Cold peripheral extremities. CPR indicated.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg sel-u">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">3</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">40</div><div class="vital-unit">bpm</div></div>
+        
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">0</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">0</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">20</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">99.5</div><div class="vital-unit">°F</div></div>
+        
+      </div>
+      <div class="ecg-label">ECG: Pulseless Electrical Activity (PEA)</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">Deeply cyanotic — lips, face, trunk, extremities</span><span class="skin-chip">Cool</span><span class="skin-chip">Diaphoretic residual</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Dilated 6mm sluggish</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">No spontaneous movement, no response to pain</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"None — unresponsive, apneic"</div></div>
+      <ul class="findings-notes"><li>Hypoxic PEA arrest — etiology is bronchospasm/hypoxia, NOT primary cardiac</li><li>Invasive airway placement in severe bronchospasm carries HIGH RISK: air trapping → auto-PEEP → pneumothorax → further CV collapse</li><li>If invasive airway is used, ventilate SLOWLY with LONG expiratory times (e.g., 6–8/min with I:E ratio 1:4 or longer)</li><li>Give IM epinephrine (or IV epinephrine per cardiac arrest guideline) AND continue aggressive bronchodilator therapy — reversing bronchospasm is the only way out</li><li>Consider needle decompression if breath sounds become asymmetric or hemodynamics deteriorate further (tension pneumothorax risk)</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="begin-cpr" data-phase-id="branch-respiratory-arrest">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Initiate high-quality pediatric CPR — compressions at 100–120/min, depth 1/3 chest AP diameter, 15:2 ratio with two rescuers</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="slow-bvm" data-phase-id="branch-respiratory-arrest">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Provide BVM ventilation with SLOW, LOW-VOLUME breaths (just enough to see chest rise, ~6–8 mL/kg = 150–200 mL) and LONG expiratory time to avoid breath stacking; rate 8–10/min during arrest</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="epi-arrest" data-phase-id="branch-respiratory-arrest">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Epinephrine 0.01 mg/kg IV/IO of 0.1 mg/mL (1:10,000) concentration = 0.25 mg (2.5 mL) IV/IO push every 3–5 minutes per pediatric cardiac arrest dosing; flush with 5 mL NS</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="continue-bronchodilator-arrest" data-phase-id="branch-respiratory-arrest">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Continue nebulized Albuterol 5 mg inline with BVM (adapter) or via ETT if intubated; this is a bronchospastic arrest — treating the cause is essential</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="avoid-unneeded-intubation" data-phase-id="branch-respiratory-arrest">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">AVOID rushing to endotracheal intubation — use BVM with two-person technique first. If SGA or ETT is placed, ventilate with extreme caution (slow rate, long expiratory time); be prepared for pneumothorax (needle decompress 2nd ICS MCL or 4th–5th ICS AAL with appropriate pediatric-sized needle).</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="magnesium-arrest" data-phase-id="branch-respiratory-arrest">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Administer Magnesium sulfate 40 mg/kg IV/IO (1 g for 25 kg patient; protocol maximum 2 g) infused over 10–15 minutes (or faster push in arrest per online medical control)</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-debrief">
+  
+  <div class="card accordion" onclick="this.classList.toggle('open')">
+    <div class="card-title">Learning Objectives</div>
+    <div class="accordion-body"><ul class="findings-notes"><li>Recognize 'quiet chest' / 'silent chest' as a sign of near-fatal asthma — absence of wheezing in a severely dyspneic asthmatic means air is NOT moving, not that bronchospasm has resolved</li><li>Identify the risk factors for fatal asthma per protocol: prior ICU admission, prior intubation, repeated ED visits, heavy beta-agonist use, medication noncompliance</li><li>Understand indications for IM epinephrine in asthma: impending respiratory failure with no improvement on nebulized bronchodilators</li><li>Articulate why invasive airway placement is dangerous in severe bronchospasm: positive pressure causes air trapping, auto-PEEP, pneumothorax, and cardiovascular collapse</li><li>Apply pediatric weight-based dosing accurately: epinephrine 0.01 mg/kg IM (max 0.3 mg), methylprednisolone 2 mg/kg (max 125 mg), magnesium 40 mg/kg (max 2 g)</li><li>Distinguish rescue therapy (bronchodilators, epinephrine) from adjuncts (steroids act over hours; magnesium is supportive) — steroids and magnesium do NOT rescue the crashing patient</li></ul></div>
+  </div>
+  <div id="debrief-actions" style="display:flex;flex-direction:column;gap:12px"></div>
+</div>
+</div>
+<script>
+
+var phaseActionData = [{"phaseId":"initial","phaseName":"Initial Contact — Severe Asthma with Silent Chest","actions":[{"id":"primary-survey","action":"Perform rapid primary survey (ABC), recognize severe respiratory distress and impending respiratory failure based on tripoded posture, retractions, nasal flaring, 1–2 word speech, cyanosis, and SpO2 86%","priority":"critical","rationale":"Rapid recognition of a near-fatal asthma presentation drives treatment urgency and the decision to escalate early to IM epinephrine.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"position-of-comfort","action":"Allow patient to remain in the tripod / position of comfort; do NOT force supine","priority":"critical","rationale":"Per airway management protocol, patients with severe bronchospasm should be left in position of comfort to optimize respiratory mechanics.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"high-flow-o2","action":"Apply high-flow oxygen via pediatric non-rebreather mask at 15 L/min; target SpO2 94–98%","priority":"critical","rationale":"Hypoxic (SpO2 86%) — oxygen is first-line while bronchodilators are prepared.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"capnography","action":"Place waveform capnography (nasal/mask sampling); interpret shark-fin waveform as bronchospasm and monitor EtCO2 trend","priority":"critical","rationale":"Shark-fin capnograph confirms obstructive physiology; rising or normal EtCO2 with tachypnea indicates impending respiratory failure.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"monitor-iv-prep","action":"Place cardiac monitor, pulse oximetry, and prepare for IV/IO access (22g or 24g, saline lock); anticipate need for IV steroids and magnesium","priority":"important","rationale":"IV access is indicated anytime IV medication administration is planned.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"recognize-silent-chest","action":"Recognize QUIET CHEST / SILENT CHEST as a near-fatal asthma sign; anticipate need for IM epinephrine if no rapid response to nebulized bronchodilators","priority":"critical","rationale":"Per protocol: 'In the setting of severe bronchoconstriction, wheezing may not be heard. Patients with known asthma with severe dyspnea should be empirically treated, even if wheezing is absent.' Silent chest = impending respiratory failure.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"history-risk-factors","action":"Obtain focused history from school nurse and (when mother arrives) confirm risk factors for fatal asthma: prior ICU admission, prior intubation, frequent ED visits, medication noncompliance","priority":"important","rationale":"Risk factor recognition per protocol Key Considerations #2 drives treatment aggressiveness.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"}]},{"phaseId":"on-duoneb","phaseName":"On Duoneb — Minimal Improvement","actions":[{"id":"duoneb","action":"Administer Albuterol 5 mg + Ipratropium 0.5 mg nebulized via pediatric mask at 6–8 L/min O2; albuterol may be repeated at 5 mg with unlimited frequency for ongoing respiratory distress, ipratropium up to 3 total doses","priority":"critical","rationale":"First-line bronchodilator therapy per respiratory distress protocol; combined anticholinergic + beta-agonist improves outcomes and may decrease admission need.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"recognize-nonresponse","action":"Reassess after 2–5 minutes on duoneb; recognize lack of clinical improvement (persistent silent chest, rising/normal EtCO2 with tachypnea, decreasing mental status) as IMPENDING RESPIRATORY FAILURE and trigger to escalate to IM epinephrine","priority":"critical","rationale":"Per protocol, epinephrine IM is indicated 'for impending respiratory failure as adjunctive therapy when there are no clinical signs of improvement with the above treatments.'","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"prepare-epi","action":"Draw up Epinephrine 1 mg/mL (1:1,000) — 0.01 mg/kg = 0.25 mg (0.25 mL) for this 25 kg patient; have IM needle (21–23g, 1 inch) ready for lateral thigh administration","priority":"critical","rationale":"Preparing the medication before it is urgently needed avoids delay at the point of decision.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"continue-o2","action":"Continue supplemental oxygen with nebulizer (6–8 L/min driving nebulizer); maintain SpO2 target 94–98%","priority":"important","rationale":"Hypoxia remains uncorrected; oxygen is a continuous baseline intervention.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"avoid-invasive-airway","action":"Do NOT proceed to supraglottic airway or endotracheal intubation at this time — invasive airway does not improve bronchospasm and risks air trapping, pneumothorax, and cardiovascular collapse. Continue to support with BVM only if ventilation fails.","priority":"critical","rationale":"Per protocol: 'Invasive airways do not improve bronchospasm. The airway should be managed in the least invasive way possible.' Positive pressure in bronchoconstriction risks breath stacking.","protocolReference":"MATC: Airway Management (Includes RSI)"}]},{"phaseId":"post-im-epi","phaseName":"Post IM Epinephrine — Dramatic Improvement","actions":[{"id":"give-im-epi","action":"Administer Epinephrine 1 mg/mL (1:1,000) 0.01 mg/kg IM (0.25 mg = 0.25 mL for 25 kg patient; protocol maximum 0.3 mg) into the lateral thigh (vastus lateralis) using a 21–23g 1-inch needle; document time of administration","priority":"critical","rationale":"Indicated for impending respiratory failure in asthma when no improvement with bronchodilators. IM lateral thigh provides rapid, reliable absorption. Protocol max 0.3 mg — this patient at 0.25 mg is within range.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"reassess-post-epi","action":"Reassess within 1–2 minutes: auscultate chest for new wheezing (return of air entry), reassess work of breathing, SpO2, EtCO2, capnograph shape, and mental status; document response","priority":"critical","rationale":"Epinephrine onset is rapid IM; early reassessment guides whether a second dose is needed at 5–15 minutes.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"continue-neb","action":"Continue nebulized Albuterol 5 mg (repeat with unlimited frequency) ± Ipratropium 0.5 mg (up to 3 total doses) via pediatric mask while patient responds","priority":"important","rationale":"Bronchodilator therapy continues alongside epinephrine; epinephrine is adjunctive, not a replacement.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"iv-io-access","action":"Obtain IV access (preferred: 22g or 24g antecubital or hand) or IO (proximal tibia) if IV fails; saline lock or slow maintenance","priority":"important","rationale":"Needed for steroid and magnesium sulfate administration; the worst time to need IV access is after a patient arrests.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"}]},{"phaseId":"on-steroids-and-mag","phaseName":"IV Steroid + Magnesium Sulfate Onboard","actions":[{"id":"methylprednisolone","action":"Administer Methylprednisolone 2 mg/kg IV (50 mg for 25 kg patient; protocol maximum 125 mg) IV push over 1–2 minutes. Alternative: Dexamethasone 0.6 mg/kg IV/IM (15 mg for this 25 kg patient; protocol maximum 16 mg).","priority":"important","rationale":"IV steroid is standard of care for critically ill asthmatic patients; prevents late-phase airway inflammation and rebound bronchospasm.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"magnesium-sulfate","action":"Administer Magnesium sulfate 40 mg/kg IV (1,000 mg = 1 g for 25 kg patient; protocol maximum 2 g) diluted in 50–100 mL NS, infused over 10–15 minutes. Monitor blood pressure — hypotension is usually responsive to a fluid bolus.","priority":"important","rationale":"Magnesium sulfate is indicated for severe bronchoconstriction with concern for impending respiratory failure. Must be infused slowly to limit hypotension risk.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"continuous-neb","action":"Consider continuous nebulized Albuterol 10–15 mg/hour via pediatric mask as bridging bronchodilator therapy during transport","priority":"supplemental","rationale":"For ongoing bronchospasm, continuous nebulization delivers sustained beta-2 agonist effect.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"monitor-mag-bp","action":"Reassess blood pressure every 3–5 minutes during magnesium infusion; if SBP drops, pause infusion and administer 10–20 mL/kg NS bolus (250–500 mL for this patient)","priority":"important","rationale":"Magnesium-induced hypotension is a known side effect and usually responds readily to fluids.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"document-response","action":"Document interval vital signs, breath sounds, mental status, and capnography waveform after each intervention","priority":"important","rationale":"Protocol emphasizes documentation of exam at baseline and after each intervention to track response.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"}]},{"phaseId":"stable-for-transport","phaseName":"Stable for Transport — Continuous Neb En Route","actions":[{"id":"transport-pediatric-ed","action":"Transport to the closest appropriate pediatric-capable emergency department; provide early notification so team can prepare for a post-near-fatal asthma admission","priority":"critical","rationale":"Transport destination selection and early notification optimize in-hospital care handoff.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"reassess-enroute","action":"Reassess vitals, breath sounds, capnography, and mental status every 5 minutes during transport; continue oxygen and continuous nebulizer","priority":"important","rationale":"Patient could rebound; ongoing assessment is protocol-mandated.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"handoff","action":"Provide a structured handoff to the receiving team including: risk factors for fatal asthma, timeline of interventions (duoneb, IM epi, steroid, magnesium), current vitals, ongoing therapies","priority":"important","rationale":"Continuity of aggressive therapy is critical — receiving team must know IM epinephrine was given and when.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"}]},{"phaseId":"branch-respiratory-arrest","phaseName":"BRANCH: Respiratory Failure → Hypoxic PEA Arrest","actions":[{"id":"begin-cpr","action":"Initiate high-quality pediatric CPR — compressions at 100–120/min, depth 1/3 chest AP diameter, 15:2 ratio with two rescuers","priority":"critical","rationale":"Hypoxic pediatric arrest requires immediate CPR.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"slow-bvm","action":"Provide BVM ventilation with SLOW, LOW-VOLUME breaths (just enough to see chest rise, ~6–8 mL/kg = 150–200 mL) and LONG expiratory time to avoid breath stacking; rate 8–10/min during arrest","priority":"critical","rationale":"Air trapping is the primary killer in bronchospastic arrest; ventilating too fast or too hard worsens auto-PEEP, reduces venous return, and can cause pneumothorax.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"epi-arrest","action":"Administer Epinephrine 0.01 mg/kg IV/IO of 0.1 mg/mL (1:10,000) concentration = 0.25 mg (2.5 mL) IV/IO push every 3–5 minutes per pediatric cardiac arrest dosing; flush with 5 mL NS","priority":"critical","rationale":"Cardiac arrest epinephrine dosing AND it also provides bronchodilation for underlying cause.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"continue-bronchodilator-arrest","action":"Continue nebulized Albuterol 5 mg inline with BVM (adapter) or via ETT if intubated; this is a bronchospastic arrest — treating the cause is essential","priority":"critical","rationale":"Reversing the underlying bronchospasm is the only definitive path to ROSC.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"},{"id":"avoid-unneeded-intubation","action":"AVOID rushing to endotracheal intubation — use BVM with two-person technique first. If SGA or ETT is placed, ventilate with extreme caution (slow rate, long expiratory time); be prepared for pneumothorax (needle decompress 2nd ICS MCL or 4th–5th ICS AAL with appropriate pediatric-sized needle).","priority":"critical","rationale":"Per protocol: 'Invasive airways do not improve bronchospasm.' Positive pressure via SGA/ETT can precipitate tension pneumothorax and cardiovascular collapse.","protocolReference":"MATC: Airway Management (Includes RSI)"},{"id":"magnesium-arrest","action":"Administer Magnesium sulfate 40 mg/kg IV/IO (1 g for 25 kg patient; protocol maximum 2 g) infused over 10–15 minutes (or faster push in arrest per online medical control)","priority":"important","rationale":"Adjunctive bronchodilator in severe bronchospasm.","protocolReference":"MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"}]}];
+var firstPhaseId = "initial";
+
+function showPanel(tab, panelId) {
+  document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  var panel = document.getElementById('panel-' + panelId);
+  if (panel) panel.classList.add('active');
+  if (panelId === 'debrief') buildDebriefActions();
+}
+
+function buildDebriefActions() {
+  var container = document.getElementById('debrief-actions');
+  if (!container) return;
+  container.innerHTML = '';
+  phaseActionData.forEach(function(phase) {
+    var isFirst = phase.phaseId === firstPhaseId;
+    var checkboxes = phase.actions.map(function(a) {
+      return document.querySelector('[data-action-id="' + a.id + '"][data-phase-id="' + phase.phaseId + '"]');
+    });
+    var anyChecked = checkboxes.some(function(cb) { return cb && cb.checked; });
+    if (!isFirst && !anyChecked) return;
+    var doneActions = [], missedActions = [];
+    phase.actions.forEach(function(a, i) {
+      var cb = checkboxes[i];
+      if (cb && cb.checked) doneActions.push(a); else missedActions.push(a);
+    });
+    var total = phase.actions.length, doneCount = doneActions.length;
+    var card = document.createElement('div');
+    card.className = 'card debrief-phase-card';
+    var header = document.createElement('div');
+    header.className = 'debrief-phase-header';
+    var hLeft = document.createElement('div');
+    hLeft.className = 'debrief-phase-name';
+    hLeft.textContent = phase.phaseName;
+    var hRight = document.createElement('div');
+    hRight.className = 'debrief-phase-score';
+    if (doneCount === total) hRight.classList.add('score-perfect');
+    else if (doneCount === 0) hRight.classList.add('score-none');
+    hRight.textContent = doneCount + '/' + total;
+    header.appendChild(hLeft); header.appendChild(hRight);
+    card.appendChild(header);
+    var body = document.createElement('div');
+    body.className = 'debrief-phase-body';
+    if (doneActions.length) {
+      var doneSection = document.createElement('div');
+      doneSection.className = 'debrief-done-section';
+      doneActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-done-row';
+        row.innerHTML = '<span class="debrief-done-icon">\u2713</span><span class="debrief-done-text">' + a.action + '</span>';
+        doneSection.appendChild(row);
+      });
+      body.appendChild(doneSection);
+    }
+    if (missedActions.length) {
+      var missLabel = document.createElement('div');
+      missLabel.className = 'debrief-missed-label';
+      missLabel.textContent = 'MISSED';
+      body.appendChild(missLabel);
+      missedActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-missed-row';
+        var top = document.createElement('div');
+        top.className = 'debrief-missed-top';
+        var badge = document.createElement('span');
+        badge.className = 'action-priority priority-' + a.priority;
+        badge.textContent = a.priority.toUpperCase();
+        var text = document.createElement('span');
+        text.className = 'debrief-missed-text';
+        text.textContent = a.action;
+        top.appendChild(badge); top.appendChild(text);
+        row.appendChild(top);
+        if (a.rationale || a.protocolReference) {
+          var detail = document.createElement('div');
+          detail.className = 'debrief-missed-detail';
+          if (a.rationale) { var reason = document.createElement('div'); reason.className = 'debrief-missed-rationale'; reason.textContent = a.rationale; detail.appendChild(reason); }
+          if (a.protocolReference) { var proto = document.createElement('div'); proto.className = 'debrief-missed-protocol'; proto.textContent = 'Protocol: ' + a.protocolReference; detail.appendChild(proto); }
+          row.appendChild(detail);
+        }
+        body.appendChild(row);
+      });
+    }
+    card.appendChild(body); container.appendChild(card);
+  });
+}
+
+// Timer
+var timerEl = document.getElementById('scenario-timer');
+var timerTotal = timerEl ? parseInt(timerEl.getAttribute('data-total')) : 0;
+var timerRemaining = timerTotal;
+var timerInterval = null;
+function timerFormat(s) { var m = Math.floor(s/60); var sec = s%60; return m+':'+(sec<10?'0':'')+sec; }
+function timerUpdate() {
+  var d = document.getElementById('timer-display'); if(!d) return;
+  d.textContent = timerFormat(timerRemaining);
+  d.classList.remove('timer-warn','timer-danger');
+  if(timerRemaining<=60) d.classList.add('timer-danger');
+  else if(timerRemaining<=timerTotal*0.25) d.classList.add('timer-warn');
+}
+function timerStart() {
+  document.getElementById('timer-start').style.display='none';
+  document.getElementById('timer-pause').style.display='';
+  document.getElementById('timer-stop').style.display='';
+  document.getElementById('timer-reset').style.display='none';
+  timerInterval=setInterval(function(){timerRemaining--;timerUpdate();if(timerRemaining<=0){timerRemaining=0;timerStop();}},1000);
+}
+function timerPause() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-pause').style.display='none';document.getElementById('timer-start').style.display=''; }
+function timerStop() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-start').style.display='none';document.getElementById('timer-pause').style.display='none';document.getElementById('timer-stop').style.display='none';document.getElementById('timer-reset').style.display=''; }
+function timerReset() { timerRemaining=timerTotal;timerUpdate();document.getElementById('timer-reset').style.display='none';document.getElementById('timer-start').style.display=''; }
+function scenarioRestart() { if(confirm('Restart scenario? This clears all checkboxes and resets the timer.'))location.reload(); }
+
+</script>
+</body>
+</html>

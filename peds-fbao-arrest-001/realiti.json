@@ -1,0 +1,293 @@
+{
+  "scenarioId": "peds-fbao-arrest-001",
+  "scenarioName": "Pediatric Foreign Body Airway Obstruction — Unconscious",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1800,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 64,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "Previously healthy 4-year-old male eating a hot dog at a backyard BBQ. Approximately 4 minutes prior to EMS arrival, the child began choking suddenly with silent cough and inability to speak. Father (untrained) initiated back blows and abdominal thrusts without success. Approximately 60 seconds before EMS arrival the child became limp and unresponsive. Father continues to attempt back blows on the limp child.",
+    "discussion": "Apply the AHA FBAO algorithm distinction between responsive (back blows/abdominal thrusts) and unresponsive (CPR with airway inspection at each breath) patients. Explain why chest compressions replace back blows once an FBAO patient becomes unresponsive. Demonstrate direct laryngoscopy and pediatric Magill forceps technique for a visualized foreign body. State and defend the absolute prohibition on blind finger sweeps. Apply pediatric CPR ratios: 15:2 two-rescuer, 30:2 single-rescuer, with depth one-third AP chest diameter and rate 100-120/min. Justify the prehospital preference for BVM/SGA over endotracheal intubation in pediatric patients. Apply post-ROSC care principles: SpO2 94-98%, EtCO2 35-40 mmHg, avoid hyperoxia and hyperventilation, serial 12-leads, glucose check, pediatric-capable destination",
+    "course": "Initial Contact — Unresponsive FBAO: On arrival, the child is unresponsive, centrally and peripherally cyanotic, apneic, with a weak slow carotid pulse. Father is frantically delivering back blows. Complete airway obstruction is presumed. No spontaneous respirations. This patient is NOT fully pulseless (weak carotid present) — this is profound hypoxia-induced bradycardia, not cardiac arrest yet. Providers must stop the father, move the child to a firm supine surface, and immediately transition to CPR per AHA FBAO-in-unresponsive-patient algorithm. → CPR Initiated — Direct Laryngoscopy Reveals Obstruction: Child is supine on a firm surface. Two-rescuer pediatric CPR begun at 15:2 compression-to-ventilation ratio. Compressions at 100-120/min, depth approximately one-third AP chest diameter (~5 cm). BVM attempts produce only partial chest rise (resistance from obstruction). During the first compression pause for ventilation, a rescuer performs direct laryngoscopy and identifies a piece of hot dog lodged at the vocal cords. Magill forceps are being retrieved. → Obstruction Cleared — Rapid Physiologic Recovery: Hot dog fragment has been removed with Magill forceps under direct laryngoscopy. The airway is now patent. BVM ventilations at 20-30/min (1 breath every 2-3 seconds) for apnea produce excellent chest rise. Over 30-60 seconds oxygenation rapidly improves. Heart rate climbs from the 40s-50s toward 90, BP begins to recover, SpO2 climbs from the 70s into the 90s on BVM with high-flow O2. EtCO2 normalizes as perfusion and ventilation improve. Patient remains unresponsive with no spontaneous respirations yet; CPR compressions discontinued as HR and perfusion improve — re-assess pulse. → ROSC-Equivalent — Post-Obstruction Stabilization: Patient has achieved effective spontaneous circulation (ROSC-equivalent — was never fully pulseless but was near-arrest). Spontaneous shallow respirations have returned. HR is in sinus tachycardia range (appropriate for this age/stress). BP normalizing. SpO2 95% on BVM with supplemental O2. AVPU has improved to Pain (groans and shows posturing to painful stimulus). Continue BVM-assisted ventilation to augment the shallow spontaneous effort; monitor closely for re-arrest. → Transport — Post-ROSC Monitoring and Definitive Care: Patient is packaged and en route to a pediatric receiving facility (preferably one with pediatric critical care/post-resuscitation capability). Continuing BVM-assisted ventilation (with increasing spontaneous effort), cardiac monitoring, IO access patent, serial 12-leads, glucose checked, avoiding hyperoxia and hyperventilation. Mental status continues to improve slowly. The crew monitors for re-arrest and communicates a full report to the receiving facility."
+  },
+  "patientInformation": {
+    "patientName": "Lucas Chen",
+    "patientCondition": "Choking while eating, now unresponsive and not breathing",
+    "patientAge": 4,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 1,
+    "patientSex": 1,
+    "patientHeight": 100,
+    "patientWeight": 16,
+    "patientPhotoId": 5,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact — Unresponsive FBAO",
+      "description": "On arrival, the child is unresponsive, centrally and peripherally cyanotic, apneic, with a weak slow carotid pulse. Father is frantically delivering back blows. Complete airway obstruction is presumed. No spontaneous respirations. This patient is NOT fully pulseless (weak carotid present) — this is profound hypoxia-induced bradycardia, not cardiac arrest yet. Providers must stop the father, move the child to a firm supine surface, and immediately transition to CPR per AHA FBAO-in-unresponsive-patient algorithm.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 52,
+        "bpSys": 60,
+        "bpDia": 40,
+        "respRate": 0,
+        "spo2": 62,
+        "etco2": 60,
+        "temp": 37,
+        "obstruction": 100,
+        "custMeasure1": 110,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "CPR Initiated — Direct Laryngoscopy Reveals Obstruction",
+      "description": "Child is supine on a firm surface. Two-rescuer pediatric CPR begun at 15:2 compression-to-ventilation ratio. Compressions at 100-120/min, depth approximately one-third AP chest diameter (~5 cm). BVM attempts produce only partial chest rise (resistance from obstruction). During the first compression pause for ventilation, a rescuer performs direct laryngoscopy and identifies a piece of hot dog lodged at the vocal cords. Magill forceps are being retrieved.",
+      "monitorType": 0,
+      "trendTime": 15,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 50,
+        "bpSys": 50,
+        "bpDia": 30,
+        "respRate": 0,
+        "spo2": 55,
+        "etco2": 55,
+        "temp": 37,
+        "obstruction": 100,
+        "custMeasure1": 110,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Obstruction Cleared — Rapid Physiologic Recovery",
+      "description": "Hot dog fragment has been removed with Magill forceps under direct laryngoscopy. The airway is now patent. BVM ventilations at 20-30/min (1 breath every 2-3 seconds) for apnea produce excellent chest rise. Over 30-60 seconds oxygenation rapidly improves. Heart rate climbs from the 40s-50s toward 90, BP begins to recover, SpO2 climbs from the 70s into the 90s on BVM with high-flow O2. EtCO2 normalizes as perfusion and ventilation improve. Patient remains unresponsive with no spontaneous respirations yet; CPR compressions discontinued as HR and perfusion improve — re-assess pulse.",
+      "monitorType": 0,
+      "trendTime": 20,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 90,
+        "bpSys": 80,
+        "bpDia": 50,
+        "respRate": 0,
+        "spo2": 88,
+        "etco2": 48,
+        "temp": 37,
+        "obstruction": 5,
+        "custMeasure1": 110,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "ROSC-Equivalent — Post-Obstruction Stabilization",
+      "description": "Patient has achieved effective spontaneous circulation (ROSC-equivalent — was never fully pulseless but was near-arrest). Spontaneous shallow respirations have returned. HR is in sinus tachycardia range (appropriate for this age/stress). BP normalizing. SpO2 95% on BVM with supplemental O2. AVPU has improved to Pain (groans and shows posturing to painful stimulus). Continue BVM-assisted ventilation to augment the shallow spontaneous effort; monitor closely for re-arrest.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 98,
+        "bpDia": 60,
+        "respRate": 14,
+        "spo2": 95,
+        "etco2": 42,
+        "temp": 37,
+        "obstruction": 10,
+        "custMeasure1": 110,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Transport — Post-ROSC Monitoring and Definitive Care",
+      "description": "Patient is packaged and en route to a pediatric receiving facility (preferably one with pediatric critical care/post-resuscitation capability). Continuing BVM-assisted ventilation (with increasing spontaneous effort), cardiac monitoring, IO access patent, serial 12-leads, glucose checked, avoiding hyperoxia and hyperventilation. Mental status continues to improve slowly. The crew monitors for re-arrest and communicates a full report to the receiving facility.",
+      "monitorType": 0,
+      "trendTime": 45,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 124,
+        "bpSys": 102,
+        "bpDia": 64,
+        "respRate": 18,
+        "spo2": 96,
+        "etco2": 40,
+        "temp": 37,
+        "obstruction": 5,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "BRANCH — Continued Back Blows, Delayed CPR → Full Arrest (Asystole)",
+      "description": "Providers fail to recognize the transition from responsive to unresponsive FBAO algorithm. They continue back blows on the limp child without starting CPR. No direct laryngoscopy is performed. After more than 3 minutes of ongoing profound hypoxia, the child progresses from hypoxic bradycardia to full cardiac arrest in asystole. The obstruction remains in place; EtCO2 is very low from absent perfusion.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 3,
+        "hr": 0,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 8,
+        "temp": 37,
+        "obstruction": 100,
+        "custMeasure1": 110,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": false,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Immediately stop back blows/abdominal thrusts once the FBAO patient is unresponsive and transition to CPR",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Initiate two-rescuer pediatric CPR at 15:2 compression-to-ventilation ratio with rate 100-120/min and depth one-third AP chest (~5 cm)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Perform direct laryngoscopy and use pediatric Magill forceps to remove the visualized foreign body — NO blind finger sweeps",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Insert appropriately sized OPA and perform effective two-person BVM ventilation with high-flow O2 at 1 breath every 2-3 seconds (20-30/min) for pediatric apnea after obstruction cleared",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continuous waveform capnography for CPR quality and early ROSC detection, with target EtCO2 35-40 mmHg post-ROSC",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Post-ROSC: target SpO2 94-98% (avoid hyperoxia), continuous cardiac monitoring, and transport to a pediatric-capable receiving facility",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IO access at proximal tibia (preferred pediatric site) early in the resuscitation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Have Epinephrine 0.01 mg/kg (0.16 mg = 1.6 mL of 0.1 mg/mL) IV/IO drawn up and ready; administer if patient becomes pulseless or remains bradycardic with poor perfusion despite oxygenation, repeat every 3-5 minutes (max single dose 1 mg)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Avoid prehospital endotracheal intubation in favor of BVM or SGA per pediatric airway protocol",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Perform pediatric 12-lead EKG and check blood glucose post-ROSC",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Avoid hyperventilation (target EtCO2 35-40 mmHg, rate 12-20/min with advanced airway or 20-30/min BVM for apnea)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

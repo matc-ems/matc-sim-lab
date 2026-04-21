@@ -1,0 +1,706 @@
+{
+  "meta": {
+    "id": "resp-copd-exac-001",
+    "name": "COPD Exacerbation — Non-Invasive Ventilation Failure",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Respiratory",
+    "protocols": ["resp-respiratory-distress", "resp-airway-management"],
+    "totalTimeSeconds": 1800,
+    "createdAt": "2026-04-21T00:00:00Z",
+    "tags": ["COPD", "respiratory distress", "NIV failure", "CPAP", "BVM", "RSI", "geriatric", "capnography"]
+  },
+  "patient": {
+    "name": "Harold Kowalski",
+    "age": 72,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 78,
+    "height": 178,
+    "chiefComplaint": "Severe shortness of breath worsening over 2 days",
+    "history": {
+      "hpi": "72-year-old male with known severe COPD on home oxygen (2 L/min nasal cannula) reports progressive shortness of breath over the last 48 hours following a recent upper respiratory infection. Productive cough with thickened yellow-green sputum. States his albuterol MDI ran out several days ago and he has not been able to refill it. Denies chest pain, fever measured at home, hemoptysis, or leg swelling. Wife reports he is markedly worse than his usual baseline and is struggling to get words out.",
+      "pastMedical": [
+        "Severe COPD (GOLD stage D) on home O2 2 L NC",
+        "Prior intubation for COPD exacerbation (approximately 2 years ago)",
+        "Multiple prior hospitalizations for COPD exacerbations",
+        "Hypertension",
+        "Hyperlipidemia",
+        "50+ pack-year smoking history (quit 3 years ago)"
+      ],
+      "medications": [
+        "Tiotropium (Spiriva) 18 mcg inhaled once daily",
+        "Fluticasone-salmeterol (Advair Diskus) 250/50 mcg inhaled twice daily",
+        "Albuterol MDI 90 mcg PRN (currently out of stock)",
+        "Atorvastatin 40 mg PO daily",
+        "Lisinopril 20 mg PO daily",
+        "Home O2 2 L/min via nasal cannula continuous"
+      ],
+      "allergies": ["NKDA"],
+      "lastOralIntake": "Sips of water this morning; has not been able to eat solids today",
+      "events": "Wife called 911 after patient's breathing progressively worsened throughout the evening. Patient tripoded at kitchen table with obvious severe distress, unable to complete sentences, pursed-lip breathing, and visibly using accessory muscles."
+    }
+  },
+  "scene": {
+    "dispatch": "Medic 21, respond priority 1 to 4827 Elmwood Lane for a 73-year-old male with difficulty breathing. Caller is the patient's wife. Scene is safe, no PD needed.",
+    "location": "Small single-story home in a quiet residential neighborhood. Patient found in the kitchen seated at the table. Narrow hallway between the kitchen and the front door; cot access from front of house is feasible but tight.",
+    "time": "Tuesday, 2045 hours. Cool spring evening.",
+    "safety": "Scene safe. No hazards. Home oxygen concentrator running — remind crew about ignition sources when applying therapy. One medium-sized dog closed in back bedroom by wife.",
+    "bystanders": "Wife (mid-60s) present, appropriately worried but cooperative. States he 'has been getting worse for two days' and that he 'ran out of his rescue inhaler on Saturday.' Confirms medication list and prior intubation.",
+    "visualCues": [
+      "Patient tripoded at kitchen table, leaning forward on elbows",
+      "Obvious pursed-lip breathing with prolonged expiratory phase",
+      "Visible suprasternal and intercostal retractions, accessory muscle use",
+      "Home oxygen concentrator running on floor, 25 ft of tubing to a nasal cannula on the patient",
+      "Two empty albuterol MDI canisters on the kitchen table",
+      "Full ashtray and pack of cigarettes on the end table in the adjacent living room (stale smell of tobacco)",
+      "Prescription bottles for tiotropium, Advair, atorvastatin, and lisinopril on the counter",
+      "Wife holding a folder labeled 'Harold's medications' with a pulmonology discharge summary from 2 years ago (prior intubation)"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Initial Presentation — Severe Respiratory Distress",
+      "description": "Patient is in severe respiratory distress with audible diffuse wheezing and prolonged expiration. He is tripoded, diaphoretic, and able to speak only 2-3 words at a time. SpO2 is profoundly low on his home 2 L NC and he is markedly tachypneic and tachycardic. Waveform capnography shows a classic 'shark-fin' pattern consistent with obstructive physiology.",
+      "isDefault": true,
+      "transitions": [
+        {
+          "targetPhaseId": "on-duoneb",
+          "condition": "Crew administers albuterol 5 mg + ipratropium 0.5 mg nebulized",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["meds-duoneb"]
+        }
+      ],
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": { "eye": 4, "verbal": 5, "motor": 6 },
+        "airway": "Patent, self-maintained. No stridor, no audible upper airway noise. No foreign body or secretions noted.",
+        "breathing": "Severe respiratory distress. Rate 34, shallow with prolonged expiratory phase and audible wheeze without a stethoscope. Tripod position, pursed-lip breathing, supraclavicular and intercostal retractions, obvious sternocleidomastoid use. Bilateral diffuse expiratory wheezing throughout all fields with markedly diminished air movement at the bases.",
+        "circulation": "Radials present, rapid and weak-regular. Skin warm, diaphoretic. Cap refill ~3 seconds.",
+        "skin": { "color": "dusky with perioral and nailbed cyanosis", "temperature": "warm", "moisture": "diaphoretic" },
+        "pupils": "PERRL 3 mm bilaterally.",
+        "motorFunction": "Moves all 4 extremities purposefully; grips equal.",
+        "otherFindings": [
+          "Waveform capnography demonstrates a 'shark-fin' pattern consistent with severe bronchospasm/obstructive physiology",
+          "Prolonged expiratory phase (I:E approximately 1:4)",
+          "Markedly anxious and air-hungry appearance",
+          "Home O2 2 L NC still in place on arrival — not meeting saturation target"
+        ],
+        "patientSpeech": "'Can't... breathe... help me...' — speaking in 2-3 word bursts only, pausing frequently to breathe."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 122,
+        "bpSys": 168,
+        "bpDia": 98,
+        "respRate": 34,
+        "spo2": 85,
+        "etco2": 58,
+        "temp": 37.2,
+        "obstruction": 50,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "scene-bsi",
+          "action": "Scene size-up, BSI/PPE (gloves, eye protection, and surgical mask over nebulizer once applied for droplet precautions)",
+          "priority": "critical",
+          "rationale": "Respiratory patient receiving nebulized therapy — PPE and droplet control are essential.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "primary-survey",
+          "action": "Perform rapid primary survey (ABCDE) and identify immediately life-threatening respiratory failure",
+          "priority": "critical",
+          "rationale": "Severe distress with hypoxia, accessory muscle use, and 2-3 word dyspnea meets criteria for impending respiratory failure.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "position-comfort",
+          "action": "Leave patient in position of comfort (tripod/upright) and keep seated; do not force supine",
+          "priority": "critical",
+          "rationale": "Tripoding improves respiratory mechanics in severe bronchospasm; forcing supine worsens distress.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "oxygen-titrate",
+          "action": "Apply high-flow oxygen via non-rebreather at 15 L/min initially, titrate to target SpO2 94-98% (consider permissive SpO2 ≥ 90% given chronic COPD)",
+          "priority": "critical",
+          "rationale": "Patient hypoxic at 85% on home 2 L NC; escalate supplemental oxygen per guideline.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "monitor-capno",
+          "action": "Place continuous pulse oximetry, 4-lead ECG, and waveform capnography via nasal sampling cannula",
+          "priority": "critical",
+          "rationale": "Continuous SpO2 and waveform capnography are indicated for severe respiratory distress and differentiate bronchospasm (shark fin) from pulmonary edema.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "iv-access",
+          "action": "Establish rapid IV access (18g antecubital preferred) for anticipated IV steroids, magnesium, and potential RSI medications",
+          "priority": "critical",
+          "rationale": "Severe COPD exacerbation is likely to require IV meds and potentially invasive airway management.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "focused-hx",
+          "action": "Obtain focused SAMPLE/OPQRST and specifically ask about prior intubation, ICU admissions, recent steroid courses, sick contacts, and home medications",
+          "priority": "important",
+          "rationale": "Prior intubation and recent URI are red flags for severe exacerbation and predictors of decompensation.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "12-lead",
+          "action": "Acquire 12-lead ECG to screen for dysrhythmia/ischemia, particularly given tachycardia and age",
+          "priority": "supplemental",
+          "rationale": "COPD exacerbation can precipitate arrhythmia; CAD must also be considered in a 72-year-old with dyspnea.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "meds-duoneb",
+          "action": "Administer Albuterol 5 mg + Ipratropium 0.5 mg combined in 3 mL normal saline via nebulizer at 6-8 L/min O2 mask. Albuterol 5 mg may be repeated with unlimited frequency for ongoing distress; Ipratropium 0.5 mg may be repeated up to a total of 3 doses",
+          "priority": "critical",
+          "rationale": "First-line bronchodilator therapy for suspected bronchospasm in respiratory distress.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        }
+      ]
+    },
+    {
+      "id": "on-duoneb",
+      "name": "On Duoneb — Minimal Improvement",
+      "description": "After one round of albuterol/ipratropium the patient shows only minimal improvement. SpO2 has drifted up to 88% with the nebulizer mask and high-flow O2, but he remains in severe distress with persistent wheezing, accessory muscle use, and rising EtCO2. Mental status is subtly worsening — he is drowsier and slower to answer questions.",
+      "isDefault": true,
+      "triggerCondition": "Albuterol 5 mg + Ipratropium 0.5 mg nebulized started",
+      "transitions": [
+        {
+          "targetPhaseId": "on-cpap-failing",
+          "condition": "Crew places patient on CPAP 5 cmH2O with in-line albuterol and coaching",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["cpap-apply"]
+        }
+      ],
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": { "eye": 4, "verbal": 4, "motor": 6 },
+        "airway": "Patent, self-maintained.",
+        "breathing": "Still severe distress. Rate 32 with prolonged expiration. Persistent diffuse expiratory wheeze bilaterally with some improvement in air movement at apices but continued diminished bases.",
+        "circulation": "Radials present, rapid. Skin warm, diaphoretic.",
+        "skin": { "color": "dusky", "temperature": "warm", "moisture": "diaphoretic" },
+        "pupils": "PERRL 3 mm.",
+        "motorFunction": "Moves all extremities; grips slightly weaker than baseline.",
+        "otherFindings": [
+          "EtCO2 waveform still shark-fin shape",
+          "Slower to answer questions — subtle AMS developing",
+          "Nebulizer mask tolerated, patient cooperating"
+        ],
+        "patientSpeech": "'Still... can't... catch... air...' — 2-3 word phrases, slightly slurred and delayed."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 162,
+        "bpDia": 94,
+        "respRate": 32,
+        "spo2": 88,
+        "etco2": 56,
+        "temp": 37.2,
+        "obstruction": 50,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "reassess-post-neb",
+          "action": "Reassess vitals, work of breathing, breath sounds, mental status, and EtCO2 waveform after nebulizer",
+          "priority": "critical",
+          "rationale": "Response to therapy (or lack thereof) guides escalation.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "meds-steroid",
+          "action": "Administer Methylprednisolone 2 mg/kg IV (156 mg calculated for 78 kg — give maximum dose of 125 mg IV) OR Dexamethasone 0.6 mg/kg IV (47 mg calculated for 78 kg — give maximum dose of 16 mg IV)",
+          "priority": "critical",
+          "rationale": "Systemic steroids are indicated in all moderate-severe COPD exacerbations; IV route preferred in critically ill patients.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "meds-mag",
+          "action": "Consider Magnesium Sulfate 1 g IV in 100 mL NS infused over 10-15 minutes (reduced geriatric dose; protocol max 2 g or 40 mg/kg, but 1 g suggested for geriatric patients)",
+          "priority": "important",
+          "rationale": "Adjunctive therapy for severe bronchoconstriction and impending respiratory failure; reduced dose for geriatrics per protocol.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "repeat-duoneb",
+          "action": "Repeat Albuterol 5 mg nebulized (unlimited frequency for ongoing distress) back-to-back; Ipratropium 0.5 mg may be given up to 3 total doses",
+          "priority": "important",
+          "rationale": "Unlimited repeat albuterol dosing is supported for ongoing distress.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "cpap-apply",
+          "action": "Apply CPAP at 5 cmH2O with in-line albuterol nebulizer (T-connector), coach patient through mask acceptance, and maintain continuous mask seal",
+          "priority": "critical",
+          "rationale": "Severe respiratory distress with inadequate response to bronchodilators warrants early NIV per protocol.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "prep-advanced",
+          "action": "Pre-draw and label anticipated RSI medications (fentanyl, etomidate or ketamine, rocuronium or succinylcholine, post-intubation sedation) and set up RSI checklist with airway adjuncts (OPA/NPA, BVM with PEEP valve set to 5, suction, 8.0 ETT, bougie, video laryngoscope)",
+          "priority": "important",
+          "rationale": "Anticipating NIV failure and preparing for RSI is a hallmark of advanced practice.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        }
+      ]
+    },
+    {
+      "id": "on-cpap-failing",
+      "name": "CPAP In Place — NIV Failure Developing",
+      "description": "Despite CPAP at 5 cmH2O with in-line albuterol, the patient is clinically fatiguing. Mental status is deteriorating (now responds only to voice), he is more diaphoretic, EtCO2 is climbing despite maintained SpO2, and respiratory rate is paradoxically slowing from exhaustion. This is NIV failure — the crew must recognize it and escalate to BVM with PEEP and prepare for RSI.",
+      "isDefault": true,
+      "triggerCondition": "CPAP placed at 5 cmH2O with in-line albuterol after nebulizer",
+      "transitions": [
+        {
+          "targetPhaseId": "bvm-assist",
+          "condition": "Crew recognizes NIV failure and begins two-person BVM with PEEP 5 and OPA/NPA",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["bvm-start"]
+        },
+        {
+          "targetPhaseId": "branch-respiratory-arrest",
+          "condition": "CPAP continued beyond failure without escalation to BVM/RSI within approximately 5 minutes",
+          "conditionType": "time_elapsed",
+          "timeoutSeconds": 300
+        }
+      ],
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": { "eye": 3, "verbal": 4, "motor": 5 },
+        "airway": "Patent but requires more frequent coaching to tolerate mask.",
+        "breathing": "Rate has dropped to 28 (paradoxical slowing from fatigue, not improvement). Persistent diffuse wheezing but air entry is now markedly diminished globally. Accessory muscle use worsening. Prolonged expiratory phase persists.",
+        "circulation": "Radials present, rate 110. Skin pale, markedly diaphoretic.",
+        "skin": { "color": "pale-gray with peripheral cyanosis", "temperature": "cool at periphery, warm centrally", "moisture": "drenched in sweat" },
+        "pupils": "PERRL 3 mm but sluggish.",
+        "motorFunction": "Moves extremities purposefully to verbal stimulus; grips weak.",
+        "otherFindings": [
+          "EtCO2 rising to 65 mmHg despite CPAP — objective evidence of NIV failure",
+          "Patient starting to pick at the mask (AMS)",
+          "Shark-fin capnography waveform persists",
+          "Clinical picture: worsening mental status + rising EtCO2 + decreasing RR = impending respiratory arrest"
+        ],
+        "patientSpeech": "Mumbling unintelligibly; no longer answering questions appropriately. Eyes open only to verbal stimulus."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 110,
+        "bpSys": 152,
+        "bpDia": 90,
+        "respRate": 28,
+        "spo2": 90,
+        "etco2": 65,
+        "temp": 37.3,
+        "obstruction": 55,
+        "trendTimeSeconds": 50,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "recognize-niv-failure",
+          "action": "Identify and verbalize NIV failure: worsening mental status, rising EtCO2 (65 mmHg), decreasing respiratory rate from fatigue, vomiting risk",
+          "priority": "critical",
+          "rationale": "Recognition of NIV failure is the key decision point — continued CPAP in this patient will lead to arrest.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "remove-cpap-escalate",
+          "action": "Remove CPAP and escalate airway management — do NOT continue NIV in a deteriorating patient",
+          "priority": "critical",
+          "rationale": "Per protocol: if patient deteriorates on CPAP/BiPAP (worsened mental status, increasing EtCO2, vomiting), remove and escalate.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "bvm-start",
+          "action": "Begin two-person, two-thumbs-up BVM ventilation with PEEP valve set to 5 cmH2O, connected to 15 L/min O2, with OPA (patient now obtunded, diminished gag) ± NPA. Ventilate at 10-12 breaths/min with just enough tidal volume (~6-8 mL/kg ideal body weight) to see chest rise. Keep in-line waveform capnography",
+          "priority": "critical",
+          "rationale": "BVM with PEEP and OPA is the next escalation and provides temporizing ventilation while preparing for RSI. Protocol preferred over immediate SGA/intubation because invasive airways do not improve bronchospasm and can cause air trapping.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "rsi-prep-final",
+          "action": "Final RSI preparation: confirm team roles, medications drawn and labeled, suction on and within reach, two laryngoscopes, 8.0 ETT cuff tested with 10 mL syringe attached, bougie, backup SGA, and end-tidal CO2 detector/waveform capnography ready for post-intubation confirmation",
+          "priority": "critical",
+          "rationale": "Checklist use improves first-pass success and reduces peri-intubation complications.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        }
+      ]
+    },
+    {
+      "id": "bvm-assist",
+      "name": "BVM + PEEP Bridging to RSI",
+      "description": "Two-person BVM with PEEP 5 and OPA is successfully augmenting the patient's oxygenation and offloading his work of breathing. SpO2 improves to 92%, EtCO2 is trending down toward 60. This is a temporizing bridge while the team performs final RSI preparation and denitrogenation.",
+      "isDefault": true,
+      "triggerCondition": "Two-person BVM with PEEP 5 + OPA/NPA initiated; NIV failure recognized",
+      "transitions": [
+        {
+          "targetPhaseId": "post-rsi",
+          "condition": "Successful RSI with confirmed ET intubation via waveform capnography",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["rsi-intubate"]
+        }
+      ],
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": { "eye": 3, "verbal": 3, "motor": 5 },
+        "airway": "Maintained with OPA; BVM seal good with two-person technique. No gag.",
+        "breathing": "Apneic effort partially offloaded by BVM at 10-12 breaths/min. Chest rise visible and symmetric. Persistent diffuse wheezing but air movement clearly improved.",
+        "circulation": "Radials strong, rate 108. Skin still diaphoretic but color improving.",
+        "skin": { "color": "pale, less dusky", "temperature": "warm", "moisture": "diaphoretic" },
+        "pupils": "PERRL 3 mm.",
+        "motorFunction": "Withdraws to noxious; spontaneously moves little.",
+        "otherFindings": [
+          "In-line capnography shows EtCO2 trending down to 60 with assisted ventilation",
+          "SpO2 climbing to 92%",
+          "Team denitrogenating patient with 15 L/min via BVM for at least 2 full minutes prior to RSI"
+        ],
+        "patientSpeech": "No intelligible speech; occasional groan."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 148,
+        "bpDia": 88,
+        "respRate": 12,
+        "spo2": 92,
+        "etco2": 60,
+        "temp": 37.3,
+        "obstruction": 50,
+        "trendTimeSeconds": 20,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "bvm-peep-technique",
+          "action": "Maintain two-person, two-thumbs-up BVM with PEEP 5 cmH2O, 10-12 breaths/min, 6-8 mL/kg IBW (~420-560 mL for this patient), allowing long expiratory time to avoid breath-stacking/air trapping",
+          "priority": "critical",
+          "rationale": "In obstructive physiology, overventilation causes breath-stacking, air trapping, and hemodynamic collapse.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "preoxygenate-rsi",
+          "action": "Preoxygenate with BVM + PEEP 5 cmH2O and apneic oxygenation via NC at 15 L/min for a minimum of 2-3 minutes before RSI",
+          "priority": "critical",
+          "rationale": "Adequate preoxygenation is the most important single factor in avoiding peri-intubation hypoxia.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "rsi-premed",
+          "action": "Premedicate with Fentanyl 1 mcg/kg (78 mcg for 78 kg patient) IV push 2-3 minutes prior to induction (50 mcg/mL concentration)",
+          "priority": "important",
+          "rationale": "Blunts sympathetic response to laryngoscopy; protocol optional but recommended.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "rsi-induction",
+          "action": "Administer induction agent — either Ketamine 1.5 mg/kg (117 mg for 78 kg patient) IV push (100 mg/mL concentration) OR Etomidate 0.3 mg/kg (23 mg for 78 kg patient) IV push (2 mg/mL concentration). Ketamine is preferred in bronchospasm for its bronchodilatory effect",
+          "priority": "critical",
+          "rationale": "Ketamine has inherent bronchodilatory effects and hemodynamic stability, preferable in severe bronchospasm.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "rsi-paralytic",
+          "action": "Administer paralytic — either Rocuronium 1 mg/kg (78 mg for 78 kg patient) IV push (10 mg/mL concentration) OR Succinylcholine 1.5 mg/kg (117 mg for 78 kg patient) IV push (20 mg/mL concentration). Rocuronium preferred when a longer duration of paralysis is acceptable or succinylcholine contraindicated",
+          "priority": "critical",
+          "rationale": "Paralysis optimizes intubating conditions and first-pass success.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "rsi-intubate",
+          "action": "Perform endotracheal intubation using video laryngoscopy (or DL with bougie) with a size 8.0 cuffed ETT for this adult male. Limit attempt to 15 seconds or SpO2 < 90%. Confirm placement with waveform capnography (primary confirmation), bilateral breath sounds, and absent epigastric sounds. Secure tube at ~24 cm at the lip (3 × tube size). Inflate cuff to ~20 cmH2O with manometer",
+          "priority": "critical",
+          "rationale": "Waveform capnography is the most reliable confirmation of ET placement.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        }
+      ]
+    },
+    {
+      "id": "post-rsi",
+      "name": "Post-RSI — Intubated, Sedated, Ventilated",
+      "description": "Patient is successfully intubated with an 8.0 cuffed ETT, confirmed by waveform capnography. He is now sedated with post-intubation sedation/analgesia, PEEP 5, mechanically or manually ventilated at 10-12 bpm with slow I:E to avoid breath-stacking. Hemodynamics have improved, SpO2 is 96%, EtCO2 has normalized toward 42, and the patient is stable for transport to the ED.",
+      "isDefault": true,
+      "triggerCondition": "Successful ET intubation with RSI meds and capnography confirmation",
+      "transitions": [],
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": { "eye": 1, "verbal": 1, "motor": 1 },
+        "airway": "Intubated with 8.0 cuffed ETT secured at 24 cm at the lip, cuff pressure 20 cmH2O by manometer.",
+        "breathing": "Mechanically/manually ventilated at 10-12 bpm, PEEP 5, tidal volume ~500 mL (~6-8 mL/kg IBW). Bilateral equal breath sounds with mild residual wheezing. Chest rise symmetric. Long expiratory time maintained.",
+        "circulation": "Radials strong. HR down from 108 to 95, BP stable at 138/82. Skin color improving.",
+        "skin": { "color": "pink", "temperature": "warm", "moisture": "slightly diaphoretic" },
+        "pupils": "3 mm, sluggish (expected post-induction).",
+        "motorFunction": "Flaccid (pharmacologically paralyzed) — ensure continued sedation is adequate.",
+        "otherFindings": [
+          "Waveform capnography shows normalized square waveform — shark fin resolving as bronchospasm improves with continued in-line albuterol",
+          "ETT secured with commercial holder",
+          "OG/NG tube placed for gastric decompression",
+          "Patient now appropriate for continued sedation titrated to RASS -2 to -3"
+        ],
+        "patientSpeech": "None (intubated and sedated)."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 95,
+        "bpSys": 138,
+        "bpDia": 82,
+        "respRate": 14,
+        "spo2": 96,
+        "etco2": 42,
+        "temp": 37.2,
+        "obstruction": 30,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "confirm-placement",
+          "action": "Confirm and re-confirm ETT placement with continuous waveform capnography, bilateral breath sounds, symmetric chest rise, absent epigastric sounds; document tube depth at the lip",
+          "priority": "critical",
+          "rationale": "Waveform capnography is the gold standard for ETT placement confirmation per protocol.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "secure-tube",
+          "action": "Secure tube with commercial tube holder (or tape); cervical collar may reduce neck movement and risk of displacement during transport",
+          "priority": "critical",
+          "rationale": "Tube dislodgement in transport is a significant mortality risk.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "post-sedation",
+          "action": "Post-intubation sedation/analgesia: Fentanyl 1-2 mcg/kg (78-156 mcg for 78 kg patient) IV push PLUS Midazolam 0.02 mg/kg (1.56 mg for 78 kg patient) IV push OR Ketamine 0.5-1 mg/kg (39-78 mg for 78 kg patient) IV push. Titrate to RASS -2 to -3 and re-dose as needed",
+          "priority": "critical",
+          "rationale": "Paralyzed patients MUST be adequately sedated — awareness under paralysis is a critical patient safety issue.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "vent-settings",
+          "action": "Set ventilation: rate 10-12 bpm, Vt ~6-8 mL/kg IBW (~500 mL), PEEP 5 cmH2O, FiO2 titrated to SpO2 ≥ 94%. Allow prolonged expiratory time (I:E 1:3 to 1:5) to avoid breath-stacking and air trapping",
+          "priority": "critical",
+          "rationale": "Obstructive physiology mandates long expiratory times to prevent dynamic hyperinflation.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "inline-neb-continue",
+          "action": "Continue in-line nebulized Albuterol 5 mg (unlimited repeat) via ETT circuit for ongoing bronchospasm",
+          "priority": "important",
+          "rationale": "Bronchospasm does not resolve with intubation; ongoing bronchodilator therapy is required.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)"
+        },
+        {
+          "id": "gastric-decomp",
+          "action": "Place an OG tube for gastric decompression after intubation to improve oxygenation and ventilation",
+          "priority": "supplemental",
+          "rationale": "Gastric decompression should be strongly considered in any patient with an advanced airway and positive pressure ventilation.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "transport",
+          "action": "Transport priority 1 to the closest appropriate facility; continuous reassessment of waveform capnography, ETT depth, vitals, and sedation level; pre-arrival notification with RSI details",
+          "priority": "critical",
+          "rationale": "Smooth handoff and continuous monitoring prevent peri-transport deterioration.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        }
+      ]
+    },
+    {
+      "id": "branch-respiratory-arrest",
+      "name": "Branch — Respiratory then Cardiac Arrest (PEA)",
+      "description": "CPAP was continued beyond the point of failure without escalation. The patient decompensates through respiratory arrest into pulseless electrical activity from profound hypoxemia and hypercarbia. He is now unresponsive, apneic (or agonal), with a narrow-complex rhythm on the monitor but no palpable pulse and no blood pressure. This is the teaching branch showing the consequence of failing to recognize NIV failure.",
+      "isDefault": false,
+      "triggerCondition": "CPAP continued beyond failure without BVM/RSI within approximately 5 minutes",
+      "transitions": [],
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": { "eye": 1, "verbal": 1, "motor": 1 },
+        "airway": "Obstructed; no gag. Requires immediate OPA and suction. CPAP mask removed.",
+        "breathing": "Agonal/apneic. No spontaneous effort. No air movement on auscultation.",
+        "circulation": "No palpable carotid or femoral pulse. Narrow-complex rhythm on monitor (PEA).",
+        "skin": { "color": "cyanotic, central and peripheral", "temperature": "cool", "moisture": "drenched" },
+        "pupils": "Fixed, dilated to 5 mm.",
+        "motorFunction": "Flaccid.",
+        "otherFindings": [
+          "Electrical activity on monitor but no mechanical output (classic PEA)",
+          "Team must transition immediately to cardiac arrest management with high-quality CPR, BVM with OPA, airway escalation, and reversible cause search (H's and T's — hypoxia and hypercarbia top of list here)",
+          "Even though PEA does not strictly meet the schema cardiac-arrest enforcement (HR > 0), SpO2 is not perfusing and therefore displayed as 0 with probe detached"
+        ],
+        "patientSpeech": "None."
+      },
+      "monitorState": {
+        "ecgRhythm": "Pulseless Electrical Activity (PEA)",
+        "ecgWaveform": 9,
+        "hr": 32,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 18,
+        "temp": 37.1,
+        "obstruction": 60,
+        "trendTimeSeconds": 45,
+        "visibility": {
+          "spo2Visible": false,
+          "spo2Attached": false,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "recognize-arrest",
+          "action": "Immediately recognize pulseless arrest (PEA), announce cardiac arrest, and begin high-quality CPR at 100-120 compressions/min with depth 2-2.4 inches, full recoil",
+          "priority": "critical",
+          "rationale": "Unrecognized or delayed CPR in hypoxic PEA dramatically reduces survival.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "bvm-arrest",
+          "action": "Remove CPAP, insert OPA, begin BVM ventilation at 10 breaths/min (asynchronous with compressions once advanced airway in place) with 15 L/min O2 — maximal oxygen supplementation during CPR",
+          "priority": "critical",
+          "rationale": "Hypoxia/hypercarbia is the reversible cause driving this arrest — aggressive oxygenation and ventilation is the fix.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "hs-and-ts",
+          "action": "Aggressively address reversible causes — Hypoxia (BVM with O2, advanced airway), Hypercarbia/H+ acidosis (adequate ventilation), Hypovolemia (IV fluid 500 mL NS bolus)",
+          "priority": "critical",
+          "rationale": "PEA from respiratory failure is reversed by restoring oxygenation and ventilation.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "epinephrine-arrest",
+          "action": "Administer Epinephrine 1 mg (10 mL of 1:10,000 / 0.1 mg/mL) IV/IO every 3-5 minutes during arrest",
+          "priority": "critical",
+          "rationale": "Standard ACLS cardiac arrest medication dosing.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "debrief-branch",
+          "action": "After scenario, debrief extensively on the failure point — recognition of NIV failure (rising EtCO2, worsening mental status, paradoxical RR drop) and the need to escalate to BVM with PEEP and RSI before respiratory arrest",
+          "priority": "important",
+          "rationale": "The branch exists specifically to teach recognition of NIV failure and appropriate escalation timing.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        }
+      ]
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Perform rapid primary survey and recognize severe respiratory distress / impending respiratory failure",
+      "Keep patient in position of comfort (tripod) — do not force supine",
+      "Apply supplemental oxygen titrated to target SpO2 94-98% (permissive ≥ 90% acceptable in COPD)",
+      "Place continuous pulse oximetry, cardiac monitoring, and waveform capnography; identify shark-fin waveform of bronchospasm",
+      "Establish IV access and administer Albuterol 5 mg + Ipratropium 0.5 mg nebulized (repeat albuterol unlimited)",
+      "Administer IV steroid — Methylprednisolone 2 mg/kg IV (max 125 mg for 78 kg patient) OR Dexamethasone 0.6 mg/kg IV (max 16 mg for 78 kg patient)",
+      "Apply CPAP 5 cmH2O with in-line albuterol for severe distress/impending failure and coach patient",
+      "Recognize NIV failure (rising EtCO2, worsening mental status, paradoxical RR drop) and escalate to two-person BVM with PEEP 5 + OPA/NPA",
+      "Perform RSI: preoxygenate, premedicate with Fentanyl 1 mcg/kg (78 mcg for 78 kg patient) IV, induce with Ketamine 1.5 mg/kg (117 mg for 78 kg patient) IV OR Etomidate 0.3 mg/kg (23 mg for 78 kg patient) IV, paralyze with Rocuronium 1 mg/kg (78 mg for 78 kg patient) IV OR Succinylcholine 1.5 mg/kg (117 mg for 78 kg patient) IV",
+      "Place 8.0 cuffed ETT and confirm placement with continuous waveform capnography",
+      "Provide post-intubation analgesia and sedation: Fentanyl 1-2 mcg/kg (78-156 mcg for 78 kg patient) IV + Midazolam 0.02 mg/kg (1.56 mg for 78 kg patient) IV OR Ketamine 0.5-1 mg/kg (39-78 mg for 78 kg patient) IV",
+      "Set lung-protective ventilation: 10-12 bpm, 6-8 mL/kg IBW (~500 mL), PEEP 5, long I:E to avoid air trapping"
+    ],
+    "expectedActions": [
+      "Obtain focused history including prior intubation, recent steroids, sick contacts, and medication compliance",
+      "Acquire 12-lead ECG to screen for ischemia/dysrhythmia",
+      "Consider Magnesium Sulfate 1 g IV in 100 mL NS over 10-15 minutes (reduced geriatric dose; protocol allows 40 mg/kg up to 2 g)",
+      "Continue in-line nebulized Albuterol 5 mg through BVM/ETT circuit as needed",
+      "Place OG tube for gastric decompression after intubation",
+      "Provide early pre-arrival notification to receiving ED with RSI handoff details",
+      "Document interventions, ETT depth, cuff pressure, and waveform capnography with each patient movement"
+    ],
+    "bonusActions": [
+      "Use video laryngoscopy and a bougie to maximize first-pass success",
+      "Apply apneic oxygenation via NC at 15 L/min during laryngoscopy",
+      "Use ETT cuff manometer to confirm 20 cmH2O cuff pressure",
+      "Pre-draw post-intubation sedation before induction so it is ready immediately after tube confirmation",
+      "Recognize and discuss permissive hypoxia (SpO2 ≥ 90%) as acceptable target in chronic COPD",
+      "Identify behavioral/psychosocial mortality risk factors (medication non-compliance — out of albuterol, prior intubation)"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Recognize severe COPD exacerbation and impending respiratory failure from history, physical findings, and waveform capnography (shark fin)",
+      "Escalate airway and ventilatory support in a protocol-driven stepwise fashion: NC → NRB → nebulized bronchodilators → CPAP → BVM with PEEP → RSI",
+      "Identify objective signs of NIV failure (rising EtCO2, declining mental status, paradoxical slowing of respiratory rate) and act decisively",
+      "Safely perform RSI in a bronchospastic patient: preoxygenation, premedication, induction (ketamine preferred for bronchodilation), paralysis, and confirmation with waveform capnography",
+      "Manage the intubated bronchospastic patient with lung-protective ventilation, prolonged expiratory time, in-line bronchodilators, and adequate post-intubation sedation"
+    ],
+    "discussionQuestions": [
+      "What clinical and capnographic findings told you NIV was failing rather than working?",
+      "Why are invasive airways considered a last resort in bronchospasm, and what specific complication are we trying to avoid?",
+      "Why would ketamine be a preferred induction agent over etomidate in severe bronchospasm?",
+      "In the branch scenario, where in the timeline could the team have prevented the arrest, and what specific cue should have triggered escalation?",
+      "How do ventilator/BVM settings differ for obstructive physiology versus ARDS or a normal lung, and why?",
+      "What is the role of permissive hypoxia (SpO2 ≥ 90%) in chronic COPD, and when might you accept it?"
+    ],
+    "commonPitfalls": [
+      "Continuing CPAP past the point of failure because the SpO2 still looks 'OK' while EtCO2 climbs and mental status drops",
+      "Aggressive BVM ventilation in bronchospasm causing breath-stacking, air trapping, and pneumothorax/hemodynamic collapse",
+      "Forgetting to redose post-intubation sedation in a paralyzed patient, risking awareness under paralysis",
+      "Failing to preoxygenate adequately (< 2-3 minutes), producing peri-intubation hypoxia",
+      "Treating anxiety on NIV with benzodiazepines instead of recognizing and treating inadequate ventilation",
+      "Skipping waveform capnography for initial ETT confirmation",
+      "Not using a checklist and omitting post-intubation steps (cuff pressure, OG tube, sedation titration)"
+    ],
+    "keyTakeaways": [
+      "In bronchospasm, the airway should be managed in the least invasive way possible — invasive airways do NOT improve bronchospasm and carry real risk of air trapping and pneumothorax",
+      "NIV failure is recognized by rising EtCO2, declining mental status, and paradoxical RR drop from fatigue — not by SpO2 alone",
+      "Waveform capnography is the single most important adjunct in respiratory distress and is the gold standard for ETT placement confirmation",
+      "Lung-protective ventilation in obstructive physiology means low rate, small tidal volumes (6-8 mL/kg IBW), PEEP 5, and long expiratory time",
+      "A paralyzed patient must always be adequately sedated — analgesia and sedation before and after intubation",
+      "Anticipatory preparation for RSI (drug-drawing, checklist, team roles) started during the NIV phase is what enables a smooth, safe airway when NIV fails"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}
