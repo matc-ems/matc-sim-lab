@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acute Coronary Syndrome - Inferior STEMI - FONA Bundle and STEMI Activation — Printable</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--card:#fff;--card-border:#d6d3d1;--text:#1c1917;--text-secondary:#44403c;--text-muted:#78716c;--green:#166534;--red:#b91c1c;--red-light:#fef2f2;--red-border:#fecaca;--orange:#c2410c;--yellow:#a16207;--blue:#1e40af;--radius:8px;--radius-sm:6px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;background:#f5f5f4;color:var(--text);line-height:1.5;padding:24px;font-size:12pt}
+.sheet{max-width:800px;margin:0 auto;background:#fff;padding:28px 32px;box-shadow:0 1px 4px rgba(0,0,0,.08);border-radius:10px}
+.scenario-name{font-size:11pt;color:var(--text-secondary)}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;break-inside:avoid}
+.card-title{font-size:9pt;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:10px 14px 6px;border-bottom:1px solid #f5f5f4}
+.card-content{padding:10px 14px 12px}
+.scene-row{padding:6px 0;border-bottom:1px solid #f5f5f4;display:grid;grid-template-columns:110px 1fr;gap:10px}
+.scene-row:last-child{border-bottom:none}
+.scene-label{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.scene-value{font-size:11pt;color:var(--text-secondary)}
+.cue-list{list-style:none;margin:0}
+.cue-list li{font-size:11pt;color:var(--text-secondary);padding:3px 0 3px 14px;position:relative}
+.cue-list li::before{content:'→';position:absolute;left:0;color:var(--text-muted);font-size:10pt}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e7e5e4}
+.sample-cell{background:#fff;padding:9px 12px}
+.sample-cell:nth-child(1),.sample-cell:nth-child(6){grid-column:1/-1}
+.sample-letter{font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--green);margin-right:4px}
+.sample-name{font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:3px}
+.sample-text{font-size:10.5pt;color:var(--text-secondary);line-height:1.45}
+.patient-chips{display:flex;gap:8px;flex-wrap:wrap}
+.patient-chip{font-size:10pt;padding:4px 10px;background:#f5f5f4;border-radius:6px;color:var(--text-secondary)}
+.patient-chip strong{color:var(--text);font-weight:700}
+.phase-section{break-before:auto;page-break-before:auto;margin-top:12px}
+.phase-section .phase-card{break-after:avoid;page-break-after:avoid}
+.phase-card{border-left:4px solid var(--text)}
+.phase-card-branch{border-left-color:var(--red)}
+.branch-tag{display:inline-block;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);background:var(--red-light);padding:2px 8px;border-radius:4px;margin-bottom:6px}
+.phase-title{font-size:16pt;font-weight:700;margin-bottom:4px}
+.phase-trigger{font-family:'DM Mono',ui-monospace,monospace;font-size:9pt;color:var(--yellow);margin-bottom:6px}
+.phase-desc{font-size:11pt;color:var(--text-secondary);line-height:1.5}
+.ecg-label{font-family:'DM Mono',ui-monospace,monospace;font-size:10pt;color:var(--text-secondary);padding:8px 12px;background:#fafaf9;border-bottom:1px solid #f0efec}
+.vitals-grid{display:flex;flex-wrap:wrap;gap:4px 18px;padding:8px 14px}
+.vital-cell{background:transparent;padding:0;text-align:left;display:flex;align-items:baseline;gap:4px}
+.vital-cell.full-width{grid-column:auto}
+.vital-name{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.vital-val{font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--text);line-height:1.1}
+.vital-unit{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;color:var(--text-muted)}
+.loc-block{margin-bottom:10px}
+.avpu-bar{display:flex;border:1px solid var(--card-border);border-radius:6px;overflow:hidden;margin-bottom:10px}
+.avpu-seg{flex:1;text-align:center;padding:6px 4px;font-family:'DM Mono',ui-monospace,monospace;font-size:10pt;font-weight:700;color:var(--text-muted);background:#fafaf9}
+.avpu-seg.sel-a{background:#ecfccb;color:var(--green)}
+.avpu-seg.sel-v{background:#fef3c7;color:var(--yellow)}
+.avpu-seg.sel-p{background:#ffedd5;color:var(--orange)}
+.avpu-seg.sel-u{background:var(--red-light);color:var(--red)}
+.gcs-detail{display:flex;flex-wrap:wrap;gap:6px 16px;padding:8px 14px;border:1px solid var(--card-border);border-radius:6px;margin-bottom:10px;align-items:baseline}
+.gcs-item{display:flex;align-items:baseline;gap:4px;padding:0;border:none}
+.gcs-item:last-of-type{border-bottom:none}
+.gcs-part{order:1;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.gcs-score{order:2;font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--text)}
+.gcs-desc{order:3;font-size:9.5pt;color:var(--text-muted);font-style:italic}
+.gcs-desc::before{content:'('}
+.gcs-desc::after{content:')'}
+.gcs-total-row{display:flex;align-items:baseline;gap:4px;order:-1;padding:0;margin:0;border:none;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.gcs-total-row .gcs-total{font-family:'DM Mono',ui-monospace,monospace;font-size:12pt;font-weight:700;color:var(--text)}
+.finding-row{padding:6px 0;border-bottom:1px solid #f5f5f4;display:grid;grid-template-columns:100px 1fr;gap:10px}
+.finding-row:last-child{border-bottom:none}
+.finding-label{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.finding-value{font-size:10.5pt;color:var(--text-secondary)}
+.finding-speech{font-style:italic;color:var(--text-muted)}
+.findings-notes{list-style:none;margin:0}
+.findings-notes li{font-size:10pt;color:var(--text-secondary);padding:2px 0 2px 12px;position:relative}
+.findings-notes li::before{content:'·';position:absolute;left:2px;font-weight:700;color:var(--text-muted)}
+.action-row{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #f5f5f4;break-inside:avoid}
+.action-row:last-child{border-bottom:none}
+.action-box{width:14px;height:14px;border:1.5px solid var(--text-muted);border-radius:3px;flex-shrink:0;margin-top:3px}
+.action-body{flex:1;min-width:0}
+.action-head{display:flex;align-items:flex-start;gap:8px;margin-bottom:4px}
+.action-priority{display:inline-block;font-family:'DM Mono',ui-monospace,monospace;font-size:7.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 6px;border-radius:3px;flex-shrink:0;margin-top:2px}
+.p-critical{background:var(--red-light);color:var(--red)}
+.p-important{background:#fff7ed;color:var(--orange)}
+.p-supp{background:#f5f5f4;color:var(--text-muted)}
+.action-text{font-size:11pt;font-weight:600;color:var(--text);line-height:1.35}
+.action-rationale,.action-ref{display:none}
+.action-head{margin-bottom:0}
+.action-row{padding:6px 0}
+@media print{
+  body{background:#fff;padding:0;font-size:10pt}
+  .sheet{box-shadow:none;max-width:none;padding:0.4in;border-radius:0}
+  .card{break-inside:avoid;margin-bottom:8px}
+  .card-title{padding:6px 10px 3px}
+  .card-content{padding:6px 10px 8px}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="card"><div class="card-title">Scenario</div><div class="card-content"><div class="scenario-name">Acute Coronary Syndrome - Inferior STEMI - FONA Bundle and STEMI Activation</div></div></div>
+  <div class="card"><div class="card-title">Patient</div><div class="card-content"><div class="patient-chips"><span class="patient-chip"><strong>Daniel Murphy</strong></span><span class="patient-chip">66 years male</span><span class="patient-chip">203 lbs (92 kg)</span><span class="patient-chip">5'11"</span><span class="patient-chip">CC: Crushing substernal chest pressure with diaphoresis, radiating to the left arm and jaw - 8/10</span></div></div></div>
+  <div class="card"><div class="card-title">Scene</div><div class="card-content">
+    <div class="scene-row"><div class="scene-label">Dispatch</div><div class="scene-value">Respond priority 1 to a private residence for a 66-year-old male with chest pain. Patient awake, sweating, says he thinks he is having a heart attack. Wife on scene.</div></div>
+    <div class="scene-row"><div class="scene-label">Location</div><div class="scene-value">Single-story private residence, front porch. Patient seated in a porch chair. Daylight, mild spring weather (~62°F), dry. Path from porch to ambulance is short and unobstructed.</div></div>
+    <div class="scene-row"><div class="scene-label">Time</div><div class="scene-value">1018 hours, Saturday morning</div></div>
+    <div class="scene-row"><div class="scene-label">Safety</div><div class="scene-value">Scene is safe. Family dog confined indoors. No environmental hazards.</div></div>
+    <div class="scene-row"><div class="scene-label">Bystanders</div><div class="scene-value">Wife is at his side, anxious but cooperative and an excellent historian. She has the patient's medication list, knows his cardiologist's name, and has confirmed no PDE5 inhibitor use.</div></div>
+  </div></div><div class="card"><div class="card-title">Visual Cues on Arrival</div><div class="card-content"><ul class="cue-list"><li>Adult male seated in a porch chair, leaning slightly forward with his hand on his chest</li><li>Visibly diaphoretic - sweating despite mild outdoor temperature</li><li>Ashen, pale complexion</li><li>Rake and bag of leaves visible in the yard</li><li>Glass of water on the porch table (untouched)</li><li>Patient's wife in the doorway, holding the medication list</li><li>No obvious signs of trauma or environmental injury</li><li>Cigarette pack visible on a side table</li></ul></div></div>
+  <div class="card">
+    <div class="card-title">SAMPLE History</div>
+    <div class="card-content" style="padding:0">
+      <div class="sample-grid">
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">S</span> Signs &amp; Symptoms</div><div class="sample-text">66-year-old male was outside doing yard work when he developed sudden substernal chest pressure approximately 45 minutes ago. He describes it as a 'heavy, crushing' sensation in the center of his chest, radiating to his left arm and jaw, with associated diaphoresis, nausea, and shortness of breath on minimal exertion. He sat down on the porch but the pain has not improved. His wife brought him a glass of water and called 911 when he said 'I think I'm having a heart attack' and looked ashen. No prior history of similar pain. No syncope, no palpitations. Denies use of any phosphodiesterase-5 inhibitors (sildenafil, tadalafil, vardenafil) within the past 48 hours and his wife confirms.</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">A</span> Allergies</div><div class="sample-text">NKDA</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">M</span> Medications</div><div class="sample-text">Lisinopril 20 mg PO daily, Atorvastatin 40 mg PO at bedtime, Metformin 1000 mg PO BID, Aspirin 81 mg PO daily (per his PCP for primary prevention - took this morning)</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">P</span> Past Medical</div><div class="sample-text">Hypertension, Hyperlipidemia, Type 2 diabetes mellitus (well controlled, A1C 6.8 last visit), Tobacco use (1 pack per day x 40 years - currently smoking), Family history: father MI at 58, brother CABG at 62, No known coronary artery disease, no prior MI, no stents</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">L</span> Last Intake</div><div class="sample-text">Eggs, toast, coffee at 0700; small glass of water 30 minutes ago</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">E</span> Events</div><div class="sample-text">Doing yard work, raking leaves. Sudden onset crushing substernal chest pain at ~0945. Sat down on porch, pain unrelenting. Wife called 911 at ~1015 when patient appeared diaphoretic and ashen.</div></div>
+      </div>
+    </div>
+  </div>
+  <section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Initial Presentation - Suspected ACS</div>
+        
+        <div class="phase-desc">Crew arrives to a 66-year-old male with classic ischemic chest pain - substernal pressure, radiation to left arm and jaw, diaphoresis, nausea, dyspnea on exertion. Clinical pretest probability for acute coronary syndrome is high given his age, multiple cardiac risk factors (HTN, HLD, DM, current smoker, family history), and presentation. The crew must rapidly initiate the FONA bundle (Fentanyl, Oxygen, Nitroglycerin, Aspirin) per the MATC ACS protocol, acquire a 12-lead ECG within 10 minutes, and prepare for STEMI activation if elevation is identified.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Sinus Rhythm</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">96</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">152/92</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">96%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">22</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">138</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent and self-maintained.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 22, mildly tachypneic. Lungs clear bilaterally without rales or wheezing. No accessory muscle use. Speaks in full sentences with effort.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Strong regular radial pulse at 96. Skin cool, pale, markedly diaphoretic. Capillary refill 2-3 seconds. No JVD. No peripheral edema.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">ashen, pale · cool · markedly diaphoretic</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm bilaterally.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">All extremities move with full strength. No focal neurologic deficit. Gait test deferred given chest pain.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'My chest is killing me. Feels like a vise. It's going down my left arm. I think this is my heart.'"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Patient describes the pain as 'crushing, like an elephant on my chest'</li><li>Pain rated 8/10, started 45 minutes ago, no relief with rest</li><li>Radiates to left arm and lower jaw</li><li>Associated diaphoresis, nausea (without emesis), and shortness of breath</li><li>Has chewed his daily 81 mg aspirin this morning - took before symptom onset</li><li>No phosphodiesterase-5 inhibitor use confirmed by patient and wife</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Perform scene size-up, BSI, and primary survey (ABCDE); identify ACS-pattern chest pain</div></div>
+        <div class="action-rationale">Pattern recognition triggers the ACS protocol bundle.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Position the patient in a position of comfort (semi-Fowler's or seated upright); minimize physical exertion - help him onto the stretcher rather than have him walk</div></div>
+        <div class="action-rationale">Reducing myocardial oxygen demand is part of ACS care; do not have an actively ischemic patient walk to the ambulance.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Apply oxygen via nasal cannula at 2-4 L/min titrated to SpO2 94-98%; do NOT routinely give high-flow O2 to a normoxic ACS patient</div></div>
+        <div class="action-rationale">Hyperoxia in ACS is associated with worse outcomes. Target normoxia, not maximal saturation.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Apply 4-lead cardiac monitor; place defibrillator pads prophylactically per protocol safety consideration #3 (high-risk patient); enable automatic VT/VF alert if available</div></div>
+        <div class="action-rationale">Acute STEMI patients are at high risk for sudden VF/VT. Pads on now save seconds during arrest.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Acquire a 12-lead ECG within 10 minutes of patient contact - this is the primary diagnostic tool to identify STEMI</div></div>
+        <div class="action-rationale">Protocol explicitly states 12-lead within 10 minutes of contact. Performance measure.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Establish two large-bore IV lines (18 g preferred); saline lock both</div></div>
+        <div class="action-rationale">Reliable vascular access is required for analgesia, antiarrhythmics, fluids, and pressors if hemodynamics deteriorate.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer Aspirin 324 mg PO (4 chewable 81 mg tablets) - chewed and swallowed; document time given regardless of his daily 81 mg</div></div>
+        <div class="action-rationale">Aspirin reduces mortality in ACS. Daily 81 mg is not the same as the loading dose - give the full 324 mg unless contraindicated.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Check blood glucose; ACS patients with diabetes can have atypical or masked symptoms</div></div>
+        <div class="action-rationale">Routine workup; hypoglycemia can mimic or coexist with ACS.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Explicitly screen patient and wife for any phosphodiesterase-5 inhibitor use (sildenafil, tadalafil, vardenafil, etc.) within the past 48 hours; also ask about IV epoprostenol/treprostinil for pulmonary hypertension - BEFORE administering nitroglycerin</div></div>
+        <div class="action-rationale">PDE5 inhibitors within 48 hours are an absolute contraindication to nitrates due to risk of profound refractory hypotension.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Obtain focused history (OPQRST + cardiac risk factors); document time of onset, character, radiation, associated symptoms, and exacerbating/relieving factors</div></div>
+        <div class="action-rationale">Time of onset is a key documentation element for STEMI care - drives the door-to-balloon decision.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Inferior STEMI Identified - FONA Bundle and STEMI Activation</div>
+        <div class="phase-trigger">Trigger: 12-lead acquired showing inferior STEMI with negative PDE5 screen</div>
+        <div class="phase-desc">The 12-lead ECG demonstrates ST elevation in II, III, and aVF (~3 mm) with reciprocal depression in I and aVL - inferior STEMI. The crew acquires a right-sided V4R lead which shows minimal ST elevation (&lt;1 mm) - no significant RV involvement. ASA has been given. PDE5 screen is negative. The crew now completes the FONA bundle: Fentanyl for pain (since pain persists despite NTG), Oxygen titrated, Nitroglycerin SL since BP is supportive (152/92) and no RV STEMI, and STEMI activation/transmission to the receiving PCI center.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ STEMI Inferior</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">92</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">148/88</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">97%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">20</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">138</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 22.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">BP supportive, strong pulses.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">ashen, pale · cool · diaphoretic</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric, full strength.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'It's still bad. Maybe a little less. I'm scared.'"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>12-lead: ST elevation 3 mm in II, III, aVF; reciprocal depression in I and aVL - INFERIOR STEMI</li><li>V4R lead acquired: minimal ST elevation (&lt;1 mm) - no significant RV involvement</li><li>Pain unchanged at 8/10 despite ASA</li><li>Patient anxious about diagnosis, asking 'Am I going to be okay?'</li><li>Wife calling family members</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Recognize Inferior STEMI on 12-lead: ST elevation in II, III, aVF with reciprocal depression in I, aVL</div></div>
+        <div class="action-rationale">Identification triggers STEMI activation and changes destination to a PCI-capable center.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Acquire a right-sided V4R lead to assess for right ventricular involvement; document findings (V4R ST elevation &gt; 1 mm = RV infarct - changes nitrate strategy)</div></div>
+        <div class="action-rationale">Inferior STEMI is associated with RV infarction in up to 50% of cases. RV involvement makes patients preload-dependent and at risk for severe nitrate-induced hypotension.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer Nitroglycerin 0.4 mg sublingual (1 tablet or metered spray) - PDE5 negative, BP 148/88 (well above 100), no significant RV STEMI on V4R; reassess BP and pain in 3-5 minutes; may repeat 0.4 mg every 3-5 minutes for ongoing pain if SBP &gt; 100</div></div>
+        <div class="action-rationale">Per protocol, nitroglycerin is appropriate for ACS chest pain when SBP &gt; 100 mmHg, no PDE5 inhibitor use, and no major RV involvement. The location of infarct (inferior) does not preclude nitrates - only severe RV involvement creates the hypotension risk.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Activate the regional STEMI system: notify the closest PCI-capable hospital, transmit the 12-lead ECG, communicate ETA, initial vitals, FONA bundle status, and time of symptom onset</div></div>
+        <div class="action-rationale">Field STEMI activation reduces door-to-balloon time. The cath lab team can be mobilized while the patient is en route.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">If chest pain persists at &gt;= 4/10 after first NTG dose, administer Fentanyl 50-100 mcg IV slowly over 1-2 minutes (~0.5-1 mcg/kg for 92 kg patient); may repeat 25-50 mcg every 5-10 minutes</div></div>
+        <div class="action-rationale">Per protocol, opiates are an acceptable alternative when pain is unresponsive to nitrates. Fentanyl is preferred over morphine in unstable angina/NSTEMI due to morphine's mortality association, and has minimal hemodynamic effect.</div>
+        <div class="action-ref">↳ MATC: Pain Management</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-supp">supplemental</span><div class="action-text">Administer Ondansetron 4 mg IV (or 4 mg ODT) for nausea associated with both the ACS and the fentanyl</div></div>
+        <div class="action-rationale">Nausea is common in inferior MI (vagal tone) and as a side effect of fentanyl; treating it improves patient comfort.</div>
+        <div class="action-ref">↳ MATC: Nausea / Vomiting</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Do NOT continue high-flow oxygen if SpO2 is already 94-98%; titrate FiO2 downward; this patient is already at 96-97% on room air range</div></div>
+        <div class="action-rationale">Hyperoxia in ACS is associated with worse outcomes; target normoxia, not maximum SpO2.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Acquire a serial 12-lead ECG every 5-10 minutes en route or with any clinical change (worsening pain, new symptoms, rhythm change); transmit changes to receiving facility</div></div>
+        <div class="action-rationale">Evolving STEMI may show new lead involvement; non-diagnostic initial ECGs can become diagnostic with serial tracings.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Maintain readiness for cardiac arrest: defib pads on, defibrillator powered on, pacing pads available; bradyarrhythmias and AV blocks are common in inferior MI</div></div>
+        <div class="action-rationale">Inferior MI commonly produces bradyarrhythmias (RCA supplies the SA and AV node in most patients). Sudden VF is a known complication of any acute STEMI.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">FONA Complete - Pain Improving, Stable Transport</div>
+        <div class="phase-trigger">Trigger: FONA bundle delivered, pain improving, stable transport en route to PCI center</div>
+        <div class="phase-desc">After ASA, NTG (with appropriate screening), and fentanyl, the patient's pain has decreased to 3/10. Blood pressure remains supportive. The crew is en route to the regional PCI center with the 12-lead transmitted, STEMI alert active, and the patient comfortable on the stretcher. Vigilance is maintained for the known complications of inferior STEMI: bradyarrhythmias (especially second- and third-degree AV blocks), hypotension, and ventricular dysrhythmias.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ STEMI Inferior</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">80</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">132/78</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">96%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">16</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">38</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">138</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 16, comfortable, lungs clear.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Strong pulses, capillary refill 2 seconds.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">improving color, less pale · warming · drying</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric, full strength.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'Pain's much better. Maybe a 3 now. Thank you. Where are we going?'"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Pain decreased from 8/10 to 3/10</li><li>Diaphoresis resolving</li><li>Patient calmer, asking about wife and what to expect at the hospital</li><li>Serial 12-lead at 10 minutes shows persistent inferior STEMI without progression</li><li>Continuous monitoring shows no new ectopy or AV block</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Reassess full vitals (HR, BP, RR, SpO2, EtCO2) every 5 minutes en route; check pain score; document trends</div></div>
+        <div class="action-rationale">Standard reassessment cadence for high-risk cardiac patient.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Repeat Nitroglycerin 0.4 mg SL every 3-5 minutes for ongoing pain if SBP remains &gt; 100 mmHg; reassess BP before each dose</div></div>
+        <div class="action-rationale">Pain reduction continues with serial NTG dosing while monitoring BP.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Administer additional Fentanyl 25-50 mcg IV every 5-10 minutes for breakthrough pain &gt;= 4/10 despite NTG; monitor respiratory drive and BP</div></div>
+        <div class="action-rationale">Pain control is part of ACS care; breakthrough doses should be small and titrated.</div>
+        <div class="action-ref">↳ MATC: Pain Management</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Vigilantly monitor for new bradyarrhythmias or AV blocks (1st degree, Mobitz I, Mobitz II, complete heart block) - common in RCA-territory inferior MI; have pacer pads available and atropine drawn up</div></div>
+        <div class="action-rationale">Inferior MI commonly affects the AV node territory; new heart block can develop suddenly.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">If BP suddenly drops with NTG dosing, suspect evolving RV involvement; hold further NTG, give 250-500 mL Normal Saline IV bolus, repeat V4R, and notify receiving facility</div></div>
+        <div class="action-rationale">Evolving RV ischemia can develop after presentation; preload support with fluids reverses NTG-induced hypotension.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Maintain defibrillator readiness: pads on, monitor on, AED/defib mode auto-alert active, 200 J biphasic ready</div></div>
+        <div class="action-rationale">Sudden VF/VT is a known complication; pre-readiness saves time.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">At PCI center: bypass ED triage per local STEMI protocol if applicable, go directly to cath lab door; structured SBAR handoff including time of onset, FONA bundle (times and doses), serial 12-leads, current vitals, pain score, current rhythm</div></div>
+        <div class="action-rationale">Door-to-balloon time is the key STEMI performance measure; smooth handoff supports the cath team.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card phase-card-branch">
+      <div class="card-content">
+        <div class="branch-tag">Improper Care Branch</div>
+        <div class="phase-title">Branch - NTG Given Without PDE5 Screen - Profound Hypotension</div>
+        <div class="phase-trigger">Trigger: NTG administered without explicit PDE5 inhibitor screen, profound hypotension follows</div>
+        <div class="phase-desc">The crew administered nitroglycerin without an explicit PDE5 inhibitor screen. After the dose, the patient becomes lightheaded and the BP crashes to SBP 62. The wife now mentions 'oh, he took one of those Viagra last night.' The patient has profound nitrate-induced hypotension. The crew must lay him flat, run wide-open IV fluids, and consider push-dose epinephrine. This branch teaches the absolute necessity of explicit screening before giving nitrates.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Sinus Tachycardia</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">118</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">62/38</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">92%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">26</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">28</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.9°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">138</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg sel-v">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">To speech</span><span class="gcs-score">3</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Confused</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Localizes pain</span><span class="gcs-score">5</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">12</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent but at risk if BP collapses further.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 26, shallow.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Carotid weak, radial absent. Skin cold, mottling at extremities.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">mottled, dusky · cold · diaphoretic</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 4 mm, slightly dilated.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Weak, sluggish.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'Lightheaded... gonna pass out... gonna pass...'"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Patient now near-syncopal, eyes rolling back briefly</li><li>Wife reports sildenafil 50 mg taken last night for ED - within 24 hours of NTG</li><li>BP crashed precipitously</li><li>Pain still present but obscured by hypotension</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Lay the patient supine immediately, elevate the legs to ~45 degrees if tolerated, to support cerebral perfusion</div></div>
+        <div class="action-rationale">Trendelenburg/legs-up improves cerebral perfusion in profound hypotension.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Hold any further nitroglycerin doses; do NOT give more nitrates</div></div>
+        <div class="action-rationale">Continuing nitrates in this state is dangerous.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Run Normal Saline 1000 mL IV wide open through both IV lines (4-6 mL/kg as a quick rule); reassess BP every 2-3 minutes</div></div>
+        <div class="action-rationale">Volume support reverses preload reduction from NTG; the half-life of NTG is short (~3-5 minutes).</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Prepare and administer Epinephrine push-dose: 10 mcg/mL (1 mL of 0.1 mg/mL epinephrine in 9 mL NS); give 10-20 mcg (1-2 mL) IV every 2-5 minutes titrated to MAP &gt; 65</div></div>
+        <div class="action-rationale">If fluids alone do not restore perfusion within 2-3 minutes, push-dose epinephrine restores BP through alpha and beta-1 effects.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-supp">supplemental</span><div class="action-text">Note for debrief: PDE5 inhibitor screening is mandatory and explicit (sildenafil/Viagra, tadalafil/Cialis, vardenafil/Levitra) - not 'have you taken anything that interacts'. Patients often do not volunteer this without direct questioning. Ask BOTH the patient AND a partner</div></div>
+        <div class="action-rationale">Patients with ED prescriptions may not consider the medication 'important' enough to mention.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card phase-card-branch">
+      <div class="card-content">
+        <div class="branch-tag">Improper Care Branch</div>
+        <div class="phase-title">Branch - RV STEMI with NTG-Induced Hypotension</div>
+        <div class="phase-trigger">Trigger: RV STEMI on V4R was identified or missed and NTG was given anyway, hypotension follows</div>
+        <div class="phase-desc">V4R was acquired and showed &gt;2 mm ST elevation indicating RV involvement, but NTG was given anyway. The patient's right ventricle is preload-dependent and unable to accept the NTG-induced reduction in venous return. SBP drops precipitously. The crew must recognize the RV physiology, stop NTG, give aggressive fluid resuscitation, and consider chronotropic/inotropic support.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ STEMI Inferior</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">88</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">84/52</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">95%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">24</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">32</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">138</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 24.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Carotid present but weak; radial weak.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">ashen, more pale · cool · diaphoretic</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'I feel really lightheaded. Like I might pass out.'"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>BP dropped from 152/92 to 84/52 after one NTG dose</li><li>Patient lightheaded, pale</li><li>V4R now confirmed: 3 mm ST elevation - RV STEMI</li><li>Inferior STEMI + RV STEMI: classic preload-dependent state</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Hold further nitroglycerin; recognize RV STEMI physiology - the right ventricle is preload-dependent and intolerant of nitrate-induced venodilation</div></div>
+        <div class="action-rationale">Pathophysiology of RV infarct: stiff, dysfunctional RV requires high preload to maintain LV filling.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Give Normal Saline 500-1000 mL IV bolus rapidly; reassess BP and lung sounds every 250 mL</div></div>
+        <div class="action-rationale">Fluid loading restores RV preload and LV filling; lungs typically remain clear because the LV is functional.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Position the patient supine with legs slightly elevated</div></div>
+        <div class="action-rationale">Improves preload.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">If BP remains &lt; 90 after 1000 mL NS, initiate push-dose Epinephrine 10-20 mcg IV every 2-5 minutes titrated to MAP &gt; 65 OR Norepinephrine 0.02-0.4 mcg/kg/min IV titrated to MAP &gt; 65</div></div>
+        <div class="action-rationale">Inotropic and vasopressor support may be needed when fluids alone are insufficient.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Document and verbally communicate that NO further nitrates should be given to this patient on this call - including by hospital staff during handoff</div></div>
+        <div class="action-rationale">Receiving team needs to know the patient has demonstrated nitrate intolerance from RV physiology.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-supp">supplemental</span><div class="action-text">Note for debrief: V4R is mandatory in inferior STEMI evaluation; RV involvement changes nitrate decisions. Even without V4R, hypotension after NTG in inferior STEMI strongly suggests RV involvement</div></div>
+        <div class="action-rationale">Pattern recognition is the safety net even when V4R is not acquired.</div>
+        <div class="action-ref">↳ MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)</div>
+      </div>
+    </div></div>
+  </div>
+  </section>
+</div>
+</body>
+</html>

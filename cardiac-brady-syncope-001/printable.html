@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Symptomatic Bradycardia with Syncope - Atropine Fails, TCP Required — Printable</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--card:#fff;--card-border:#d6d3d1;--text:#1c1917;--text-secondary:#44403c;--text-muted:#78716c;--green:#166534;--red:#b91c1c;--red-light:#fef2f2;--red-border:#fecaca;--orange:#c2410c;--yellow:#a16207;--blue:#1e40af;--radius:8px;--radius-sm:6px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;background:#f5f5f4;color:var(--text);line-height:1.5;padding:24px;font-size:12pt}
+.sheet{max-width:800px;margin:0 auto;background:#fff;padding:28px 32px;box-shadow:0 1px 4px rgba(0,0,0,.08);border-radius:10px}
+.scenario-name{font-size:11pt;color:var(--text-secondary)}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;break-inside:avoid}
+.card-title{font-size:9pt;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:10px 14px 6px;border-bottom:1px solid #f5f5f4}
+.card-content{padding:10px 14px 12px}
+.scene-row{padding:6px 0;border-bottom:1px solid #f5f5f4;display:grid;grid-template-columns:110px 1fr;gap:10px}
+.scene-row:last-child{border-bottom:none}
+.scene-label{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.scene-value{font-size:11pt;color:var(--text-secondary)}
+.cue-list{list-style:none;margin:0}
+.cue-list li{font-size:11pt;color:var(--text-secondary);padding:3px 0 3px 14px;position:relative}
+.cue-list li::before{content:'→';position:absolute;left:0;color:var(--text-muted);font-size:10pt}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e7e5e4}
+.sample-cell{background:#fff;padding:9px 12px}
+.sample-cell:nth-child(1),.sample-cell:nth-child(6){grid-column:1/-1}
+.sample-letter{font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--green);margin-right:4px}
+.sample-name{font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:3px}
+.sample-text{font-size:10.5pt;color:var(--text-secondary);line-height:1.45}
+.patient-chips{display:flex;gap:8px;flex-wrap:wrap}
+.patient-chip{font-size:10pt;padding:4px 10px;background:#f5f5f4;border-radius:6px;color:var(--text-secondary)}
+.patient-chip strong{color:var(--text);font-weight:700}
+.phase-section{break-before:auto;page-break-before:auto;margin-top:12px}
+.phase-section .phase-card{break-after:avoid;page-break-after:avoid}
+.phase-card{border-left:4px solid var(--text)}
+.phase-card-branch{border-left-color:var(--red)}
+.branch-tag{display:inline-block;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);background:var(--red-light);padding:2px 8px;border-radius:4px;margin-bottom:6px}
+.phase-title{font-size:16pt;font-weight:700;margin-bottom:4px}
+.phase-trigger{font-family:'DM Mono',ui-monospace,monospace;font-size:9pt;color:var(--yellow);margin-bottom:6px}
+.phase-desc{font-size:11pt;color:var(--text-secondary);line-height:1.5}
+.ecg-label{font-family:'DM Mono',ui-monospace,monospace;font-size:10pt;color:var(--text-secondary);padding:8px 12px;background:#fafaf9;border-bottom:1px solid #f0efec}
+.vitals-grid{display:flex;flex-wrap:wrap;gap:4px 18px;padding:8px 14px}
+.vital-cell{background:transparent;padding:0;text-align:left;display:flex;align-items:baseline;gap:4px}
+.vital-cell.full-width{grid-column:auto}
+.vital-name{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.vital-val{font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--text);line-height:1.1}
+.vital-unit{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;color:var(--text-muted)}
+.loc-block{margin-bottom:10px}
+.avpu-bar{display:flex;border:1px solid var(--card-border);border-radius:6px;overflow:hidden;margin-bottom:10px}
+.avpu-seg{flex:1;text-align:center;padding:6px 4px;font-family:'DM Mono',ui-monospace,monospace;font-size:10pt;font-weight:700;color:var(--text-muted);background:#fafaf9}
+.avpu-seg.sel-a{background:#ecfccb;color:var(--green)}
+.avpu-seg.sel-v{background:#fef3c7;color:var(--yellow)}
+.avpu-seg.sel-p{background:#ffedd5;color:var(--orange)}
+.avpu-seg.sel-u{background:var(--red-light);color:var(--red)}
+.gcs-detail{display:flex;flex-wrap:wrap;gap:6px 16px;padding:8px 14px;border:1px solid var(--card-border);border-radius:6px;margin-bottom:10px;align-items:baseline}
+.gcs-item{display:flex;align-items:baseline;gap:4px;padding:0;border:none}
+.gcs-item:last-of-type{border-bottom:none}
+.gcs-part{order:1;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.gcs-score{order:2;font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--text)}
+.gcs-desc{order:3;font-size:9.5pt;color:var(--text-muted);font-style:italic}
+.gcs-desc::before{content:'('}
+.gcs-desc::after{content:')'}
+.gcs-total-row{display:flex;align-items:baseline;gap:4px;order:-1;padding:0;margin:0;border:none;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.gcs-total-row .gcs-total{font-family:'DM Mono',ui-monospace,monospace;font-size:12pt;font-weight:700;color:var(--text)}
+.finding-row{padding:6px 0;border-bottom:1px solid #f5f5f4;display:grid;grid-template-columns:100px 1fr;gap:10px}
+.finding-row:last-child{border-bottom:none}
+.finding-label{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.finding-value{font-size:10.5pt;color:var(--text-secondary)}
+.finding-speech{font-style:italic;color:var(--text-muted)}
+.findings-notes{list-style:none;margin:0}
+.findings-notes li{font-size:10pt;color:var(--text-secondary);padding:2px 0 2px 12px;position:relative}
+.findings-notes li::before{content:'·';position:absolute;left:2px;font-weight:700;color:var(--text-muted)}
+.action-row{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #f5f5f4;break-inside:avoid}
+.action-row:last-child{border-bottom:none}
+.action-box{width:14px;height:14px;border:1.5px solid var(--text-muted);border-radius:3px;flex-shrink:0;margin-top:3px}
+.action-body{flex:1;min-width:0}
+.action-head{display:flex;align-items:flex-start;gap:8px;margin-bottom:4px}
+.action-priority{display:inline-block;font-family:'DM Mono',ui-monospace,monospace;font-size:7.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 6px;border-radius:3px;flex-shrink:0;margin-top:2px}
+.p-critical{background:var(--red-light);color:var(--red)}
+.p-important{background:#fff7ed;color:var(--orange)}
+.p-supp{background:#f5f5f4;color:var(--text-muted)}
+.action-text{font-size:11pt;font-weight:600;color:var(--text);line-height:1.35}
+.action-rationale,.action-ref{display:none}
+.action-head{margin-bottom:0}
+.action-row{padding:6px 0}
+@media print{
+  body{background:#fff;padding:0;font-size:10pt}
+  .sheet{box-shadow:none;max-width:none;padding:0.4in;border-radius:0}
+  .card{break-inside:avoid;margin-bottom:8px}
+  .card-title{padding:6px 10px 3px}
+  .card-content{padding:6px 10px 8px}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="card"><div class="card-title">Scenario</div><div class="card-content"><div class="scenario-name">Symptomatic Bradycardia with Syncope - Atropine Fails, TCP Required</div></div></div>
+  <div class="card"><div class="card-title">Patient</div><div class="card-content"><div class="patient-chips"><span class="patient-chip"><strong>Margaret &quot;Maggie&quot; O'Sullivan</strong></span><span class="patient-chip">74 years female</span><span class="patient-chip">150 lbs (68 kg)</span><span class="patient-chip">5'4"</span><span class="patient-chip">CC: Brief loss of consciousness with subsequent weakness, dizziness, and chest heaviness; heart rate persistently in the low 30s</span></div></div></div>
+  <div class="card"><div class="card-title">Scene</div><div class="card-content">
+    <div class="scene-row"><div class="scene-label">Dispatch</div><div class="scene-value">Respond priority 1 to a private residence for a 74-year-old female with a syncopal episode. Patient is now awake but feels weak. Daughter on scene with her.</div></div>
+    <div class="scene-row"><div class="scene-label">Location</div><div class="scene-value">Single-story private residence, kitchen / dining area. Patient seated in a kitchen chair with daughter at her side. Adequate lighting. Comfortable indoor temperature. Wide hallways adequate for stretcher.</div></div>
+    <div class="scene-row"><div class="scene-label">Time</div><div class="scene-value">1014 hours, Wednesday morning</div></div>
+    <div class="scene-row"><div class="scene-label">Safety</div><div class="scene-value">Scene is safe. Small dog confined to a back room. No environmental hazards. Adequate space to work in the kitchen.</div></div>
+    <div class="scene-row"><div class="scene-label">Bystanders</div><div class="scene-value">Adult daughter (primary caregiver, lives nearby) is at bedside. She has the patient's medication list, recent cardiology notes, and is an excellent historian. She witnessed the syncopal event and provides time stamps.</div></div>
+  </div></div><div class="card"><div class="card-title">Visual Cues on Arrival</div><div class="card-content"><ul class="cue-list"><li>Elderly female sitting in a kitchen chair, leaning back with eyes closed but rousable</li><li>Pale, diaphoretic skin</li><li>Cup of tea on the counter - water still warm</li><li>Walking cane next to the chair</li><li>No signs of head trauma or fall injuries</li><li>Daughter holding mother's hand, speaking softly to her</li><li>Medication bottles arranged neatly on the counter</li><li>Cardiology follow-up appointment card visible on the refrigerator</li></ul></div></div>
+  <div class="card">
+    <div class="card-title">SAMPLE History</div>
+    <div class="card-content" style="padding:0">
+      <div class="sample-grid">
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">S</span> Signs &amp; Symptoms</div><div class="sample-text">74-year-old female was standing at the kitchen counter making tea when she felt suddenly lightheaded, became diaphoretic, and slumped to the floor. Her daughter, who was in the next room, heard her fall and found her pale and unresponsive for approximately 20-30 seconds before she regained awareness. Patient now reports persistent weakness, lightheadedness, vague substernal pressure, and shortness of breath when she tries to sit up. No prodromal palpitations. Daughter notes mother has 'been off' for 2-3 days with mild fatigue and one prior near-syncope episode 2 days ago that resolved spontaneously and was not reported. No new medications, no falls, no head strike noted on exam.</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">A</span> Allergies</div><div class="sample-text">Sulfa - rash</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">M</span> Medications</div><div class="sample-text">Lisinopril 20 mg PO daily, Atorvastatin 20 mg PO at bedtime, Acetaminophen 500 mg PO PRN for arthritis, Vitamin D 1000 IU PO daily</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">P</span> Past Medical</div><div class="sample-text">Hypertension (well controlled historically), Hyperlipidemia, Mild aortic stenosis - last echo 1 year ago, moderate gradient, on cardiology follow-up, Osteoarthritis bilateral knees, No known coronary artery disease, no prior pacemaker</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">L</span> Last Intake</div><div class="sample-text">Toast and orange juice this morning at 0700; sips of water since</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">E</span> Events</div><div class="sample-text">Standing in the kitchen making tea when she felt lightheaded, slumped to the floor, brief LOC ~20-30 seconds witnessed by daughter. On the floor she was pale, breathing, with a weak pulse. She was helped back to a chair. She remains weak, diaphoretic, and complains of chest heaviness. Daughter called 911.</div></div>
+      </div>
+    </div>
+  </div>
+  <section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Initial Presentation - Symptomatic Bradycardia After Syncope</div>
+        
+        <div class="phase-desc">Crew arrives to find a 74-year-old female who briefly lost consciousness and is now persistently bradycardic (HR low 30s), hypotensive (SBP 80s), and symptomatic with weakness, lightheadedness, vague chest pressure, and shortness of breath. The crew must recognize this as symptomatic bradycardia with hemodynamic instability - the patient meets the criteria for the Bradycardia protocol. The 12-lead ECG reveals third-degree (complete) heart block with a wide ventricular escape rhythm. This is a presentation where atropine is unlikely to work because the AV node is blocked - the protocol specifically calls out that third-degree block may not respond to atropine and may require chronotropic agents or pacing.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Third Degree Heart Block</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">32</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">78/50</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">94%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">22</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">35</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.9°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent and self-maintained. Speaks slowly but clearly.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Mildly tachypneic at rest, RR 22; speaks in short phrases. Bilateral breath sounds clear without rales. No accessory muscle use.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Carotid and femoral pulses present, slow and regular. Radial pulses weak and thready. Skin pale, cool, diaphoretic. Capillary refill 4-5 seconds in fingertips. No JVD. No peripheral edema.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pale · cool · diaphoretic</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm bilaterally.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Moves all 4 extremities; grip weak but symmetric. No focal neurologic deficit.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'I just got... so dizzy. I felt my heart slow way down... and I went out for a minute. I still feel awful.'"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Patient appears tired and anxious</li><li>Reports the room 'spins' when she sits up further</li><li>States she can feel her heart 'pounding really hard but really slow'</li><li>Vague substernal pressure rated 3/10 - non-radiating, came on with the syncopal episode</li><li>No bowel or bladder incontinence with the syncopal event</li><li>No tongue laceration, no postictal confusion - this was not a seizure</li><li>Daughter confirms NO erectile dysfunction medications, no recreational drugs, no recent illness</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Perform scene size-up, BSI, and primary survey (ABCDE); confirm scene safety; identify symptomatic bradycardia with hemodynamic compromise</div></div>
+        <div class="action-rationale">Standard initial approach. Recognize that the chief complaint is hemodynamically unstable bradycardia, not 'syncope' alone.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Position the patient supine with legs elevated to support cerebral perfusion if tolerated; if she cannot tolerate supine due to dyspnea, semi-Fowler's is acceptable</div></div>
+        <div class="action-rationale">Improves preload and cerebral perfusion in hypotensive bradycardia.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Apply oxygen via nasal cannula at 4 L/min titrated to SpO2 94-98%</div></div>
+        <div class="action-rationale">SpO2 94% with diaphoresis warrants supplemental O2; per protocol target 94-98%.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Apply 4-lead cardiac monitor and acquire a 12-lead ECG; identify Third Degree (Complete) Heart Block - regular P waves at ~80 dissociated from a slow ventricular escape rhythm at 32</div></div>
+        <div class="action-rationale">12-lead ECG identifies the mechanism. Third-degree block has specific implications: atropine often fails, and pacing or chronotropes are likely required.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Establish two large-bore peripheral IVs (18 g preferred); saline lock both</div></div>
+        <div class="action-rationale">Reliable vascular access is required for atropine, vasopressors, and sedation/analgesia for pacing.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Check blood glucose; treat hypoglycemia per protocol if &lt; 70 mg/dL with Dextrose 10% 250 mL (25 g) IV</div></div>
+        <div class="action-rationale">Hypoglycemia is a treatable cause of altered mental status and a routine bradycardia work-up element.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Obtain SAMPLE history with attention to potential culprit medications: beta-blockers, calcium channel blockers, digoxin, clonidine - none in this patient. Confirm with daughter no new medications</div></div>
+        <div class="action-rationale">Toxin/medication-induced bradycardia changes treatment (e.g., glucagon for beta-blockers, calcium for CCBs). This patient is on neither.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Administer Normal Saline 250-500 mL IV bolus for hypotension; reassess BP and lung sounds; may repeat once if BP remains low and lungs stay clear (caution given history of mild aortic stenosis)</div></div>
+        <div class="action-rationale">Volume support for hypotension; small aliquots and frequent reassessment given valvular disease.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Apply transcutaneous pacing pads in anterior-posterior position prophylactically; do not yet initiate pacing - have it ready in case atropine fails</div></div>
+        <div class="action-rationale">Pre-positioning pacer pads dramatically shortens time-to-capture if atropine fails. AP pad placement is standard for TCP.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Atropine Trial - No Response (Third-Degree Block)</div>
+        <div class="phase-trigger">Trigger: Atropine 1 mg IV administered with no rate response after 3-5 minutes</div>
+        <div class="phase-desc">The crew administered Atropine 1 mg IV. As is typical for third-degree heart block (where the AV node is the site of block and atropine acts above the block), the heart rate did not respond. The crew correctly recognizes this and continues per protocol with up to two more doses of atropine to a maximum of 3 mg total - while preparing for transcutaneous pacing or vasopressor escalation. The patient remains hypotensive and symptomatic.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Third Degree Heart Block</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">34</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">80/52</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">95%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">22</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">35</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.9°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Unchanged. RR 22.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Unchanged - HR persists in low 30s on monitor; BP remains low 80s systolic.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pale · cool · diaphoretic</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm bilaterally - no anticholinergic mydriasis given low dose.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'I still feel terrible... I don't think anything's changed.'"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>No change in heart rate or blood pressure after first 1 mg atropine - typical for third-degree block</li><li>Patient slightly more anxious due to ongoing symptoms</li><li>Daughter asks 'is the medicine working?' - good opportunity to explain stepwise approach</li><li>Pacer pads already applied in AP position from earlier preparation</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Reassess heart rate, blood pressure, and symptoms 3-5 minutes after Atropine 1 mg dose; document no response</div></div>
+        <div class="action-rationale">Documentation of response to therapy is a key performance measure.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Administer second dose of Atropine 1 mg IV (3-5 minutes after first); flush with 10-20 mL NS</div></div>
+        <div class="action-rationale">Protocol allows atropine 1 mg IV every 3-5 minutes to a maximum total of 3 mg. Continue to a logical endpoint or escalate.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Recognize that atropine is unlikely to be effective in third-degree (complete) heart block - the protocol specifically states that 3rd degree block or denervated heart 'may not respond to atropine and in these cases, proceed quickly to chronotropic agents or transcutaneous pacing'</div></div>
+        <div class="action-rationale">Cognitive recognition of the limits of atropine prevents wasted time when escalation is needed.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">While giving the second atropine, prepare the transcutaneous pacer: confirm pads in AP position, switch monitor to PACER mode, set rate at 80, start mA at 0 to titrate up</div></div>
+        <div class="action-rationale">Parallel preparation reduces time-to-capture once the decision is made. Standard initial pacing rate is 60-80; use 80 for symptomatic patient with hypotension.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Draw up sedation/analgesia for pacing: Midazolam 1-2 mg IV and Fentanyl 50-100 mcg IV available; do not push until pacing is initiated and capture confirmed</div></div>
+        <div class="action-rationale">TCP is uncomfortable; protocol explicitly states 'if pacing is performed, consider sedation or pain control.'</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Explain to the patient and her daughter that pacing will be used to keep the heart rate up; warn about the sensation (chest thumping, muscle twitching) and tell her she will receive medication for comfort</div></div>
+        <div class="action-rationale">Informed patient cooperation reduces anxiety and improves tolerance of pacing.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Transcutaneous Pacing - Electrical and Mechanical Capture</div>
+        <div class="phase-trigger">Trigger: TCP initiated at rate 80, mA titrated to capture, both electrical and mechanical capture confirmed, sedation/analgesia given</div>
+        <div class="phase-desc">Atropine has been maxed at 3 mg total without effect. The crew initiates transcutaneous pacing at a rate of 80 with current titrated up from 0. At ~60 mA they observe consistent pacer spikes followed by wide QRS complexes - electrical capture. They confirm mechanical capture by palpating a femoral pulse synchronized with each pacer spike (NOT carotid - skeletal muscle twitching from TCP can mimic a carotid pulse). Blood pressure improves to SBP 102. The patient receives sedation (midazolam) and analgesia (fentanyl) and reports being much more comfortable. The crew now prepares for transport while maintaining capture.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Pacemaker Rhythm</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">80</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">102/64</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">97%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">18</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 18, breathing more comfortably; lungs clear bilaterally.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Femoral pulse palpable and synchronized with each pacer spike. Skin warming and pinking centrally. Capillary refill 2-3 seconds.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pink · warming · drying</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">All 4 extremities, symmetric.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'It's a strange feeling but I'm feeling better. Thank you.'"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Pacer spike at 80/min with wide QRS following each spike - electrical capture confirmed</li><li>Femoral pulse synchronous with pacer at 80 - mechanical capture confirmed</li><li>Patient reports the chest thumping is uncomfortable but 'I feel a lot better than I did'</li><li>Mild facial grimacing during higher mA but tolerating after sedation/analgesia</li><li>Capture threshold ~60 mA, set 10-20 mA above threshold for safety margin</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Verify electrical capture: each pacer spike on the monitor is followed by a wide QRS complex; document the threshold mA</div></div>
+        <div class="action-rationale">Electrical capture must be confirmed before assuming the heart is being paced.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Verify mechanical capture by palpating a FEMORAL pulse (not carotid) synchronized with each pacer spike; consider also auscultating heart sounds or palpating right brachial</div></div>
+        <div class="action-rationale">Skeletal muscle twitching from TCP can mimic a carotid pulse - the femoral is the validated site to confirm true cardiac output. Without mechanical capture, the patient is still in arrest physiology.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Set output 10-20 mA above the capture threshold to provide a safety margin; document final settings (rate 80, output ~75 mA in this case)</div></div>
+        <div class="action-rationale">Threshold-only output risks loss of capture with patient movement, perspiration, or pad shift.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer Midazolam 1 mg IV slowly over 1-2 minutes (may repeat 1 mg every 3-5 minutes for ongoing distress; titrate to comfort and respiratory drive)</div></div>
+        <div class="action-rationale">TCP is uncomfortable. Sedation is required by protocol. Start low and titrate; the patient is hypotensive and elderly.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Administer Fentanyl 50 mcg IV slowly over 1-2 minutes (may repeat 25-50 mcg every 5-10 minutes for ongoing pain) for analgesia of the TCP discomfort</div></div>
+        <div class="action-rationale">Analgesia complements sedation for the noxious stimulation of TCP. Fentanyl has minimal hemodynamic effect compared to morphine.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Reassess blood pressure 1-2 minutes after capture; if SBP remains &lt; 90, administer Normal Saline 250-500 mL IV bolus and consider Epinephrine push-dose 10 mcg IV every 2 minutes titrated to MAP &gt; 65</div></div>
+        <div class="action-rationale">Mechanical capture should improve BP, but volume support and chronotropes may still be needed. Do not assume capture alone fixes hypotension.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Prepare for transport while maintaining pacer; do not move patient or transfer to stretcher until capture is verified after each movement step</div></div>
+        <div class="action-rationale">Pad shift during transfers is a common cause of capture loss.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Stable on TCP - Transport to ED</div>
+        <div class="phase-trigger">Trigger: Patient stable on TCP, en route to ED</div>
+        <div class="phase-desc">Patient is being transported to the closest cardiac-capable ED. Pacer is maintaining electrical and mechanical capture at rate 80, mA 75. SBP is 108, MAP &gt; 65, SpO2 97% on NC. Patient is comfortable and conversational. The crew continues vigilance for capture loss, monitors sedation level, and performs early notification with rhythm, paced rate/output, vital trend, and meds given.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Pacemaker Rhythm</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">80</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">108/66</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">97%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">16</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">38</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent, self-maintained.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 16, lungs clear, NC at 4 L/min.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Strong femoral pulse synchronized with paced beats. Skin warm, pink, dry.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pink · warm · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric, full strength.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'Much better. Just tired now.' Full sentences."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Pacer maintaining capture, no recent threshold change</li><li>Patient mildly drowsy from sedation but easily roused</li><li>No further chest pressure</li><li>Daughter following in personal vehicle</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Continuously verify electrical capture (pacer spike followed by wide QRS) and mechanical capture (palpable femoral pulse synchronous with pacer rate) throughout transport; document at least every 5 minutes</div></div>
+        <div class="action-rationale">Pacer pads can shift, fluid/sweat can degrade contact, and patient movement can cause loss of capture mid-transport.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Reassess full vitals (HR, BP, RR, SpO2, EtCO2, mental status, lung sounds) every 5 minutes; document</div></div>
+        <div class="action-rationale">Standard reassessment cadence for unstable cardiac patients.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Monitor sedation depth with capnography and mental status; titrate additional Midazolam 1 mg or Fentanyl 25-50 mcg only if symptoms recur and respiratory drive intact</div></div>
+        <div class="action-rationale">Over-sedation in elderly patients can cause respiratory depression and hypotension.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Provide early notification to the receiving hospital: 74 F with third-degree heart block, atropine refractory, on TCP at rate 80 with mA 75, BP 108/66, comfortable; request the cath/pacer team be on standby</div></div>
+        <div class="action-rationale">Definitive treatment is a transvenous or permanent pacemaker; advance notice mobilizes the team.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">At the ED bedside, transfer to hospital monitor/pacer without breaking pacing for more than a few seconds; structured SBAR handoff including rhythm, pacing parameters, atropine doses given (max 3 mg), sedation/analgesia given and times</div></div>
+        <div class="action-rationale">A pacing-dependent patient cannot tolerate prolonged interruption of capture.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card phase-card-branch">
+      <div class="card-content">
+        <div class="branch-tag">Improper Care Branch</div>
+        <div class="phase-title">Branch - Skip Atropine, Pace Immediately</div>
+        <div class="phase-trigger">Trigger: Crew bypassed atropine and went directly to TCP without trial</div>
+        <div class="phase-desc">The crew elected to bypass atropine and proceed directly to transcutaneous pacing. While protocol allows direct TCP for impending hemodynamic collapse, this patient has time for an atropine trial. Direct TCP is not necessarily wrong - it just adds discomfort and need for sedation. The case becomes a discussion point for the debrief: atropine is cheap, fast, and may avoid TCP altogether in mixed mechanism bradycardias. In patients who clearly will not respond (e.g., transplant heart, agonal patient with capture window closing), direct TCP is preferred.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Pacemaker Rhythm</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">80</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">96/60</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">96%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">20</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.9°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 22.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pulses unchanged at presentation.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pale · cool · diaphoretic</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'Why is my chest doing that?' Patient surprised by sensation."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Patient now experiencing TCP discomfort without prior trial of less invasive options</li><li>Will still ultimately require sedation/analgesia and same destination</li><li>Discussion point for debrief: protocol stepwise approach</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Recognize that the patient will still need sedation (Midazolam 1 mg IV) and analgesia (Fentanyl 50 mcg IV) regardless of route to pacing</div></div>
+        <div class="action-rationale">TCP is uncomfortable regardless of why you started it.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Verify both electrical and mechanical capture (femoral pulse synchronous with pacer)</div></div>
+        <div class="action-rationale">Capture verification is the same regardless of indication.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-supp">supplemental</span><div class="action-text">Note for debrief: protocol favors least invasive escalation first (atropine) unless impending hemodynamic collapse. This patient was unstable but not collapsing - atropine first was reasonable.</div></div>
+        <div class="action-rationale">Cognitive review supports stepwise protocol thinking.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card phase-card-branch">
+      <div class="card-content">
+        <div class="branch-tag">Improper Care Branch</div>
+        <div class="phase-title">Branch - TCP Initiated Without Sedation/Analgesia</div>
+        <div class="phase-trigger">Trigger: TCP captured but no sedation or analgesia administered, patient in distress</div>
+        <div class="phase-desc">TCP was started and capture achieved, but the crew did not give sedation or analgesia. The patient is conscious and writhing in distress with each pacing impulse. Skeletal muscle stimulation causes severe chest wall pain and the patient may pull at the pads or ask to stop. This violates protocol explicitly ('if pacing is performed, consider sedation or pain control'). Capture quality may degrade due to patient movement.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Pacemaker Rhythm</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">80</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">100/64</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">95%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">28</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">32</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent but patient grimacing and crying out with each pacer impulse.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 28, shallow due to distress; pursed lip pattern.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pacer captured, BP improved, but patient distress is degrading hemodynamics.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pale, flushed in patches · cool · diaphoretic</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 4 mm, dilated from sympathetic activation.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Writhing, pulling at hand of crew; chest wall muscles visibly twitching with each pacer spike.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'It hurts! Make it stop! Please...'"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Patient in obvious distress with every pacer impulse</li><li>Daughter alarmed and asking 'Is this supposed to hurt her like this?'</li><li>Capture intermittently lost as patient moves; threshold rising due to pad movement</li><li>Sympathetic surge worsening hemodynamic state</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer Midazolam 1-2 mg IV slowly over 1-2 minutes to address distress (titrate to comfort, max initial 5 mg with careful BP/respiratory monitoring)</div></div>
+        <div class="action-rationale">Sedation is required by protocol when pacing. Patient distress also degrades capture and hemodynamics.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer Fentanyl 50-100 mcg IV slowly over 1-2 minutes for analgesia (may repeat 25-50 mcg every 5-10 min)</div></div>
+        <div class="action-rationale">Pain control complements sedation; the chest wall muscle stimulation is genuinely painful.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Calmly explain to the daughter that you are now providing pain medication and sedation, that the pacing is keeping her mother's heart rate up while these meds take effect</div></div>
+        <div class="action-rationale">Family reassurance reduces overall scene anxiety and supports cooperation.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">After sedation/analgesia, re-verify electrical and mechanical capture; the now-still patient may have a stable lower threshold and improved BP</div></div>
+        <div class="action-rationale">Once distress resolves, capture is more reliable.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div></div>
+  </div>
+  </section>
+</div>
+</body>
+</html>

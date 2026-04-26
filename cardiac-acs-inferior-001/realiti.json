@@ -1,0 +1,324 @@
+{
+  "scenarioId": "cardiac-acs-inferior-001",
+  "scenarioName": "Acute Coronary Syndrome - Inferior STEMI - FONA Bundle and STEMI Activation",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "66-year-old male was outside doing yard work when he developed sudden substernal chest pressure approximately 45 minutes ago. He describes it as a 'heavy, crushing' sensation in the center of his chest, radiating to his left arm and jaw, with associated diaphoresis, nausea, and shortness of breath on minimal exertion. He sat down on the porch but the pain has not improved. His wife brought him a glass of water and called 911 when he said 'I think I'm having a heart attack' and looked ashen. No prior history of similar pain. No syncope, no palpitations. Denies use of any phosphodiesterase-5 inhibitors (sildenafil, tadalafil, vardenafil) within the past 48 hours and his wife confirms.",
+    "discussion": "Apply the FONA bundle (Fentanyl, Oxygen, Nitroglycerin, Aspirin) as a cognitive checklist for ACS. Acquire a 12-lead ECG within 10 minutes of patient contact - the primary diagnostic tool for STEMI. Identify Inferior STEMI on 12-lead (ST elevation II, III, aVF with reciprocal depression I, aVL). Always acquire V4R in inferior STEMI to evaluate for RV involvement; >1 mm STE in V4R = RV infarct = nitrate caution. Verbalize the absolute contraindication to nitroglycerin within 48 hours of phosphodiesterase-5 inhibitors. Apply the Aspirin loading rule: 324 mg PO chewed even if the patient takes daily 81 mg - the dose is what matters. Choose Fentanyl over Morphine in unstable angina/NSTEMI given morphine's mortality association. Activate the regional STEMI system from the field and transmit the 12-lead ECG. Recognize that inferior STEMI commonly produces bradyarrhythmias and AV blocks - have atropine and pacer pads ready. Differentiate between PDE5-induced hypotension and RV-STEMI-induced hypotension, both of which respond to fluids; the former resolves over 30 minutes as NTG is metabolized",
+    "course": "Initial Presentation - Suspected ACS: Crew arrives to a 66-year-old male with classic ischemic chest pain - substernal pressure, radiation to left arm and jaw, diaphoresis, nausea, dyspnea on exertion. Clinical pretest probability for acute coronary syndrome is high given his age, multiple cardiac risk factors (HTN, HLD, DM, current smoker, family history), and presentation. The crew must rapidly initiate the FONA bundle (Fentanyl, Oxygen, Nitroglycerin, Aspirin) per the MATC ACS protocol, acquire a 12-lead ECG within 10 minutes, and prepare for STEMI activation if elevation is identified. → Inferior STEMI Identified - FONA Bundle and STEMI Activation: The 12-lead ECG demonstrates ST elevation in II, III, and aVF (~3 mm) with reciprocal depression in I and aVL - inferior STEMI. The crew acquires a right-sided V4R lead which shows minimal ST elevation (<1 mm) - no significant RV involvement. ASA has been given. PDE5 screen is negative. The crew now completes the FONA bundle: Fentanyl for pain (since pain persists despite NTG), Oxygen titrated, Nitroglycerin SL since BP is supportive (152/92) and no RV STEMI, and STEMI activation/transmission to the receiving PCI center. → FONA Complete - Pain Improving, Stable Transport: After ASA, NTG (with appropriate screening), and fentanyl, the patient's pain has decreased to 3/10. Blood pressure remains supportive. The crew is en route to the regional PCI center with the 12-lead transmitted, STEMI alert active, and the patient comfortable on the stretcher. Vigilance is maintained for the known complications of inferior STEMI: bradyarrhythmias (especially second- and third-degree AV blocks), hypotension, and ventricular dysrhythmias."
+  },
+  "patientInformation": {
+    "patientName": "Daniel Murphy",
+    "patientCondition": "Crushing substernal chest pressure with diaphoresis, radiating to the left arm and jaw - 8/10",
+    "patientAge": 66,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 180,
+    "patientWeight": 92,
+    "patientPhotoId": 80,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Presentation - Suspected ACS",
+      "description": "Crew arrives to a 66-year-old male with classic ischemic chest pain - substernal pressure, radiation to left arm and jaw, diaphoresis, nausea, dyspnea on exertion. Clinical pretest probability for acute coronary syndrome is high given his age, multiple cardiac risk factors (HTN, HLD, DM, current smoker, family history), and presentation. The crew must rapidly initiate the FONA bundle (Fentanyl, Oxygen, Nitroglycerin, Aspirin) per the MATC ACS protocol, acquire a 12-lead ECG within 10 minutes, and prepare for STEMI activation if elevation is identified.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 96,
+        "bpSys": 152,
+        "bpDia": 92,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 138,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Establish two large-bore IV lines",
+        "Check blood glucose"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Inferior STEMI Identified - FONA Bundle and STEMI Activation",
+      "description": "The 12-lead ECG demonstrates ST elevation in II, III, and aVF (~3 mm) with reciprocal depression in I and aVL - inferior STEMI. The crew acquires a right-sided V4R lead which shows minimal ST elevation (<1 mm) - no significant RV involvement. ASA has been given. PDE5 screen is negative. The crew now completes the FONA bundle: Fentanyl for pain (since pain persists despite NTG), Oxygen titrated, Nitroglycerin SL since BP is supportive (152/92) and no RV STEMI, and STEMI activation/transmission to the receiving PCI center.",
+      "monitorType": 0,
+      "trendTime": 25,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 24,
+        "hr": 92,
+        "bpSys": 148,
+        "bpDia": 88,
+        "respRate": 20,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 138,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "FONA Complete - Pain Improving, Stable Transport",
+      "description": "After ASA, NTG (with appropriate screening), and fentanyl, the patient's pain has decreased to 3/10. Blood pressure remains supportive. The crew is en route to the regional PCI center with the 12-lead transmitted, STEMI alert active, and the patient comfortable on the stretcher. Vigilance is maintained for the known complications of inferior STEMI: bradyarrhythmias (especially second- and third-degree AV blocks), hypotension, and ventricular dysrhythmias.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 24,
+        "hr": 80,
+        "bpSys": 132,
+        "bpDia": 78,
+        "respRate": 16,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 138,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Branch - NTG Given Without PDE5 Screen - Profound Hypotension",
+      "description": "The crew administered nitroglycerin without an explicit PDE5 inhibitor screen. After the dose, the patient becomes lightheaded and the BP crashes to SBP 62. The wife now mentions 'oh, he took one of those Viagra last night.' The patient has profound nitrate-induced hypotension. The crew must lay him flat, run wide-open IV fluids, and consider push-dose epinephrine. This branch teaches the absolute necessity of explicit screening before giving nitrates.",
+      "monitorType": 0,
+      "trendTime": 20,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 62,
+        "bpDia": 38,
+        "respRate": 26,
+        "spo2": 92,
+        "etco2": 28,
+        "temp": 36.6,
+        "obstruction": 0,
+        "custMeasure1": 138,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Branch - RV STEMI with NTG-Induced Hypotension",
+      "description": "V4R was acquired and showed >2 mm ST elevation indicating RV involvement, but NTG was given anyway. The patient's right ventricle is preload-dependent and unable to accept the NTG-induced reduction in venous return. SBP drops precipitously. The crew must recognize the RV physiology, stop NTG, give aggressive fluid resuscitation, and consider chronotropic/inotropic support.",
+      "monitorType": 0,
+      "trendTime": 25,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 24,
+        "hr": 88,
+        "bpSys": 84,
+        "bpDia": 52,
+        "respRate": 24,
+        "spo2": 95,
+        "etco2": 32,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 138,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Recognize ACS-pattern chest pain (substernal pressure, radiation, diaphoresis, dyspnea) and initiate ACS protocol",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire 12-lead ECG within 10 minutes of patient contact",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Identify Inferior STEMI on 12-lead (ST elevation II, III, aVF with reciprocal depression I, aVL)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire a right-sided V4R lead to assess for RV involvement before giving nitrates",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish two large-bore IV lines",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Aspirin 324 mg PO chewed (4 chewable 81 mg tablets) regardless of daily 81 mg dose",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Explicitly screen for phosphodiesterase-5 inhibitor use (sildenafil, tadalafil, vardenafil) within 48 hours BEFORE administering nitroglycerin",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Nitroglycerin 0.4 mg SL only if SBP > 100, no PDE5 use, and no major RV STEMI; may repeat every 3-5 minutes",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Fentanyl 50-100 mcg IV slowly for ongoing pain unrelieved by nitrates",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Activate the regional STEMI system: notify the closest PCI-capable hospital and transmit the 12-lead ECG",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Place defibrillator pads prophylactically and maintain readiness for VT/VF or new AV block",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If hypotension develops after NTG, lay supine, hold further NTG, give fluids, consider push-dose epinephrine",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Provide structured SBAR handoff at the cath lab door with time of symptom onset, FONA bundle status, serial 12-leads",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Position the patient in a position of comfort (semi-Fowler's) and minimize physical exertion",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply oxygen titrated to SpO2 94-98% (do NOT hyperoxygenate)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Obtain a complete medication history including phosphodiesterase-5 inhibitors and any anticoagulants",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire serial 12-lead ECGs every 5-10 minutes en route or with any clinical change",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Ondansetron 4 mg IV/ODT for nausea",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document time of symptom onset, time of patient contact, time of 12-lead acquisition, time of STEMI activation, time of ASA, time of NTG, time of fentanyl",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Vigilantly monitor for bradyarrhythmias and new AV blocks - common in inferior MI",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

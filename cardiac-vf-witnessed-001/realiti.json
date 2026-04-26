@@ -1,0 +1,323 @@
+{
+  "scenarioId": "cardiac-vf-witnessed-001",
+  "scenarioName": "Witnessed VF Cardiac Arrest at Softball Field - ROSC After Single Shock",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "62-year-old male was actively playing right field in a recreational softball league when he came up to bat. He hit a single and was running to first base when bystanders saw him grunt, clutch his chest briefly, and fall forward face-down approximately three feet before the bag. He was instantly unresponsive with no pulse and no respirations. A bystander (off-duty registered nurse) ran out within 30 seconds, rolled him supine, and initiated high-quality bystander CPR with another player providing rescue breaths via pocket mask. An AED from the concession stand was retrieved at approximately the 4-minute mark but not yet attached when EMS arrived at 6 minutes post-arrest. Patient had complained of mild chest pressure to his teammates between innings but attributed it to heartburn from a hot dog and refused to sit out.",
+    "discussion": "Recognize witnessed cardiac arrest with bystander CPR as a survivable event when high-quality CPR and rapid defibrillation are delivered. Apply the cardiac arrest pit-crew model with defined roles and a code leader. Defibrillate witnessed VF as soon as the device is ready - no required delay for additional CPR cycles when bystander CPR has been adequate. Use the manufacturer's recommended (or highest) energy setting for biphasic defibrillation (200 J on Zoll X-Series). Resume compressions immediately after defibrillation without a pulse check for 2 minutes. Recognize ROSC by multiple methods: organized rhythm, palpable pulse, EtCO2 surge. Apply post-ROSC priorities: airway, ventilation 8-10/min, SpO2 94-98%, BP support, 12-lead, destination decision. Identify Inferior STEMI on 12-lead ECG (II, III, aVF with reciprocal changes in I, aVL) and consider RV involvement. Activate the regional STEMI system from the field and transmit the 12-lead to the receiving facility. Avoid the two leading causes of post-ROSC re-arrest: hyperventilation and untreated hypotension",
+    "course": "Arrival on Scene - Witnessed Arrest with Bystander CPR: EMS arrives at the field 6 minutes post-collapse. Bystander CPR is in progress with reasonable quality. The patient is pulseless and apneic. The crew must rapidly take over compressions, place the defibrillator pads (taking over from the not-yet-attached AED), and analyze the rhythm. Because this is a witnessed arrest with bystander CPR already underway, defibrillation should occur as soon as the device is ready - no delay for additional CPR cycles is required. → ROSC After First Shock - Initial Stabilization: After the single 200 J shock, compressions resumed for 2 minutes. At the next rhythm check the monitor shows an organized sinus rhythm and a strong carotid pulse is palpable. EtCO2 has surged from ~18 to 38 mmHg, consistent with sudden ROSC. The patient remains comatose. Time-to-shock was <10 minutes from collapse, with effective bystander CPR - a survivable scenario. The next priorities are airway, hemodynamics, 12-lead ECG to identify a likely STEMI precipitant, and rapid transport to a cardiac catheterization-capable facility. → Stable Transport to PCI Center - Inferior STEMI on 12-Lead: The 12-lead ECG demonstrates ST elevation in II, III, and aVF with reciprocal depression in I and aVL - inferior STEMI, the likely arrest etiology. Patient is hemodynamically stable on supportive ventilation with EtCO2 38 mmHg, SBP 110, MAP > 65 without vasopressors. Crew transports lights/siren to the regional PCI center, transmits the 12-lead, and gives early notification."
+  },
+  "patientInformation": {
+    "patientName": "Robert \"Bob\" Halverson",
+    "patientCondition": "Witnessed cardiac arrest - collapsed while running bases at a recreational softball game",
+    "patientAge": 62,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 178,
+    "patientWeight": 88,
+    "patientPhotoId": 75,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Arrival on Scene - Witnessed Arrest with Bystander CPR",
+      "description": "EMS arrives at the field 6 minutes post-collapse. Bystander CPR is in progress with reasonable quality. The patient is pulseless and apneic. The crew must rapidly take over compressions, place the defibrillator pads (taking over from the not-yet-attached AED), and analyze the rhythm. Because this is a witnessed arrest with bystander CPR already underway, defibrillation should occur as soon as the device is ready - no delay for additional CPR cycles is required.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": true,
+      "defibDisarm": false,
+      "parameters": {
+        "ecgWaveform": 18,
+        "hr": 0,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 18,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": false,
+        "spo2Attached": false,
+        "rrVisible": false,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "ROSC After First Shock - Initial Stabilization",
+      "description": "After the single 200 J shock, compressions resumed for 2 minutes. At the next rhythm check the monitor shows an organized sinus rhythm and a strong carotid pulse is palpable. EtCO2 has surged from ~18 to 38 mmHg, consistent with sudden ROSC. The patient remains comatose. Time-to-shock was <10 minutes from collapse, with effective bystander CPR - a survivable scenario. The next priorities are airway, hemodynamics, 12-lead ECG to identify a likely STEMI precipitant, and rapid transport to a cardiac catheterization-capable facility.",
+      "monitorType": 0,
+      "trendTime": 15,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 96,
+        "bpDia": 60,
+        "respRate": 6,
+        "spo2": 88,
+        "etco2": 38,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Stable Transport to PCI Center - Inferior STEMI on 12-Lead",
+      "description": "The 12-lead ECG demonstrates ST elevation in II, III, and aVF with reciprocal depression in I and aVL - inferior STEMI, the likely arrest etiology. Patient is hemodynamically stable on supportive ventilation with EtCO2 38 mmHg, SBP 110, MAP > 65 without vasopressors. Crew transports lights/siren to the regional PCI center, transmits the 12-lead, and gives early notification.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 24,
+        "hr": 92,
+        "bpSys": 112,
+        "bpDia": 70,
+        "respRate": 10,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Provide structured SBAR handoff at the cath lab door"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Branch - Delayed Defibrillation - Continued VF",
+      "description": "Defibrillation was delayed beyond 90 seconds after VF was identified, often because the crew prioritized IV access, advanced airway placement, or extra CPR cycles before the first shock. The patient remains in coarse VF deteriorating toward fine VF. Each minute of delayed defibrillation in VF reduces survival by approximately 7-10%. The team must recognize the priority error, defibrillate immediately, and add antiarrhythmic therapy if VF is shock-refractory.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": true,
+      "defibDisarm": false,
+      "parameters": {
+        "ecgWaveform": 18,
+        "hr": 0,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 12,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": false,
+        "spo2Attached": false,
+        "rrVisible": false,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Branch - Re-Arrest from Hyperventilation / Untreated Hypotension",
+      "description": "Despite ROSC, the team either hyperventilated the patient (RR > 12), failed to address falling SBP, or removed the defibrillator pads. Within minutes the patient re-arrests - frequently back to VF. The team must immediately reapply pads (or recognize they were never removed), restart compressions, and re-shock. This branch teaches that the post-ROSC period is the highest risk for re-arrest and that pads must remain on.",
+      "monitorType": 0,
+      "trendTime": 20,
+      "jumpTime": 0,
+      "defibShock": true,
+      "defibDisarm": false,
+      "parameters": {
+        "ecgWaveform": 18,
+        "hr": 0,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 14,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": false,
+        "spo2Attached": false,
+        "rrVisible": false,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Confirm pulselessness and apnea, take over compressions seamlessly from bystanders without long pauses",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply manual defibrillator pads in parallel with continuing compressions",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Identify Coarse Ventricular Fibrillation on the monitor",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Deliver first defibrillation at 200 J biphasic (Zoll highest setting) within 90 seconds of pad placement",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Resume compressions immediately after the shock - no pulse check for 2 minutes",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Maintain high-quality CPR: 100-120/min, depth 2-2.4 inches, full recoil, minimal interruptions",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IO access at the proximal humerus without interrupting compressions",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply waveform capnography and target EtCO2 > 10 mmHg as a marker of effective compressions",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize ROSC: organized rhythm, palpable pulse, sudden EtCO2 surge",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Manage post-ROSC airway and ventilation at 10 breaths/min - do NOT hyperventilate",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Target SpO2 94-98% post-ROSC - do NOT hyperoxygenate",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire post-ROSC 12-lead ECG and identify Inferior STEMI pattern",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to PCI/cath-capable facility with field STEMI activation and 12-lead transmission",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Leave defibrillator pads in place for the duration of post-ROSC care due to high re-arrest risk",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Treat post-ROSC hypotension (SBP < 90 / MAP < 65) with NS bolus then Epinephrine push-dose or infusion",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Designate a code leader and assign pit-crew roles",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish a second IV in addition to the IO during transport",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Epinephrine 1 mg IV/IO during the first or second round of compressions if VF persists past first shock",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Place a supraglottic airway (i-gel) for the comatose post-ROSC patient lacking gag reflex",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Provide structured SBAR handoff at the cath lab door",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document downtime, bystander CPR status, time-to-first-shock, time of ROSC for QI registry",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

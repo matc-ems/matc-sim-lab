@@ -1,0 +1,808 @@
+{
+  "meta": {
+    "id": "cardiac-brady-bb-od-001",
+    "name": "Beta-Blocker Overdose - Symptomatic Bradycardia, Glucagon and Pacing",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Cardiac",
+    "protocols": [
+      "tox-beta-blocker-poisoning-overdose",
+      "cv-bradycardia",
+      "tox-poisoning-overdose-universal",
+      "medical-shock"
+    ],
+    "totalTimeSeconds": 1800,
+    "createdAt": "2026-04-26T00:00:00Z",
+    "tags": ["beta-blocker overdose", "bradycardia", "glucagon", "atropine", "transcutaneous pacing", "TCP", "toxicology", "self-harm"]
+  },
+  "patient": {
+    "name": "Frank Petrov",
+    "age": 70,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 85,
+    "height": 178,
+    "chiefComplaint": "Found by daughter at home: lethargic, slow heart rate, hypotensive; suspected intentional metoprolol overdose",
+    "history": {
+      "hpi": "70-year-old male with a history of atrial fibrillation, hypertension, and major depressive disorder. He was found by his adult daughter on the couch this afternoon, looking pale and groggy with slurred speech. She reports he had been despondent over his wife's recent death (~6 weeks ago) and had stopped going to grief counseling. On the kitchen counter she found his prescription bottle of metoprolol tartrate 50 mg empty (he had a 60-tablet 30-day supply filled 5 days ago - so an estimated 50+ tablets potentially ingested). She estimates she last spoke to him by phone at ~1100 when he sounded 'normal but flat.' She arrived at ~1430 and found him in his current condition, suggesting ingestion possibly 1-3 hours ago. She found a partially handwritten note on the kitchen table that did not appear to be a suicide note but expressed sadness. No other empty pill bottles. He has not vomited. No alcohol bottles visible.",
+      "pastMedical": [
+        "Atrial fibrillation (rate-controlled on metoprolol)",
+        "Hypertension",
+        "Major depressive disorder (recurrent, currently moderate)",
+        "Recent bereavement (wife died 6 weeks ago)",
+        "Mild chronic kidney disease (baseline Cr ~1.4)",
+        "No prior overdose history per family"
+      ],
+      "medications": [
+        "Metoprolol tartrate 50 mg PO BID (the suspected overdose agent)",
+        "Apixaban 5 mg PO BID",
+        "Sertraline 100 mg PO daily",
+        "Lisinopril 10 mg PO daily",
+        "Atorvastatin 40 mg PO at bedtime"
+      ],
+      "allergies": ["NKDA"],
+      "lastOralIntake": "Daughter unsure - possibly toast and coffee mid-morning",
+      "events": "Daughter spoke with patient by phone at ~1100, sounded normal-flat. Found him on the couch at ~1430 looking pale, groggy, with slurred speech. Pill bottle of metoprolol 50 mg empty on counter. Estimated 50+ tablets ingested. Possible time of ingestion 1-3 hours ago. Daughter called 911 immediately."
+    }
+  },
+  "scene": {
+    "dispatch": "Respond priority 1 to a private residence for a 70-year-old male with altered mental status and slow heart rate. Daughter on scene reports possible medication overdose.",
+    "location": "Single-story private residence, living room. Patient supine on the couch. Adequate lighting. Comfortable indoor temperature. Direct path to the front door for stretcher.",
+    "time": "1438 hours, Saturday afternoon",
+    "safety": "Scene is safe. Daughter directing crew. No environmental or chemical hazards. Empty pill bottle bagged for transport with the patient.",
+    "bystanders": "Adult daughter (lives nearby, primary contact) is at bedside, distraught but cooperative. She has the prescription bottles, knows the medications, and can speak to her father's recent emotional state.",
+    "visualCues": [
+      "Elderly male supine on couch, eyes closed, intermittent groaning",
+      "Pale, dry skin",
+      "Empty bottle of metoprolol tartrate 50 mg on the kitchen counter (pharmacy fill 5 days ago, 60-tablet rx)",
+      "Partially handwritten note on the kitchen table (sadness, no explicit suicide statement)",
+      "Photo of the patient and his late wife visible in the room",
+      "No alcohol bottles, no other empty pill bottles, no drug paraphernalia",
+      "Patient in pajamas, no signs of trauma",
+      "Phone on coffee table"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Initial Presentation - Suspected Beta-Blocker Overdose",
+      "description": "Crew arrives to a 70-year-old male with altered mental status, bradycardia (HR 38), hypotension (SBP 78), and suspected metoprolol overdose. Time of ingestion is uncertain (possibly 1-3 hours ago). The presentation is classic for beta-blocker toxicity: bradycardia, hypotension, AMS, and the empty metoprolol bottle. The crew must apply the Beta-Blocker Overdose protocol: airway, oxygen, monitor, IV access, glucose check, fluid challenge, atropine (often ineffective in BB OD), glucagon (the antidote), and prepare for transcutaneous pacing if refractory. Activated charcoal is generally NOT appropriate here because of the time-since-ingestion uncertainty, declining mental status, and unprotected airway.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": { "eye": 3, "verbal": 4, "motor": 5 },
+        "airway": "Patent and self-maintained but at risk if mental status declines further; gag reflex intact at present.",
+        "breathing": "RR 14, regular, lungs clear bilaterally. SpO2 94% on room air.",
+        "circulation": "Carotid and femoral pulses present but slow and weak. Radial pulse weak. Skin cool, pale, dry. Capillary refill 4-5 seconds.",
+        "skin": { "color": "pale", "temperature": "cool", "moisture": "dry" },
+        "pupils": "PERRL 3 mm bilaterally - no anticholinergic mydriasis.",
+        "motorFunction": "Withdraws to noxious stimulus; localizes inconsistently; symmetric.",
+        "otherFindings": [
+          "Patient mumbles and intermittently groans; opens eyes to loud verbal stimulus",
+          "Slurred speech when prompted; oriented to self only",
+          "Daughter confirms metoprolol bottle empty, no other empty bottles",
+          "Empty pill bottle bagged for transport",
+          "No vomiting or aspiration noted",
+          "No tongue laceration, no incontinence"
+        ],
+        "patientSpeech": "'Mmmh... leave me... alone...' (intermittent, slurred)"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 38,
+        "bpSys": 78,
+        "bpDia": 50,
+        "respRate": 14,
+        "spo2": 94,
+        "etco2": 38,
+        "temp": 36.4,
+        "obstruction": 0,
+        "glucose": 76,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "scene-bsi",
+          "action": "Perform scene size-up and BSI; secure the empty pill bottle and any handwritten notes for the receiving facility; document time-since-ingestion as estimated by daughter",
+          "priority": "critical",
+          "rationale": "Pill bottle and notes guide hospital toxicology workup and dosing decisions. Time-since-ingestion drives charcoal/airway/monitoring decisions.",
+          "protocolReference": "MATC: Poisoning/Overdose - Universal"
+        },
+        {
+          "id": "primary-survey",
+          "action": "Complete primary survey (ABCDE); identify symptomatic bradycardia with hemodynamic compromise and altered mental status; recognize beta-blocker toxidrome (bradycardia + hypotension + AMS + sometimes hypoglycemia)",
+          "priority": "critical",
+          "rationale": "Pattern recognition triggers the Beta-Blocker Overdose protocol.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "position",
+          "action": "Position the patient supine with legs slightly elevated; maintain airway readiness in case mental status declines further (suction, OPA/NPA available, BVM ready)",
+          "priority": "critical",
+          "rationale": "Beta-blocker overdose patients can deteriorate rapidly; airway protection is anticipated.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "oxygen",
+          "action": "Apply oxygen via nasal cannula at 4 L/min titrated to SpO2 94-98%",
+          "priority": "important",
+          "rationale": "SpO2 94% with bradycardia and AMS warrants supplemental O2.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "monitor-12-lead",
+          "action": "Apply 4-lead cardiac monitor; acquire 12-lead ECG; identify Sinus Bradycardia at 38; assess QRS width carefully (propranolol and acebutolol can widen QRS - sodium bicarbonate indicated)",
+          "priority": "critical",
+          "rationale": "QRS width informs treatment - widened QRS in beta-blocker overdose suggests propranolol-like sodium channel effects warranting sodium bicarbonate.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "iv-access-2",
+          "action": "Establish two large-bore IV lines (18 g preferred); saline lock both",
+          "priority": "critical",
+          "rationale": "Two reliable IVs are essential for fluids, glucagon, atropine, calcium, and potential pressor escalation.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "blood-glucose",
+          "action": "Check blood glucose; result is 76 mg/dL (low-normal); beta-blockers can cause hypoglycemia, especially in pediatric patients - serial glucose checks indicated",
+          "priority": "critical",
+          "rationale": "Per protocol, check blood glucose on all beta-blocker overdose patients. Serial checks during long transport.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "place-pacer-pads",
+          "action": "Apply transcutaneous pacing pads in anterior-posterior position prophylactically; do not yet initiate pacing - have it ready in case medications fail",
+          "priority": "critical",
+          "rationale": "Pre-positioning pacer pads dramatically shortens time-to-capture if medications fail.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "fluid-bolus",
+          "action": "Administer Normal Saline 20 mL/kg (1700 mL for 85 kg patient) IV bolus; reassess BP and lung sounds; consider repeat aliquot if BP remains low and lungs stay clear",
+          "priority": "critical",
+          "rationale": "Per protocol, fluid challenge of 20 mL/kg is a first-line intervention for the hypotensive bradycardic beta-blocker overdose patient.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "history",
+          "action": "Obtain detailed history from daughter: substances ingested, time of ingestion, quantity, suicidal ideation, prior overdoses, other medications in the home (especially calcium channel blockers, TCAs, opioids, benzodiazepines)",
+          "priority": "critical",
+          "rationale": "Mixed overdose changes treatment significantly. Must rule out concurrent CCB or TCA ingestion.",
+          "protocolReference": "MATC: Poisoning/Overdose - Universal"
+        },
+        {
+          "id": "no-charcoal",
+          "action": "Do NOT administer activated charcoal: time of ingestion is uncertain (likely > 1 hour), mental status is declining, and the airway is at risk - charcoal aspiration is catastrophic. Document deferral and rationale",
+          "priority": "critical",
+          "rationale": "Per protocol, activated charcoal is only appropriate within 1 hour of ingestion AND with a protected airway. This patient meets neither criterion.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "atropine-glucagon-trial",
+          "condition": "Atropine 1 mg IV given for symptomatic bradycardia (likely to fail in beta-blocker overdose)",
+          "conditionType": "action_taken"
+        },
+        {
+          "targetPhaseId": "branch-airway-deterioration",
+          "condition": "Patient mental status further declines with deterioration to AVPU Pain or Unresponsive; airway compromise",
+          "conditionType": "vital_threshold"
+        }
+      ]
+    },
+    {
+      "id": "atropine-glucagon-trial",
+      "name": "Atropine Fails - Glucagon Antidote",
+      "description": "Atropine 1 mg IV produced no rate response (typical for beta-blocker overdose - the protocol explicitly states 'atropine may have little or no effect'). The crew administers Glucagon 5 mg IV - the specific antidote for beta-blocker toxicity. Glucagon bypasses the beta-receptor blockade by activating cardiac adenylate cyclase via a separate receptor pathway, increasing cAMP, and improving inotropy and chronotropy. The crew must anticipate vomiting (common glucagon side effect) and consider ondansetron prophylaxis.",
+      "triggerCondition": "Atropine 1 mg IV given with no rate response after 3-5 minutes",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": { "eye": 3, "verbal": 4, "motor": 5 },
+        "airway": "Patent.",
+        "breathing": "Unchanged. RR 14.",
+        "circulation": "Unchanged - HR persists at 38-40; BP remains low 80s systolic.",
+        "skin": { "color": "pale", "temperature": "cool", "moisture": "dry" },
+        "pupils": "PERRL 3 mm.",
+        "motorFunction": "Symmetric.",
+        "otherFindings": [
+          "No change in heart rate or blood pressure after atropine - typical for beta-blocker toxicity",
+          "Patient remains responsive to verbal stimulation but minimally interactive",
+          "1 L of fluid bolus completed; 700 mL more running",
+          "Pacer pads in place from earlier preparation",
+          "Daughter has bagged the empty pill bottle for transport"
+        ],
+        "patientSpeech": "Slurred 'Mmm... what's happening...'"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 40,
+        "bpSys": 84,
+        "bpDia": 54,
+        "respRate": 14,
+        "spo2": 95,
+        "etco2": 36,
+        "temp": 36.4,
+        "obstruction": 0,
+        "glucose": 76,
+        "trendTimeSeconds": 25,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "reassess-atropine",
+          "action": "Reassess heart rate and BP 3-5 minutes after Atropine 1 mg dose; document no response - consistent with beta-blocker pathophysiology",
+          "priority": "critical",
+          "rationale": "Atropine's mechanism (vagal blockade) does not bypass the beta-receptor blockade; the protocol notes 'atropine may have little or no effect.'",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "atropine-second",
+          "action": "Administer second Atropine 1 mg IV (per protocol allows up to 3 mg total) while transitioning to specific antidote therapy; document atropine total",
+          "priority": "important",
+          "rationale": "Maximum atropine dose is 3 mg; document all doses. Beta-blocker overdose protocol allows up to 3 mg.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "glucagon-loading",
+          "action": "Administer Glucagon 5 mg IV bolus (specific antidote for beta-blocker toxicity); reconstitute with provided diluent or sterile water; push slowly over 1-2 minutes",
+          "priority": "critical",
+          "rationale": "Glucagon is the specific antidote: it activates cardiac adenylate cyclase via a non-beta receptor and increases cAMP, restoring inotropy/chronotropy in beta-blocker toxicity. Adult dose is 5 mg IV initial, may repeat 5 mg in 5-10 min for total of 10 mg.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "ondansetron-prophylaxis",
+          "action": "Administer Ondansetron 4 mg IV slowly prior to or with the glucagon dose; glucagon causes nausea/vomiting at therapeutic doses and aspiration is a major risk in this AMS patient",
+          "priority": "critical",
+          "rationale": "Per protocol pearls, 'Glucagon has a side effect of increased vomiting at these doses and ondansetron prophylaxis may be considered.'",
+          "protocolReference": "MATC: Nausea / Vomiting"
+        },
+        {
+          "id": "calcium-consideration",
+          "action": "If hypotension/bradycardia refractory, consider Calcium gluconate 10% 1 g (10 mL of 100 mg/mL) IV slow push over 5 minutes. This is more clearly indicated for calcium channel blocker overdose, but mixed BB/CCB ingestion cannot be excluded if the daughter is uncertain about the bottles",
+          "priority": "important",
+          "rationale": "Calcium has limited but real role in beta-blocker overdose, more so in mixed/uncertain BB+CCB. Slow push to avoid bradycardia/asystole.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "prepare-tcp",
+          "action": "While giving glucagon, prepare the transcutaneous pacer: confirm pads in AP position, switch monitor to PACER mode, set rate at 70-80, start mA at 0 to titrate up; have sedation/analgesia drawn up (Midazolam 1 mg + Fentanyl 50 mcg)",
+          "priority": "critical",
+          "rationale": "Parallel preparation reduces time-to-capture when needed. Anticipate that medications may not work in this overdose.",
+          "protocolReference": "MATC: Bradycardia"
+        },
+        {
+          "id": "watch-airway",
+          "action": "Continuously reassess mental status and airway; if patient declines to AVPU Pain or Unresponsive, prepare for intubation per RSI protocol",
+          "priority": "critical",
+          "rationale": "Per protocol, 'Frequent reassessment is essential as patient deterioration can be rapid and catastrophic.' Beta-blocker patients can deteriorate without warning.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "consider-bicarbonate",
+          "action": "If QRS widens > 100 msec, consider Sodium bicarbonate 1-2 mEq/kg (85-170 mEq for 85 kg patient) IV - propranolol especially can produce TCA-like sodium channel blockade",
+          "priority": "important",
+          "rationale": "Per protocol, 'If widened QRS (100 msec or greater), consider sodium bicarbonate 1-2 mEq/kg IV. This can be repeated as needed to narrow QRS.'",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "tcp-required",
+          "condition": "Glucagon and atropine and fluids fail to restore HR > 50 and SBP > 90; TCP initiated with electrical and mechanical capture; sedation/analgesia given",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["glucagon-loading", "prepare-tcp"]
+        },
+        {
+          "targetPhaseId": "branch-glucagon-aspiration",
+          "condition": "Glucagon given without ondansetron prophylaxis; patient vomits and aspirates",
+          "conditionType": "action_not_taken"
+        }
+      ]
+    },
+    {
+      "id": "tcp-required",
+      "name": "Glucagon Insufficient - Transcutaneous Pacing Required",
+      "description": "Despite glucagon 5 mg IV, repeat glucagon 5 mg in 10 minutes (total 10 mg), atropine 2 mg total, calcium gluconate 1 g, and 2 L fluid bolus, the patient remains bradycardic at HR 42 with persistent hypotension SBP 80. The crew initiates transcutaneous pacing at rate 70 with sedation/analgesia and titrates output to capture. Mechanical capture is confirmed by femoral pulse synchronous with pacer spikes. The crew prepares for vasopressor escalation if BP remains low after capture. This is a refractory beta-blocker overdose - the next escalations at the hospital will likely include high-dose insulin/dextrose and possibly intralipid.",
+      "triggerCondition": "Glucagon and other medications failed to adequately respond; TCP initiated and capture achieved",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": { "eye": 3, "verbal": 4, "motor": 5 },
+        "airway": "Patent. Suctioning available.",
+        "breathing": "RR 16, regular.",
+        "circulation": "Femoral pulse palpable and synchronous with pacer spikes.",
+        "skin": { "color": "pale, slowly pinking centrally", "temperature": "cool, warming slightly", "moisture": "dry" },
+        "pupils": "PERRL 3 mm.",
+        "motorFunction": "Symmetric, withdrawing weakly to noxious stimulus.",
+        "otherFindings": [
+          "Pacer captured at ~80 mA, set at 90 mA for safety margin (10-20 above threshold)",
+          "Patient grimaced during pacing but tolerating after sedation/analgesia",
+          "Total glucagon given: 10 mg (5 mg + 5 mg)",
+          "BP slowly improving with capture and pressor support"
+        ],
+        "patientSpeech": "Mumbling, no clear speech."
+      },
+      "monitorState": {
+        "ecgRhythm": "Pacemaker Rhythm",
+        "ecgWaveform": 9,
+        "hr": 70,
+        "bpSys": 96,
+        "bpDia": 60,
+        "respRate": 16,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.5,
+        "obstruction": 0,
+        "glucose": 78,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "verify-electrical-capture",
+          "action": "Verify electrical capture: each pacer spike on the monitor is followed by a wide QRS complex; document threshold mA and final output (10-20 mA above threshold)",
+          "priority": "critical",
+          "rationale": "Electrical capture must be confirmed before assuming the heart is being paced.",
+          "protocolReference": "MATC: Bradycardia"
+        },
+        {
+          "id": "verify-mechanical-capture",
+          "action": "Verify mechanical capture by palpating a FEMORAL pulse (not carotid) synchronized with each pacer spike",
+          "priority": "critical",
+          "rationale": "Carotid pulse can be mimicked by skeletal muscle twitching from TCP. The femoral is the validated site.",
+          "protocolReference": "MATC: Bradycardia"
+        },
+        {
+          "id": "midazolam-tcp",
+          "action": "Administer Midazolam 1 mg IV slowly (titrate to comfort with caution given hypotension and AMS; max initial 2-3 mg in this patient)",
+          "priority": "critical",
+          "rationale": "Sedation required for TCP. Use lower dose given AMS and hypotension.",
+          "protocolReference": "MATC: Bradycardia"
+        },
+        {
+          "id": "fentanyl-tcp",
+          "action": "Administer Fentanyl 25-50 mcg IV slowly (lower dose in AMS hypotensive patient)",
+          "priority": "important",
+          "rationale": "Analgesia complements sedation; fentanyl preferred over morphine for hemodynamic safety.",
+          "protocolReference": "MATC: Bradycardia"
+        },
+        {
+          "id": "glucagon-second-dose",
+          "action": "If not already given, administer second Glucagon 5 mg IV bolus (5-10 minutes after first, to total 10 mg). Consider glucagon infusion 1-5 mg/hr if available locally for extended response",
+          "priority": "critical",
+          "rationale": "Per protocol, glucagon may be repeated to total 10 mg; infusion can be considered for sustained effect (off-protocol may require medical direction).",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "vasopressor-prep",
+          "action": "If BP remains < 90 after pacing capture, initiate Epinephrine push-dose 10-20 mcg IV every 2-5 minutes titrated to MAP > 65, OR Epinephrine infusion 0.02-0.2 mcg/kg/min IV titrated to MAP > 65, OR Norepinephrine 0.02-0.4 mcg/kg/min IV titrated to MAP > 65",
+          "priority": "critical",
+          "rationale": "Per protocol, vasopressors after adequate fluid resuscitation (1-2 L crystalloid). Beta-blocker patients may need higher than expected pressor doses.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "serial-glucose",
+          "action": "Recheck blood glucose every 15-30 minutes during transport; treat hypoglycemia with Dextrose 10% 250 mL (25 g) IV per protocol",
+          "priority": "important",
+          "rationale": "Beta-blockers can cause hypoglycemia (especially in pediatric patients but also possible in adults).",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "early-notify",
+          "action": "Provide early notification to receiving facility (preferably one with toxicology consult capability): 70 M with intentional metoprolol overdose, refractory bradycardia/hypotension, on TCP with capture, glucagon 10 mg given, atropine 2 mg, NS 2 L, on push-dose epinephrine; request toxicology consult on arrival",
+          "priority": "critical",
+          "rationale": "Receiving team needs advance notice for high-dose insulin/dextrose preparation, ICU bed, possible intralipid, and toxicology consult.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "psychiatric-hold",
+          "action": "Document daughter's history of patient's depression, recent bereavement, and the empty pill bottle; communicate intentional ingestion to receiving team for appropriate psychiatric hold/consult after medical stabilization",
+          "priority": "important",
+          "rationale": "Intentional overdose triggers psychiatric evaluation and safety planning. Documentation is essential.",
+          "protocolReference": "MATC: Poisoning/Overdose - Universal"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "transport-tcp",
+          "condition": "TCP captured, glucagon and pressor support active, transport initiated to facility with toxicology and ICU capability",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["verify-mechanical-capture", "early-notify"]
+        }
+      ]
+    },
+    {
+      "id": "transport-tcp",
+      "name": "Transport on TCP and Pressor Support",
+      "description": "Patient en route to a hospital with toxicology and ICU capability. TCP is maintaining capture at rate 70, mA 90. Push-dose epinephrine has stabilized BP at SBP 102. Glucagon 10 mg total has been given. Patient remains AMS but airway is patent. The crew vigilantly monitors capture, BP, mental status, glucose, and prepares for further deterioration including potential need for intubation, fast-paced communication with receiving team, and potential treatment for ongoing absorption (note: metoprolol IR formulation is mostly absorbed in 1-3 hours, but the patient may continue to absorb if ingestion was more recent).",
+      "triggerCondition": "Stable on TCP, glucagon, and pressor support, en route to ED",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": { "eye": 3, "verbal": 4, "motor": 5 },
+        "airway": "Patent, suction available, OPA placed.",
+        "breathing": "RR 16, regular, lungs clear.",
+        "circulation": "Pacing-captured, pressor support stabilizing BP, perfusion improving.",
+        "skin": { "color": "pinking centrally, pale extremities", "temperature": "warming", "moisture": "dry" },
+        "pupils": "PERRL 3 mm.",
+        "motorFunction": "Symmetric, slow but improving response.",
+        "otherFindings": [
+          "Pacer maintaining capture, no recent threshold change",
+          "Push-dose epinephrine titrated; BP responding",
+          "Glucose stable at 88 mg/dL on recheck",
+          "Daughter following in own vehicle to hospital"
+        ],
+        "patientSpeech": "Slow, slurred, occasional one-word responses to firm verbal stimulus."
+      },
+      "monitorState": {
+        "ecgRhythm": "Pacemaker Rhythm",
+        "ecgWaveform": 9,
+        "hr": 70,
+        "bpSys": 102,
+        "bpDia": 64,
+        "respRate": 16,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.5,
+        "obstruction": 0,
+        "glucose": 88,
+        "trendTimeSeconds": 35,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "ongoing-capture-check",
+          "action": "Continuously verify electrical and mechanical capture; document at least every 5 minutes",
+          "priority": "critical",
+          "rationale": "Pacer pads can shift, fluid/sweat can degrade contact, patient movement can cause loss of capture.",
+          "protocolReference": "MATC: Bradycardia"
+        },
+        {
+          "id": "ongoing-vs",
+          "action": "Reassess full vitals (HR, BP, RR, SpO2, EtCO2, mental status, lung sounds) every 5 minutes; document trends",
+          "priority": "critical",
+          "rationale": "Beta-blocker patients can deteriorate rapidly; trend monitoring is essential.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "monitor-airway",
+          "action": "Continuously assess airway and respiratory drive; prepare for RSI if mental status declines further or aspiration risk increases",
+          "priority": "critical",
+          "rationale": "AMS + intentional overdose + possible vomiting from glucagon = high airway risk.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "serial-glucose",
+          "action": "Recheck blood glucose every 15-30 minutes; treat hypoglycemia with Dextrose 10% 250 mL (25 g) IV per protocol",
+          "priority": "important",
+          "rationale": "Beta-blocker hypoglycemia can develop late.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "serial-12-lead",
+          "action": "Acquire serial 12-lead ECGs every 10 minutes en route or with any clinical change; specifically monitor QRS width (sodium bicarbonate indicated if QRS > 100 msec)",
+          "priority": "important",
+          "rationale": "QRS widening can develop late in beta-blocker overdose, especially propranolol.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "smooth-handoff",
+          "action": "At ED bedside, give detailed SBAR handoff: substance (metoprolol tartrate 50 mg, ~50 tablets), time of ingestion (estimated 1-3 hours ago), all interventions and times (atropine 2 mg total, glucagon 10 mg total, NS 2 L, calcium gluconate 1 g, push-dose epi titrated, TCP at rate 70 mA 90 with capture), psychiatric history (intentional, recent bereavement, depression), all bottles/notes secured",
+          "priority": "critical",
+          "rationale": "Comprehensive handoff supports tox/ICU planning (high-dose insulin, intralipid, ECMO consideration if refractory).",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        },
+        {
+          "id": "mental-health-care",
+          "action": "Communicate intentional overdose context to receiving team; document for psychiatric hold/consult after medical stabilization; ensure family member is informed of patient's location",
+          "priority": "important",
+          "rationale": "Mental health follow-up is part of comprehensive care for intentional overdose.",
+          "protocolReference": "MATC: Poisoning/Overdose - Universal"
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "branch-airway-deterioration",
+      "name": "Branch - Airway Deterioration Requiring Intubation",
+      "description": "Patient mental status declined to AVPU Pain (GCS 7-8) with depressed gag reflex and increasing aspiration risk. Vital signs are similar but airway is now the primary problem. The crew must perform RSI per the Airway Management protocol while maintaining hemodynamic support. This is challenging in a hypotensive bradycardic patient: induction agents must be selected for hemodynamic neutrality (ketamine often preferred), and sedation must continue post-intubation.",
+      "triggerCondition": "Patient mental status declines to AVPU Pain or Unresponsive with airway compromise",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": { "eye": 1, "verbal": 2, "motor": 4 },
+        "airway": "At risk; gag reflex absent or weak; pooling secretions.",
+        "breathing": "RR 10, shallow.",
+        "circulation": "Bradycardic, hypotensive.",
+        "skin": { "color": "pale", "temperature": "cool", "moisture": "dry" },
+        "pupils": "PERRL 3 mm.",
+        "motorFunction": "Withdraws to noxious stimulus only; no purposeful movement.",
+        "otherFindings": [
+          "GCS 7 - clear airway compromise",
+          "Aspiration risk high",
+          "Hemodynamics tenuous - induction agent selection critical"
+        ],
+        "patientSpeech": "Moans only."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 42,
+        "bpSys": 86,
+        "bpDia": 56,
+        "respRate": 10,
+        "spo2": 92,
+        "etco2": 38,
+        "temp": 36.4,
+        "obstruction": 0,
+        "glucose": 78,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "preoxygenate",
+          "action": "Pre-oxygenate via BVM with PEEP 5 cmH2O at 100% O2 for 3-5 minutes; apply nasal cannula at 15 L/min for apneic oxygenation during the intubation attempt",
+          "priority": "critical",
+          "rationale": "Pre-oxygenation extends the safe apnea window in a hypotensive bradycardic patient.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "fluid-load-pre-rsi",
+          "action": "Continue fluid resuscitation and push-dose epinephrine prior to induction to support BP through the intubation",
+          "priority": "critical",
+          "rationale": "Induction agents drop BP further; pre-loading volume and pressors mitigates this.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "rsi-induction-ketamine",
+          "action": "Administer Ketamine 1 mg/kg (~85 mg for 85 kg patient) IV push for induction (preferred over etomidate or propofol given hemodynamic profile)",
+          "priority": "critical",
+          "rationale": "Ketamine is hemodynamically neutral and may even support BP via catecholamine release; preferred in shock states.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "rsi-paralytic",
+          "action": "Administer paralytic: Rocuronium 1 mg/kg (85 mg for 85 kg patient) IV push (preferred over succinylcholine in possible hyperkalemic states or unknown overdose)",
+          "priority": "critical",
+          "rationale": "Rocuronium safer with unknown electrolyte status; longer duration provides more intubation window.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "intubate-confirm",
+          "action": "Perform endotracheal intubation with size 7.5-8.0 ETT; confirm placement with continuous waveform capnography (gold standard), bilateral breath sounds, absent gastric sounds; secure tube; document depth at incisors",
+          "priority": "critical",
+          "rationale": "Waveform capnography is the gold standard for confirming and continuously verifying tube placement.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "post-intubation-sedation",
+          "action": "Maintain post-intubation sedation: Ketamine 0.5-1 mg/kg (~42-85 mg) IV every 10-15 minutes OR Fentanyl 25-50 mcg IV + Midazolam 1-2 mg IV titrated; do not leave the paralyzed patient awake",
+          "priority": "critical",
+          "rationale": "Continuous sedation is mandatory post-intubation; awake-paralyzed is a known harm.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "vent-rate-target",
+          "action": "Ventilate at 10-12 breaths/minute targeting EtCO2 35-45 mmHg; do NOT hyperventilate",
+          "priority": "critical",
+          "rationale": "Standard post-intubation ventilation parameters.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "branch-glucagon-aspiration",
+      "name": "Branch - Vomiting and Aspiration After Glucagon",
+      "description": "Glucagon was administered without ondansetron prophylaxis. The patient vomited within minutes (a known glucagon side effect at therapeutic doses), aspirated, and now has decreased SpO2, audible coarse rhonchi, and increased work of breathing. The crew must manage the aspiration: suction aggressively, position lateral if not contraindicated, escalate oxygen, and consider RSI if respiratory failure develops.",
+      "triggerCondition": "Glucagon given without ondansetron, patient vomited, aspirated",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": { "eye": 3, "verbal": 3, "motor": 5 },
+        "airway": "Soiled with emesis; suctioning required; partial airway compromise.",
+        "breathing": "RR 22, labored, coarse rhonchi bilaterally.",
+        "circulation": "Bradycardic; BP unchanged.",
+        "skin": { "color": "pale, slightly cyanotic at lips", "temperature": "cool", "moisture": "dry except diaphoresis on forehead from increased work of breathing" },
+        "pupils": "PERRL 3 mm.",
+        "motorFunction": "Symmetric.",
+        "otherFindings": [
+          "Patient vomited bile-stained gastric contents within 3-5 minutes of glucagon",
+          "Coarse rhonchi heard bilaterally on auscultation",
+          "SpO2 dropped from 95% to 86% before suctioning",
+          "Aspiration is the likely cause of the desaturation"
+        ],
+        "patientSpeech": "Coughing, sputtering."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 42,
+        "bpSys": 86,
+        "bpDia": 54,
+        "respRate": 22,
+        "spo2": 88,
+        "etco2": 32,
+        "temp": 36.4,
+        "obstruction": 30,
+        "glucose": 78,
+        "trendTimeSeconds": 25,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "aggressive-suction",
+          "action": "Suction the oropharynx aggressively with a Yankauer; clear emesis from mouth and posterior pharynx",
+          "priority": "critical",
+          "rationale": "Removing the emesis bolus is the first step in aspiration management.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "lateral-position",
+          "action": "Place the patient in the lateral recovery position if cervical spine is not a concern, to allow continued drainage of secretions",
+          "priority": "important",
+          "rationale": "Gravity-assisted drainage prevents further aspiration.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "escalate-o2",
+          "action": "Apply oxygen via NRB at 15 L/min; consider BVM-assisted ventilations if SpO2 remains < 90% or work of breathing increases",
+          "priority": "critical",
+          "rationale": "Aspiration causes ventilation-perfusion mismatch; supplemental O2 supports oxygenation while course defines.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "ondansetron-now",
+          "action": "Administer Ondansetron 4 mg IV now to prevent further vomiting",
+          "priority": "critical",
+          "rationale": "Treat the cause; further vomiting will worsen aspiration.",
+          "protocolReference": "MATC: Nausea / Vomiting"
+        },
+        {
+          "id": "consider-rsi",
+          "action": "If respiratory status worsens (SpO2 < 88% on NRB, RR > 30 with increased work, or rising EtCO2), prepare for RSI per the Airway Management protocol",
+          "priority": "critical",
+          "rationale": "Aspiration with respiratory failure requires intubation for airway protection and ventilation.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "lesson-learned-glucagon",
+          "action": "Document for QI: ondansetron prophylaxis should be given before or with every glucagon dose at antidote levels (5-10 mg) due to high vomiting incidence",
+          "priority": "supplemental",
+          "rationale": "Protocol pearl explicitly states this; it is a teachable, preventable error.",
+          "protocolReference": "MATC: Beta Blocker Poisoning/Overdose"
+        }
+      ],
+      "transitions": []
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Recognize beta-blocker overdose toxidrome: bradycardia + hypotension + AMS + possible hypoglycemia",
+      "Secure the empty pill bottle and any handwritten notes for the receiving facility",
+      "Apply 4-lead monitor and acquire 12-lead ECG; assess QRS width (sodium bicarbonate indicated if > 100 msec)",
+      "Establish two large-bore IV lines",
+      "Check blood glucose; recheck every 15-30 minutes; treat hypoglycemia with Dextrose 10% per protocol",
+      "Apply transcutaneous pacing pads in AP position prophylactically",
+      "Administer Normal Saline 20 mL/kg (1700 mL for 85 kg) IV bolus; reassess and consider repeat",
+      "Administer Atropine 1 mg IV every 3-5 minutes to a maximum of 3 mg (often ineffective in beta-blocker overdose)",
+      "Administer Glucagon 5 mg IV bolus as the specific antidote; may repeat 5 mg in 5-10 minutes for total of 10 mg",
+      "Administer Ondansetron 4 mg IV with or before glucagon to prevent vomiting and aspiration",
+      "Initiate transcutaneous pacing at rate 70-80 if medications fail; verify mechanical capture by femoral pulse",
+      "Provide sedation (Midazolam 1 mg IV) and analgesia (Fentanyl 25-50 mcg IV) for TCP",
+      "Initiate vasopressor support (push-dose Epinephrine 10-20 mcg or Norepinephrine infusion) for refractory hypotension after fluid resuscitation",
+      "Do NOT administer activated charcoal: time uncertain, mental status declining, airway at risk",
+      "Continuously monitor airway and prepare for RSI if mental status declines further",
+      "Provide early notification to a hospital with toxicology and ICU capability",
+      "Document the intentional ingestion context for psychiatric evaluation post medical stabilization"
+    ],
+    "expectedActions": [
+      "Apply oxygen titrated to SpO2 94-98%",
+      "Position the patient supine or lateral-recovery if AMS",
+      "Acquire serial 12-lead ECGs every 10 minutes; monitor QRS width",
+      "Consider Calcium gluconate 10% 1 g IV for refractory bradycardia/hypotension or possible mixed BB/CCB ingestion",
+      "Consider Sodium bicarbonate 1-2 mEq/kg IV if QRS widens > 100 msec (especially propranolol)",
+      "Document all medication doses and times, vital sign trends, and pacer settings",
+      "Communicate compassionately with the daughter throughout the call"
+    ],
+    "bonusActions": [
+      "Recognize the differential of bradycardia + hypotension + AMS includes beta-blocker, calcium channel blocker, digoxin, clonidine, opioid (with miosis), and sepsis",
+      "Consider the possibility of mixed overdose (BB + CCB or BB + TCA) when family is uncertain about all available medications",
+      "Consider glucagon infusion (1-5 mg/hr) if available locally for sustained effect after bolus dosing - may require medical direction",
+      "Prepare receiving facility with advance notice for high-dose insulin/dextrose (HIET), intralipid, and ECMO if refractory",
+      "Recognize that RSI in this patient requires hemodynamically neutral induction (ketamine preferred over etomidate, never propofol)"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Recognize the beta-blocker overdose toxidrome: bradycardia, hypotension, AMS, sometimes hypoglycemia",
+      "Apply the Beta-Blocker Overdose protocol: airway, O2, monitor, IV, glucose, fluids, atropine, glucagon, vasopressors, TCP",
+      "Understand that atropine often fails in beta-blocker overdose because the beta-receptor blockade is not vagal-mediated",
+      "Use Glucagon 5 mg IV (may repeat to 10 mg total) as the specific antidote that bypasses the beta-receptor blockade by activating cardiac adenylate cyclase",
+      "Provide ondansetron prophylaxis with every glucagon dose to prevent vomiting and aspiration",
+      "Apply the activated charcoal decision rule: only within 1 hour of ingestion AND with a protected airway - this patient meets neither criterion",
+      "Differentiate electrical and mechanical capture during TCP using the femoral pulse",
+      "Provide sedation and analgesia for TCP, with reduced doses given AMS and hypotension",
+      "Recognize the need for early ICU/toxicology resources and notify in advance",
+      "Recognize that intentional overdose requires post-medical-stabilization psychiatric evaluation",
+      "Choose hemodynamically neutral induction (ketamine) for RSI in a shock-state patient"
+    ],
+    "discussionQuestions": [
+      "Why does atropine often fail in beta-blocker overdose? Where does the drug act, and what is the mechanism of beta-blocker bradycardia?",
+      "Walk through the mechanism of glucagon as a beta-blocker antidote. What pathway does it activate, and why does this matter?",
+      "Why is ondansetron prophylaxis recommended with every glucagon dose? What is the consequence of not giving it?",
+      "When should you administer activated charcoal in overdose? What conditions must be met?",
+      "How would you adjust your treatment if the daughter said the bottle was diltiazem (CCB) instead of metoprolol (BB)?",
+      "What is the ECG sign that propranolol is a likely culprit, and what is the protocol-mandated response?",
+      "How do you manage the conscious-sedation calculus for TCP in a hypotensive AMS overdose patient?",
+      "What advance preparations should you ask the receiving facility to make for this patient?"
+    ],
+    "commonPitfalls": [
+      "Failing to recognize the beta-blocker toxidrome and treating only the bradycardia without the antidote",
+      "Continuing to escalate atropine when it is clearly not working",
+      "Forgetting to give ondansetron with glucagon - patient vomits and aspirates",
+      "Administering activated charcoal in a patient with declining mental status - aspiration risk",
+      "Forgetting to check and recheck blood glucose - beta-blockers can cause hypoglycemia",
+      "Failing to monitor QRS width and missing propranolol-induced sodium channel blockade",
+      "Using etomidate or propofol for RSI in a hypotensive shock-state patient instead of ketamine",
+      "Failing to advance-notify a toxicology/ICU-capable facility",
+      "Failing to document the intentional context for psychiatric follow-up after medical stabilization"
+    ],
+    "keyTakeaways": [
+      "Beta-blocker overdose: bradycardia + hypotension + AMS - apply the antidote (glucagon)",
+      "Glucagon 5 mg IV bolus, may repeat to 10 mg total; always give ondansetron with it",
+      "Atropine often fails in beta-blocker overdose - do not delay glucagon",
+      "Activated charcoal: only in <1 hour ingestion AND protected airway",
+      "Refractory cases: TCP, push-dose epinephrine, sodium bicarbonate for wide QRS, and rapid transport to ICU/toxicology center",
+      "Intentional overdose triggers psychiatric evaluation after medical stabilization"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 80
+  }
+}

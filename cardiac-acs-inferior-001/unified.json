@@ -1,0 +1,671 @@
+{
+  "meta": {
+    "id": "cardiac-acs-inferior-001",
+    "name": "Acute Coronary Syndrome - Inferior STEMI - FONA Bundle and STEMI Activation",
+    "version": 1,
+    "difficulty": "intermediate",
+    "category": "Cardiac",
+    "protocols": [
+      "cv-chest-pain-acs-stemi",
+      "medical-pain-management"
+    ],
+    "totalTimeSeconds": 1500,
+    "createdAt": "2026-04-26T00:00:00Z",
+    "tags": ["ACS", "STEMI", "inferior STEMI", "FONA", "aspirin", "nitroglycerin", "fentanyl", "PCI activation"]
+  },
+  "patient": {
+    "name": "Daniel Murphy",
+    "age": 66,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 92,
+    "height": 180,
+    "chiefComplaint": "Crushing substernal chest pressure with diaphoresis, radiating to the left arm and jaw - 8/10",
+    "history": {
+      "hpi": "66-year-old male was outside doing yard work when he developed sudden substernal chest pressure approximately 45 minutes ago. He describes it as a 'heavy, crushing' sensation in the center of his chest, radiating to his left arm and jaw, with associated diaphoresis, nausea, and shortness of breath on minimal exertion. He sat down on the porch but the pain has not improved. His wife brought him a glass of water and called 911 when he said 'I think I'm having a heart attack' and looked ashen. No prior history of similar pain. No syncope, no palpitations. Denies use of any phosphodiesterase-5 inhibitors (sildenafil, tadalafil, vardenafil) within the past 48 hours and his wife confirms.",
+      "pastMedical": [
+        "Hypertension",
+        "Hyperlipidemia",
+        "Type 2 diabetes mellitus (well controlled, A1C 6.8 last visit)",
+        "Tobacco use (1 pack per day x 40 years - currently smoking)",
+        "Family history: father MI at 58, brother CABG at 62",
+        "No known coronary artery disease, no prior MI, no stents"
+      ],
+      "medications": [
+        "Lisinopril 20 mg PO daily",
+        "Atorvastatin 40 mg PO at bedtime",
+        "Metformin 1000 mg PO BID",
+        "Aspirin 81 mg PO daily (per his PCP for primary prevention - took this morning)"
+      ],
+      "allergies": ["NKDA"],
+      "lastOralIntake": "Eggs, toast, coffee at 0700; small glass of water 30 minutes ago",
+      "events": "Doing yard work, raking leaves. Sudden onset crushing substernal chest pain at ~0945. Sat down on porch, pain unrelenting. Wife called 911 at ~1015 when patient appeared diaphoretic and ashen."
+    }
+  },
+  "scene": {
+    "dispatch": "Respond priority 1 to a private residence for a 66-year-old male with chest pain. Patient awake, sweating, says he thinks he is having a heart attack. Wife on scene.",
+    "location": "Single-story private residence, front porch. Patient seated in a porch chair. Daylight, mild spring weather (~62°F), dry. Path from porch to ambulance is short and unobstructed.",
+    "time": "1018 hours, Saturday morning",
+    "safety": "Scene is safe. Family dog confined indoors. No environmental hazards.",
+    "bystanders": "Wife is at his side, anxious but cooperative and an excellent historian. She has the patient's medication list, knows his cardiologist's name, and has confirmed no PDE5 inhibitor use.",
+    "visualCues": [
+      "Adult male seated in a porch chair, leaning slightly forward with his hand on his chest",
+      "Visibly diaphoretic - sweating despite mild outdoor temperature",
+      "Ashen, pale complexion",
+      "Rake and bag of leaves visible in the yard",
+      "Glass of water on the porch table (untouched)",
+      "Patient's wife in the doorway, holding the medication list",
+      "No obvious signs of trauma or environmental injury",
+      "Cigarette pack visible on a side table"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Initial Presentation - Suspected ACS",
+      "description": "Crew arrives to a 66-year-old male with classic ischemic chest pain - substernal pressure, radiation to left arm and jaw, diaphoresis, nausea, dyspnea on exertion. Clinical pretest probability for acute coronary syndrome is high given his age, multiple cardiac risk factors (HTN, HLD, DM, current smoker, family history), and presentation. The crew must rapidly initiate the FONA bundle (Fentanyl, Oxygen, Nitroglycerin, Aspirin) per the MATC ACS protocol, acquire a 12-lead ECG within 10 minutes, and prepare for STEMI activation if elevation is identified.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": { "eye": 4, "verbal": 5, "motor": 6 },
+        "airway": "Patent and self-maintained.",
+        "breathing": "RR 22, mildly tachypneic. Lungs clear bilaterally without rales or wheezing. No accessory muscle use. Speaks in full sentences with effort.",
+        "circulation": "Strong regular radial pulse at 96. Skin cool, pale, markedly diaphoretic. Capillary refill 2-3 seconds. No JVD. No peripheral edema.",
+        "skin": { "color": "ashen, pale", "temperature": "cool", "moisture": "markedly diaphoretic" },
+        "pupils": "PERRL 3 mm bilaterally.",
+        "motorFunction": "All extremities move with full strength. No focal neurologic deficit. Gait test deferred given chest pain.",
+        "otherFindings": [
+          "Patient describes the pain as 'crushing, like an elephant on my chest'",
+          "Pain rated 8/10, started 45 minutes ago, no relief with rest",
+          "Radiates to left arm and lower jaw",
+          "Associated diaphoresis, nausea (without emesis), and shortness of breath",
+          "Has chewed his daily 81 mg aspirin this morning - took before symptom onset",
+          "No phosphodiesterase-5 inhibitor use confirmed by patient and wife"
+        ],
+        "patientSpeech": "'My chest is killing me. Feels like a vise. It's going down my left arm. I think this is my heart.'"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 96,
+        "bpSys": 152,
+        "bpDia": 92,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "glucose": 138,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "scene-bsi",
+          "action": "Perform scene size-up, BSI, and primary survey (ABCDE); identify ACS-pattern chest pain",
+          "priority": "critical",
+          "rationale": "Pattern recognition triggers the ACS protocol bundle.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "position-comfort",
+          "action": "Position the patient in a position of comfort (semi-Fowler's or seated upright); minimize physical exertion - help him onto the stretcher rather than have him walk",
+          "priority": "important",
+          "rationale": "Reducing myocardial oxygen demand is part of ACS care; do not have an actively ischemic patient walk to the ambulance.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "oxygen",
+          "action": "Apply oxygen via nasal cannula at 2-4 L/min titrated to SpO2 94-98%; do NOT routinely give high-flow O2 to a normoxic ACS patient",
+          "priority": "important",
+          "rationale": "Hyperoxia in ACS is associated with worse outcomes. Target normoxia, not maximal saturation.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "monitor-defib",
+          "action": "Apply 4-lead cardiac monitor; place defibrillator pads prophylactically per protocol safety consideration #3 (high-risk patient); enable automatic VT/VF alert if available",
+          "priority": "critical",
+          "rationale": "Acute STEMI patients are at high risk for sudden VF/VT. Pads on now save seconds during arrest.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "12-lead-asap",
+          "action": "Acquire a 12-lead ECG within 10 minutes of patient contact - this is the primary diagnostic tool to identify STEMI",
+          "priority": "critical",
+          "rationale": "Protocol explicitly states 12-lead within 10 minutes of contact. Performance measure.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "iv-access-2",
+          "action": "Establish two large-bore IV lines (18 g preferred); saline lock both",
+          "priority": "critical",
+          "rationale": "Reliable vascular access is required for analgesia, antiarrhythmics, fluids, and pressors if hemodynamics deteriorate.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "asa",
+          "action": "Administer Aspirin 324 mg PO (4 chewable 81 mg tablets) - chewed and swallowed; document time given regardless of his daily 81 mg",
+          "priority": "critical",
+          "rationale": "Aspirin reduces mortality in ACS. Daily 81 mg is not the same as the loading dose - give the full 324 mg unless contraindicated.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "blood-glucose",
+          "action": "Check blood glucose; ACS patients with diabetes can have atypical or masked symptoms",
+          "priority": "important",
+          "rationale": "Routine workup; hypoglycemia can mimic or coexist with ACS.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "pde5-screen",
+          "action": "Explicitly screen patient and wife for any phosphodiesterase-5 inhibitor use (sildenafil, tadalafil, vardenafil, etc.) within the past 48 hours; also ask about IV epoprostenol/treprostinil for pulmonary hypertension - BEFORE administering nitroglycerin",
+          "priority": "critical",
+          "rationale": "PDE5 inhibitors within 48 hours are an absolute contraindication to nitrates due to risk of profound refractory hypotension.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "history-detail",
+          "action": "Obtain focused history (OPQRST + cardiac risk factors); document time of onset, character, radiation, associated symptoms, and exacerbating/relieving factors",
+          "priority": "important",
+          "rationale": "Time of onset is a key documentation element for STEMI care - drives the door-to-balloon decision.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "stemi-identified",
+          "condition": "12-lead acquired and Inferior STEMI pattern recognized (ST elevation II, III, aVF with reciprocal depression I, aVL)",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["12-lead-asap"]
+        },
+        {
+          "targetPhaseId": "branch-ntg-no-screen",
+          "condition": "Nitroglycerin given without PDE5 inhibitor screen - patient reveals sildenafil use last night, profound hypotension follows",
+          "conditionType": "action_not_taken"
+        }
+      ]
+    },
+    {
+      "id": "stemi-identified",
+      "name": "Inferior STEMI Identified - FONA Bundle and STEMI Activation",
+      "description": "The 12-lead ECG demonstrates ST elevation in II, III, and aVF (~3 mm) with reciprocal depression in I and aVL - inferior STEMI. The crew acquires a right-sided V4R lead which shows minimal ST elevation (<1 mm) - no significant RV involvement. ASA has been given. PDE5 screen is negative. The crew now completes the FONA bundle: Fentanyl for pain (since pain persists despite NTG), Oxygen titrated, Nitroglycerin SL since BP is supportive (152/92) and no RV STEMI, and STEMI activation/transmission to the receiving PCI center.",
+      "triggerCondition": "12-lead acquired showing inferior STEMI with negative PDE5 screen",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": { "eye": 4, "verbal": 5, "motor": 6 },
+        "airway": "Patent.",
+        "breathing": "RR 22.",
+        "circulation": "BP supportive, strong pulses.",
+        "skin": { "color": "ashen, pale", "temperature": "cool", "moisture": "diaphoretic" },
+        "pupils": "PERRL 3 mm.",
+        "motorFunction": "Symmetric, full strength.",
+        "otherFindings": [
+          "12-lead: ST elevation 3 mm in II, III, aVF; reciprocal depression in I and aVL - INFERIOR STEMI",
+          "V4R lead acquired: minimal ST elevation (<1 mm) - no significant RV involvement",
+          "Pain unchanged at 8/10 despite ASA",
+          "Patient anxious about diagnosis, asking 'Am I going to be okay?'",
+          "Wife calling family members"
+        ],
+        "patientSpeech": "'It's still bad. Maybe a little less. I'm scared.'"
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Inferior",
+        "ecgWaveform": 24,
+        "hr": 92,
+        "bpSys": 148,
+        "bpDia": 88,
+        "respRate": 20,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "glucose": 138,
+        "trendTimeSeconds": 25,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "stemi-recognize",
+          "action": "Recognize Inferior STEMI on 12-lead: ST elevation in II, III, aVF with reciprocal depression in I, aVL",
+          "priority": "critical",
+          "rationale": "Identification triggers STEMI activation and changes destination to a PCI-capable center.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "v4r-rv-check",
+          "action": "Acquire a right-sided V4R lead to assess for right ventricular involvement; document findings (V4R ST elevation > 1 mm = RV infarct - changes nitrate strategy)",
+          "priority": "critical",
+          "rationale": "Inferior STEMI is associated with RV infarction in up to 50% of cases. RV involvement makes patients preload-dependent and at risk for severe nitrate-induced hypotension.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "ntg",
+          "action": "Administer Nitroglycerin 0.4 mg sublingual (1 tablet or metered spray) - PDE5 negative, BP 148/88 (well above 100), no significant RV STEMI on V4R; reassess BP and pain in 3-5 minutes; may repeat 0.4 mg every 3-5 minutes for ongoing pain if SBP > 100",
+          "priority": "critical",
+          "rationale": "Per protocol, nitroglycerin is appropriate for ACS chest pain when SBP > 100 mmHg, no PDE5 inhibitor use, and no major RV involvement. The location of infarct (inferior) does not preclude nitrates - only severe RV involvement creates the hypotension risk.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "stemi-activation",
+          "action": "Activate the regional STEMI system: notify the closest PCI-capable hospital, transmit the 12-lead ECG, communicate ETA, initial vitals, FONA bundle status, and time of symptom onset",
+          "priority": "critical",
+          "rationale": "Field STEMI activation reduces door-to-balloon time. The cath lab team can be mobilized while the patient is en route.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "fentanyl-for-pain",
+          "action": "If chest pain persists at >= 4/10 after first NTG dose, administer Fentanyl 50-100 mcg IV slowly over 1-2 minutes (~0.5-1 mcg/kg for 92 kg patient); may repeat 25-50 mcg every 5-10 minutes",
+          "priority": "important",
+          "rationale": "Per protocol, opiates are an acceptable alternative when pain is unresponsive to nitrates. Fentanyl is preferred over morphine in unstable angina/NSTEMI due to morphine's mortality association, and has minimal hemodynamic effect.",
+          "protocolReference": "MATC: Pain Management"
+        },
+        {
+          "id": "antiemetic",
+          "action": "Administer Ondansetron 4 mg IV (or 4 mg ODT) for nausea associated with both the ACS and the fentanyl",
+          "priority": "supplemental",
+          "rationale": "Nausea is common in inferior MI (vagal tone) and as a side effect of fentanyl; treating it improves patient comfort.",
+          "protocolReference": "MATC: Nausea / Vomiting"
+        },
+        {
+          "id": "no-supplemental-O2-if-normoxic",
+          "action": "Do NOT continue high-flow oxygen if SpO2 is already 94-98%; titrate FiO2 downward; this patient is already at 96-97% on room air range",
+          "priority": "important",
+          "rationale": "Hyperoxia in ACS is associated with worse outcomes; target normoxia, not maximum SpO2.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "serial-12-lead",
+          "action": "Acquire a serial 12-lead ECG every 5-10 minutes en route or with any clinical change (worsening pain, new symptoms, rhythm change); transmit changes to receiving facility",
+          "priority": "important",
+          "rationale": "Evolving STEMI may show new lead involvement; non-diagnostic initial ECGs can become diagnostic with serial tracings.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "be-ready-for-arrest",
+          "action": "Maintain readiness for cardiac arrest: defib pads on, defibrillator powered on, pacing pads available; bradyarrhythmias and AV blocks are common in inferior MI",
+          "priority": "critical",
+          "rationale": "Inferior MI commonly produces bradyarrhythmias (RCA supplies the SA and AV node in most patients). Sudden VF is a known complication of any acute STEMI.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "post-fona-improving",
+          "condition": "FONA bundle completed (ASA given, NTG given with BP support, fentanyl titrated for pain), STEMI activation called, transport initiated to PCI center",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["asa", "ntg", "stemi-activation"]
+        },
+        {
+          "targetPhaseId": "branch-rv-stemi-hypotension",
+          "condition": "If V4R revealed RV STEMI and NTG was still given anyway, severe hypotension follows",
+          "conditionType": "action_taken"
+        }
+      ]
+    },
+    {
+      "id": "post-fona-improving",
+      "name": "FONA Complete - Pain Improving, Stable Transport",
+      "description": "After ASA, NTG (with appropriate screening), and fentanyl, the patient's pain has decreased to 3/10. Blood pressure remains supportive. The crew is en route to the regional PCI center with the 12-lead transmitted, STEMI alert active, and the patient comfortable on the stretcher. Vigilance is maintained for the known complications of inferior STEMI: bradyarrhythmias (especially second- and third-degree AV blocks), hypotension, and ventricular dysrhythmias.",
+      "triggerCondition": "FONA bundle delivered, pain improving, stable transport en route to PCI center",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": { "eye": 4, "verbal": 5, "motor": 6 },
+        "airway": "Patent.",
+        "breathing": "RR 16, comfortable, lungs clear.",
+        "circulation": "Strong pulses, capillary refill 2 seconds.",
+        "skin": { "color": "improving color, less pale", "temperature": "warming", "moisture": "drying" },
+        "pupils": "PERRL 3 mm.",
+        "motorFunction": "Symmetric, full strength.",
+        "otherFindings": [
+          "Pain decreased from 8/10 to 3/10",
+          "Diaphoresis resolving",
+          "Patient calmer, asking about wife and what to expect at the hospital",
+          "Serial 12-lead at 10 minutes shows persistent inferior STEMI without progression",
+          "Continuous monitoring shows no new ectopy or AV block"
+        ],
+        "patientSpeech": "'Pain's much better. Maybe a 3 now. Thank you. Where are we going?'"
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Inferior",
+        "ecgWaveform": 24,
+        "hr": 80,
+        "bpSys": 132,
+        "bpDia": 78,
+        "respRate": 16,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.7,
+        "obstruction": 0,
+        "glucose": 138,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "ongoing-vs",
+          "action": "Reassess full vitals (HR, BP, RR, SpO2, EtCO2) every 5 minutes en route; check pain score; document trends",
+          "priority": "critical",
+          "rationale": "Standard reassessment cadence for high-risk cardiac patient.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "ntg-repeat",
+          "action": "Repeat Nitroglycerin 0.4 mg SL every 3-5 minutes for ongoing pain if SBP remains > 100 mmHg; reassess BP before each dose",
+          "priority": "important",
+          "rationale": "Pain reduction continues with serial NTG dosing while monitoring BP.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "fentanyl-prn",
+          "action": "Administer additional Fentanyl 25-50 mcg IV every 5-10 minutes for breakthrough pain >= 4/10 despite NTG; monitor respiratory drive and BP",
+          "priority": "important",
+          "rationale": "Pain control is part of ACS care; breakthrough doses should be small and titrated.",
+          "protocolReference": "MATC: Pain Management"
+        },
+        {
+          "id": "watch-for-block",
+          "action": "Vigilantly monitor for new bradyarrhythmias or AV blocks (1st degree, Mobitz I, Mobitz II, complete heart block) - common in RCA-territory inferior MI; have pacer pads available and atropine drawn up",
+          "priority": "critical",
+          "rationale": "Inferior MI commonly affects the AV node territory; new heart block can develop suddenly.",
+          "protocolReference": "MATC: Bradycardia"
+        },
+        {
+          "id": "watch-for-rv-evolving",
+          "action": "If BP suddenly drops with NTG dosing, suspect evolving RV involvement; hold further NTG, give 250-500 mL Normal Saline IV bolus, repeat V4R, and notify receiving facility",
+          "priority": "critical",
+          "rationale": "Evolving RV ischemia can develop after presentation; preload support with fluids reverses NTG-induced hypotension.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "maintain-readiness",
+          "action": "Maintain defibrillator readiness: pads on, monitor on, AED/defib mode auto-alert active, 200 J biphasic ready",
+          "priority": "critical",
+          "rationale": "Sudden VF/VT is a known complication; pre-readiness saves time.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "smooth-handoff",
+          "action": "At PCI center: bypass ED triage per local STEMI protocol if applicable, go directly to cath lab door; structured SBAR handoff including time of onset, FONA bundle (times and doses), serial 12-leads, current vitals, pain score, current rhythm",
+          "priority": "critical",
+          "rationale": "Door-to-balloon time is the key STEMI performance measure; smooth handoff supports the cath team.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "branch-ntg-no-screen",
+      "name": "Branch - NTG Given Without PDE5 Screen - Profound Hypotension",
+      "description": "The crew administered nitroglycerin without an explicit PDE5 inhibitor screen. After the dose, the patient becomes lightheaded and the BP crashes to SBP 62. The wife now mentions 'oh, he took one of those Viagra last night.' The patient has profound nitrate-induced hypotension. The crew must lay him flat, run wide-open IV fluids, and consider push-dose epinephrine. This branch teaches the absolute necessity of explicit screening before giving nitrates.",
+      "triggerCondition": "NTG administered without explicit PDE5 inhibitor screen, profound hypotension follows",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": { "eye": 3, "verbal": 4, "motor": 5 },
+        "airway": "Patent but at risk if BP collapses further.",
+        "breathing": "RR 26, shallow.",
+        "circulation": "Carotid weak, radial absent. Skin cold, mottling at extremities.",
+        "skin": { "color": "mottled, dusky", "temperature": "cold", "moisture": "diaphoretic" },
+        "pupils": "PERRL 4 mm, slightly dilated.",
+        "motorFunction": "Weak, sluggish.",
+        "otherFindings": [
+          "Patient now near-syncopal, eyes rolling back briefly",
+          "Wife reports sildenafil 50 mg taken last night for ED - within 24 hours of NTG",
+          "BP crashed precipitously",
+          "Pain still present but obscured by hypotension"
+        ],
+        "patientSpeech": "'Lightheaded... gonna pass out... gonna pass...'"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 62,
+        "bpDia": 38,
+        "respRate": 26,
+        "spo2": 92,
+        "etco2": 28,
+        "temp": 36.6,
+        "obstruction": 0,
+        "glucose": 138,
+        "trendTimeSeconds": 20,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "supine",
+          "action": "Lay the patient supine immediately, elevate the legs to ~45 degrees if tolerated, to support cerebral perfusion",
+          "priority": "critical",
+          "rationale": "Trendelenburg/legs-up improves cerebral perfusion in profound hypotension.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "stop-ntg",
+          "action": "Hold any further nitroglycerin doses; do NOT give more nitrates",
+          "priority": "critical",
+          "rationale": "Continuing nitrates in this state is dangerous.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "rapid-fluids",
+          "action": "Run Normal Saline 1000 mL IV wide open through both IV lines (4-6 mL/kg as a quick rule); reassess BP every 2-3 minutes",
+          "priority": "critical",
+          "rationale": "Volume support reverses preload reduction from NTG; the half-life of NTG is short (~3-5 minutes).",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "push-dose-epi",
+          "action": "Prepare and administer Epinephrine push-dose: 10 mcg/mL (1 mL of 0.1 mg/mL epinephrine in 9 mL NS); give 10-20 mcg (1-2 mL) IV every 2-5 minutes titrated to MAP > 65",
+          "priority": "critical",
+          "rationale": "If fluids alone do not restore perfusion within 2-3 minutes, push-dose epinephrine restores BP through alpha and beta-1 effects.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "lesson-learned",
+          "action": "Note for debrief: PDE5 inhibitor screening is mandatory and explicit (sildenafil/Viagra, tadalafil/Cialis, vardenafil/Levitra) - not 'have you taken anything that interacts'. Patients often do not volunteer this without direct questioning. Ask BOTH the patient AND a partner",
+          "priority": "supplemental",
+          "rationale": "Patients with ED prescriptions may not consider the medication 'important' enough to mention.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "branch-rv-stemi-hypotension",
+      "name": "Branch - RV STEMI with NTG-Induced Hypotension",
+      "description": "V4R was acquired and showed >2 mm ST elevation indicating RV involvement, but NTG was given anyway. The patient's right ventricle is preload-dependent and unable to accept the NTG-induced reduction in venous return. SBP drops precipitously. The crew must recognize the RV physiology, stop NTG, give aggressive fluid resuscitation, and consider chronotropic/inotropic support.",
+      "triggerCondition": "RV STEMI on V4R was identified or missed and NTG was given anyway, hypotension follows",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": { "eye": 4, "verbal": 5, "motor": 6 },
+        "airway": "Patent.",
+        "breathing": "RR 24.",
+        "circulation": "Carotid present but weak; radial weak.",
+        "skin": { "color": "ashen, more pale", "temperature": "cool", "moisture": "diaphoretic" },
+        "pupils": "PERRL 3 mm.",
+        "motorFunction": "Symmetric.",
+        "otherFindings": [
+          "BP dropped from 152/92 to 84/52 after one NTG dose",
+          "Patient lightheaded, pale",
+          "V4R now confirmed: 3 mm ST elevation - RV STEMI",
+          "Inferior STEMI + RV STEMI: classic preload-dependent state"
+        ],
+        "patientSpeech": "'I feel really lightheaded. Like I might pass out.'"
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Inferior",
+        "ecgWaveform": 24,
+        "hr": 88,
+        "bpSys": 84,
+        "bpDia": 52,
+        "respRate": 24,
+        "spo2": 95,
+        "etco2": 32,
+        "temp": 36.7,
+        "obstruction": 0,
+        "glucose": 138,
+        "trendTimeSeconds": 25,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "stop-ntg-rv",
+          "action": "Hold further nitroglycerin; recognize RV STEMI physiology - the right ventricle is preload-dependent and intolerant of nitrate-induced venodilation",
+          "priority": "critical",
+          "rationale": "Pathophysiology of RV infarct: stiff, dysfunctional RV requires high preload to maintain LV filling.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "fluids-rv",
+          "action": "Give Normal Saline 500-1000 mL IV bolus rapidly; reassess BP and lung sounds every 250 mL",
+          "priority": "critical",
+          "rationale": "Fluid loading restores RV preload and LV filling; lungs typically remain clear because the LV is functional.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "supine-rv",
+          "action": "Position the patient supine with legs slightly elevated",
+          "priority": "important",
+          "rationale": "Improves preload.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "pressors-rv",
+          "action": "If BP remains < 90 after 1000 mL NS, initiate push-dose Epinephrine 10-20 mcg IV every 2-5 minutes titrated to MAP > 65 OR Norepinephrine 0.02-0.4 mcg/kg/min IV titrated to MAP > 65",
+          "priority": "critical",
+          "rationale": "Inotropic and vasopressor support may be needed when fluids alone are insufficient.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "no-more-ntg-this-call",
+          "action": "Document and verbally communicate that NO further nitrates should be given to this patient on this call - including by hospital staff during handoff",
+          "priority": "critical",
+          "rationale": "Receiving team needs to know the patient has demonstrated nitrate intolerance from RV physiology.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "lesson-rv",
+          "action": "Note for debrief: V4R is mandatory in inferior STEMI evaluation; RV involvement changes nitrate decisions. Even without V4R, hypotension after NTG in inferior STEMI strongly suggests RV involvement",
+          "priority": "supplemental",
+          "rationale": "Pattern recognition is the safety net even when V4R is not acquired.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        }
+      ],
+      "transitions": []
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Recognize ACS-pattern chest pain (substernal pressure, radiation, diaphoresis, dyspnea) and initiate ACS protocol",
+      "Acquire 12-lead ECG within 10 minutes of patient contact",
+      "Identify Inferior STEMI on 12-lead (ST elevation II, III, aVF with reciprocal depression I, aVL)",
+      "Acquire a right-sided V4R lead to assess for RV involvement before giving nitrates",
+      "Establish two large-bore IV lines",
+      "Administer Aspirin 324 mg PO chewed (4 chewable 81 mg tablets) regardless of daily 81 mg dose",
+      "Explicitly screen for phosphodiesterase-5 inhibitor use (sildenafil, tadalafil, vardenafil) within 48 hours BEFORE administering nitroglycerin",
+      "Administer Nitroglycerin 0.4 mg SL only if SBP > 100, no PDE5 use, and no major RV STEMI; may repeat every 3-5 minutes",
+      "Administer Fentanyl 50-100 mcg IV slowly for ongoing pain unrelieved by nitrates",
+      "Activate the regional STEMI system: notify the closest PCI-capable hospital and transmit the 12-lead ECG",
+      "Place defibrillator pads prophylactically and maintain readiness for VT/VF or new AV block",
+      "If hypotension develops after NTG, lay supine, hold further NTG, give fluids, consider push-dose epinephrine",
+      "Provide structured SBAR handoff at the cath lab door with time of symptom onset, FONA bundle status, serial 12-leads"
+    ],
+    "expectedActions": [
+      "Position the patient in a position of comfort (semi-Fowler's) and minimize physical exertion",
+      "Apply oxygen titrated to SpO2 94-98% (do NOT hyperoxygenate)",
+      "Check blood glucose",
+      "Obtain a complete medication history including phosphodiesterase-5 inhibitors and any anticoagulants",
+      "Acquire serial 12-lead ECGs every 5-10 minutes en route or with any clinical change",
+      "Administer Ondansetron 4 mg IV/ODT for nausea",
+      "Document time of symptom onset, time of patient contact, time of 12-lead acquisition, time of STEMI activation, time of ASA, time of NTG, time of fentanyl",
+      "Vigilantly monitor for bradyarrhythmias and new AV blocks - common in inferior MI"
+    ],
+    "bonusActions": [
+      "Use the FONA mnemonic (Fentanyl, Oxygen, Nitroglycerin, Aspirin) as a cognitive checklist for ACS care",
+      "Acquire a posterior 15-lead (V7-V9) if there is significant inferior STEMI or any reciprocal anterior depression",
+      "Consider field activation of the cath lab via direct-to-cath protocol if available locally - bypasses ED triage",
+      "Counsel patient and family on what to expect at the PCI center (cath lab, possible PCI, length of admission)",
+      "Acquire all serial 12-leads digitally and ensure all are transmitted/printed for the receiving cath team"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Apply the FONA bundle (Fentanyl, Oxygen, Nitroglycerin, Aspirin) as a cognitive checklist for ACS",
+      "Acquire a 12-lead ECG within 10 minutes of patient contact - the primary diagnostic tool for STEMI",
+      "Identify Inferior STEMI on 12-lead (ST elevation II, III, aVF with reciprocal depression I, aVL)",
+      "Always acquire V4R in inferior STEMI to evaluate for RV involvement; >1 mm STE in V4R = RV infarct = nitrate caution",
+      "Verbalize the absolute contraindication to nitroglycerin within 48 hours of phosphodiesterase-5 inhibitors",
+      "Apply the Aspirin loading rule: 324 mg PO chewed even if the patient takes daily 81 mg - the dose is what matters",
+      "Choose Fentanyl over Morphine in unstable angina/NSTEMI given morphine's mortality association",
+      "Activate the regional STEMI system from the field and transmit the 12-lead ECG",
+      "Recognize that inferior STEMI commonly produces bradyarrhythmias and AV blocks - have atropine and pacer pads ready",
+      "Differentiate between PDE5-induced hypotension and RV-STEMI-induced hypotension, both of which respond to fluids; the former resolves over 30 minutes as NTG is metabolized"
+    ],
+    "discussionQuestions": [
+      "What is FONA? Why is it useful as a cognitive bundle, and what would you add to it locally?",
+      "Walk through the 12-lead findings of an inferior STEMI. Why do reciprocal changes in I and aVL increase your confidence in the diagnosis?",
+      "Why is V4R essential in inferior STEMI, and what changes if it is positive for RV involvement?",
+      "Compare the time course of recovery from PDE5-induced hypotension vs RV-STEMI-induced hypotension. Both are treated with fluids; what is different?",
+      "Why is high-flow oxygen contraindicated in normoxic ACS patients?",
+      "What is the rationale for choosing fentanyl over morphine in this patient?",
+      "How would you respond if the wife mentioned 'he took a pill last night' AFTER you had already given NTG?"
+    ],
+    "commonPitfalls": [
+      "Giving nitroglycerin without explicitly asking about phosphodiesterase-5 inhibitors",
+      "Failing to acquire V4R in inferior STEMI and missing RV involvement",
+      "Continuing high-flow oxygen in a normoxic ACS patient (hyperoxia worsens outcomes)",
+      "Skipping aspirin because the patient takes daily 81 mg - the loading dose is what matters",
+      "Choosing morphine over fentanyl in unstable angina/NSTEMI",
+      "Failing to acquire a 12-lead within 10 minutes of patient contact",
+      "Letting an actively ischemic patient walk to the ambulance - worsens myocardial oxygen demand",
+      "Not pre-positioning defib pads in a high-risk ACS patient",
+      "Forgetting to transmit the 12-lead to the receiving cath lab"
+    ],
+    "keyTakeaways": [
+      "12-lead within 10 minutes - the protocol-mandated time-to-ECG performance measure",
+      "FONA: Fentanyl (for pain), Oxygen (titrated to 94-98%), Nitroglycerin (after PDE5 screen and BP check), Aspirin (324 mg chewed)",
+      "Inferior STEMI: II, III, aVF with reciprocal I, aVL - always acquire V4R for RV involvement",
+      "PDE5 screen is non-negotiable before any nitrate",
+      "Field STEMI activation reduces door-to-balloon time",
+      "Inferior MI: be ready for bradyarrhythmias, AV blocks, and sudden VF/VT"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

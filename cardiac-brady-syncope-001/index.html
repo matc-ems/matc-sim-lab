@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Symptomatic Bradycardia with Syncope - Atropine Fails, TCP Required</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#f4f3f0;--card:#fff;--card-border:#e8e6e1;--text:#1c1917;--text-secondary:#57534e;--text-muted:#a8a29e;--green:#16a34a;--green-light:#f0fdf4;--green-border:#bbf7d0;--red:#dc2626;--red-light:#fef2f2;--red-border:#fecaca;--orange:#ea580c;--orange-light:#fff7ed;--orange-border:#fed7aa;--blue:#2563eb;--blue-light:#eff6ff;--purple:#7c3aed;--cyan:#0891b2;--yellow:#ca8a04;--radius:14px;--radius-sm:10px;--shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100dvh;overflow-x:hidden}
+.top-bar{background:var(--card);padding:16px 20px 0;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--card-border)}
+.scenario-name{font-size:17px;font-weight:700;margin-bottom:4px}
+.scenario-tags{display:flex;gap:6px;margin-bottom:14px}
+.tag{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px}
+.tag-difficulty{background:var(--orange-light);color:var(--orange)}
+.tag-category{background:var(--blue-light);color:var(--blue)}
+.tag-time{background:#f5f5f4;color:var(--text-muted)}
+.phase-strip{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}
+.phase-strip::-webkit-scrollbar{display:none}
+.phase-tab{flex-shrink:0;font-size:13px;font-weight:600;padding:10px 16px;color:var(--text-muted);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;position:relative}
+.phase-tab.active{color:var(--text);border-bottom-color:var(--text)}
+.phase-tab.branch{color:var(--red);opacity:.5}
+.phase-tab.branch.active{opacity:1;border-bottom-color:var(--red)}
+.phase-tab .hint-dot{display:none;width:7px;height:7px;border-radius:50%;position:absolute;top:6px;right:4px}
+.phase-tab.hint-next .hint-dot{display:block;background:var(--green);animation:pulse-hint 1.5s infinite}
+.phase-tab.hint-branch .hint-dot{display:block;background:var(--red);animation:pulse-hint 1s infinite}
+@keyframes pulse-hint{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.content{padding:16px;max-width:600px;margin:0 auto}
+.panel{display:none}.panel.active{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);padding:14px 16px 10px}
+.card-content{padding:0 16px 16px}
+.accordion{cursor:pointer;user-select:none}
+.accordion .card-title{display:flex;justify-content:space-between;align-items:center;padding:16px}
+.accordion .card-title::after{content:'＋';font-size:16px;color:var(--text-muted)}
+.accordion.open .card-title::after{content:'−'}
+.accordion .accordion-body{display:none;padding:0 16px 16px}
+.accordion.open .accordion-body{display:block}
+.scene-row{padding:8px 0;border-bottom:1px solid #f5f5f4}.scene-row:last-child{border-bottom:none}
+.scene-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.scene-value{font-size:14px;color:var(--text-secondary)}
+.cue-list{list-style:none}.cue-list li{font-size:14px;color:var(--text-secondary);padding:4px 0 4px 16px;position:relative}.cue-list li::before{content:'→';position:absolute;left:0;color:var(--text-muted);font-size:12px}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.sample-cell{background:var(--card);padding:12px}.sample-cell.full{grid-column:1/-1}
+.sample-letter{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--green);margin-right:4px}
+.sample-name{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:4px}
+.sample-text{font-size:13px;color:var(--text-secondary);line-height:1.4}
+.patient-chips{display:flex;flex-wrap:wrap;gap:8px}
+.patient-chip{font-size:13px;padding:6px 12px;background:#f5f5f4;border-radius:8px;color:var(--text-secondary)}
+.patient-chip strong{color:var(--text);font-weight:600}
+.phase-card{border-left:4px solid var(--text)}.phase-card.branch-card{border-left-color:var(--red)}
+.phase-card .card-content{padding:16px}
+.phase-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.phase-trigger{font-family:'DM Mono',monospace;font-size:11px;color:var(--yellow);margin-bottom:8px}
+.phase-desc{font-size:14px;color:var(--text-secondary);line-height:1.5}
+.vitals-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.vital-cell{background:var(--card);padding:10px 8px;text-align:center}.vital-cell.full-width{grid-column:1/-1}
+.vital-name{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.vital-val{font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:var(--text);line-height:1.1}
+.vital-unit{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted)}
+.vital-cell.alert .vital-val{color:var(--red)}.vital-cell.alert .vital-name{color:var(--red)}.vital-cell.alert{background:var(--red-light)}
+.vital-cell.warn .vital-val{color:var(--orange)}.vital-cell.warn .vital-name{color:var(--orange)}.vital-cell.warn{background:var(--orange-light)}
+.ecg-label{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-secondary);padding:8px 12px;background:#fafaf9;border-bottom:1px solid #f0efec;border-radius:var(--radius-sm) var(--radius-sm) 0 0}
+.avpu-bar{display:flex;border-radius:8px;overflow:hidden;margin-bottom:12px;border:1px solid var(--card-border)}
+.avpu-seg{flex:1;text-align:center;padding:8px 4px;font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--text-muted);background:#fafaf9}
+.avpu-seg.sel-a{background:var(--green-light);color:var(--green);border:1px solid var(--green-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-v{background:var(--orange-light);color:var(--yellow);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-p{background:var(--orange-light);color:var(--orange);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-u{background:var(--red-light);color:var(--red);border:1px solid var(--red-border);margin:-1px;border-radius:8px}
+.gcs-row{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-secondary);margin-bottom:14px;text-align:center}
+.gcs-total{font-size:18px;font-weight:700;color:var(--text)}
+.finding-row{padding:10px 0;border-bottom:1px solid #f5f5f4}.finding-row:last-child{border-bottom:none}
+.finding-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:3px}
+.finding-value{font-size:14px;color:var(--text-secondary)}.finding-value.danger{color:var(--red);font-weight:600}.finding-value.improving{color:var(--green)}.finding-value.speech{font-style:italic;color:var(--text-muted)}
+.skin-chips{display:flex;gap:6px;flex-wrap:wrap}
+.skin-chip{font-size:12px;padding:3px 10px;border-radius:6px;background:#f5f5f4;color:var(--text-secondary)}.skin-chip.warn{background:var(--red-light);color:var(--red)}
+.findings-notes{list-style:none}.findings-notes li{font-size:13px;color:var(--text-secondary);padding:3px 0 3px 14px;position:relative}.findings-notes li::before{content:'·';position:absolute;left:2px;font-weight:700;color:var(--text-muted)}.findings-notes li.danger{color:var(--red)}
+.action-card{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4}.action-card:last-child{border-bottom:none}
+.action-check{width:18px;height:18px;flex-shrink:0;cursor:pointer;accent-color:var(--green)}
+.action-body{flex:1}
+.action-priority{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.p-critical{color:var(--red)}.p-important{color:var(--orange)}
+.action-text{font-size:14px;color:var(--text);font-weight:500}
+.action-chevron{color:var(--text-muted);font-size:14px;transition:transform .2s;flex-shrink:0}
+.action-card.open .action-chevron{transform:rotate(90deg)}
+.action-detail{display:none;padding:0 14px 14px 46px}.action-card.open .action-detail{display:block}
+.action-rationale{font-size:13px;color:var(--text-secondary);line-height:1.5;padding:10px 12px;background:#fafaf9;border-radius:8px;border-left:3px solid var(--card-border)}
+.action-ref{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);margin-top:6px}
+.branch-alert{background:var(--red-light);border:1px solid var(--red-border);border-radius:var(--radius);padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
+.branch-alert-icon{font-size:18px;flex-shrink:0}
+.branch-alert-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:2px}
+.branch-alert-text{font-size:13px;color:var(--text-secondary)}
+.assess-group-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:10px 16px}
+.assess-critical .assess-group-title{color:var(--red)}.assess-expected .assess-group-title{color:var(--orange)}
+.assess-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);cursor:pointer}
+.assess-check{width:22px;height:22px;border:2px solid #d6d3d1;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.assess-check.done{background:var(--green);border-color:var(--green)}.assess-check.done::after{content:'✓';font-size:12px;color:#fff;font-weight:700}
+.debrief-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:14px 16px 10px}
+.debrief-item{padding:10px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);line-height:1.5;display:flex;gap:10px}
+.debrief-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--text-muted);flex-shrink:0;min-width:20px;padding-top:2px}
+.bottom-spacer{height:80px}
+@media print{.top-bar{position:static}.panel{display:flex!important;flex-direction:column;gap:12px;page-break-inside:avoid;margin-bottom:20px}.accordion .accordion-body{display:block!important}.action-detail{display:block!important}}
+
+.action-priority{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+.priority-critical{background:var(--red-light,#fef2f2);color:var(--red,#dc2626)}
+.priority-important{background:var(--orange-light,#fff7ed);color:var(--orange,#ea580c)}
+.priority-supplemental{background:#f5f5f4;color:var(--text-muted,#a8a29e)}
+.action-check{width:18px;height:18px;flex-shrink:0}
+.top-bar-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.timer-widget{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+#timer-display{font-family:'DM Mono',monospace;font-size:20px;font-weight:700;color:var(--text-muted,#a8a29e);font-variant-numeric:tabular-nums;line-height:1}
+.timer-controls{display:flex;gap:4px}
+.timer-btn{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;border:1px solid var(--card-border,#e8e6e1);background:var(--card,#fff);color:var(--text-secondary,#57534e);cursor:pointer;line-height:1.4}
+.timer-btn:hover{background:#f5f5f4}
+.timer-btn-stop{border-color:var(--red-border,#fecaca);color:var(--red,#dc2626)}
+.timer-btn-stop:hover{background:var(--red-light,#fef2f2)}
+.timer-btn-restart{border-color:var(--blue,#2563eb);color:var(--blue,#2563eb)}
+.timer-btn-restart:hover{background:var(--blue-light,#eff6ff)}
+.gcs-detail{margin-top:10px}
+.gcs-item{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid #f5f5f4}
+.gcs-item:last-of-type{border-bottom:none}
+.gcs-part{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted,#a8a29e);min-width:52px;flex-shrink:0}
+.gcs-desc{flex:1;font-size:13px;color:var(--text-secondary,#57534e)}
+.gcs-score{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--text,#1c1917);min-width:20px;text-align:right;flex-shrink:0}
+.gcs-total-row{display:flex;justify-content:flex-end;align-items:baseline;gap:8px;padding-top:10px;margin-top:6px;border-top:1px solid var(--card-border,#e8e6e1);font-family:'DM Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted,#a8a29e)}
+.gcs-total-row .gcs-total{font-family:'DM Mono',monospace;font-size:18px;font-weight:700;color:var(--text,#1c1917)}
+#timer-display.timer-warn{color:var(--orange,#ea580c)}
+#timer-display.timer-danger{color:var(--red,#dc2626)}
+.debrief-phase-card{overflow:hidden}
+.debrief-phase-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px}
+.debrief-phase-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score.score-perfect{color:var(--green,#16a34a)}
+.debrief-phase-score.score-none{color:var(--red,#dc2626)}
+.debrief-phase-body{padding:0 16px 14px}
+.debrief-done-section{background:var(--green-light,#f0fdf4);border:1px solid var(--green-border,#bbf7d0);border-radius:var(--radius-sm,10px);padding:6px 12px;margin-bottom:10px}
+.debrief-done-row{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px;color:var(--green,#16a34a)}
+.debrief-done-icon{font-weight:700;flex-shrink:0;font-size:12px}
+.debrief-done-text{color:var(--text-secondary,#57534e)}
+.debrief-missed-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red,#dc2626);padding:4px 0 8px}
+.debrief-missed-row{background:var(--red-light,#fef2f2);border:1px solid var(--red-border,#fecaca);border-radius:var(--radius-sm,10px);padding:10px 12px;margin-bottom:6px}
+.debrief-missed-row:last-child{margin-bottom:0}
+.debrief-missed-top{display:flex;align-items:center;gap:8px}
+.debrief-missed-text{font-size:14px;font-weight:600;color:var(--text,#1c1917)}
+.debrief-missed-detail{padding:6px 0 0 0;margin-top:6px;border-top:1px solid var(--red-border,#fecaca)}
+.debrief-missed-rationale{font-size:12px;color:var(--text-secondary,#57534e);line-height:1.4}
+.debrief-missed-protocol{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue,#2563eb);margin-top:2px}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-header">
+    <div>
+      <div class="scenario-name">Symptomatic Bradycardia with Syncope - Atropine Fails, TCP Required</div>
+      <div class="scenario-tags">
+        <span class="tag tag-difficulty">intermediate</span>
+        <span class="tag tag-category">Cardiac</span>
+      </div>
+    </div>
+    <div class="timer-widget" id="scenario-timer" data-total="1500">
+      <span id="timer-display">25:00</span>
+      <div class="timer-controls">
+        <button id="timer-start" class="timer-btn" onclick="timerStart()">start</button>
+        <button id="timer-pause" class="timer-btn" onclick="timerPause()" style="display:none">pause</button>
+        <button id="timer-stop" class="timer-btn timer-btn-stop" onclick="timerStop()" style="display:none">stop</button>
+        <button id="timer-reset" class="timer-btn" onclick="timerReset()" style="display:none">reset</button>
+        <button class="timer-btn timer-btn-restart" onclick="scenarioRestart()" title="Restart scenario — clears checkboxes and timer">↻ restart</button>
+      </div>
+    </div>
+  </div>
+  <div class="phase-strip">
+    <div class="phase-tab active" data-panel="scene" onclick="showPanel(this, 'scene')">Scene</div>
+    <div class="phase-tab" data-panel="phase-initial" onclick="showPanel(this, 'phase-initial')">Initial Presentation - Symptomatic Bradycardia After Syncope</div>
+    <div class="phase-tab" data-panel="phase-atropine-trial" onclick="showPanel(this, 'phase-atropine-trial')">Atropine Trial - No Response (Third-Degree Block)</div>
+    <div class="phase-tab" data-panel="phase-tcp-capture" onclick="showPanel(this, 'phase-tcp-capture')">Transcutaneous Pacing - Electrical and Mechanical Capture</div>
+    <div class="phase-tab" data-panel="phase-transport-stable" onclick="showPanel(this, 'phase-transport-stable')">Stable on TCP - Transport to ED</div>
+    <div class="phase-tab branch" data-panel="phase-branch-skip-atropine-direct-pace" onclick="showPanel(this, 'phase-branch-skip-atropine-direct-pace')">Branch - Skip Atropine, Pace Immediately</div>
+    <div class="phase-tab branch" data-panel="phase-branch-pacing-no-sedation" onclick="showPanel(this, 'phase-branch-pacing-no-sedation')">Branch - TCP Initiated Without Sedation/Analgesia</div>
+    <div class="phase-tab" data-panel="debrief" onclick="showPanel(this, 'debrief')">Debrief</div>
+  </div>
+</div>
+<div class="content">
+  
+<div class="panel active" id="panel-scene">
+  <div class="card">
+    <div class="card-title">Dispatch</div>
+    <div class="card-content" style="font-size:14px;color:var(--text-secondary)">Respond priority 1 to a private residence for a 74-year-old female with a syncopal episode. Patient is now awake but feels weak. Daughter on scene with her.</div>
+  </div>
+  <div class="card accordion open" onclick="this.classList.toggle('open')">
+    <div class="card-title">Scene Setup</div>
+    <div class="accordion-body">
+      <div class="scene-row"><div class="scene-label">Location</div><div class="scene-value">Single-story private residence, kitchen / dining area. Patient seated in a kitchen chair with daughter at her side. Adequate lighting. Comfortable indoor temperature. Wide hallways adequate for stretcher.</div></div>
+      <div class="scene-row"><div class="scene-label">Time</div><div class="scene-value">1014 hours, Wednesday morning</div></div>
+      <div class="scene-row"><div class="scene-label">Safety</div><div class="scene-value">Scene is safe. Small dog confined to a back room. No environmental hazards. Adequate space to work in the kitchen.</div></div>
+      <div class="scene-row"><div class="scene-label">Bystanders</div><div class="scene-value">Adult daughter (primary caregiver, lives nearby) is at bedside. She has the patient's medication list, recent cardiology notes, and is an excellent historian. She witnessed the syncopal event and provides time stamps.</div></div>
+      <div class="scene-row"><div class="scene-label">Visual Cues</div><ul class="cue-list"><li>Elderly female sitting in a kitchen chair, leaning back with eyes closed but rousable</li><li>Pale, diaphoretic skin</li><li>Cup of tea on the counter - water still warm</li><li>Walking cane next to the chair</li><li>No signs of head trauma or fall injuries</li><li>Daughter holding mother's hand, speaking softly to her</li><li>Medication bottles arranged neatly on the counter</li><li>Cardiology follow-up appointment card visible on the refrigerator</li></ul></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Patient Information</div>
+    <div class="card-content">
+      <div class="patient-chips">
+        <div class="patient-chip"><strong>Margaret &quot;Maggie&quot; O'Sullivan</strong></div>
+        <div class="patient-chip">74 years</div>
+        <div class="patient-chip">female</div>
+        <div class="patient-chip">150 lbs (68 kg)</div>
+        <div class="patient-chip">5'4"</div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-phase-initial">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Initial Presentation - Symptomatic Bradycardia After Syncope</div>
+      
+      <div class="phase-desc">Crew arrives to find a 74-year-old female who briefly lost consciousness and is now persistently bradycardic (HR low 30s), hypotensive (SBP 80s), and symptomatic with weakness, lightheadedness, vague chest pressure, and shortness of breath. The crew must recognize this as symptomatic bradycardia with hemodynamic instability - the patient meets the criteria for the Bradycardia protocol. The 12-lead ECG reveals third-degree (complete) heart block with a wide ventricular escape rhythm. This is a presentation where atropine is unlikely to work because the AV node is blocked - the protocol specifically calls out that third-degree block may not respond to atropine and may require chronotropic agents or pacing.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent and self-maintained. Speaks slowly but clearly.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Mildly tachypneic at rest, RR 22; speaks in short phrases. Bilateral breath sounds clear without rales. No accessory muscle use.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Carotid and femoral pulses present, slow and regular. Radial pulses weak and thready. Skin pale, cool, diaphoretic. Capillary refill 4-5 seconds in fingertips. No JVD. No peripheral edema.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">32</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">78/50</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">22</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">94</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">35</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.9</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Third Degree Heart Block</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pale</span><span class="skin-chip">cool</span><span class="skin-chip">diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm bilaterally.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Moves all 4 extremities; grip weak but symmetric. No focal neurologic deficit.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'I just got... so dizzy. I felt my heart slow way down... and I went out for a minute. I still feel awful.'"</div></div>
+      <ul class="findings-notes"><li>Patient appears tired and anxious</li><li>Reports the room 'spins' when she sits up further</li><li>States she can feel her heart 'pounding really hard but really slow'</li><li>Vague substernal pressure rated 3/10 - non-radiating, came on with the syncopal episode</li><li>No bowel or bladder incontinence with the syncopal event</li><li>No tongue laceration, no postictal confusion - this was not a seizure</li><li>Daughter confirms NO erectile dysfunction medications, no recreational drugs, no recent illness</li></ul>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">SAMPLE History</div>
+    <div class="card-content">
+      <div class="sample-grid">
+        <div class="sample-cell full"><span class="sample-letter">S</span><div class="sample-name">Signs/Symptoms</div><div class="sample-text">Brief loss of consciousness with subsequent weakness, dizziness, and chest heaviness; heart rate persistently in the low 30s</div></div>
+        <div class="sample-cell"><span class="sample-letter">A</span><div class="sample-name">Allergies</div><div class="sample-text">Sulfa - rash</div></div>
+        <div class="sample-cell"><span class="sample-letter">M</span><div class="sample-name">Medications</div><div class="sample-text">Lisinopril 20 mg PO daily, Atorvastatin 20 mg PO at bedtime, Acetaminophen 500 mg PO PRN for arthritis, Vitamin D 1000 IU PO daily</div></div>
+        <div class="sample-cell"><span class="sample-letter">P</span><div class="sample-name">Past Medical</div><div class="sample-text">Hypertension (well controlled historically), Hyperlipidemia, Mild aortic stenosis - last echo 1 year ago, moderate gradient, on cardiology follow-up, Osteoarthritis bilateral knees, No known coronary artery disease, no prior pacemaker</div></div>
+        <div class="sample-cell"><span class="sample-letter">L</span><div class="sample-name">Last Oral Intake</div><div class="sample-text">Toast and orange juice this morning at 0700; sips of water since</div></div>
+        <div class="sample-cell full"><span class="sample-letter">E</span><div class="sample-name">Events</div><div class="sample-text">Standing in the kitchen making tea when she felt lightheaded, slumped to the floor, brief LOC ~20-30 seconds witnessed by daughter. On the floor she was pale, breathing, with a weak pulse. She was helped back to a chair. She remains weak, diaphoretic, and complains of chest heaviness. Daughter called 911.</div></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="scene-bsi-primary" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Perform scene size-up, BSI, and primary survey (ABCDE); confirm scene safety; identify symptomatic bradycardia with hemodynamic compromise</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="position" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Position the patient supine with legs elevated to support cerebral perfusion if tolerated; if she cannot tolerate supine due to dyspnea, semi-Fowler's is acceptable</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="oxygen" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Apply oxygen via nasal cannula at 4 L/min titrated to SpO2 94-98%</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="monitor-12-lead" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Apply 4-lead cardiac monitor and acquire a 12-lead ECG; identify Third Degree (Complete) Heart Block - regular P waves at ~80 dissociated from a slow ventricular escape rhythm at 32</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="iv-access" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Establish two large-bore peripheral IVs (18 g preferred); saline lock both</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="blood-glucose" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Check blood glucose; treat hypoglycemia per protocol if &lt; 70 mg/dL with Dextrose 10% 250 mL (25 g) IV</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="history-meds" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Obtain SAMPLE history with attention to potential culprit medications: beta-blockers, calcium channel blockers, digoxin, clonidine - none in this patient. Confirm with daughter no new medications</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="fluid-bolus" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Administer Normal Saline 250-500 mL IV bolus for hypotension; reassess BP and lung sounds; may repeat once if BP remains low and lungs stay clear (caution given history of mild aortic stenosis)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="place-pacer-pads" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Apply transcutaneous pacing pads in anterior-posterior position prophylactically; do not yet initiate pacing - have it ready in case atropine fails</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-atropine-trial">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Atropine Trial - No Response (Third-Degree Block)</div>
+      <div class="phase-trigger">Atropine 1 mg IV administered with no rate response after 3-5 minutes</div>
+      <div class="phase-desc">The crew administered Atropine 1 mg IV. As is typical for third-degree heart block (where the AV node is the site of block and atropine acts above the block), the heart rate did not respond. The crew correctly recognizes this and continues per protocol with up to two more doses of atropine to a maximum of 3 mg total - while preparing for transcutaneous pacing or vasopressor escalation. The patient remains hypotensive and symptomatic.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Unchanged. RR 22.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Unchanged - HR persists in low 30s on monitor; BP remains low 80s systolic.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">34</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">80/52</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">22</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">95</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">35</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.9</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Third Degree Heart Block</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pale</span><span class="skin-chip">cool</span><span class="skin-chip">diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm bilaterally - no anticholinergic mydriasis given low dose.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'I still feel terrible... I don't think anything's changed.'"</div></div>
+      <ul class="findings-notes"><li>No change in heart rate or blood pressure after first 1 mg atropine - typical for third-degree block</li><li>Patient slightly more anxious due to ongoing symptoms</li><li>Daughter asks 'is the medicine working?' - good opportunity to explain stepwise approach</li><li>Pacer pads already applied in AP position from earlier preparation</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reassess-atropine" data-phase-id="atropine-trial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Reassess heart rate, blood pressure, and symptoms 3-5 minutes after Atropine 1 mg dose; document no response</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="atropine-second" data-phase-id="atropine-trial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Administer second dose of Atropine 1 mg IV (3-5 minutes after first); flush with 10-20 mL NS</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="recognize-failure" data-phase-id="atropine-trial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Recognize that atropine is unlikely to be effective in third-degree (complete) heart block - the protocol specifically states that 3rd degree block or denervated heart 'may not respond to atropine and in these cases, proceed quickly to chronotropic agents or transcutaneous pacing'</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="prepare-tcp" data-phase-id="atropine-trial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">While giving the second atropine, prepare the transcutaneous pacer: confirm pads in AP position, switch monitor to PACER mode, set rate at 80, start mA at 0 to titrate up</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="prepare-sedation-analgesia" data-phase-id="atropine-trial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Draw up sedation/analgesia for pacing: Midazolam 1-2 mg IV and Fentanyl 50-100 mcg IV available; do not push until pacing is initiated and capture confirmed</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="communicate-patient" data-phase-id="atropine-trial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Explain to the patient and her daughter that pacing will be used to keep the heart rate up; warn about the sensation (chest thumping, muscle twitching) and tell her she will receive medication for comfort</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-tcp-capture">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Transcutaneous Pacing - Electrical and Mechanical Capture</div>
+      <div class="phase-trigger">TCP initiated at rate 80, mA titrated to capture, both electrical and mechanical capture confirmed, sedation/analgesia given</div>
+      <div class="phase-desc">Atropine has been maxed at 3 mg total without effect. The crew initiates transcutaneous pacing at a rate of 80 with current titrated up from 0. At ~60 mA they observe consistent pacer spikes followed by wide QRS complexes - electrical capture. They confirm mechanical capture by palpating a femoral pulse synchronized with each pacer spike (NOT carotid - skeletal muscle twitching from TCP can mimic a carotid pulse). Blood pressure improves to SBP 102. The patient receives sedation (midazolam) and analgesia (fentanyl) and reports being much more comfortable. The crew now prepares for transport while maintaining capture.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 18, breathing more comfortably; lungs clear bilaterally.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Femoral pulse palpable and synchronized with each pacer spike. Skin warming and pinking centrally. Capillary refill 2-3 seconds.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">80</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">102/64</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">18</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">97</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Pacemaker Rhythm</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pink</span><span class="skin-chip">warming</span><span class="skin-chip">drying</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">All 4 extremities, symmetric.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'It's a strange feeling but I'm feeling better. Thank you.'"</div></div>
+      <ul class="findings-notes"><li>Pacer spike at 80/min with wide QRS following each spike - electrical capture confirmed</li><li>Femoral pulse synchronous with pacer at 80 - mechanical capture confirmed</li><li>Patient reports the chest thumping is uncomfortable but 'I feel a lot better than I did'</li><li>Mild facial grimacing during higher mA but tolerating after sedation/analgesia</li><li>Capture threshold ~60 mA, set 10-20 mA above threshold for safety margin</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="verify-electrical-capture" data-phase-id="tcp-capture">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Verify electrical capture: each pacer spike on the monitor is followed by a wide QRS complex; document the threshold mA</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="verify-mechanical-capture" data-phase-id="tcp-capture">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Verify mechanical capture by palpating a FEMORAL pulse (not carotid) synchronized with each pacer spike; consider also auscultating heart sounds or palpating right brachial</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="set-mA-above-threshold" data-phase-id="tcp-capture">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Set output 10-20 mA above the capture threshold to provide a safety margin; document final settings (rate 80, output ~75 mA in this case)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="midazolam" data-phase-id="tcp-capture">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Midazolam 1 mg IV slowly over 1-2 minutes (may repeat 1 mg every 3-5 minutes for ongoing distress; titrate to comfort and respiratory drive)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="fentanyl" data-phase-id="tcp-capture">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Administer Fentanyl 50 mcg IV slowly over 1-2 minutes (may repeat 25-50 mcg every 5-10 minutes for ongoing pain) for analgesia of the TCP discomfort</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reassess-bp" data-phase-id="tcp-capture">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Reassess blood pressure 1-2 minutes after capture; if SBP remains &lt; 90, administer Normal Saline 250-500 mL IV bolus and consider Epinephrine push-dose 10 mcg IV every 2 minutes titrated to MAP &gt; 65</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="prepare-transport" data-phase-id="tcp-capture">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Prepare for transport while maintaining pacer; do not move patient or transfer to stretcher until capture is verified after each movement step</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-transport-stable">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Stable on TCP - Transport to ED</div>
+      <div class="phase-trigger">Patient stable on TCP, en route to ED</div>
+      <div class="phase-desc">Patient is being transported to the closest cardiac-capable ED. Pacer is maintaining electrical and mechanical capture at rate 80, mA 75. SBP is 108, MAP &gt; 65, SpO2 97% on NC. Patient is comfortable and conversational. The crew continues vigilance for capture loss, monitors sedation level, and performs early notification with rhythm, paced rate/output, vital trend, and meds given.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent, self-maintained.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 16, lungs clear, NC at 4 L/min.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Strong femoral pulse synchronized with paced beats. Skin warm, pink, dry.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">80</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">108/66</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">16</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">97</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">38</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Pacemaker Rhythm</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pink</span><span class="skin-chip">warm</span><span class="skin-chip">dry</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric, full strength.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'Much better. Just tired now.' Full sentences."</div></div>
+      <ul class="findings-notes"><li>Pacer maintaining capture, no recent threshold change</li><li>Patient mildly drowsy from sedation but easily roused</li><li>No further chest pressure</li><li>Daughter following in personal vehicle</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="ongoing-capture-check" data-phase-id="transport-stable">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Continuously verify electrical capture (pacer spike followed by wide QRS) and mechanical capture (palpable femoral pulse synchronous with pacer rate) throughout transport; document at least every 5 minutes</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="ongoing-vs" data-phase-id="transport-stable">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Reassess full vitals (HR, BP, RR, SpO2, EtCO2, mental status, lung sounds) every 5 minutes; document</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="monitor-sedation" data-phase-id="transport-stable">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Monitor sedation depth with capnography and mental status; titrate additional Midazolam 1 mg or Fentanyl 25-50 mcg only if symptoms recur and respiratory drive intact</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="early-notify" data-phase-id="transport-stable">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Provide early notification to the receiving hospital: 74 F with third-degree heart block, atropine refractory, on TCP at rate 80 with mA 75, BP 108/66, comfortable; request the cath/pacer team be on standby</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="smooth-handoff" data-phase-id="transport-stable">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">At the ED bedside, transfer to hospital monitor/pacer without breaking pacing for more than a few seconds; structured SBAR handoff including rhythm, pacing parameters, atropine doses given (max 3 mg), sedation/analgesia given and times</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-branch-skip-atropine-direct-pace">
+  <div class="card phase-card branch-card">
+    <div class="card-content">
+      <div class="phase-title">Branch - Skip Atropine, Pace Immediately</div>
+      <div class="phase-trigger">Crew bypassed atropine and went directly to TCP without trial</div>
+      <div class="phase-desc">The crew elected to bypass atropine and proceed directly to transcutaneous pacing. While protocol allows direct TCP for impending hemodynamic collapse, this patient has time for an atropine trial. Direct TCP is not necessarily wrong - it just adds discomfort and need for sedation. The case becomes a discussion point for the debrief: atropine is cheap, fast, and may avoid TCP altogether in mixed mechanism bradycardias. In patients who clearly will not respond (e.g., transplant heart, agonal patient with capture window closing), direct TCP is preferred.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 22.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pulses unchanged at presentation.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">80</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">96/60</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">20</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">96</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.9</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Pacemaker Rhythm</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pale</span><span class="skin-chip">cool</span><span class="skin-chip">diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'Why is my chest doing that?' Patient surprised by sensation."</div></div>
+      <ul class="findings-notes"><li>Patient now experiencing TCP discomfort without prior trial of less invasive options</li><li>Will still ultimately require sedation/analgesia and same destination</li><li>Discussion point for debrief: protocol stepwise approach</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="still-needs-sedation" data-phase-id="branch-skip-atropine-direct-pace">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Recognize that the patient will still need sedation (Midazolam 1 mg IV) and analgesia (Fentanyl 50 mcg IV) regardless of route to pacing</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="verify-capture-here-too" data-phase-id="branch-skip-atropine-direct-pace">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Verify both electrical and mechanical capture (femoral pulse synchronous with pacer)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reflect" data-phase-id="branch-skip-atropine-direct-pace">
+        <span class="action-priority priority-supplemental">SUPPLEMENTAL</span>
+        <span class="action-text">Note for debrief: protocol favors least invasive escalation first (atropine) unless impending hemodynamic collapse. This patient was unstable but not collapsing - atropine first was reasonable.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-branch-pacing-no-sedation">
+  <div class="card phase-card branch-card">
+    <div class="card-content">
+      <div class="phase-title">Branch - TCP Initiated Without Sedation/Analgesia</div>
+      <div class="phase-trigger">TCP captured but no sedation or analgesia administered, patient in distress</div>
+      <div class="phase-desc">TCP was started and capture achieved, but the crew did not give sedation or analgesia. The patient is conscious and writhing in distress with each pacing impulse. Skeletal muscle stimulation causes severe chest wall pain and the patient may pull at the pads or ask to stop. This violates protocol explicitly ('if pacing is performed, consider sedation or pain control'). Capture quality may degrade due to patient movement.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent but patient grimacing and crying out with each pacer impulse.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 28, shallow due to distress; pursed lip pattern.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pacer captured, BP improved, but patient distress is degrading hemodynamics.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg sel-a">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Oriented</span><span class="gcs-score">5</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">15</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">80</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">100/64</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">28</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">95</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">32</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">102</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Pacemaker Rhythm</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pale, flushed in patches</span><span class="skin-chip">cool</span><span class="skin-chip">diaphoretic</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 4 mm, dilated from sympathetic activation.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Writhing, pulling at hand of crew; chest wall muscles visibly twitching with each pacer spike.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"'It hurts! Make it stop! Please...'"</div></div>
+      <ul class="findings-notes"><li>Patient in obvious distress with every pacer impulse</li><li>Daughter alarmed and asking 'Is this supposed to hurt her like this?'</li><li>Capture intermittently lost as patient moves; threshold rising due to pad movement</li><li>Sympathetic surge worsening hemodynamic state</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="give-sedation-now" data-phase-id="branch-pacing-no-sedation">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Midazolam 1-2 mg IV slowly over 1-2 minutes to address distress (titrate to comfort, max initial 5 mg with careful BP/respiratory monitoring)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="give-analgesia-now" data-phase-id="branch-pacing-no-sedation">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Fentanyl 50-100 mcg IV slowly over 1-2 minutes for analgesia (may repeat 25-50 mcg every 5-10 min)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reassure-family" data-phase-id="branch-pacing-no-sedation">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Calmly explain to the daughter that you are now providing pain medication and sedation, that the pacing is keeping her mother's heart rate up while these meds take effect</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="verify-capture-after-meds" data-phase-id="branch-pacing-no-sedation">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">After sedation/analgesia, re-verify electrical and mechanical capture; the now-still patient may have a stable lower threshold and improved BP</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-debrief">
+  
+  <div class="card accordion" onclick="this.classList.toggle('open')">
+    <div class="card-title">Learning Objectives</div>
+    <div class="accordion-body"><ul class="findings-notes"><li>Define symptomatic bradycardia: HR &lt; 60 with symptoms (AMS, chest pain, syncope, shock, diaphoresis) or hemodynamic instability</li><li>Apply the stepwise Bradycardia protocol: airway/O2/monitor/12-lead/IV/glucose first, then atropine, then chronotropes or TCP</li><li>Identify Third Degree (Complete) Heart Block on the 12-lead and understand why atropine often fails (block is at AV node; atropine works above the block)</li><li>Recognize that the protocol explicitly recommends moving 'quickly to chronotropic agents or transcutaneous pacing' for third-degree block or denervated heart (e.g., transplant)</li><li>Differentiate electrical capture (pacer spike followed by wide QRS) from mechanical capture (palpable pulse synchronous with pacer); use the femoral, not the carotid, to confirm mechanical capture</li><li>Set pacing output 10-20 mA above the capture threshold for safety margin</li><li>Provide sedation (midazolam) and analgesia (fentanyl) for any patient receiving TCP</li><li>Recognize when to escalate to chronotropic infusion or push-dose epinephrine if pacing fails or BP remains low</li><li>Identify the tox/drug-induced bradycardias (beta-blockers, calcium channel blockers, digoxin, clonidine) where treatment differs</li></ul></div>
+  </div>
+  <div id="debrief-actions" style="display:flex;flex-direction:column;gap:12px"></div>
+</div>
+</div>
+<script>
+
+var phaseActionData = [{"phaseId":"initial","phaseName":"Initial Presentation - Symptomatic Bradycardia After Syncope","actions":[{"id":"scene-bsi-primary","action":"Perform scene size-up, BSI, and primary survey (ABCDE); confirm scene safety; identify symptomatic bradycardia with hemodynamic compromise","priority":"critical","rationale":"Standard initial approach. Recognize that the chief complaint is hemodynamically unstable bradycardia, not 'syncope' alone.","protocolReference":"MATC: Bradycardia"},{"id":"position","action":"Position the patient supine with legs elevated to support cerebral perfusion if tolerated; if she cannot tolerate supine due to dyspnea, semi-Fowler's is acceptable","priority":"important","rationale":"Improves preload and cerebral perfusion in hypotensive bradycardia.","protocolReference":"MATC: Bradycardia"},{"id":"oxygen","action":"Apply oxygen via nasal cannula at 4 L/min titrated to SpO2 94-98%","priority":"important","rationale":"SpO2 94% with diaphoresis warrants supplemental O2; per protocol target 94-98%.","protocolReference":"MATC: Bradycardia"},{"id":"monitor-12-lead","action":"Apply 4-lead cardiac monitor and acquire a 12-lead ECG; identify Third Degree (Complete) Heart Block - regular P waves at ~80 dissociated from a slow ventricular escape rhythm at 32","priority":"critical","rationale":"12-lead ECG identifies the mechanism. Third-degree block has specific implications: atropine often fails, and pacing or chronotropes are likely required.","protocolReference":"MATC: Bradycardia"},{"id":"iv-access","action":"Establish two large-bore peripheral IVs (18 g preferred); saline lock both","priority":"critical","rationale":"Reliable vascular access is required for atropine, vasopressors, and sedation/analgesia for pacing.","protocolReference":"MATC: Bradycardia"},{"id":"blood-glucose","action":"Check blood glucose; treat hypoglycemia per protocol if < 70 mg/dL with Dextrose 10% 250 mL (25 g) IV","priority":"important","rationale":"Hypoglycemia is a treatable cause of altered mental status and a routine bradycardia work-up element.","protocolReference":"MATC: Bradycardia"},{"id":"history-meds","action":"Obtain SAMPLE history with attention to potential culprit medications: beta-blockers, calcium channel blockers, digoxin, clonidine - none in this patient. Confirm with daughter no new medications","priority":"critical","rationale":"Toxin/medication-induced bradycardia changes treatment (e.g., glucagon for beta-blockers, calcium for CCBs). This patient is on neither.","protocolReference":"MATC: Bradycardia"},{"id":"fluid-bolus","action":"Administer Normal Saline 250-500 mL IV bolus for hypotension; reassess BP and lung sounds; may repeat once if BP remains low and lungs stay clear (caution given history of mild aortic stenosis)","priority":"important","rationale":"Volume support for hypotension; small aliquots and frequent reassessment given valvular disease.","protocolReference":"MATC: Shock"},{"id":"place-pacer-pads","action":"Apply transcutaneous pacing pads in anterior-posterior position prophylactically; do not yet initiate pacing - have it ready in case atropine fails","priority":"critical","rationale":"Pre-positioning pacer pads dramatically shortens time-to-capture if atropine fails. AP pad placement is standard for TCP.","protocolReference":"MATC: Bradycardia"}]},{"phaseId":"atropine-trial","phaseName":"Atropine Trial - No Response (Third-Degree Block)","actions":[{"id":"reassess-atropine","action":"Reassess heart rate, blood pressure, and symptoms 3-5 minutes after Atropine 1 mg dose; document no response","priority":"critical","rationale":"Documentation of response to therapy is a key performance measure.","protocolReference":"MATC: Bradycardia"},{"id":"atropine-second","action":"Administer second dose of Atropine 1 mg IV (3-5 minutes after first); flush with 10-20 mL NS","priority":"important","rationale":"Protocol allows atropine 1 mg IV every 3-5 minutes to a maximum total of 3 mg. Continue to a logical endpoint or escalate.","protocolReference":"MATC: Bradycardia"},{"id":"recognize-failure","action":"Recognize that atropine is unlikely to be effective in third-degree (complete) heart block - the protocol specifically states that 3rd degree block or denervated heart 'may not respond to atropine and in these cases, proceed quickly to chronotropic agents or transcutaneous pacing'","priority":"critical","rationale":"Cognitive recognition of the limits of atropine prevents wasted time when escalation is needed.","protocolReference":"MATC: Bradycardia"},{"id":"prepare-tcp","action":"While giving the second atropine, prepare the transcutaneous pacer: confirm pads in AP position, switch monitor to PACER mode, set rate at 80, start mA at 0 to titrate up","priority":"critical","rationale":"Parallel preparation reduces time-to-capture once the decision is made. Standard initial pacing rate is 60-80; use 80 for symptomatic patient with hypotension.","protocolReference":"MATC: Bradycardia"},{"id":"prepare-sedation-analgesia","action":"Draw up sedation/analgesia for pacing: Midazolam 1-2 mg IV and Fentanyl 50-100 mcg IV available; do not push until pacing is initiated and capture confirmed","priority":"critical","rationale":"TCP is uncomfortable; protocol explicitly states 'if pacing is performed, consider sedation or pain control.'","protocolReference":"MATC: Bradycardia"},{"id":"communicate-patient","action":"Explain to the patient and her daughter that pacing will be used to keep the heart rate up; warn about the sensation (chest thumping, muscle twitching) and tell her she will receive medication for comfort","priority":"important","rationale":"Informed patient cooperation reduces anxiety and improves tolerance of pacing.","protocolReference":"MATC: Bradycardia"}]},{"phaseId":"tcp-capture","phaseName":"Transcutaneous Pacing - Electrical and Mechanical Capture","actions":[{"id":"verify-electrical-capture","action":"Verify electrical capture: each pacer spike on the monitor is followed by a wide QRS complex; document the threshold mA","priority":"critical","rationale":"Electrical capture must be confirmed before assuming the heart is being paced.","protocolReference":"MATC: Bradycardia"},{"id":"verify-mechanical-capture","action":"Verify mechanical capture by palpating a FEMORAL pulse (not carotid) synchronized with each pacer spike; consider also auscultating heart sounds or palpating right brachial","priority":"critical","rationale":"Skeletal muscle twitching from TCP can mimic a carotid pulse - the femoral is the validated site to confirm true cardiac output. Without mechanical capture, the patient is still in arrest physiology.","protocolReference":"MATC: Bradycardia"},{"id":"set-mA-above-threshold","action":"Set output 10-20 mA above the capture threshold to provide a safety margin; document final settings (rate 80, output ~75 mA in this case)","priority":"critical","rationale":"Threshold-only output risks loss of capture with patient movement, perspiration, or pad shift.","protocolReference":"MATC: Bradycardia"},{"id":"midazolam","action":"Administer Midazolam 1 mg IV slowly over 1-2 minutes (may repeat 1 mg every 3-5 minutes for ongoing distress; titrate to comfort and respiratory drive)","priority":"critical","rationale":"TCP is uncomfortable. Sedation is required by protocol. Start low and titrate; the patient is hypotensive and elderly.","protocolReference":"MATC: Bradycardia"},{"id":"fentanyl","action":"Administer Fentanyl 50 mcg IV slowly over 1-2 minutes (may repeat 25-50 mcg every 5-10 minutes for ongoing pain) for analgesia of the TCP discomfort","priority":"important","rationale":"Analgesia complements sedation for the noxious stimulation of TCP. Fentanyl has minimal hemodynamic effect compared to morphine.","protocolReference":"MATC: Bradycardia"},{"id":"reassess-bp","action":"Reassess blood pressure 1-2 minutes after capture; if SBP remains < 90, administer Normal Saline 250-500 mL IV bolus and consider Epinephrine push-dose 10 mcg IV every 2 minutes titrated to MAP > 65","priority":"critical","rationale":"Mechanical capture should improve BP, but volume support and chronotropes may still be needed. Do not assume capture alone fixes hypotension.","protocolReference":"MATC: Shock"},{"id":"prepare-transport","action":"Prepare for transport while maintaining pacer; do not move patient or transfer to stretcher until capture is verified after each movement step","priority":"critical","rationale":"Pad shift during transfers is a common cause of capture loss.","protocolReference":"MATC: Bradycardia"}]},{"phaseId":"transport-stable","phaseName":"Stable on TCP - Transport to ED","actions":[{"id":"ongoing-capture-check","action":"Continuously verify electrical capture (pacer spike followed by wide QRS) and mechanical capture (palpable femoral pulse synchronous with pacer rate) throughout transport; document at least every 5 minutes","priority":"critical","rationale":"Pacer pads can shift, fluid/sweat can degrade contact, and patient movement can cause loss of capture mid-transport.","protocolReference":"MATC: Bradycardia"},{"id":"ongoing-vs","action":"Reassess full vitals (HR, BP, RR, SpO2, EtCO2, mental status, lung sounds) every 5 minutes; document","priority":"important","rationale":"Standard reassessment cadence for unstable cardiac patients.","protocolReference":"MATC: Bradycardia"},{"id":"monitor-sedation","action":"Monitor sedation depth with capnography and mental status; titrate additional Midazolam 1 mg or Fentanyl 25-50 mcg only if symptoms recur and respiratory drive intact","priority":"important","rationale":"Over-sedation in elderly patients can cause respiratory depression and hypotension.","protocolReference":"MATC: Bradycardia"},{"id":"early-notify","action":"Provide early notification to the receiving hospital: 74 F with third-degree heart block, atropine refractory, on TCP at rate 80 with mA 75, BP 108/66, comfortable; request the cath/pacer team be on standby","priority":"critical","rationale":"Definitive treatment is a transvenous or permanent pacemaker; advance notice mobilizes the team.","protocolReference":"MATC: Bradycardia"},{"id":"smooth-handoff","action":"At the ED bedside, transfer to hospital monitor/pacer without breaking pacing for more than a few seconds; structured SBAR handoff including rhythm, pacing parameters, atropine doses given (max 3 mg), sedation/analgesia given and times","priority":"critical","rationale":"A pacing-dependent patient cannot tolerate prolonged interruption of capture.","protocolReference":"MATC: Bradycardia"}]},{"phaseId":"branch-skip-atropine-direct-pace","phaseName":"Branch - Skip Atropine, Pace Immediately","actions":[{"id":"still-needs-sedation","action":"Recognize that the patient will still need sedation (Midazolam 1 mg IV) and analgesia (Fentanyl 50 mcg IV) regardless of route to pacing","priority":"critical","rationale":"TCP is uncomfortable regardless of why you started it.","protocolReference":"MATC: Bradycardia"},{"id":"verify-capture-here-too","action":"Verify both electrical and mechanical capture (femoral pulse synchronous with pacer)","priority":"critical","rationale":"Capture verification is the same regardless of indication.","protocolReference":"MATC: Bradycardia"},{"id":"reflect","action":"Note for debrief: protocol favors least invasive escalation first (atropine) unless impending hemodynamic collapse. This patient was unstable but not collapsing - atropine first was reasonable.","priority":"supplemental","rationale":"Cognitive review supports stepwise protocol thinking.","protocolReference":"MATC: Bradycardia"}]},{"phaseId":"branch-pacing-no-sedation","phaseName":"Branch - TCP Initiated Without Sedation/Analgesia","actions":[{"id":"give-sedation-now","action":"Administer Midazolam 1-2 mg IV slowly over 1-2 minutes to address distress (titrate to comfort, max initial 5 mg with careful BP/respiratory monitoring)","priority":"critical","rationale":"Sedation is required by protocol when pacing. Patient distress also degrades capture and hemodynamics.","protocolReference":"MATC: Bradycardia"},{"id":"give-analgesia-now","action":"Administer Fentanyl 50-100 mcg IV slowly over 1-2 minutes for analgesia (may repeat 25-50 mcg every 5-10 min)","priority":"critical","rationale":"Pain control complements sedation; the chest wall muscle stimulation is genuinely painful.","protocolReference":"MATC: Bradycardia"},{"id":"reassure-family","action":"Calmly explain to the daughter that you are now providing pain medication and sedation, that the pacing is keeping her mother's heart rate up while these meds take effect","priority":"important","rationale":"Family reassurance reduces overall scene anxiety and supports cooperation.","protocolReference":"MATC: Bradycardia"},{"id":"verify-capture-after-meds","action":"After sedation/analgesia, re-verify electrical and mechanical capture; the now-still patient may have a stable lower threshold and improved BP","priority":"critical","rationale":"Once distress resolves, capture is more reliable.","protocolReference":"MATC: Bradycardia"}]}];
+var firstPhaseId = "initial";
+
+function showPanel(tab, panelId) {
+  document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  var panel = document.getElementById('panel-' + panelId);
+  if (panel) panel.classList.add('active');
+  if (panelId === 'debrief') buildDebriefActions();
+}
+
+function buildDebriefActions() {
+  var container = document.getElementById('debrief-actions');
+  if (!container) return;
+  container.innerHTML = '';
+  phaseActionData.forEach(function(phase) {
+    var isFirst = phase.phaseId === firstPhaseId;
+    var checkboxes = phase.actions.map(function(a) {
+      return document.querySelector('[data-action-id="' + a.id + '"][data-phase-id="' + phase.phaseId + '"]');
+    });
+    var anyChecked = checkboxes.some(function(cb) { return cb && cb.checked; });
+    if (!isFirst && !anyChecked) return;
+    var doneActions = [], missedActions = [];
+    phase.actions.forEach(function(a, i) {
+      var cb = checkboxes[i];
+      if (cb && cb.checked) doneActions.push(a); else missedActions.push(a);
+    });
+    var total = phase.actions.length, doneCount = doneActions.length;
+    var card = document.createElement('div');
+    card.className = 'card debrief-phase-card';
+    var header = document.createElement('div');
+    header.className = 'debrief-phase-header';
+    var hLeft = document.createElement('div');
+    hLeft.className = 'debrief-phase-name';
+    hLeft.textContent = phase.phaseName;
+    var hRight = document.createElement('div');
+    hRight.className = 'debrief-phase-score';
+    if (doneCount === total) hRight.classList.add('score-perfect');
+    else if (doneCount === 0) hRight.classList.add('score-none');
+    hRight.textContent = doneCount + '/' + total;
+    header.appendChild(hLeft); header.appendChild(hRight);
+    card.appendChild(header);
+    var body = document.createElement('div');
+    body.className = 'debrief-phase-body';
+    if (doneActions.length) {
+      var doneSection = document.createElement('div');
+      doneSection.className = 'debrief-done-section';
+      doneActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-done-row';
+        row.innerHTML = '<span class="debrief-done-icon">\u2713</span><span class="debrief-done-text">' + a.action + '</span>';
+        doneSection.appendChild(row);
+      });
+      body.appendChild(doneSection);
+    }
+    if (missedActions.length) {
+      var missLabel = document.createElement('div');
+      missLabel.className = 'debrief-missed-label';
+      missLabel.textContent = 'MISSED';
+      body.appendChild(missLabel);
+      missedActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-missed-row';
+        var top = document.createElement('div');
+        top.className = 'debrief-missed-top';
+        var badge = document.createElement('span');
+        badge.className = 'action-priority priority-' + a.priority;
+        badge.textContent = a.priority.toUpperCase();
+        var text = document.createElement('span');
+        text.className = 'debrief-missed-text';
+        text.textContent = a.action;
+        top.appendChild(badge); top.appendChild(text);
+        row.appendChild(top);
+        if (a.rationale || a.protocolReference) {
+          var detail = document.createElement('div');
+          detail.className = 'debrief-missed-detail';
+          if (a.rationale) { var reason = document.createElement('div'); reason.className = 'debrief-missed-rationale'; reason.textContent = a.rationale; detail.appendChild(reason); }
+          if (a.protocolReference) { var proto = document.createElement('div'); proto.className = 'debrief-missed-protocol'; proto.textContent = 'Protocol: ' + a.protocolReference; detail.appendChild(proto); }
+          row.appendChild(detail);
+        }
+        body.appendChild(row);
+      });
+    }
+    card.appendChild(body); container.appendChild(card);
+  });
+}
+
+// Timer
+var timerEl = document.getElementById('scenario-timer');
+var timerTotal = timerEl ? parseInt(timerEl.getAttribute('data-total')) : 0;
+var timerRemaining = timerTotal;
+var timerInterval = null;
+function timerFormat(s) { var m = Math.floor(s/60); var sec = s%60; return m+':'+(sec<10?'0':'')+sec; }
+function timerUpdate() {
+  var d = document.getElementById('timer-display'); if(!d) return;
+  d.textContent = timerFormat(timerRemaining);
+  d.classList.remove('timer-warn','timer-danger');
+  if(timerRemaining<=60) d.classList.add('timer-danger');
+  else if(timerRemaining<=timerTotal*0.25) d.classList.add('timer-warn');
+}
+function timerStart() {
+  document.getElementById('timer-start').style.display='none';
+  document.getElementById('timer-pause').style.display='';
+  document.getElementById('timer-stop').style.display='';
+  document.getElementById('timer-reset').style.display='none';
+  timerInterval=setInterval(function(){timerRemaining--;timerUpdate();if(timerRemaining<=0){timerRemaining=0;timerStop();}},1000);
+}
+function timerPause() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-pause').style.display='none';document.getElementById('timer-start').style.display=''; }
+function timerStop() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-start').style.display='none';document.getElementById('timer-pause').style.display='none';document.getElementById('timer-stop').style.display='none';document.getElementById('timer-reset').style.display=''; }
+function timerReset() { timerRemaining=timerTotal;timerUpdate();document.getElementById('timer-reset').style.display='none';document.getElementById('timer-start').style.display=''; }
+function scenarioRestart() { if(confirm('Restart scenario? This clears all checkboxes and resets the timer.'))location.reload(); }
+
+</script>
+</body>
+</html>

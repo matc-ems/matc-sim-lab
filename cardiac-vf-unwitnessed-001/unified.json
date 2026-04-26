@@ -1,0 +1,702 @@
+{
+  "meta": {
+    "id": "cardiac-vf-unwitnessed-001",
+    "name": "Unwitnessed VF Cardiac Arrest at Home - Bystander CPR, Single Shock ROSC",
+    "version": 1,
+    "difficulty": "intermediate",
+    "category": "Cardiac",
+    "protocols": [
+      "resus-cardiac-arrest",
+      "resus-post-rosc",
+      "cv-chest-pain-acs-stemi"
+    ],
+    "totalTimeSeconds": 1500,
+    "createdAt": "2026-04-26T00:00:00Z",
+    "tags": ["cardiac arrest", "VF", "unwitnessed arrest", "defibrillation", "ROSC", "post-ROSC", "ACLS"]
+  },
+  "patient": {
+    "name": "Marcus Thompson",
+    "age": 55,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 80,
+    "height": 175,
+    "chiefComplaint": "Found unresponsive in basement workshop, pulseless and apneic - cardiac arrest with bystander CPR in progress",
+    "history": {
+      "hpi": "55-year-old male went to his basement workshop after dinner to work on a project. Approximately 30 minutes later his wife heard a thud and a tool dropping. She went downstairs immediately and found him face-down on the workshop floor next to his workbench. She estimates he had been down for less than 5 minutes - she had heard him moving around just minutes before. She found no pulse and no respirations, called 911, and the dispatcher coached her through chest compressions and rescue breaths (30:2). She has been doing CPR for approximately 4 minutes when EMS arrives. Total estimated downtime is 8-10 minutes from collapse to EMS arrival. Pre-arrest, the patient had complained of intermittent indigestion-like discomfort over the past 3-4 days that he attributed to stress and dietary indiscretion.",
+      "pastMedical": [
+        "Hypertension (on medication)",
+        "Hyperlipidemia (on medication)",
+        "Pre-diabetes (recent A1C 6.2)",
+        "Tobacco use (1/2 pack per day x 25 years)",
+        "Family history: father MI at 60, brother stenting at 58",
+        "No prior MI, no known CAD"
+      ],
+      "medications": [
+        "Lisinopril 10 mg PO daily",
+        "Atorvastatin 20 mg PO at bedtime",
+        "Omeprazole 20 mg PO daily PRN heartburn",
+        "Aspirin 81 mg PO daily (per his PCP for primary prevention)"
+      ],
+      "allergies": ["NKDA"],
+      "lastOralIntake": "Dinner ~2 hours ago: pasta, salad, glass of wine",
+      "events": "After dinner, patient went to basement workshop. Wife heard a thud at ~1947, went downstairs at ~1948 and found him pulseless, apneic, face-down on the floor. Called 911 immediately, started dispatcher-coached CPR within ~1 minute of finding him. EMS arrival at ~1955 (approximately 8 minutes downtime, ~6 minutes of bystander CPR)."
+    }
+  },
+  "scene": {
+    "dispatch": "Respond priority 1 to a private residence for an adult male in cardiac arrest. CPR is being performed by his wife with dispatcher coaching. Patient is in the basement.",
+    "location": "Two-story private residence, basement workshop. Patient is supine on a concrete floor next to a workbench. Cluttered workshop with tools, sawdust, and exposed extension cords. Adequate overhead lighting. Cool temperature (~62°F). Stairway access only - narrow stairs.",
+    "time": "1955 hours, Friday evening",
+    "safety": "Scene generally safe but cluttered. Crew must clear extension cords from immediate work area; ensure no exposed electrical hazards. Cool ambient temperature. Stairway extrication will require coordination.",
+    "bystanders": "Wife (primary CPR provider) is exhausted but still doing compressions when crew arrives. She is anxious but cooperative and an excellent historian. Adult son (visiting) is upstairs, can help as runner.",
+    "visualCues": [
+      "Adult male supine on the basement floor next to a workbench",
+      "Wife actively performing chest compressions on her knees beside him",
+      "Cordless drill and unfinished project visible on the workbench",
+      "No signs of head trauma from the fall - no obvious blood, no skull deformity",
+      "Skin pale, lips dusky cyanotic",
+      "Phone on speakerphone next to wife - dispatcher still on the line",
+      "Sawdust and tools surrounding the patient",
+      "Narrow stairway behind the crew - extrication consideration"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial",
+      "name": "Arrival on Scene - Unwitnessed Arrest with Bystander CPR",
+      "description": "EMS arrives at an unwitnessed cardiac arrest with bystander CPR in progress for approximately 6 minutes. Total estimated downtime is 8-10 minutes. Per protocol, for unwitnessed arrests it is reasonable to initiate (or continue) CPR while the defibrillator is being applied and to defibrillate as soon as the device is ready - there is no required delay for additional CPR cycles. The crew takes over compressions seamlessly, applies pads, identifies coarse VF, and prepares to defibrillate.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": { "eye": 1, "verbal": 1, "motor": 1 },
+        "airway": "Patent with manual jaw thrust by rescuers; small amount of stomach contents in oral cavity from compressions. Suctioning required. OPA tolerated.",
+        "breathing": "Apneic. Wife was providing rescue breaths via mouth-to-pocket-mask 30:2 ratio per dispatcher instruction.",
+        "circulation": "Pulseless at carotid and femoral. Wife's compressions are being performed but visibly fatigued; depth shallow, rate slowing. Skin cool, pale, peripheral cyanosis.",
+        "skin": { "color": "pale with central cyanosis at lips and nail beds", "temperature": "cool (basement temperature)", "moisture": "dry" },
+        "pupils": "Dilated 5-6 mm, sluggish bilaterally.",
+        "motorFunction": "No spontaneous movement.",
+        "otherFindings": [
+          "Unwitnessed arrest with estimated downtime 8-10 minutes",
+          "Bystander CPR ~6 minutes; quality degrading with wife's fatigue",
+          "Stomach contents at the mouth - small volume",
+          "Pads-on-bare-chest planning required - shirt to be removed",
+          "No external signs of trauma",
+          "Dispatcher still on speakerphone confirming address"
+        ],
+        "patientSpeech": "None - apneic and pulseless."
+      },
+      "monitorState": {
+        "ecgRhythm": "Ventricular Fibrillation (Coarse)",
+        "ecgWaveform": 18,
+        "hr": 0,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 14,
+        "temp": 36.5,
+        "obstruction": 0,
+        "glucose": 122,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": false,
+          "spo2Attached": false,
+          "rrVisible": false,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "scene-bsi",
+          "action": "Perform scene size-up and BSI; clear immediate hazards (extension cords); confirm scene safety; designate code leader and assign pit-crew roles",
+          "priority": "critical",
+          "rationale": "Cluttered workshop requires deliberate clearing before resuscitation. Pit-crew structure with code leader is essential.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "take-over-cpr",
+          "action": "Take over chest compressions seamlessly from the exhausted wife; brief her gratefully and direct her to a safe location; immediately re-establish high-quality compressions at 100-120/min, depth 2-2.4 inches with full recoil",
+          "priority": "critical",
+          "rationale": "Bystander CPR fatigue is rapidly identified by visible technique decline. Take over without scolding the spouse; her CPR has bought him time.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "confirm-arrest",
+          "action": "Confirm pulselessness (no more than 10 seconds at the carotid) and apnea between compressor swaps",
+          "priority": "critical",
+          "rationale": "Brief pulse check confirms arrest physiology; longer pauses harm survival.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "apply-pads",
+          "action": "Apply manual defibrillator pads in anterior-lateral position WITHOUT interrupting compressions; remove shirt, wipe skin dry of sweat/sawdust; ensure good pad contact",
+          "priority": "critical",
+          "rationale": "Pad placement must occur in parallel with compressions; sawdust on the chest can degrade pad contact.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "suction-airway",
+          "action": "Suction the oral cavity briefly between compressions, place an OPA, and provide BVM ventilations at 10/min (1 breath every 6 seconds OR 1 breath every 10 compressions); do NOT interrupt compressions for airway management",
+          "priority": "critical",
+          "rationale": "Airway management must not interrupt compressions per protocol. Brief suctioning during natural compression pause is acceptable.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "rhythm-analysis",
+          "action": "Pause compressions briefly (pre-charge defibrillator while compressions continue); analyze rhythm - identify Coarse Ventricular Fibrillation",
+          "priority": "critical",
+          "rationale": "Pre-charging during compressions is the technique to minimize peri-shock pause.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "first-shock",
+          "action": "Deliver immediate manual defibrillation at 200 J biphasic (Zoll X-Series highest setting per manufacturer); ensure crew is clear; resume compressions immediately after shock without pulse check for 2 minutes",
+          "priority": "critical",
+          "rationale": "Per protocol, for unwitnessed arrests defibrillation should be attempted as soon as the device is ready. Use the highest manufacturer setting (200 J biphasic on Zoll). Resume compressions immediately - do not pause for pulse check.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "io-access",
+          "action": "Establish IO access at the proximal humerus (preferred adult site) without interrupting compressions; saline flush to confirm placement",
+          "priority": "important",
+          "rationale": "Pit-crew model: rapid IO is reliable and does not interrupt compressions.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "etco2-monitor",
+          "action": "Apply waveform capnography to BVM or advanced airway as soon as available; target EtCO2 > 10 mmHg as a marker of effective compressions",
+          "priority": "important",
+          "rationale": "Quantitative EtCO2 monitors compression effectiveness and may signal ROSC (sudden rise) before pulse return.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "history-from-wife",
+          "action": "Assign one team member to obtain focused history from the wife: when she heard the thud, when she found him, downtime estimate, prior chest pain or symptoms, medications, allergies, code status",
+          "priority": "important",
+          "rationale": "Pre-arrest indigestion-like discomfort raises concern for ACS as the cause; downtime estimate informs prognosis discussions.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "consider-extrication",
+          "action": "Begin planning for extrication from the basement: rescue plan including LUCAS or mechanical CPR device if available, narrow stair carry technique, and avoiding manual compressions during patient movement",
+          "priority": "important",
+          "rationale": "Manual compressions in motion (especially up narrow stairs) are dangerous and ineffective. Plan ahead for ROSC-or-not transport.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "post-shock-rosc",
+          "condition": "First defibrillation at 200 J delivered with immediate resumption of compressions; rhythm check after 2 min reveals organized rhythm with palpable pulse",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["first-shock", "take-over-cpr"]
+        },
+        {
+          "targetPhaseId": "branch-refractory-vf",
+          "condition": "Multiple shocks delivered without conversion - shock-refractory VF, requiring antiarrhythmic and continued ACLS",
+          "conditionType": "action_taken"
+        }
+      ]
+    },
+    {
+      "id": "post-shock-rosc",
+      "name": "ROSC After First Shock - Initial Stabilization",
+      "description": "After the single 200 J shock, compressions resumed for 2 minutes. At the next rhythm check the monitor shows an organized sinus rhythm and a palpable carotid pulse is detected. EtCO2 has surged from ~14 to 36 mmHg, consistent with sudden ROSC. The patient is comatose. The team transitions to the post-ROSC priorities: airway management, ventilation at 10/min (NOT faster), SpO2 94-98%, BP support, 12-lead, destination decision. Given the unwitnessed arrest, downtime ~8-10 min, and pre-arrest indigestion-like complaints, a STEMI is very plausible and a PCI-capable destination is indicated.",
+      "triggerCondition": "First shock at 200 J delivered, 2 minutes of post-shock CPR completed, then rhythm check reveals organized rhythm with palpable carotid pulse",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": { "eye": 1, "verbal": 1, "motor": 2 },
+        "airway": "Patent with OPA in place; some emesis suctioned; no gag reflex - candidate for advanced airway.",
+        "breathing": "Spontaneous, shallow, agonal-pattern at ~4-6/min; BVM-assisted ventilations at 10/min, EtCO2 36 mmHg with good square waveform.",
+        "circulation": "Strong carotid pulse, palpable femoral. Skin warming centrally; capillary refill 4-5 seconds in extremities.",
+        "skin": { "color": "pale, pinking centrally", "temperature": "cool", "moisture": "dry" },
+        "pupils": "5 mm, sluggish bilaterally - improving from earlier dilation.",
+        "motorFunction": "Decerebrate posturing to noxious stimulus only. No purposeful movement.",
+        "otherFindings": [
+          "EtCO2 surge from 14 to 36 mmHg coincident with rhythm change - classic ROSC signature",
+          "Patient comatose post-arrest - typical post-ROSC presentation",
+          "No spontaneous airway protection",
+          "Wife relieved but very emotional, needs support and updates",
+          "Unwitnessed downtime + 6 min bystander CPR + 1 shock = potentially survivable but uncertain neurologic prognosis"
+        ],
+        "patientSpeech": "None - comatose."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 110,
+        "bpSys": 88,
+        "bpDia": 56,
+        "respRate": 6,
+        "spo2": 86,
+        "etco2": 36,
+        "temp": 36.5,
+        "obstruction": 0,
+        "glucose": 122,
+        "trendTimeSeconds": 15,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "confirm-rosc",
+          "action": "Confirm ROSC: palpable carotid pulse, organized rhythm on monitor, EtCO2 surge, palpable femoral; document time of ROSC",
+          "priority": "critical",
+          "rationale": "Time-of-ROSC is a key documentation element. Multiple confirmation methods avoid false-positive ROSC.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "post-rosc-airway",
+          "action": "Manage airway with BVM ventilations at 10 breaths/minute with PEEP valve, targeting EtCO2 35-45 mmHg; insert OPA/NPA; place a supraglottic airway (i-gel) given comatose state without airway reflexes",
+          "priority": "critical",
+          "rationale": "Most post-ROSC patients need ventilatory support. Ventilation rate is 8-10/min, NOT faster - hyperventilation precipitates re-arrest.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "no-hyperventilation",
+          "action": "Verbalize and enforce the rule: 10 breaths/min, EtCO2 target 35-45 mmHg, NO hyperventilation; use a metronome or count out loud",
+          "priority": "critical",
+          "rationale": "Hyperventilation is a leading cause of post-ROSC hypotension and re-arrest by reducing venous return and causing respiratory alkalosis.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "spo2-target",
+          "action": "Titrate FiO2 to SpO2 94-98%; do NOT hyperoxygenate - wean from 100% O2 once SpO2 stabilizes",
+          "priority": "important",
+          "rationale": "Hyperoxia in the post-ROSC period is associated with worse neurologic outcomes. Target normoxia.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "12-lead",
+          "action": "Acquire post-ROSC 12-lead ECG as soon as feasible (en route is acceptable); transmit to receiving facility; serial 12-leads if initial is non-diagnostic",
+          "priority": "critical",
+          "rationale": "STEMI is a common reversible cause of arrest. Pre-arrest indigestion-like symptoms raise STEMI suspicion. Identification changes destination.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "second-iv",
+          "action": "Establish a second peripheral IV line (18 g if possible) in addition to the IO; saline lock both",
+          "priority": "important",
+          "rationale": "Reliable vascular access is required for potential vasopressors and resuscitation if hemodynamics deteriorate.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "hypotension-mgmt",
+          "action": "For SBP < 90 or MAP < 65: give 250-500 mL Normal Saline IV bolus; if persistent, initiate Epinephrine push-dose (10 mcg/mL prepared by adding 1 mL of 0.1 mg/mL epinephrine to 9 mL NS; give 10-20 mcg = 1-2 mL boluses every 2-5 min) titrated to MAP > 65, OR Epinephrine infusion 0.02-0.2 mcg/kg/min",
+          "priority": "critical",
+          "rationale": "Post-ROSC stunning frequently produces hypotension; aggressive but careful BP support prevents re-arrest and supports cerebral perfusion.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "blood-glucose",
+          "action": "Check blood glucose; treat hypoglycemia with Dextrose 10% 250 mL (25 g) IV per protocol; treat hyperglycemia with hospital notification only",
+          "priority": "important",
+          "rationale": "Hypoglycemia is a reversible cause to evaluate and treat in any post-ROSC patient.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "leave-pads-on",
+          "action": "Leave defibrillator pads in place; maintain continuous monitor; have manual defibrillator immediately available for re-arrest",
+          "priority": "critical",
+          "rationale": "Re-arrest is common in the immediate post-ROSC period. Pads stay on.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "extrication-plan",
+          "action": "Plan stair extrication: secure airway and IVs, brief team on carry sequence, avoid manual compressions during stair carry; consider deploying a mechanical CPR device or LUCAS preemptively in case of re-arrest",
+          "priority": "important",
+          "rationale": "Stair extrication is high-risk; pre-planned approach reduces fall risk and capture loss in re-arrest.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "destination-decision",
+          "action": "Transport to nearest STEMI/cath-capable facility (PCI center) per local destination protocol; provide early notification including ROSC status, downtime, bystander CPR status, suspected etiology, and any 12-lead findings",
+          "priority": "critical",
+          "rationale": "Post-cardiac arrest care at specialized centers is associated with decreased mortality and improved neurologic outcomes.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "support-wife",
+          "action": "Brief the wife in age-appropriate language: 'We've got his pulse back, but he's still very critical and not awake. We're taking him to [hospital name].' Direct her to hospital with a family member driver; do not have her drive herself.",
+          "priority": "important",
+          "rationale": "Family communication and safety is part of comprehensive prehospital care.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "transport-stable",
+          "condition": "Airway managed, BP supported with fluids/pressors as needed, 12-lead acquired, transport initiated to PCI-capable facility",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["post-rosc-airway", "12-lead", "destination-decision"]
+        },
+        {
+          "targetPhaseId": "branch-rearrest",
+          "condition": "Hyperventilation occurs (RR > 12), or hypotension goes untreated > 5 minutes, or pads removed",
+          "conditionType": "action_not_taken",
+          "timeoutSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": "transport-stable",
+      "name": "Stable Transport to PCI Center",
+      "description": "Patient is en route to the regional PCI center with airway secured (i-gel), BVM at 10/min via mechanical ventilator with PEEP if available, EtCO2 38, SpO2 96% on titrated O2, SBP 108 with a 500 mL NS bolus running, no vasopressors needed at this time. Defibrillator pads remain in place. The crew vigilantly monitors for re-arrest, performs serial 12-leads, and provides early notification.",
+      "triggerCondition": "Post-ROSC patient with airway managed, 12-lead acquired, hemodynamically stable, transport initiated",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": { "eye": 1, "verbal": 1, "motor": 4 },
+        "airway": "Patent via supraglottic airway (i-gel) with continuous waveform capnography; secure with strap.",
+        "breathing": "Assisted ventilations at 10/min via i-gel; bilateral chest rise; bilateral breath sounds clear; EtCO2 38 mmHg, square waveform.",
+        "circulation": "Strong central pulses; skin warming, pinking; capillary refill 2-3 seconds. No JVD. Lungs clear.",
+        "skin": { "color": "pink centrally, pale extremities", "temperature": "warming", "moisture": "dry" },
+        "pupils": "4 mm, sluggish but reactive bilaterally - improving.",
+        "motorFunction": "Withdraws weakly to noxious stimulus.",
+        "otherFindings": [
+          "12-lead: ST elevation in V1-V4 (~3 mm) with reciprocal changes - Anterior STEMI pattern (likely the arrest etiology)",
+          "No new ectopy",
+          "i-gel functioning well",
+          "500 mL NS bolus completed; second bolus running PRN"
+        ],
+        "patientSpeech": "None - remains comatose."
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Anterior",
+        "ecgWaveform": 23,
+        "hr": 96,
+        "bpSys": 110,
+        "bpDia": 68,
+        "respRate": 10,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.5,
+        "obstruction": 0,
+        "glucose": 122,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "stemi-recognize",
+          "action": "Recognize Anterior STEMI on 12-lead ECG (ST elevation in V1-V4 with reciprocal changes); this is the likely arrest etiology",
+          "priority": "critical",
+          "rationale": "Anterior STEMI typically reflects LAD occlusion - the 'widowmaker' - and explains the arrest. Confirms PCI as the destination decision.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "transmit-12-lead",
+          "action": "Transmit 12-lead ECG to receiving PCI center; activate STEMI alert with early notification including ROSC status, presumed anterior STEMI, downtime estimate, bystander CPR duration, and current vital signs",
+          "priority": "critical",
+          "rationale": "Field STEMI activation reduces door-to-balloon time. The cath lab team mobilizes while patient is en route.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "aspirin-deferred",
+          "action": "Defer prehospital aspirin given inability to swallow (comatose); document deferral and reason; the receiving cath lab can administer rectal aspirin or via OG/NG once intubated",
+          "priority": "important",
+          "rationale": "ASA cannot be safely given orally to a comatose patient. Hospital can administer once airway secured.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "no-ntg-comatose",
+          "action": "Do NOT administer nitroglycerin to a comatose post-arrest patient (no chest pain to treat, and nitrate can drop BP precariously)",
+          "priority": "critical",
+          "rationale": "NTG carries hypotension risk in a marginally compensated post-ROSC patient; no clinical indication absent symptoms to treat.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"
+        },
+        {
+          "id": "continuous-reassess",
+          "action": "Reassess full vitals (HR, BP, RR, SpO2, EtCO2, GCS, lung sounds) every 5 minutes en route; document; alert immediately to any decline in MAP < 65 or rising EtCO2 (re-arrest precursor)",
+          "priority": "critical",
+          "rationale": "Post-ROSC patients fluctuate rapidly; trend monitoring catches deterioration early.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "anti-hyperthermia",
+          "action": "Avoid hyperthermia: do NOT pile on warm blankets; keep ambient temperature moderate; avoid excessive bunting",
+          "priority": "important",
+          "rationale": "Per protocol, avoid hyperthermia (T > 37.5°C / 99.5°F) post-ROSC. Prehospital therapeutic hypothermia is not routinely recommended, but avoiding hyperthermia is.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "smooth-handoff",
+          "action": "Provide structured SBAR handoff at the cath lab door; do NOT remove monitor/defibrillator pads until receiving team has applied theirs; pass off the 12-lead, downtime, and bystander CPR data verbally and on the run sheet for QI registry",
+          "priority": "critical",
+          "rationale": "Continuity of monitoring during the highest re-arrest risk period; complete data transfer for QI registry.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "branch-refractory-vf",
+      "name": "Branch - Shock-Refractory VF",
+      "description": "After the first shock, the patient remained in VF. After 2 minutes of CPR and a second shock at 200 J, VF persists. The team must escalate ACLS care: high-dose antiarrhythmic (Amiodarone 300 mg IV/IO), continued CPR, continued shocks every 2 minutes, epinephrine 1 mg every 3-5 minutes, and a methodical search for reversible causes (H's and T's). Consideration of double-sequential defibrillation, ECMO, or termination of resuscitation may be appropriate at extended downtimes.",
+      "triggerCondition": "First shock did not convert VF; second shock at 200 J also failed; persistent VF",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": { "eye": 1, "verbal": 1, "motor": 1 },
+        "airway": "Patent via i-gel; suctioning required intermittently.",
+        "breathing": "Apneic; BVM at 10/min via i-gel.",
+        "circulation": "Pulseless; high-quality compressions ongoing with rotation every 2 minutes.",
+        "skin": { "color": "pale, central cyanosis at lips persisting", "temperature": "cool", "moisture": "dry" },
+        "pupils": "Mid-position, sluggish - not progressing.",
+        "motorFunction": "None.",
+        "otherFindings": [
+          "Persistent VF after multiple shocks",
+          "EtCO2 ~14-18 mmHg with compressions - acceptable but not good",
+          "Compressors rotated every 2 minutes",
+          "Wife being escorted to a couch upstairs by son to await transport decision"
+        ],
+        "patientSpeech": "None."
+      },
+      "monitorState": {
+        "ecgRhythm": "Ventricular Fibrillation (Coarse)",
+        "ecgWaveform": 18,
+        "hr": 0,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 16,
+        "temp": 36.5,
+        "obstruction": 0,
+        "glucose": 122,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": false,
+          "spo2Attached": false,
+          "rrVisible": false,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "epi-q3-5",
+          "action": "Administer Epinephrine 1 mg (1:10,000, 10 mL) IV/IO every 3-5 minutes; flush with 20 mL NS",
+          "priority": "critical",
+          "rationale": "Standard ACLS for cardiac arrest.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "amiodarone-300",
+          "action": "Administer Amiodarone 300 mg IV/IO bolus (may repeat 150 mg in 4-6 minutes if still refractory VF/pulseless VT). Lidocaine 1 mg/kg (80 mg for 80 kg patient) IV is an alternative.",
+          "priority": "critical",
+          "rationale": "Antiarrhythmic for shock-refractory VF; 300 mg is the protocol dose.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "continuous-cpr",
+          "action": "Continue 2-minute cycles of high-quality CPR with rotation; rhythm check and shock at end of each cycle if VF persists",
+          "priority": "critical",
+          "rationale": "Standard ACLS cycle.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "address-hs-ts",
+          "action": "Methodically address Hs and Ts: hypoxia (O2 on, EtCO2 monitored), hypovolemia (NS bolus 1 L), hypo/hyperkalemia (no dialysis history), hydrogen/acidosis (consider sodium bicarbonate 1 mEq/kg = 80 mEq IV if known acidotic state), hypothermia (no), tension pneumo (no chest trauma), tamponade (no signs), toxins (no overdose), thrombosis cardiac (suspected - cath capable), thrombosis pulmonary (consider PE)",
+          "priority": "critical",
+          "rationale": "Routine systematic search; some causes are correctable in the field.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "consider-transport-rosc",
+          "action": "After ~20-30 minutes of high-quality ACLS without ROSC, contact medical direction to discuss either continued resuscitation, termination of resuscitation, or transport with mechanical CPR to an ECMO-capable receiving center if available",
+          "priority": "important",
+          "rationale": "Termination decisions or ECMO referral are time-sensitive and typically require medical direction consultation.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "support-family",
+          "action": "Designate one team member to communicate with the wife: 'We're working very hard. We'll let you know as soon as anything changes.' Avoid premature prognostic statements.",
+          "priority": "important",
+          "rationale": "Family-centered care is part of comprehensive resuscitation.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "branch-rearrest",
+      "name": "Branch - Re-Arrest from Hyperventilation / Untreated Hypotension",
+      "description": "After ROSC, the team either hyperventilated, failed to support BP, or removed pads. The patient re-arrests in VF. Pads should still be on - shock immediately and resume CPR.",
+      "triggerCondition": "Hyperventilation, untreated hypotension, or pad removal in the post-ROSC period",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": { "eye": 1, "verbal": 1, "motor": 1 },
+        "airway": "Patent via i-gel.",
+        "breathing": "Apneic.",
+        "circulation": "Pulseless.",
+        "skin": { "color": "rapidly mottling and cyanotic", "temperature": "cool", "moisture": "dry" },
+        "pupils": "Mid-position, sluggish.",
+        "motorFunction": "None.",
+        "otherFindings": [
+          "EtCO2 dropped from 36 to 14 with re-arrest",
+          "Pads still on - shock can be delivered immediately",
+          "Time of re-arrest noted - within minutes of first ROSC"
+        ],
+        "patientSpeech": "None."
+      },
+      "monitorState": {
+        "ecgRhythm": "Ventricular Fibrillation (Coarse)",
+        "ecgWaveform": 18,
+        "hr": 0,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 14,
+        "temp": 36.5,
+        "obstruction": 0,
+        "glucose": 122,
+        "trendTimeSeconds": 20,
+        "visibility": {
+          "spo2Visible": false,
+          "spo2Attached": false,
+          "rrVisible": false,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "recognize-rearrest",
+          "action": "Recognize re-arrest immediately: loss of pulse, EtCO2 drop, return to VF on continuous monitor",
+          "priority": "critical",
+          "rationale": "Continuous monitoring catches re-arrest in seconds.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "compressions-restart",
+          "action": "Restart high-quality compressions at 100-120/min immediately",
+          "priority": "critical",
+          "rationale": "Same as primary arrest treatment.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "shock-rearrest",
+          "action": "Deliver immediate defibrillation at 200 J biphasic via the pads still in place; resume compressions for 2 minutes",
+          "priority": "critical",
+          "rationale": "Pads should not have been removed precisely so this shock can occur with no setup delay.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        },
+        {
+          "id": "correct-the-error",
+          "action": "Identify what triggered the re-arrest (hyperventilation? untreated hypotension? pad removal?) and correct it: ventilate at 10/min, support BP, leave pads on",
+          "priority": "critical",
+          "rationale": "Correcting the underlying cause prevents another re-arrest cycle.",
+          "protocolReference": "MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"
+        },
+        {
+          "id": "epi-rearrest",
+          "action": "Administer Epinephrine 1 mg (1:10,000) IV/IO; may repeat every 3-5 minutes during ongoing arrest",
+          "priority": "critical",
+          "rationale": "Standard ACLS.",
+          "protocolReference": "MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"
+        }
+      ],
+      "transitions": []
+    }
+  ],
+  "assessment": {
+    "criticalActions": [
+      "Take over compressions seamlessly from the fatiguing bystander",
+      "Re-establish high-quality CPR: 100-120/min, depth 2-2.4 inches, full recoil, minimal interruptions",
+      "Apply manual defibrillator pads in parallel with continuing compressions",
+      "Identify Coarse Ventricular Fibrillation on the monitor",
+      "Deliver first defibrillation at 200 J biphasic (Zoll highest setting)",
+      "Resume compressions immediately after the shock - no pulse check for 2 minutes",
+      "Establish IO access at the proximal humerus without interrupting compressions",
+      "Apply waveform capnography and target EtCO2 > 10 mmHg",
+      "Recognize ROSC: organized rhythm, palpable pulse, sudden EtCO2 surge",
+      "Manage post-ROSC airway with supraglottic airway and BVM at 10 breaths/min - do NOT hyperventilate",
+      "Target SpO2 94-98% post-ROSC - do NOT hyperoxygenate",
+      "Acquire post-ROSC 12-lead ECG and identify Anterior STEMI pattern",
+      "Transport to PCI/cath-capable facility with field STEMI activation",
+      "Leave defibrillator pads in place for the duration of post-ROSC care",
+      "Treat post-ROSC hypotension (SBP < 90) with NS bolus then push-dose epinephrine if needed",
+      "Provide clear, compassionate communication with the wife throughout the call"
+    ],
+    "expectedActions": [
+      "Designate a code leader and assign pit-crew roles before the first shock",
+      "Brief and direct the wife to a safe area without scolding her CPR effort",
+      "Establish a second IV in addition to the IO during transport",
+      "Place a supraglottic airway (i-gel) for the comatose post-ROSC patient lacking gag reflex",
+      "Plan stair extrication with a mechanical CPR device or LUCAS available in case of re-arrest",
+      "Provide structured SBAR handoff at the cath lab door with downtime, bystander CPR duration, time-to-first-shock, time of ROSC",
+      "Avoid hyperthermia post-ROSC by limiting warm blankets and bunting"
+    ],
+    "bonusActions": [
+      "Pre-charge the defibrillator during compressions to minimize peri-shock pause",
+      "Use a metronome or CPR feedback device for compression rate and ventilation rate",
+      "Acquire serial 12-leads en route if initial post-ROSC tracing is non-diagnostic",
+      "Counsel the wife to not drive herself - have a family member drive or arrange transport",
+      "Document the bystander CPR quality and duration in detail for cardiac arrest QI registry"
+    ]
+  },
+  "debriefing": {
+    "learningObjectives": [
+      "Recognize unwitnessed cardiac arrest with bystander CPR as still survivable when high-quality ALS care follows",
+      "Apply the cardiac arrest pit-crew model with defined roles and a code leader",
+      "Defibrillate as soon as the device is ready in unwitnessed VF arrests - no required delay for additional CPR cycles per protocol",
+      "Use the manufacturer's recommended (or highest) energy setting for biphasic defibrillation (200 J on Zoll X-Series)",
+      "Resume compressions immediately after defibrillation without a pulse check for 2 minutes",
+      "Recognize ROSC by multiple methods: organized rhythm, palpable pulse, EtCO2 surge",
+      "Apply post-ROSC priorities: airway, ventilation 8-10/min, SpO2 94-98%, BP support, 12-lead, destination decision",
+      "Identify Anterior STEMI on 12-lead ECG (V1-V4 ST elevation) and activate the regional STEMI system",
+      "Avoid the two leading causes of post-ROSC re-arrest: hyperventilation and untreated hypotension",
+      "Plan for stair/awkward extrications with mechanical CPR device readiness in case of re-arrest",
+      "Manage shock-refractory VF with continued shocks, epinephrine, and amiodarone, and consider termination of resuscitation or ECMO referral as appropriate"
+    ],
+    "discussionQuestions": [
+      "What features of this arrest made it more or less survivable than the witnessed-arrest scenario?",
+      "Walk through the protocol's distinction between witnessed and unwitnessed arrest - does the timing of defibrillation actually differ?",
+      "How would your management differ if the wife had not started CPR and you arrived to find a 10-minute downtime with no bystander CPR?",
+      "What does an EtCO2 surge from 14 to 36 mmHg signal during compressions? Can you describe the waveform in detail?",
+      "How do you communicate with a family member who has been doing CPR for 6 minutes and is exhausted - what is helpful and what is harmful?",
+      "What are the considerations for stair extrication in a post-ROSC patient? When does a mechanical CPR device become essential?",
+      "Anterior STEMI in a post-ROSC patient: what is the destination decision logic, and how does the time from arrest affect the cath lab approach?"
+    ],
+    "commonPitfalls": [
+      "Delaying the first shock to 'finish' a CPR cycle on an already-compressed patient with bystander CPR",
+      "Pausing compressions for more than 5-10 seconds to check pulses or reassess rhythm",
+      "Hyperventilating the post-ROSC patient at 20-30/min instead of 8-10/min",
+      "Hyperoxygenating - leaving FiO2 at 100% after SpO2 has normalized",
+      "Removing defibrillator pads before transfer to the hospital",
+      "Performing manual compressions in motion during a stair carry - dangerous to crew and ineffective",
+      "Failing to acquire a 12-lead post-ROSC and missing an anterior STEMI",
+      "Scolding or criticizing the bystander spouse who has been doing CPR - this damages future bystander engagement",
+      "Forgetting to document the downtime, bystander CPR quality and duration, and ROSC time for the cardiac arrest QI registry"
+    ],
+    "keyTakeaways": [
+      "Unwitnessed VF + bystander CPR + early ALS = survivable - the bystander matters",
+      "Defibrillate as soon as the device is ready in any VF, witnessed or not",
+      "200 J biphasic on a Zoll X-Series, immediately followed by 2 minutes of compressions",
+      "Post-ROSC: ventilate at 10/min, SpO2 94-98%, support BP, leave pads on, 12-lead, PCI center",
+      "Anterior STEMI: V1-V4 - common arrest etiology in middle-aged men with cardiac risk factors",
+      "Plan extrication with mechanical CPR readiness in awkward locations - re-arrest is common"
+    ]
+  },
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

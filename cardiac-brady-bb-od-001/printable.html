@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beta-Blocker Overdose - Symptomatic Bradycardia, Glucagon and Pacing — Printable</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--card:#fff;--card-border:#d6d3d1;--text:#1c1917;--text-secondary:#44403c;--text-muted:#78716c;--green:#166534;--red:#b91c1c;--red-light:#fef2f2;--red-border:#fecaca;--orange:#c2410c;--yellow:#a16207;--blue:#1e40af;--radius:8px;--radius-sm:6px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;background:#f5f5f4;color:var(--text);line-height:1.5;padding:24px;font-size:12pt}
+.sheet{max-width:800px;margin:0 auto;background:#fff;padding:28px 32px;box-shadow:0 1px 4px rgba(0,0,0,.08);border-radius:10px}
+.scenario-name{font-size:11pt;color:var(--text-secondary)}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;break-inside:avoid}
+.card-title{font-size:9pt;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:10px 14px 6px;border-bottom:1px solid #f5f5f4}
+.card-content{padding:10px 14px 12px}
+.scene-row{padding:6px 0;border-bottom:1px solid #f5f5f4;display:grid;grid-template-columns:110px 1fr;gap:10px}
+.scene-row:last-child{border-bottom:none}
+.scene-label{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.scene-value{font-size:11pt;color:var(--text-secondary)}
+.cue-list{list-style:none;margin:0}
+.cue-list li{font-size:11pt;color:var(--text-secondary);padding:3px 0 3px 14px;position:relative}
+.cue-list li::before{content:'→';position:absolute;left:0;color:var(--text-muted);font-size:10pt}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e7e5e4}
+.sample-cell{background:#fff;padding:9px 12px}
+.sample-cell:nth-child(1),.sample-cell:nth-child(6){grid-column:1/-1}
+.sample-letter{font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--green);margin-right:4px}
+.sample-name{font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:3px}
+.sample-text{font-size:10.5pt;color:var(--text-secondary);line-height:1.45}
+.patient-chips{display:flex;gap:8px;flex-wrap:wrap}
+.patient-chip{font-size:10pt;padding:4px 10px;background:#f5f5f4;border-radius:6px;color:var(--text-secondary)}
+.patient-chip strong{color:var(--text);font-weight:700}
+.phase-section{break-before:auto;page-break-before:auto;margin-top:12px}
+.phase-section .phase-card{break-after:avoid;page-break-after:avoid}
+.phase-card{border-left:4px solid var(--text)}
+.phase-card-branch{border-left-color:var(--red)}
+.branch-tag{display:inline-block;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);background:var(--red-light);padding:2px 8px;border-radius:4px;margin-bottom:6px}
+.phase-title{font-size:16pt;font-weight:700;margin-bottom:4px}
+.phase-trigger{font-family:'DM Mono',ui-monospace,monospace;font-size:9pt;color:var(--yellow);margin-bottom:6px}
+.phase-desc{font-size:11pt;color:var(--text-secondary);line-height:1.5}
+.ecg-label{font-family:'DM Mono',ui-monospace,monospace;font-size:10pt;color:var(--text-secondary);padding:8px 12px;background:#fafaf9;border-bottom:1px solid #f0efec}
+.vitals-grid{display:flex;flex-wrap:wrap;gap:4px 18px;padding:8px 14px}
+.vital-cell{background:transparent;padding:0;text-align:left;display:flex;align-items:baseline;gap:4px}
+.vital-cell.full-width{grid-column:auto}
+.vital-name{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.vital-val{font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--text);line-height:1.1}
+.vital-unit{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;color:var(--text-muted)}
+.loc-block{margin-bottom:10px}
+.avpu-bar{display:flex;border:1px solid var(--card-border);border-radius:6px;overflow:hidden;margin-bottom:10px}
+.avpu-seg{flex:1;text-align:center;padding:6px 4px;font-family:'DM Mono',ui-monospace,monospace;font-size:10pt;font-weight:700;color:var(--text-muted);background:#fafaf9}
+.avpu-seg.sel-a{background:#ecfccb;color:var(--green)}
+.avpu-seg.sel-v{background:#fef3c7;color:var(--yellow)}
+.avpu-seg.sel-p{background:#ffedd5;color:var(--orange)}
+.avpu-seg.sel-u{background:var(--red-light);color:var(--red)}
+.gcs-detail{display:flex;flex-wrap:wrap;gap:6px 16px;padding:8px 14px;border:1px solid var(--card-border);border-radius:6px;margin-bottom:10px;align-items:baseline}
+.gcs-item{display:flex;align-items:baseline;gap:4px;padding:0;border:none}
+.gcs-item:last-of-type{border-bottom:none}
+.gcs-part{order:1;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.gcs-score{order:2;font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--text)}
+.gcs-desc{order:3;font-size:9.5pt;color:var(--text-muted);font-style:italic}
+.gcs-desc::before{content:'('}
+.gcs-desc::after{content:')'}
+.gcs-total-row{display:flex;align-items:baseline;gap:4px;order:-1;padding:0;margin:0;border:none;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.gcs-total-row .gcs-total{font-family:'DM Mono',ui-monospace,monospace;font-size:12pt;font-weight:700;color:var(--text)}
+.finding-row{padding:6px 0;border-bottom:1px solid #f5f5f4;display:grid;grid-template-columns:100px 1fr;gap:10px}
+.finding-row:last-child{border-bottom:none}
+.finding-label{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.finding-value{font-size:10.5pt;color:var(--text-secondary)}
+.finding-speech{font-style:italic;color:var(--text-muted)}
+.findings-notes{list-style:none;margin:0}
+.findings-notes li{font-size:10pt;color:var(--text-secondary);padding:2px 0 2px 12px;position:relative}
+.findings-notes li::before{content:'·';position:absolute;left:2px;font-weight:700;color:var(--text-muted)}
+.action-row{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #f5f5f4;break-inside:avoid}
+.action-row:last-child{border-bottom:none}
+.action-box{width:14px;height:14px;border:1.5px solid var(--text-muted);border-radius:3px;flex-shrink:0;margin-top:3px}
+.action-body{flex:1;min-width:0}
+.action-head{display:flex;align-items:flex-start;gap:8px;margin-bottom:4px}
+.action-priority{display:inline-block;font-family:'DM Mono',ui-monospace,monospace;font-size:7.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 6px;border-radius:3px;flex-shrink:0;margin-top:2px}
+.p-critical{background:var(--red-light);color:var(--red)}
+.p-important{background:#fff7ed;color:var(--orange)}
+.p-supp{background:#f5f5f4;color:var(--text-muted)}
+.action-text{font-size:11pt;font-weight:600;color:var(--text);line-height:1.35}
+.action-rationale,.action-ref{display:none}
+.action-head{margin-bottom:0}
+.action-row{padding:6px 0}
+@media print{
+  body{background:#fff;padding:0;font-size:10pt}
+  .sheet{box-shadow:none;max-width:none;padding:0.4in;border-radius:0}
+  .card{break-inside:avoid;margin-bottom:8px}
+  .card-title{padding:6px 10px 3px}
+  .card-content{padding:6px 10px 8px}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="card"><div class="card-title">Scenario</div><div class="card-content"><div class="scenario-name">Beta-Blocker Overdose - Symptomatic Bradycardia, Glucagon and Pacing</div></div></div>
+  <div class="card"><div class="card-title">Patient</div><div class="card-content"><div class="patient-chips"><span class="patient-chip"><strong>Frank Petrov</strong></span><span class="patient-chip">70 years male</span><span class="patient-chip">187 lbs (85 kg)</span><span class="patient-chip">5'10"</span><span class="patient-chip">CC: Found by daughter at home: lethargic, slow heart rate, hypotensive; suspected intentional metoprolol overdose</span></div></div></div>
+  <div class="card"><div class="card-title">Scene</div><div class="card-content">
+    <div class="scene-row"><div class="scene-label">Dispatch</div><div class="scene-value">Respond priority 1 to a private residence for a 70-year-old male with altered mental status and slow heart rate. Daughter on scene reports possible medication overdose.</div></div>
+    <div class="scene-row"><div class="scene-label">Location</div><div class="scene-value">Single-story private residence, living room. Patient supine on the couch. Adequate lighting. Comfortable indoor temperature. Direct path to the front door for stretcher.</div></div>
+    <div class="scene-row"><div class="scene-label">Time</div><div class="scene-value">1438 hours, Saturday afternoon</div></div>
+    <div class="scene-row"><div class="scene-label">Safety</div><div class="scene-value">Scene is safe. Daughter directing crew. No environmental or chemical hazards. Empty pill bottle bagged for transport with the patient.</div></div>
+    <div class="scene-row"><div class="scene-label">Bystanders</div><div class="scene-value">Adult daughter (lives nearby, primary contact) is at bedside, distraught but cooperative. She has the prescription bottles, knows the medications, and can speak to her father's recent emotional state.</div></div>
+  </div></div><div class="card"><div class="card-title">Visual Cues on Arrival</div><div class="card-content"><ul class="cue-list"><li>Elderly male supine on couch, eyes closed, intermittent groaning</li><li>Pale, dry skin</li><li>Empty bottle of metoprolol tartrate 50 mg on the kitchen counter (pharmacy fill 5 days ago, 60-tablet rx)</li><li>Partially handwritten note on the kitchen table (sadness, no explicit suicide statement)</li><li>Photo of the patient and his late wife visible in the room</li><li>No alcohol bottles, no other empty pill bottles, no drug paraphernalia</li><li>Patient in pajamas, no signs of trauma</li><li>Phone on coffee table</li></ul></div></div>
+  <div class="card">
+    <div class="card-title">SAMPLE History</div>
+    <div class="card-content" style="padding:0">
+      <div class="sample-grid">
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">S</span> Signs &amp; Symptoms</div><div class="sample-text">70-year-old male with a history of atrial fibrillation, hypertension, and major depressive disorder. He was found by his adult daughter on the couch this afternoon, looking pale and groggy with slurred speech. She reports he had been despondent over his wife's recent death (~6 weeks ago) and had stopped going to grief counseling. On the kitchen counter she found his prescription bottle of metoprolol tartrate 50 mg empty (he had a 60-tablet 30-day supply filled 5 days ago - so an estimated 50+ tablets potentially ingested). She estimates she last spoke to him by phone at ~1100 when he sounded 'normal but flat.' She arrived at ~1430 and found him in his current condition, suggesting ingestion possibly 1-3 hours ago. She found a partially handwritten note on the kitchen table that did not appear to be a suicide note but expressed sadness. No other empty pill bottles. He has not vomited. No alcohol bottles visible.</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">A</span> Allergies</div><div class="sample-text">NKDA</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">M</span> Medications</div><div class="sample-text">Metoprolol tartrate 50 mg PO BID (the suspected overdose agent), Apixaban 5 mg PO BID, Sertraline 100 mg PO daily, Lisinopril 10 mg PO daily, Atorvastatin 40 mg PO at bedtime</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">P</span> Past Medical</div><div class="sample-text">Atrial fibrillation (rate-controlled on metoprolol), Hypertension, Major depressive disorder (recurrent, currently moderate), Recent bereavement (wife died 6 weeks ago), Mild chronic kidney disease (baseline Cr ~1.4), No prior overdose history per family</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">L</span> Last Intake</div><div class="sample-text">Daughter unsure - possibly toast and coffee mid-morning</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">E</span> Events</div><div class="sample-text">Daughter spoke with patient by phone at ~1100, sounded normal-flat. Found him on the couch at ~1430 looking pale, groggy, with slurred speech. Pill bottle of metoprolol 50 mg empty on counter. Estimated 50+ tablets ingested. Possible time of ingestion 1-3 hours ago. Daughter called 911 immediately.</div></div>
+      </div>
+    </div>
+  </div>
+  <section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Initial Presentation - Suspected Beta-Blocker Overdose</div>
+        
+        <div class="phase-desc">Crew arrives to a 70-year-old male with altered mental status, bradycardia (HR 38), hypotension (SBP 78), and suspected metoprolol overdose. Time of ingestion is uncertain (possibly 1-3 hours ago). The presentation is classic for beta-blocker toxicity: bradycardia, hypotension, AMS, and the empty metoprolol bottle. The crew must apply the Beta-Blocker Overdose protocol: airway, oxygen, monitor, IV access, glucose check, fluid challenge, atropine (often ineffective in BB OD), glucagon (the antidote), and prepare for transcutaneous pacing if refractory. Activated charcoal is generally NOT appropriate here because of the time-since-ingestion uncertainty, declining mental status, and unprotected airway.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Sinus Bradycardia</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">38</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">78/50</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">94%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">14</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">38</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.5°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">76</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg sel-v">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">To speech</span><span class="gcs-score">3</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Confused</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Localizes pain</span><span class="gcs-score">5</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">12</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent and self-maintained but at risk if mental status declines further; gag reflex intact at present.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 14, regular, lungs clear bilaterally. SpO2 94% on room air.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Carotid and femoral pulses present but slow and weak. Radial pulse weak. Skin cool, pale, dry. Capillary refill 4-5 seconds.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pale · cool · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm bilaterally - no anticholinergic mydriasis.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Withdraws to noxious stimulus; localizes inconsistently; symmetric.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"'Mmmh... leave me... alone...' (intermittent, slurred)"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Patient mumbles and intermittently groans; opens eyes to loud verbal stimulus</li><li>Slurred speech when prompted; oriented to self only</li><li>Daughter confirms metoprolol bottle empty, no other empty bottles</li><li>Empty pill bottle bagged for transport</li><li>No vomiting or aspiration noted</li><li>No tongue laceration, no incontinence</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Perform scene size-up and BSI; secure the empty pill bottle and any handwritten notes for the receiving facility; document time-since-ingestion as estimated by daughter</div></div>
+        <div class="action-rationale">Pill bottle and notes guide hospital toxicology workup and dosing decisions. Time-since-ingestion drives charcoal/airway/monitoring decisions.</div>
+        <div class="action-ref">↳ MATC: Poisoning/Overdose - Universal</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Complete primary survey (ABCDE); identify symptomatic bradycardia with hemodynamic compromise and altered mental status; recognize beta-blocker toxidrome (bradycardia + hypotension + AMS + sometimes hypoglycemia)</div></div>
+        <div class="action-rationale">Pattern recognition triggers the Beta-Blocker Overdose protocol.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Position the patient supine with legs slightly elevated; maintain airway readiness in case mental status declines further (suction, OPA/NPA available, BVM ready)</div></div>
+        <div class="action-rationale">Beta-blocker overdose patients can deteriorate rapidly; airway protection is anticipated.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Apply oxygen via nasal cannula at 4 L/min titrated to SpO2 94-98%</div></div>
+        <div class="action-rationale">SpO2 94% with bradycardia and AMS warrants supplemental O2.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Apply 4-lead cardiac monitor; acquire 12-lead ECG; identify Sinus Bradycardia at 38; assess QRS width carefully (propranolol and acebutolol can widen QRS - sodium bicarbonate indicated)</div></div>
+        <div class="action-rationale">QRS width informs treatment - widened QRS in beta-blocker overdose suggests propranolol-like sodium channel effects warranting sodium bicarbonate.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Establish two large-bore IV lines (18 g preferred); saline lock both</div></div>
+        <div class="action-rationale">Two reliable IVs are essential for fluids, glucagon, atropine, calcium, and potential pressor escalation.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Check blood glucose; result is 76 mg/dL (low-normal); beta-blockers can cause hypoglycemia, especially in pediatric patients - serial glucose checks indicated</div></div>
+        <div class="action-rationale">Per protocol, check blood glucose on all beta-blocker overdose patients. Serial checks during long transport.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Apply transcutaneous pacing pads in anterior-posterior position prophylactically; do not yet initiate pacing - have it ready in case medications fail</div></div>
+        <div class="action-rationale">Pre-positioning pacer pads dramatically shortens time-to-capture if medications fail.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer Normal Saline 20 mL/kg (1700 mL for 85 kg patient) IV bolus; reassess BP and lung sounds; consider repeat aliquot if BP remains low and lungs stay clear</div></div>
+        <div class="action-rationale">Per protocol, fluid challenge of 20 mL/kg is a first-line intervention for the hypotensive bradycardic beta-blocker overdose patient.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Obtain detailed history from daughter: substances ingested, time of ingestion, quantity, suicidal ideation, prior overdoses, other medications in the home (especially calcium channel blockers, TCAs, opioids, benzodiazepines)</div></div>
+        <div class="action-rationale">Mixed overdose changes treatment significantly. Must rule out concurrent CCB or TCA ingestion.</div>
+        <div class="action-ref">↳ MATC: Poisoning/Overdose - Universal</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Do NOT administer activated charcoal: time of ingestion is uncertain (likely &gt; 1 hour), mental status is declining, and the airway is at risk - charcoal aspiration is catastrophic. Document deferral and rationale</div></div>
+        <div class="action-rationale">Per protocol, activated charcoal is only appropriate within 1 hour of ingestion AND with a protected airway. This patient meets neither criterion.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Atropine Fails - Glucagon Antidote</div>
+        <div class="phase-trigger">Trigger: Atropine 1 mg IV given with no rate response after 3-5 minutes</div>
+        <div class="phase-desc">Atropine 1 mg IV produced no rate response (typical for beta-blocker overdose - the protocol explicitly states 'atropine may have little or no effect'). The crew administers Glucagon 5 mg IV - the specific antidote for beta-blocker toxicity. Glucagon bypasses the beta-receptor blockade by activating cardiac adenylate cyclase via a separate receptor pathway, increasing cAMP, and improving inotropy and chronotropy. The crew must anticipate vomiting (common glucagon side effect) and consider ondansetron prophylaxis.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Sinus Bradycardia</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">40</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">84/54</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">95%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">14</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.5°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">76</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg sel-v">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">To speech</span><span class="gcs-score">3</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Confused</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Localizes pain</span><span class="gcs-score">5</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">12</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Unchanged. RR 14.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Unchanged - HR persists at 38-40; BP remains low 80s systolic.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pale · cool · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"Slurred 'Mmm... what's happening...'"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>No change in heart rate or blood pressure after atropine - typical for beta-blocker toxicity</li><li>Patient remains responsive to verbal stimulation but minimally interactive</li><li>1 L of fluid bolus completed; 700 mL more running</li><li>Pacer pads in place from earlier preparation</li><li>Daughter has bagged the empty pill bottle for transport</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Reassess heart rate and BP 3-5 minutes after Atropine 1 mg dose; document no response - consistent with beta-blocker pathophysiology</div></div>
+        <div class="action-rationale">Atropine's mechanism (vagal blockade) does not bypass the beta-receptor blockade; the protocol notes 'atropine may have little or no effect.'</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Administer second Atropine 1 mg IV (per protocol allows up to 3 mg total) while transitioning to specific antidote therapy; document atropine total</div></div>
+        <div class="action-rationale">Maximum atropine dose is 3 mg; document all doses. Beta-blocker overdose protocol allows up to 3 mg.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer Glucagon 5 mg IV bolus (specific antidote for beta-blocker toxicity); reconstitute with provided diluent or sterile water; push slowly over 1-2 minutes</div></div>
+        <div class="action-rationale">Glucagon is the specific antidote: it activates cardiac adenylate cyclase via a non-beta receptor and increases cAMP, restoring inotropy/chronotropy in beta-blocker toxicity. Adult dose is 5 mg IV initial, may repeat 5 mg in 5-10 min for total of 10 mg.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer Ondansetron 4 mg IV slowly prior to or with the glucagon dose; glucagon causes nausea/vomiting at therapeutic doses and aspiration is a major risk in this AMS patient</div></div>
+        <div class="action-rationale">Per protocol pearls, 'Glucagon has a side effect of increased vomiting at these doses and ondansetron prophylaxis may be considered.'</div>
+        <div class="action-ref">↳ MATC: Nausea / Vomiting</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">If hypotension/bradycardia refractory, consider Calcium gluconate 10% 1 g (10 mL of 100 mg/mL) IV slow push over 5 minutes. This is more clearly indicated for calcium channel blocker overdose, but mixed BB/CCB ingestion cannot be excluded if the daughter is uncertain about the bottles</div></div>
+        <div class="action-rationale">Calcium has limited but real role in beta-blocker overdose, more so in mixed/uncertain BB+CCB. Slow push to avoid bradycardia/asystole.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">While giving glucagon, prepare the transcutaneous pacer: confirm pads in AP position, switch monitor to PACER mode, set rate at 70-80, start mA at 0 to titrate up; have sedation/analgesia drawn up (Midazolam 1 mg + Fentanyl 50 mcg)</div></div>
+        <div class="action-rationale">Parallel preparation reduces time-to-capture when needed. Anticipate that medications may not work in this overdose.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Continuously reassess mental status and airway; if patient declines to AVPU Pain or Unresponsive, prepare for intubation per RSI protocol</div></div>
+        <div class="action-rationale">Per protocol, 'Frequent reassessment is essential as patient deterioration can be rapid and catastrophic.' Beta-blocker patients can deteriorate without warning.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">If QRS widens &gt; 100 msec, consider Sodium bicarbonate 1-2 mEq/kg (85-170 mEq for 85 kg patient) IV - propranolol especially can produce TCA-like sodium channel blockade</div></div>
+        <div class="action-rationale">Per protocol, 'If widened QRS (100 msec or greater), consider sodium bicarbonate 1-2 mEq/kg IV. This can be repeated as needed to narrow QRS.'</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Glucagon Insufficient - Transcutaneous Pacing Required</div>
+        <div class="phase-trigger">Trigger: Glucagon and other medications failed to adequately respond; TCP initiated and capture achieved</div>
+        <div class="phase-desc">Despite glucagon 5 mg IV, repeat glucagon 5 mg in 10 minutes (total 10 mg), atropine 2 mg total, calcium gluconate 1 g, and 2 L fluid bolus, the patient remains bradycardic at HR 42 with persistent hypotension SBP 80. The crew initiates transcutaneous pacing at rate 70 with sedation/analgesia and titrates output to capture. Mechanical capture is confirmed by femoral pulse synchronous with pacer spikes. The crew prepares for vasopressor escalation if BP remains low after capture. This is a refractory beta-blocker overdose - the next escalations at the hospital will likely include high-dose insulin/dextrose and possibly intralipid.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Pacemaker Rhythm</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">70</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">96/60</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">96%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">16</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.7°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">78</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg sel-v">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">To speech</span><span class="gcs-score">3</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Confused</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Localizes pain</span><span class="gcs-score">5</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">12</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent. Suctioning available.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 16, regular.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Femoral pulse palpable and synchronous with pacer spikes.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pale, slowly pinking centrally · cool, warming slightly · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric, withdrawing weakly to noxious stimulus.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"Mumbling, no clear speech."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Pacer captured at ~80 mA, set at 90 mA for safety margin (10-20 above threshold)</li><li>Patient grimaced during pacing but tolerating after sedation/analgesia</li><li>Total glucagon given: 10 mg (5 mg + 5 mg)</li><li>BP slowly improving with capture and pressor support</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Verify electrical capture: each pacer spike on the monitor is followed by a wide QRS complex; document threshold mA and final output (10-20 mA above threshold)</div></div>
+        <div class="action-rationale">Electrical capture must be confirmed before assuming the heart is being paced.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Verify mechanical capture by palpating a FEMORAL pulse (not carotid) synchronized with each pacer spike</div></div>
+        <div class="action-rationale">Carotid pulse can be mimicked by skeletal muscle twitching from TCP. The femoral is the validated site.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer Midazolam 1 mg IV slowly (titrate to comfort with caution given hypotension and AMS; max initial 2-3 mg in this patient)</div></div>
+        <div class="action-rationale">Sedation required for TCP. Use lower dose given AMS and hypotension.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Administer Fentanyl 25-50 mcg IV slowly (lower dose in AMS hypotensive patient)</div></div>
+        <div class="action-rationale">Analgesia complements sedation; fentanyl preferred over morphine for hemodynamic safety.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">If not already given, administer second Glucagon 5 mg IV bolus (5-10 minutes after first, to total 10 mg). Consider glucagon infusion 1-5 mg/hr if available locally for extended response</div></div>
+        <div class="action-rationale">Per protocol, glucagon may be repeated to total 10 mg; infusion can be considered for sustained effect (off-protocol may require medical direction).</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">If BP remains &lt; 90 after pacing capture, initiate Epinephrine push-dose 10-20 mcg IV every 2-5 minutes titrated to MAP &gt; 65, OR Epinephrine infusion 0.02-0.2 mcg/kg/min IV titrated to MAP &gt; 65, OR Norepinephrine 0.02-0.4 mcg/kg/min IV titrated to MAP &gt; 65</div></div>
+        <div class="action-rationale">Per protocol, vasopressors after adequate fluid resuscitation (1-2 L crystalloid). Beta-blocker patients may need higher than expected pressor doses.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Recheck blood glucose every 15-30 minutes during transport; treat hypoglycemia with Dextrose 10% 250 mL (25 g) IV per protocol</div></div>
+        <div class="action-rationale">Beta-blockers can cause hypoglycemia (especially in pediatric patients but also possible in adults).</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Provide early notification to receiving facility (preferably one with toxicology consult capability): 70 M with intentional metoprolol overdose, refractory bradycardia/hypotension, on TCP with capture, glucagon 10 mg given, atropine 2 mg, NS 2 L, on push-dose epinephrine; request toxicology consult on arrival</div></div>
+        <div class="action-rationale">Receiving team needs advance notice for high-dose insulin/dextrose preparation, ICU bed, possible intralipid, and toxicology consult.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Document daughter's history of patient's depression, recent bereavement, and the empty pill bottle; communicate intentional ingestion to receiving team for appropriate psychiatric hold/consult after medical stabilization</div></div>
+        <div class="action-rationale">Intentional overdose triggers psychiatric evaluation and safety planning. Documentation is essential.</div>
+        <div class="action-ref">↳ MATC: Poisoning/Overdose - Universal</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Transport on TCP and Pressor Support</div>
+        <div class="phase-trigger">Trigger: Stable on TCP, glucagon, and pressor support, en route to ED</div>
+        <div class="phase-desc">Patient en route to a hospital with toxicology and ICU capability. TCP is maintaining capture at rate 70, mA 90. Push-dose epinephrine has stabilized BP at SBP 102. Glucagon 10 mg total has been given. Patient remains AMS but airway is patent. The crew vigilantly monitors capture, BP, mental status, glucose, and prepares for further deterioration including potential need for intubation, fast-paced communication with receiving team, and potential treatment for ongoing absorption (note: metoprolol IR formulation is mostly absorbed in 1-3 hours, but the patient may continue to absorb if ingestion was more recent).</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Pacemaker Rhythm</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">70</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">102/64</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">96%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">16</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.7°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">88</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg sel-v">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">To speech</span><span class="gcs-score">3</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Confused</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Localizes pain</span><span class="gcs-score">5</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">12</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent, suction available, OPA placed.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 16, regular, lungs clear.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pacing-captured, pressor support stabilizing BP, perfusion improving.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pinking centrally, pale extremities · warming · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric, slow but improving response.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"Slow, slurred, occasional one-word responses to firm verbal stimulus."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Pacer maintaining capture, no recent threshold change</li><li>Push-dose epinephrine titrated; BP responding</li><li>Glucose stable at 88 mg/dL on recheck</li><li>Daughter following in own vehicle to hospital</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Continuously verify electrical and mechanical capture; document at least every 5 minutes</div></div>
+        <div class="action-rationale">Pacer pads can shift, fluid/sweat can degrade contact, patient movement can cause loss of capture.</div>
+        <div class="action-ref">↳ MATC: Bradycardia</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Reassess full vitals (HR, BP, RR, SpO2, EtCO2, mental status, lung sounds) every 5 minutes; document trends</div></div>
+        <div class="action-rationale">Beta-blocker patients can deteriorate rapidly; trend monitoring is essential.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Continuously assess airway and respiratory drive; prepare for RSI if mental status declines further or aspiration risk increases</div></div>
+        <div class="action-rationale">AMS + intentional overdose + possible vomiting from glucagon = high airway risk.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Recheck blood glucose every 15-30 minutes; treat hypoglycemia with Dextrose 10% 250 mL (25 g) IV per protocol</div></div>
+        <div class="action-rationale">Beta-blocker hypoglycemia can develop late.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Acquire serial 12-lead ECGs every 10 minutes en route or with any clinical change; specifically monitor QRS width (sodium bicarbonate indicated if QRS &gt; 100 msec)</div></div>
+        <div class="action-rationale">QRS widening can develop late in beta-blocker overdose, especially propranolol.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">At ED bedside, give detailed SBAR handoff: substance (metoprolol tartrate 50 mg, ~50 tablets), time of ingestion (estimated 1-3 hours ago), all interventions and times (atropine 2 mg total, glucagon 10 mg total, NS 2 L, calcium gluconate 1 g, push-dose epi titrated, TCP at rate 70 mA 90 with capture), psychiatric history (intentional, recent bereavement, depression), all bottles/notes secured</div></div>
+        <div class="action-rationale">Comprehensive handoff supports tox/ICU planning (high-dose insulin, intralipid, ECMO consideration if refractory).</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Communicate intentional overdose context to receiving team; document for psychiatric hold/consult after medical stabilization; ensure family member is informed of patient's location</div></div>
+        <div class="action-rationale">Mental health follow-up is part of comprehensive care for intentional overdose.</div>
+        <div class="action-ref">↳ MATC: Poisoning/Overdose - Universal</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card phase-card-branch">
+      <div class="card-content">
+        <div class="branch-tag">Improper Care Branch</div>
+        <div class="phase-title">Branch - Airway Deterioration Requiring Intubation</div>
+        <div class="phase-trigger">Trigger: Patient mental status declines to AVPU Pain or Unresponsive with airway compromise</div>
+        <div class="phase-desc">Patient mental status declined to AVPU Pain (GCS 7-8) with depressed gag reflex and increasing aspiration risk. Vital signs are similar but airway is now the primary problem. The crew must perform RSI per the Airway Management protocol while maintaining hemodynamic support. This is challenging in a hypotensive bradycardic patient: induction agents must be selected for hemodynamic neutrality (ketamine often preferred), and sedation must continue post-intubation.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Sinus Bradycardia</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">42</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">86/56</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">92%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">10</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">38</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.5°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">78</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg sel-p">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Incomprehensible sounds</span><span class="gcs-score">2</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Withdraws from pain</span><span class="gcs-score">4</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">7</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">At risk; gag reflex absent or weak; pooling secretions.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 10, shallow.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Bradycardic, hypotensive.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pale · cool · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Withdraws to noxious stimulus only; no purposeful movement.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"Moans only."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>GCS 7 - clear airway compromise</li><li>Aspiration risk high</li><li>Hemodynamics tenuous - induction agent selection critical</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Pre-oxygenate via BVM with PEEP 5 cmH2O at 100% O2 for 3-5 minutes; apply nasal cannula at 15 L/min for apneic oxygenation during the intubation attempt</div></div>
+        <div class="action-rationale">Pre-oxygenation extends the safe apnea window in a hypotensive bradycardic patient.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Continue fluid resuscitation and push-dose epinephrine prior to induction to support BP through the intubation</div></div>
+        <div class="action-rationale">Induction agents drop BP further; pre-loading volume and pressors mitigates this.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer Ketamine 1 mg/kg (~85 mg for 85 kg patient) IV push for induction (preferred over etomidate or propofol given hemodynamic profile)</div></div>
+        <div class="action-rationale">Ketamine is hemodynamically neutral and may even support BP via catecholamine release; preferred in shock states.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer paralytic: Rocuronium 1 mg/kg (85 mg for 85 kg patient) IV push (preferred over succinylcholine in possible hyperkalemic states or unknown overdose)</div></div>
+        <div class="action-rationale">Rocuronium safer with unknown electrolyte status; longer duration provides more intubation window.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Perform endotracheal intubation with size 7.5-8.0 ETT; confirm placement with continuous waveform capnography (gold standard), bilateral breath sounds, absent gastric sounds; secure tube; document depth at incisors</div></div>
+        <div class="action-rationale">Waveform capnography is the gold standard for confirming and continuously verifying tube placement.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Maintain post-intubation sedation: Ketamine 0.5-1 mg/kg (~42-85 mg) IV every 10-15 minutes OR Fentanyl 25-50 mcg IV + Midazolam 1-2 mg IV titrated; do not leave the paralyzed patient awake</div></div>
+        <div class="action-rationale">Continuous sedation is mandatory post-intubation; awake-paralyzed is a known harm.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Ventilate at 10-12 breaths/minute targeting EtCO2 35-45 mmHg; do NOT hyperventilate</div></div>
+        <div class="action-rationale">Standard post-intubation ventilation parameters.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card phase-card-branch">
+      <div class="card-content">
+        <div class="branch-tag">Improper Care Branch</div>
+        <div class="phase-title">Branch - Vomiting and Aspiration After Glucagon</div>
+        <div class="phase-trigger">Trigger: Glucagon given without ondansetron, patient vomited, aspirated</div>
+        <div class="phase-desc">Glucagon was administered without ondansetron prophylaxis. The patient vomited within minutes (a known glucagon side effect at therapeutic doses), aspirated, and now has decreased SpO2, audible coarse rhonchi, and increased work of breathing. The crew must manage the aspiration: suction aggressively, position lateral if not contraindicated, escalate oxygen, and consider RSI if respiratory failure develops.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Sinus Bradycardia</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">42</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">86/54</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">88%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">22</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">32</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">97.5°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">78</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg sel-v">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">To speech</span><span class="gcs-score">3</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Inappropriate words</span><span class="gcs-score">3</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Localizes pain</span><span class="gcs-score">5</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">11</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Soiled with emesis; suctioning required; partial airway compromise.</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 22, labored, coarse rhonchi bilaterally.</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Bradycardic; BP unchanged.</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pale, slightly cyanotic at lips · cool · dry except diaphoresis on forehead from increased work of breathing</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">PERRL 3 mm.</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric.</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"Coughing, sputtering."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Patient vomited bile-stained gastric contents within 3-5 minutes of glucagon</li><li>Coarse rhonchi heard bilaterally on auscultation</li><li>SpO2 dropped from 95% to 86% before suctioning</li><li>Aspiration is the likely cause of the desaturation</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Suction the oropharynx aggressively with a Yankauer; clear emesis from mouth and posterior pharynx</div></div>
+        <div class="action-rationale">Removing the emesis bolus is the first step in aspiration management.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Place the patient in the lateral recovery position if cervical spine is not a concern, to allow continued drainage of secretions</div></div>
+        <div class="action-rationale">Gravity-assisted drainage prevents further aspiration.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Apply oxygen via NRB at 15 L/min; consider BVM-assisted ventilations if SpO2 remains &lt; 90% or work of breathing increases</div></div>
+        <div class="action-rationale">Aspiration causes ventilation-perfusion mismatch; supplemental O2 supports oxygenation while course defines.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Administer Ondansetron 4 mg IV now to prevent further vomiting</div></div>
+        <div class="action-rationale">Treat the cause; further vomiting will worsen aspiration.</div>
+        <div class="action-ref">↳ MATC: Nausea / Vomiting</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">If respiratory status worsens (SpO2 &lt; 88% on NRB, RR &gt; 30 with increased work, or rising EtCO2), prepare for RSI per the Airway Management protocol</div></div>
+        <div class="action-rationale">Aspiration with respiratory failure requires intubation for airway protection and ventilation.</div>
+        <div class="action-ref">↳ MATC: Airway Management (Includes RSI)</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-supp">supplemental</span><div class="action-text">Document for QI: ondansetron prophylaxis should be given before or with every glucagon dose at antidote levels (5-10 mg) due to high vomiting incidence</div></div>
+        <div class="action-rationale">Protocol pearl explicitly states this; it is a teachable, preventable error.</div>
+        <div class="action-ref">↳ MATC: Beta Blocker Poisoning/Overdose</div>
+      </div>
+    </div></div>
+  </div>
+  </section>
+</div>
+</body>
+</html>

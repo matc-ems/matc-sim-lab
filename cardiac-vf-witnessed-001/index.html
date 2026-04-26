@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Witnessed VF Cardiac Arrest at Softball Field - ROSC After Single Shock</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#f4f3f0;--card:#fff;--card-border:#e8e6e1;--text:#1c1917;--text-secondary:#57534e;--text-muted:#a8a29e;--green:#16a34a;--green-light:#f0fdf4;--green-border:#bbf7d0;--red:#dc2626;--red-light:#fef2f2;--red-border:#fecaca;--orange:#ea580c;--orange-light:#fff7ed;--orange-border:#fed7aa;--blue:#2563eb;--blue-light:#eff6ff;--purple:#7c3aed;--cyan:#0891b2;--yellow:#ca8a04;--radius:14px;--radius-sm:10px;--shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100dvh;overflow-x:hidden}
+.top-bar{background:var(--card);padding:16px 20px 0;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--card-border)}
+.scenario-name{font-size:17px;font-weight:700;margin-bottom:4px}
+.scenario-tags{display:flex;gap:6px;margin-bottom:14px}
+.tag{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px}
+.tag-difficulty{background:var(--orange-light);color:var(--orange)}
+.tag-category{background:var(--blue-light);color:var(--blue)}
+.tag-time{background:#f5f5f4;color:var(--text-muted)}
+.phase-strip{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}
+.phase-strip::-webkit-scrollbar{display:none}
+.phase-tab{flex-shrink:0;font-size:13px;font-weight:600;padding:10px 16px;color:var(--text-muted);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;position:relative}
+.phase-tab.active{color:var(--text);border-bottom-color:var(--text)}
+.phase-tab.branch{color:var(--red);opacity:.5}
+.phase-tab.branch.active{opacity:1;border-bottom-color:var(--red)}
+.phase-tab .hint-dot{display:none;width:7px;height:7px;border-radius:50%;position:absolute;top:6px;right:4px}
+.phase-tab.hint-next .hint-dot{display:block;background:var(--green);animation:pulse-hint 1.5s infinite}
+.phase-tab.hint-branch .hint-dot{display:block;background:var(--red);animation:pulse-hint 1s infinite}
+@keyframes pulse-hint{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.content{padding:16px;max-width:600px;margin:0 auto}
+.panel{display:none}.panel.active{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);padding:14px 16px 10px}
+.card-content{padding:0 16px 16px}
+.accordion{cursor:pointer;user-select:none}
+.accordion .card-title{display:flex;justify-content:space-between;align-items:center;padding:16px}
+.accordion .card-title::after{content:'＋';font-size:16px;color:var(--text-muted)}
+.accordion.open .card-title::after{content:'−'}
+.accordion .accordion-body{display:none;padding:0 16px 16px}
+.accordion.open .accordion-body{display:block}
+.scene-row{padding:8px 0;border-bottom:1px solid #f5f5f4}.scene-row:last-child{border-bottom:none}
+.scene-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.scene-value{font-size:14px;color:var(--text-secondary)}
+.cue-list{list-style:none}.cue-list li{font-size:14px;color:var(--text-secondary);padding:4px 0 4px 16px;position:relative}.cue-list li::before{content:'→';position:absolute;left:0;color:var(--text-muted);font-size:12px}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.sample-cell{background:var(--card);padding:12px}.sample-cell.full{grid-column:1/-1}
+.sample-letter{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--green);margin-right:4px}
+.sample-name{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:4px}
+.sample-text{font-size:13px;color:var(--text-secondary);line-height:1.4}
+.patient-chips{display:flex;flex-wrap:wrap;gap:8px}
+.patient-chip{font-size:13px;padding:6px 12px;background:#f5f5f4;border-radius:8px;color:var(--text-secondary)}
+.patient-chip strong{color:var(--text);font-weight:600}
+.phase-card{border-left:4px solid var(--text)}.phase-card.branch-card{border-left-color:var(--red)}
+.phase-card .card-content{padding:16px}
+.phase-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.phase-trigger{font-family:'DM Mono',monospace;font-size:11px;color:var(--yellow);margin-bottom:8px}
+.phase-desc{font-size:14px;color:var(--text-secondary);line-height:1.5}
+.vitals-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#f0efec;border-radius:var(--radius-sm);overflow:hidden}
+.vital-cell{background:var(--card);padding:10px 8px;text-align:center}.vital-cell.full-width{grid-column:1/-1}
+.vital-name{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px}
+.vital-val{font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:var(--text);line-height:1.1}
+.vital-unit{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted)}
+.vital-cell.alert .vital-val{color:var(--red)}.vital-cell.alert .vital-name{color:var(--red)}.vital-cell.alert{background:var(--red-light)}
+.vital-cell.warn .vital-val{color:var(--orange)}.vital-cell.warn .vital-name{color:var(--orange)}.vital-cell.warn{background:var(--orange-light)}
+.ecg-label{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-secondary);padding:8px 12px;background:#fafaf9;border-bottom:1px solid #f0efec;border-radius:var(--radius-sm) var(--radius-sm) 0 0}
+.avpu-bar{display:flex;border-radius:8px;overflow:hidden;margin-bottom:12px;border:1px solid var(--card-border)}
+.avpu-seg{flex:1;text-align:center;padding:8px 4px;font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--text-muted);background:#fafaf9}
+.avpu-seg.sel-a{background:var(--green-light);color:var(--green);border:1px solid var(--green-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-v{background:var(--orange-light);color:var(--yellow);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-p{background:var(--orange-light);color:var(--orange);border:1px solid var(--orange-border);margin:-1px;border-radius:8px}
+.avpu-seg.sel-u{background:var(--red-light);color:var(--red);border:1px solid var(--red-border);margin:-1px;border-radius:8px}
+.gcs-row{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-secondary);margin-bottom:14px;text-align:center}
+.gcs-total{font-size:18px;font-weight:700;color:var(--text)}
+.finding-row{padding:10px 0;border-bottom:1px solid #f5f5f4}.finding-row:last-child{border-bottom:none}
+.finding-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:3px}
+.finding-value{font-size:14px;color:var(--text-secondary)}.finding-value.danger{color:var(--red);font-weight:600}.finding-value.improving{color:var(--green)}.finding-value.speech{font-style:italic;color:var(--text-muted)}
+.skin-chips{display:flex;gap:6px;flex-wrap:wrap}
+.skin-chip{font-size:12px;padding:3px 10px;border-radius:6px;background:#f5f5f4;color:var(--text-secondary)}.skin-chip.warn{background:var(--red-light);color:var(--red)}
+.findings-notes{list-style:none}.findings-notes li{font-size:13px;color:var(--text-secondary);padding:3px 0 3px 14px;position:relative}.findings-notes li::before{content:'·';position:absolute;left:2px;font-weight:700;color:var(--text-muted)}.findings-notes li.danger{color:var(--red)}
+.action-card{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4}.action-card:last-child{border-bottom:none}
+.action-check{width:18px;height:18px;flex-shrink:0;cursor:pointer;accent-color:var(--green)}
+.action-body{flex:1}
+.action-priority{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.p-critical{color:var(--red)}.p-important{color:var(--orange)}
+.action-text{font-size:14px;color:var(--text);font-weight:500}
+.action-chevron{color:var(--text-muted);font-size:14px;transition:transform .2s;flex-shrink:0}
+.action-card.open .action-chevron{transform:rotate(90deg)}
+.action-detail{display:none;padding:0 14px 14px 46px}.action-card.open .action-detail{display:block}
+.action-rationale{font-size:13px;color:var(--text-secondary);line-height:1.5;padding:10px 12px;background:#fafaf9;border-radius:8px;border-left:3px solid var(--card-border)}
+.action-ref{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);margin-top:6px}
+.branch-alert{background:var(--red-light);border:1px solid var(--red-border);border-radius:var(--radius);padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
+.branch-alert-icon{font-size:18px;flex-shrink:0}
+.branch-alert-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:2px}
+.branch-alert-text{font-size:13px;color:var(--text-secondary)}
+.assess-group-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:10px 16px}
+.assess-critical .assess-group-title{color:var(--red)}.assess-expected .assess-group-title{color:var(--orange)}
+.assess-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);cursor:pointer}
+.assess-check{width:22px;height:22px;border:2px solid #d6d3d1;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.assess-check.done{background:var(--green);border-color:var(--green)}.assess-check.done::after{content:'✓';font-size:12px;color:#fff;font-weight:700}
+.debrief-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:14px 16px 10px}
+.debrief-item{padding:10px 16px;border-top:1px solid #f5f5f4;font-size:14px;color:var(--text-secondary);line-height:1.5;display:flex;gap:10px}
+.debrief-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--text-muted);flex-shrink:0;min-width:20px;padding-top:2px}
+.bottom-spacer{height:80px}
+@media print{.top-bar{position:static}.panel{display:flex!important;flex-direction:column;gap:12px;page-break-inside:avoid;margin-bottom:20px}.accordion .accordion-body{display:block!important}.action-detail{display:block!important}}
+
+.action-priority{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+.priority-critical{background:var(--red-light,#fef2f2);color:var(--red,#dc2626)}
+.priority-important{background:var(--orange-light,#fff7ed);color:var(--orange,#ea580c)}
+.priority-supplemental{background:#f5f5f4;color:var(--text-muted,#a8a29e)}
+.action-check{width:18px;height:18px;flex-shrink:0}
+.top-bar-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.timer-widget{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+#timer-display{font-family:'DM Mono',monospace;font-size:20px;font-weight:700;color:var(--text-muted,#a8a29e);font-variant-numeric:tabular-nums;line-height:1}
+.timer-controls{display:flex;gap:4px}
+.timer-btn{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;border:1px solid var(--card-border,#e8e6e1);background:var(--card,#fff);color:var(--text-secondary,#57534e);cursor:pointer;line-height:1.4}
+.timer-btn:hover{background:#f5f5f4}
+.timer-btn-stop{border-color:var(--red-border,#fecaca);color:var(--red,#dc2626)}
+.timer-btn-stop:hover{background:var(--red-light,#fef2f2)}
+.timer-btn-restart{border-color:var(--blue,#2563eb);color:var(--blue,#2563eb)}
+.timer-btn-restart:hover{background:var(--blue-light,#eff6ff)}
+.gcs-detail{margin-top:10px}
+.gcs-item{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid #f5f5f4}
+.gcs-item:last-of-type{border-bottom:none}
+.gcs-part{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted,#a8a29e);min-width:52px;flex-shrink:0}
+.gcs-desc{flex:1;font-size:13px;color:var(--text-secondary,#57534e)}
+.gcs-score{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--text,#1c1917);min-width:20px;text-align:right;flex-shrink:0}
+.gcs-total-row{display:flex;justify-content:flex-end;align-items:baseline;gap:8px;padding-top:10px;margin-top:6px;border-top:1px solid var(--card-border,#e8e6e1);font-family:'DM Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted,#a8a29e)}
+.gcs-total-row .gcs-total{font-family:'DM Mono',monospace;font-size:18px;font-weight:700;color:var(--text,#1c1917)}
+#timer-display.timer-warn{color:var(--orange,#ea580c)}
+#timer-display.timer-danger{color:var(--red,#dc2626)}
+.debrief-phase-card{overflow:hidden}
+.debrief-phase-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px}
+.debrief-phase-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--text-muted,#a8a29e)}
+.debrief-phase-score.score-perfect{color:var(--green,#16a34a)}
+.debrief-phase-score.score-none{color:var(--red,#dc2626)}
+.debrief-phase-body{padding:0 16px 14px}
+.debrief-done-section{background:var(--green-light,#f0fdf4);border:1px solid var(--green-border,#bbf7d0);border-radius:var(--radius-sm,10px);padding:6px 12px;margin-bottom:10px}
+.debrief-done-row{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px;color:var(--green,#16a34a)}
+.debrief-done-icon{font-weight:700;flex-shrink:0;font-size:12px}
+.debrief-done-text{color:var(--text-secondary,#57534e)}
+.debrief-missed-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red,#dc2626);padding:4px 0 8px}
+.debrief-missed-row{background:var(--red-light,#fef2f2);border:1px solid var(--red-border,#fecaca);border-radius:var(--radius-sm,10px);padding:10px 12px;margin-bottom:6px}
+.debrief-missed-row:last-child{margin-bottom:0}
+.debrief-missed-top{display:flex;align-items:center;gap:8px}
+.debrief-missed-text{font-size:14px;font-weight:600;color:var(--text,#1c1917)}
+.debrief-missed-detail{padding:6px 0 0 0;margin-top:6px;border-top:1px solid var(--red-border,#fecaca)}
+.debrief-missed-rationale{font-size:12px;color:var(--text-secondary,#57534e);line-height:1.4}
+.debrief-missed-protocol{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue,#2563eb);margin-top:2px}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-header">
+    <div>
+      <div class="scenario-name">Witnessed VF Cardiac Arrest at Softball Field - ROSC After Single Shock</div>
+      <div class="scenario-tags">
+        <span class="tag tag-difficulty">intermediate</span>
+        <span class="tag tag-category">Cardiac</span>
+      </div>
+    </div>
+    <div class="timer-widget" id="scenario-timer" data-total="1500">
+      <span id="timer-display">25:00</span>
+      <div class="timer-controls">
+        <button id="timer-start" class="timer-btn" onclick="timerStart()">start</button>
+        <button id="timer-pause" class="timer-btn" onclick="timerPause()" style="display:none">pause</button>
+        <button id="timer-stop" class="timer-btn timer-btn-stop" onclick="timerStop()" style="display:none">stop</button>
+        <button id="timer-reset" class="timer-btn" onclick="timerReset()" style="display:none">reset</button>
+        <button class="timer-btn timer-btn-restart" onclick="scenarioRestart()" title="Restart scenario — clears checkboxes and timer">↻ restart</button>
+      </div>
+    </div>
+  </div>
+  <div class="phase-strip">
+    <div class="phase-tab active" data-panel="scene" onclick="showPanel(this, 'scene')">Scene</div>
+    <div class="phase-tab" data-panel="phase-initial" onclick="showPanel(this, 'phase-initial')">Arrival on Scene - Witnessed Arrest with Bystander CPR</div>
+    <div class="phase-tab" data-panel="phase-post-shock-rosc" onclick="showPanel(this, 'phase-post-shock-rosc')">ROSC After First Shock - Initial Stabilization</div>
+    <div class="phase-tab" data-panel="phase-transport-stable" onclick="showPanel(this, 'phase-transport-stable')">Stable Transport to PCI Center - Inferior STEMI on 12-Lead</div>
+    <div class="phase-tab branch" data-panel="phase-branch-delayed-shock" onclick="showPanel(this, 'phase-branch-delayed-shock')">Branch - Delayed Defibrillation - Continued VF</div>
+    <div class="phase-tab branch" data-panel="phase-branch-rearrest" onclick="showPanel(this, 'phase-branch-rearrest')">Branch - Re-Arrest from Hyperventilation / Untreated Hypotension</div>
+    <div class="phase-tab" data-panel="debrief" onclick="showPanel(this, 'debrief')">Debrief</div>
+  </div>
+</div>
+<div class="content">
+  
+<div class="panel active" id="panel-scene">
+  <div class="card">
+    <div class="card-title">Dispatch</div>
+    <div class="card-content" style="font-size:14px;color:var(--text-secondary)">Respond priority 1 to the City Park softball diamond #3 for an adult male in cardiac arrest. CPR is in progress. Caller states an AED is on the way to the patient. Patient is approximately 60 years old.</div>
+  </div>
+  <div class="card accordion open" onclick="this.classList.toggle('open')">
+    <div class="card-title">Scene Setup</div>
+    <div class="accordion-body">
+      <div class="scene-row"><div class="scene-label">Location</div><div class="scene-value">Public softball diamond at a city park, dirt infield. Patient is supine in the dirt approximately 3 feet short of first base. Bright daylight, warm spring evening, ground is dry. Spectators in bleachers approximately 40 feet away.</div></div>
+      <div class="scene-row"><div class="scene-label">Time</div><div class="scene-value">1842 hours, Tuesday evening</div></div>
+      <div class="scene-row"><div class="scene-label">Safety</div><div class="scene-value">Scene is safe. Game has been stopped, players cleared off the field. No traffic hazards. Bystanders cooperative. Hot ambient temperature (~78°F) but patient lying in early-evening shade.</div></div>
+      <div class="scene-row"><div class="scene-label">Bystanders</div><div class="scene-value">Bystander RN (off-duty, identifies herself credibly) is performing chest compressions and is willing to continue. Teammate is providing rescue breaths via pocket mask at a 30:2 ratio. Multiple teammates and family members present. Patient's wife is on the bleachers, distraught, being supported by friends.</div></div>
+      <div class="scene-row"><div class="scene-label">Visual Cues</div><ul class="cue-list"><li>Adult male in softball uniform, supine in the dirt of the basepath</li><li>Bystander CPR in progress with adequate rate and depth</li><li>Pocket mask in place, teammate providing rescue breaths every 30 compressions</li><li>AED case being carried out from concession stand by a teammate</li><li>No signs of trauma; no helmet, no head injury</li><li>Skin pale, lips dusky/cyanotic</li><li>No spontaneous movement or respirations between compressions</li><li>Hot dog wrapper and Gatorade bottle visible on bench</li></ul></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Patient Information</div>
+    <div class="card-content">
+      <div class="patient-chips">
+        <div class="patient-chip"><strong>Robert &quot;Bob&quot; Halverson</strong></div>
+        <div class="patient-chip">62 years</div>
+        <div class="patient-chip">male</div>
+        <div class="patient-chip">194 lbs (88 kg)</div>
+        <div class="patient-chip">5'10"</div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-phase-initial">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Arrival on Scene - Witnessed Arrest with Bystander CPR</div>
+      
+      <div class="phase-desc">EMS arrives at the field 6 minutes post-collapse. Bystander CPR is in progress with reasonable quality. The patient is pulseless and apneic. The crew must rapidly take over compressions, place the defibrillator pads (taking over from the not-yet-attached AED), and analyze the rhythm. Because this is a witnessed arrest with bystander CPR already underway, defibrillation should occur as soon as the device is ready - no delay for additional CPR cycles is required.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent with manual jaw thrust by rescuers; mild emesis at the corner of the mouth from earlier compressions, otherwise clear. OPA tolerated.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Apneic. Bystander providing rescue breaths via pocket mask 30:2 ratio. Bilateral chest rise visible with each ventilation.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pulseless at carotid and femoral. Bystander compressions in progress at appropriate rate and depth. Skin cool, pale, peripheral cyanosis at lips and nail beds.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg sel-u">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">3</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">0</div><div class="vital-unit">bpm</div></div>
+        
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">0</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">0</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">18</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.2</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">118</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Ventricular Fibrillation (Coarse)</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pale with central cyanosis</span><span class="skin-chip">cool</span><span class="skin-chip">dry</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Mid-position, sluggish bilaterally.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">No spontaneous movement.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"None - patient is apneic and pulseless."</div></div>
+      <ul class="findings-notes"><li>Witnessed arrest, downtime ~6 minutes</li><li>Bystander CPR initiated within 30 seconds of collapse</li><li>No signs of trauma from the fall</li><li>AED retrieved but not yet attached when EMS arrived</li><li>No obvious signs of hemorrhage or other reversible causes externally visible</li></ul>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">SAMPLE History</div>
+    <div class="card-content">
+      <div class="sample-grid">
+        <div class="sample-cell full"><span class="sample-letter">S</span><div class="sample-name">Signs/Symptoms</div><div class="sample-text">Witnessed cardiac arrest - collapsed while running bases at a recreational softball game</div></div>
+        <div class="sample-cell"><span class="sample-letter">A</span><div class="sample-name">Allergies</div><div class="sample-text">NKDA</div></div>
+        <div class="sample-cell"><span class="sample-letter">M</span><div class="sample-name">Medications</div><div class="sample-text">Lisinopril 20 mg PO daily, Atorvastatin 40 mg PO at bedtime, Aspirin 81 mg PO daily (per his cardiologist for primary prevention)</div></div>
+        <div class="sample-cell"><span class="sample-letter">P</span><div class="sample-name">Past Medical</div><div class="sample-text">Hypertension (well controlled), Hyperlipidemia, Tobacco use (1/2 pack per day x 30 years), Family history: father died of MI at age 64, No known coronary artery disease</div></div>
+        <div class="sample-cell"><span class="sample-letter">L</span><div class="sample-name">Last Oral Intake</div><div class="sample-text">Hot dog, chips, and Gatorade approximately 30 minutes prior to collapse</div></div>
+        <div class="sample-cell full"><span class="sample-letter">E</span><div class="sample-name">Events</div><div class="sample-text">Pre-arrest: complaint of chest pressure between innings, attributed to heartburn. Collapse occurred mid-stride between home and first base. Witnessed by entire team and crowd. Bystander CPR initiated within ~30 seconds of collapse by an off-duty RN. AED retrieved at ~4 minutes but not yet attached. EMS arrival at ~6 minutes post-collapse.</div></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="scene-bsi" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Perform scene size-up and BSI; confirm scene safety; designate code leader and assign pit-crew roles (compressions, airway/ventilation, monitor/defibrillator, IV/IO + medications, scribe)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="confirm-arrest" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Confirm pulselessness at the carotid for no more than 10 seconds; confirm apnea; assume code from bystanders without interrupting compressions</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="high-quality-cpr" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Take over chest compressions at 100-120/min, depth 2-2.4 inches (5-6 cm), full chest recoil, minimize pauses; rotate compressors every 2 minutes</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="apply-pads" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Apply manual defibrillator pads in anterior-lateral position WITHOUT interrupting compressions; remove uniform shirt as needed; ensure dirt/sweat is wiped from chest before pad placement</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="passive-ventilation" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Apply oxygen via NRB at 15 L/min with OPA in place for passive oxygenation during the first 3-4 cycles (6-8 minutes), or perform BVM ventilation at 10 breaths/minute (1 breath every 10 compressions) without interrupting compressions</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="rhythm-analysis" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Pause compressions briefly (pre-charge defibrillator while compressions continue); analyze rhythm - identify Coarse Ventricular Fibrillation</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="first-shock" data-phase-id="initial">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Deliver immediate manual defibrillation at 200 J biphasic (Zoll X-Series highest setting per manufacturer); ensure crew is clear; resume compressions immediately after shock without pulse check for 2 minutes</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="io-access" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Establish IO access at the proximal humerus (preferred adult site) without interrupting compressions; saline flush</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="etco2-monitor" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Apply waveform capnography to BVM or advanced airway as soon as available; target EtCO2 &gt; 10 mmHg as a marker of effective compressions</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="history-from-bystanders" data-phase-id="initial">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Assign one team member to obtain focused arrest history from bystanders/wife: downtime, witnessed status, bystander CPR quality, prior chest pain, medical history, medications</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-post-shock-rosc">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">ROSC After First Shock - Initial Stabilization</div>
+      <div class="phase-trigger">First shock at 200 J delivered, 2 minutes of post-shock CPR completed, then rhythm check reveals organized rhythm with palpable carotid pulse</div>
+      <div class="phase-desc">After the single 200 J shock, compressions resumed for 2 minutes. At the next rhythm check the monitor shows an organized sinus rhythm and a strong carotid pulse is palpable. EtCO2 has surged from ~18 to 38 mmHg, consistent with sudden ROSC. The patient remains comatose. Time-to-shock was &lt;10 minutes from collapse, with effective bystander CPR - a survivable scenario. The next priorities are airway, hemodynamics, 12-lead ECG to identify a likely STEMI precipitant, and rapid transport to a cardiac catheterization-capable facility.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent with OPA in place; no gag reflex. Crew prepares for advanced airway.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Spontaneous, shallow, irregular agonal-pattern at ~6/min; BVM-assisted ventilations at 10/min, EtCO2 38 mmHg with good waveform.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Strong carotid pulse, palpable femoral. Skin warming and pinking centrally; peripheral perfusion still poor. Capillary refill 4 seconds.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg sel-u">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Extension (decerebrate)</span><span class="gcs-score">2</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">4</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">108</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">96/60</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">6</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">88</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">38</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.2</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">118</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Sinus Tachycardia</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pale, pinking centrally</span><span class="skin-chip">cool</span><span class="skin-chip">dry</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Mid-position, sluggish bilaterally.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Decerebrate posturing to noxious stimulus only. No purposeful movement.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"None - comatose."</div></div>
+      <ul class="findings-notes"><li>EtCO2 surge from 18 to 38 mmHg coincident with rhythm change - classic ROSC signature</li><li>Patient comatose post-arrest - typical ROSC presentation</li><li>No spontaneous airway protection</li><li>Crowd has been moved back; wife now permitted near scene</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="confirm-rosc" data-phase-id="post-shock-rosc">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Confirm ROSC: palpable carotid pulse, organized rhythm on monitor, EtCO2 surge, palpable femoral; document time of ROSC</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="post-rosc-airway" data-phase-id="post-shock-rosc">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Manage airway with BVM ventilations at 10 breaths/minute with PEEP valve if available, targeting EtCO2 35-45 mmHg; insert OPA/NPA; consider supraglottic airway (i-gel) given comatose state without airway reflexes</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="no-hyperventilation" data-phase-id="post-shock-rosc">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Do NOT hyperventilate; verbalize the rule (10 breaths/min, EtCO2 target 35-45 mmHg); use a metronome or timer for ventilation rate</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="spo2-target" data-phase-id="post-shock-rosc">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Titrate FiO2 to SpO2 94-98%; do NOT hyperoxygenate - wean from 100% O2 once SpO2 stabilizes</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="12-lead" data-phase-id="post-shock-rosc">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Acquire post-ROSC 12-lead ECG as soon as feasible (en route is acceptable); transmit to receiving facility; serial 12-leads if initial is non-diagnostic</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="second-iv" data-phase-id="post-shock-rosc">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Establish a second peripheral IV line (18 g if possible) in addition to the IO; saline locks both</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="hypotension-mgmt" data-phase-id="post-shock-rosc">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">For SBP &lt; 90 or MAP &lt; 65: give 250-500 mL Normal Saline IV bolus; if persistent, initiate Epinephrine push-dose (10 mcg/mL prepared by adding 1 mL of 0.1 mg/mL epinephrine to 9 mL NS, give 10-20 mcg = 1-2 mL boluses every 2-5 min) titrated to MAP &gt; 65, OR Epinephrine infusion 0.02-0.2 mcg/kg/min</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="blood-glucose" data-phase-id="post-shock-rosc">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Check blood glucose; treat hypoglycemia with Dextrose 10% 250 mL (25 g) IV per protocol, treat hyperglycemia with hospital notification only</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="leave-pads-on" data-phase-id="post-shock-rosc">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Leave defibrillator pads in place; maintain continuous monitor; have manual defibrillator immediately available for re-arrest</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="destination-decision" data-phase-id="post-shock-rosc">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Transport to nearest STEMI/cath-capable facility (PCI center) per local destination protocol; provide early notification including ROSC status, suspected etiology, downtime, and any 12-lead findings</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-transport-stable">
+  <div class="card phase-card">
+    <div class="card-content">
+      <div class="phase-title">Stable Transport to PCI Center - Inferior STEMI on 12-Lead</div>
+      <div class="phase-trigger">Post-ROSC patient with airway managed, 12-lead acquired (Inferior STEMI pattern), normotensive, transport initiated</div>
+      <div class="phase-desc">The 12-lead ECG demonstrates ST elevation in II, III, and aVF with reciprocal depression in I and aVL - inferior STEMI, the likely arrest etiology. Patient is hemodynamically stable on supportive ventilation with EtCO2 38 mmHg, SBP 110, MAP &gt; 65 without vasopressors. Crew transports lights/siren to the regional PCI center, transmits the 12-lead, and gives early notification.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent via supraglottic airway (i-gel) with continuous waveform capnography; secure.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">BVM-assisted ventilations at 10/min via i-gel; bilateral chest rise; bilateral breath sounds clear; EtCO2 38 mmHg, square waveform.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Strong central pulses; skin warming, pinking; capillary refill 2 seconds. No JVD. Lungs clear.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg sel-p">P</div><div class="avpu-seg">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Withdraws from pain</span><span class="gcs-score">4</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">6</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">92</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">112/70</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">10</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">96</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">38</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">118</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: STEMI Inferior</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pink centrally</span><span class="skin-chip">warming</span><span class="skin-chip">dry</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Mid-position 4 mm, sluggish but reactive bilaterally.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Withdraws weakly to noxious stimulus.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"None - remains comatose."</div></div>
+      <ul class="findings-notes"><li>12-lead: ST elevation 3 mm in II, III, aVF with reciprocal depression in I and aVL - Inferior STEMI</li><li>No new ectopy on monitor</li><li>i-gel functioning well, EtCO2 stable</li><li>Wife informed and being transported separately by family</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="stemi-recognize" data-phase-id="transport-stable">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Recognize Inferior STEMI on 12-lead ECG (ST elevation in II, III, aVF with reciprocal depression in I, aVL); consider right-sided V4R lead</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="transmit-12-lead" data-phase-id="transport-stable">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Transmit 12-lead ECG to receiving PCI center; activate STEMI alert with early notification including ROSC status, presumed inferior STEMI, downtime, bystander CPR status, and current vital signs</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="aspirin-deferred" data-phase-id="transport-stable">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Defer prehospital aspirin given inability to swallow safely; document this; receiving cath lab will administer enteric-coated PR or rectal aspirin OR give via OG/NG once intubated</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="no-ntg-comatose" data-phase-id="transport-stable">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Do NOT administer nitroglycerin to a comatose post-arrest patient (no chest pain to treat, BP marginal, RV involvement possible with inferior STEMI)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="continuous-reassess" data-phase-id="transport-stable">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Reassess full vitals (HR, BP, RR, SpO2, EtCO2, GCS, lung sounds) every 5 minutes en route; document; alert immediately to any decline in MAP &lt; 65 or rising EtCO2 (re-arrest precursor)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="smooth-handoff" data-phase-id="transport-stable">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Provide structured SBAR handoff at the cath lab door; do NOT remove monitor/defibrillator pads until receiving team has applied theirs; pass off the 12-lead, downtime, and bystander CPR data verbally and on the run sheet</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-branch-delayed-shock">
+  <div class="card phase-card branch-card">
+    <div class="card-content">
+      <div class="phase-title">Branch - Delayed Defibrillation - Continued VF</div>
+      <div class="phase-trigger">Defibrillation delayed &gt; 90 seconds after VF identified, or compressions interrupted excessively for procedures</div>
+      <div class="phase-desc">Defibrillation was delayed beyond 90 seconds after VF was identified, often because the crew prioritized IV access, advanced airway placement, or extra CPR cycles before the first shock. The patient remains in coarse VF deteriorating toward fine VF. Each minute of delayed defibrillation in VF reduces survival by approximately 7-10%. The team must recognize the priority error, defibrillate immediately, and add antiarrhythmic therapy if VF is shock-refractory.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent with OPA. Some emesis being suctioned.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Apneic. BVM ventilations being attempted but rescuer over-ventilating at ~16/min - must coach down to 10/min.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pulseless. Compressions still being performed. EtCO2 marginal.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg sel-u">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">3</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">0</div><div class="vital-unit">bpm</div></div>
+        
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">0</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">0</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">12</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">118</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Ventricular Fibrillation (Fine)</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">pale with central cyanosis worsening</span><span class="skin-chip">cool</span><span class="skin-chip">dry</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Mid-position, fixed and dilated.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">No movement.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"None."</div></div>
+      <ul class="findings-notes"><li>VF persisting and beginning to decay toward fine VF</li><li>EtCO2 dropping from 18 to ~12 - marker of declining perfusion</li><li>Compressor visibly fatiguing - needs swap</li><li>Time-to-shock now &gt; 8 minutes from collapse</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="recognize-delay" data-phase-id="branch-delayed-shock">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Recognize the time-to-shock delay; verbalize that the priority for VF is immediate defibrillation, not airway or IV access</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="shock-now" data-phase-id="branch-delayed-shock">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Deliver immediate manual defibrillation at 200 J biphasic; resume compressions immediately for 2 minutes without pulse check</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="epi-during" data-phase-id="branch-delayed-shock">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Epinephrine 1 mg (1:10,000, 10 mL) IV/IO during the next round of compressions; flush with 20 mL NS; may repeat every 3-5 minutes</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="amiodarone" data-phase-id="branch-delayed-shock">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">If VF persists after second shock, administer Amiodarone 300 mg IV/IO bolus (may repeat 150 mg in 4-6 minutes if still refractory VF)</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="correct-vent-rate" data-phase-id="branch-delayed-shock">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Coach BVM operator to ventilate at 10 breaths/min only (1 breath every 6 seconds, or 1 every 10 compressions); use a metronome</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="rotate-compressors" data-phase-id="branch-delayed-shock">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Rotate compressors at the next 2-minute rhythm check or sooner if EtCO2 drops below 10 mmHg or compressions visibly fatigue</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="reversible-causes" data-phase-id="branch-delayed-shock">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Address H's and T's: hypoxia (O2 on), hypovolemia (NS bolus), hypo/hyperkalemia (consider history), hypothermia (rare here), tension pneumo (history of trauma? no), tamponade (no), toxins (medications - none high risk), thrombosis (suspect coronary - cath capable destination)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-phase-branch-rearrest">
+  <div class="card phase-card branch-card">
+    <div class="card-content">
+      <div class="phase-title">Branch - Re-Arrest from Hyperventilation / Untreated Hypotension</div>
+      <div class="phase-trigger">Hyperventilation, untreated hypotension, or pad removal in the post-ROSC period</div>
+      <div class="phase-desc">Despite ROSC, the team either hyperventilated the patient (RR &gt; 12), failed to address falling SBP, or removed the defibrillator pads. Within minutes the patient re-arrests - frequently back to VF. The team must immediately reapply pads (or recognize they were never removed), restart compressions, and re-shock. This branch teaches that the post-ROSC period is the highest risk for re-arrest and that pads must remain on.</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Primary Survey (ABCs)</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent via SGA still in place. Suctioning required for emesis.</div></div>
+      <div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">Apneic again. BVM ventilations resumed at correct rate.</div></div>
+      <div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pulseless. Compressions resumed.</div></div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Level of Consciousness</div>
+    <div class="card-content">
+      <div class="avpu-bar">
+        <div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg">P</div><div class="avpu-seg sel-u">U</div>
+      </div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">No response</span><span class="gcs-score">1</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">3</span></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content">
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">0</div><div class="vital-unit">bpm</div></div>
+        
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">0</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO2</div><div class="vital-val">0</div><div class="vital-unit">%</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO2</div><div class="vital-val">14</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">98.1</div><div class="vital-unit">°F</div></div>
+        <div class="vital-cell"><div class="vital-name">Glucose</div><div class="vital-val">118</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+      <div class="ecg-label">ECG: Ventricular Fibrillation (Coarse)</div>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <div class="card-title">Physical Findings</div>
+    <div class="card-content">
+      <div class="finding-row"><div class="finding-label">Skin</div><div class="skin-chips"><span class="skin-chip">rapidly mottling and cyanotic</span><span class="skin-chip">cool</span><span class="skin-chip">dry</span></div></div>
+      <div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Mid-position, sluggish.</div></div>
+      <div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">None.</div></div>
+      <div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value speech">"None."</div></div>
+      <ul class="findings-notes"><li>EtCO2 dropped from 38 to 14 with re-arrest</li><li>Pads were correctly left on - shock can be delivered immediately</li><li>Time of re-arrest noted - within minutes of first ROSC</li></ul>
+    </div>
+  </div>
+
+  
+
+  
+  <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content">
+      
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="recognize-rearrest" data-phase-id="branch-rearrest">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Recognize re-arrest immediately: loss of pulse, EtCO2 drop, return to VF on continuous monitor</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="compressions-restart" data-phase-id="branch-rearrest">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Restart high-quality compressions at 100-120/min immediately</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="shock-rearrest" data-phase-id="branch-rearrest">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Deliver immediate defibrillation at 200 J biphasic via the pads that should still be in place; resume compressions for 2 minutes</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="correct-the-error" data-phase-id="branch-rearrest">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Identify what triggered the re-arrest (hyperventilation? untreated hypotension? pad removal?) and correct it: ventilate at 10/min, support BP, leave pads on</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="epi-rearrest" data-phase-id="branch-rearrest">
+        <span class="action-priority priority-critical">CRITICAL</span>
+        <span class="action-text">Administer Epinephrine 1 mg (1:10,000) IV/IO; may repeat every 3-5 minutes during ongoing arrest</span>
+      </div>
+      <div class="action-card" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f5f4">
+        <input type="checkbox" class="action-check" data-action-id="transport-considerations" data-phase-id="branch-rearrest">
+        <span class="action-priority priority-important">IMPORTANT</span>
+        <span class="action-text">Consider whether to remain on scene to re-establish ROSC versus transport with mechanical CPR device; manual compressions in a moving ambulance are dangerous and ineffective</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="panel" id="panel-debrief">
+  
+  <div class="card accordion" onclick="this.classList.toggle('open')">
+    <div class="card-title">Learning Objectives</div>
+    <div class="accordion-body"><ul class="findings-notes"><li>Recognize witnessed cardiac arrest with bystander CPR as a survivable event when high-quality CPR and rapid defibrillation are delivered</li><li>Apply the cardiac arrest pit-crew model with defined roles and a code leader</li><li>Defibrillate witnessed VF as soon as the device is ready - no required delay for additional CPR cycles when bystander CPR has been adequate</li><li>Use the manufacturer's recommended (or highest) energy setting for biphasic defibrillation (200 J on Zoll X-Series)</li><li>Resume compressions immediately after defibrillation without a pulse check for 2 minutes</li><li>Recognize ROSC by multiple methods: organized rhythm, palpable pulse, EtCO2 surge</li><li>Apply post-ROSC priorities: airway, ventilation 8-10/min, SpO2 94-98%, BP support, 12-lead, destination decision</li><li>Identify Inferior STEMI on 12-lead ECG (II, III, aVF with reciprocal changes in I, aVL) and consider RV involvement</li><li>Activate the regional STEMI system from the field and transmit the 12-lead to the receiving facility</li><li>Avoid the two leading causes of post-ROSC re-arrest: hyperventilation and untreated hypotension</li></ul></div>
+  </div>
+  <div id="debrief-actions" style="display:flex;flex-direction:column;gap:12px"></div>
+</div>
+</div>
+<script>
+
+var phaseActionData = [{"phaseId":"initial","phaseName":"Arrival on Scene - Witnessed Arrest with Bystander CPR","actions":[{"id":"scene-bsi","action":"Perform scene size-up and BSI; confirm scene safety; designate code leader and assign pit-crew roles (compressions, airway/ventilation, monitor/defibrillator, IV/IO + medications, scribe)","priority":"critical","rationale":"A clear pit-crew structure with a code leader is fundamental to high-performance cardiac arrest care.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"confirm-arrest","action":"Confirm pulselessness at the carotid for no more than 10 seconds; confirm apnea; assume code from bystanders without interrupting compressions","priority":"critical","rationale":"Pulse check must be brief; pulselessness is the trigger for full ACLS protocol.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"high-quality-cpr","action":"Take over chest compressions at 100-120/min, depth 2-2.4 inches (5-6 cm), full chest recoil, minimize pauses; rotate compressors every 2 minutes","priority":"critical","rationale":"High-quality CPR is the single most important determinant of survival.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"apply-pads","action":"Apply manual defibrillator pads in anterior-lateral position WITHOUT interrupting compressions; remove uniform shirt as needed; ensure dirt/sweat is wiped from chest before pad placement","priority":"critical","rationale":"Pad placement and defibrillator setup must occur in parallel with compressions; dry skin and good pad contact are essential.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"passive-ventilation","action":"Apply oxygen via NRB at 15 L/min with OPA in place for passive oxygenation during the first 3-4 cycles (6-8 minutes), or perform BVM ventilation at 10 breaths/minute (1 breath every 10 compressions) without interrupting compressions","priority":"important","rationale":"MATC protocol allows passive oxygenation via NRB for the first 3-4 cycles in suspected cardiac etiology arrest; airway management should not interrupt compressions.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"rhythm-analysis","action":"Pause compressions briefly (pre-charge defibrillator while compressions continue); analyze rhythm - identify Coarse Ventricular Fibrillation","priority":"critical","rationale":"Pre-charging during compressions minimizes peri-shock pause - a key compressions fraction performance measure.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"first-shock","action":"Deliver immediate manual defibrillation at 200 J biphasic (Zoll X-Series highest setting per manufacturer); ensure crew is clear; resume compressions immediately after shock without pulse check for 2 minutes","priority":"critical","rationale":"Witnessed VF with pads in place: shock takes precedence over additional CPR cycles. Per protocol, use highest manufacturer setting (200 J biphasic on Zoll). Resume compressions immediately - do not pause for pulse check.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"io-access","action":"Establish IO access at the proximal humerus (preferred adult site) without interrupting compressions; saline flush","priority":"important","rationale":"Pit-crew model: rapid IO is reliable and does not interrupt compressions.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"etco2-monitor","action":"Apply waveform capnography to BVM or advanced airway as soon as available; target EtCO2 > 10 mmHg as a marker of effective compressions","priority":"important","rationale":"Quantitative EtCO2 monitors compression effectiveness and may signal ROSC (sudden rise) before pulse return.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"history-from-bystanders","action":"Assign one team member to obtain focused arrest history from bystanders/wife: downtime, witnessed status, bystander CPR quality, prior chest pain, medical history, medications","priority":"important","rationale":"Chest pressure prior to collapse strongly suggests cardiac etiology and an STEMI workup post-ROSC.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"}]},{"phaseId":"post-shock-rosc","phaseName":"ROSC After First Shock - Initial Stabilization","actions":[{"id":"confirm-rosc","action":"Confirm ROSC: palpable carotid pulse, organized rhythm on monitor, EtCO2 surge, palpable femoral; document time of ROSC","priority":"critical","rationale":"Time-of-ROSC is a key documentation element. Multiple confirmation methods avoid false-positive ROSC calls.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"},{"id":"post-rosc-airway","action":"Manage airway with BVM ventilations at 10 breaths/minute with PEEP valve if available, targeting EtCO2 35-45 mmHg; insert OPA/NPA; consider supraglottic airway (i-gel) given comatose state without airway reflexes","priority":"critical","rationale":"Most post-ROSC patients need ventilatory support. Ventilation rate is 8-10/min, NOT faster - hyperventilation precipitates re-arrest.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"},{"id":"no-hyperventilation","action":"Do NOT hyperventilate; verbalize the rule (10 breaths/min, EtCO2 target 35-45 mmHg); use a metronome or timer for ventilation rate","priority":"critical","rationale":"Hyperventilation is a leading cause of post-ROSC hypotension and re-arrest by reducing venous return and causing respiratory alkalosis.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"},{"id":"spo2-target","action":"Titrate FiO2 to SpO2 94-98%; do NOT hyperoxygenate - wean from 100% O2 once SpO2 stabilizes","priority":"important","rationale":"Hyperoxia in the post-ROSC period is associated with worse neurologic outcomes. Target normoxia.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"},{"id":"12-lead","action":"Acquire post-ROSC 12-lead ECG as soon as feasible (en route is acceptable); transmit to receiving facility; serial 12-leads if initial is non-diagnostic","priority":"critical","rationale":"STEMI is a common reversible cause of arrest. Identification changes destination to a cath lab capable facility. Pre-arrest chest pressure raises STEMI suspicion.","protocolReference":"MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"},{"id":"second-iv","action":"Establish a second peripheral IV line (18 g if possible) in addition to the IO; saline locks both","priority":"important","rationale":"Reliable vascular access is required for potential vasopressors and resuscitation if hemodynamics deteriorate.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"},{"id":"hypotension-mgmt","action":"For SBP < 90 or MAP < 65: give 250-500 mL Normal Saline IV bolus; if persistent, initiate Epinephrine push-dose (10 mcg/mL prepared by adding 1 mL of 0.1 mg/mL epinephrine to 9 mL NS, give 10-20 mcg = 1-2 mL boluses every 2-5 min) titrated to MAP > 65, OR Epinephrine infusion 0.02-0.2 mcg/kg/min","priority":"critical","rationale":"Post-ROSC stunning frequently produces hypotension; aggressive but careful BP support prevents re-arrest and supports cerebral perfusion.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"},{"id":"blood-glucose","action":"Check blood glucose; treat hypoglycemia with Dextrose 10% 250 mL (25 g) IV per protocol, treat hyperglycemia with hospital notification only","priority":"important","rationale":"Hypoglycemia is a reversible cause to evaluate and treat in any post-ROSC patient.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"},{"id":"leave-pads-on","action":"Leave defibrillator pads in place; maintain continuous monitor; have manual defibrillator immediately available for re-arrest","priority":"critical","rationale":"Re-arrest is common in the immediate post-ROSC period. Pads stay on.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"},{"id":"destination-decision","action":"Transport to nearest STEMI/cath-capable facility (PCI center) per local destination protocol; provide early notification including ROSC status, suspected etiology, downtime, and any 12-lead findings","priority":"critical","rationale":"Post-cardiac arrest care at specialized centers is associated with decreased mortality and improved neurologic outcomes.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"}]},{"phaseId":"transport-stable","phaseName":"Stable Transport to PCI Center - Inferior STEMI on 12-Lead","actions":[{"id":"stemi-recognize","action":"Recognize Inferior STEMI on 12-lead ECG (ST elevation in II, III, aVF with reciprocal depression in I, aVL); consider right-sided V4R lead","priority":"critical","rationale":"Inferior STEMI is the likely cause of this arrest. Identification is required for STEMI activation. V4R helps identify RV involvement which informs fluid/nitrate strategy.","protocolReference":"MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"},{"id":"transmit-12-lead","action":"Transmit 12-lead ECG to receiving PCI center; activate STEMI alert with early notification including ROSC status, presumed inferior STEMI, downtime, bystander CPR status, and current vital signs","priority":"critical","rationale":"Field STEMI activation reduces door-to-balloon time. Receiving facility prepares cath lab while patient is en route.","protocolReference":"MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"},{"id":"aspirin-deferred","action":"Defer prehospital aspirin given inability to swallow safely; document this; receiving cath lab will administer enteric-coated PR or rectal aspirin OR give via OG/NG once intubated","priority":"important","rationale":"ASA cannot be safely given orally to a comatose patient without an airway. Hospital can administer once airway secured.","protocolReference":"MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"},{"id":"no-ntg-comatose","action":"Do NOT administer nitroglycerin to a comatose post-arrest patient (no chest pain to treat, BP marginal, RV involvement possible with inferior STEMI)","priority":"critical","rationale":"NTG carries hypotension risk in a marginally compensated post-ROSC patient with possible RV infarct; no clinical indication absent symptoms.","protocolReference":"MATC: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)"},{"id":"continuous-reassess","action":"Reassess full vitals (HR, BP, RR, SpO2, EtCO2, GCS, lung sounds) every 5 minutes en route; document; alert immediately to any decline in MAP < 65 or rising EtCO2 (re-arrest precursor)","priority":"critical","rationale":"Post-ROSC patients fluctuate rapidly; trend monitoring catches deterioration early.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"},{"id":"smooth-handoff","action":"Provide structured SBAR handoff at the cath lab door; do NOT remove monitor/defibrillator pads until receiving team has applied theirs; pass off the 12-lead, downtime, and bystander CPR data verbally and on the run sheet","priority":"critical","rationale":"Continuity of monitoring during the highest re-arrest risk period; complete data transfer for QI registry.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"}]},{"phaseId":"branch-delayed-shock","phaseName":"Branch - Delayed Defibrillation - Continued VF","actions":[{"id":"recognize-delay","action":"Recognize the time-to-shock delay; verbalize that the priority for VF is immediate defibrillation, not airway or IV access","priority":"critical","rationale":"Cognitive correction is essential for the team to break out of incorrect prioritization.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"shock-now","action":"Deliver immediate manual defibrillation at 200 J biphasic; resume compressions immediately for 2 minutes without pulse check","priority":"critical","rationale":"Defibrillation is the only definitive treatment for VF. Every minute of delay reduces survival.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"epi-during","action":"Administer Epinephrine 1 mg (1:10,000, 10 mL) IV/IO during the next round of compressions; flush with 20 mL NS; may repeat every 3-5 minutes","priority":"critical","rationale":"Epinephrine should be given during the first or second round of CPR; it should not delay defibrillation but is now appropriate.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"amiodarone","action":"If VF persists after second shock, administer Amiodarone 300 mg IV/IO bolus (may repeat 150 mg in 4-6 minutes if still refractory VF)","priority":"important","rationale":"Antiarrhythmic for shock-refractory VF; alternative is Lidocaine 1 mg/kg (88 mg for 88 kg patient) IV/IO.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"correct-vent-rate","action":"Coach BVM operator to ventilate at 10 breaths/min only (1 breath every 6 seconds, or 1 every 10 compressions); use a metronome","priority":"critical","rationale":"Hyperventilation worsens venous return and outcome.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"rotate-compressors","action":"Rotate compressors at the next 2-minute rhythm check or sooner if EtCO2 drops below 10 mmHg or compressions visibly fatigue","priority":"important","rationale":"Fatigue degrades compression quality. Rotation maintains the most important arrest therapy.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"reversible-causes","action":"Address H's and T's: hypoxia (O2 on), hypovolemia (NS bolus), hypo/hyperkalemia (consider history), hypothermia (rare here), tension pneumo (history of trauma? no), tamponade (no), toxins (medications - none high risk), thrombosis (suspect coronary - cath capable destination)","priority":"important","rationale":"Routine search for reversible causes is part of every arrest.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"}]},{"phaseId":"branch-rearrest","phaseName":"Branch - Re-Arrest from Hyperventilation / Untreated Hypotension","actions":[{"id":"recognize-rearrest","action":"Recognize re-arrest immediately: loss of pulse, EtCO2 drop, return to VF on continuous monitor","priority":"critical","rationale":"Continuous monitoring catches re-arrest in seconds; do not wait for a scheduled vitals check.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"},{"id":"compressions-restart","action":"Restart high-quality compressions at 100-120/min immediately","priority":"critical","rationale":"Same as primary arrest treatment - high quality compressions.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"shock-rearrest","action":"Deliver immediate defibrillation at 200 J biphasic via the pads that should still be in place; resume compressions for 2 minutes","priority":"critical","rationale":"Pads should not have been removed precisely so this shock can occur with no setup delay.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"correct-the-error","action":"Identify what triggered the re-arrest (hyperventilation? untreated hypotension? pad removal?) and correct it: ventilate at 10/min, support BP, leave pads on","priority":"critical","rationale":"Correcting the underlying cause prevents another re-arrest cycle.","protocolReference":"MATC: Adult Post-ROSC (Return of Spontaneous Circulation) Care"},{"id":"epi-rearrest","action":"Administer Epinephrine 1 mg (1:10,000) IV/IO; may repeat every 3-5 minutes during ongoing arrest","priority":"critical","rationale":"Standard ACLS during persistent arrest.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"},{"id":"transport-considerations","action":"Consider whether to remain on scene to re-establish ROSC versus transport with mechanical CPR device; manual compressions in a moving ambulance are dangerous and ineffective","priority":"important","rationale":"Protocol emphasizes resuscitating as close to scene as operationally possible.","protocolReference":"MATC: Cardiac Arrest (VF/VT/Asystole/PEA)"}]}];
+var firstPhaseId = "initial";
+
+function showPanel(tab, panelId) {
+  document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  var panel = document.getElementById('panel-' + panelId);
+  if (panel) panel.classList.add('active');
+  if (panelId === 'debrief') buildDebriefActions();
+}
+
+function buildDebriefActions() {
+  var container = document.getElementById('debrief-actions');
+  if (!container) return;
+  container.innerHTML = '';
+  phaseActionData.forEach(function(phase) {
+    var isFirst = phase.phaseId === firstPhaseId;
+    var checkboxes = phase.actions.map(function(a) {
+      return document.querySelector('[data-action-id="' + a.id + '"][data-phase-id="' + phase.phaseId + '"]');
+    });
+    var anyChecked = checkboxes.some(function(cb) { return cb && cb.checked; });
+    if (!isFirst && !anyChecked) return;
+    var doneActions = [], missedActions = [];
+    phase.actions.forEach(function(a, i) {
+      var cb = checkboxes[i];
+      if (cb && cb.checked) doneActions.push(a); else missedActions.push(a);
+    });
+    var total = phase.actions.length, doneCount = doneActions.length;
+    var card = document.createElement('div');
+    card.className = 'card debrief-phase-card';
+    var header = document.createElement('div');
+    header.className = 'debrief-phase-header';
+    var hLeft = document.createElement('div');
+    hLeft.className = 'debrief-phase-name';
+    hLeft.textContent = phase.phaseName;
+    var hRight = document.createElement('div');
+    hRight.className = 'debrief-phase-score';
+    if (doneCount === total) hRight.classList.add('score-perfect');
+    else if (doneCount === 0) hRight.classList.add('score-none');
+    hRight.textContent = doneCount + '/' + total;
+    header.appendChild(hLeft); header.appendChild(hRight);
+    card.appendChild(header);
+    var body = document.createElement('div');
+    body.className = 'debrief-phase-body';
+    if (doneActions.length) {
+      var doneSection = document.createElement('div');
+      doneSection.className = 'debrief-done-section';
+      doneActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-done-row';
+        row.innerHTML = '<span class="debrief-done-icon">\u2713</span><span class="debrief-done-text">' + a.action + '</span>';
+        doneSection.appendChild(row);
+      });
+      body.appendChild(doneSection);
+    }
+    if (missedActions.length) {
+      var missLabel = document.createElement('div');
+      missLabel.className = 'debrief-missed-label';
+      missLabel.textContent = 'MISSED';
+      body.appendChild(missLabel);
+      missedActions.forEach(function(a) {
+        var row = document.createElement('div');
+        row.className = 'debrief-missed-row';
+        var top = document.createElement('div');
+        top.className = 'debrief-missed-top';
+        var badge = document.createElement('span');
+        badge.className = 'action-priority priority-' + a.priority;
+        badge.textContent = a.priority.toUpperCase();
+        var text = document.createElement('span');
+        text.className = 'debrief-missed-text';
+        text.textContent = a.action;
+        top.appendChild(badge); top.appendChild(text);
+        row.appendChild(top);
+        if (a.rationale || a.protocolReference) {
+          var detail = document.createElement('div');
+          detail.className = 'debrief-missed-detail';
+          if (a.rationale) { var reason = document.createElement('div'); reason.className = 'debrief-missed-rationale'; reason.textContent = a.rationale; detail.appendChild(reason); }
+          if (a.protocolReference) { var proto = document.createElement('div'); proto.className = 'debrief-missed-protocol'; proto.textContent = 'Protocol: ' + a.protocolReference; detail.appendChild(proto); }
+          row.appendChild(detail);
+        }
+        body.appendChild(row);
+      });
+    }
+    card.appendChild(body); container.appendChild(card);
+  });
+}
+
+// Timer
+var timerEl = document.getElementById('scenario-timer');
+var timerTotal = timerEl ? parseInt(timerEl.getAttribute('data-total')) : 0;
+var timerRemaining = timerTotal;
+var timerInterval = null;
+function timerFormat(s) { var m = Math.floor(s/60); var sec = s%60; return m+':'+(sec<10?'0':'')+sec; }
+function timerUpdate() {
+  var d = document.getElementById('timer-display'); if(!d) return;
+  d.textContent = timerFormat(timerRemaining);
+  d.classList.remove('timer-warn','timer-danger');
+  if(timerRemaining<=60) d.classList.add('timer-danger');
+  else if(timerRemaining<=timerTotal*0.25) d.classList.add('timer-warn');
+}
+function timerStart() {
+  document.getElementById('timer-start').style.display='none';
+  document.getElementById('timer-pause').style.display='';
+  document.getElementById('timer-stop').style.display='';
+  document.getElementById('timer-reset').style.display='none';
+  timerInterval=setInterval(function(){timerRemaining--;timerUpdate();if(timerRemaining<=0){timerRemaining=0;timerStop();}},1000);
+}
+function timerPause() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-pause').style.display='none';document.getElementById('timer-start').style.display=''; }
+function timerStop() { clearInterval(timerInterval);timerInterval=null;document.getElementById('timer-start').style.display='none';document.getElementById('timer-pause').style.display='none';document.getElementById('timer-stop').style.display='none';document.getElementById('timer-reset').style.display=''; }
+function timerReset() { timerRemaining=timerTotal;timerUpdate();document.getElementById('timer-reset').style.display='none';document.getElementById('timer-start').style.display=''; }
+function scenarioRestart() { if(confirm('Restart scenario? This clears all checkboxes and resets the timer.'))location.reload(); }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+{
+  "scenarioId": "cardiac-brady-syncope-001",
+  "scenarioName": "Symptomatic Bradycardia with Syncope - Atropine Fails, TCP Required",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 60,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "74-year-old female was standing at the kitchen counter making tea when she felt suddenly lightheaded, became diaphoretic, and slumped to the floor. Her daughter, who was in the next room, heard her fall and found her pale and unresponsive for approximately 20-30 seconds before she regained awareness. Patient now reports persistent weakness, lightheadedness, vague substernal pressure, and shortness of breath when she tries to sit up. No prodromal palpitations. Daughter notes mother has 'been off' for 2-3 days with mild fatigue and one prior near-syncope episode 2 days ago that resolved spontaneously and was not reported. No new medications, no falls, no head strike noted on exam.",
+    "discussion": "Define symptomatic bradycardia: HR < 60 with symptoms (AMS, chest pain, syncope, shock, diaphoresis) or hemodynamic instability. Apply the stepwise Bradycardia protocol: airway/O2/monitor/12-lead/IV/glucose first, then atropine, then chronotropes or TCP. Identify Third Degree (Complete) Heart Block on the 12-lead and understand why atropine often fails (block is at AV node; atropine works above the block). Recognize that the protocol explicitly recommends moving 'quickly to chronotropic agents or transcutaneous pacing' for third-degree block or denervated heart (e.g., transplant). Differentiate electrical capture (pacer spike followed by wide QRS) from mechanical capture (palpable pulse synchronous with pacer); use the femoral, not the carotid, to confirm mechanical capture. Set pacing output 10-20 mA above the capture threshold for safety margin. Provide sedation (midazolam) and analgesia (fentanyl) for any patient receiving TCP. Recognize when to escalate to chronotropic infusion or push-dose epinephrine if pacing fails or BP remains low. Identify the tox/drug-induced bradycardias (beta-blockers, calcium channel blockers, digoxin, clonidine) where treatment differs",
+    "course": "Initial Presentation - Symptomatic Bradycardia After Syncope: Crew arrives to find a 74-year-old female who briefly lost consciousness and is now persistently bradycardic (HR low 30s), hypotensive (SBP 80s), and symptomatic with weakness, lightheadedness, vague chest pressure, and shortness of breath. The crew must recognize this as symptomatic bradycardia with hemodynamic instability - the patient meets the criteria for the Bradycardia protocol. The 12-lead ECG reveals third-degree (complete) heart block with a wide ventricular escape rhythm. This is a presentation where atropine is unlikely to work because the AV node is blocked - the protocol specifically calls out that third-degree block may not respond to atropine and may require chronotropic agents or pacing. → Atropine Trial - No Response (Third-Degree Block): The crew administered Atropine 1 mg IV. As is typical for third-degree heart block (where the AV node is the site of block and atropine acts above the block), the heart rate did not respond. The crew correctly recognizes this and continues per protocol with up to two more doses of atropine to a maximum of 3 mg total - while preparing for transcutaneous pacing or vasopressor escalation. The patient remains hypotensive and symptomatic. → Transcutaneous Pacing - Electrical and Mechanical Capture: Atropine has been maxed at 3 mg total without effect. The crew initiates transcutaneous pacing at a rate of 80 with current titrated up from 0. At ~60 mA they observe consistent pacer spikes followed by wide QRS complexes - electrical capture. They confirm mechanical capture by palpating a femoral pulse synchronized with each pacer spike (NOT carotid - skeletal muscle twitching from TCP can mimic a carotid pulse). Blood pressure improves to SBP 102. The patient receives sedation (midazolam) and analgesia (fentanyl) and reports being much more comfortable. The crew now prepares for transport while maintaining capture. → Stable on TCP - Transport to ED: Patient is being transported to the closest cardiac-capable ED. Pacer is maintaining electrical and mechanical capture at rate 80, mA 75. SBP is 108, MAP > 65, SpO2 97% on NC. Patient is comfortable and conversational. The crew continues vigilance for capture loss, monitors sedation level, and performs early notification with rhythm, paced rate/output, vital trend, and meds given."
+  },
+  "patientInformation": {
+    "patientName": "Margaret \"Maggie\" O'Sullivan",
+    "patientCondition": "Brief loss of consciousness with subsequent weakness, dizziness, and chest heaviness; heart rate persistently in the low 30s",
+    "patientAge": 74,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 163,
+    "patientWeight": 68,
+    "patientPhotoId": 89,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Presentation - Symptomatic Bradycardia After Syncope",
+      "description": "Crew arrives to find a 74-year-old female who briefly lost consciousness and is now persistently bradycardic (HR low 30s), hypotensive (SBP 80s), and symptomatic with weakness, lightheadedness, vague chest pressure, and shortness of breath. The crew must recognize this as symptomatic bradycardia with hemodynamic instability - the patient meets the criteria for the Bradycardia protocol. The 12-lead ECG reveals third-degree (complete) heart block with a wide ventricular escape rhythm. This is a presentation where atropine is unlikely to work because the AV node is blocked - the protocol specifically calls out that third-degree block may not respond to atropine and may require chronotropic agents or pacing.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 100,
+        "hr": 32,
+        "bpSys": 78,
+        "bpDia": 50,
+        "respRate": 22,
+        "spo2": 94,
+        "etco2": 35,
+        "temp": 36.6,
+        "obstruction": 0,
+        "custMeasure1": 102,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Apply transcutaneous pacing pads in anterior-posterior position",
+        "Check blood glucose"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Atropine Trial - No Response (Third-Degree Block)",
+      "description": "The crew administered Atropine 1 mg IV. As is typical for third-degree heart block (where the AV node is the site of block and atropine acts above the block), the heart rate did not respond. The crew correctly recognizes this and continues per protocol with up to two more doses of atropine to a maximum of 3 mg total - while preparing for transcutaneous pacing or vasopressor escalation. The patient remains hypotensive and symptomatic.",
+      "monitorType": 0,
+      "trendTime": 25,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 100,
+        "hr": 34,
+        "bpSys": 80,
+        "bpDia": 52,
+        "respRate": 22,
+        "spo2": 95,
+        "etco2": 35,
+        "temp": 36.6,
+        "obstruction": 0,
+        "custMeasure1": 102,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Transcutaneous Pacing - Electrical and Mechanical Capture",
+      "description": "Atropine has been maxed at 3 mg total without effect. The crew initiates transcutaneous pacing at a rate of 80 with current titrated up from 0. At ~60 mA they observe consistent pacer spikes followed by wide QRS complexes - electrical capture. They confirm mechanical capture by palpating a femoral pulse synchronized with each pacer spike (NOT carotid - skeletal muscle twitching from TCP can mimic a carotid pulse). Blood pressure improves to SBP 102. The patient receives sedation (midazolam) and analgesia (fentanyl) and reports being much more comfortable. The crew now prepares for transport while maintaining capture.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 80,
+        "bpSys": 102,
+        "bpDia": 64,
+        "respRate": 18,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 102,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Stable on TCP - Transport to ED",
+      "description": "Patient is being transported to the closest cardiac-capable ED. Pacer is maintaining electrical and mechanical capture at rate 80, mA 75. SBP is 108, MAP > 65, SpO2 97% on NC. Patient is comfortable and conversational. The crew continues vigilance for capture loss, monitors sedation level, and performs early notification with rhythm, paced rate/output, vital trend, and meds given.",
+      "monitorType": 0,
+      "trendTime": 35,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 80,
+        "bpSys": 108,
+        "bpDia": 66,
+        "respRate": 16,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 102,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Branch - Skip Atropine, Pace Immediately",
+      "description": "The crew elected to bypass atropine and proceed directly to transcutaneous pacing. While protocol allows direct TCP for impending hemodynamic collapse, this patient has time for an atropine trial. Direct TCP is not necessarily wrong - it just adds discomfort and need for sedation. The case becomes a discussion point for the debrief: atropine is cheap, fast, and may avoid TCP altogether in mixed mechanism bradycardias. In patients who clearly will not respond (e.g., transplant heart, agonal patient with capture window closing), direct TCP is preferred.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 80,
+        "bpSys": 96,
+        "bpDia": 60,
+        "respRate": 20,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.6,
+        "obstruction": 0,
+        "custMeasure1": 102,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Branch - TCP Initiated Without Sedation/Analgesia",
+      "description": "TCP was started and capture achieved, but the crew did not give sedation or analgesia. The patient is conscious and writhing in distress with each pacing impulse. Skeletal muscle stimulation causes severe chest wall pain and the patient may pull at the pads or ask to stop. This violates protocol explicitly ('if pacing is performed, consider sedation or pain control'). Capture quality may degrade due to patient movement.",
+      "monitorType": 0,
+      "trendTime": 25,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 80,
+        "bpSys": 100,
+        "bpDia": 64,
+        "respRate": 28,
+        "spo2": 95,
+        "etco2": 32,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 102,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Recognize symptomatic bradycardia with hemodynamic compromise (HR 32, SBP 78, syncope, altered)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire 12-lead ECG and identify Third Degree (Complete) Heart Block",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish two large-bore IV lines",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Atropine 1 mg IV every 3-5 minutes to a maximum total of 3 mg",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize that atropine commonly fails in third-degree heart block and prepare TCP in parallel",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply transcutaneous pacing pads in anterior-posterior position",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Initiate TCP at rate 80, titrate output (mA) up from 0 until electrical capture achieved",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Verify mechanical capture by palpating a FEMORAL pulse synchronous with each pacer spike (not carotid)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Set output 10-20 mA above the capture threshold for safety margin",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer Midazolam 1 mg IV (titratable) AND Fentanyl 50 mcg IV (titratable) for sedation/analgesia of pacing",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reassess blood pressure after capture; treat persistent SBP < 90 with NS bolus and push-dose epinephrine if needed",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Maintain capture during patient movement and transport; verify continuously",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Provide early notification to a cardiac-capable ED for definitive transvenous/permanent pacing",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Position the patient supine with legs elevated as tolerated",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply oxygen to maintain SpO2 94-98%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Obtain a complete medication history with attention to beta-blockers, calcium channel blockers, digoxin, and clonidine",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Administer 250-500 mL NS IV bolus for hypotension while preparing TCP",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Communicate the planned pacing intervention to the patient and family before initiating",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document atropine doses, time given, response (or lack of response)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document pacer settings, threshold mA, capture status, and times of medications",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}
