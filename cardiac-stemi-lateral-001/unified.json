@@ -1,0 +1,462 @@
+{
+  "meta": {
+    "id": "cardiac-stemi-lateral-001",
+    "name": "Lateral STEMI — Atypical Jaw Pain in an Elderly Female",
+    "version": 1,
+    "difficulty": "intermediate",
+    "category": "Cardiac",
+    "protocols": [
+      "cv-chest-pain-acs-stemi"
+    ],
+    "totalTimeSeconds": 1200,
+    "createdAt": "2026-05-03T00:00:00Z",
+    "tags": [
+      "STEMI",
+      "lateral MI",
+      "atypical presentation",
+      "jaw pain",
+      "elderly female",
+      "12-lead",
+      "STEMI recognition",
+      "intermediate"
+    ]
+  },
+  "patient": {
+    "name": "Margaret 'Peggy' O'Sullivan",
+    "age": 71,
+    "ageUnit": "years",
+    "sex": "female",
+    "weight": 68,
+    "weightLbs": 150,
+    "height": 163,
+    "chiefComplaint": "Persistent jaw pain and 'flu-like' fatigue with nausea and diaphoresis, present for about 2 hours, not relieved by acetaminophen.",
+    "history": {
+      "hpi": "71-year-old female, retired schoolteacher, called her daughter complaining of a dull aching pain in her left jaw and the side of her neck that started while she was watering her garden. She thought it might be a tooth or sinus problem. Over the next 90 minutes she became progressively nauseated, started sweating despite cool temperature, and felt 'just exhausted, like I have the flu.' Daughter arrived, found her pale and clammy, and called 911. Patient repeatedly minimizes her symptoms — 'it's probably just my tooth' — and denies chest pain when asked directly. On further questioning admits to a vague pressure 'across the chest' but says it doesn't really hurt. Has been short of breath walking from the kitchen to the couch. She has a history of hypertension, well-controlled type 2 diabetes, and hyperlipidemia, and takes a baby aspirin daily.",
+      "pastMedical": [
+        "Hypertension (15 years, controlled)",
+        "Type 2 diabetes mellitus (well-controlled, A1c 6.8)",
+        "Hyperlipidemia",
+        "Hypothyroidism",
+        "Osteoarthritis"
+      ],
+      "medications": [
+        "Lisinopril 10 mg PO daily",
+        "Metformin 500 mg PO BID",
+        "Atorvastatin 20 mg PO at bedtime",
+        "Levothyroxine 75 mcg PO daily",
+        "Aspirin 81 mg PO daily",
+        "Acetaminophen 1000 mg PO ~30 minutes ago for jaw pain"
+      ],
+      "allergies": [
+        "Sulfa drugs (rash)"
+      ],
+      "lastOralIntake": "Toast, tea, and her morning meds about 3 hours ago",
+      "events": "Onset of left-sided jaw pain while gardening ~2 hours ago; progressive nausea, diaphoresis, fatigue, and shortness of breath. Daughter found her pale and clammy and called 911."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 71-year-old female, sick person, possible flu-like illness with jaw pain. Conscious and breathing. Daughter on scene.",
+    "location": "Single-family home, living room. Patient sitting in a recliner, blanket draped over her legs. Adequate lighting. Garden hose still running on patio (per daughter).",
+    "time": "Wednesday, 10:55, mild spring morning",
+    "safety": "Scene safe. No pets. Daughter is calm and helpful, has medication list ready.",
+    "bystanders": "Adult daughter present and provides history. Confirms no recent dental work, no facial trauma, no recent illness in the household. Confirms no PDE5 inhibitor use in the household.",
+    "visualCues": [
+      "Patient seated in recliner, leaning back, eyes half-closed",
+      "Pale skin with visible perspiration on forehead and upper lip despite cool room",
+      "Hand resting on left jaw / side of neck",
+      "Half-empty glass of water and acetaminophen bottle on side table",
+      "Walker beside the chair",
+      "Dispatched dispatch description ('flu-like') in stark contrast to the actual diaphoretic, ill appearance"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 71-year-old female seated in her recliner. The dispatch comment ('flu-like, jaw pain') and the patient's own minimization ('it's just my tooth') belie an obviously diaphoretic, pale, mildly dyspneic woman who has been ill for 2 hours. The teaching point here is the AHA-recognized atypical female-pattern ACS presentation: jaw/neck pain, fatigue, nausea, diaphoresis, mild dyspnea — without overt chest pain. She must be evaluated as a possible ACS patient and a 12-lead must be obtained early.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent, self-maintained",
+        "breathing": "RR 22, mildly labored, lungs with mild bibasilar crackles",
+        "circulation": "Regular pulse; cool, pale, diaphoretic; cap refill 2 sec",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 3 mm, briskly reactive",
+        "motorFunction": "Intact and symmetric; no facial droop",
+        "otherFindings": [
+          "Mild crackles at lung bases — possible LV strain",
+          "Hand resting on left jaw; tender with no obvious dental abnormality",
+          "Patient minimizes symptoms ('I'm sure it's just a flu')",
+          "On directed questioning, admits to vague pressure across the chest 'but it doesn't really hurt'",
+          "No facial droop, slurred speech, or focal weakness"
+        ],
+        "patientSpeech": "I think I just have a flu, dear. My jaw has been aching. Maybe a tooth. I'm so tired."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 86,
+        "bpSys": 138,
+        "bpDia": 82,
+        "respRate": 22,
+        "spo2": 93,
+        "etco2": 36,
+        "temp": 36.7,
+        "tempF": 98.1,
+        "obstruction": 0,
+        "glucose": 138,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": false,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "primary-survey",
+          "shortAction": "Primary survey; recognize atypical ACS in elderly diabetic female",
+          "priority": "critical",
+          "rationale": "MATC ACS Inclusion Criteria explicitly calls out atypical/unusual symptoms in women, the elderly, and diabetics — this patient has all three risk modifiers.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Inclusion Criteria: Chest pain or discomfort in other areas of the body (e.g., arm, jaw, epigastrium) of suspected cardiac origin, shortness of breath, associated or unexplained sweating, nausea, vomiting, or dizziness. Atypical or unusual symptoms are more common in women, the elderly, and diabetic patients. May also present with CHF, syncope, and/or shock."
+        },
+        {
+          "id": "directed-history",
+          "shortAction": "Ask directly about chest pressure, dyspnea, sweating, nausea — do not accept 'just the flu'",
+          "priority": "critical",
+          "rationale": "MATC ACS Educational Pearl — ACS presents with vague/atypical complaints; clinician must actively look past the patient's framing.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Key Considerations: Acute coronary syndrome may present with atypical pain, vague or only generalized complaints. Ischemic burden time is a risk for morbidity and mortality, EMS can help decrease first medical contact to intervention time/reflow by efficient scripting/training of safely minimizing scene time."
+        },
+        {
+          "id": "cardiac-monitor",
+          "shortAction": "Cardiac monitor; SpO2; defib pads on (high-risk presentation)",
+          "priority": "critical",
+          "rationale": "MATC ACS step 2 + Patient Safety #3 — immediate rhythm assessment; defib pads on high-risk patients.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Assess the patient's cardiac rhythm and immediately address pulseless rhythms, symptomatic tachycardia, or symptomatic bradycardia. Patient Safety Considerations: Consider placing defibrillator pads on high-risk patients."
+        },
+        {
+          "id": "twelve-lead-early",
+          "shortAction": "12-lead EKG within 10 minutes; do NOT defer because pain is 'just jaw'",
+          "priority": "critical",
+          "rationale": "MATC ACS step 4 + Performance Measure — 12-lead within 10 minutes for ANY patient with signs/symptoms of ACS.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "The 12-lead EKG is the primary diagnostic tool that identifies a STEMI; it is imperative that EMS clinicians routinely acquire a 12-lead EKG within 10 minutes for all patients exhibiting signs and symptoms of ACS."
+        },
+        {
+          "id": "oxygen-targeted",
+          "shortAction": "O2 via NC 2 L/min — SpO2 93%, target 94–98%",
+          "priority": "important",
+          "rationale": "MATC ACS step 3 — O2 if dyspneic, hypoxemic, or signs of CHF; titrate to 94–98%.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "If the patient is dyspneic, hypoxemic, or has obvious signs of heart failure, EMS clinicians should administer oxygen as appropriate with a target of achieving 94–98% saturation."
+        },
+        {
+          "id": "aspirin",
+          "shortAction": "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+          "priority": "critical",
+          "rationale": "MATC ACS step 5 — chewable, non-enteric ASA 162–325 mg.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Administer aspirin; chewable, non-enteric-coated aspirin preferred (162–325 mg)."
+        },
+        {
+          "id": "iv-access",
+          "shortAction": "Establish IV access (18 ga AC preferred)",
+          "priority": "critical",
+          "rationale": "MATC ACS step 6 — IV access required prior to nitrate or analgesic.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Establish IV access."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "stemi-recognized",
+          "if": "Lateral STEMI recognized on 12-lead",
+          "condition": "12-lead acquired showing ST elevation in I, aVL, V5, V6 with reciprocal depression in II, III, aVF — lateral STEMI; ASA given; IV access in place; STEMI activation indicated.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["twelve-lead-early", "aspirin", "iv-access"]
+        },
+        {
+          "targetPhaseId": "branch-treated-as-flu",
+          "if": "Treated as 'flu / dental' — no 12-lead",
+          "condition": "Crew accepts the patient's framing of 'flu and toothache' and does not acquire a 12-lead EKG; STEMI is missed in the field; transport without STEMI alert to a non-PCI hospital.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": ["directed-history", "twelve-lead-early"]
+        }
+      ]
+    },
+    {
+      "id": "stemi-recognized",
+      "name": "Lateral STEMI recognized",
+      "description": "12-lead shows ST elevation 2–3 mm in leads I and aVL with concordant ST elevation 2 mm in V5 and V6, and reciprocal ST depression in II, III, aVF — classic lateral wall STEMI consistent with circumflex artery occlusion. Crew confirms the diagnosis, calls a STEMI alert, gives nitroglycerin after confirming no PDE5 use and acceptable BP, and prepares rapid transport to PCI-capable facility.",
+      "triggerCondition": "12-lead EKG acquired and correctly interpreted as lateral STEMI; ASA given; IV access established; PDE5 use ruled out by history.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 20, slightly improved with O2; mild bibasilar crackles",
+        "circulation": "Regular pulse; cool, pale; cap refill 2 sec",
+        "skin": {
+          "color": "pale-pink",
+          "temperature": "cool",
+          "moisture": "moist"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "12-lead: ST elevation 2-3 mm I, aVL with concordant 2 mm V5, V6; reciprocal depression II, III, aVF",
+          "Now acknowledges 'a heaviness across the chest' when asked specifically",
+          "Bibasilar crackles persist — mild LV strain"
+        ],
+        "patientSpeech": "Oh dear. So this isn't my tooth?"
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Lateral",
+        "ecgWaveform": 25,
+        "hr": 84,
+        "bpSys": 132,
+        "bpDia": 78,
+        "respRate": 20,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "tempF": 98.1,
+        "obstruction": 0,
+        "glucose": 138,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "stemi-alert",
+          "shortAction": "Activate STEMI alert; transmit/notify receiving PCI center",
+          "priority": "critical",
+          "rationale": "MATC ACS Goal #3 / step 4 — STEMI activation drives door-to-balloon; advance notification.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Activate hospital-based STEMI system of care. Advance notification should be provided to the receiving hospital for patients identified as having a STEMI. All EKGs should be made available to treating personnel at the receiving hospital, whether hand delivered as hard copy or transmitted from the field."
+        },
+        {
+          "id": "ntg-with-pde5-screen",
+          "shortAction": "Nitroglycerin 0.4 mg SL (SBP 132, no PDE5 use); may repeat q3–5 min if SBP > 100",
+          "priority": "important",
+          "rationale": "MATC ACS step 7 — NTG only after PDE5 screen and SBP > 100.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Nitroglycerin 0.4 mg sublingual (SL), can repeat q (quaque, every) 3–5 minutes if SBP greater than 100 mmHg. The use of nitrates should be avoided in any patient who has used a phosphodiesterase inhibitor within the past 48 hours. Examples include sildenafil (Viagra®, Revatio®), vardenafil (Levitra®, Staxyn®), tadalafil (Cialis®, Adcirca®)."
+        },
+        {
+          "id": "rapid-transport",
+          "shortAction": "Minimize scene time; rapid transport to PCI center",
+          "priority": "critical",
+          "rationale": "MATC ACS Educational Pearl — ischemic burden time drives morbidity/mortality.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Key Considerations: Acute coronary syndrome may present with atypical pain, vague or only generalized complaints. Ischemic burden time is a risk for morbidity and mortality, EMS can help decrease first medical contact to intervention time/reflow by efficient scripting/training of safely minimizing scene time."
+        },
+        {
+          "id": "monitor-deterioration",
+          "shortAction": "Watch for VT/VF, worsening CHF; defib pads on; serial 12-leads",
+          "priority": "critical",
+          "rationale": "MATC ACS Patient Safety #1, #2, #3, #4 — observe for dysrhythmia/decompensation; serial EKGs; defib pads.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Patient Safety Considerations: Observe for signs of clinical deterioration: dysrhythmias, chest pain, shortness of breath, decreased level of consciousness/syncope, or other signs of shock/hypotension. Perform serial 12-lead EKGs (especially if clinical changes are noted). Consider placing defibrillator pads on high-risk patients. Consider configuring monitor/defibrillator to allow automatic VT/VF alert."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "transport-pci",
+          "if": "STEMI alerted, en route to PCI",
+          "condition": "STEMI activation called, transport initiated to PCI-capable center, NTG given with appropriate hemodynamic monitoring.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["stemi-alert", "rapid-transport"]
+        }
+      ]
+    },
+    {
+      "id": "transport-pci",
+      "name": "Transport to PCI center",
+      "description": "Patient en route to PCI-capable receiving facility with STEMI alert active. Pain reduced after second NTG. Hemodynamically stable. Crew provides bedside handoff with full clinical picture: atypical jaw-pain presentation, time of symptom onset, 12-lead with lateral STEMI pattern, ASA and NTG given.",
+      "triggerCondition": "STEMI alert called and transport to PCI-capable hospital initiated; ongoing ACS care en route.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 18, comfortable, mild basilar crackles",
+        "circulation": "Regular pulse; warmer skin; less diaphoretic",
+        "skin": {
+          "color": "pale-pink",
+          "temperature": "cool",
+          "moisture": "slightly moist"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "Jaw pain reduced from 6/10 to 3/10 after 2nd NTG",
+          "Repeat 12-lead unchanged — persistent lateral STEMI"
+        ],
+        "patientSpeech": "It's a little better. My daughter is going to think I'm a fool for saying it was a tooth."
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Lateral",
+        "ecgWaveform": 25,
+        "hr": 78,
+        "bpSys": 122,
+        "bpDia": 74,
+        "respRate": 18,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.7,
+        "tempF": 98.1,
+        "obstruction": 0,
+        "glucose": 138,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "second-ntg",
+          "shortAction": "Nitroglycerin 0.4 mg SL q3–5 min while SBP > 100; reassess",
+          "priority": "important",
+          "rationale": "MATC ACS step 7 — NTG may be repeated q3–5 min while SBP > 100.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Nitroglycerin 0.4 mg sublingual (SL), can repeat q (quaque, every) 3–5 minutes if SBP greater than 100 mmHg."
+        },
+        {
+          "id": "early-notification",
+          "shortAction": "Early notify receiving hospital; deliver EKG copy at bedside",
+          "priority": "critical",
+          "rationale": "MATC ACS step 11 + Documentation — early notification of changes; EKGs delivered to receiving hospital; document onset, contact-to-EKG, ASA, STEMI notification times.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Early notification to receiving facility of any changes in patient condition or serial EKGs. Key Documentation Elements: The time of symptom onset; The time of patient contact by EMS to the time of 12-lead EKG acquisition; The time aspirin (ASA) administered, or reason why not given; The time of STEMI notification."
+        },
+        {
+          "id": "opiate-if-refractory",
+          "shortAction": "If pain unresponsive to NTG, opiate analgesic per Pain Management",
+          "priority": "supplemental",
+          "rationale": "MATC ACS step 9 — opiates as alternative when NTG inadequate.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "If the pain is unresponsive to nitrates, opiates are an acceptable alternative. Morphine should be used with caution in unstable angina (UA)/non-STEMI due to an association with increased mortality."
+        }
+      ]
+    },
+    {
+      "id": "branch-treated-as-flu",
+      "name": "Treated as flu/dental — no 12-lead",
+      "description": "Crew accepts the patient's framing of 'just the flu and a sore tooth' and does not pursue a directed cardiac history or acquire a 12-lead EKG. Patient is loaded for transport as a 'sick person' to the closest community ED rather than a PCI center. STEMI is missed in the field, no STEMI alert is called, and reperfusion is delayed by the receiving ED having to discover the diagnosis themselves. This branch is the classic 'female-pattern MI miss' — a recognized public health and EMS quality issue.",
+      "triggerCondition": "Atypical female ACS presentation accepted as 'flu / dental' without a directed cardiac history or 12-lead; STEMI missed in the field with delayed reperfusion.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 24, more labored, basilar crackles worsening",
+        "circulation": "Regular pulse; clammy; cap refill 3 sec",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal, reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "Symptoms worsening en route — dyspnea increasing",
+          "Patient now reports 'I think the chest pressure is getting worse'",
+          "Basilar crackles becoming more pronounced",
+          "STEMI missed; no field activation",
+          "Transport to non-PCI hospital"
+        ],
+        "patientSpeech": "I'm having more trouble breathing. The pressure in my chest is worse."
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Lateral",
+        "ecgWaveform": 25,
+        "hr": 92,
+        "bpSys": 142,
+        "bpDia": 86,
+        "respRate": 24,
+        "spo2": 91,
+        "etco2": 34,
+        "temp": 36.7,
+        "tempF": 98.1,
+        "obstruction": 0,
+        "glucose": 138,
+        "trendTimeSeconds": 50,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "delayed-twelve-lead-recovery",
+          "shortAction": "Acquire 12-lead now en route; STEMI alert; reroute to PCI center",
+          "priority": "critical",
+          "rationale": "MATC ACS step 4 / Performance Measures — 12-lead within 10 minutes; STEMI must be identified and alerted as soon as possible.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "The 12-lead EKG is the primary diagnostic tool that identifies a STEMI; it is imperative that EMS clinicians routinely acquire a 12-lead EKG within 10 minutes for all patients exhibiting signs and symptoms of ACS. Performance of serial EKGs is encouraged for symptomatic patients with EKGs initially non-diagnostic for STEMI."
+        },
+        {
+          "id": "aspirin-now",
+          "shortAction": "Aspirin 324 mg PO chewed (if not already given)",
+          "priority": "critical",
+          "rationale": "MATC ACS step 5 — chewable, non-enteric ASA 162–325 mg.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Administer aspirin; chewable, non-enteric-coated aspirin preferred (162–325 mg)."
+        },
+        {
+          "id": "document-delay",
+          "shortAction": "Document recognition delay; reason; corrective action",
+          "priority": "important",
+          "rationale": "MATC ACS Documentation — contact-to-EKG time and ASA timing required.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Key Documentation Elements: The time of patient contact by EMS to the time of 12-lead EKG acquisition; The time aspirin (ASA) administered, or reason why not given; The time of STEMI notification."
+        }
+      ]
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

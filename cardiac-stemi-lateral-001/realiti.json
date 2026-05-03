@@ -1,0 +1,286 @@
+{
+  "scenarioId": "cardiac-stemi-lateral-001",
+  "scenarioName": "Lateral STEMI — Atypical Jaw Pain in an Elderly Female",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1200,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "71-year-old female, retired schoolteacher, called her daughter complaining of a dull aching pain in her left jaw and the side of her neck that started while she was watering her garden. She thought it might be a tooth or sinus problem. Over the next 90 minutes she became progressively nauseated, started sweating despite cool temperature, and felt 'just exhausted, like I have the flu.' Daughter arrived, found her pale and clammy, and called 911. Patient repeatedly minimizes her symptoms — 'it's probably just my tooth' — and denies chest pain when asked directly. On further questioning admits to a vague pressure 'across the chest' but says it doesn't really hurt. Has been short of breath walking from the kitchen to the couch. She has a history of hypertension, well-controlled type 2 diabetes, and hyperlipidemia, and takes a baby aspirin daily.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find a 71-year-old female seated in her recliner. The dispatch comment ('flu-like, jaw pain') and the patient's own minimization ('it's just my tooth') belie an obviously diaphoretic, pale, mildly dyspneic woman who has been ill for 2 hours. The teaching point here is the AHA-recognized atypical female-pattern ACS presentation: jaw/neck pain, fatigue, nausea, diaphoresis, mild dyspnea — without overt chest pain. She must be evaluated as a possible ACS patient and a 12-lead must be obtained early. → Lateral STEMI recognized: 12-lead shows ST elevation 2–3 mm in leads I and aVL with concordant ST elevation 2 mm in V5 and V6, and reciprocal ST depression in II, III, aVF — classic lateral wall STEMI consistent with circumflex artery occlusion. Crew confirms the diagnosis, calls a STEMI alert, gives nitroglycerin after confirming no PDE5 use and acceptable BP, and prepares rapid transport to PCI-capable facility. → Transport to PCI center: Patient en route to PCI-capable receiving facility with STEMI alert active. Pain reduced after second NTG. Hemodynamically stable. Crew provides bedside handoff with full clinical picture: atypical jaw-pain presentation, time of symptom onset, 12-lead with lateral STEMI pattern, ASA and NTG given."
+  },
+  "patientInformation": {
+    "patientName": "Margaret 'Peggy' O'Sullivan",
+    "patientCondition": "Persistent jaw pain and 'flu-like' fatigue with nausea and diaphoresis, present for about 2 hours, not relieved by acetaminophen.",
+    "patientAge": 71,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 163,
+    "patientWeight": 68,
+    "patientPhotoId": 86,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 71-year-old female seated in her recliner. The dispatch comment ('flu-like, jaw pain') and the patient's own minimization ('it's just my tooth') belie an obviously diaphoretic, pale, mildly dyspneic woman who has been ill for 2 hours. The teaching point here is the AHA-recognized atypical female-pattern ACS presentation: jaw/neck pain, fatigue, nausea, diaphoresis, mild dyspnea — without overt chest pain. She must be evaluated as a possible ACS patient and a 12-lead must be obtained early.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 86,
+        "bpSys": 138,
+        "bpDia": 82,
+        "respRate": 22,
+        "spo2": 93,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 138,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": false,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize atypical ACS in elderly diabetic female",
+        "Ask directly about chest pressure, dyspnea, sweating, nausea — do not accept 'just the flu'",
+        "Cardiac monitor; SpO2; defib pads on (high-risk presentation)",
+        "12-lead EKG within 10 minutes; do NOT defer because pain is 'just jaw'",
+        "O2 via NC 2 L/min — SpO2 93%, target 94–98%",
+        "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+        "Establish IV access (18 ga AC preferred)"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Lateral STEMI recognized",
+      "description": "12-lead shows ST elevation 2–3 mm in leads I and aVL with concordant ST elevation 2 mm in V5 and V6, and reciprocal ST depression in II, III, aVF — classic lateral wall STEMI consistent with circumflex artery occlusion. Crew confirms the diagnosis, calls a STEMI alert, gives nitroglycerin after confirming no PDE5 use and acceptable BP, and prepares rapid transport to PCI-capable facility.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 25,
+        "hr": 84,
+        "bpSys": 132,
+        "bpDia": 78,
+        "respRate": 20,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 138,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Activate STEMI alert; transmit/notify receiving PCI center",
+        "Nitroglycerin 0.4 mg SL (SBP 132, no PDE5 use); may repeat q3–5 min if SBP > 100",
+        "Minimize scene time; rapid transport to PCI center",
+        "Watch for VT/VF, worsening CHF; defib pads on; serial 12-leads"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Transport to PCI center",
+      "description": "Patient en route to PCI-capable receiving facility with STEMI alert active. Pain reduced after second NTG. Hemodynamically stable. Crew provides bedside handoff with full clinical picture: atypical jaw-pain presentation, time of symptom onset, 12-lead with lateral STEMI pattern, ASA and NTG given.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 25,
+        "hr": 78,
+        "bpSys": 122,
+        "bpDia": 74,
+        "respRate": 18,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 138,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Nitroglycerin 0.4 mg SL q3–5 min while SBP > 100; reassess",
+        "Early notify receiving hospital; deliver EKG copy at bedside",
+        "If pain unresponsive to NTG, opiate analgesic per Pain Management"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Treated as flu/dental — no 12-lead",
+      "description": "Crew accepts the patient's framing of 'just the flu and a sore tooth' and does not pursue a directed cardiac history or acquire a 12-lead EKG. Patient is loaded for transport as a 'sick person' to the closest community ED rather than a PCI center. STEMI is missed in the field, no STEMI alert is called, and reperfusion is delayed by the receiving ED having to discover the diagnosis themselves. This branch is the classic 'female-pattern MI miss' — a recognized public health and EMS quality issue.",
+      "monitorType": 0,
+      "trendTime": 50,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 25,
+        "hr": 92,
+        "bpSys": 142,
+        "bpDia": 86,
+        "respRate": 24,
+        "spo2": 91,
+        "etco2": 34,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 138,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Acquire 12-lead now en route; STEMI alert; reroute to PCI center",
+        "Aspirin 324 mg PO chewed (if not already given)",
+        "Document recognition delay; reason; corrective action"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize atypical ACS in elderly diabetic female",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Ask directly about chest pressure, dyspnea, sweating, nausea — do not accept 'just the flu'",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cardiac monitor; SpO2; defib pads on (high-risk presentation)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "12-lead EKG within 10 minutes; do NOT defer because pain is 'just jaw'",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "O2 via NC 2 L/min — SpO2 93%, target 94–98%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access (18 ga AC preferred)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Activate STEMI alert; transmit/notify receiving PCI center",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Nitroglycerin 0.4 mg SL (SBP 132, no PDE5 use); may repeat q3–5 min if SBP > 100",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Minimize scene time; rapid transport to PCI center",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Watch for VT/VF, worsening CHF; defib pads on; serial 12-leads",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Nitroglycerin 0.4 mg SL q3–5 min while SBP > 100; reassess",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early notify receiving hospital; deliver EKG copy at bedside",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If pain unresponsive to NTG, opiate analgesic per Pain Management",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire 12-lead now en route; STEMI alert; reroute to PCI center",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Aspirin 324 mg PO chewed (if not already given)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document recognition delay; reason; corrective action",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

@@ -1,0 +1,490 @@
+{
+  "meta": {
+    "id": "cardiac-stemi-inferior-rv-001",
+    "name": "Inferior STEMI with Right Ventricular Involvement — Hypotension and Cautious Nitrate Use",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Cardiac",
+    "protocols": [
+      "cv-chest-pain-acs-stemi",
+      "medical-shock"
+    ],
+    "totalTimeSeconds": 1500,
+    "createdAt": "2026-05-03T00:00:00Z",
+    "tags": [
+      "STEMI",
+      "inferior MI",
+      "RV infarct",
+      "V4R",
+      "hypotension",
+      "fluid resuscitation",
+      "nitrate caution",
+      "advanced"
+    ]
+  },
+  "patient": {
+    "name": "Frank Delgado",
+    "age": 64,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 95,
+    "weightLbs": 209,
+    "height": 178,
+    "chiefComplaint": "Substernal chest pressure with nausea, lightheadedness, and one episode of near-syncope while sitting on the couch about 25 minutes prior to EMS arrival.",
+    "history": {
+      "hpi": "64-year-old male was watching TV when he developed sudden onset of substernal pressure described as 8/10 with radiation to the right shoulder and back. Associated with profuse diaphoresis, nausea, one episode of vomiting, and a brief 'gray-out' when he stood up to get water. Wife noted he looked 'really pale' and called 911. Pain has been continuous for ~25 minutes. He has had no prior cardiac diagnosis but has been told his blood pressure is high and runs around 150–160 systolic at his clinic. Denies recent illness, fever, leg pain, or trauma. Father had a heart attack in his 50s.",
+      "pastMedical": [
+        "Hypertension (untreated, intermittent compliance)",
+        "Type 2 diabetes mellitus, on oral agents",
+        "Obesity (BMI 30)",
+        "Family history: father MI in his 50s"
+      ],
+      "medications": [
+        "Metformin 1000 mg PO BID",
+        "Lisinopril 20 mg PO daily (admits to skipping doses for the past several months)"
+      ],
+      "allergies": [
+        "NKDA"
+      ],
+      "lastOralIntake": "Pizza and a beer about 90 minutes ago",
+      "events": "Sudden substernal pressure with nausea and one episode of vomiting while watching TV; near-syncope on standing; wife found him pale and diaphoretic and called 911."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 64-year-old male, chest pain with near-syncope, conscious. Wife reports he looks pale. Single-family residence, living room.",
+    "location": "Single-family home, living room. Patient supine on the couch where wife helped him lie down. Adequate lighting; small amount of vomitus in the kitchen sink (per wife). Clear path for cot.",
+    "time": "Saturday, 19:45, mild evening",
+    "safety": "Scene safe. Pets contained. Wife is anxious but cooperative. Adequate working space.",
+    "bystanders": "Wife present, gives history. No PDE5 inhibitor use in the household per wife.",
+    "visualCues": [
+      "Patient supine on couch, eyes closed but rousable",
+      "Pale, profusely diaphoretic, shirt damp",
+      "Slight tremor in hands",
+      "TV still on in background (game show)",
+      "Empty pizza box on coffee table; a partially finished beer on side table"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 64-year-old male supine on the living room couch, pale, diaphoretic, and clearly unwell. Initial blood pressure is low (84/56), heart rate is bradycardic at 52 with regular rhythm, and the patient is alert but lightheaded. Pain is substernal with radiation to the back. This presentation pattern — chest pain + hypotension + bradycardia in an elderly diabetic male — should raise immediate concern for inferior STEMI with RV involvement.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent, self-maintained",
+        "breathing": "RR 22, lungs clear bilaterally, no rales (notably — RV infarct without LV failure)",
+        "circulation": "Weak radial pulse; cool, pale, diaphoretic; cap refill 3 sec; JVD noted",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 4 mm, briskly reactive",
+        "motorFunction": "Moves all extremities; no focal deficit",
+        "otherFindings": [
+          "Jugular venous distension at 30°",
+          "Lungs CLEAR (key — no pulmonary edema despite hypotension; suggests RV failure not LV)",
+          "Patient feels 'lightheaded' when raising head",
+          "One episode of vomiting reported by wife"
+        ],
+        "patientSpeech": "I feel awful. Like the room is going to spin if I sit up. My chest hurts in the middle and into my back."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Bradycardia",
+        "ecgWaveform": 9,
+        "hr": 52,
+        "bpSys": 84,
+        "bpDia": 56,
+        "respRate": 22,
+        "spo2": 95,
+        "etco2": 34,
+        "temp": 36.7,
+        "tempF": 98.1,
+        "obstruction": 0,
+        "glucose": 162,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "primary-survey",
+          "shortAction": "Primary survey; recognize chest pain + hypotension as cardiac emergency",
+          "priority": "critical",
+          "rationale": "MATC ACS Goal #1 and Patient Presentation #1 — atypical/shocky presentations are more common in elderly and diabetic patients.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Inclusion Criteria: Chest pain or discomfort in other areas of the body (e.g., arm, jaw, epigastrium) of suspected cardiac origin, shortness of breath, associated or unexplained sweating, nausea, vomiting, or dizziness. Atypical or unusual symptoms are more common in women, the elderly, and diabetic patients. May also present with CHF, syncope, and/or shock."
+        },
+        {
+          "id": "cardiac-monitor",
+          "shortAction": "Cardiac monitor; defib pads on (high-risk inferior MI pattern)",
+          "priority": "critical",
+          "rationale": "MATC ACS step 2 + Patient Safety #3 — immediate rhythm check, defib pads on high-risk patients.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Assess the patient's cardiac rhythm and immediately address pulseless rhythms, symptomatic tachycardia, or symptomatic bradycardia. Patient Safety Considerations: Consider placing defibrillator pads on high-risk patients."
+        },
+        {
+          "id": "twelve-lead-early",
+          "shortAction": "12-lead EKG within 10 minutes; look at II/III/aVF",
+          "priority": "critical",
+          "rationale": "MATC ACS step 4 + Performance Measure — 12-lead within 10 minutes; identify STEMI pattern.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "The 12-lead EKG is the primary diagnostic tool that identifies a STEMI; it is imperative that EMS clinicians routinely acquire a 12-lead EKG within 10 minutes for all patients exhibiting signs and symptoms of ACS."
+        },
+        {
+          "id": "right-sided-leads",
+          "shortAction": "Acquire right-sided 12-lead (V4R) to assess RV involvement",
+          "priority": "important",
+          "rationale": "MATC ACS step 8 — right-sided leads identify presumed RV infarct; do not preclude NTG but require hemodynamic vigilance.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "The location of the infarct does not preclude the use of nitrates. Right-sided leads are of no additional value if an inferior STEMI has been diagnosed and such findings (presumed RV infarct) do not preclude the use of nitroglycerin: however, continually monitor the patient's hemodynamic status and be prepared to resuscitate if hypotension occurs."
+        },
+        {
+          "id": "aspirin",
+          "shortAction": "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+          "priority": "critical",
+          "rationale": "MATC ACS step 5 — chewable, non-enteric ASA 162–325 mg.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Administer aspirin; chewable, non-enteric-coated aspirin preferred (162–325 mg)."
+        },
+        {
+          "id": "iv-access-large-bore",
+          "shortAction": "Two large-bore IVs (18 ga); set up for fluid bolus",
+          "priority": "critical",
+          "rationale": "MATC ACS step 6 + Shock step 8 — IV access for medications and fluid resuscitation in hypotensive patient.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Establish IV access."
+        },
+        {
+          "id": "history-pde5-screen",
+          "shortAction": "Focused SAMPLE; ask about PDE5 inhibitor use before any nitrate",
+          "priority": "critical",
+          "rationale": "MATC ACS step 7 — screen for PDE5 use prior to nitrate, especially critical in hypotensive patient.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "The use of nitrates should be avoided in any patient who has used a phosphodiesterase inhibitor within the past 48 hours. Examples include sildenafil (Viagra®, Revatio®), vardenafil (Levitra®, Staxyn®), tadalafil (Cialis®, Adcirca®)."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "rv-recognized-fluid",
+          "if": "Inferior STEMI + RV recognized; fluid bolus given",
+          "condition": "12-lead identifies inferior STEMI (II/III/aVF elevation); right-sided V4R confirms RV involvement; crew gives fluid bolus before considering NTG.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["twelve-lead-early", "right-sided-leads", "iv-access-large-bore"]
+        },
+        {
+          "targetPhaseId": "branch-ntg-crash",
+          "if": "NTG given without fluid first",
+          "condition": "Nitroglycerin administered before fluid resuscitation in hypotensive RV-infarct patient; preload-dependent RV cannot maintain stroke volume; profound hypotension and near-arrest follow.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["right-sided-leads"]
+        }
+      ]
+    },
+    {
+      "id": "rv-recognized-fluid",
+      "name": "RV recognized; fluid bolus given",
+      "description": "12-lead shows ST elevation 2–3 mm in II, III, aVF with reciprocal depression in I and aVL. ST elevation in lead III greater than lead II — concerning for RCA culprit. Right-sided V4R shows ST elevation > 1 mm, confirming RV involvement. Crew initiates 250–500 mL NS bolus, withholds NTG until BP improves, calls STEMI alert, and prepares rapid transport. The preload-dependent RV physiology means these patients improve dramatically with volume.",
+      "triggerCondition": "Inferior STEMI confirmed on 12-lead with V4R demonstrating RV involvement; fluid bolus initiated to address preload-dependent hypotension before considering nitrates.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 20, lungs CLEAR (still no rales — supports RV vs. LV failure)",
+        "circulation": "Improving radial pulse with fluid; less diaphoretic; JVD persists",
+        "skin": {
+          "color": "pale-pink (improving)",
+          "temperature": "cool",
+          "moisture": "moist"
+        },
+        "pupils": "Equal, reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "12-lead: ST elevation 2-3 mm II, III, aVF; III > II; reciprocal ST depression I, aVL",
+          "V4R: ST elevation 1.5 mm — confirms RV involvement",
+          "Lungs remain clear — important reassurance for continued fluid",
+          "BP responding to first 250 mL bolus"
+        ],
+        "patientSpeech": "I feel a little better lying flat. The pain's still there."
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Inferior",
+        "ecgWaveform": 24,
+        "hr": 58,
+        "bpSys": 96,
+        "bpDia": 64,
+        "respRate": 20,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "tempF": 98.1,
+        "obstruction": 0,
+        "glucose": 162,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "stemi-alert",
+          "shortAction": "Activate STEMI alert; transmit/notify PCI center; flag 'inferior with RV'",
+          "priority": "critical",
+          "rationale": "MATC ACS Goal #3 / step 4 — STEMI activation drives door-to-balloon time; advance notification.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Activate hospital-based STEMI system of care. Advance notification should be provided to the receiving hospital for patients identified as having a STEMI. All EKGs should be made available to treating personnel at the receiving hospital, whether hand delivered as hard copy or transmitted from the field."
+        },
+        {
+          "id": "fluid-bolus",
+          "shortAction": "NS 250–500 mL IV bolus; reassess lungs and BP each bolus",
+          "priority": "critical",
+          "rationale": "MATC Shock step 9 — predetermined boluses to MAP goal; MATC ACS step 7 caution — be ready for hypotension with fluid bolus or pressor.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "IV fluid volume goal attained by giving boluses that are pressure infused over less than 15 minutes each based on patient's condition and clinical impression. Fluid volume goal to achieve a mean arterial pressure (adults) or other targets (pediatrics). Adult: Physiologic target: MAP goal 65 mmHg; Fluid goal of up to 30 mL/kg of isotonic fluid by administering rapid, predetermined boluses (e.g., 500 mL) unless the MAP goal is achieved, or pulmonary edema develops."
+        },
+        {
+          "id": "withhold-ntg-until-stable",
+          "shortAction": "Withhold NTG until SBP > 100 and stable; opiate alternative if needed",
+          "priority": "critical",
+          "rationale": "MATC ACS step 7 caution — care with NTG when BP marginal; weigh risk vs benefit; opiate alternative.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Care should always be taken when giving nitroglycerin when the patient's blood pressure is marginal. If used in this setting, the clinician should weigh the risk and benefit of nitrate administration over the administration of an opiate analgesic and be ready to respond to hypotension with fluid bolus or pressor."
+        },
+        {
+          "id": "monitor-cardiogenic-shock",
+          "shortAction": "Auscultate lungs each bolus; stop fluids if rales develop",
+          "priority": "critical",
+          "rationale": "MATC Shock Patient Safety — recognize cardiogenic shock; stop fluids if rales/hepatomegaly develop.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Patient Safety Considerations: Recognition of cardiogenic shock - If the patient condition deteriorates after fluid administration, rales or hepatomegaly develop, then consider cardiogenic shock and withholding further fluid administration."
+        },
+        {
+          "id": "monitor-rhythm-changes",
+          "shortAction": "Watch for AV block / bradycardia (RCA supplies AV node)",
+          "priority": "important",
+          "rationale": "MATC ACS step 2 + Patient Safety #1 — observe for dysrhythmias; inferior MI commonly causes AV blocks via RCA-AV nodal artery.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Observe for signs of clinical deterioration: dysrhythmias, chest pain, shortness of breath, decreased level of consciousness/syncope, or other signs of shock/hypotension. Assess the patient's cardiac rhythm and immediately address pulseless rhythms, symptomatic tachycardia, or symptomatic bradycardia."
+        },
+        {
+          "id": "rapid-transport",
+          "shortAction": "Minimize scene time; rapid transport to PCI center",
+          "priority": "critical",
+          "rationale": "MATC ACS Educational Pearl — ischemic burden time drives morbidity/mortality.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Key Considerations: Acute coronary syndrome may present with atypical pain, vague or only generalized complaints. Ischemic burden time is a risk for morbidity and mortality, EMS can help decrease first medical contact to intervention time/reflow by efficient scripting/training of safely minimizing scene time."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "transport-pci",
+          "if": "Hemodynamics improved; en route to PCI",
+          "condition": "Fluid resuscitation has stabilized SBP; STEMI alert called; en route to PCI center; continued monitoring for AV block and decompensation.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["fluid-bolus", "stemi-alert", "rapid-transport"]
+        }
+      ]
+    },
+    {
+      "id": "transport-pci",
+      "name": "Transport to PCI center",
+      "description": "Patient en route to PCI-capable receiving facility with STEMI alert active. SBP improved to 110s with second 250 mL bolus. Lungs remain clear. Patient reports pain is somewhat better with rest. Crew continues to monitor for new conduction abnormalities and prepares bedside handoff with full 12-lead packet (including V4R), onset time, and treatment given.",
+      "triggerCondition": "STEMI alert called and transport to PCI-capable hospital initiated; fluid resuscitation has improved hemodynamics; ongoing monitoring for AV blocks.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 18, lungs clear",
+        "circulation": "Stronger pulse; warmer skin; less diaphoretic",
+        "skin": {
+          "color": "pale-pink",
+          "temperature": "cool",
+          "moisture": "slightly moist"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "Pain 5/10 with rest and fluid",
+          "Repeat 12-lead unchanged — persistent inferior STEMI",
+          "No new AV block or bradycardia worsening",
+          "JVD reduced"
+        ],
+        "patientSpeech": "It's a little better. Are we going to the hospital that does the cath?"
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Inferior",
+        "ecgWaveform": 24,
+        "hr": 64,
+        "bpSys": 112,
+        "bpDia": 70,
+        "respRate": 18,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 162,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "serial-twelve-lead",
+          "shortAction": "Repeat 12-lead with any change; deliver EKG copy at bedside",
+          "priority": "important",
+          "rationale": "MATC ACS step 4 + Patient Safety #2 — serial 12-leads encouraged; deliver EKGs to receiving hospital.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Performance of serial EKGs is encouraged for symptomatic patients with EKGs initially non-diagnostic for STEMI. All EKGs should be made available to treating personnel at the receiving hospital, whether hand delivered as hard copy or transmitted from the field."
+        },
+        {
+          "id": "consider-ntg-now",
+          "shortAction": "Consider NTG 0.4 mg SL now that SBP > 100 (cautious; reassess each dose)",
+          "priority": "supplemental",
+          "rationale": "MATC ACS step 7/8 — RV involvement does not preclude NTG; once SBP > 100, may consider with continued vigilance.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Nitroglycerin 0.4 mg sublingual (SL), can repeat q (quaque, every) 3–5 minutes if SBP greater than 100 mmHg. The location of the infarct does not preclude the use of nitrates. Right-sided leads are of no additional value if an inferior STEMI has been diagnosed and such findings (presumed RV infarct) do not preclude the use of nitroglycerin: however, continually monitor the patient's hemodynamic status and be prepared to resuscitate if hypotension occurs."
+        },
+        {
+          "id": "early-notification",
+          "shortAction": "Early notification of receiving hospital of any change",
+          "priority": "critical",
+          "rationale": "MATC ACS step 11 — early notification of changes; documentation requirements.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Early notification to receiving facility of any changes in patient condition or serial EKGs."
+        }
+      ]
+    },
+    {
+      "id": "branch-ntg-crash",
+      "name": "NTG given without fluid first",
+      "description": "Crew administered nitroglycerin to a hypotensive RV-infarct patient before fluid resuscitation. The preload-dependent RV cannot maintain stroke volume against further venodilation. Within 90 seconds of NTG, BP crashes to 56/30, patient becomes confused and pulses are barely palpable. Crew must immediately recognize, stop NTG, drop patient supine with legs elevated, give rapid IV fluid bolus, and prepare for possible push-dose pressor.",
+      "triggerCondition": "Nitroglycerin administered before fluid resuscitation in a patient with inferior STEMI and presumed RV involvement, causing precipitous hypotension.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 3,
+          "verbal": 4,
+          "motor": 5
+        },
+        "airway": "Patent",
+        "breathing": "RR 26, shallow, lungs clear",
+        "circulation": "Thready, weak central pulse; cold, mottled extremities; cap refill > 4 sec",
+        "skin": {
+          "color": "ashen with peripheral mottling",
+          "temperature": "cold",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 4 mm, reactive",
+        "motorFunction": "Weak; slow to respond",
+        "otherFindings": [
+          "BP crashed within 90 seconds of NTG to 56/30",
+          "Patient confused and slow to respond",
+          "JVD now collapsed despite RV failure (intravascularly empty)",
+          "Lungs still clear"
+        ],
+        "patientSpeech": "I … can't … (slurred)"
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Inferior",
+        "ecgWaveform": 24,
+        "hr": 48,
+        "bpSys": 56,
+        "bpDia": 30,
+        "respRate": 26,
+        "spo2": 92,
+        "etco2": 28,
+        "temp": 36.6,
+        "tempF": 97.9,
+        "obstruction": 0,
+        "glucose": 162,
+        "trendTimeSeconds": 15,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "stop-ntg-supine",
+          "shortAction": "Stop NTG; supine with legs elevated; recognize NTG-induced crash",
+          "priority": "critical",
+          "rationale": "MATC ACS step 7 caution — be ready to respond to hypotension; first move is to stop the offending agent and reposition.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Care should always be taken when giving nitroglycerin when the patient's blood pressure is marginal. If used in this setting, the clinician should weigh the risk and benefit of nitrate administration over the administration of an opiate analgesic and be ready to respond to hypotension with fluid bolus or pressor."
+        },
+        {
+          "id": "rapid-fluid-bolus",
+          "shortAction": "Rapid 500 mL NS bolus pressure-infused; reassess after each",
+          "priority": "critical",
+          "rationale": "MATC Shock step 9 — fluid resuscitation to MAP 65 mmHg; rapid pressure-infused boluses.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Adult: Physiologic target: MAP goal 65 mmHg; Fluid goal of up to 30 mL/kg of isotonic fluid by administering rapid, predetermined boluses (e.g., 500 mL) unless the MAP goal is achieved, or pulmonary edema develops."
+        },
+        {
+          "id": "push-dose-epi",
+          "shortAction": "If fluid-refractory: push-dose epi 10–20 mcg IV q2 min (10 mcg/mL prep)",
+          "priority": "important",
+          "rationale": "MATC Shock vasopressor step 11 — push-dose epi when fluid-refractory; titrate to MAP 65.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Vasopressors (shock unresponsive to IV fluids) titrated to physiologic targets: Epinephrine, 0.05–0.3 mcg/kg/minute. Alternative to a drip, push dose epinephrine may be administered: Prepare 10 mcg/mL by diluting 1 mL of epinephrine 0.1 mg/mL (1:10,000) in 9 mL of normal saline; Administer 0.01 mg/kg (0.1 mL/kg) up to a maximum single dose of 10 mcg (1 mL) q 3–5 minutes titrated to maintain goal MAP."
+        },
+        {
+          "id": "no-more-ntg",
+          "shortAction": "Withhold further nitrates; opiate alternative for ongoing pain",
+          "priority": "critical",
+          "rationale": "MATC ACS step 9 — opiates as alternative when NTG contraindicated.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "If the pain is unresponsive to nitrates, opiates are an acceptable alternative. Morphine should be used with caution in unstable angina (UA)/non-STEMI due to an association with increased mortality."
+        },
+        {
+          "id": "early-notify-deterioration",
+          "shortAction": "Early notify receiving hospital of decompensation",
+          "priority": "important",
+          "rationale": "MATC ACS step 11 — early notification of any changes in patient condition.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Early notification to receiving facility of any changes in patient condition or serial EKGs."
+        }
+      ]
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

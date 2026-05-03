@@ -1,0 +1,314 @@
+{
+  "scenarioId": "cardiac-stemi-inferior-rv-001",
+  "scenarioName": "Inferior STEMI with Right Ventricular Involvement — Hypotension and Cautious Nitrate Use",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "64-year-old male was watching TV when he developed sudden onset of substernal pressure described as 8/10 with radiation to the right shoulder and back. Associated with profuse diaphoresis, nausea, one episode of vomiting, and a brief 'gray-out' when he stood up to get water. Wife noted he looked 'really pale' and called 911. Pain has been continuous for ~25 minutes. He has had no prior cardiac diagnosis but has been told his blood pressure is high and runs around 150–160 systolic at his clinic. Denies recent illness, fever, leg pain, or trauma. Father had a heart attack in his 50s.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find a 64-year-old male supine on the living room couch, pale, diaphoretic, and clearly unwell. Initial blood pressure is low (84/56), heart rate is bradycardic at 52 with regular rhythm, and the patient is alert but lightheaded. Pain is substernal with radiation to the back. This presentation pattern — chest pain + hypotension + bradycardia in an elderly diabetic male — should raise immediate concern for inferior STEMI with RV involvement. → RV recognized; fluid bolus given: 12-lead shows ST elevation 2–3 mm in II, III, aVF with reciprocal depression in I and aVL. ST elevation in lead III greater than lead II — concerning for RCA culprit. Right-sided V4R shows ST elevation > 1 mm, confirming RV involvement. Crew initiates 250–500 mL NS bolus, withholds NTG until BP improves, calls STEMI alert, and prepares rapid transport. The preload-dependent RV physiology means these patients improve dramatically with volume. → Transport to PCI center: Patient en route to PCI-capable receiving facility with STEMI alert active. SBP improved to 110s with second 250 mL bolus. Lungs remain clear. Patient reports pain is somewhat better with rest. Crew continues to monitor for new conduction abnormalities and prepares bedside handoff with full 12-lead packet (including V4R), onset time, and treatment given."
+  },
+  "patientInformation": {
+    "patientName": "Frank Delgado",
+    "patientCondition": "Substernal chest pressure with nausea, lightheadedness, and one episode of near-syncope while sitting on the couch about 25 minutes prior to EMS arrival.",
+    "patientAge": 64,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 178,
+    "patientWeight": 95,
+    "patientPhotoId": 77,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 64-year-old male supine on the living room couch, pale, diaphoretic, and clearly unwell. Initial blood pressure is low (84/56), heart rate is bradycardic at 52 with regular rhythm, and the patient is alert but lightheaded. Pain is substernal with radiation to the back. This presentation pattern — chest pain + hypotension + bradycardia in an elderly diabetic male — should raise immediate concern for inferior STEMI with RV involvement.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 52,
+        "bpSys": 84,
+        "bpDia": 56,
+        "respRate": 22,
+        "spo2": 95,
+        "etco2": 34,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 162,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize chest pain + hypotension as cardiac emergency",
+        "Cardiac monitor; defib pads on (high-risk inferior MI pattern)",
+        "12-lead EKG within 10 minutes; look at II/III/aVF",
+        "Acquire right-sided 12-lead (V4R) to assess RV involvement",
+        "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+        "Two large-bore IVs (18 ga); set up for fluid bolus",
+        "Focused SAMPLE; ask about PDE5 inhibitor use before any nitrate"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "RV recognized; fluid bolus given",
+      "description": "12-lead shows ST elevation 2–3 mm in II, III, aVF with reciprocal depression in I and aVL. ST elevation in lead III greater than lead II — concerning for RCA culprit. Right-sided V4R shows ST elevation > 1 mm, confirming RV involvement. Crew initiates 250–500 mL NS bolus, withholds NTG until BP improves, calls STEMI alert, and prepares rapid transport. The preload-dependent RV physiology means these patients improve dramatically with volume.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 24,
+        "hr": 58,
+        "bpSys": 96,
+        "bpDia": 64,
+        "respRate": 20,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 162,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Activate STEMI alert; transmit/notify PCI center; flag 'inferior with RV'",
+        "NS 250–500 mL IV bolus; reassess lungs and BP each bolus",
+        "Withhold NTG until SBP > 100 and stable; opiate alternative if needed",
+        "Auscultate lungs each bolus; stop fluids if rales develop",
+        "Watch for AV block / bradycardia (RCA supplies AV node)",
+        "Minimize scene time; rapid transport to PCI center"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Transport to PCI center",
+      "description": "Patient en route to PCI-capable receiving facility with STEMI alert active. SBP improved to 110s with second 250 mL bolus. Lungs remain clear. Patient reports pain is somewhat better with rest. Crew continues to monitor for new conduction abnormalities and prepares bedside handoff with full 12-lead packet (including V4R), onset time, and treatment given.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 24,
+        "hr": 64,
+        "bpSys": 112,
+        "bpDia": 70,
+        "respRate": 18,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 162,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Repeat 12-lead with any change; deliver EKG copy at bedside",
+        "Consider NTG 0.4 mg SL now that SBP > 100 (cautious; reassess each dose)",
+        "Early notification of receiving hospital of any change"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "NTG given without fluid first",
+      "description": "Crew administered nitroglycerin to a hypotensive RV-infarct patient before fluid resuscitation. The preload-dependent RV cannot maintain stroke volume against further venodilation. Within 90 seconds of NTG, BP crashes to 56/30, patient becomes confused and pulses are barely palpable. Crew must immediately recognize, stop NTG, drop patient supine with legs elevated, give rapid IV fluid bolus, and prepare for possible push-dose pressor.",
+      "monitorType": 0,
+      "trendTime": 15,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 24,
+        "hr": 48,
+        "bpSys": 56,
+        "bpDia": 30,
+        "respRate": 26,
+        "spo2": 92,
+        "etco2": 28,
+        "temp": 36.6,
+        "obstruction": 0,
+        "custMeasure1": 162,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Stop NTG; supine with legs elevated; recognize NTG-induced crash",
+        "Rapid 500 mL NS bolus pressure-infused; reassess after each",
+        "If fluid-refractory: push-dose epi 10–20 mcg IV q2 min (10 mcg/mL prep)",
+        "Withhold further nitrates; opiate alternative for ongoing pain",
+        "Early notify receiving hospital of decompensation"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize chest pain + hypotension as cardiac emergency",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cardiac monitor; defib pads on (high-risk inferior MI pattern)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "12-lead EKG within 10 minutes; look at II/III/aVF",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire right-sided 12-lead (V4R) to assess RV involvement",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Two large-bore IVs (18 ga); set up for fluid bolus",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Focused SAMPLE; ask about PDE5 inhibitor use before any nitrate",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Activate STEMI alert; transmit/notify PCI center; flag 'inferior with RV'",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "NS 250–500 mL IV bolus; reassess lungs and BP each bolus",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Withhold NTG until SBP > 100 and stable; opiate alternative if needed",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Auscultate lungs each bolus; stop fluids if rales develop",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Watch for AV block / bradycardia (RCA supplies AV node)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Minimize scene time; rapid transport to PCI center",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Repeat 12-lead with any change; deliver EKG copy at bedside",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Consider NTG 0.4 mg SL now that SBP > 100 (cautious; reassess each dose)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early notification of receiving hospital of any change",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Stop NTG; supine with legs elevated; recognize NTG-induced crash",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Rapid 500 mL NS bolus pressure-infused; reassess after each",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If fluid-refractory: push-dose epi 10–20 mcg IV q2 min (10 mcg/mL prep)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Withhold further nitrates; opiate alternative for ongoing pain",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early notify receiving hospital of decompensation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

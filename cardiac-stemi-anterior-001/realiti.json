@@ -1,0 +1,347 @@
+{
+  "scenarioId": "cardiac-stemi-anterior-001",
+  "scenarioName": "Anterior STEMI — Crushing Substernal Chest Pain with V1–V4 ST Elevation",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1200,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "58-year-old male was working in the front yard moving mulch when he developed sudden onset of substernal 'crushing' pressure described as 9/10, radiating to the left arm and jaw. Associated with profuse diaphoresis, nausea without vomiting, and a sense of doom. Patient sat down on the porch step and asked his wife to call 911. Pain has been continuous for approximately 35 minutes by the time of EMS arrival. He has not taken anything for the pain. Denies prior episodes of similar pain, recent illness, fever, cough, leg pain, or trauma. He has a history of hypertension and hyperlipidemia, smokes a half-pack per day, and his father died of a heart attack at age 61.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find a 58-year-old male seated on his front porch step, pale, diaphoretic, and clutching his chest. He is alert and oriented but appears in significant distress. Pain has been ongoing for approximately 35 minutes since onset during yard work. → STEMI recognized: 12-lead shows ST elevation of 3–5 mm in V1–V4 with reciprocal depression in II, III, aVF — classic anterior STEMI consistent with proximal LAD occlusion. Patient remains in pain, hemodynamically stable but high-risk for VT/VF. Crew activates STEMI alert with the receiving PCI center, gives nitroglycerin after confirming no PDE5 use, and prepares rapid transport. → Transport to PCI center: Patient en route to PCI-capable receiving facility with STEMI alert active. Pain reduced to 5/10 after second NTG dose. Hemodynamically stable. Crew gives second-look 12-lead and provides bedside handoff with onset time, EKG copy, and treatment given."
+  },
+  "patientInformation": {
+    "patientName": "Daniel Hoffman",
+    "patientCondition": "Crushing substernal chest pressure with radiation to the left arm and jaw, diaphoresis, and nausea, onset approximately 35 minutes ago while shoveling mulch in the front yard.",
+    "patientAge": 58,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 180,
+    "patientWeight": 92,
+    "patientPhotoId": 70,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 58-year-old male seated on his front porch step, pale, diaphoretic, and clutching his chest. He is alert and oriented but appears in significant distress. Pain has been ongoing for approximately 35 minutes since onset during yard work.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 94,
+        "bpSys": 152,
+        "bpDia": 96,
+        "respRate": 20,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.9,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": false,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Scene safety; primary survey; recognize possible ACS",
+        "Determine onset time; OPQRST + SAMPLE; ask about PDE5 inhibitor use",
+        "Place on cardiac monitor; SpO2; consider defibrillator pads",
+        "Acquire 12-lead EKG within 10 minutes of patient contact",
+        "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+        "Establish IV access (18 ga AC preferred)"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "STEMI recognized",
+      "description": "12-lead shows ST elevation of 3–5 mm in V1–V4 with reciprocal depression in II, III, aVF — classic anterior STEMI consistent with proximal LAD occlusion. Patient remains in pain, hemodynamically stable but high-risk for VT/VF. Crew activates STEMI alert with the receiving PCI center, gives nitroglycerin after confirming no PDE5 use, and prepares rapid transport.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 23,
+        "hr": 92,
+        "bpSys": 146,
+        "bpDia": 90,
+        "respRate": 20,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.9,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Activate STEMI alert; transmit/notify receiving PCI center early",
+        "Nitroglycerin 0.4 mg SL (SBP 146 — safe; no PDE5 use); may repeat q3–5 min if SBP > 100",
+        "Titrate O2 only if SpO2 < 94% (currently 96–97%, no supplemental O2)",
+        "Minimize scene time; rapid transport to PCI center",
+        "Repeat 12-lead en route or with any clinical change",
+        "Watch for VT/VF; defib pads on; rescue meds for pain unresponsive to NTG"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Transport to PCI center",
+      "description": "Patient en route to PCI-capable receiving facility with STEMI alert active. Pain reduced to 5/10 after second NTG dose. Hemodynamically stable. Crew gives second-look 12-lead and provides bedside handoff with onset time, EKG copy, and treatment given.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 23,
+        "hr": 88,
+        "bpSys": 132,
+        "bpDia": 80,
+        "respRate": 18,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.9,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Nitroglycerin 0.4 mg SL ×2 q3–5 min while SBP > 100; reassess",
+        "Early notification of any change; deliver EKG copy at bedside",
+        "If pain unresponsive to NTG, opiate analgesic per Pain Management"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "NTG given without PDE5 screen",
+      "description": "Crew administered nitroglycerin without explicitly asking about PDE5 inhibitor use. Patient had taken tadalafil 24 hours ago for erectile dysfunction — not volunteered to the wife or crew. Within 2 minutes of NTG, BP drops precipitously to 72/44, patient becomes lightheaded and pale. Crew must recognize, drop the patient supine, give rapid IV fluid bolus, and treat as a NTG-induced hypotensive event. STEMI care must continue concurrently.",
+      "monitorType": 0,
+      "trendTime": 20,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 23,
+        "hr": 116,
+        "bpSys": 72,
+        "bpDia": 44,
+        "respRate": 24,
+        "spo2": 94,
+        "etco2": 32,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Stop NTG; supine; recognize NTG/PDE5 interaction",
+        "Rapid 250–500 mL NS bolus, reassess; titrate to SBP > 90",
+        "Withhold further nitrates; STEMI alert; opiate alternative for ongoing pain",
+        "Early notify receiving hospital of hemodynamic change"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "12-lead delayed > 10 min",
+      "description": "Crew completes scene tasks but does not acquire a 12-lead EKG until well after 10 minutes from patient contact. STEMI activation is consequently delayed, which directly extends the patient's ischemic burden and door-to-balloon clock. The receiving hospital learns of the STEMI only at arrival rather than en route.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 23,
+        "hr": 96,
+        "bpSys": 150,
+        "bpDia": 92,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.9,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": false,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Acquire 12-lead now; STEMI alert immediately; rapid transport",
+        "Document contact-to-EKG time; reason for delay"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Scene safety; primary survey; recognize possible ACS",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Determine onset time; OPQRST + SAMPLE; ask about PDE5 inhibitor use",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Place on cardiac monitor; SpO2; consider defibrillator pads",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire 12-lead EKG within 10 minutes of patient contact",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access (18 ga AC preferred)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Activate STEMI alert; transmit/notify receiving PCI center early",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Nitroglycerin 0.4 mg SL (SBP 146 — safe; no PDE5 use); may repeat q3–5 min if SBP > 100",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Titrate O2 only if SpO2 < 94% (currently 96–97%, no supplemental O2)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Minimize scene time; rapid transport to PCI center",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Repeat 12-lead en route or with any clinical change",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Watch for VT/VF; defib pads on; rescue meds for pain unresponsive to NTG",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Nitroglycerin 0.4 mg SL ×2 q3–5 min while SBP > 100; reassess",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early notification of any change; deliver EKG copy at bedside",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If pain unresponsive to NTG, opiate analgesic per Pain Management",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Stop NTG; supine; recognize NTG/PDE5 interaction",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Rapid 250–500 mL NS bolus, reassess; titrate to SBP > 90",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Withhold further nitrates; STEMI alert; opiate alternative for ongoing pain",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early notify receiving hospital of hemodynamic change",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire 12-lead now; STEMI alert immediately; rapid transport",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document contact-to-EKG time; reason for delay",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

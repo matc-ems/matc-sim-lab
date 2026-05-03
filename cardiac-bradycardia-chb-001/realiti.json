@@ -1,0 +1,293 @@
+{
+  "scenarioId": "cardiac-bradycardia-chb-001",
+  "scenarioName": "Unstable Bradycardia with Complete Heart Block — Syncope, TCP, and Transport",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 80,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "79-year-old female was standing at her kitchen counter pouring tea when she suddenly collapsed without warning. Her adult daughter, who was visiting, witnessed the event — patient went pale, slumped, and was unresponsive for approximately 30 seconds before regaining consciousness on the floor. She did not strike her head (daughter caught her partially). On regaining consciousness she was confused for ~1 minute, then oriented but exhausted and lightheaded. Daughter palpated her radial pulse and found it 'really slow.' Patient reports two milder 'gray-out' episodes over the past 2 days, which she did not mention to her family. Denies chest pain at rest, denies dyspnea at rest, denies palpitations. Has noted increasing exercise intolerance over the past week. She has hypertension, atrial fibrillation on rate-control therapy, hyperlipidemia, and hypothyroidism.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find a 79-year-old female seated on the kitchen floor, pale and weak after a witnessed syncopal episode ~15 minutes prior. She is currently alert and oriented but exhausted. Daughter reports a heart rate that 'felt really slow' on palpation. The teaching point sets up immediately: an elderly patient on a beta-blocker AND a calcium channel blocker presenting with syncope and bradycardia must trigger immediate evaluation for high-grade AV block, with TCP readiness and an explicit awareness that her drug regimen is contributing to the bradycardia and may make atropine ineffective. → Atropine 1 mg IV — minimal response: Atropine 1 mg IV is administered per protocol. As expected with third-degree AV block (block is below the AV node), the response is minimal — heart rate increases briefly to the high 30s but symptoms persist. Crew now correctly proceeds to transcutaneous pacing per the protocol's explicit guidance that 3rd degree block may not respond to atropine and warrants rapid escalation to TCP or chronotropic agents. → TCP started; mechanical capture: Transcutaneous pacing initiated at 70 bpm. Output current titrated from 60 mA upward; electrical capture confirmed at 80 mA, mechanical capture confirmed by palpation of a pulse with each pacer spike and improvement in BP and mentation. Pre-pacing sedation given for the alert patient. Crew transports to a hospital with cardiology and electrophysiology / pacemaker capability and provides bedside handoff."
+  },
+  "patientInformation": {
+    "patientName": "Eleanor Whitfield",
+    "patientCondition": "Syncope while standing in the kitchen approximately 15 minutes ago, with persistent fatigue, lightheadedness, and a heart rate the daughter describes as 'really slow' palpated at the wrist.",
+    "patientAge": 79,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 160,
+    "patientWeight": 65,
+    "patientPhotoId": 95,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 79-year-old female seated on the kitchen floor, pale and weak after a witnessed syncopal episode ~15 minutes prior. She is currently alert and oriented but exhausted. Daughter reports a heart rate that 'felt really slow' on palpation. The teaching point sets up immediately: an elderly patient on a beta-blocker AND a calcium channel blocker presenting with syncope and bradycardia must trigger immediate evaluation for high-grade AV block, with TCP readiness and an explicit awareness that her drug regimen is contributing to the bradycardia and may make atropine ineffective.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 100,
+        "hr": 32,
+        "bpSys": 82,
+        "bpDia": 50,
+        "respRate": 18,
+        "spo2": 94,
+        "etco2": 36,
+        "temp": 36.5,
+        "obstruction": 0,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize symptomatic bradycardia from witnessed syncope",
+        "Manage airway; O2 to maintain SpO2 94–98% (NC 2 L now)",
+        "Cardiac monitor; defib + pacer pads on; 12-lead EKG immediately",
+        "Establish IV access (large-bore proximal)",
+        "Check blood glucose — rule out hypoglycemia as a syncope/AMS driver",
+        "Document beta-blocker + CCB on board (likely contributors to bradycardia)",
+        "Recognize 3rd degree AV block on 12-lead (P-QRS dissociation)"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Atropine 1 mg IV — minimal response",
+      "description": "Atropine 1 mg IV is administered per protocol. As expected with third-degree AV block (block is below the AV node), the response is minimal — heart rate increases briefly to the high 30s but symptoms persist. Crew now correctly proceeds to transcutaneous pacing per the protocol's explicit guidance that 3rd degree block may not respond to atropine and warrants rapid escalation to TCP or chronotropic agents.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 100,
+        "hr": 36,
+        "bpSys": 84,
+        "bpDia": 52,
+        "respRate": 18,
+        "spo2": 95,
+        "etco2": 36,
+        "temp": 36.5,
+        "obstruction": 0,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Atropine 1 mg IV (may repeat q3–5 min, max 3 mg total) — likely ineffective in 3° block",
+        "Proceed quickly to TCP — do not waste time chasing atropine in 3° block",
+        "Pacer pads on (anterior-posterior); set pacer rate 70, current at threshold"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "TCP started; mechanical capture",
+      "description": "Transcutaneous pacing initiated at 70 bpm. Output current titrated from 60 mA upward; electrical capture confirmed at 80 mA, mechanical capture confirmed by palpation of a pulse with each pacer spike and improvement in BP and mentation. Pre-pacing sedation given for the alert patient. Crew transports to a hospital with cardiology and electrophysiology / pacemaker capability and provides bedside handoff.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 70,
+        "bpSys": 114,
+        "bpDia": 72,
+        "respRate": 16,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 36.5,
+        "obstruction": 0,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "TCP rate 70; titrate output upward until electrical + mechanical capture confirmed",
+        "Confirm mechanical capture by palpating pulse with each pacer spike",
+        "Pre-pacing sedation/analgesia (e.g., midazolam 1–2 mg IV titrated; or fentanyl) per pain mgmt",
+        "If TCP fails: epi push-dose 10–20 mcg IV q2 min OR epi drip 2–10 mcg/min (titrate MAP > 65)",
+        "Rapid transport to cardiology / pacemaker-capable hospital; bedside handoff with strips"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Bradycardia not treated; PEA arrest",
+      "description": "Crew obtained a monitor strip but did not recognize the 3rd degree AV block, did not place pacer pads, and proceeded with passive supportive transport with the patient on a nasal cannula and IV access only. En route the heart rate slowed further to 22 with a junctional escape, and shortly thereafter the patient lost pulses with continued slow electrical activity on the monitor — pulseless electrical activity arrest. Crew must now recognize the deterioration, begin high-quality CPR, manage the arrest, and consider the bradyarrhythmic etiology.",
+      "monitorType": 0,
+      "trendTime": 20,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 22,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 88,
+        "etco2": 18,
+        "temp": 36.5,
+        "obstruction": 0,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Confirm pulselessness; immediate high-quality CPR",
+        "Epinephrine 1 mg IV per Cardiac Arrest protocol; resume CPR",
+        "Treat underlying bradyarrhythmia; consider Hs and Ts; prep TCP if ROSC"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize symptomatic bradycardia from witnessed syncope",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Manage airway; O2 to maintain SpO2 94–98% (NC 2 L now)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cardiac monitor; defib + pacer pads on; 12-lead EKG immediately",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access (large-bore proximal)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose — rule out hypoglycemia as a syncope/AMS driver",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document beta-blocker + CCB on board (likely contributors to bradycardia)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize 3rd degree AV block on 12-lead (P-QRS dissociation)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Atropine 1 mg IV (may repeat q3–5 min, max 3 mg total) — likely ineffective in 3° block",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Proceed quickly to TCP — do not waste time chasing atropine in 3° block",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Pacer pads on (anterior-posterior); set pacer rate 70, current at threshold",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "TCP rate 70; titrate output upward until electrical + mechanical capture confirmed",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm mechanical capture by palpating pulse with each pacer spike",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Pre-pacing sedation/analgesia (e.g., midazolam 1–2 mg IV titrated; or fentanyl) per pain mgmt",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If TCP fails: epi push-dose 10–20 mcg IV q2 min OR epi drip 2–10 mcg/min (titrate MAP > 65)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Rapid transport to cardiology / pacemaker-capable hospital; bedside handoff with strips",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm pulselessness; immediate high-quality CPR",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Epinephrine 1 mg IV per Cardiac Arrest protocol; resume CPR",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Treat underlying bradyarrhythmia; consider Hs and Ts; prep TCP if ROSC",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

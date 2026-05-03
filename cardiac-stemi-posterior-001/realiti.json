@@ -1,0 +1,333 @@
+{
+  "scenarioId": "cardiac-stemi-posterior-001",
+  "scenarioName": "Posterior STEMI — ST Depression V1–V3 with Tall R Waves; Posterior Leads Confirm",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "60-year-old male was finishing dinner with his wife when he developed a deep pressure-like discomfort in the mid-chest with radiation through to the back between his shoulder blades. He initially attributed this to indigestion from a heavy meal and took two doses of liquid antacid with no relief. Over 30 minutes the discomfort intensified, he became diaphoretic and nauseated, and he asked his wife to call 911. Patient describes the pain as 7/10, deep, pressure-like, with associated nausea and light-headedness. Denies vomiting, denies positional or pleuritic component, denies sharp tearing pain (no aortic dissection features). He has hypertension and hyperlipidemia and was a smoker until 5 years ago.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find a 60-year-old male seated at his dining table, pale, diaphoretic, and clutching his mid-chest. He insists 'this is just bad indigestion' but his appearance tells a different story. Pain has been present for ~50 minutes. The teaching point sets up here: this is going to look like an ACS evaluation, but the standard 12-lead is going to require careful interpretation because the infarct is on the posterior wall — ST depression V1–V3 with tall R waves, not the usual elevation pattern. → ST depression V1–V3 + tall R waves: Standard 12-lead shows ST depression of 2–3 mm in V1, V2, V3 with R waves > S waves in V1 and V2 and upright T waves in those leads. There is NO ST elevation on the standard 12-lead. The reciprocal pattern (anterior depression + tall R wave) IS the posterior STEMI footprint. The decision now is whether to acquire posterior leads (V7, V8, V9) — if any show ≥ 0.5 mm ST elevation, posterior STEMI is confirmed. Crew should also consider this could represent acute posterior MI from circumflex or RCA occlusion. → Posterior STEMI confirmed; alert called: Posterior leads V7, V8, V9 demonstrate ≥ 1 mm ST elevation, confirming acute posterior wall STEMI consistent with circumflex or RCA territory occlusion. Crew calls STEMI alert with the receiving PCI center, transmits both standard and posterior 12-leads, gives nitroglycerin after PDE5 screen and acceptable BP, and prepares rapid transport. → Transport to PCI center: Patient en route to PCI-capable receiving facility with STEMI alert active. Pain reduced after second NTG. Hemodynamically stable. Crew provides bedside handoff with full clinical picture: posterior STEMI on V7–V9, time of symptom onset, treatment timeline."
+  },
+  "patientInformation": {
+    "patientName": "Vincent Romano",
+    "patientCondition": "Substernal chest pressure with radiation to the back and a feeling of indigestion that started about 50 minutes ago after dinner; not relieved by antacids.",
+    "patientAge": 60,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 175,
+    "patientWeight": 90,
+    "patientPhotoId": 72,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 60-year-old male seated at his dining table, pale, diaphoretic, and clutching his mid-chest. He insists 'this is just bad indigestion' but his appearance tells a different story. Pain has been present for ~50 minutes. The teaching point sets up here: this is going to look like an ACS evaluation, but the standard 12-lead is going to require careful interpretation because the infarct is on the posterior wall — ST depression V1–V3 with tall R waves, not the usual elevation pattern.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 88,
+        "bpSys": 144,
+        "bpDia": 88,
+        "respRate": 20,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 122,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": false,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; do NOT accept 'just indigestion' framing — treat as possible ACS",
+        "OPQRST + SAMPLE; document onset, screen for PDE5 use",
+        "Cardiac monitor; SpO2; defib pads on (high-risk)",
+        "12-lead EKG within 10 minutes of contact",
+        "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+        "Establish IV access (18 ga AC preferred)"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "ST depression V1–V3 + tall R waves",
+      "description": "Standard 12-lead shows ST depression of 2–3 mm in V1, V2, V3 with R waves > S waves in V1 and V2 and upright T waves in those leads. There is NO ST elevation on the standard 12-lead. The reciprocal pattern (anterior depression + tall R wave) IS the posterior STEMI footprint. The decision now is whether to acquire posterior leads (V7, V8, V9) — if any show ≥ 0.5 mm ST elevation, posterior STEMI is confirmed. Crew should also consider this could represent acute posterior MI from circumflex or RCA occlusion.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 26,
+        "hr": 86,
+        "bpSys": 140,
+        "bpDia": 86,
+        "respRate": 20,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 122,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Recognize ST depression V1–V3 + tall R as possible posterior STEMI",
+        "Acquire posterior leads V7, V8, V9 — confirm with ≥ 0.5 mm ST elevation",
+        "Transmit 12-lead for remote physician interpretation if posterior pattern uncertain"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Posterior STEMI confirmed; alert called",
+      "description": "Posterior leads V7, V8, V9 demonstrate ≥ 1 mm ST elevation, confirming acute posterior wall STEMI consistent with circumflex or RCA territory occlusion. Crew calls STEMI alert with the receiving PCI center, transmits both standard and posterior 12-leads, gives nitroglycerin after PDE5 screen and acceptable BP, and prepares rapid transport.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 26,
+        "hr": 84,
+        "bpSys": 138,
+        "bpDia": 84,
+        "respRate": 20,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 122,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Activate STEMI alert; transmit/notify PCI center; flag 'posterior'",
+        "Nitroglycerin 0.4 mg SL (SBP 138, no PDE5 use); may repeat q3–5 min if SBP > 100",
+        "Minimize scene time; rapid transport to PCI center",
+        "Defib pads on; watch for VT/VF, AV blocks (RCA/Cx territory), serial 12-leads"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Transport to PCI center",
+      "description": "Patient en route to PCI-capable receiving facility with STEMI alert active. Pain reduced after second NTG. Hemodynamically stable. Crew provides bedside handoff with full clinical picture: posterior STEMI on V7–V9, time of symptom onset, treatment timeline.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 26,
+        "hr": 80,
+        "bpSys": 124,
+        "bpDia": 76,
+        "respRate": 18,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 122,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Nitroglycerin 0.4 mg SL q3–5 min while SBP > 100; reassess",
+        "Early notify hospital of any change; deliver standard + posterior EKGs",
+        "If pain unresponsive to NTG, opiate analgesic per Pain Management"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Posterior leads not done; STEMI missed",
+      "description": "Crew interprets the standard 12-lead as 'NSTEMI / ischemia / non-diagnostic' and does not acquire posterior leads. STEMI alert is not called. Patient is transported as a non-STEMI cardiac patient — possibly bypassing a closer PCI-capable center for the closest community ED. Door-to-balloon clock effectively does not start until the receiving ED ultimately recognizes the pattern themselves and rooms transfer the patient. This is the canonical missed posterior STEMI debrief.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 26,
+        "hr": 90,
+        "bpSys": 142,
+        "bpDia": 88,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 122,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Acquire posterior leads V7–V9 now; reroute to PCI; activate STEMI alert",
+        "Transmit standard + posterior 12-leads for remote interpretation",
+        "Document time pattern recognized; reason posterior leads delayed"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; do NOT accept 'just indigestion' framing — treat as possible ACS",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "OPQRST + SAMPLE; document onset, screen for PDE5 use",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cardiac monitor; SpO2; defib pads on (high-risk)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "12-lead EKG within 10 minutes of contact",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access (18 ga AC preferred)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize ST depression V1–V3 + tall R as possible posterior STEMI",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire posterior leads V7, V8, V9 — confirm with ≥ 0.5 mm ST elevation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transmit 12-lead for remote physician interpretation if posterior pattern uncertain",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Activate STEMI alert; transmit/notify PCI center; flag 'posterior'",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Nitroglycerin 0.4 mg SL (SBP 138, no PDE5 use); may repeat q3–5 min if SBP > 100",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Minimize scene time; rapid transport to PCI center",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Defib pads on; watch for VT/VF, AV blocks (RCA/Cx territory), serial 12-leads",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Nitroglycerin 0.4 mg SL q3–5 min while SBP > 100; reassess",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early notify hospital of any change; deliver standard + posterior EKGs",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If pain unresponsive to NTG, opiate analgesic per Pain Management",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire posterior leads V7–V9 now; reroute to PCI; activate STEMI alert",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transmit standard + posterior 12-leads for remote interpretation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document time pattern recognized; reason posterior leads delayed",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

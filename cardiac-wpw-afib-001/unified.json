@@ -1,0 +1,541 @@
+{
+  "meta": {
+    "id": "cardiac-wpw-afib-001",
+    "name": "WPW with Atrial Fibrillation — Irregularly Irregular Wide Complex Tachycardia",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Cardiac",
+    "protocols": [
+      "cv-tachycardia"
+    ],
+    "totalTimeSeconds": 1500,
+    "createdAt": "2026-05-03T00:00:00Z",
+    "tags": [
+      "WPW",
+      "Wolff-Parkinson-White",
+      "pre-excited atrial fibrillation",
+      "wide complex tachycardia",
+      "procainamide",
+      "synchronized cardioversion",
+      "avoid AV nodal blockers",
+      "advanced"
+    ]
+  },
+  "patient": {
+    "name": "Devon Marshall",
+    "age": 34,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 82,
+    "weightLbs": 181,
+    "height": 183,
+    "chiefComplaint": "Sudden onset of palpitations, lightheadedness, chest fluttering, and shortness of breath that began ~20 minutes ago at the gym. Patient describes 'my heart is beating so fast it feels like it's going to come out of my chest.'",
+    "history": {
+      "hpi": "34-year-old previously healthy male was on the treadmill at his gym when he developed sudden onset of palpitations, chest fluttering, and a sensation of impending doom. He stopped, sat down, and felt lightheaded but did not lose consciousness. A bystander called 911. Patient reports two prior 'episodes' over the past two years where his heart 'raced' for about 20 minutes and self-resolved; he never sought care because each one stopped on its own. He has been told once that he has 'a short PR or something' on a sports physical EKG but doesn't remember the details. Denies fever, recent illness, drug use, caffeine excess, weight loss, or hot/cold intolerance. Drinks alcohol socially. No prescription medications. He is now anxious, alert, mildly dyspneic, with a borderline blood pressure.",
+      "pastMedical": [
+        "Possible Wolff-Parkinson-White noted on a sports physical EKG approximately 5 years ago — never followed up",
+        "Two prior self-resolving episodes of 'racing heart' lasting ~20 min each, no syncope",
+        "Otherwise healthy, no chronic disease"
+      ],
+      "medications": [
+        "None"
+      ],
+      "allergies": [
+        "NKDA"
+      ],
+      "lastOralIntake": "Pre-workout drink (caffeine and beta-alanine) about 90 minutes ago; protein bar 2 hours ago",
+      "events": "Sudden onset of palpitations and chest fluttering during treadmill exercise ~20 minutes prior to EMS arrival. Stopped exercising, sat down, became lightheaded. Bystander called 911."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 34-year-old male, complaint of rapid heart rate and lightheadedness at the gym. Conscious and breathing. Stage 1 response.",
+    "location": "Commercial gym, main cardio floor. Patient seated on a bench beside the treadmill he was using. Other gym members keeping a respectful distance. Adequate lighting. Front desk staff has cleared a path.",
+    "time": "Friday, 17:30, after-work peak gym hours",
+    "safety": "Scene safe. Gym staff cooperative. Adequate room to work and to bring in cot.",
+    "bystanders": "Gym manager and two members. Bystander who called 911 reports patient was on treadmill, suddenly stopped, sat down, and looked pale. No witnessed loss of consciousness. No fall.",
+    "visualCues": [
+      "Athletic male in workout clothes seated on bench, leaning forward with hands on knees",
+      "Pale and slightly diaphoretic; chest visibly rising and falling rapidly",
+      "Water bottle on the floor beside him",
+      "Smartwatch on wrist showing a heart-rate alert at 220+ bpm",
+      "Apparently fit, no obvious chronic illness signs"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a young, athletic, but visibly distressed male seated on a gym bench. He is alert, pale, mildly diaphoretic, and tachypneic. Radial pulse is rapid and irregular and difficult to count manually. The teaching point begins now: a previously healthy young patient with an irregularly irregular wide complex tachycardia must trigger immediate consideration of pre-excited atrial fibrillation (WPW with AFib) and the rule against AV nodal blockers.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent, self-maintained",
+        "breathing": "RR 24, mildly labored, lungs clear",
+        "circulation": "Rapid, irregular, weak radial pulse difficult to count manually; cool/clammy skin; cap refill 2–3 sec",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 4 mm, briskly reactive",
+        "motorFunction": "Intact and symmetric",
+        "otherFindings": [
+          "Radial pulse rapid and irregularly irregular — cannot count by palpation",
+          "Patient anxious, oriented, in obvious distress",
+          "No chest pain at this point but reports 'a fluttering' in the chest",
+          "Smartwatch shows HR alert >220 bpm"
+        ],
+        "patientSpeech": "My heart is going crazy. I feel like I'm going to pass out. Please help me."
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 220,
+        "bpSys": 92,
+        "bpDia": 58,
+        "respRate": 24,
+        "spo2": 96,
+        "etco2": 34,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 104,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "primary-survey-airway-o2",
+          "shortAction": "Primary survey; manage airway; titrate O2 to 94–98% saturation",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Adult Management steps 1–2 — manage airway, oxygen targeted to 94–98%.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Adult Management: Manage airway as necessary. Administer oxygen as appropriate with a target of achieving 94–98% saturation."
+        },
+        {
+          "id": "monitor-twelve-lead",
+          "shortAction": "Cardiac monitor; defib pads on; 12-lead EKG immediately",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia step 3 — monitor and 12-lead are mandatory; this patient needs morphology assessment.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Initiate monitoring and perform 12-lead EKG."
+        },
+        {
+          "id": "iv-access",
+          "shortAction": "Establish IV access (large-bore proximal site)",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia step 4 — IV access required for medication administration.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Establish IV access."
+        },
+        {
+          "id": "blood-glucose",
+          "shortAction": "Check blood glucose — rule out hypoglycemia as a tachycardia driver",
+          "priority": "important",
+          "rationale": "MATC Tachycardia step 5 — check glucose and treat hypoglycemia per the Hypoglycemia Guideline.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Check blood glucose and treat hypoglycemia per the Hypoglycemia Guideline."
+        },
+        {
+          "id": "rhythm-classification",
+          "shortAction": "Classify rhythm: irregularly irregular + wide QRS = pre-excited AFib (WPW) until proven otherwise",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Notes #3 + Patient Safety #4 — irregular wide complex must be considered pre-excited AFib; AV nodal blockers contraindicated.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "A wide-complex irregular rhythm should be considered pre-excited A-FIB; extreme care must be taken in these patients. Characteristic EKG findings include a short PR interval and, in some cases, a delta wave. Avoid AV nodal blocking agents such as adenosine, calcium channel blockers, digoxin, and possibly beta-blockers in patients with pre-excitation A-FIB (e.g., Wolff-Parkinson-White Syndrome, Lown-Ganong-Levine Syndrome) because these drugs may cause a paradoxical increase in the ventricular response."
+        },
+        {
+          "id": "stability-assessment",
+          "shortAction": "Determine stability: AMS / chest pain / SOB / hypotension / shock?",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Patient Presentation — stability determines pharmacology vs. cardioversion.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Patients will manifest elevated heart rate for age and may or may not also present with associated signs or symptoms such as palpitations, dyspnea, chest pain, syncope/near-syncope, hemodynamic compromise, altered mental status, or other signs of end organ malperfusion."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "stable-procainamide",
+          "if": "Pre-excited AFib recognized; patient stable",
+          "condition": "Crew identifies irregularly irregular wide complex tachycardia as pre-excited AFib (WPW); patient is symptomatic but mentation intact, SBP > 90; correctly avoids AV nodal blockers and selects procainamide.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["rhythm-classification", "stability-assessment"]
+        },
+        {
+          "targetPhaseId": "branch-adenosine-vfib",
+          "if": "Adenosine or diltiazem given (AV nodal blocker)",
+          "condition": "Crew misidentifies the rhythm as SVT or AFib with aberrancy and gives an AV nodal blocker (adenosine or diltiazem). Block of the AV node forces conduction down the accessory pathway, ventricular response accelerates, and rhythm degenerates into ventricular fibrillation.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["rhythm-classification"]
+        },
+        {
+          "targetPhaseId": "branch-unstable-cardiovert",
+          "if": "Patient becomes unstable",
+          "condition": "Patient deteriorates with progressive hypotension, altered mental status, or chest pain before pharmacology can take effect; synchronized cardioversion indicated.",
+          "conditionType": "vital_threshold",
+          "triggerActionIds": ["stability-assessment"]
+        }
+      ]
+    },
+    {
+      "id": "stable-procainamide",
+      "name": "Procainamide for stable pre-excited AFib",
+      "description": "Crew correctly identifies pre-excited AFib (WPW with AFib) and avoids AV nodal blockers. Patient is hemodynamically borderline-stable (SBP 92, mentation intact, no ischemic chest pain) — pharmacologic conversion with procainamide is the protocol-preferred approach. Procainamide infusion at 20–50 mg/min is initiated with continuous monitoring of QRS width, BP, and rhythm. Endpoints are: arrhythmia suppression, hypotension, QRS widening > 50%, or max dose 17 mg/kg.",
+      "triggerCondition": "Pre-excited AFib recognized on monitor; patient borderline-stable (SBP > 90, mentation intact); procainamide selected per protocol over AV nodal blockers.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 22, less labored with O2",
+        "circulation": "Rapid, irregular pulse; pale, cool, less diaphoretic",
+        "skin": {
+          "color": "pale-pink",
+          "temperature": "cool",
+          "moisture": "moist"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "12-lead: irregularly irregular, wide QRS (>120 ms) with varying morphology and visible delta-wave hint",
+          "No chest pain, mentation intact, SBP marginal at 92",
+          "Defib pads on, sync mode pre-armed in case of deterioration"
+        ],
+        "patientSpeech": "It still feels really fast. Is that medicine going to slow it down?"
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 210,
+        "bpSys": 96,
+        "bpDia": 62,
+        "respRate": 22,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 104,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "avoid-av-nodal-blockers",
+          "shortAction": "Withhold adenosine, diltiazem, metoprolol, digoxin (pre-excited AFib)",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Patient Safety #4 + Notes #3 — avoid AV nodal blocking agents in pre-excited AFib (WPW).",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Patient Safety Considerations: With irregular wide complex tachycardia (A-FIB with aberrancy such as Wolff-Parkinson-White and Lown-Ganong Levine), avoid use of AV nodal blocking agents (e.g., adenosine, calcium channel blockers, beta-blockers). Notes/Educational Pearls: Blocking the AV node in some of these patients may lead to impulses that are transmitted exclusively down the accessory pathway, which can result in ventricular fibrillation."
+        },
+        {
+          "id": "procainamide-infusion",
+          "shortAction": "Procainamide IV at 20–50 mg/min (max 17 mg/kg = ~1394 mg for 82 kg); stop at suppression / hypotension / QRS widens > 50%",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Irregular Wide Complex Stable step 1 — procainamide is the first-line pharmacologic agent for pre-excited AFib; explicit endpoints required.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Irregular Wide Complex Tachycardia – Stable (A-FIB with aberrancy, pre-excited A-FIB, multifocal atrial tachycardia (MAT) or polymorphic VT/torsades de pointes): Procainamide 20–50 mg/min until arrhythmia suppressed, hypotension ensues, QRS duration increases greater than 50%, or maximum dose 17 mg/kg given. Maintenance infusion: 1–4 mg/min. Avoid if prolonged QT or CHF."
+        },
+        {
+          "id": "amiodarone-after-procainamide",
+          "shortAction": "If procainamide unsuccessful, amiodarone 150 mg IV over 10 min (NOT before procainamide in WPW)",
+          "priority": "supplemental",
+          "rationale": "MATC Tachycardia Notes #3 + Patient Safety #5 — amiodarone is acceptable but must follow procainamide in WPW patients.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Amiodarone 150 mg IV over 10 minutes. May repeat once as needed. Administration of amiodarone, if needed, should follow procainamide in patients with Wolff–Parkinson–White syndrome. Patient Safety Considerations: Patients with Wolff–Parkinson–White should be given procainamide prior to amiodarone."
+        },
+        {
+          "id": "sync-cardioversion-ready",
+          "shortAction": "Sync mode pre-armed; energy 120–150 J biphasic ready if patient deteriorates",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Irregular Wide Unstable + Notes #6 — synchronized cardioversion at biphasic energies if patient becomes unstable.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Irregular Wide Complex Tachycardia – Unstable: Deliver a synchronized shock based on manufacturer's recommendation. For responsive patients, consider sedation. Biphasic waveforms have been proven to convert A-FIB at lower energies and higher rates of success than monophasic waveforms. Strategies include dose escalation (70, 120, 150, 170 joules (J) for biphasic or 100, 200, 300, 360 J for monophasic) versus beginning with single high energy/highest success rate for single shock delivered."
+        },
+        {
+          "id": "single-antidysrhythmic",
+          "shortAction": "Use only one antidysrhythmic at a time; document each push",
+          "priority": "important",
+          "rationale": "MATC Tachycardia Patient Safety #1 — only one antidysrhythmic at a time.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Patient Safety Considerations: Only use one antidysrhythmic at a time."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "post-conversion-transport",
+          "if": "Rhythm converts; transport",
+          "condition": "Procainamide infusion successfully suppresses pre-excited AFib; rhythm converts to sinus with WPW pattern visible at baseline; transport with continuous monitoring.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["procainamide-infusion"]
+        }
+      ]
+    },
+    {
+      "id": "post-conversion-transport",
+      "name": "Converted to sinus; WPW visible at baseline",
+      "description": "After approximately 600–800 mg of procainamide infused at 30 mg/min, the rhythm converts to sinus with a short PR interval and a small but unmistakable delta wave — the classic WPW baseline. HR settles in the 80s with normal blood pressure. Crew transitions to maintenance infusion 1–4 mg/min, transports for cardiology evaluation and likely electrophysiology referral, and provides bedside handoff with the conversion strip.",
+      "triggerCondition": "Procainamide infusion successfully suppressed the pre-excited AFib; baseline WPW conduction now visible; transport for definitive electrophysiology evaluation.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 16, comfortable",
+        "circulation": "Strong, regular radial pulse; warm skin; cap refill < 2 sec",
+        "skin": {
+          "color": "pink",
+          "temperature": "warm",
+          "moisture": "dry"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "Rhythm converted to sinus with short PR and delta wave",
+          "Patient describes 'I can feel it slowed down — that was wild'",
+          "Repeat 12-lead documents WPW pattern at baseline",
+          "BP normalized"
+        ],
+        "patientSpeech": "Wow, I can feel it slowed down. I really thought I was going to die."
+      },
+      "monitorState": {
+        "ecgRhythm": "Wolff-Parkinson-White",
+        "ecgWaveform": 84,
+        "hr": 84,
+        "bpSys": 124,
+        "bpDia": 76,
+        "respRate": 16,
+        "spo2": 98,
+        "etco2": 38,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 104,
+        "trendTimeSeconds": 50,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "maintenance-infusion",
+          "shortAction": "Procainamide maintenance 1–4 mg/min IV; reassess BP and QRS each interval",
+          "priority": "important",
+          "rationale": "MATC Tachycardia Irregular Wide Stable — maintenance infusion 1–4 mg/min.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Procainamide 20–50 mg/min until arrhythmia suppressed, hypotension ensues, QRS duration increases greater than 50%, or maximum dose 17 mg/kg given. Maintenance infusion: 1–4 mg/min. Avoid if prolonged QT or CHF."
+        },
+        {
+          "id": "documentation",
+          "shortAction": "Save initial, mid-treatment, and post-conversion strips; document times and totals",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Documentation — initial rhythm, all changes, time/dose/response of meds, monitor strips after each intervention.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Key Documentation Elements: Initial rhythm and all rhythm changes; Time, dose, and response to medications given; Cardioversion times, synchronization, attempts, joules, and response; Obtain monitor strips after each intervention; Patient weight."
+        },
+        {
+          "id": "transport-cardiology",
+          "shortAction": "Transport to ED with cardiology / EP capability; bedside handoff with strips",
+          "priority": "critical",
+          "rationale": "Transport and destination decisions are part of the broader care plan; WPW patient with documented pre-excited AFib needs definitive electrophysiology evaluation.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Patient Care Goals: Maintain adequate oxygenation, ventilation, and perfusion. Control ventricular rate. Restore regular sinus rhythm in unstable patient. Search for underlying cause."
+        }
+      ]
+    },
+    {
+      "id": "branch-adenosine-vfib",
+      "name": "Adenosine given → VFib arrest",
+      "description": "Crew misread the irregular wide complex tachycardia as a regular SVT and gave adenosine 6 mg IV. Within seconds the AV node was blocked and conduction was forced exclusively down the accessory pathway, the ventricular rate accelerated to >300, and the rhythm degenerated into ventricular fibrillation. Patient is now pulseless. Immediate high-quality CPR and defibrillation are required.",
+      "triggerCondition": "AV nodal blocker (adenosine, diltiazem, metoprolol, digoxin) administered to a patient with pre-excited AFib; rhythm degenerated to ventricular fibrillation.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {
+          "eye": 1,
+          "verbal": 1,
+          "motor": 1
+        },
+        "airway": "Requires assistance — head positioning and BVM",
+        "breathing": "Agonal then apneic within 30 seconds of arrest",
+        "circulation": "Pulseless",
+        "skin": {
+          "color": "ashen-cyanotic",
+          "temperature": "cool",
+          "moisture": "diaphoretic then drying"
+        },
+        "pupils": "Dilated, sluggishly reactive",
+        "motorFunction": "Flaccid",
+        "otherFindings": [
+          "VFib on monitor within 15-30 seconds of adenosine push",
+          "Pulseless",
+          "Defib pads now used for therapy, not just monitoring",
+          "This is the classic teaching — AV nodal blockade in pre-excited AFib"
+        ],
+        "patientSpeech": "None — pulseless"
+      },
+      "monitorState": {
+        "ecgRhythm": "Ventricular Fibrillation (Coarse)",
+        "ecgWaveform": 18,
+        "hr": 0,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 18,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 104,
+        "trendTimeSeconds": 15,
+        "visibility": {
+          "spo2Visible": false,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "begin-cpr",
+          "shortAction": "Confirm pulselessness; immediate high-quality CPR",
+          "priority": "critical",
+          "rationale": "Cardiac arrest from VFib — immediate CPR is foundational; this is now a Cardiac Arrest call, transitioning out of Tachycardia management.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Patient Care Goals: Maintain adequate oxygenation, ventilation, and perfusion. Patient Safety Considerations: With irregular wide complex tachycardia (A-FIB with aberrancy such as Wolff-Parkinson-White and Lown-Ganong Levine), avoid use of AV nodal blocking agents (e.g., adenosine, calcium channel blockers, beta-blockers). Notes: Blocking the AV node in some of these patients may lead to impulses that are transmitted exclusively down the accessory pathway, which can result in ventricular fibrillation."
+        },
+        {
+          "id": "defibrillate",
+          "shortAction": "Defibrillate 200 J biphasic (manufacturer recommendation); resume CPR immediately",
+          "priority": "critical",
+          "rationale": "VFib — defibrillation is the only rhythm-converting intervention; per local protocols, follow Cardiac Arrest guideline.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Irregular Wide Complex Tachycardia – Unstable: Deliver a synchronized shock based on manufacturer's recommendation."
+        },
+        {
+          "id": "recognize-iatrogenic",
+          "shortAction": "Recognize iatrogenic VFib; document AV nodal blocker as cause",
+          "priority": "important",
+          "rationale": "MATC Tachycardia Notes #3 — AV nodal blockade in pre-excited AFib can cause VFib; documentation important for QI and handoff.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Avoid AV nodal blocking agents such as adenosine, calcium channel blockers, digoxin, and possibly beta-blockers in patients with pre-excitation A-FIB (e.g., Wolff-Parkinson-White Syndrome, Lown-Ganong-Levine Syndrome) because these drugs may cause a paradoxical increase in the ventricular response. Blocking the AV node in some of these patients may lead to impulses that are transmitted exclusively down the accessory pathway, which can result in ventricular fibrillation."
+        }
+      ]
+    },
+    {
+      "id": "branch-unstable-cardiovert",
+      "name": "Unstable → synchronized cardioversion",
+      "description": "Patient deteriorates with worsening hypotension (SBP < 80), AMS, and chest pain before pharmacology can take effect. The pre-excited AFib is now an unstable irregular wide complex tachycardia. Crew correctly transitions to synchronized cardioversion at biphasic 120–150 J with sedation as feasible. This is a valid alternative path that does not punish the crew for selecting cardioversion when the clinical condition warrants it.",
+      "triggerCondition": "Patient becomes unstable (hypotension, AMS, ischemic chest pain) with the pre-excited AFib still present; synchronized cardioversion indicated per Irregular Wide Complex Unstable algorithm.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 3,
+          "verbal": 4,
+          "motor": 5
+        },
+        "airway": "Patent",
+        "breathing": "RR 28, more labored, lungs clear",
+        "circulation": "Rapid irregular weak central pulse; cool/clammy; cap refill 4 sec",
+        "skin": {
+          "color": "ashen",
+          "temperature": "cold",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 4 mm, reactive",
+        "motorFunction": "Sluggish; symmetric",
+        "otherFindings": [
+          "Patient now confused and dizzy",
+          "Reports new substernal chest pain 7/10",
+          "Marginal mentation and BP — unstable",
+          "Defib in sync mode at biphasic energy"
+        ],
+        "patientSpeech": "I'm so dizzy. My chest hurts now too. I think I'm going out."
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 230,
+        "bpSys": 76,
+        "bpDia": 48,
+        "respRate": 28,
+        "spo2": 92,
+        "etco2": 30,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 104,
+        "trendTimeSeconds": 20,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "sync-cardiovert",
+          "shortAction": "Synchronized cardioversion 120–150 J biphasic (manufacturer recommendation)",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Irregular Wide Complex Unstable step 1 — synchronized shock per manufacturer.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Irregular Wide Complex Tachycardia – Unstable: Deliver a synchronized shock based on manufacturer's recommendation. For responsive patients, consider sedation. Biphasic waveforms have been proven to convert A-FIB at lower energies and higher rates of success than monophasic waveforms."
+        },
+        {
+          "id": "sedation-pre-shock",
+          "shortAction": "If responsive: pre-shock sedation/analgesia (e.g., midazolam, fentanyl) per pain mgmt",
+          "priority": "important",
+          "rationale": "MATC Tachycardia Patient Safety #3 + Irregular Wide Unstable step 2 — sedation/pain control if patient responsive prior to cardioversion.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "For responsive patients, consider sedation. Patient Safety Considerations: If using cardioversion, consider sedation and pain control."
+        },
+        {
+          "id": "post-shock-reassess",
+          "shortAction": "Reassess rhythm and pulse after each shock; escalate energy if not converted",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Notes #6 — energy escalation strategy for biphasic AFib cardioversion.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Biphasic waveforms have been proven to convert A-FIB at lower energies and higher rates of success than monophasic waveforms. Strategies include dose escalation (70, 120, 150, 170 joules (J) for biphasic or 100, 200, 300, 360 J for monophasic) versus beginning with single high energy/highest success rate for single shock delivered."
+        }
+      ]
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 150,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

@@ -1,0 +1,550 @@
+{
+  "meta": {
+    "id": "cardiac-stemi-anterior-001",
+    "name": "Anterior STEMI — Crushing Substernal Chest Pain with V1–V4 ST Elevation",
+    "version": 1,
+    "difficulty": "intermediate",
+    "category": "Cardiac",
+    "protocols": [
+      "cv-chest-pain-acs-stemi"
+    ],
+    "totalTimeSeconds": 1200,
+    "createdAt": "2026-05-03T00:00:00Z",
+    "tags": [
+      "STEMI",
+      "anterior MI",
+      "ACS",
+      "chest pain",
+      "12-lead",
+      "STEMI activation",
+      "intermediate"
+    ]
+  },
+  "patient": {
+    "name": "Daniel Hoffman",
+    "age": 58,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 92,
+    "weightLbs": 203,
+    "height": 180,
+    "chiefComplaint": "Crushing substernal chest pressure with radiation to the left arm and jaw, diaphoresis, and nausea, onset approximately 35 minutes ago while shoveling mulch in the front yard.",
+    "history": {
+      "hpi": "58-year-old male was working in the front yard moving mulch when he developed sudden onset of substernal 'crushing' pressure described as 9/10, radiating to the left arm and jaw. Associated with profuse diaphoresis, nausea without vomiting, and a sense of doom. Patient sat down on the porch step and asked his wife to call 911. Pain has been continuous for approximately 35 minutes by the time of EMS arrival. He has not taken anything for the pain. Denies prior episodes of similar pain, recent illness, fever, cough, leg pain, or trauma. He has a history of hypertension and hyperlipidemia, smokes a half-pack per day, and his father died of a heart attack at age 61.",
+      "pastMedical": [
+        "Hypertension (10 years)",
+        "Hyperlipidemia",
+        "Former 1-pack-per-day smoker, now 1/2 pack-per-day for 30+ years",
+        "Family history: father MI age 61, brother CABG age 55"
+      ],
+      "medications": [
+        "Lisinopril 20 mg PO daily",
+        "Atorvastatin 40 mg PO at bedtime",
+        "Aspirin 81 mg PO daily (took today's dose this morning)"
+      ],
+      "allergies": [
+        "NKDA"
+      ],
+      "lastOralIntake": "Coffee and a piece of toast about 2 hours ago",
+      "events": "Onset of crushing substernal chest pressure with diaphoresis and nausea while doing yard work approximately 35 minutes ago; pain has been continuous and unrelieved with rest. Wife called 911."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 58-year-old male, chest pain, conscious and breathing, on the front porch of a single-family home. Wife on scene.",
+    "location": "Front porch of a single-family home in a residential neighborhood. Patient seated on the top step, leaning forward with elbows on knees. Wheelbarrow with mulch in driveway. Daylight, dry pavement.",
+    "time": "Sunday, 11:40, warm late-spring morning",
+    "safety": "Scene safe. No traffic hazards in driveway. Pets contained. Wife is anxious but cooperative.",
+    "bystanders": "Wife present, reports onset, denies any prior cardiac history beyond elevated cholesterol and high blood pressure. Confirms no recent erectile dysfunction medication use. No PDE5 inhibitors in the household.",
+    "visualCues": [
+      "Patient seated on porch step, leaning forward with hand pressed over mid-sternum",
+      "Pale, profusely diaphoretic with shirt visibly damp at the chest and back",
+      "Wheelbarrow with mulch and a shovel in the driveway",
+      "Patient grimacing, talking in short sentences",
+      "Empty coffee cup on porch railing"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 58-year-old male seated on his front porch step, pale, diaphoretic, and clutching his chest. He is alert and oriented but appears in significant distress. Pain has been ongoing for approximately 35 minutes since onset during yard work.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent, self-maintained",
+        "breathing": "Mildly tachypneic, no accessory muscle use, lung sounds clear bilaterally",
+        "circulation": "Strong, regular radial pulse; cool, pale, diaphoretic skin; cap refill 2 seconds",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 3 mm, briskly reactive",
+        "motorFunction": "Moves all extremities equally; no focal weakness",
+        "otherFindings": [
+          "Patient leaning forward, splinting chest with hand",
+          "Levine's sign — clenched fist over sternum",
+          "No peripheral edema",
+          "No JVD",
+          "Speaks in short sentences due to discomfort"
+        ],
+        "patientSpeech": "It feels like someone is sitting on my chest. It hurts down my left arm. I've never felt anything like this."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 94,
+        "bpSys": 152,
+        "bpDia": 96,
+        "respRate": 20,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.9,
+        "tempF": 98.4,
+        "obstruction": 0,
+        "glucose": 118,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": false,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "primary-survey",
+          "shortAction": "Scene safety; primary survey; recognize possible ACS",
+          "priority": "critical",
+          "rationale": "MATC ACS step 1 — identify STEMI quickly and assess for symptoms of suspected cardiac origin.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Patient Care Goals: Identify ST-elevation myocardial infarction (STEMI) quickly. Determine the time of symptom onset. Activate hospital-based STEMI system of care."
+        },
+        {
+          "id": "focused-history",
+          "shortAction": "Determine onset time; OPQRST + SAMPLE; ask about PDE5 inhibitor use",
+          "priority": "critical",
+          "rationale": "MATC ACS Goal #2 requires determining symptom onset; assessment requires medication history including PDE5 inhibitors before any nitrate.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Pertinent Assessment Findings: A complete medication list should be obtained from each patient. It is especially important for the treating physician and healthcare providers to be informed if the patient is taking beta-blockers, calcium channel blockers, clonidine, digoxin, blood thinners (anticoagulants), and medications for the treatment of erectile dysfunction or pulmonary hypertension."
+        },
+        {
+          "id": "cardiac-monitor",
+          "shortAction": "Place on cardiac monitor; SpO2; consider defibrillator pads",
+          "priority": "critical",
+          "rationale": "MATC ACS step 2 requires immediate rhythm assessment; Patient Safety #3 recommends defib pads on high-risk patients.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Assess the patient's cardiac rhythm and immediately address pulseless rhythms, symptomatic tachycardia, or symptomatic bradycardia. Patient Safety Considerations: Consider placing defibrillator pads on high-risk patients."
+        },
+        {
+          "id": "twelve-lead",
+          "shortAction": "Acquire 12-lead EKG within 10 minutes of patient contact",
+          "priority": "critical",
+          "rationale": "MATC ACS step 4 — 12-lead within 10 minutes is the primary diagnostic tool and a performance measure.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "The 12-lead EKG is the primary diagnostic tool that identifies a STEMI; it is imperative that EMS clinicians routinely acquire a 12-lead EKG within 10 minutes for all patients exhibiting signs and symptoms of ACS."
+        },
+        {
+          "id": "aspirin",
+          "shortAction": "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+          "priority": "critical",
+          "rationale": "MATC ACS step 5 — chewable, non-enteric aspirin 162–325 mg. Patient took 81 mg this morning; additional dose is appropriate per protocol.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Administer aspirin; chewable, non-enteric-coated aspirin preferred (162–325 mg)."
+        },
+        {
+          "id": "iv-access",
+          "shortAction": "Establish IV access (18 ga AC preferred)",
+          "priority": "critical",
+          "rationale": "MATC ACS step 6 — IV access required prior to nitrate or analgesic administration.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Establish IV access."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "stemi-recognized",
+          "if": "12-lead obtained, STEMI recognized",
+          "condition": "12-lead acquired within 10 minutes; ST elevation in V1-V4 identified; ASA, IV access in place; ready for STEMI activation and nitrate consideration with PDE5 screen completed.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["twelve-lead", "aspirin", "iv-access"]
+        },
+        {
+          "targetPhaseId": "branch-ntg-no-pde5",
+          "if": "NTG given without PDE5 screen",
+          "condition": "Crew administers nitroglycerin without first asking about phosphodiesterase-inhibitor use; patient took tadalafil 24 hours ago for ED — not volunteered. Severe hypotension follows.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": ["focused-history"]
+        },
+        {
+          "targetPhaseId": "branch-delayed-twelve-lead",
+          "if": "12-lead delayed > 10 min",
+          "condition": "12-lead EKG not acquired within 10 minutes of patient contact; STEMI activation delayed and door-to-balloon clock starts late.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": ["twelve-lead"]
+        }
+      ]
+    },
+    {
+      "id": "stemi-recognized",
+      "name": "STEMI recognized",
+      "description": "12-lead shows ST elevation of 3–5 mm in V1–V4 with reciprocal depression in II, III, aVF — classic anterior STEMI consistent with proximal LAD occlusion. Patient remains in pain, hemodynamically stable but high-risk for VT/VF. Crew activates STEMI alert with the receiving PCI center, gives nitroglycerin after confirming no PDE5 use, and prepares rapid transport.",
+      "triggerCondition": "12-lead acquired showing ST elevation V1–V4 consistent with anterior STEMI; ASA given; IV access established; PDE5 use ruled out by history.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent, self-maintained",
+        "breathing": "RR 20, lungs clear, no rales",
+        "circulation": "Regular pulse; pale, diaphoretic; cap refill 2 sec",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact and symmetric",
+        "otherFindings": [
+          "Pain now 7/10 after positioning and oxygen",
+          "12-lead: ST elevation 3–5 mm V1–V4 with reciprocal depression inferior leads",
+          "No JVD, no peripheral edema, no rales"
+        ],
+        "patientSpeech": "It's still bad. It feels a little better sitting up. Am I having a heart attack?"
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Anterior",
+        "ecgWaveform": 23,
+        "hr": 92,
+        "bpSys": 146,
+        "bpDia": 90,
+        "respRate": 20,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.9,
+        "tempF": 98.4,
+        "obstruction": 0,
+        "glucose": 118,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "stemi-alert",
+          "shortAction": "Activate STEMI alert; transmit/notify receiving PCI center early",
+          "priority": "critical",
+          "rationale": "MATC ACS Goal #3 and step 4 — STEMI activation drives door-to-balloon time; advance notification is a performance measure.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Activate hospital-based STEMI system of care. Advance notification should be provided to the receiving hospital for patients identified as having a STEMI. All EKGs should be made available to treating personnel at the receiving hospital, whether hand delivered as hard copy or transmitted from the field."
+        },
+        {
+          "id": "ntg-with-pde5-screen",
+          "shortAction": "Nitroglycerin 0.4 mg SL (SBP 146 — safe; no PDE5 use); may repeat q3–5 min if SBP > 100",
+          "priority": "important",
+          "rationale": "MATC ACS step 7 — NTG only after PDE5 screen and SBP > 100; appropriate here.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Nitroglycerin 0.4 mg sublingual (SL), can repeat q (quaque, every) 3–5 minutes if SBP greater than 100 mmHg. The use of nitrates should be avoided in any patient who has used a phosphodiesterase inhibitor within the past 48 hours. Examples include sildenafil (Viagra®, Revatio®), vardenafil (Levitra®, Staxyn®), tadalafil (Cialis®, Adcirca®)."
+        },
+        {
+          "id": "oxygen-targeted",
+          "shortAction": "Titrate O2 only if SpO2 < 94% (currently 96–97%, no supplemental O2)",
+          "priority": "important",
+          "rationale": "MATC ACS step 3 — O2 only if dyspneic, hypoxemic, or signs of CHF; targeted SpO2 94–98%.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "If the patient is dyspneic, hypoxemic, or has obvious signs of heart failure, EMS clinicians should administer oxygen as appropriate with a target of achieving 94–98% saturation."
+        },
+        {
+          "id": "rapid-transport",
+          "shortAction": "Minimize scene time; rapid transport to PCI center",
+          "priority": "critical",
+          "rationale": "MATC ACS Educational Pearl — ischemic burden time drives morbidity/mortality; minimize scene time.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Key Considerations: Acute coronary syndrome may present with atypical pain, vague or only generalized complaints. Ischemic burden time is a risk for morbidity and mortality, EMS can help decrease first medical contact to intervention time/reflow by efficient scripting/training of safely minimizing scene time."
+        },
+        {
+          "id": "serial-twelve-lead",
+          "shortAction": "Repeat 12-lead en route or with any clinical change",
+          "priority": "important",
+          "rationale": "MATC ACS step 4 — serial 12-leads encouraged; Patient Safety #2 — perform serial 12-leads if clinical changes are noted.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Performance of serial EKGs is encouraged for symptomatic patients with EKGs initially non-diagnostic for STEMI. Patient Safety Considerations: Perform serial 12-lead EKGs (especially if clinical changes are noted)."
+        },
+        {
+          "id": "monitor-deterioration",
+          "shortAction": "Watch for VT/VF; defib pads on; rescue meds for pain unresponsive to NTG",
+          "priority": "important",
+          "rationale": "MATC ACS Patient Safety #1, #3, #4 — observe for dysrhythmia/decompensation, defib pads on high-risk patients, configure VT/VF auto-alert.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Patient Safety Considerations: Observe for signs of clinical deterioration: dysrhythmias, chest pain, shortness of breath, decreased level of consciousness/syncope, or other signs of shock/hypotension. Consider placing defibrillator pads on high-risk patients. Consider configuring monitor/defibrillator to allow automatic VT/VF alert."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "transport-pci",
+          "if": "STEMI alerted, en route to PCI",
+          "condition": "STEMI activation called, transport initiated to PCI center, NTG given with appropriate hemodynamic monitoring.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["stemi-alert", "rapid-transport"]
+        }
+      ]
+    },
+    {
+      "id": "transport-pci",
+      "name": "Transport to PCI center",
+      "description": "Patient en route to PCI-capable receiving facility with STEMI alert active. Pain reduced to 5/10 after second NTG dose. Hemodynamically stable. Crew gives second-look 12-lead and provides bedside handoff with onset time, EKG copy, and treatment given.",
+      "triggerCondition": "STEMI alert called and transport to PCI-capable hospital initiated; patient continues with ongoing ACS treatment en route.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 18, comfortable, lungs clear",
+        "circulation": "Regular pulse; less diaphoretic, color improving slightly",
+        "skin": {
+          "color": "pale-pink",
+          "temperature": "cool",
+          "moisture": "moist"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "Pain 5/10 after 2nd NTG; states 'a little better'",
+          "Anxious but cooperative",
+          "Repeat 12-lead unchanged — persistent anterior STEMI"
+        ],
+        "patientSpeech": "It's a little better. Still feels heavy."
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Anterior",
+        "ecgWaveform": 23,
+        "hr": 88,
+        "bpSys": 132,
+        "bpDia": 80,
+        "respRate": 18,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 36.9,
+        "tempF": 98.4,
+        "obstruction": 0,
+        "glucose": 118,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "second-ntg",
+          "shortAction": "Nitroglycerin 0.4 mg SL ×2 q3–5 min while SBP > 100; reassess",
+          "priority": "important",
+          "rationale": "MATC ACS step 7 — NTG may be repeated q3–5 min while SBP > 100.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Nitroglycerin 0.4 mg sublingual (SL), can repeat q (quaque, every) 3–5 minutes if SBP greater than 100 mmHg."
+        },
+        {
+          "id": "early-notification",
+          "shortAction": "Early notification of any change; deliver EKG copy at bedside",
+          "priority": "critical",
+          "rationale": "MATC ACS step 11 — early notification of changes; documentation must include onset time, contact-to-EKG, ASA, STEMI notification.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Early notification to receiving facility of any changes in patient condition or serial EKGs. Key Documentation Elements: The time of symptom onset; The time of patient contact by EMS to the time of 12-lead EKG acquisition; The time aspirin (ASA) administered, or reason why not given; The time of STEMI notification."
+        },
+        {
+          "id": "opiate-if-refractory",
+          "shortAction": "If pain unresponsive to NTG, opiate analgesic per Pain Management",
+          "priority": "supplemental",
+          "rationale": "MATC ACS step 9 — opiates acceptable if pain unresponsive to nitrates; caution with morphine in UA/NSTEMI.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "If the pain is unresponsive to nitrates, opiates are an acceptable alternative. Morphine should be used with caution in unstable angina (UA)/non-STEMI due to an association with increased mortality."
+        }
+      ]
+    },
+    {
+      "id": "branch-ntg-no-pde5",
+      "name": "NTG given without PDE5 screen",
+      "description": "Crew administered nitroglycerin without explicitly asking about PDE5 inhibitor use. Patient had taken tadalafil 24 hours ago for erectile dysfunction — not volunteered to the wife or crew. Within 2 minutes of NTG, BP drops precipitously to 72/44, patient becomes lightheaded and pale. Crew must recognize, drop the patient supine, give rapid IV fluid bolus, and treat as a NTG-induced hypotensive event. STEMI care must continue concurrently.",
+      "triggerCondition": "Nitroglycerin administered without screening for phosphodiesterase-inhibitor use; patient took tadalafil within 48 hours, leading to severe vasodilatory hypotension.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 4,
+          "verbal": 4,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 24, shallow, lungs clear",
+        "circulation": "Weak rapid radial; cool clammy skin; cap refill 4 sec",
+        "skin": {
+          "color": "ashen",
+          "temperature": "cold",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 4 mm, reactive",
+        "motorFunction": "Weak but intact symmetric",
+        "otherFindings": [
+          "Severe hypotension within 2 minutes of NTG",
+          "Patient reports lightheadedness and a 'gray' feeling",
+          "Wife now recalls 'oh — he took a Cialis last night'",
+          "STEMI on monitor unchanged"
+        ],
+        "patientSpeech": "I feel really weird … I'm gonna pass out …"
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Anterior",
+        "ecgWaveform": 23,
+        "hr": 116,
+        "bpSys": 72,
+        "bpDia": 44,
+        "respRate": 24,
+        "spo2": 94,
+        "etco2": 32,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 118,
+        "trendTimeSeconds": 20,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "recognize-hypotension",
+          "shortAction": "Stop NTG; supine; recognize NTG/PDE5 interaction",
+          "priority": "critical",
+          "rationale": "MATC ACS step 7 caution — care should be taken with NTG when BP marginal; ready to respond to hypotension with fluid bolus or pressor.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Care should always be taken when giving nitroglycerin when the patient's blood pressure is marginal. If used in this setting, the clinician should weigh the risk and benefit of nitrate administration over the administration of an opiate analgesic and be ready to respond to hypotension with fluid bolus or pressor."
+        },
+        {
+          "id": "fluid-bolus-branch",
+          "shortAction": "Rapid 250–500 mL NS bolus, reassess; titrate to SBP > 90",
+          "priority": "critical",
+          "rationale": "MATC ACS step 7 caution — be ready to respond with fluid bolus or pressor.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Care should always be taken when giving nitroglycerin when the patient's blood pressure is marginal. If used in this setting, the clinician should weigh the risk and benefit of nitrate administration over the administration of an opiate analgesic and be ready to respond to hypotension with fluid bolus or pressor."
+        },
+        {
+          "id": "no-more-ntg-branch",
+          "shortAction": "Withhold further nitrates; STEMI alert; opiate alternative for ongoing pain",
+          "priority": "critical",
+          "rationale": "MATC ACS step 9 — opiates as alternative when NTG contraindicated/inducing hypotension; continue STEMI care.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "If the pain is unresponsive to nitrates, opiates are an acceptable alternative. Morphine should be used with caution in unstable angina (UA)/non-STEMI due to an association with increased mortality."
+        },
+        {
+          "id": "early-notify-deterioration",
+          "shortAction": "Early notify receiving hospital of hemodynamic change",
+          "priority": "important",
+          "rationale": "MATC ACS step 11 — early notification of any changes in patient condition.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Early notification to receiving facility of any changes in patient condition or serial EKGs."
+        }
+      ]
+    },
+    {
+      "id": "branch-delayed-twelve-lead",
+      "name": "12-lead delayed > 10 min",
+      "description": "Crew completes scene tasks but does not acquire a 12-lead EKG until well after 10 minutes from patient contact. STEMI activation is consequently delayed, which directly extends the patient's ischemic burden and door-to-balloon clock. The receiving hospital learns of the STEMI only at arrival rather than en route.",
+      "triggerCondition": "12-lead EKG was not acquired within 10 minutes of patient contact, delaying STEMI recognition and field activation.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 22, lungs clear",
+        "circulation": "Regular pulse; pale, diaphoretic; cap refill 2 sec",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "Pain unchanged at 9/10",
+          "12-lead delayed; STEMI recognized only after arrival at hospital",
+          "Door-to-balloon clock starts late"
+        ],
+        "patientSpeech": "It still hurts the same. Are we going yet?"
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Anterior",
+        "ecgWaveform": 23,
+        "hr": 96,
+        "bpSys": 150,
+        "bpDia": 92,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.9,
+        "tempF": 98.4,
+        "obstruction": 0,
+        "glucose": 118,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": false,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "delayed-twelve-lead-recovery",
+          "shortAction": "Acquire 12-lead now; STEMI alert immediately; rapid transport",
+          "priority": "critical",
+          "rationale": "MATC ACS step 4 / Performance Measures — 12-lead within 10 minutes of contact; advance notification.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "The 12-lead EKG is the primary diagnostic tool that identifies a STEMI; it is imperative that EMS clinicians routinely acquire a 12-lead EKG within 10 minutes for all patients exhibiting signs and symptoms of ACS. Performance Measures: The time of patient contact by the first medical contact to the time of 12-lead EKG acquisition within 10 minutes."
+        },
+        {
+          "id": "document-delay",
+          "shortAction": "Document contact-to-EKG time; reason for delay",
+          "priority": "important",
+          "rationale": "MATC ACS Key Documentation Elements — contact-to-EKG time is required documentation.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Key Documentation Elements: The time of patient contact by EMS to the time of 12-lead EKG acquisition."
+        }
+      ]
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}
