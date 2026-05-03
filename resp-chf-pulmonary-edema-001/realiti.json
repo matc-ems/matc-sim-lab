@@ -1,0 +1,286 @@
+{
+  "scenarioId": "resp-chf-pulmonary-edema-001",
+  "scenarioName": "CHF Exacerbation — Severe Hypertensive Pulmonary Edema, CPAP and High-Dose Nitrates",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1200,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "81-year-old female with a history of HFrEF (EF 35%), hypertension, and atrial fibrillation woke from a nap with progressive shortness of breath. She admits to skipping her diuretic for the past 3 days because 'it was making me run to the bathroom too much' and has eaten salty leftovers from a wedding the night before. She has been increasingly short of breath while gardening earlier in the day and tonight cannot tolerate lying flat at all — sleeping in a recliner. Her husband heard her cough up pink frothy sputum into a tissue and called 911. She denies chest pain. She has had three prior CHF admissions in the past year, no intubations, no PICU/CCU.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find an 81-year-old female in severe respiratory distress: tripoding, pale-cyanotic, with audible coarse crackles, pink frothy sputum, JVD, and bilateral lower-extremity pitting edema. SBP is 198, SpO2 is 82% on room air, and she is speaking only 1–2 words at a time. This is hypertensive (flash) pulmonary edema. The teaching point is the protocol-driven CPAP-first / high-dose nitrate strategy: CPAP, NTG 0.8 mg SL (SBP > 160 dosing), and consideration of an IV nitroglycerin infusion titrated to BP. → CPAP on; high-dose NTG started: CPAP at 7.5 cmH2O with FiO2 100% applied with good mask seal. Patient initially fights it, then settles with coaching. SpO2 climbs from 82% → 90% within 2 minutes. NTG 0.8 mg SL given per the SBP ≥ 160 pathway and is repeated every 5 minutes while SBP remains > 100. IV nitroglycerin infusion is set up and titrated to blood pressure. Within 5–8 minutes the patient's work of breathing dramatically improves — the classic CHF/CPAP/nitrate response. → Improving on CPAP + nitrates; transport: Patient is markedly improved. SpO2 95% on CPAP, RR 24, speaking in short sentences. BP 158/92. Crackles softer, less frothy sputum. Crew transports to cardiology-capable hospital with continued CPAP, IV NTG infusion titrated to BP, and continuous monitoring. Bedside handoff includes the timeline and the diuretic non-adherence as the precipitant."
+  },
+  "patientInformation": {
+    "patientName": "Beatrice Holloway",
+    "patientCondition": "Severe shortness of breath that began about an hour ago and rapidly worsened; she is now unable to lie flat, has cough productive of pink frothy sputum, and is too breathless to speak more than 1–2 words at a time.",
+    "patientAge": 81,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 160,
+    "patientWeight": 65,
+    "patientPhotoId": 98,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find an 81-year-old female in severe respiratory distress: tripoding, pale-cyanotic, with audible coarse crackles, pink frothy sputum, JVD, and bilateral lower-extremity pitting edema. SBP is 198, SpO2 is 82% on room air, and she is speaking only 1–2 words at a time. This is hypertensive (flash) pulmonary edema. The teaching point is the protocol-driven CPAP-first / high-dose nitrate strategy: CPAP, NTG 0.8 mg SL (SBP > 160 dosing), and consideration of an IV nitroglycerin infusion titrated to BP.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 128,
+        "bpSys": 198,
+        "bpDia": 116,
+        "respRate": 36,
+        "spo2": 82,
+        "etco2": 30,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize fluid-overload etiology (rales + JVD + edema + CHF hx)",
+        "Position of comfort — upright; do NOT lay her flat",
+        "CPAP 5–10 cmH2O FiO2 100% — apply NOW for severe distress; titrate to comfort",
+        "Cardiac monitor; SpO2 + waveform capnography (CHF tends to have low EtCO2)",
+        "12-lead EKG to rule out concurrent ischemia / NSTEMI",
+        "IV access; screen for PDE5 inhibitor use prior to nitrates"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "CPAP on; high-dose NTG started",
+      "description": "CPAP at 7.5 cmH2O with FiO2 100% applied with good mask seal. Patient initially fights it, then settles with coaching. SpO2 climbs from 82% → 90% within 2 minutes. NTG 0.8 mg SL given per the SBP ≥ 160 pathway and is repeated every 5 minutes while SBP remains > 100. IV nitroglycerin infusion is set up and titrated to blood pressure. Within 5–8 minutes the patient's work of breathing dramatically improves — the classic CHF/CPAP/nitrate response.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 118,
+        "bpSys": 184,
+        "bpDia": 106,
+        "respRate": 30,
+        "spo2": 92,
+        "etco2": 32,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "NTG 0.8 mg SL (SBP ≥ 160 pathway); repeat q5 min while SBP > 100",
+        "Set up IV nitroglycerin infusion titrated to BP (effective preload + afterload reduction)",
+        "Do NOT push prehospital furosemide — pulmonary edema is volume distribution, not total volume overload",
+        "Document BP reassessment after each NTG dose; titrate to BP and symptoms",
+        "Transport to cardiology-capable receiving hospital; bedside handoff with treatment timeline"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Improving on CPAP + nitrates; transport",
+      "description": "Patient is markedly improved. SpO2 95% on CPAP, RR 24, speaking in short sentences. BP 158/92. Crackles softer, less frothy sputum. Crew transports to cardiology-capable hospital with continued CPAP, IV NTG infusion titrated to BP, and continuous monitoring. Bedside handoff includes the timeline and the diuretic non-adherence as the precipitant.",
+      "monitorType": 0,
+      "trendTime": 50,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 102,
+        "bpSys": 158,
+        "bpDia": 92,
+        "respRate": 24,
+        "spo2": 95,
+        "etco2": 36,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Continue CPAP en route; titrate IV NTG infusion to BP and symptoms",
+        "Watch for hypotension from nitrates — fluid bolus 250 mL ready if SBP drops < 100",
+        "Early notify receiving hospital; bedside handoff with timeline + diuretic non-adherence"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "CPAP delayed → respiratory failure",
+      "description": "Crew gives nitrates but does not apply CPAP. Oxygenation does not improve, work of breathing escalates, patient becomes drowsy and confused. This is hypoxemic respiratory failure from pulmonary edema with rising EtCO2 and mental status decline. Crew must rescue: apply CPAP now with strong coaching (or escalate to BVM if she can no longer tolerate CPAP), continue nitrates, and prepare for possible advanced airway if BVM ventilation also fails.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 130,
+        "bpSys": 180,
+        "bpDia": 110,
+        "respRate": 20,
+        "spo2": 78,
+        "etco2": 56,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Apply CPAP NOW with coaching; if intolerant or arresting → BVM with PEEP",
+        "Continue NTG 0.8 mg SL q5 min and titrate IV nitroglycerin infusion",
+        "If BVM ineffective: prepare advanced airway per Airway Management"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize fluid-overload etiology (rales + JVD + edema + CHF hx)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Position of comfort — upright; do NOT lay her flat",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "CPAP 5–10 cmH2O FiO2 100% — apply NOW for severe distress; titrate to comfort",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cardiac monitor; SpO2 + waveform capnography (CHF tends to have low EtCO2)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "12-lead EKG to rule out concurrent ischemia / NSTEMI",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "IV access; screen for PDE5 inhibitor use prior to nitrates",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "NTG 0.8 mg SL (SBP ≥ 160 pathway); repeat q5 min while SBP > 100",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Set up IV nitroglycerin infusion titrated to BP (effective preload + afterload reduction)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT push prehospital furosemide — pulmonary edema is volume distribution, not total volume overload",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document BP reassessment after each NTG dose; titrate to BP and symptoms",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to cardiology-capable receiving hospital; bedside handoff with treatment timeline",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continue CPAP en route; titrate IV NTG infusion to BP and symptoms",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Watch for hypotension from nitrates — fluid bolus 250 mL ready if SBP drops < 100",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early notify receiving hospital; bedside handoff with timeline + diuretic non-adherence",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply CPAP NOW with coaching; if intolerant or arresting → BVM with PEEP",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continue NTG 0.8 mg SL q5 min and titrate IV nitroglycerin infusion",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If BVM ineffective: prepare advanced airway per Airway Management",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

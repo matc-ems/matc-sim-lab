@@ -1,0 +1,467 @@
+{
+  "meta": {
+    "id": "resp-chf-pulmonary-edema-001",
+    "name": "CHF Exacerbation — Severe Hypertensive Pulmonary Edema, CPAP and High-Dose Nitrates",
+    "version": 1,
+    "difficulty": "intermediate",
+    "category": "Respiratory/Cardiac",
+    "protocols": [
+      "resp-respiratory-distress",
+      "resp-airway-management"
+    ],
+    "totalTimeSeconds": 1200,
+    "createdAt": "2026-05-03T00:00:00Z",
+    "tags": [
+      "CHF",
+      "pulmonary edema",
+      "hypertensive flash pulmonary edema",
+      "CPAP",
+      "nitroglycerin",
+      "nitro drip",
+      "geriatric",
+      "intermediate"
+    ]
+  },
+  "patient": {
+    "name": "Beatrice Holloway",
+    "age": 81,
+    "ageUnit": "years",
+    "sex": "female",
+    "weight": 65,
+    "weightLbs": 143,
+    "height": 160,
+    "chiefComplaint": "Severe shortness of breath that began about an hour ago and rapidly worsened; she is now unable to lie flat, has cough productive of pink frothy sputum, and is too breathless to speak more than 1–2 words at a time.",
+    "history": {
+      "hpi": "81-year-old female with a history of HFrEF (EF 35%), hypertension, and atrial fibrillation woke from a nap with progressive shortness of breath. She admits to skipping her diuretic for the past 3 days because 'it was making me run to the bathroom too much' and has eaten salty leftovers from a wedding the night before. She has been increasingly short of breath while gardening earlier in the day and tonight cannot tolerate lying flat at all — sleeping in a recliner. Her husband heard her cough up pink frothy sputum into a tissue and called 911. She denies chest pain. She has had three prior CHF admissions in the past year, no intubations, no PICU/CCU.",
+      "pastMedical": [
+        "HFrEF (EF 35%, ischemic cardiomyopathy)",
+        "Hypertension",
+        "Atrial fibrillation on apixaban",
+        "Type 2 diabetes mellitus (controlled)",
+        "Three prior CHF admissions in the past year"
+      ],
+      "medications": [
+        "Furosemide 40 mg PO daily (NOT taken for past 3 days)",
+        "Carvedilol 12.5 mg PO BID",
+        "Lisinopril 10 mg PO daily",
+        "Apixaban 5 mg PO BID",
+        "Metformin 500 mg PO BID",
+        "Atorvastatin 40 mg PO at bedtime"
+      ],
+      "allergies": [
+        "NKDA"
+      ],
+      "lastOralIntake": "Salty leftovers (wedding food) within past 4–8 hours",
+      "events": "Diuretic non-adherence × 3 days plus dietary salt → progressive dyspnea over the day → woke from nap with severe orthopnea and pink frothy cough; husband called 911."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 81-year-old female, severe shortness of breath, conscious, unable to lie flat. Husband on scene at single-family home.",
+    "location": "Single-family home, living room. Patient seated upright in a recliner with feet on the floor, leaning forward. Adequate lighting; clear path to door.",
+    "time": "Tuesday, 23:30, late evening",
+    "safety": "Scene safe. No pets in the room. Husband is anxious but cooperative. Adequate space and lighting.",
+    "bystanders": "Husband present. Provides clear history: skipped diuretic, salty meal, prior CHF admissions, no chest pain. Confirms no PDE5 inhibitor use in the household. Brings medication bottles.",
+    "visualCues": [
+      "Elderly woman seated upright in recliner, leaning forward",
+      "Pale-cyanotic, mouth open, struggling to breathe",
+      "Visible suprasternal retractions; nasal flaring",
+      "Pink-tinged frothy sputum on a tissue in her hand",
+      "Audible coarse crackles even from across the room",
+      "Obvious pitting edema to the mid-shins; abdomen mildly distended"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find an 81-year-old female in severe respiratory distress: tripoding, pale-cyanotic, with audible coarse crackles, pink frothy sputum, JVD, and bilateral lower-extremity pitting edema. SBP is 198, SpO2 is 82% on room air, and she is speaking only 1–2 words at a time. This is hypertensive (flash) pulmonary edema. The teaching point is the protocol-driven CPAP-first / high-dose nitrate strategy: CPAP, NTG 0.8 mg SL (SBP > 160 dosing), and consideration of an IV nitroglycerin infusion titrated to BP.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 4,
+          "motor": 6
+        },
+        "airway": "Patent — sitting upright, tripoding",
+        "breathing": "RR 36, severe distress, suprasternal/intercostal retractions, nasal flaring; audible coarse crackles to the apices bilaterally; pink frothy sputum",
+        "circulation": "Strong, rapid, irregularly irregular radial pulse; warm extremities; JVD to the angle of jaw at 30°",
+        "skin": {
+          "color": "pale-cyanotic at lips and nailbeds",
+          "temperature": "warm",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 3 mm, briskly reactive",
+        "motorFunction": "Symmetric, no focal deficit",
+        "otherFindings": [
+          "Coarse rales to apices bilaterally",
+          "JVD to angle of jaw at 30°",
+          "Bilateral pitting pretibial edema (3+) to mid-shin",
+          "Pink frothy sputum",
+          "Speaking 1–2 words at a time",
+          "EtCO2 30 — relatively low (CHF tends to lower EtCO2 vs. COPD)"
+        ],
+        "patientSpeech": "Can't … breathe … help …"
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 128,
+        "bpSys": 198,
+        "bpDia": 116,
+        "respRate": 36,
+        "spo2": 82,
+        "etco2": 30,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 142,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "primary-survey-recognize",
+          "shortAction": "Primary survey; recognize fluid-overload etiology (rales + JVD + edema + CHF hx)",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Pertinent Assessment 4b — fluid overload (CHF) etiology suggested by JVD, rales, peripheral edema, history of CHF/diuretic noncompliance/hypertension.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Etiology of respiratory distress: Fluid overload etiology (e.g., CHF, pulmonary edema) is suggested by: Jugular venous distention; Rales on auscultation; Peripheral edema; History of CHF, diuretic therapy, dialysis noncompliance, hypertension."
+        },
+        {
+          "id": "position-upright",
+          "shortAction": "Position of comfort — upright; do NOT lay her flat",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Treatment 1 — manage airway in least invasive way; position is foundational supportive care for pulmonary edema.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Adults with suspected pulmonary edema due to acute heart failure or fluid overload: Restoration of adequate oxygenation and ventilation should precede or be accomplished simultaneously with other medication therapies."
+        },
+        {
+          "id": "cpap-now",
+          "shortAction": "CPAP 5–10 cmH2O FiO2 100% — apply NOW for severe distress; titrate to comfort",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Treatment 5a — CPAP/BiPAP is the cornerstone for severe distress in pulmonary edema; restoration of oxygenation/ventilation should precede or be simultaneous with medication therapy.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Adults with suspected pulmonary edema due to acute heart failure or fluid overload (such as dialysis noncompliance): Restoration of adequate oxygenation and ventilation should precede or be accomplished simultaneously with other medication therapies below: CPAP/BiPAP: See Airway Management Guideline for goals of care and escalation of interventions. Non-invasive ventilation (NIV) should be administered for severe respiratory distress via BVM, continuous positive airway pressure (CPAP) or bi-level positive airway pressure (BiPAP)."
+        },
+        {
+          "id": "monitor-spo2-etco2",
+          "shortAction": "Cardiac monitor; SpO2 + waveform capnography (CHF tends to have low EtCO2)",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Monitoring + Note #4 — SpO2/EtCO2; CHF tends toward lower EtCO2 vs. COPD; very low EtCO2 marker of poor outcomes.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Monitoring: Pulse oximetry and EtCO2 should be routinely used as adjuncts to other forms of monitoring in patients with respiratory complaints. Continuous cardiac monitoring may be indicated in patients with respiratory distress associated with suspected acute or decompensated congestive heart failure (CHF) or dysrhythmia. 12-lead EKG may be indicated to assess for dysrhythmia or ischemia."
+        },
+        {
+          "id": "twelve-lead",
+          "shortAction": "12-lead EKG to rule out concurrent ischemia / NSTEMI",
+          "priority": "important",
+          "rationale": "MATC Respiratory Distress Monitoring 2c — 12-lead may be indicated to assess for dysrhythmia/ischemia, particularly with CHF presentation.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "12-lead EKG may be indicated to assess for dysrhythmia or ischemia, particularly in patients with risk factors for coronary artery disease and/or presentation consistent with CHF."
+        },
+        {
+          "id": "iv-access-pde5-screen",
+          "shortAction": "IV access; screen for PDE5 inhibitor use prior to nitrates",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Patient Safety #2 + Treatment 3 — IV access for medications; PDE5 contraindication for nitrates.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "IV Access and Fluids – IV access should be placed when IV medication administration is indicated. Patient Safety Considerations: The use of nitrates should be avoided in any patient who has used a phosphodiesterase inhibitor within the past 48 hours."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "cpap-on-high-dose-ntg",
+          "if": "CPAP applied + high-dose NTG (SBP ≥ 160 pathway)",
+          "condition": "CPAP applied with good seal; SBP > 160 confirmed; NTG 0.8 mg SL given per ≥ 160 mmHg pathway and crew prepares IV nitroglycerin infusion.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["cpap-now", "iv-access-pde5-screen"]
+        },
+        {
+          "targetPhaseId": "branch-cpap-not-applied",
+          "if": "CPAP delayed; respiratory failure",
+          "condition": "Crew gives nitrates without applying CPAP; oxygenation continues to fall, work of breathing increases; patient progresses to respiratory failure.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": ["cpap-now"]
+        }
+      ]
+    },
+    {
+      "id": "cpap-on-high-dose-ntg",
+      "name": "CPAP on; high-dose NTG started",
+      "description": "CPAP at 7.5 cmH2O with FiO2 100% applied with good mask seal. Patient initially fights it, then settles with coaching. SpO2 climbs from 82% → 90% within 2 minutes. NTG 0.8 mg SL given per the SBP ≥ 160 pathway and is repeated every 5 minutes while SBP remains > 100. IV nitroglycerin infusion is set up and titrated to blood pressure. Within 5–8 minutes the patient's work of breathing dramatically improves — the classic CHF/CPAP/nitrate response.",
+      "triggerCondition": "CPAP applied for hypertensive flash pulmonary edema; high-dose nitrate (0.8 mg SL) initiated per ≥ 160 mmHg pathway with IV NTG infusion considered for sustained venous and afterload reduction.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 4,
+          "motor": 6
+        },
+        "airway": "Patent — CPAP mask seated",
+        "breathing": "RR 30 with CPAP, less retraction, beginning to clear from the bases",
+        "circulation": "Strong rapid irregular pulse; warm",
+        "skin": {
+          "color": "pink at chest, less cyanotic at lips",
+          "temperature": "warm",
+          "moisture": "still moist",
+          "alt": "improving overall"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "CPAP at 7.5 cmH2O FiO2 100% — patient settled with coaching",
+          "SpO2 90% (up from 82%) within 2 min on CPAP",
+          "Crackles still present but softening",
+          "BP 184/106 after first NTG"
+        ],
+        "patientSpeech": "Better … (short phrases now)"
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 118,
+        "bpSys": 184,
+        "bpDia": 106,
+        "respRate": 30,
+        "spo2": 92,
+        "etco2": 32,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 142,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "ntg-08-sl-high",
+          "shortAction": "NTG 0.8 mg SL (SBP ≥ 160 pathway); repeat q5 min while SBP > 100",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Treatment 5d — for SBP ≥ 160 or MAP > 120, NTG 0.8 mg SL repeat q5 min; consider IV infusion.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "SBP >= 160 mmHg or MAP greater than 120: Nitroglycerin 0.8 mg SL, can repeat every 5 minutes for SBP greater than 100 mmHg. Consider IV nitroglycerin infusion titrated to blood pressure."
+        },
+        {
+          "id": "ntg-iv-infusion",
+          "shortAction": "Set up IV nitroglycerin infusion titrated to BP (effective preload + afterload reduction)",
+          "priority": "important",
+          "rationale": "MATC Respiratory Distress Treatment 5d + Note #5, #7 — IV NTG infusion titrated to BP; high-dose nitrates reduce both preload and afterload, may improve cardiac output.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Nitroglycerin 0.8 mg SL, can repeat every 5 minutes for SBP greater than 100 mmHg. Consider IV nitroglycerin infusion titrated to blood pressure. Notes: Nitroglycerin reduces left ventricular filling pressure primarily via venous dilation. At higher doses the drug variably lowers systemic afterload and increases stroke volume and cardiac output. Nitrates provide both subjective and objective improvement, and might decrease intubation rates, incidence of MIs, and mortality. High-dose nitrates can reduce both preload and afterload and potentially increase cardiac output and blood pressure."
+        },
+        {
+          "id": "no-furosemide-prehospital",
+          "shortAction": "Do NOT push prehospital furosemide — pulmonary edema is volume distribution, not total volume overload",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Note #6 — diuretics provide no immediate benefit and can cause significant harm in the prehospital setting.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Pulmonary edema is more commonly a problem of volume distribution than total body fluid overload, so administration of diuretics such as furosemide provide no immediate benefit for most patients and can cause significant harm. Inducement of inappropriate diuresis can lead to increased morbidity and mortality in patients with other disease processes such as pneumonia and sepsis."
+        },
+        {
+          "id": "reassess-bp-each-dose",
+          "shortAction": "Document BP reassessment after each NTG dose; titrate to BP and symptoms",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Performance Measure — documentation of BP reassessment in patients receiving nitrates.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Performance Measures: Documentation of blood pressure reassessment in patients receiving nitrates."
+        },
+        {
+          "id": "transport-cardiology",
+          "shortAction": "Transport to cardiology-capable receiving hospital; bedside handoff with treatment timeline",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Performance Measures — track time to bronchodilator/nitrate, time to NIV, percentage of CPAP patients requiring intubation.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Performance Measures: Time to administration of oxygen in hypoxic patients. Time to initiation of non-invasive positive pressure ventilation. Number of CPAP/BiPAP patients who require intubation."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "improving-transport",
+          "if": "Improving on CPAP + nitrates; transport",
+          "condition": "Within ~5 minutes of CPAP plus repeated NTG, SpO2 climbs to 95%, RR settles into the 20s, BP comes down to 158/92, and the patient is speaking in short sentences. Transport with continued CPAP and nitrate titration.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["ntg-08-sl-high", "cpap-now"]
+        }
+      ]
+    },
+    {
+      "id": "improving-transport",
+      "name": "Improving on CPAP + nitrates; transport",
+      "description": "Patient is markedly improved. SpO2 95% on CPAP, RR 24, speaking in short sentences. BP 158/92. Crackles softer, less frothy sputum. Crew transports to cardiology-capable hospital with continued CPAP, IV NTG infusion titrated to BP, and continuous monitoring. Bedside handoff includes the timeline and the diuretic non-adherence as the precipitant.",
+      "triggerCondition": "Combination of CPAP, repeated SL NTG, and IV NTG infusion has produced clinical improvement; transport with continued therapy.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent on CPAP",
+        "breathing": "RR 24, comfortable on CPAP, scattered fine crackles bibasilar (improved)",
+        "circulation": "Strong rapid pulse; warm; less diaphoretic",
+        "skin": {
+          "color": "pink",
+          "temperature": "warm",
+          "moisture": "moist but drying"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "SpO2 95% on CPAP",
+          "BP 158/92 — coming down with nitrate titration",
+          "Less frothy sputum, softer crackles",
+          "Speaking short sentences"
+        ],
+        "patientSpeech": "I can breathe a little better. Thank you. I'm sorry — I should have taken my water pill."
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 102,
+        "bpSys": 158,
+        "bpDia": 92,
+        "respRate": 24,
+        "spo2": 95,
+        "etco2": 36,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 142,
+        "trendTimeSeconds": 50,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "continue-cpap-titrate-ntg",
+          "shortAction": "Continue CPAP en route; titrate IV NTG infusion to BP and symptoms",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Treatment 5 + Performance Measures — continued CPAP with nitrate titration; track normalization of vitals.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Restoration of adequate oxygenation and ventilation should precede or be accomplished simultaneously with other medication therapies. Performance Measures: Time to improved SPO2 and/or decreased respiratory rate. Normalizing change in vital signs (pulse, blood pressure, respiratory rate, neurologic status assessment) temperature, O2 saturation, and capnography values with treatment."
+        },
+        {
+          "id": "watch-hypotension",
+          "shortAction": "Watch for hypotension from nitrates — fluid bolus 250 mL ready if SBP drops < 100",
+          "priority": "important",
+          "rationale": "MATC Respiratory Distress Treatment 5b — for SBP < 100, IV fluid bolus 250–500 mL and consider vasopressor.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "SBP less than 100 mmHg: IV fluid bolus 250–500 mL. Consider vasopressor: Norepinephrine 0.02–2 mcg/kg/min."
+        },
+        {
+          "id": "early-notification",
+          "shortAction": "Early notify receiving hospital; bedside handoff with timeline + diuretic non-adherence",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Documentation — document interventions and response.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Document key aspects of the exam at baseline and after each intervention: Respiratory rate; Oxygen saturation; EtCO2/waveform shape; Use of accessory muscles; Breath sounds and quality; Mental status; Response to interventions."
+        }
+      ]
+    },
+    {
+      "id": "branch-cpap-not-applied",
+      "name": "CPAP delayed → respiratory failure",
+      "description": "Crew gives nitrates but does not apply CPAP. Oxygenation does not improve, work of breathing escalates, patient becomes drowsy and confused. This is hypoxemic respiratory failure from pulmonary edema with rising EtCO2 and mental status decline. Crew must rescue: apply CPAP now with strong coaching (or escalate to BVM if she can no longer tolerate CPAP), continue nitrates, and prepare for possible advanced airway if BVM ventilation also fails.",
+      "triggerCondition": "Nitrates given without CPAP; oxygenation continued to deteriorate; patient progressing to hypoxemic/hypercapnic respiratory failure.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 3,
+          "verbal": 3,
+          "motor": 5
+        },
+        "airway": "Maintaining but tiring",
+        "breathing": "RR 40 → slowing to 20 with shallow effort (failure pattern)",
+        "circulation": "Strong rapid pulse; cool with peripheral cyanosis",
+        "skin": {
+          "color": "central cyanosis",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Sluggish but symmetric",
+        "otherFindings": [
+          "Drowsiness — late warning of respiratory failure",
+          "Pink frothy sputum increased",
+          "EtCO2 rising into mid-50s — hypercapnic failure",
+          "SpO2 still 78% on NRB"
+        ],
+        "patientSpeech": "(no longer speaking; eyes closed except to voice)"
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 130,
+        "bpSys": 180,
+        "bpDia": 110,
+        "respRate": 20,
+        "spo2": 78,
+        "etco2": 56,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 142,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "rescue-cpap-bvm",
+          "shortAction": "Apply CPAP NOW with coaching; if intolerant or arresting → BVM with PEEP",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Treatment 1c-d + 5a — NIV is indicated for severe distress; BVM if NIV ineffective.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Non-invasive ventilation (NIV) should be administered for severe respiratory distress via BVM, continuous positive airway pressure (CPAP) or bi-level positive airway pressure (BiPAP). If indicated, bronchodilators should be administered in line with NIV."
+        },
+        {
+          "id": "continue-high-dose-nitrate",
+          "shortAction": "Continue NTG 0.8 mg SL q5 min and titrate IV nitroglycerin infusion",
+          "priority": "critical",
+          "rationale": "MATC Respiratory Distress Treatment 5d — high-dose nitrates for SBP ≥ 160; continue while addressing oxygenation.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "SBP >= 160 mmHg or MAP greater than 120: Nitroglycerin 0.8 mg SL, can repeat every 5 minutes for SBP greater than 100 mmHg. Consider IV nitroglycerin infusion titrated to blood pressure."
+        },
+        {
+          "id": "advanced-airway-if-failure",
+          "shortAction": "If BVM ineffective: prepare advanced airway per Airway Management",
+          "priority": "important",
+          "rationale": "MATC Respiratory Distress Patient Safety #3 — supraglottic / intubation only if BVM fails.",
+          "protocolReference": "MATC: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+          "protocolExcerpt": "Patient Safety Considerations: Invasive airways do not improve bronchospasm. The airway should be managed in the least invasive way possible. Supraglottic devices and endotracheal intubation should be considered only if BVM ventilation fails."
+        }
+      ]
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

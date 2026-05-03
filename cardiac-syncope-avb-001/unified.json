@@ -1,0 +1,504 @@
+{
+  "meta": {
+    "id": "cardiac-syncope-avb-001",
+    "name": "Syncope Workup → Bradycardia → 2:1 AV Block — TCP with Morphine Analgesia",
+    "version": 1,
+    "difficulty": "intermediate",
+    "category": "Cardiac",
+    "protocols": [
+      "cv-syncope",
+      "cv-bradycardia",
+      "medical-pain-management"
+    ],
+    "totalTimeSeconds": 1500,
+    "createdAt": "2026-05-03T00:00:00Z",
+    "tags": [
+      "syncope",
+      "bradycardia",
+      "high-grade AV block",
+      "2:1 AV block",
+      "transcutaneous pacing",
+      "TCP",
+      "morphine",
+      "intermediate"
+    ]
+  },
+  "patient": {
+    "name": "Patricia Bowman",
+    "age": 70,
+    "ageUnit": "years",
+    "sex": "female",
+    "weight": 68,
+    "weightLbs": 150,
+    "height": 162,
+    "chiefComplaint": "Brief loss of consciousness with loss of postural tone in the kitchen approximately 20 minutes ago; struck the side of her face on the counter on the way down; now alert and embarrassed but feels lightheaded when she tries to sit up.",
+    "history": {
+      "hpi": "70-year-old female was making dinner in the kitchen when she suddenly 'felt the room go away' and woke up on the floor approximately 30 seconds later. Her husband heard a thud and found her on the floor. She struck the left side of her face on the counter on the way down — a small bruise but no laceration and no LOC after the fall (per husband). She remembers feeling 'a little woozy' for a few minutes before but does not remember any prodrome. She denies chest pain, palpitations, dyspnea, headache, focal weakness, or seizure activity. She has had two prior 'almost passed out' episodes over the past month that she did not seek care for. She has hypertension and hyperlipidemia and is on amlodipine and atorvastatin; recently started on metoprolol 25 mg by her PCP for 'irregular heartbeat noted on a routine visit.'",
+      "pastMedical": [
+        "Hypertension",
+        "Hyperlipidemia",
+        "Recently noted 'irregular heartbeat' on routine PCP visit (started metoprolol 4 weeks ago)",
+        "Two prior near-syncopal episodes in the past month (not previously evaluated)"
+      ],
+      "medications": [
+        "Amlodipine 5 mg PO daily",
+        "Atorvastatin 20 mg PO at bedtime",
+        "Metoprolol succinate 25 mg PO daily (started 4 weeks ago)",
+        "Aspirin 81 mg PO daily"
+      ],
+      "allergies": [
+        "NKDA"
+      ],
+      "lastOralIntake": "Cup of tea about 90 minutes ago; was about to make dinner",
+      "events": "Brief witnessed syncope in the kitchen ~20 minutes ago with strike to left face on counter; now conscious and conversant, but lightheaded with positional change."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 70-year-old female, syncopal episode at home with strike to face. Now conscious. Husband on scene at single-family home.",
+    "location": "Single-family home, kitchen. Patient seated on the floor where her husband helped her into a sitting position. Adequate lighting; clear path to door for cot.",
+    "time": "Sunday, 17:50, weekend evening",
+    "safety": "Scene safe. No hazards. Husband calm and helpful, has medication list ready.",
+    "bystanders": "Husband present, witnessed the event partially (heard the thud, found patient on the floor). Confirms ~30 seconds unresponsive; no convulsions; no incontinence; no head impact behind the ear or to the back. Brings medication bottles.",
+    "visualCues": [
+      "Elderly woman seated on the kitchen floor, back against the cabinets",
+      "Small bruise developing on the left zygoma; no laceration",
+      "Pale and slightly diaphoretic",
+      "Pot of water on the stove still simmering",
+      "Pill bottles on counter (recently retrieved by husband)"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives to a 70-year-old female on the kitchen floor after a witnessed syncopal episode ~20 minutes ago with a strike to the left face on the counter. She is now alert and embarrassed but feels lightheaded when she tries to sit up. Initial monitor connection reveals a slow rhythm in the high 30s. The teaching arc moves from a 'syncope work-up' through 'bradycardia recognition' to 'high-grade AV block on 12-lead' — and then a TCP with morphine analgesia + non-pharmacologic measures (an alternative to the fentanyl/midazolam path).",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent, self-maintained",
+        "breathing": "RR 18, lungs clear",
+        "circulation": "Slow weak radial pulse; cool pale; cap refill 3 sec",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "mildly diaphoretic"
+        },
+        "pupils": "Equal at 3 mm, briskly reactive",
+        "motorFunction": "Symmetric, intact, no focal weakness; no facial droop",
+        "otherFindings": [
+          "Small left zygomatic bruise from strike on counter; no laceration",
+          "No occipital impact, no neck pain",
+          "Two prior near-syncopal episodes in the past month",
+          "Recently started metoprolol — likely contributor",
+          "Pulse ~38 — clearly bradycardic",
+          "12-lead pending"
+        ],
+        "patientSpeech": "I'm so embarrassed. I just woke up on the floor. I had a couple of almost-fainted spells last month but I didn't tell anyone."
+      },
+      "monitorState": {
+        "ecgRhythm": "AV Block Type II 2:1",
+        "ecgWaveform": 40,
+        "hr": 38,
+        "bpSys": 92,
+        "bpDia": 58,
+        "respRate": 18,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "tempF": 98.1,
+        "obstruction": 0,
+        "glucose": 108,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "primary-survey-syncope",
+          "shortAction": "Primary survey; recognize witnessed syncope with possible cardiac etiology",
+          "priority": "critical",
+          "rationale": "MATC Syncope Patient Presentation + Inclusion — abrupt LOC with loss of postural tone; cardiac causes are high-risk.",
+          "protocolReference": "MATC: Adult and Pediatric Syncope and Near Syncope",
+          "protocolExcerpt": "Inclusion Criteria: Abrupt loss of consciousness with loss of postural tone. Notes/Educational Pearls: High-risk causes of syncope include, but are not limited to, the following: Cardiovascular: Myocardial infarction; Aortic stenosis; Hypertrophic cardiomyopathy; Pulmonary embolus; Aortic dissection; Dysrhythmia; Mitral valve prolapse is associated with higher risk for sudden death."
+        },
+        {
+          "id": "trauma-screen",
+          "shortAction": "Screen for fall-related trauma — face strike, c-spine, occipital impact",
+          "priority": "critical",
+          "rationale": "MATC Syncope Patient Safety #2 — geriatric falls from standing should be diligently screened for trauma.",
+          "protocolReference": "MATC: Adult and Pediatric Syncope and Near Syncope",
+          "protocolExcerpt": "Patient Safety Considerations: Geriatric patients suffering falls from standing may sustain significant injury and should be diligently screened for trauma."
+        },
+        {
+          "id": "monitor-twelve-lead",
+          "shortAction": "Cardiac monitor; defib + pacer pads on early; 12-lead EKG",
+          "priority": "critical",
+          "rationale": "MATC Syncope Patient Safety #1 + cardiac monitoring + 12-lead is a Performance Measure — recurrent arrhythmia possible; cardiac monitor and 12-lead are required.",
+          "protocolReference": "MATC: Adult and Pediatric Syncope and Near Syncope",
+          "protocolExcerpt": "Patient Safety Considerations: Patients suffering from syncope due to arrhythmia may experience recurrent arrhythmias and should therefore be placed on a cardiac monitor. Performance Measures: Acquisition of 12-lead EKG. Application of cardiac monitor."
+        },
+        {
+          "id": "iv-access",
+          "shortAction": "IV access (large-bore proximal)",
+          "priority": "critical",
+          "rationale": "MATC Syncope Treatment + Bradycardia step 4 — IV access for medications.",
+          "protocolReference": "MATC: Adult and Pediatric Syncope and Near Syncope",
+          "protocolExcerpt": "Treatment and Interventions: Establish IV access. Fluid bolus if appropriate. Cardiac monitor. 12-lead EKG. Monitor for and treat arrhythmias (if present, refer to appropriate guideline)."
+        },
+        {
+          "id": "blood-glucose",
+          "shortAction": "Check blood glucose — rule out hypoglycemia as syncope driver",
+          "priority": "important",
+          "rationale": "MATC Syncope Pertinent Physical Exam — BGL part of evaluation.",
+          "protocolReference": "MATC: Adult and Pediatric Syncope and Near Syncope",
+          "protocolExcerpt": "Additional Evaluation: Cardiac monitoring; Oxygen saturation (SPO2); Ongoing vital signs; 12-lead EKG; Blood glucose level (BGL)."
+        },
+        {
+          "id": "med-history-recent-meto",
+          "shortAction": "Document recently started metoprolol (4 wks) — likely contributor to bradycardia",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia Notes #3 — consider culprit medications; new beta-blocker is a strong candidate.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Consider potential culprit medications including beta-blockers, calcium channel blockers, sodium channel blockers/anti-depressants, digoxin, and clonidine. If medication overdose is considered, refer to appropriate guideline in the Toxins and Environmental Section."
+        },
+        {
+          "id": "rhythm-recognition",
+          "shortAction": "Recognize 2:1 AV block / high-grade block on 12-lead — explains syncope",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia Inclusion #2 + Syncope Note #4 — high-grade AV block is one of the named cardiac syncope causes.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "The major EKG rhythms classified as bradycardia include: Sinus bradycardia; Second-degree AV block (Type I-Wenckebach/Mobitz I, Type II-Mobitz II); Third-degree AV block, complete heart block; Ventricular escape rhythms."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "atropine-then-tcp",
+          "if": "AVB recognized; atropine partial → TCP + morphine",
+          "condition": "12-lead identifies 2:1 AV block; atropine 1 mg IV given with limited response; crew prepares TCP and pre-medicates with morphine for analgesia.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["rhythm-recognition", "monitor-twelve-lead"]
+        },
+        {
+          "targetPhaseId": "branch-not-monitored",
+          "if": "Syncope discharged as 'vasovagal' — no monitor",
+          "condition": "Crew accepts the patient's framing of the event as 'vasovagal' (just got dizzy) and does not place monitor or 12-lead. Patient has another syncopal episode en route.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": ["monitor-twelve-lead", "rhythm-recognition"]
+        }
+      ]
+    },
+    {
+      "id": "atropine-then-tcp",
+      "name": "Atropine partial → TCP + morphine analgesia",
+      "description": "Atropine 1 mg IV given. HR briefly bumps to 50 with brief BP improvement to 102 then drops back to high 30s — limited response, expected with high-grade AV block on a beta-blocker. TCP indicated. For analgesia, crew uses morphine 6.8 mg IV (68 kg × 0.1 mg/kg = 6.8 mg, capped at 10 mg max) BEFORE starting pacing — pacing pain and pectoral/intercostal muscle contraction can be substantial. Position of comfort and verbal reassurance also offered.",
+      "triggerCondition": "Atropine produced only transient bump; TCP indicated; pre-pacing morphine analgesia and non-pharmacologic measures applied.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 18, lungs clear",
+        "circulation": "Still slow, still weak; brief bump after atropine then back to baseline",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "mildly diaphoretic"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "Atropine 1 mg → HR briefly 50 then back to high 30s",
+          "BP briefly 102/64 then back to 92/58",
+          "Pacer pads in place; pacer powered on",
+          "Morphine 6.8 mg drawn up; non-pharmacologic measures explained"
+        ],
+        "patientSpeech": "Whatever you need to do. I felt that medicine make my heart race for a second. Should I be worried about that pacing thing?"
+      },
+      "monitorState": {
+        "ecgRhythm": "AV Block Type II 2:1",
+        "ecgWaveform": 40,
+        "hr": 42,
+        "bpSys": 96,
+        "bpDia": 60,
+        "respRate": 18,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "tempF": 98.1,
+        "obstruction": 0,
+        "glucose": 108,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "atropine",
+          "shortAction": "Atropine 1 mg IV (may repeat q3–5 min, max 3 mg total) — limited efficacy on β-blocker / high-grade block",
+          "priority": "important",
+          "rationale": "MATC Bradycardia step 6 — atropine 1 mg IV q3–5 min (max 3 mg).",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Consider the following additional therapies if bradycardia and symptoms or hemodynamic instability continue: Atropine 1 mg IV q 3–5 minutes (maximum total dose of 3 mg)."
+        },
+        {
+          "id": "explain-pacing",
+          "shortAction": "Explain TCP to patient: 'You'll feel thumping; we'll give pain medicine first'",
+          "priority": "important",
+          "rationale": "MATC Bradycardia Patient Safety + Pain Management — sedation/analgesia for pacing; communication reduces anxiety.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Patient Safety Considerations: If pacing is performed, consider sedation or pain control."
+        },
+        {
+          "id": "morphine-pre-pacing",
+          "shortAction": "Morphine 6.8 mg IV (68 kg × 0.1 mg/kg; max 10 mg) BEFORE TCP",
+          "priority": "critical",
+          "rationale": "MATC Pain Management 6a — morphine 0.1 mg/kg IM/IV/IO max initial 10 mg; analgesia for procedure.",
+          "protocolReference": "MATC: Pain Management",
+          "protocolExcerpt": "For Moderate to Severe pain, analgesics include: Morphine sulfate: 0.1 mg/kg IM, IV or IO (maximum initial dose is 10 mg)."
+        },
+        {
+          "id": "non-pharm-comfort",
+          "shortAction": "Position of comfort; verbal reassurance; coach through pacing",
+          "priority": "important",
+          "rationale": "MATC Pain Management 4 — non-pharmacologic options include position of comfort and verbal reassurance.",
+          "protocolReference": "MATC: Pain Management",
+          "protocolExcerpt": "Non-pharmacologic pain management options include: Placement of the patient in a position of comfort. Application of ice packs and/or splints for pain secondary to trauma. Verbal reassurance to control anxiety."
+        },
+        {
+          "id": "pain-safety-screen",
+          "shortAction": "Allergies, BP, SpO2 confirmed; capnography on (capno predicts hypoventilation early)",
+          "priority": "critical",
+          "rationale": "MATC Pain Management 7 + Patient Safety #2 — capnography earlier predictor of opioid hypoventilation; caution with hypotension/GCS < 15 (she is alert and SBP > 90 — acceptable).",
+          "protocolReference": "MATC: Pain Management",
+          "protocolExcerpt": "Use of non-invasive capnography is an earlier predictor of hypoventilation than pulse oximetry if opioid medications are administered. Patient Safety Considerations: Administer opioids with caution to patients with Glasgow Coma Score (GCS) less than 15, hypotension, identified medication allergy, hypoxia (SPO2 less than 90%) after maximal supplemental oxygen therapy, or signs of hypoventilation."
+        },
+        {
+          "id": "tcp-set-titrate",
+          "shortAction": "TCP rate 70; output 60 mA → titrate up to electrical + mechanical capture",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia step 6 — TCP for high-grade block / impending collapse; titrate to capture; document.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Transcutaneous Pacing – If pacing is performed, consider sedation or pain control. Bradycardia should be managed via the least invasive manner possible, escalating care as needed. In cases of impending hemodynamic collapse, proceed directly to transcutaneous pacing."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "tcp-capture-comfortable",
+          "if": "TCP capture; patient comfortable",
+          "condition": "Mechanical capture confirmed at output 80 mA at rate 70; patient tolerates well thanks to pre-pacing morphine + verbal coaching; BP and mentation improve.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["morphine-pre-pacing", "tcp-set-titrate"]
+        }
+      ]
+    },
+    {
+      "id": "tcp-capture-comfortable",
+      "name": "TCP capture; comfortable transport",
+      "description": "TCP at rate 70, output 80 mA, demonstrates electrical capture with mechanical capture confirmed by palpable pulse with each pacer spike. BP improves to 122/74, mentation clear, no recurrent near-syncope. Patient describes the pacing as 'thumping' but tolerable thanks to morphine. Crew transports to cardiology / electrophysiology-capable hospital with continued monitoring of pacing parameters and respiratory status during opioid wear-off.",
+      "triggerCondition": "TCP at rate 70 with output titrated to mechanical capture; pre-pacing morphine analgesia gives the patient a tolerable experience; transport for definitive cardiology workup.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 16, comfortable, lungs clear",
+        "circulation": "Strong palpable pulse synchronous with pacer spikes; warm; cap refill < 2 sec",
+        "skin": {
+          "color": "pink",
+          "temperature": "warm",
+          "moisture": "dry"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "Mechanical capture at 80 mA, rate 70",
+          "BP 122/74 — improved",
+          "Patient describes pacing as 'thumping but tolerable'",
+          "Mentation clear; no further dizzy spells",
+          "Mild residual analgesia from morphine"
+        ],
+        "patientSpeech": "I can feel it thumping but the medicine helps. Thank you. I'm sorry I didn't tell anyone about the dizzy spells."
+      },
+      "monitorState": {
+        "ecgRhythm": "Pacemaker Rhythm",
+        "ecgWaveform": 9,
+        "hr": 70,
+        "bpSys": 122,
+        "bpDia": 74,
+        "respRate": 16,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 36.7,
+        "tempF": 98.1,
+        "obstruction": 0,
+        "glucose": 108,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "confirm-mechanical-capture",
+          "shortAction": "Confirm mechanical capture by palpating pulse with each pacer spike; document",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia Documentation — pacing time, rate, joules, capture, response.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Key Documentation Elements: Cardiac rhythm/rate; Time, dose, and response of medications given; Pacing: Time started or stopped, rate, joules, capture, and response rate; Patient weight; History of event supporting treatment of underlying causes."
+        },
+        {
+          "id": "reassess-pain-rr",
+          "shortAction": "Reassess pain score, RR, SpO2, EtCO2 q5 min after morphine (capnography earlier predictor of hypoventilation)",
+          "priority": "critical",
+          "rationale": "MATC Pain Management 7 + Documentation — capnography earlier predictor of opioid-induced hypoventilation; reassess.",
+          "protocolReference": "MATC: Pain Management",
+          "protocolExcerpt": "Use of non-invasive capnography is an earlier predictor of hypoventilation than pulse oximetry if opioid medications are administered. Documentation of patient reassessment with repeat vital signs and patient pain scale assessment."
+        },
+        {
+          "id": "vasopressor-backup",
+          "shortAction": "If TCP fails or BP drops: epi push-dose 10–20 mcg q2 min OR epi drip 0.02–0.2 mcg/kg/min",
+          "priority": "supplemental",
+          "rationale": "MATC Bradycardia step 6 — vasopressor options when TCP fails.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Vasopressor medications (in order of preference): Epinephrine IV drip 0.02–0.2 mcg/kg/min titrated to a MAP greater than 65 mmHg OR Epinephrine by push dose (dilute boluses): for example, prepare 10 mcg/mL by adding 1 mL of 0.1 mg/mL epinephrine to 9 mL of normal saline, then administer 10–20 mcg boluses (1–2 mL) q 2 minutes titrated MAP greater than 65 mmHg OR Norepinephrine 0.02–0.4 mcg/kg/minute IV titrated to a MAP greater than 65 mmHg."
+        },
+        {
+          "id": "transport-cardiology",
+          "shortAction": "Transport to cardiology / EP-capable hospital; bedside handoff with strips + dose timeline",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia Documentation + Syncope Notes #1 — full handoff including pacing parameters; EMS in unique position to identify cause of syncope.",
+          "protocolReference": "MATC: Adult and Pediatric Syncope and Near Syncope",
+          "protocolExcerpt": "Notes/Educational Pearls: By being most proximate to the scene and to the patient's presentation, EMS clinicians are commonly in a unique position to identify the cause of syncope. Consideration of potential causes, ongoing monitoring of vitals and cardiac rhythm and detailed exam and history are essential pieces of information to pass on to hospital clinicians."
+        },
+        {
+          "id": "document-syncope-mechanism",
+          "shortAction": "Document presenting rhythm, rhythm at time of syncope/near-syncope, all changes",
+          "priority": "important",
+          "rationale": "MATC Syncope Documentation — presenting cardiac rhythm; cardiac rhythm when symptomatic; any rhythm changes; BGL.",
+          "protocolReference": "MATC: Adult and Pediatric Syncope and Near Syncope",
+          "protocolExcerpt": "Key Documentation Elements: Presenting cardiac rhythm; Cardiac rhythm present when patient is symptomatic; Any cardiac rhythm changes; Blood pressure; Pulse; Blood glucose level (BGL); Symptoms immediately preceding event; Patient status on EMS arrival: recovered or still symptomatic."
+        }
+      ]
+    },
+    {
+      "id": "branch-not-monitored",
+      "name": "Discharged as 'vasovagal' — no monitor",
+      "description": "Crew accepts the patient's narrative of 'just got dizzy' and treats this as a low-acuity transport without applying cardiac monitor or 12-lead. En route, the patient has another syncopal episode in the ambulance — this time witnessed by the crew. Now they must rapidly recognize the underlying high-grade AV block, place the monitor and pacer pads, and proceed with TCP. The teaching point is that the protocol's Patient Safety guidance is explicit — syncope due to arrhythmia may recur, and ALL syncope patients should be on a monitor.",
+      "triggerCondition": "Cardiac monitor not applied; patient experienced recurrent syncopal episode in the ambulance; underlying high-grade AV block now evident.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": {
+          "eye": 2,
+          "verbal": 3,
+          "motor": 5
+        },
+        "airway": "Patent",
+        "breathing": "RR 14, shallow",
+        "circulation": "Slow weak pulse during episode",
+        "skin": {
+          "color": "ashen",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal, sluggishly reactive",
+        "motorFunction": "Withdraws to pain only",
+        "otherFindings": [
+          "Recurrent syncopal episode in transport — witnessed by crew",
+          "Now obvious cardiac etiology",
+          "Monitor and pacer pads must go on immediately",
+          "Potential traumatic injury from second event (head against cot rail)"
+        ],
+        "patientSpeech": "(transient unresponsive; recovers spontaneously over 30 sec)"
+      },
+      "monitorState": {
+        "ecgRhythm": "AV Block Type II 2:1",
+        "ecgWaveform": 40,
+        "hr": 32,
+        "bpSys": 76,
+        "bpDia": 48,
+        "respRate": 14,
+        "spo2": 92,
+        "etco2": 32,
+        "temp": 36.7,
+        "tempF": 98.1,
+        "obstruction": 0,
+        "glucose": 108,
+        "trendTimeSeconds": 20,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "monitor-now",
+          "shortAction": "Apply cardiac monitor + pacer pads NOW; 12-lead EKG en route",
+          "priority": "critical",
+          "rationale": "MATC Syncope Patient Safety #1 + Performance Measures — cardiac monitor and 12-lead are required; recurrent arrhythmia risk.",
+          "protocolReference": "MATC: Adult and Pediatric Syncope and Near Syncope",
+          "protocolExcerpt": "Patient Safety Considerations: Patients suffering from syncope due to arrhythmia may experience recurrent arrhythmias and should therefore be placed on a cardiac monitor. Performance Measures: Acquisition of 12-lead EKG. Application of cardiac monitor."
+        },
+        {
+          "id": "rescue-atropine",
+          "shortAction": "Atropine 1 mg IV (limited response expected on β-blocker) and prep TCP",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia step 6 + Notes #6 — atropine then TCP; rapid escalation in high-grade block.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Atropine 1 mg IV q 3–5 minutes (maximum total dose of 3 mg). Notes: Third-degree heart block or the denervated heart (as in cardiac transplant) may not respond to atropine and in these cases, proceed quickly to chronotropic agents (such as epinephrine or dopamine) or transcutaneous pacing. In cases of impending hemodynamic collapse, proceed directly to transcutaneous pacing."
+        },
+        {
+          "id": "rescue-tcp-with-analgesia",
+          "shortAction": "TCP with morphine 6.8 mg IV (68 kg × 0.1 mg/kg) for analgesia; titrate to capture",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia + Pain Management — TCP with analgesia; morphine at 0.1 mg/kg.",
+          "protocolReference": "MATC: Pain Management",
+          "protocolExcerpt": "For Moderate to Severe pain, analgesics include: Morphine sulfate: 0.1 mg/kg IM, IV or IO (maximum initial dose is 10 mg)."
+        },
+        {
+          "id": "advance-notify",
+          "shortAction": "Advance notification of recurrent syncope and new high-grade block; ETA",
+          "priority": "important",
+          "rationale": "MATC Bradycardia / Syncope Documentation — communicate cause and clinical changes to receiving facility.",
+          "protocolReference": "MATC: Adult and Pediatric Syncope and Near Syncope",
+          "protocolExcerpt": "Notes/Educational Pearls: By being most proximate to the scene and to the patient's presentation, EMS clinicians are commonly in a unique position to identify the cause of syncope. Consideration of potential causes, ongoing monitoring of vitals and cardiac rhythm and detailed exam and history are essential pieces of information to pass on to hospital clinicians."
+        }
+      ]
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 80
+  }
+}

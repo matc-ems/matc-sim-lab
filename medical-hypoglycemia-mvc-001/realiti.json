@@ -1,0 +1,302 @@
+{
+  "scenarioId": "medical-hypoglycemia-mvc-001",
+  "scenarioName": "Hypoglycemic Driver — Single-Vehicle MVC with Head Trauma",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "54-year-old male insulin-dependent type 1 diabetic was driving home from his evening shift at the warehouse when he reportedly drifted across the centerline, struck a curb, and came to rest against a road-sign post at low speed (~25 mph). A passing driver who happened to be a coworker witnessed the event and reports the patient 'looked weird and pale' approximately a block before the crash. He remembers the patient mentioning at work that he had 'skipped dinner.' Patient is conscious but confused, combative, diaphoretic, and has a 1-inch forehead laceration with bony bruising; airbag deployed. Witness called 911. Per his MedicAlert tag he is a type 1 diabetic on an insulin pump (visible on the abdomen).",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to a low-speed single-vehicle MVC with a 54-year-old male driver who is confused, combative, and diaphoretic with a forehead laceration. The pre-crash history (skipped dinner, T1DM on insulin pump, witness saying patient 'looked weird' before the crash) and the diaphoretic combative presentation point strongly to hypoglycemia AS THE CAUSE of the crash. The teaching point is to do BOTH at once: check the glucose AND protect the trauma airway / cervical spine / head-injury pathway. Do not treat one at the expense of the other. → IV D10 given; mentation improves: IV access established. Crew administers 25 g of dextrose as 250 mL of D10% IV infused incrementally. Within 2–3 minutes the patient's mentation clears: he becomes oriented, no longer combative, embarrassed, and remembers driving home. He admits he 'didn't eat dinner because I was running late.' Trauma assessment continues — head injury risk remains because of the mechanism and the laceration, even though the AMS turned out to be metabolic in origin. Crew continues spine precautions and transports to a trauma-capable receiving facility. → Transport to trauma center: Patient transported on the cot in spinal motion restriction with cervical collar, head injury precautions, oxygen targeted to 94–98%, IV in place, and continuous monitoring. Crew provides bedside handoff using AT-MIST framework: 54M, ~30 minutes ago, low-speed MVC, 1-inch forehead laceration with mechanism for closed head injury, hypoglycemia identified as cause (BGL 38 → 112 after D10), insulin pump stopped."
+  },
+  "patientInformation": {
+    "patientName": "Marcus Reynolds",
+    "patientCondition": "Single-vehicle motor vehicle crash with the driver still in the vehicle, confused and combative, with a 1-inch laceration over the left eyebrow from striking the steering wheel and column. Bystander reports he 'looked weird' before driving off the road.",
+    "patientAge": 54,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 178,
+    "patientWeight": 88,
+    "patientPhotoId": 65,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to a low-speed single-vehicle MVC with a 54-year-old male driver who is confused, combative, and diaphoretic with a forehead laceration. The pre-crash history (skipped dinner, T1DM on insulin pump, witness saying patient 'looked weird' before the crash) and the diaphoretic combative presentation point strongly to hypoglycemia AS THE CAUSE of the crash. The teaching point is to do BOTH at once: check the glucose AND protect the trauma airway / cervical spine / head-injury pathway. Do not treat one at the expense of the other.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 152,
+        "bpDia": 96,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.6,
+        "obstruction": 0,
+        "custMeasure1": 38,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Scene safety; manual c-spine; primary survey (MARCH); recognize trauma + AMS",
+        "Check blood glucose IMMEDIATELY — diaphoretic combative T1DM (BGL = 38)",
+        "High-flow O2 via NRB (head-injury pathway prophylaxis vs desaturation)",
+        "Direct pressure to forehead laceration; gauze dressing",
+        "Secondary survey — head/neck/torso/pelvis/extremities for occult injury",
+        "Baseline pupils, GCS, motor exam — reassess with any change"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "IV D10 given; mentation improves",
+      "description": "IV access established. Crew administers 25 g of dextrose as 250 mL of D10% IV infused incrementally. Within 2–3 minutes the patient's mentation clears: he becomes oriented, no longer combative, embarrassed, and remembers driving home. He admits he 'didn't eat dinner because I was running late.' Trauma assessment continues — head injury risk remains because of the mechanism and the laceration, even though the AMS turned out to be metabolic in origin. Crew continues spine precautions and transports to a trauma-capable receiving facility.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 88,
+        "bpSys": 142,
+        "bpDia": 88,
+        "respRate": 18,
+        "spo2": 98,
+        "etco2": 38,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 112,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "D10% 250 mL IV (= 25 g) infused incrementally — D10 preferred over D50 per Safety #2",
+        "Stop / disconnect insulin pump — known T1DM pump patient with hypoglycemia",
+        "Repeat blood glucose 5–10 min after dextrose; document response",
+        "Transport — does NOT meet release criteria (concomitant trauma, head injury)",
+        "Maintain spine precautions; transport to trauma-capable receiving facility",
+        "Avoid hypotension — target SBP > 110 in head injury; no hyperventilation",
+        "Stop / disconnect insulin pump"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Transport to trauma center",
+      "description": "Patient transported on the cot in spinal motion restriction with cervical collar, head injury precautions, oxygen targeted to 94–98%, IV in place, and continuous monitoring. Crew provides bedside handoff using AT-MIST framework: 54M, ~30 minutes ago, low-speed MVC, 1-inch forehead laceration with mechanism for closed head injury, hypoglycemia identified as cause (BGL 38 → 112 after D10), insulin pump stopped.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 84,
+        "bpSys": 138,
+        "bpDia": 86,
+        "respRate": 16,
+        "spo2": 98,
+        "etco2": 38,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 112,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Serial GCS, pupils, motor en route — every 5 min and with any change",
+        "Recheck BGL en route; watch for recurrent hypoglycemia (insulin pump still on board)",
+        "Bedside AT-MIST handoff: hypoglycemia → MVC → head laceration → cleared with D10"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "BGL not checked; treated only as head injury",
+      "description": "Crew labels the patient as a 'combative head injury' and does not check glucose. Combativeness is escalated rather than diagnosed — restraints applied, possibly chemical sedation considered. AMS persists. The forehead laceration is dressed, but the underlying driver of the AMS — a BGL of 38 — is missed and the patient continues to be hypoglycemic en route. This is the classic miss the AMS protocol explicitly warns about: 'Hypoglycemic and hypoxic patients can be irritable and violent.' Crew must rescue by checking BGL now and giving D10.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 122,
+        "bpSys": 156,
+        "bpDia": 100,
+        "respRate": 24,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.6,
+        "obstruction": 0,
+        "custMeasure1": 34,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Stop / disconnect insulin pump — known T1DM pump patient with hypoglycemia",
+        "Check blood glucose NOW (combative + diaphoretic + T1DM = hypoglycemia until proven otherwise)",
+        "D10% 250 mL IV (= 25 g) infused incrementally; reassess; recheck BGL",
+        "Stop / disconnect insulin pump",
+        "Do NOT chemically sedate without checking BGL first — sedation could mask continuing hypoglycemia"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Scene safety; manual c-spine; primary survey (MARCH); recognize trauma + AMS",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose IMMEDIATELY — diaphoretic combative T1DM (BGL = 38)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "High-flow O2 via NRB (head-injury pathway prophylaxis vs desaturation)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Direct pressure to forehead laceration; gauze dressing",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Secondary survey — head/neck/torso/pelvis/extremities for occult injury",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Baseline pupils, GCS, motor exam — reassess with any change",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "D10% 250 mL IV (= 25 g) infused incrementally — D10 preferred over D50 per Safety #2",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Stop / disconnect insulin pump — known T1DM pump patient with hypoglycemia",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Repeat blood glucose 5–10 min after dextrose; document response",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport — does NOT meet release criteria (concomitant trauma, head injury)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Maintain spine precautions; transport to trauma-capable receiving facility",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Avoid hypotension — target SBP > 110 in head injury; no hyperventilation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Serial GCS, pupils, motor en route — every 5 min and with any change",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recheck BGL en route; watch for recurrent hypoglycemia (insulin pump still on board)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Bedside AT-MIST handoff: hypoglycemia → MVC → head laceration → cleared with D10",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose NOW (combative + diaphoretic + T1DM = hypoglycemia until proven otherwise)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "D10% 250 mL IV (= 25 g) infused incrementally; reassess; recheck BGL",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Stop / disconnect insulin pump",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT chemically sedate without checking BGL first — sedation could mask continuing hypoglycemia",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

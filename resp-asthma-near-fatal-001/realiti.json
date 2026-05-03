@@ -1,0 +1,307 @@
+{
+  "scenarioId": "resp-asthma-near-fatal-001",
+  "scenarioName": "Near-Fatal Asthma in a 14-Year-Old — IM Epinephrine, Magnesium, and CPAP Transition",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "14-year-old female with severe persistent asthma developed worsening dyspnea throughout the day after running out of her controller inhaler (Symbicort) approximately 2 weeks ago. She has been using her albuterol rescue inhaler heavily today and emptied it about 90 minutes ago. Mother brought her to the front yard to wait for EMS. On arrival the patient is tripoding, drowsy, with very poor air entry — the chest is nearly silent. She has had a prior PICU admission for asthma at age 9 with intubation for 36 hours, and she has had 4 ED visits in the past year. Mother reports she has been depressed and 'didn't tell us the inhaler was running low.' The patient is mostly cooperative but able to speak only 1–2 words at a time.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to a 14-year-old in the worst end of the asthma severity spectrum: tripoding, drowsy, with a nearly silent chest, central cyanosis, and 1–2 word speech. She has every high-risk feature in the protocol: prior PICU + intubation, multiple ED visits, heavy beta-agonist use, controller non-adherence, and a behavioral/psychosocial contributor (depression). Drowsiness and silent chest are LATE warnings of impending respiratory arrest. The teaching path is the full escalation: position + O2, IMMEDIATE DuoNeb + IM epi (do not wait for nebulizer onset in a near-fatal patient), IV steroid, magnesium, and transition to CPAP as the bronchodilators take effect. → IV steroid + magnesium → CPAP transition: First-line treatments are flowing. Crew adds IV methylprednisolone 100 mg (50 kg × 2 mg/kg, max 125 mg) for the corticosteroid effect, magnesium sulfate 2 g IV over 15 minutes (50 kg × 40 mg/kg = 2000 mg, capped at 2 g protocol max) for severe bronchoconstriction, and transitions to CPAP at 5–7.5 cmH2O FiO2 100% with the nebulizer in line. As mag infuses, BP is monitored — magnesium can cause hypotension responsive to a fluid bolus. → Improving on CPAP; transport: After all four therapies (DuoNeb + IM epi + IV steroid + IV mag) and transition to CPAP, the patient is markedly improved. SpO2 95% on CPAP, RR 24, mentation cleared, speaking short sentences. Crew transports to pediatric-capable receiving hospital with continued CPAP, finishing mag infusion, and full timeline for handoff."
+  },
+  "patientInformation": {
+    "patientName": "Aisha Bennett",
+    "patientCondition": "Severe respiratory distress with near-silent chest, inability to speak more than 1–2 words, and altered mental status; the family reports she ran out of her controller inhaler 2 weeks ago and her rescue inhaler today.",
+    "patientAge": 14,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 1,
+    "patientSex": 2,
+    "patientHeight": 160,
+    "patientWeight": 50,
+    "patientPhotoId": 17,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to a 14-year-old in the worst end of the asthma severity spectrum: tripoding, drowsy, with a nearly silent chest, central cyanosis, and 1–2 word speech. She has every high-risk feature in the protocol: prior PICU + intubation, multiple ED visits, heavy beta-agonist use, controller non-adherence, and a behavioral/psychosocial contributor (depression). Drowsiness and silent chest are LATE warnings of impending respiratory arrest. The teaching path is the full escalation: position + O2, IMMEDIATE DuoNeb + IM epi (do not wait for nebulizer onset in a near-fatal patient), IV steroid, magnesium, and transition to CPAP as the bronchodilators take effect.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 148,
+        "bpSys": 118,
+        "bpDia": 72,
+        "respRate": 36,
+        "spo2": 86,
+        "etco2": 56,
+        "temp": 37,
+        "obstruction": 70,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize near-fatal asthma (silent chest + drowsy + speech 1–2 words)",
+        "Position of comfort (tripod); high-flow O2 via NRB to target SpO2 94–98%",
+        "Albuterol 5 mg + Ipratropium 0.5 mg nebulized via mask; repeat albuterol unlimited frequency",
+        "Epinephrine 0.3 mg IM anterolateral thigh (50 kg × 0.01 mg/kg = 0.5 mg → cap at 0.3 mg max); may repeat q5–15 min",
+        "IV access — set up IV steroid + magnesium",
+        "Continuous SpO2 + waveform capnography (shark fin = bronchospasm; rising EtCO2 = failing)"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "IV steroid + magnesium → CPAP transition",
+      "description": "First-line treatments are flowing. Crew adds IV methylprednisolone 100 mg (50 kg × 2 mg/kg, max 125 mg) for the corticosteroid effect, magnesium sulfate 2 g IV over 15 minutes (50 kg × 40 mg/kg = 2000 mg, capped at 2 g protocol max) for severe bronchoconstriction, and transitions to CPAP at 5–7.5 cmH2O FiO2 100% with the nebulizer in line. As mag infuses, BP is monitored — magnesium can cause hypotension responsive to a fluid bolus.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 142,
+        "bpSys": 110,
+        "bpDia": 70,
+        "respRate": 32,
+        "spo2": 92,
+        "etco2": 46,
+        "temp": 37,
+        "obstruction": 50,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Methylprednisolone 100 mg IV (50 kg × 2 mg/kg = 100 mg; max 125 mg) — IV route for critical patient",
+        "Magnesium sulfate 2 g IV over 10–15 min (50 kg × 40 mg/kg = 2000 mg → cap at 2 g max)",
+        "CPAP 7.5 cmH2O FiO2 100% with bronchodilator in line; coach patient through mask",
+        "Monitor BP during mag — fluid bolus 250–500 mL ready if mag-induced hypotension",
+        "Do NOT jump to advanced airway in pure bronchospasm — risk of pneumothorax and collapse",
+        "Do NOT give inhaled magnesium or heliox — no patient benefit"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Improving on CPAP; transport",
+      "description": "After all four therapies (DuoNeb + IM epi + IV steroid + IV mag) and transition to CPAP, the patient is markedly improved. SpO2 95% on CPAP, RR 24, mentation cleared, speaking short sentences. Crew transports to pediatric-capable receiving hospital with continued CPAP, finishing mag infusion, and full timeline for handoff.",
+      "monitorType": 0,
+      "trendTime": 50,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 122,
+        "bpSys": 108,
+        "bpDia": 68,
+        "respRate": 24,
+        "spo2": 95,
+        "etco2": 38,
+        "temp": 37,
+        "obstruction": 30,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Continue CPAP with nebulizer in line; reassess each 5 min",
+        "Finish magnesium infusion; monitor BP, give 250–500 mL bolus if hypotensive",
+        "Transport to pediatric-capable ED; bedside handoff with full timeline + dose calc",
+        "Flag high-risk profile (prior intubation, ED visits, depression, non-adherence) at handoff"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Escalation delayed → respiratory arrest",
+      "description": "Crew started a single neb and waited for response without giving IM epi or IV mag. Patient progressed from drowsy + silent chest to apnea, then to cardiac arrest from hypoxic insult. Crew must now manage with BVM (gentle, slow rate to avoid air trapping), continue nebulizer, give IM epi, IV mag, and full ACLS if pulseless. The teaching point is that severe asthma requires PARALLEL escalation, not sequential.",
+      "monitorType": 0,
+      "trendTime": 15,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 30,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 8,
+        "temp": 37,
+        "obstruction": 80,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": false,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Confirm pulselessness; immediate high-quality CPR",
+        "BVM slow ventilation rate (8–10/min); long expiratory phase; avoid air trapping",
+        "Epinephrine 0.3 mg IM (50 kg × 0.01 mg/kg = 0.5 mg → cap at 0.3 mg); may repeat",
+        "Magnesium 2 g IV over 10–15 min (50 kg × 40 mg/kg → cap at 2 g)"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize near-fatal asthma (silent chest + drowsy + speech 1–2 words)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Position of comfort (tripod); high-flow O2 via NRB to target SpO2 94–98%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Albuterol 5 mg + Ipratropium 0.5 mg nebulized via mask; repeat albuterol unlimited frequency",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Epinephrine 0.3 mg IM anterolateral thigh (50 kg × 0.01 mg/kg = 0.5 mg → cap at 0.3 mg max); may repeat q5–15 min",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "IV access — set up IV steroid + magnesium",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continuous SpO2 + waveform capnography (shark fin = bronchospasm; rising EtCO2 = failing)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Methylprednisolone 100 mg IV (50 kg × 2 mg/kg = 100 mg; max 125 mg) — IV route for critical patient",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Magnesium sulfate 2 g IV over 10–15 min (50 kg × 40 mg/kg = 2000 mg → cap at 2 g max)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "CPAP 7.5 cmH2O FiO2 100% with bronchodilator in line; coach patient through mask",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Monitor BP during mag — fluid bolus 250–500 mL ready if mag-induced hypotension",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT jump to advanced airway in pure bronchospasm — risk of pneumothorax and collapse",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT give inhaled magnesium or heliox — no patient benefit",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continue CPAP with nebulizer in line; reassess each 5 min",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Finish magnesium infusion; monitor BP, give 250–500 mL bolus if hypotensive",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to pediatric-capable ED; bedside handoff with full timeline + dose calc",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Flag high-risk profile (prior intubation, ED visits, depression, non-adherence) at handoff",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm pulselessness; immediate high-quality CPR",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "BVM slow ventilation rate (8–10/min); long expiratory phase; avoid air trapping",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Epinephrine 0.3 mg IM (50 kg × 0.01 mg/kg = 0.5 mg → cap at 0.3 mg); may repeat",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Magnesium 2 g IV over 10–15 min (50 kg × 40 mg/kg → cap at 2 g)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

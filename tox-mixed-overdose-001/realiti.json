@@ -1,0 +1,340 @@
+{
+  "scenarioId": "tox-mixed-overdose-001",
+  "scenarioName": "Mixed Opioid + Benzodiazepine Overdose — Partial Response to Naloxone, Continued BVM",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1200,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "32-year-old male was found unresponsive in the locked stall of a coffee shop restroom approximately 10 minutes ago. The maintenance worker forced the lock, found the patient slumped on the toilet with a tourniquet still on his arm, an empty syringe on the floor, and a pill bottle of alprazolam (prescribed to a different person) open on the floor. Patient is unresponsive to voice and shake; minimal response to noxious stimulus. Per the maintenance worker, no naloxone was given prior to EMS. Patient is otherwise unidentified — no ID on his person but a phone is on the floor. No history available beyond the scene.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to a young man unresponsive on the floor of a coffee-shop restroom with the classic opioid toxidrome — pinpoint pupils, hypoventilation, cyanosis — AND an open bottle of alprazolam belonging to someone else, suggesting a polysubstance ingestion. The teaching point here is foundational: airway, breathing, oxygenation FIRST; naloxone is an adjunct. With a benzodiazepine on board the patient may not fully wake even with adequate naloxone, and continued BVM ventilation is the right answer — RSI is NOT indicated as long as oxygenation and ventilation are adequate with BVM and a basic adjunct. → Naloxone given; partial response: After establishing airway and starting BVM, naloxone 0.4 mg IV is given (titrated low to avoid abrupt withdrawal). Within 2 minutes the respiratory rate improves to 14 with adequate tidal volume on its own, SpO2 climbs to 96% on supplemental O2, but the patient does not fully wake — he is groggy, eye-opens to pain, slurred 1–2 word responses. This pattern is classic for a polysubstance ingestion (opioid + benzo): naloxone reverses the opioid, but the benzodiazepine remains active. Continued airway monitoring and supportive care are correct; RSI is NOT indicated because the patient is now ventilating adequately and oxygenating well, and flumazenil is contraindicated. → Transport with monitoring: Patient transported with continuous SpO2, EtCO2, cardiac monitor, NPA in place, supplemental O2. He remains depressed (benzo on board) but is ventilating adequately and oxygenating well. Crew watches for recurrent opioid effect (naloxone wearing off) and is prepared to repeat dose if respiratory depression recurs."
+  },
+  "patientInformation": {
+    "patientName": "Tyler McClain",
+    "patientCondition": "Found unresponsive in a public restroom by a maintenance worker; lips cyanotic, slow shallow breathing, pinpoint pupils, and visible signs of recent IV drug use.",
+    "patientAge": 32,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 180,
+    "patientWeight": 80,
+    "patientPhotoId": 39,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to a young man unresponsive on the floor of a coffee-shop restroom with the classic opioid toxidrome — pinpoint pupils, hypoventilation, cyanosis — AND an open bottle of alprazolam belonging to someone else, suggesting a polysubstance ingestion. The teaching point here is foundational: airway, breathing, oxygenation FIRST; naloxone is an adjunct. With a benzodiazepine on board the patient may not fully wake even with adequate naloxone, and continued BVM ventilation is the right answer — RSI is NOT indicated as long as oxygenation and ventilation are adequate with BVM and a basic adjunct.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 78,
+        "bpSys": 108,
+        "bpDia": 64,
+        "respRate": 4,
+        "spo2": 78,
+        "etco2": 62,
+        "temp": 36.4,
+        "obstruction": 0,
+        "custMeasure1": 92,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Scene safety; PPE; remove tourniquet; secure needle (sharps container)",
+        "Primary survey; recognize opioid toxidrome (resp depression, miosis, AMS)",
+        "Reposition (head tilt/chin lift); insert NPA (gag intact)",
+        "BVM ventilation 10–12/min with PEEP 5; target SpO2 94–98%",
+        "Continuous SpO2 + waveform capnography",
+        "Check blood glucose — rule out hypoglycemia as concurrent cause of AMS"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Naloxone given; partial response",
+      "description": "After establishing airway and starting BVM, naloxone 0.4 mg IV is given (titrated low to avoid abrupt withdrawal). Within 2 minutes the respiratory rate improves to 14 with adequate tidal volume on its own, SpO2 climbs to 96% on supplemental O2, but the patient does not fully wake — he is groggy, eye-opens to pain, slurred 1–2 word responses. This pattern is classic for a polysubstance ingestion (opioid + benzo): naloxone reverses the opioid, but the benzodiazepine remains active. Continued airway monitoring and supportive care are correct; RSI is NOT indicated because the patient is now ventilating adequately and oxygenating well, and flumazenil is contraindicated.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 84,
+        "bpSys": 116,
+        "bpDia": 70,
+        "respRate": 14,
+        "spo2": 96,
+        "etco2": 42,
+        "temp": 36.5,
+        "obstruction": 0,
+        "custMeasure1": 92,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Naloxone 0.4 mg IV (titrate to adequate respiratory effort, NOT to wake-up)",
+        "Maintain NPA + supplemental O2; do NOT push to RSI — patient is ventilating adequately",
+        "Do NOT give flumazenil — can precipitate refractory seizures in benzo-dependent patient",
+        "Monitor for recurrent respiratory depression — naloxone wears off in ~30–90 min",
+        "Transport with continuous monitoring; bring pill bottle and syringe (in sharps) to ED",
+        "Coordinate with PD; document scene findings and chain of custody for evidence"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Transport with monitoring",
+      "description": "Patient transported with continuous SpO2, EtCO2, cardiac monitor, NPA in place, supplemental O2. He remains depressed (benzo on board) but is ventilating adequately and oxygenating well. Crew watches for recurrent opioid effect (naloxone wearing off) and is prepared to repeat dose if respiratory depression recurs.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 82,
+        "bpSys": 118,
+        "bpDia": 70,
+        "respRate": 14,
+        "spo2": 97,
+        "etco2": 40,
+        "temp": 36.5,
+        "obstruction": 0,
+        "custMeasure1": 92,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Repeat naloxone 0.4 mg IV/IM if RR drops < 10 or SpO2 falls",
+        "Document doses, route, response, total naloxone given, ongoing assessment"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Naloxone IN without airway support",
+      "description": "Crew jumped to naloxone IN without first opening the airway or giving BVM ventilation. Patient remained apneic during the 3–5 minute onset window for IN naloxone, SpO2 fell into the 60s, EtCO2 rose into the 70s, and the patient developed bradycardia from hypoxia. Crew now must rescue: airway adjunct + BVM with PEEP, give IV naloxone, and watch for arrest.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 42,
+        "bpSys": 88,
+        "bpDia": 50,
+        "respRate": 4,
+        "spo2": 64,
+        "etco2": 74,
+        "temp": 36.4,
+        "obstruction": 0,
+        "custMeasure1": 92,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "NPA + two-person BVM with PEEP NOW; ventilate to SpO2 > 94%",
+        "Naloxone 0.4–1 mg IV titrated to adequate respiratory effort (IV more predictable than IN)",
+        "If pulse lost: CPR per Cardiac Arrest protocol; naloxone has NO benefit in arrest"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Excessive naloxone → precipitated withdrawal",
+      "description": "Crew gave 2 mg of naloxone IV as a single bolus instead of titrating low. Within 60 seconds the patient awakens combatively, vomits, and tries to rip out the IV. This is iatrogenic precipitated opioid withdrawal — protocol explicitly warns against it. Crew must protect airway from aspiration, restrain only as needed for safety, and continue supportive care until benzo wears off as well.",
+      "monitorType": 0,
+      "trendTime": 15,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 122,
+        "bpSys": 156,
+        "bpDia": 96,
+        "respRate": 28,
+        "spo2": 95,
+        "etco2": 36,
+        "temp": 36.6,
+        "obstruction": 0,
+        "custMeasure1": 92,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Position to side; suction airway; protect from aspiration",
+        "Verbal reassurance; explain naloxone reversed an overdose; coach to stay still",
+        "Transport — naloxone wears off and opioid + benzo can re-emerge; AMA risky"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Scene safety; PPE; remove tourniquet; secure needle (sharps container)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Primary survey; recognize opioid toxidrome (resp depression, miosis, AMS)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reposition (head tilt/chin lift); insert NPA (gag intact)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "BVM ventilation 10–12/min with PEEP 5; target SpO2 94–98%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continuous SpO2 + waveform capnography",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose — rule out hypoglycemia as concurrent cause of AMS",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Naloxone 0.4 mg IV (titrate to adequate respiratory effort, NOT to wake-up)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Maintain NPA + supplemental O2; do NOT push to RSI — patient is ventilating adequately",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT give flumazenil — can precipitate refractory seizures in benzo-dependent patient",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Monitor for recurrent respiratory depression — naloxone wears off in ~30–90 min",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport with continuous monitoring; bring pill bottle and syringe (in sharps) to ED",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Coordinate with PD; document scene findings and chain of custody for evidence",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Repeat naloxone 0.4 mg IV/IM if RR drops < 10 or SpO2 falls",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document doses, route, response, total naloxone given, ongoing assessment",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "NPA + two-person BVM with PEEP NOW; ventilate to SpO2 > 94%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Naloxone 0.4–1 mg IV titrated to adequate respiratory effort (IV more predictable than IN)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If pulse lost: CPR per Cardiac Arrest protocol; naloxone has NO benefit in arrest",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Position to side; suction airway; protect from aspiration",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Verbal reassurance; explain naloxone reversed an overdose; coach to stay still",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport — naloxone wears off and opioid + benzo can re-emerge; AMA risky",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

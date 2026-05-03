@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Difficult IV Access in Septic Dehydrated Elderly Patient — IO / EJ Decision and Infusion Math — Printable</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--card:#fff;--card-border:#d6d3d1;--text:#1c1917;--text-secondary:#44403c;--text-muted:#78716c;--green:#166534;--red:#b91c1c;--red-light:#fef2f2;--red-border:#fecaca;--orange:#c2410c;--yellow:#a16207;--blue:#1e40af;--radius:8px;--radius-sm:6px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;background:#f5f5f4;color:var(--text);line-height:1.5;padding:24px;font-size:12pt}
+.sheet{max-width:800px;margin:0 auto;background:#fff;padding:28px 32px;box-shadow:0 1px 4px rgba(0,0,0,.08);border-radius:10px}
+.scenario-name{font-size:11pt;color:var(--text-secondary)}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;break-inside:avoid}
+.card-title{font-size:9pt;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:10px 14px 6px;border-bottom:1px solid #f5f5f4}
+.card-content{padding:10px 14px 12px}
+.scene-row{padding:6px 0;border-bottom:1px solid #f5f5f4;display:grid;grid-template-columns:110px 1fr;gap:10px}
+.scene-row:last-child{border-bottom:none}
+.scene-label{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.scene-value{font-size:11pt;color:var(--text-secondary)}
+.cue-list{list-style:none;margin:0}
+.cue-list li{font-size:11pt;color:var(--text-secondary);padding:3px 0 3px 14px;position:relative}
+.cue-list li::before{content:'→';position:absolute;left:0;color:var(--text-muted);font-size:10pt}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e7e5e4}
+.sample-cell{background:#fff;padding:9px 12px}
+.sample-cell:nth-child(1),.sample-cell:nth-child(6){grid-column:1/-1}
+.sample-letter{font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--green);margin-right:4px}
+.sample-name{font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:3px}
+.sample-text{font-size:10.5pt;color:var(--text-secondary);line-height:1.45}
+.patient-chips{display:flex;gap:8px;flex-wrap:wrap}
+.patient-chip{font-size:10pt;padding:4px 10px;background:#f5f5f4;border-radius:6px;color:var(--text-secondary)}
+.patient-chip strong{color:var(--text);font-weight:700}
+.phase-section{break-before:auto;page-break-before:auto;margin-top:12px}
+.phase-section .phase-card{break-after:avoid;page-break-after:avoid}
+.phase-card{border-left:4px solid var(--text)}
+.phase-card-branch{border-left-color:var(--red)}
+.branch-tag{display:inline-block;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);background:var(--red-light);padding:2px 8px;border-radius:4px;margin-bottom:6px}
+.phase-title{font-size:16pt;font-weight:700;margin-bottom:4px}
+.phase-trigger{font-family:'DM Mono',ui-monospace,monospace;font-size:9pt;color:var(--yellow);margin-bottom:6px}
+.phase-desc{font-size:11pt;color:var(--text-secondary);line-height:1.5}
+.ecg-label{font-family:'DM Mono',ui-monospace,monospace;font-size:10pt;color:var(--text-secondary);padding:8px 12px;background:#fafaf9;border-bottom:1px solid #f0efec}
+.vitals-grid{display:flex;flex-wrap:wrap;gap:4px 18px;padding:8px 14px}
+.vital-cell{background:transparent;padding:0;text-align:left;display:flex;align-items:baseline;gap:4px}
+.vital-cell.full-width{grid-column:auto}
+.vital-name{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.vital-val{font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--text);line-height:1.1}
+.vital-unit{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;color:var(--text-muted)}
+.loc-block{margin-bottom:10px}
+.avpu-bar{display:flex;border:1px solid var(--card-border);border-radius:6px;overflow:hidden;margin-bottom:10px}
+.avpu-seg{flex:1;text-align:center;padding:6px 4px;font-family:'DM Mono',ui-monospace,monospace;font-size:10pt;font-weight:700;color:var(--text-muted);background:#fafaf9}
+.avpu-seg.sel-a{background:#ecfccb;color:var(--green)}
+.avpu-seg.sel-v{background:#fef3c7;color:var(--yellow)}
+.avpu-seg.sel-p{background:#ffedd5;color:var(--orange)}
+.avpu-seg.sel-u{background:var(--red-light);color:var(--red)}
+.gcs-detail{display:flex;flex-wrap:wrap;gap:6px 16px;padding:8px 14px;border:1px solid var(--card-border);border-radius:6px;margin-bottom:10px;align-items:baseline}
+.gcs-item{display:flex;align-items:baseline;gap:4px;padding:0;border:none}
+.gcs-item:last-of-type{border-bottom:none}
+.gcs-part{order:1;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.gcs-score{order:2;font-family:'DM Mono',ui-monospace,monospace;font-size:11pt;font-weight:700;color:var(--text)}
+.gcs-desc{order:3;font-size:9.5pt;color:var(--text-muted);font-style:italic}
+.gcs-desc::before{content:'('}
+.gcs-desc::after{content:')'}
+.gcs-total-row{display:flex;align-items:baseline;gap:4px;order:-1;padding:0;margin:0;border:none;font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.gcs-total-row .gcs-total{font-family:'DM Mono',ui-monospace,monospace;font-size:12pt;font-weight:700;color:var(--text)}
+.finding-row{padding:6px 0;border-bottom:1px solid #f5f5f4;display:grid;grid-template-columns:100px 1fr;gap:10px}
+.finding-row:last-child{border-bottom:none}
+.finding-label{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
+.finding-value{font-size:10.5pt;color:var(--text-secondary)}
+.finding-speech{font-style:italic;color:var(--text-muted)}
+.findings-notes{list-style:none;margin:0}
+.findings-notes li{font-size:10pt;color:var(--text-secondary);padding:2px 0 2px 12px;position:relative}
+.findings-notes li::before{content:'·';position:absolute;left:2px;font-weight:700;color:var(--text-muted)}
+.action-row{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #f5f5f4;break-inside:avoid}
+.action-row:last-child{border-bottom:none}
+.action-box{width:14px;height:14px;border:1.5px solid var(--text-muted);border-radius:3px;flex-shrink:0;margin-top:3px}
+.action-body{flex:1;min-width:0}
+.action-head{display:flex;align-items:flex-start;gap:8px;margin-bottom:4px}
+.action-priority{display:inline-block;font-family:'DM Mono',ui-monospace,monospace;font-size:7.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 6px;border-radius:3px;flex-shrink:0;margin-top:2px}
+.p-critical{background:var(--red-light);color:var(--red)}
+.p-important{background:#fff7ed;color:var(--orange)}
+.p-supp{background:#f5f5f4;color:var(--text-muted)}
+.action-text{font-size:11pt;font-weight:600;color:var(--text);line-height:1.35}
+.action-rationale{display:none}
+.action-excerpt{font-size:9.5pt;color:var(--text-secondary);line-height:1.5;font-style:italic;border-left:2px solid var(--card-border);padding:2px 0 2px 9px;margin:5px 0 4px 0}
+.action-ref{font-family:'DM Mono',ui-monospace,monospace;font-size:8pt;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.action-head{margin-bottom:0}
+.action-row{padding:8px 0}
+@media print{
+  body{background:#fff;padding:0;font-size:10pt}
+  .sheet{box-shadow:none;max-width:none;padding:0.4in;border-radius:0}
+  .card{break-inside:avoid;margin-bottom:8px}
+  .card-title{padding:6px 10px 3px}
+  .card-content{padding:6px 10px 8px}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="card"><div class="card-title">Scenario</div><div class="card-content"><div class="scenario-name">Difficult IV Access in Septic Dehydrated Elderly Patient — IO / EJ Decision and Infusion Math</div></div></div>
+  <div class="card"><div class="card-title">Patient</div><div class="card-content"><div class="patient-chips"><span class="patient-chip"><strong>Doris Pemberton</strong></span><span class="patient-chip">78 years female</span><span class="patient-chip">128 lbs (58 kg)</span><span class="patient-chip">5'2"</span><span class="patient-chip">CC: Three days of progressive weakness, decreased PO intake, low-grade fever, and dark concentrated urine; daughter found her in bed too weak to lift her head.</span></div></div></div>
+  <div class="card"><div class="card-title">Scene</div><div class="card-content">
+    <div class="scene-row"><div class="scene-label">Dispatch</div><div class="scene-value">Dispatch: 78-year-old female, sick person, weakness and decreased oral intake. Daughter on scene at single-family home.</div></div>
+    <div class="scene-row"><div class="scene-label">Location</div><div class="scene-value">Single-family home, master bedroom. Patient supine in bed, head of bed elevated. Bedside commode visible with dark concentrated urine. Adequate lighting; clear path through hallway to front door.</div></div>
+    <div class="scene-row"><div class="scene-label">Time</div><div class="scene-value">Friday, 13:30, weekday afternoon</div></div>
+    <div class="scene-row"><div class="scene-label">Safety</div><div class="scene-value">Scene safe. Standard universal precautions; possible infectious source. Daughter calm and articulate.</div></div>
+    <div class="scene-row"><div class="scene-label">Bystanders</div><div class="scene-value">Daughter present, gives clear history: 3 days of fever, decreased PO, dark urine. Brings medication bottles to the bedside.</div></div>
+  </div></div><div class="card"><div class="card-title">Visual Cues on Arrival</div><div class="card-content"><ul class="cue-list"><li>Frail elderly woman supine in bed, eyes half-closed</li><li>Dry, cracked lips; tongue dry and furrowed</li><li>Sunken eyes — visible dehydration</li><li>Bedside commode with very dark, concentrated urine</li><li>Skin tenting visible on the dorsum of the hand</li><li>Veins on the arms appear flat and ropy — small caliber, difficult targets</li></ul></div></div>
+  <div class="card">
+    <div class="card-title">SAMPLE History</div>
+    <div class="card-content" style="padding:0">
+      <div class="sample-grid">
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">S</span> Signs &amp; Symptoms</div><div class="sample-text">78-year-old female who lives alone has been ill for 3 days with fever, decreased appetite, and decreased fluid intake. Her daughter, who normally checks on her by phone every day, became concerned today when her mother did not answer the phone all morning. She drove over and found her mother in bed, very weak, with dry mouth and tongue, eyes sunken, and concentrated dark urine in the bedside commode. Patient is conversant but lethargic, oriented to person only, and has been mostly bed-bound for 24 hours. She has known kidney disease (CKD stage 3), atrial fibrillation, hypertension, and a history of recurrent UTIs with multidrug-resistant organisms.</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">A</span> Allergies</div><div class="sample-text">Sulfa (rash), Penicillin (rash)</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">M</span> Medications</div><div class="sample-text">Apixaban 2.5 mg PO BID (renal-adjusted), Metoprolol succinate 25 mg PO daily, Lisinopril 5 mg PO daily, Levothyroxine 50 mcg PO daily, Acetaminophen PRN</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">P</span> Past Medical</div><div class="sample-text">Chronic kidney disease (CKD stage 3, baseline Cr 1.8), Atrial fibrillation on apixaban, Hypertension, Hypothyroidism, Recurrent UTIs (3 in past year, MDR organisms), Osteoporosis (multiple compression fractures)</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">L</span> Last Intake</div><div class="sample-text">Few sips of water yesterday; minimal solid food for 3 days</div></div>
+        <div class="sample-cell"><div class="sample-name"><span class="sample-letter">E</span> Events</div><div class="sample-text">Three days of fever and decreased PO; bed-bound today; daughter found her too weak to lift her head and called 911.</div></div>
+      </div>
+    </div>
+  </div>
+  <section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Initial Contact</div>
+        
+        <div class="phase-desc">EMS arrives to find a 78-year-old female frail and clearly dehydrated: dry mouth and tongue, sunken eyes, skin tenting, dark concentrated urine. She is hypotensive at 84/52, tachycardic at 110 (despite chronic beta-blocker), and lethargic with oriented-to-person-only mentation. The veins on her arms are flat, ropy, and small. The teaching point sets up immediately: this is septic shock with poor IV access. Crew needs to commit to a clear escalation plan — two peripheral attempts in ≤ 90 seconds, then IO (preferred for medication-administration speed) or EJ (preferred for sustained access in cooperative patients) — and must run the infusion math correctly: 30 mL/kg fluid goal = 1740 mL, norepi 0.05–0.5 mcg/kg/min.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Atrial Fibrillation</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">110</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">84/52</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">94%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">24</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">28</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">101.7°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">152</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg sel-v">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">To speech</span><span class="gcs-score">3</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Confused</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Localizes pain</span><span class="gcs-score">5</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">12</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent, self-maintained</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 24, lungs clear</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Weak rapid radial pulse; cool extremities; cap refill 4 sec; flat ropy veins</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pale with mild flush at face · warm at chest, cool at extremities · dry — skin tenting on dorsum of hand</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Equal at 3 mm, briskly reactive</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Symmetric; weakness throughout</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"I'm so tired … I just want to sleep …"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Dry oral mucosa, furrowed tongue, sunken eyes</li><li>Dark concentrated urine in commode</li><li>Skin tenting on hand</li><li>Tachycardic despite chronic beta-blocker — concerning</li><li>T 101.6°F (38.7°C); EtCO2 28 (poor perfusion marker)</li><li>Veins: flat, ropy, small-caliber, difficult targets</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Primary survey; recognize septic shock with severe dehydration</div></div>
+        <div class="action-excerpt">Inclusion Criteria: Signs of poor perfusion (due to a medical cause) such as one or more of the following: Altered mental status; Delayed capillary refill (&gt; 3 seconds); Decreased urine output; Respiratory rate greater than 20 breaths per minute in adults; Hypotension for age; Tachycardia or bradycardia for age, out of proportion to temperature; Weak, decreased or bounding pulses; Cool/mottled or flushed/ruddy skin.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">O2 NC 2 L → titrate to SpO2 94–98%</div></div>
+        <div class="action-excerpt">Administer oxygen as appropriate with a target of achieving 94–98% saturation.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Cardiac monitor; SpO2 + EtCO2 (low EtCO2 = poor perfusion)</div></div>
+        <div class="action-excerpt">Cardiac monitor. Pulse oximetry and EtCO2 (reading of less than 25 mmHg may be sign of poor perfusion).</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Check blood glucose; correct if &lt; 60</div></div>
+        <div class="action-excerpt">Check blood sugar, and correct if less than 60 mg/dL.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Attempt 2 peripheral IVs with appropriate technique; commit to ≤ 90 sec / 2 attempts then escalate</div></div>
+        <div class="action-excerpt">Establish IV access. If unable to obtain within two attempts or less than 90 seconds, place an IO needle.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">IO placed; fluid + pressor flowing</div>
+        <div class="phase-trigger">Trigger: Peripheral IV access failed within protocol timeframe; IO (or EJ) access established and fluid + vasopressor delivered without further delay.</div>
+        <div class="phase-desc">After two failed peripheral attempts within 90 seconds, the crew correctly escalates: a humeral IO is placed (preferred over proximal tibia for adult resuscitation flow rates), or an external jugular is cannulated as an alternative. NS pressure-infused via the IO toward the 30 mL/kg goal: 58 kg × 30 mL/kg = 1740 mL total target, given as 500 mL boluses. Norepi drip is prepared at 0.05–0.5 mcg/kg/min: starting at 0.1 mcg/kg/min = 5.8 mcg/min titrated to MAP &gt; 65. Push-dose epi 10 mcg q3–5 min as bridge while drip is set up.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Atrial Fibrillation</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">104</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">92/58</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">96%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">22</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">32</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">101.7°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">152</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg sel-v">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">To speech</span><span class="gcs-score">3</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Confused</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Localizes pain</span><span class="gcs-score">5</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">12</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 22, lungs still clear</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Pulse strengthening with fluid; mottling improving</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">less mottled, slightly pinker chest · warming · dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Equal, briskly reactive</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Slightly improved</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"(answers single words: 'thirsty,' 'sleep'; tracks crew with eyes)"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>Humeral IO in place (or large EJ); flow 250 mL/15 min via pressure infuser</li><li>After 500 mL: BP 92/58, HR 104</li><li>Lungs clear after first bolus — fluid still safe</li><li>Norepi drip set up; push-dose epi as bridge</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Place IO (humeral preferred for flow rate) or cannulate EJ; confirm patency</div></div>
+        <div class="action-excerpt">Establish IV access. If unable to obtain within two attempts or less than 90 seconds, place an IO needle.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">NS 500 mL boluses pressure-infused; goal 1740 mL total (58 kg × 30 mL/kg) or until MAP &gt; 65 / pulmonary edema</div></div>
+        <div class="action-excerpt">Adult: Physiologic target: MAP goal 65 mmHg. Fluid goal of up to 30 mL/kg of isotonic fluid by administering rapid, predetermined boluses (e.g., 500 mL) unless the MAP goal is achieved, or pulmonary edema develops.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Norepinephrine 0.05–0.5 mcg/kg/min; start 0.1 mcg/kg/min = 5.8 mcg/min; titrate to MAP &gt; 65</div></div>
+        <div class="action-excerpt">Vasopressors (shock unresponsive to IV fluids) titrated to physiologic targets: Norepinephrine 0.05–0.5 mcg/kg/minute. Preference in both neurogenic and infectious (sepsis) causes of distributive shock.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-important">important</span><div class="action-text">Push-dose epi 10 mcg IV q3–5 min as bridge while norepi drip is mixed (10 mcg/mL prep)</div></div>
+        <div class="action-excerpt">Epinephrine, 0.05–0.3 mcg/kg/minute. Alternative to a drip, push dose epinephrine may be administered: Prepare 10 mcg/mL by diluting 1 mL of epinephrine 0.1 mg/mL (1:10,000) in 9 mL of normal saline; Administer 0.01 mg/kg (0.1 mL/kg) up to a maximum single dose of 10 mcg (1 mL) q 3–5 minutes titrated to maintain goal MAP.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Advance notification — septic shock, fluid + pressor underway, ETA</div></div>
+        <div class="action-excerpt">Provide advanced notification to the hospital. Performance Measures: Percentage of patients with suspected shock for whom advanced notification to the hospital was provided.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Auscultate lungs after each bolus; stop fluids if rales develop (cardiogenic transition)</div></div>
+        <div class="action-excerpt">Patient Safety Considerations: Recognition of cardiogenic shock - If the patient condition deteriorates after fluid administration, rales or hepatomegaly develop, then consider cardiogenic shock and withholding further fluid administration.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card">
+      <div class="card-content">
+        
+        <div class="phase-title">Improving; transport on infusions</div>
+        <div class="phase-trigger">Trigger: Combination of fluid resuscitation and norepinephrine infusion produced clinical improvement; transport with continued therapy.</div>
+        <div class="phase-desc">Patient improving with restored circulation. MAP 75, HR 96 (down from 110), pinker, more interactive. Lungs still clear. Crew transports on continuous norepi infusion via IO/EJ with continued fluid as long as lungs remain clear. Bedside handoff includes timeline, IV access challenge, total fluid given, infusion rate.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Atrial Fibrillation</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">96</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">110/70</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">97%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">18</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">36</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">101.5°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">152</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg sel-v">V</div><div class="avpu-seg">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">Spontaneous</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Confused</span><span class="gcs-score">4</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Obeys commands</span><span class="gcs-score">6</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">14</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Patent</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 18, lungs clear</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Stronger pulse; warmer extremities; cap refill 2 sec</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">pink · warm · less dry</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Equal, briskly reactive</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Slightly improving</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"I'm sorry I haven't been drinking. I just felt awful."</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>MAP 75 with norepi 0.15 mcg/kg/min</li><li>Mentation improved — answers in short sentences now</li><li>Lungs clear; can continue fluid</li><li>EtCO2 36 — improving with restored perfusion</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Continue norepi titration to MAP &gt; 65; continue fluid alongside (lungs clear)</div></div>
+        <div class="action-excerpt">IV fluid volume goal attained by giving boluses that are pressure infused over less than 15 minutes each based on patient's condition and clinical impression. Fluid volume goal to achieve a mean arterial pressure (adults). Vasopressors (shock unresponsive to IV fluids) titrated to physiologic targets.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Full vital signs q5 min; document fluid total + pressor dose + response</div></div>
+        <div class="action-excerpt">Key Documentation Elements: Medications administered. Full vital signs (pulse, blood pressure, respiratory rate, neurologic status assessment) with reassessment q 15 minutes or more frequently as appropriate. Lactate level (if available). Neurologic status assessment. Amount of fluids given.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-supp">supplemental</span><div class="action-text">Acetaminophen 1000 mg PR if able (max 1000 mg per Shock step 15a)</div></div>
+        <div class="action-excerpt">Antipyretics for fever – nonsteroidal anti-inflammatory agents are contraindicated in infants less than 6 months of age: Acetaminophen (15 mg/kg; maximum dose of 1000 mg).</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div></div>
+  </div>
+  </section><section class="phase-section">
+    <div class="card phase-card phase-card-branch">
+      <div class="card-content">
+        <div class="branch-tag">Improper Care Branch</div>
+        <div class="phase-title">Time wasted on peripheral attempts</div>
+        <div class="phase-trigger">Trigger: Multiple unsuccessful peripheral IV attempts beyond protocol timeframe; fluid resuscitation and vasopressor delayed; patient progressed to deeper shock with end-organ injury.</div>
+        <div class="phase-desc">Crew makes 5+ peripheral IV attempts over more than 10 minutes without escalating to IO or EJ. The patient receives no fluid, no pressor, no antipyretic, and continues to deteriorate. BP drops to 64/40, mentation decreases to GCS 8, EtCO2 falls below 22 — severe shock with end-organ injury. The protocol's explicit '90 seconds / 2 attempts then IO' rule was violated. Rescue requires immediate IO placement now and aggressive resuscitation.</div>
+      </div>
+    </div>
+    <div class="card">
+    <div class="card-title">Vital Signs</div>
+    <div class="card-content" style="padding:0">
+      <div class="ecg-label">⏦ Atrial Fibrillation</div>
+      <div class="vitals-grid">
+        <div class="vital-cell"><div class="vital-name">HR</div><div class="vital-val">124</div><div class="vital-unit">bpm</div></div>
+        <div class="vital-cell"><div class="vital-name">BP</div><div class="vital-val">64/40</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">SpO₂</div><div class="vital-val">90%</div></div>
+        <div class="vital-cell"><div class="vital-name">RR</div><div class="vital-val">30</div><div class="vital-unit">/min</div></div>
+        <div class="vital-cell"><div class="vital-name">EtCO₂</div><div class="vital-val">22</div><div class="vital-unit">mmHg</div></div>
+        <div class="vital-cell"><div class="vital-name">Temp</div><div class="vital-val">101.8°</div><div class="vital-unit">F</div></div>
+        <div class="vital-cell full-width"><div class="vital-name">Glucose</div><div class="vital-val">152</div><div class="vital-unit">mg/dL</div></div>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Clinical Findings</div>
+    <div class="card-content">
+      
+    <div class="loc-block">
+      <div class="avpu-bar"><div class="avpu-seg">A</div><div class="avpu-seg">V</div><div class="avpu-seg sel-p">P</div><div class="avpu-seg">U</div></div>
+      <div class="gcs-detail">
+    <div class="gcs-item"><span class="gcs-part">Eyes</span><span class="gcs-desc">To pain</span><span class="gcs-score">2</span></div>
+    <div class="gcs-item"><span class="gcs-part">Verbal</span><span class="gcs-desc">Incomprehensible sounds</span><span class="gcs-score">2</span></div>
+    <div class="gcs-item"><span class="gcs-part">Motor</span><span class="gcs-desc">Withdraws from pain</span><span class="gcs-score">4</span></div>
+    <div class="gcs-total-row">Total GCS <span class="gcs-total">8</span></div>
+  </div>
+    </div>
+      <div class="finding-row"><div class="finding-label">Airway</div><div class="finding-value">Maintaining for now but at risk</div></div><div class="finding-row"><div class="finding-label">Breathing</div><div class="finding-value">RR 30 irregular shallow</div></div><div class="finding-row"><div class="finding-label">Circulation</div><div class="finding-value">Thready central pulse; mottled and cold extremities; cap refill &gt; 5 sec</div></div><div class="finding-row"><div class="finding-label">Skin</div><div class="finding-value">ashen with peripheral mottling · cold · diaphoretic now</div></div><div class="finding-row"><div class="finding-label">Pupils</div><div class="finding-value">Equal at 4 mm, sluggishly reactive</div></div><div class="finding-row"><div class="finding-label">Motor</div><div class="finding-value">Withdraws to pain only</div></div><div class="finding-row"><div class="finding-label">Speech</div><div class="finding-value"><span class="finding-speech">"(no longer speaking; moans to pain)"</span></div></div><div class="finding-row"><div class="finding-label">Other</div><div class="finding-value"><ul class="findings-notes"><li>5+ failed peripheral attempts; multiple bruises on forearms</li><li>BP 64/40; mentation worsened to GCS 8</li><li>EtCO2 22 — severe poor perfusion</li><li>Lungs still clear (fluid still indicated)</li><li>Time wasted; teaching moment for protocol adherence</li></ul></div></div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-title">Expected Actions</div>
+    <div class="card-content" style="padding:0 16px 12px"><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Stop peripheral attempts; place IO NOW (humeral); start NS 1 L pressure-infused</div></div>
+        <div class="action-excerpt">Establish IV access. If unable to obtain within two attempts or less than 90 seconds, place an IO needle.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Rapid pressure-infuse 1 L NS via IO; continue toward 30 mL/kg total</div></div>
+        <div class="action-excerpt">Adult: Physiologic target: MAP goal 65 mmHg. Fluid goal of up to 30 mL/kg of isotonic fluid by administering rapid, predetermined boluses (e.g., 500 mL) unless the MAP goal is achieved, or pulmonary edema develops.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Norepi 0.1 mcg/kg/min (5.8 mcg/min for 58 kg) via IO; titrate to MAP &gt; 65</div></div>
+        <div class="action-excerpt">Vasopressors (shock unresponsive to IV fluids) titrated to physiologic targets: Norepinephrine 0.05–0.5 mcg/kg/minute. Preference in both neurogenic and infectious (sepsis) causes of distributive shock.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">NPA + BVM if RR/SpO2 continue to decline; do not let airway lapse</div></div>
+        <div class="action-excerpt">Patient Safety Considerations: With depressed mental status, initial focus is on airway protection, oxygenation, ventilation, and perfusion.</div>
+        <div class="action-ref">↳ MATC: Altered Mental Status</div>
+      </div>
+    </div><div class="action-row">
+      <div class="action-box"></div>
+      <div class="action-body">
+        <div class="action-head"><span class="action-priority p-critical">critical</span><div class="action-text">Advance notification of decompensation and ETA</div></div>
+        <div class="action-excerpt">Provide advanced notification to the hospital.</div>
+        <div class="action-ref">↳ MATC: Shock</div>
+      </div>
+    </div></div>
+  </div>
+  </section>
+</div>
+</body>
+</html>

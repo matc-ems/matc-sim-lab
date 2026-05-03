@@ -1,0 +1,489 @@
+{
+  "meta": {
+    "id": "cardiac-bradycardia-tcp-fentanyl-001",
+    "name": "Progressive Symptomatic Bradycardia — TCP with Fentanyl for Pacing Comfort",
+    "version": 1,
+    "difficulty": "intermediate",
+    "category": "Cardiac",
+    "protocols": [
+      "cv-bradycardia",
+      "medical-pain-management"
+    ],
+    "totalTimeSeconds": 1500,
+    "createdAt": "2026-05-03T00:00:00Z",
+    "tags": [
+      "bradycardia",
+      "Mobitz II",
+      "high-grade AV block",
+      "transcutaneous pacing",
+      "TCP",
+      "fentanyl",
+      "pacing sedation",
+      "intermediate"
+    ]
+  },
+  "patient": {
+    "name": "Janet Whitfield",
+    "age": 68,
+    "ageUnit": "years",
+    "sex": "female",
+    "weight": 70,
+    "weightLbs": 154,
+    "height": 165,
+    "chiefComplaint": "Several days of progressive fatigue, lightheadedness, and shortness of breath on exertion that worsened today to the point she could not walk from the bedroom to the bathroom without nearly fainting; daughter found her pale and clammy on the bathroom floor.",
+    "history": {
+      "hpi": "68-year-old female reports progressive fatigue and lightheadedness for the past 3 days, attributed initially to 'a bug going around.' This morning she became too weak to walk down the hall. Her daughter, who lives next door, came over to check on her and found her pale and clammy seated on the bathroom floor where she had felt 'too dizzy to stand.' She denies chest pain at rest but reports brief dull substernal pressure with the dizzy episodes. She has never had palpitations. She has had two prior 'almost fainted' episodes this week. She has hypertension (well controlled), known coronary artery disease s/p one drug-eluting stent to the LAD 4 years ago, and is on metoprolol succinate 50 mg daily.",
+      "pastMedical": [
+        "Coronary artery disease s/p PCI with DES to mid-LAD (2022)",
+        "Hypertension",
+        "Hyperlipidemia",
+        "Mild kidney disease (CKD stage 2)"
+      ],
+      "medications": [
+        "Metoprolol succinate 50 mg PO daily",
+        "Lisinopril 10 mg PO daily",
+        "Atorvastatin 40 mg PO at bedtime",
+        "Aspirin 81 mg PO daily",
+        "Clopidogrel 75 mg PO daily"
+      ],
+      "allergies": [
+        "NKDA"
+      ],
+      "lastOralIntake": "Tea and a piece of toast about 3 hours ago",
+      "events": "Three days of progressive weakness; today became too weak/dizzy to walk; daughter found her pale and clammy on bathroom floor."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 68-year-old female, sick person, weakness and near-syncope, conscious. Daughter on scene at single-family home.",
+    "location": "Single-family home, primary bathroom. Patient seated on the floor with her back against the tub. Adequate lighting. Clear path to the bedroom and out the front door for cot.",
+    "time": "Wednesday, 09:25, mid-morning",
+    "safety": "Scene safe. No hazards. Daughter calm and articulate, has medication list ready.",
+    "bystanders": "Daughter present. Reports two prior 'almost fainted' episodes this week and progressive fatigue over 3 days. Confirms baseline ambulatory and independent.",
+    "visualCues": [
+      "Patient on bathroom floor, back against the tub, knees up",
+      "Pale and visibly diaphoretic",
+      "Fully clothed in nightgown and robe",
+      "Glasses on the floor beside her",
+      "Pill bottles on the bedroom dresser (visible from doorway)",
+      "No vomitus, no incontinence, no obvious trauma"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 68-year-old female on the bathroom floor, pale, diaphoretic, and weak. Initial monitor connection shows a slow regular rhythm in the high 30s. The teaching point sets up: this is symptomatic bradycardia with high-grade AV block on a patient who is on a beta-blocker AND is bradycardic enough to be near-syncopal. Atropine may have limited effect because of the high block AND the chronic beta-blockade. Crew should anticipate pacing — and a key teaching beat is to plan sedation/analgesia using fentanyl (per Pain Management) BEFORE pacing rather than after the patient is in obvious distress.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent, self-maintained",
+        "breathing": "RR 22, lungs clear bilaterally",
+        "circulation": "Slow weak radial pulse; cool, pale, mildly diaphoretic; cap refill 3 sec",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 3 mm, briskly reactive",
+        "motorFunction": "Symmetric, intact, but weak",
+        "otherFindings": [
+          "Reports lightheadedness and brief substernal pressure with dizzy episodes",
+          "On metoprolol — likely contributor to bradycardia",
+          "Two prior near-syncopal episodes this week",
+          "12-lead pending"
+        ],
+        "patientSpeech": "I just feel terrible. The room keeps spinning when I try to sit up. I almost passed out twice this week."
+      },
+      "monitorState": {
+        "ecgRhythm": "Second Degree AV Block Type II",
+        "ecgWaveform": 103,
+        "hr": 38,
+        "bpSys": 86,
+        "bpDia": 54,
+        "respRate": 22,
+        "spo2": 95,
+        "etco2": 36,
+        "temp": 36.6,
+        "tempF": 97.9,
+        "obstruction": 0,
+        "glucose": 102,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "primary-survey-recognize",
+          "shortAction": "Primary survey; recognize symptomatic bradycardia with near-syncope",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia Inclusion #1 — HR < 60 with symptoms (near-syncope, weakness, diaphoresis) requires treatment.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Inclusion Criteria: Heart rate less than 60 beats per minute (BPM) with either symptoms (altered mental status (AMS), chest pain (CP), congestive heart failure (CHF), seizure, syncope, shock, pallor, diaphoresis) or evidence of hemodynamic instability."
+        },
+        {
+          "id": "airway-oxygen",
+          "shortAction": "O2 NC 2 L titrate to SpO2 94–98%",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia steps 1–2 — manage airway, oxygen targeted 94–98%.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Adult Management: Manage airway as necessary. Administer oxygen as appropriate with a target of achieving 94–98% saturation."
+        },
+        {
+          "id": "monitor-pacer-pads",
+          "shortAction": "Cardiac monitor; place pacer pads NOW (anterior-posterior); 12-lead EKG",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia step 3 + Notes #6 — early pad placement saves time when escalation is needed; identify rhythm.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Initiate monitoring and perform 12-lead EKG. Bradycardia should be managed via the least invasive manner possible, escalating care as needed. In cases of impending hemodynamic collapse, proceed directly to transcutaneous pacing."
+        },
+        {
+          "id": "iv-access",
+          "shortAction": "IV access ×2; large-bore proximal",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia step 4 — IV access required for medications.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Establish IV access."
+        },
+        {
+          "id": "blood-glucose",
+          "shortAction": "Check blood glucose",
+          "priority": "important",
+          "rationale": "MATC Bradycardia step 5 — check glucose.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Check blood glucose and treat hypoglycemia per the Hypoglycemia Guideline and Hyperglycemia Guideline."
+        },
+        {
+          "id": "med-history",
+          "shortAction": "Document beta-blocker (metoprolol) on board — likely contributor; may blunt atropine response",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia Notes #3 — consider culprit medications including beta-blockers, CCBs.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Consider potential culprit medications including beta-blockers, calcium channel blockers, sodium channel blockers/anti-depressants, digoxin, and clonidine."
+        },
+        {
+          "id": "rhythm-recognition",
+          "shortAction": "Recognize Mobitz II / high-grade AV block on 12-lead",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia Inclusion #2 — Mobitz II is a named bradyarrhythmia warranting treatment.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "The major EKG rhythms classified as bradycardia include: Sinus bradycardia; Second-degree AV block (Type I-Wenckebach/Mobitz I, Type II-Mobitz II); Third-degree AV block, complete heart block; Ventricular escape rhythms."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "atropine-then-tcp-prep",
+          "if": "Atropine given; minimal response → prep TCP with fentanyl",
+          "condition": "Atropine 1 mg IV given per protocol; minimal response (HR briefly to 44 then back to high 30s); crew prepares for TCP and pre-medicates with fentanyl 70 mcg IV.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["rhythm-recognition", "monitor-pacer-pads"]
+        }
+      ]
+    },
+    {
+      "id": "atropine-then-tcp-prep",
+      "name": "Atropine partial response → prepare TCP + fentanyl",
+      "description": "Atropine 1 mg IV given. The patient briefly bumps to HR 44 with slight BP improvement to 92 systolic, but within 60 seconds drops back to 38 with continued symptoms. This is the protocol-defined trigger to escalate — high-grade block with limited atropine response on a beta-blocker. Crew prepares for TCP and importantly pre-medicates with fentanyl 70 mcg IV (1 mcg/kg per Pain Management) BEFORE starting pacing — pacing-spike discomfort and intercostal/pectoral muscle contraction can be substantial in an alert patient.",
+      "triggerCondition": "Atropine produced only transient bump in HR/BP; patient remains symptomatic with high-grade AV block; TCP indicated and pre-pacing fentanyl analgesia given.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 22, lungs clear",
+        "circulation": "Still slow, still weak; brief bump after atropine then back to baseline",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "mildly diaphoretic"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "Atropine 1 mg given — HR briefly 44 then back to high 30s",
+          "BP briefly 92/56 then back to 86/52",
+          "Patient still feels weak and lightheaded",
+          "Pacer pads in place; pacer powered on and ready",
+          "Fentanyl 70 mcg drawn up"
+        ],
+        "patientSpeech": "I still feel like I'm going to pass out. Whatever you need to do, please do it."
+      },
+      "monitorState": {
+        "ecgRhythm": "Second Degree AV Block Type II",
+        "ecgWaveform": 103,
+        "hr": 40,
+        "bpSys": 88,
+        "bpDia": 54,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.6,
+        "tempF": 97.9,
+        "obstruction": 0,
+        "glucose": 102,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "atropine",
+          "shortAction": "Atropine 1 mg IV (may repeat q3–5 min, max 3 mg total) — limited efficacy on β-blocker / high-grade block",
+          "priority": "important",
+          "rationale": "MATC Bradycardia step 6 — atropine 1 mg IV q3–5 min (max 3 mg).",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Consider the following additional therapies if bradycardia and symptoms or hemodynamic instability continue: Atropine 1 mg IV q 3–5 minutes (maximum total dose of 3 mg)."
+        },
+        {
+          "id": "explain-pacing",
+          "shortAction": "Explain TCP to patient: 'You'll feel thumping; we'll give pain medicine first'",
+          "priority": "important",
+          "rationale": "MATC Bradycardia Patient Safety + Pain Management — sedation/analgesia for pacing; communication reduces anxiety.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Patient Safety Considerations: If pacing is performed, consider sedation or pain control. Performance Measures: Use of sedation or pain management with cardiac pacing."
+        },
+        {
+          "id": "fentanyl-pre-pacing",
+          "shortAction": "Fentanyl 70 mcg IV (70 kg × 1 mcg/kg; max 100 mcg) BEFORE starting TCP",
+          "priority": "critical",
+          "rationale": "MATC Pain Management 6b — fentanyl 1 mcg/kg IV/IM/IN/IO max 100 mcg; preferred for procedural comfort with TCP.",
+          "protocolReference": "MATC: Pain Management",
+          "protocolExcerpt": "For Moderate to Severe pain, analgesics include: Fentanyl: 1 mcg/kg IN, IM, IV or IO (maximum initial dose of 100 mcg)."
+        },
+        {
+          "id": "pain-safety-screen",
+          "shortAction": "Confirm allergies; SpO2; BP; hold opioid if hypotensive or GCS < 15 at baseline",
+          "priority": "critical",
+          "rationale": "MATC Pain Management Patient Safety #2 — caution with opioids in hypotension, hypoxia, GCS < 15; she is borderline so use cautiously and monitor.",
+          "protocolReference": "MATC: Pain Management",
+          "protocolExcerpt": "Patient Safety Considerations: Administer opioids with caution to patients with Glasgow Coma Score (GCS) less than 15, hypotension, identified medication allergy, hypoxia (SPO2 less than 90%) after maximal supplemental oxygen therapy, or signs of hypoventilation."
+        },
+        {
+          "id": "tcp-set-titrate",
+          "shortAction": "TCP rate 70; output 60 mA → titrate up to electrical + mechanical capture",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia step 6 — TCP for high-grade block / impending collapse; titrate to capture; document.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Transcutaneous Pacing – If pacing is performed, consider sedation or pain control. Bradycardia should be managed via the least invasive manner possible, escalating care as needed. In cases of impending hemodynamic collapse, proceed directly to transcutaneous pacing."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "tcp-capture-comfort",
+          "if": "TCP capture; patient comfortable on fentanyl",
+          "condition": "Mechanical capture confirmed at output 80 mA at rate 70; patient tolerating well thanks to pre-pacing fentanyl; BP and mentation improve.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["fentanyl-pre-pacing", "tcp-set-titrate"]
+        },
+        {
+          "targetPhaseId": "branch-pacing-no-sedation",
+          "if": "TCP started without analgesia",
+          "description": "Crew jumps to pacing without giving fentanyl first. Patient tolerates poorly, agitates, fights the pads, and crew has to give fentanyl mid-procedure with a more anxious and uncomfortable patient.",
+          "condition": "TCP initiated without pre-pacing analgesia; patient experiences significant pain, agitation, and movement that interferes with capture confirmation; crew gives fentanyl reactively.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": ["fentanyl-pre-pacing"]
+        }
+      ]
+    },
+    {
+      "id": "tcp-capture-comfort",
+      "name": "TCP capture; patient comfortable",
+      "description": "TCP at rate 70, output 80 mA, demonstrates electrical capture with mechanical capture confirmed by palpable pulse with each pacer spike. BP improves to 118/70, mentation improves. Patient describes the pacing as 'thumping' but tolerable thanks to the pre-pacing fentanyl. Crew transports to a cardiology / pacemaker-capable hospital.",
+      "triggerCondition": "TCP started at rate 70 with output titrated to mechanical capture; pre-pacing fentanyl analgesia gives the patient a tolerable experience.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 16, comfortable, lungs clear",
+        "circulation": "Strong palpable pulse synchronous with pacer spikes; warm; cap refill < 2 sec",
+        "skin": {
+          "color": "pink",
+          "temperature": "warm",
+          "moisture": "dry"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "Mechanical capture at 80 mA, rate 70",
+          "BP 118/70 — markedly improved",
+          "Patient describes pacing as 'thumping but tolerable'",
+          "Mentation improved",
+          "Less diaphoretic"
+        ],
+        "patientSpeech": "I can feel it thumping but it's not bad. Thank you for the medicine first. I feel a lot better."
+      },
+      "monitorState": {
+        "ecgRhythm": "Pacemaker Rhythm",
+        "ecgWaveform": 9,
+        "hr": 70,
+        "bpSys": 118,
+        "bpDia": 72,
+        "respRate": 16,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 36.6,
+        "tempF": 97.9,
+        "obstruction": 0,
+        "glucose": 102,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "confirm-mechanical-capture",
+          "shortAction": "Confirm mechanical capture by palpating pulse with each pacer spike; document",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia Documentation — pacing time, rate, joules, capture, response.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Key Documentation Elements: Cardiac rhythm/rate; Time, dose, and response of medications given; Pacing: Time started or stopped, rate, joules, capture, and response rate; Patient weight; History of event supporting treatment of underlying causes."
+        },
+        {
+          "id": "reassess-pain-rr",
+          "shortAction": "Reassess pain score, RR, SpO2, EtCO2 q5 min after fentanyl (capnography earlier predictor of hypoventilation)",
+          "priority": "critical",
+          "rationale": "MATC Pain Management 7 + Documentation — capnography earlier predictor of opioid-induced hypoventilation; reassess pain and vitals.",
+          "protocolReference": "MATC: Pain Management",
+          "protocolExcerpt": "Use of non-invasive capnography is an earlier predictor of hypoventilation than pulse oximetry if opioid medications are administered. Key Documentation Elements: Documentation of patient vital signs (pulse, blood pressure, respiratory rate, neurologic status assessment) with pulse oximetry. Documentation of patient reassessment with repeat vital signs and patient pain scale assessment."
+        },
+        {
+          "id": "vasopressor-backup",
+          "shortAction": "If TCP fails or BP drops: epi push-dose 10–20 mcg q2 min OR epi drip 0.02–0.2 mcg/kg/min",
+          "priority": "supplemental",
+          "rationale": "MATC Bradycardia step 6 — vasopressor options when TCP fails.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Vasopressor medications (in order of preference): Epinephrine IV drip 0.02–0.2 mcg/kg/min titrated to a MAP greater than 65 mmHg OR Epinephrine by push dose (dilute boluses): for example, prepare 10 mcg/mL by adding 1 mL of 0.1 mg/mL epinephrine to 9 mL of normal saline, then administer 10–20 mcg boluses (1–2 mL) q 2 minutes titrated MAP greater than 65 mmHg OR Norepinephrine 0.02–0.4 mcg/kg/minute IV titrated to a MAP greater than 65 mmHg."
+        },
+        {
+          "id": "transport-cardiology",
+          "shortAction": "Transport to cardiology / pacemaker-capable hospital; bedside handoff",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia Documentation — full handoff including pacing parameters and meds.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Key Documentation Elements: Cardiac rhythm/rate; Time, dose, and response of medications given; Pacing: Time started or stopped, rate, joules, capture, and response rate."
+        }
+      ]
+    },
+    {
+      "id": "branch-pacing-no-sedation",
+      "name": "Pacing without analgesia — distress",
+      "description": "Crew jumped straight to pacing without pre-medicating with fentanyl. Within seconds the patient is in significant pain from the pacing-induced muscle contractions and is fighting/moving on the cot, which makes capture confirmation difficult and adds anxiety. Crew now gives fentanyl reactively. The teaching point is that the protocol explicitly says 'consider sedation or pain control' for pacing — this is best done BEFORE pacing starts, not after the patient is already in distress.",
+      "triggerCondition": "TCP started without pre-pacing analgesia; alert patient experiencing significant pain and agitation; reactive analgesia required.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 26, anxious, lungs clear",
+        "circulation": "Pulse with each pacer spike when patient still; movement degrading capture",
+        "skin": {
+          "color": "flushed with anxiety",
+          "temperature": "warm",
+          "moisture": "diaphoretic with discomfort"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Reaching for pads, trying to sit up",
+        "otherFindings": [
+          "Patient is yelling 'it hurts!' and trying to remove the pads",
+          "Pacer-induced pectoral and intercostal contractions visible",
+          "Capture intermittent due to movement",
+          "BP and mentation NOT improving because of incomplete capture"
+        ],
+        "patientSpeech": "It hurts! Stop! I can't take this — get this off me!"
+      },
+      "monitorState": {
+        "ecgRhythm": "Pacemaker Failure to Capture",
+        "ecgWaveform": 9,
+        "hr": 50,
+        "bpSys": 92,
+        "bpDia": 56,
+        "respRate": 26,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "tempF": 98.1,
+        "obstruction": 0,
+        "glucose": 102,
+        "trendTimeSeconds": 20,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "give-fentanyl-now",
+          "shortAction": "Fentanyl 70 mcg IV NOW (70 kg × 1 mcg/kg; max 100 mcg); reassess capture once calm",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia Patient Safety + Pain Management — sedation/pain control for TCP; ideally pre-procedure but rescue analgesia needed now.",
+          "protocolReference": "MATC: Pain Management",
+          "protocolExcerpt": "For Moderate to Severe pain, analgesics include: Fentanyl: 1 mcg/kg IN, IM, IV or IO (maximum initial dose of 100 mcg). If indicated based on pain assessment, and vital signs allow, repeat pain medication administration (excluding acetaminophen and nonsteroidal anti-inflammatory medicines) after 5 minutes of the previous dose."
+        },
+        {
+          "id": "verbal-reassurance",
+          "shortAction": "Verbal reassurance; explain pacing; non-pharmacologic measures",
+          "priority": "important",
+          "rationale": "MATC Pain Management 4 — non-pharmacologic options including verbal reassurance to control anxiety.",
+          "protocolReference": "MATC: Pain Management",
+          "protocolExcerpt": "Non-pharmacologic pain management options include: Placement of the patient in a position of comfort. Application of ice packs and/or splints for pain secondary to trauma. Verbal reassurance to control anxiety."
+        },
+        {
+          "id": "reconfirm-capture",
+          "shortAction": "Reconfirm electrical + mechanical capture once patient settled",
+          "priority": "critical",
+          "rationale": "MATC Bradycardia Documentation — confirm and document capture.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Pacing: Time started or stopped, rate, joules, capture, and response rate."
+        },
+        {
+          "id": "lesson-document",
+          "shortAction": "Document plan: pre-pacing analgesia next time; QI moment",
+          "priority": "important",
+          "rationale": "MATC Bradycardia Performance Measure — use of sedation/pain management with pacing.",
+          "protocolReference": "MATC: Bradycardia",
+          "protocolExcerpt": "Performance Measures: Blood sugar obtained. Correct medication(s) and dose given for patient condition, age, and weight. Correct application and use of cardiac pacing. Use of sedation or pain management with cardiac pacing."
+        }
+      ]
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 80
+  }
+}

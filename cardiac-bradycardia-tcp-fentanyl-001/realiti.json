@@ -1,0 +1,307 @@
+{
+  "scenarioId": "cardiac-bradycardia-tcp-fentanyl-001",
+  "scenarioName": "Progressive Symptomatic Bradycardia — TCP with Fentanyl for Pacing Comfort",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 80,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "68-year-old female reports progressive fatigue and lightheadedness for the past 3 days, attributed initially to 'a bug going around.' This morning she became too weak to walk down the hall. Her daughter, who lives next door, came over to check on her and found her pale and clammy seated on the bathroom floor where she had felt 'too dizzy to stand.' She denies chest pain at rest but reports brief dull substernal pressure with the dizzy episodes. She has never had palpitations. She has had two prior 'almost fainted' episodes this week. She has hypertension (well controlled), known coronary artery disease s/p one drug-eluting stent to the LAD 4 years ago, and is on metoprolol succinate 50 mg daily.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find a 68-year-old female on the bathroom floor, pale, diaphoretic, and weak. Initial monitor connection shows a slow regular rhythm in the high 30s. The teaching point sets up: this is symptomatic bradycardia with high-grade AV block on a patient who is on a beta-blocker AND is bradycardic enough to be near-syncopal. Atropine may have limited effect because of the high block AND the chronic beta-blockade. Crew should anticipate pacing — and a key teaching beat is to plan sedation/analgesia using fentanyl (per Pain Management) BEFORE pacing rather than after the patient is in obvious distress. → Atropine partial response → prepare TCP + fentanyl: Atropine 1 mg IV given. The patient briefly bumps to HR 44 with slight BP improvement to 92 systolic, but within 60 seconds drops back to 38 with continued symptoms. This is the protocol-defined trigger to escalate — high-grade block with limited atropine response on a beta-blocker. Crew prepares for TCP and importantly pre-medicates with fentanyl 70 mcg IV (1 mcg/kg per Pain Management) BEFORE starting pacing — pacing-spike discomfort and intercostal/pectoral muscle contraction can be substantial in an alert patient. → TCP capture; patient comfortable: TCP at rate 70, output 80 mA, demonstrates electrical capture with mechanical capture confirmed by palpable pulse with each pacer spike. BP improves to 118/70, mentation improves. Patient describes the pacing as 'thumping' but tolerable thanks to the pre-pacing fentanyl. Crew transports to a cardiology / pacemaker-capable hospital."
+  },
+  "patientInformation": {
+    "patientName": "Janet Whitfield",
+    "patientCondition": "Several days of progressive fatigue, lightheadedness, and shortness of breath on exertion that worsened today to the point she could not walk from the bedroom to the bathroom without nearly fainting; daughter found her pale and clammy on the bathroom floor.",
+    "patientAge": 68,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 165,
+    "patientWeight": 70,
+    "patientPhotoId": 82,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 68-year-old female on the bathroom floor, pale, diaphoretic, and weak. Initial monitor connection shows a slow regular rhythm in the high 30s. The teaching point sets up: this is symptomatic bradycardia with high-grade AV block on a patient who is on a beta-blocker AND is bradycardic enough to be near-syncopal. Atropine may have limited effect because of the high block AND the chronic beta-blockade. Crew should anticipate pacing — and a key teaching beat is to plan sedation/analgesia using fentanyl (per Pain Management) BEFORE pacing rather than after the patient is in obvious distress.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 103,
+        "hr": 38,
+        "bpSys": 86,
+        "bpDia": 54,
+        "respRate": 22,
+        "spo2": 95,
+        "etco2": 36,
+        "temp": 36.6,
+        "obstruction": 0,
+        "custMeasure1": 102,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize symptomatic bradycardia with near-syncope",
+        "O2 NC 2 L titrate to SpO2 94–98%",
+        "Cardiac monitor; place pacer pads NOW (anterior-posterior); 12-lead EKG",
+        "IV access ×2; large-bore proximal",
+        "Check blood glucose",
+        "Document beta-blocker (metoprolol) on board — likely contributor; may blunt atropine response",
+        "Recognize Mobitz II / high-grade AV block on 12-lead"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Atropine partial response → prepare TCP + fentanyl",
+      "description": "Atropine 1 mg IV given. The patient briefly bumps to HR 44 with slight BP improvement to 92 systolic, but within 60 seconds drops back to 38 with continued symptoms. This is the protocol-defined trigger to escalate — high-grade block with limited atropine response on a beta-blocker. Crew prepares for TCP and importantly pre-medicates with fentanyl 70 mcg IV (1 mcg/kg per Pain Management) BEFORE starting pacing — pacing-spike discomfort and intercostal/pectoral muscle contraction can be substantial in an alert patient.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 103,
+        "hr": 40,
+        "bpSys": 88,
+        "bpDia": 54,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.6,
+        "obstruction": 0,
+        "custMeasure1": 102,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Atropine 1 mg IV (may repeat q3–5 min, max 3 mg total) — limited efficacy on β-blocker / high-grade block",
+        "Explain TCP to patient: 'You'll feel thumping; we'll give pain medicine first'",
+        "Fentanyl 70 mcg IV (70 kg × 1 mcg/kg; max 100 mcg) BEFORE starting TCP",
+        "Confirm allergies; SpO2; BP; hold opioid if hypotensive or GCS < 15 at baseline",
+        "TCP rate 70; output 60 mA → titrate up to electrical + mechanical capture"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "TCP capture; patient comfortable",
+      "description": "TCP at rate 70, output 80 mA, demonstrates electrical capture with mechanical capture confirmed by palpable pulse with each pacer spike. BP improves to 118/70, mentation improves. Patient describes the pacing as 'thumping' but tolerable thanks to the pre-pacing fentanyl. Crew transports to a cardiology / pacemaker-capable hospital.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 70,
+        "bpSys": 118,
+        "bpDia": 72,
+        "respRate": 16,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 36.6,
+        "obstruction": 0,
+        "custMeasure1": 102,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Confirm mechanical capture by palpating pulse with each pacer spike; document",
+        "Reassess pain score, RR, SpO2, EtCO2 q5 min after fentanyl (capnography earlier predictor of hypoventilation)",
+        "If TCP fails or BP drops: epi push-dose 10–20 mcg q2 min OR epi drip 0.02–0.2 mcg/kg/min",
+        "Transport to cardiology / pacemaker-capable hospital; bedside handoff"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Pacing without analgesia — distress",
+      "description": "Crew jumped straight to pacing without pre-medicating with fentanyl. Within seconds the patient is in significant pain from the pacing-induced muscle contractions and is fighting/moving on the cot, which makes capture confirmation difficult and adds anxiety. Crew now gives fentanyl reactively. The teaching point is that the protocol explicitly says 'consider sedation or pain control' for pacing — this is best done BEFORE pacing starts, not after the patient is already in distress.",
+      "monitorType": 0,
+      "trendTime": 20,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 50,
+        "bpSys": 92,
+        "bpDia": 56,
+        "respRate": 26,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 102,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Fentanyl 70 mcg IV NOW (70 kg × 1 mcg/kg; max 100 mcg); reassess capture once calm",
+        "Verbal reassurance; explain pacing; non-pharmacologic measures",
+        "Reconfirm electrical + mechanical capture once patient settled",
+        "Document plan: pre-pacing analgesia next time; QI moment"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize symptomatic bradycardia with near-syncope",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "O2 NC 2 L titrate to SpO2 94–98%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cardiac monitor; place pacer pads NOW (anterior-posterior); 12-lead EKG",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "IV access ×2; large-bore proximal",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document beta-blocker (metoprolol) on board — likely contributor; may blunt atropine response",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize Mobitz II / high-grade AV block on 12-lead",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Atropine 1 mg IV (may repeat q3–5 min, max 3 mg total) — limited efficacy on β-blocker / high-grade block",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Explain TCP to patient: 'You'll feel thumping; we'll give pain medicine first'",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Fentanyl 70 mcg IV (70 kg × 1 mcg/kg; max 100 mcg) BEFORE starting TCP",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm allergies; SpO2; BP; hold opioid if hypotensive or GCS < 15 at baseline",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "TCP rate 70; output 60 mA → titrate up to electrical + mechanical capture",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm mechanical capture by palpating pulse with each pacer spike; document",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reassess pain score, RR, SpO2, EtCO2 q5 min after fentanyl (capnography earlier predictor of hypoventilation)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If TCP fails or BP drops: epi push-dose 10–20 mcg q2 min OR epi drip 0.02–0.2 mcg/kg/min",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to cardiology / pacemaker-capable hospital; bedside handoff",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Fentanyl 70 mcg IV NOW (70 kg × 1 mcg/kg; max 100 mcg); reassess capture once calm",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Verbal reassurance; explain pacing; non-pharmacologic measures",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reconfirm electrical + mechanical capture once patient settled",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document plan: pre-pacing analgesia next time; QI moment",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

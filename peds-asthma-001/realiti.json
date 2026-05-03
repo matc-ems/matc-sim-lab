@@ -1,0 +1,272 @@
+{
+  "scenarioId": "peds-asthma-001",
+  "scenarioName": "Pediatric Severe Asthma — 4-Year-Old Responds to DuoNeb + IM Epinephrine",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1200,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "4-year-old female with known persistent asthma developed worsening cough and wheezing over the past 24 hours after upper respiratory infection symptoms in the household. Mother gave 4 puffs of albuterol MDI with spacer one hour ago without relief, then another 4 puffs 20 minutes ago. The child has continued to deteriorate, is now too tight and tired to speak more than 1–2 words at a time, with visible chest retractions. Mother called 911 because 'she's never been this bad without going to the hospital.' Patient was hospitalized for asthma at age 2 (no PICU, no intubation), has had two ED visits in the past year, and uses fluticasone daily. No known allergies. No fever today. Currently afebrile, no recent steroid course.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find a 4-year-old with severe asthma exacerbation: tripoding, retracting, nasally flaring, with audible expiratory wheezing and 1–2 word speech. SpO2 is 88% on room air, RR 40, and EtCO2 is in the low 30s with a shark-fin waveform. The teaching point is the full pediatric asthma escalation sequence with explicit weight-based math: albuterol 5 mg + ipratropium 0.5 mg nebulized, dexamethasone 0.6 mg/kg, IM epinephrine 0.01 mg/kg if impending failure, and magnesium 40 mg/kg IV if continued failure. → Minimal response to DuoNeb → IM epinephrine: After the first DuoNeb the patient remains in severe distress: still 1–2 word speech, retractions persist, SpO2 90% on NRB, EtCO2 still low with shark-fin waveform. This is impending respiratory failure with inadequate response to bronchodilator. Crew escalates to intramuscular epinephrine per protocol — 0.01 mg/kg of 1 mg/mL solution IM in the anterolateral thigh, max 0.3 mg. For this 16 kg child: 0.16 mg IM. Continuous nebulizer continues during and after epi; magnesium sulfate set up for next escalation. → Responding; transport on continuous neb: Within minutes of IM epi the child opens up. Air entry improves bilaterally, retractions diminish, SpO2 climbs to 95% on NRB, EtCO2 waveform normalizes. Speech improves to short sentences. Mag sulfate held in reserve since the child is now improving. Crew transports on continuous albuterol with mother present, provides bedside handoff with full timeline."
+  },
+  "patientInformation": {
+    "patientName": "Layla Whitman",
+    "patientCondition": "Severe respiratory distress with audible wheezing and inability to speak more than 1–2 words at a time, in a child with known asthma whose home albuterol metered-dose inhaler has not relieved her symptoms.",
+    "patientAge": 4,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 1,
+    "patientSex": 2,
+    "patientHeight": 102,
+    "patientWeight": 16,
+    "patientPhotoId": 5,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 4-year-old with severe asthma exacerbation: tripoding, retracting, nasally flaring, with audible expiratory wheezing and 1–2 word speech. SpO2 is 88% on room air, RR 40, and EtCO2 is in the low 30s with a shark-fin waveform. The teaching point is the full pediatric asthma escalation sequence with explicit weight-based math: albuterol 5 mg + ipratropium 0.5 mg nebulized, dexamethasone 0.6 mg/kg, IM epinephrine 0.01 mg/kg if impending failure, and magnesium 40 mg/kg IV if continued failure.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 152,
+        "bpSys": 102,
+        "bpDia": 64,
+        "respRate": 40,
+        "spo2": 88,
+        "etco2": 32,
+        "temp": 37,
+        "obstruction": 70,
+        "custMeasure1": 112,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize severe pediatric asthma with impending failure",
+        "Allow position of comfort (tripod); supplemental O2 via NRB to target SpO2 94–98%",
+        "Continuous SpO2 + waveform capnography (shark fin = bronchospasm)",
+        "Albuterol 5 mg + Ipratropium 0.5 mg nebulized via mask (DuoNeb); repeat albuterol unlimited frequency",
+        "Dexamethasone 9.6 mg PO/IV/IM (16 kg × 0.6 mg/kg = 9.6 mg; max 16 mg) — single dose"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Minimal response to DuoNeb → IM epinephrine",
+      "description": "After the first DuoNeb the patient remains in severe distress: still 1–2 word speech, retractions persist, SpO2 90% on NRB, EtCO2 still low with shark-fin waveform. This is impending respiratory failure with inadequate response to bronchodilator. Crew escalates to intramuscular epinephrine per protocol — 0.01 mg/kg of 1 mg/mL solution IM in the anterolateral thigh, max 0.3 mg. For this 16 kg child: 0.16 mg IM. Continuous nebulizer continues during and after epi; magnesium sulfate set up for next escalation.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 158,
+        "bpSys": 104,
+        "bpDia": 66,
+        "respRate": 38,
+        "spo2": 90,
+        "etco2": 32,
+        "temp": 37,
+        "obstruction": 60,
+        "custMeasure1": 112,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Epinephrine 0.16 mg IM anterolateral thigh (16 kg × 0.01 mg/kg of 1 mg/mL; max 0.3 mg); may repeat q5–15 min",
+        "Continuous albuterol via nebulizer; ipratropium up to 3 total doses",
+        "Establish IV; set up magnesium sulfate 640 mg IV (16 kg × 40 mg/kg) over 10–15 min for next escalation",
+        "Reassess RR, SpO2, EtCO2, breath sounds, retractions after each intervention"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Responding; transport on continuous neb",
+      "description": "Within minutes of IM epi the child opens up. Air entry improves bilaterally, retractions diminish, SpO2 climbs to 95% on NRB, EtCO2 waveform normalizes. Speech improves to short sentences. Mag sulfate held in reserve since the child is now improving. Crew transports on continuous albuterol with mother present, provides bedside handoff with full timeline.",
+      "monitorType": 0,
+      "trendTime": 50,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 140,
+        "bpSys": 100,
+        "bpDia": 64,
+        "respRate": 30,
+        "spo2": 95,
+        "etco2": 36,
+        "temp": 37,
+        "obstruction": 30,
+        "custMeasure1": 112,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Continuous nebulized albuterol en route; reassess each 5 min",
+        "Magnesium 640 mg IV over 10–15 min ready in case of relapse; watch for hypotension",
+        "Transport to pediatric-capable ED; bedside handoff with timeline + dose calc"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Bronchodilator delayed → BVM rescue",
+      "description": "Crew did not initiate bronchodilator promptly. Patient deteriorated to drowsiness, paradoxical breathing, and SpO2 < 80%. This is now respiratory failure requiring BVM ventilation in line with continuous nebulizer and IM epi. Invasive airway is NOT first move — supraglottic/intubation in pure bronchospasm risks pneumothorax and cardiovascular collapse.",
+      "monitorType": 0,
+      "trendTime": 20,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 170,
+        "bpSys": 96,
+        "bpDia": 60,
+        "respRate": 50,
+        "spo2": 78,
+        "etco2": 64,
+        "temp": 37,
+        "obstruction": 80,
+        "custMeasure1": 112,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "BVM ventilation slowly (10–12/min) in line with continuous nebulizer; gentle bagging — avoid air trapping",
+        "Epinephrine 0.16 mg IM anterolateral thigh (16 kg × 0.01 mg/kg; max 0.3 mg) — give now",
+        "IV/IO; magnesium 640 mg IV over 10–15 min (16 kg × 40 mg/kg)"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize severe pediatric asthma with impending failure",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Allow position of comfort (tripod); supplemental O2 via NRB to target SpO2 94–98%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continuous SpO2 + waveform capnography (shark fin = bronchospasm)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Albuterol 5 mg + Ipratropium 0.5 mg nebulized via mask (DuoNeb); repeat albuterol unlimited frequency",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Dexamethasone 9.6 mg PO/IV/IM (16 kg × 0.6 mg/kg = 9.6 mg; max 16 mg) — single dose",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Epinephrine 0.16 mg IM anterolateral thigh (16 kg × 0.01 mg/kg of 1 mg/mL; max 0.3 mg); may repeat q5–15 min",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continuous albuterol via nebulizer; ipratropium up to 3 total doses",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV; set up magnesium sulfate 640 mg IV (16 kg × 40 mg/kg) over 10–15 min for next escalation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reassess RR, SpO2, EtCO2, breath sounds, retractions after each intervention",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continuous nebulized albuterol en route; reassess each 5 min",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Magnesium 640 mg IV over 10–15 min ready in case of relapse; watch for hypotension",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to pediatric-capable ED; bedside handoff with timeline + dose calc",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "BVM ventilation slowly (10–12/min) in line with continuous nebulizer; gentle bagging — avoid air trapping",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Epinephrine 0.16 mg IM anterolateral thigh (16 kg × 0.01 mg/kg; max 0.3 mg) — give now",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "IV/IO; magnesium 640 mg IV over 10–15 min (16 kg × 40 mg/kg)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

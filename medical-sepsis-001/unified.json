@@ -1,0 +1,481 @@
+{
+  "meta": {
+    "id": "medical-sepsis-001",
+    "name": "Septic Shock — Nursing Home Resident with Fever, Hypotension, and Altered Mentation",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Medical",
+    "protocols": [
+      "medical-shock",
+      "medical-altered-mental-status"
+    ],
+    "totalTimeSeconds": 1500,
+    "createdAt": "2026-05-03T00:00:00Z",
+    "tags": [
+      "sepsis",
+      "septic shock",
+      "geriatric",
+      "nursing home",
+      "fluid resuscitation",
+      "norepinephrine",
+      "airway management",
+      "advanced"
+    ]
+  },
+  "patient": {
+    "name": "Harold Brennan",
+    "age": 75,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 75,
+    "weightLbs": 165,
+    "height": 175,
+    "chiefComplaint": "Two-day history of fever, increasing confusion, and decreased oral intake; nursing home staff report he is now too weak to stand and 'just isn't himself.'",
+    "history": {
+      "hpi": "75-year-old male nursing home resident with a baseline of mild dementia (oriented to person and place at baseline, ambulatory with walker) developed a fever 48 hours ago to a maximum of 102.6°F, with progressive lethargy, decreased PO intake, and one episode of incontinence today. Nursing staff noticed cloudy, foul-smelling urine in his Foley collection bag yesterday and again this morning. Per staff, his last set of vitals at 06:00 was BP 96/58, HR 108, T 101.8°F, SpO2 94% on RA. Now at 11:00 he is too weak to stand, only opens his eyes to voice, and answers only with single words. No reported chest pain, vomiting, or diarrhea. Tylenol given at 06:00 with no clinical improvement.",
+      "pastMedical": [
+        "Mild dementia (Mini-Mental ~22; oriented to person/place at baseline)",
+        "Type 2 diabetes mellitus (controlled on metformin)",
+        "Hypertension",
+        "BPH with chronic indwelling Foley catheter",
+        "Recurrent UTIs (3 in past year)",
+        "Atrial fibrillation on apixaban"
+      ],
+      "medications": [
+        "Metformin 500 mg PO BID",
+        "Lisinopril 10 mg PO daily",
+        "Apixaban 5 mg PO BID",
+        "Tamsulosin 0.4 mg PO daily",
+        "Donepezil 10 mg PO at bedtime",
+        "Acetaminophen 650 mg PO at 06:00 today"
+      ],
+      "allergies": [
+        "Sulfa drugs (rash)"
+      ],
+      "lastOralIntake": "Few sips of water at breakfast; minimal solid intake for ~24 hours",
+      "events": "Two days of fever, lethargy, decreased PO intake; cloudy foul-smelling Foley output; progressive weakness; staff called 911 when patient could no longer stand."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 75-year-old male, sick person, weakness and altered mental status from a nursing facility. Conscious. Stage 1 response.",
+    "location": "Long-term care facility, double-occupancy room. Patient supine in bed, head of bed elevated 30°. Adequate lighting; charge nurse at bedside with chart.",
+    "time": "Wednesday, 11:10, weekday morning",
+    "safety": "Scene safe. Standard PPE (gown, gloves, mask) appropriate for febrile patient with possible infectious source.",
+    "bystanders": "Charge nurse present with paper face sheet, MAR, and the past 48 hours of nursing notes including vital sign trend. Confirms baseline mentation, current Foley findings, and family contact information.",
+    "visualCues": [
+      "Elderly male in hospital gown, pale and visibly ill",
+      "Foley catheter in place; bag contains cloudy, dark amber urine with sediment",
+      "Skin appears warm and flushed at chest, mottled at extremities",
+      "Oxygen tank on wall with NC at 2 L (already in place per nursing)",
+      "MAR and 48-hour vital sign trend on bedside table"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 75-year-old nursing home resident who has deteriorated over 48 hours from baseline ambulatory dementia to lethargic and unable to stand. He is febrile, tachycardic, hypotensive, and mottled at the extremities with flash capillary refill at the chest — classic distributive (septic) shock pattern. The Foley bag is full of cloudy, sediment-laden urine. The teaching point sets up immediately: recognize sepsis as the cause of his AMS and shock, give early aggressive fluid resuscitation with explicit mL/kg math, and prepare for vasopressor escalation if fluid-refractory.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 3,
+          "verbal": 3,
+          "motor": 5
+        },
+        "airway": "Patent, self-maintained",
+        "breathing": "RR 26, lungs clear with mild bibasilar crackles",
+        "circulation": "Weak rapid radial pulse; warm flushed chest with mottled cool extremities; flash cap refill at chest, > 4 sec at extremities",
+        "skin": {
+          "color": "flushed at chest, mottled at extremities",
+          "temperature": "warm-hot at chest",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 3 mm, briskly reactive",
+        "motorFunction": "Generalized weakness; symmetric; no focal deficit",
+        "otherFindings": [
+          "Foley bag full of cloudy, foul-smelling, sediment-laden urine",
+          "Mucous membranes dry; tongue dry",
+          "T 102.4°F (39.1°C) by tympanic",
+          "Distributive shock physiology — flushed warm chest with mottled cool extremities",
+          "EtCO2 28 — low (poor perfusion marker)"
+        ],
+        "patientSpeech": "(opens eyes to voice; answers with single words: 'water,' 'sick,' 'sleep')"
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 124,
+        "bpSys": 78,
+        "bpDia": 44,
+        "respRate": 26,
+        "spo2": 92,
+        "etco2": 28,
+        "temp": 39.1,
+        "tempF": 102.4,
+        "obstruction": 0,
+        "glucose": 168,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "primary-survey-recognize-sepsis",
+          "shortAction": "Primary survey; recognize septic shock (fever + hypotension + AMS + warm-flushed/mottled pattern)",
+          "priority": "critical",
+          "rationale": "MATC Shock Inclusion + Pertinent Assessment — distributive shock has flash cap refill, bounding/warm chest pulses; sepsis must be recognized as the cause of his hypotension.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Inclusion Criteria: Signs of poor perfusion (due to a medical cause) such as one or more of the following: Altered mental status; Delayed capillary refill (> 3 seconds); Flash capillary refill (> 1 second) seen in early septic shock; Decreased urine output; Respiratory rate greater than 20 breaths per minute in adults. Pertinent Assessment Findings: Distributive shock: flash capillary refill, bounding peripheral pulses."
+        },
+        {
+          "id": "airway-oxygen",
+          "shortAction": "Position; titrate O2 NC → NRB to target SpO2 94–98%",
+          "priority": "critical",
+          "rationale": "MATC Shock step 2 — O2 to 94–98%; AMS warrants escalation if airway compromise.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Administer oxygen as appropriate with a target of achieving 94–98% saturation."
+        },
+        {
+          "id": "monitor-spo2-etco2",
+          "shortAction": "Cardiac monitor; SpO2 + EtCO2 (low EtCO2 = poor perfusion)",
+          "priority": "critical",
+          "rationale": "MATC Shock step 3–4 — cardiac monitor and pulse-ox/EtCO2; EtCO2 < 25 may indicate poor perfusion.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Cardiac monitor. Pulse oximetry and EtCO2 (reading of less than 25 mmHg may be sign of poor perfusion)."
+        },
+        {
+          "id": "blood-glucose",
+          "shortAction": "Check blood glucose; correct if < 60 mg/dL (current 168 — within range)",
+          "priority": "critical",
+          "rationale": "MATC Shock step 5 — check blood sugar and correct if < 60.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Check blood sugar, and correct if less than 60 mg/dL."
+        },
+        {
+          "id": "twelve-lead",
+          "shortAction": "12-lead EKG to rule out concurrent ischemia in tachycardic septic patient",
+          "priority": "important",
+          "rationale": "MATC Shock step 6 — EKG indicated; sepsis can mask or unmask coronary ischemia in elderly.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "EKG."
+        },
+        {
+          "id": "iv-or-io",
+          "shortAction": "IV access ×2 large-bore; if 2 attempts/<90 sec fail → place IO",
+          "priority": "critical",
+          "rationale": "MATC Shock step 8 — IV access; if unable within two attempts or 90 sec, place IO.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Establish IV access. If unable to obtain within two attempts or less than 90 seconds, place an IO needle."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "fluid-resus-initiated",
+          "if": "IV/IO access established; fluid bolus initiated",
+          "condition": "IV or IO access obtained; first 500 mL NS bolus pressure-infused for hypotensive distributive shock; targeting MAP > 65 with fluid goal up to 30 mL/kg.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["iv-or-io"]
+        },
+        {
+          "targetPhaseId": "branch-undertreated-decline",
+          "if": "Inadequate fluid; no vasopressor planning",
+          "condition": "Crew gives only one small (250 mL) bolus and proceeds to passive transport without committing to volume resuscitation; patient continues to decline.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": ["iv-or-io"]
+        }
+      ]
+    },
+    {
+      "id": "fluid-resus-initiated",
+      "name": "Fluid resuscitation initiated",
+      "description": "First 500 mL bolus of NS pressure-infused. Lungs reassessed — clear, no rales. Second bolus initiated. Crew tracks toward fluid goal of 30 mL/kg (75 kg × 30 = 2250 mL total target) while monitoring for pulmonary edema. Norepinephrine drip is set up alongside fluid in anticipation of fluid-refractory shock — preferred vasopressor in distributive (sepsis) shock.",
+      "triggerCondition": "IV/IO access established and first fluid bolus initiated for septic distributive shock; crew tracking toward 30 mL/kg goal while reassessing lungs and BP after each bolus.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 3,
+          "verbal": 3,
+          "motor": 5
+        },
+        "airway": "Patent",
+        "breathing": "RR 24, lungs still clear (no rales developing)",
+        "circulation": "Pulse strengthening with fluid; mottling improving at extremities",
+        "skin": {
+          "color": "flushed chest, less mottled",
+          "temperature": "warm",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Slightly improved interaction",
+        "otherFindings": [
+          "After 500 mL: BP 86/52, HR 116",
+          "Lungs reassessed clear",
+          "Norepi drip being set up at bedside",
+          "EtCO2 climbing from 28 → 32 with improved perfusion"
+        ],
+        "patientSpeech": "(answers single words: 'thirsty,' 'tired'; tracks crew with eyes)"
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 116,
+        "bpSys": 86,
+        "bpDia": 52,
+        "respRate": 24,
+        "spo2": 95,
+        "etco2": 32,
+        "temp": 39.1,
+        "tempF": 102.4,
+        "obstruction": 0,
+        "glucose": 168,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "fluid-30-ml-kg",
+          "shortAction": "NS 500 mL boluses pressure-infused; total goal 2250 mL (75 kg × 30 mL/kg) or until MAP > 65 / pulmonary edema",
+          "priority": "critical",
+          "rationale": "MATC Shock step 9a — adult fluid goal up to 30 mL/kg by predetermined (e.g., 500 mL) boluses unless MAP achieved or pulmonary edema develops.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Adult: Physiologic target: MAP goal 65 mmHg. Fluid goal of up to 30 mL/kg of isotonic fluid by administering rapid, predetermined boluses (e.g., 500 mL) unless the MAP goal is achieved, or pulmonary edema develops."
+        },
+        {
+          "id": "reassess-each-bolus",
+          "shortAction": "Auscultate lungs after each bolus; stop if rales develop",
+          "priority": "critical",
+          "rationale": "MATC Shock Patient Safety — recognize cardiogenic shock; stop fluids if rales/hepatomegaly develop.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Patient Safety Considerations: Recognition of cardiogenic shock - If the patient condition deteriorates after fluid administration, rales or hepatomegaly develop, then consider cardiogenic shock and withholding further fluid administration."
+        },
+        {
+          "id": "set-up-norepi",
+          "shortAction": "Set up norepinephrine drip 0.05–0.5 mcg/kg/min; preferred vasopressor in sepsis",
+          "priority": "critical",
+          "rationale": "MATC Shock step 11a — norepinephrine is the preferred vasopressor in distributive (sepsis) shock.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Vasopressors (shock unresponsive to IV fluids) titrated to physiologic targets: Cardiogenic, hypovolemic, obstructive shock and distributive shock: Norepinephrine 0.05–0.5 mcg/kg/minute. Preference in both neurogenic and infectious (sepsis) causes of distributive shock."
+        },
+        {
+          "id": "advance-notify-receiving",
+          "shortAction": "Advance notification of receiving hospital — 'septic shock, fluid resuscitating'",
+          "priority": "critical",
+          "rationale": "MATC Shock step 13 + Performance Measure — advance notification to hospital is required.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Provide advanced notification to the hospital. Performance Measures: Percentage of patients with suspected shock for whom advanced notification to the hospital was provided."
+        },
+        {
+          "id": "antipyretic-consider",
+          "shortAction": "Acetaminophen 1000 mg PO/PR if able (per Shock step 15a)",
+          "priority": "supplemental",
+          "rationale": "MATC Shock step 15 — antipyretics for fever; acetaminophen 15 mg/kg max 1000 mg.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Antipyretics for fever – nonsteroidal anti-inflammatory agents are contraindicated in infants less than 6 months of age: Acetaminophen (15 mg/kg; maximum dose of 1000 mg)."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "fluid-refractory-norepi",
+          "if": "Hypotension persists after 30 mL/kg → start norepi",
+          "condition": "After ~2 L of NS, MAP remains < 65; crew starts norepinephrine drip titrated to MAP > 65 and continues transport.",
+          "conditionType": "vital_threshold",
+          "triggerActionIds": ["fluid-30-ml-kg", "set-up-norepi"]
+        }
+      ]
+    },
+    {
+      "id": "fluid-refractory-norepi",
+      "name": "Fluid-refractory → norepinephrine drip",
+      "description": "After approximately 2000 mL of NS the patient remains hypotensive (MAP ~58). Lungs still clear. Crew starts norepinephrine drip at 0.1 mcg/kg/min (75 kg × 0.1 = 7.5 mcg/min) titrated upward q3 min to MAP > 65. Push-dose epinephrine 10 mcg available as bridge while drip is set up. Patient transported to ED with advance sepsis alert.",
+      "triggerCondition": "Hypotension persists after near-30 mL/kg fluid resuscitation; norepinephrine drip initiated and titrated to MAP > 65; advance hospital notification given.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 3,
+          "verbal": 4,
+          "motor": 5
+        },
+        "airway": "Patent",
+        "breathing": "RR 22, lungs still clear",
+        "circulation": "Stronger pulse with norepi titration; less mottling",
+        "skin": {
+          "color": "improving — pink chest, less mottled extremities",
+          "temperature": "warm",
+          "moisture": "moist"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Slowly improving interaction",
+        "otherFindings": [
+          "After ~2 L NS, MAP still ~58 — fluid-refractory",
+          "Norepi drip at 0.1 mcg/kg/min (7.5 mcg/min); titrated upward",
+          "Lungs clear; can continue fluids alongside pressor",
+          "EtCO2 36 — improving with restored perfusion"
+        ],
+        "patientSpeech": "(answers more clearly: 'water please,' 'tired')"
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 108,
+        "bpSys": 102,
+        "bpDia": 64,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 39.0,
+        "tempF": 102.2,
+        "obstruction": 0,
+        "glucose": 168,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "norepi-titrate",
+          "shortAction": "Norepinephrine 0.05–0.5 mcg/kg/min; start 0.1 mcg/kg/min (7.5 mcg/min) titrate to MAP > 65",
+          "priority": "critical",
+          "rationale": "MATC Shock step 11 — norepi titrated to physiologic targets; explicit dose math.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Vasopressors (shock unresponsive to IV fluids) titrated to physiologic targets: Norepinephrine 0.05–0.5 mcg/kg/minute. Preference in both neurogenic and infectious (sepsis) causes of distributive shock."
+        },
+        {
+          "id": "push-dose-bridge",
+          "shortAction": "Push-dose epi 10 mcg IV q3–5 min as bridge while norepi drip is mixed (10 mcg/mL prep)",
+          "priority": "important",
+          "rationale": "MATC Shock step 11a — push-dose epi alternative; recipe spelled out in protocol.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Epinephrine, 0.05–0.3 mcg/kg/minute. Alternative to a drip, push dose epinephrine may be administered: Prepare 10 mcg/mL by diluting 1 mL of epinephrine 0.1 mg/mL (1:10,000) in 9 mL of normal saline; Administer 0.01 mg/kg (0.1 mL/kg) up to a maximum single dose of 10 mcg (1 mL) q 3–5 minutes titrated to maintain goal MAP."
+        },
+        {
+          "id": "continue-fluids",
+          "shortAction": "Continue fluid alongside vasopressor; reassess lungs each 250 mL",
+          "priority": "critical",
+          "rationale": "MATC Shock step 9 — fluid resuscitation continues toward 30 mL/kg unless pulmonary edema or MAP achieved; vasopressors are added, not substituted.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "IV fluid volume goal attained by giving boluses that are pressure infused over less than 15 minutes each based on patient's condition and clinical impression. Fluid volume goal to achieve a mean arterial pressure (adults). Adult: Physiologic target: MAP goal 65 mmHg. Fluid goal of up to 30 mL/kg of isotonic fluid by administering rapid, predetermined boluses (e.g., 500 mL)."
+        },
+        {
+          "id": "vital-signs-q15",
+          "shortAction": "Full vital signs q5 min; document fluid total, pressor dose, response",
+          "priority": "critical",
+          "rationale": "MATC Shock Documentation — full vital signs with reassessment q15 min or more frequently; fluid totals and meds.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Key Documentation Elements: Medications administered. Full vital signs (pulse, blood pressure, respiratory rate, neurologic status assessment) with reassessment q 15 minutes or more frequently as appropriate. Lactate level (if available). Neurologic status assessment. Amount of fluids given."
+        }
+      ]
+    },
+    {
+      "id": "branch-undertreated-decline",
+      "name": "Undertreated; deeper shock and AMS",
+      "description": "Crew gave only one 250 mL bolus and proceeded to transport without committing to a volume resuscitation strategy or vasopressor planning. En route the patient deteriorates: BP 64/38, GCS drops to 7, respiratory pattern becomes irregular. Crew must now rescue: open both IV lines wide, continue fluid toward 30 mL/kg, start norepinephrine, manage airway with BVM as needed, advance notify the receiving hospital.",
+      "triggerCondition": "Inadequate fluid resuscitation and no pre-positioned vasopressor strategy; septic shock progressed to deeper shock with AMS; rescue with aggressive resuscitation now required.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": {
+          "eye": 2,
+          "verbal": 2,
+          "motor": 4
+        },
+        "airway": "Maintains for now but diminishing",
+        "breathing": "RR 30 irregular, shallow, lungs clear",
+        "circulation": "Thready central pulse; cold mottled extremities; cap refill > 5 sec",
+        "skin": {
+          "color": "ashen with peripheral mottling",
+          "temperature": "cold extremities, warm chest",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 4 mm, sluggishly reactive",
+        "motorFunction": "Withdraws to pain only",
+        "otherFindings": [
+          "BP 64/38 — deeper shock",
+          "GCS 8 — at risk for airway compromise",
+          "EtCO2 22 — severe poor-perfusion marker",
+          "Lungs still clear — fluid still appropriate"
+        ],
+        "patientSpeech": "(no longer speaking; moans to pain)"
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 134,
+        "bpSys": 64,
+        "bpDia": 38,
+        "respRate": 30,
+        "spo2": 90,
+        "etco2": 22,
+        "temp": 39.2,
+        "tempF": 102.6,
+        "obstruction": 0,
+        "glucose": 168,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "rescue-airway-bvm",
+          "shortAction": "Rescue airway: NPA + BVM 10–12/min for declining mentation; reassess",
+          "priority": "critical",
+          "rationale": "MATC Altered Mental Status Patient Safety — initial focus on airway protection, oxygenation, ventilation when mental status depressed.",
+          "protocolReference": "MATC: Altered Mental Status",
+          "protocolExcerpt": "Patient Safety Considerations: With depressed mental status, initial focus is on airway protection, oxygenation, ventilation, and perfusion."
+        },
+        {
+          "id": "rescue-fluid",
+          "shortAction": "Open both IVs/IO; pressure-infuse 1 L NS now; continue toward 30 mL/kg total",
+          "priority": "critical",
+          "rationale": "MATC Shock step 9 — adult fluid goal up to 30 mL/kg unless pulmonary edema/MAP achieved.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Fluid goal of up to 30 mL/kg of isotonic fluid by administering rapid, predetermined boluses (e.g., 500 mL) unless the MAP goal is achieved, or pulmonary edema develops."
+        },
+        {
+          "id": "rescue-norepi",
+          "shortAction": "Norepinephrine 0.1 mcg/kg/min (7.5 mcg/min); titrate up; push-dose epi as bridge",
+          "priority": "critical",
+          "rationale": "MATC Shock step 11 — norepi for distributive shock unresponsive to fluid; push-dose epi as alternative bridge.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Norepinephrine 0.05–0.5 mcg/kg/minute. Preference in both neurogenic and infectious (sepsis) causes of distributive shock."
+        },
+        {
+          "id": "advance-notify",
+          "shortAction": "Advance notification of decompensation and ETA",
+          "priority": "critical",
+          "rationale": "MATC Shock step 13 + Performance Measure — advance notification.",
+          "protocolReference": "MATC: Shock",
+          "protocolExcerpt": "Provide advanced notification to the hospital."
+        }
+      ]
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

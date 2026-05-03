@@ -1,0 +1,300 @@
+{
+  "scenarioId": "medical-difficult-iv-sepsis-001",
+  "scenarioName": "Difficult IV Access in Septic Dehydrated Elderly Patient — IO / EJ Decision and Infusion Math",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "78-year-old female who lives alone has been ill for 3 days with fever, decreased appetite, and decreased fluid intake. Her daughter, who normally checks on her by phone every day, became concerned today when her mother did not answer the phone all morning. She drove over and found her mother in bed, very weak, with dry mouth and tongue, eyes sunken, and concentrated dark urine in the bedside commode. Patient is conversant but lethargic, oriented to person only, and has been mostly bed-bound for 24 hours. She has known kidney disease (CKD stage 3), atrial fibrillation, hypertension, and a history of recurrent UTIs with multidrug-resistant organisms.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find a 78-year-old female frail and clearly dehydrated: dry mouth and tongue, sunken eyes, skin tenting, dark concentrated urine. She is hypotensive at 84/52, tachycardic at 110 (despite chronic beta-blocker), and lethargic with oriented-to-person-only mentation. The veins on her arms are flat, ropy, and small. The teaching point sets up immediately: this is septic shock with poor IV access. Crew needs to commit to a clear escalation plan — two peripheral attempts in ≤ 90 seconds, then IO (preferred for medication-administration speed) or EJ (preferred for sustained access in cooperative patients) — and must run the infusion math correctly: 30 mL/kg fluid goal = 1740 mL, norepi 0.05–0.5 mcg/kg/min. → IO placed; fluid + pressor flowing: After two failed peripheral attempts within 90 seconds, the crew correctly escalates: a humeral IO is placed (preferred over proximal tibia for adult resuscitation flow rates), or an external jugular is cannulated as an alternative. NS pressure-infused via the IO toward the 30 mL/kg goal: 58 kg × 30 mL/kg = 1740 mL total target, given as 500 mL boluses. Norepi drip is prepared at 0.05–0.5 mcg/kg/min: starting at 0.1 mcg/kg/min = 5.8 mcg/min titrated to MAP > 65. Push-dose epi 10 mcg q3–5 min as bridge while drip is set up. → Improving; transport on infusions: Patient improving with restored circulation. MAP 75, HR 96 (down from 110), pinker, more interactive. Lungs still clear. Crew transports on continuous norepi infusion via IO/EJ with continued fluid as long as lungs remain clear. Bedside handoff includes timeline, IV access challenge, total fluid given, infusion rate."
+  },
+  "patientInformation": {
+    "patientName": "Doris Pemberton",
+    "patientCondition": "Three days of progressive weakness, decreased PO intake, low-grade fever, and dark concentrated urine; daughter found her in bed too weak to lift her head.",
+    "patientAge": 78,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 158,
+    "patientWeight": 58,
+    "patientPhotoId": 94,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 78-year-old female frail and clearly dehydrated: dry mouth and tongue, sunken eyes, skin tenting, dark concentrated urine. She is hypotensive at 84/52, tachycardic at 110 (despite chronic beta-blocker), and lethargic with oriented-to-person-only mentation. The veins on her arms are flat, ropy, and small. The teaching point sets up immediately: this is septic shock with poor IV access. Crew needs to commit to a clear escalation plan — two peripheral attempts in ≤ 90 seconds, then IO (preferred for medication-administration speed) or EJ (preferred for sustained access in cooperative patients) — and must run the infusion math correctly: 30 mL/kg fluid goal = 1740 mL, norepi 0.05–0.5 mcg/kg/min.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 110,
+        "bpSys": 84,
+        "bpDia": 52,
+        "respRate": 24,
+        "spo2": 94,
+        "etco2": 28,
+        "temp": 38.7,
+        "obstruction": 0,
+        "custMeasure1": 152,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize septic shock with severe dehydration",
+        "O2 NC 2 L → titrate to SpO2 94–98%",
+        "Cardiac monitor; SpO2 + EtCO2 (low EtCO2 = poor perfusion)",
+        "Check blood glucose; correct if < 60",
+        "Attempt 2 peripheral IVs with appropriate technique; commit to ≤ 90 sec / 2 attempts then escalate"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "IO placed; fluid + pressor flowing",
+      "description": "After two failed peripheral attempts within 90 seconds, the crew correctly escalates: a humeral IO is placed (preferred over proximal tibia for adult resuscitation flow rates), or an external jugular is cannulated as an alternative. NS pressure-infused via the IO toward the 30 mL/kg goal: 58 kg × 30 mL/kg = 1740 mL total target, given as 500 mL boluses. Norepi drip is prepared at 0.05–0.5 mcg/kg/min: starting at 0.1 mcg/kg/min = 5.8 mcg/min titrated to MAP > 65. Push-dose epi 10 mcg q3–5 min as bridge while drip is set up.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 104,
+        "bpSys": 92,
+        "bpDia": 58,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 32,
+        "temp": 38.7,
+        "obstruction": 0,
+        "custMeasure1": 152,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Place IO (humeral preferred for flow rate) or cannulate EJ; confirm patency",
+        "NS 500 mL boluses pressure-infused; goal 1740 mL total (58 kg × 30 mL/kg) or until MAP > 65 / pulmonary edema",
+        "Norepinephrine 0.05–0.5 mcg/kg/min; start 0.1 mcg/kg/min = 5.8 mcg/min; titrate to MAP > 65",
+        "Push-dose epi 10 mcg IV q3–5 min as bridge while norepi drip is mixed (10 mcg/mL prep)",
+        "Advance notification — septic shock, fluid + pressor underway, ETA",
+        "Auscultate lungs after each bolus; stop fluids if rales develop (cardiogenic transition)"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Improving; transport on infusions",
+      "description": "Patient improving with restored circulation. MAP 75, HR 96 (down from 110), pinker, more interactive. Lungs still clear. Crew transports on continuous norepi infusion via IO/EJ with continued fluid as long as lungs remain clear. Bedside handoff includes timeline, IV access challenge, total fluid given, infusion rate.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 96,
+        "bpSys": 110,
+        "bpDia": 70,
+        "respRate": 18,
+        "spo2": 97,
+        "etco2": 36,
+        "temp": 38.6,
+        "obstruction": 0,
+        "custMeasure1": 152,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Continue norepi titration to MAP > 65; continue fluid alongside (lungs clear)",
+        "Full vital signs q5 min; document fluid total + pressor dose + response",
+        "Acetaminophen 1000 mg PR if able (max 1000 mg per Shock step 15a)"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Time wasted on peripheral attempts",
+      "description": "Crew makes 5+ peripheral IV attempts over more than 10 minutes without escalating to IO or EJ. The patient receives no fluid, no pressor, no antipyretic, and continues to deteriorate. BP drops to 64/40, mentation decreases to GCS 8, EtCO2 falls below 22 — severe shock with end-organ injury. The protocol's explicit '90 seconds / 2 attempts then IO' rule was violated. Rescue requires immediate IO placement now and aggressive resuscitation.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 124,
+        "bpSys": 64,
+        "bpDia": 40,
+        "respRate": 30,
+        "spo2": 90,
+        "etco2": 22,
+        "temp": 38.8,
+        "obstruction": 0,
+        "custMeasure1": 152,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Stop peripheral attempts; place IO NOW (humeral); start NS 1 L pressure-infused",
+        "Rapid pressure-infuse 1 L NS via IO; continue toward 30 mL/kg total",
+        "Norepi 0.1 mcg/kg/min (5.8 mcg/min for 58 kg) via IO; titrate to MAP > 65",
+        "NPA + BVM if RR/SpO2 continue to decline; do not let airway lapse",
+        "Advance notification of decompensation and ETA"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize septic shock with severe dehydration",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "O2 NC 2 L → titrate to SpO2 94–98%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cardiac monitor; SpO2 + EtCO2 (low EtCO2 = poor perfusion)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose; correct if < 60",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Attempt 2 peripheral IVs with appropriate technique; commit to ≤ 90 sec / 2 attempts then escalate",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Place IO (humeral preferred for flow rate) or cannulate EJ; confirm patency",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "NS 500 mL boluses pressure-infused; goal 1740 mL total (58 kg × 30 mL/kg) or until MAP > 65 / pulmonary edema",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Norepinephrine 0.05–0.5 mcg/kg/min; start 0.1 mcg/kg/min = 5.8 mcg/min; titrate to MAP > 65",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Push-dose epi 10 mcg IV q3–5 min as bridge while norepi drip is mixed (10 mcg/mL prep)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Advance notification — septic shock, fluid + pressor underway, ETA",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Auscultate lungs after each bolus; stop fluids if rales develop (cardiogenic transition)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continue norepi titration to MAP > 65; continue fluid alongside (lungs clear)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Full vital signs q5 min; document fluid total + pressor dose + response",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acetaminophen 1000 mg PR if able (max 1000 mg per Shock step 15a)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Stop peripheral attempts; place IO NOW (humeral); start NS 1 L pressure-infused",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Rapid pressure-infuse 1 L NS via IO; continue toward 30 mL/kg total",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Norepi 0.1 mcg/kg/min (5.8 mcg/min for 58 kg) via IO; titrate to MAP > 65",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "NPA + BVM if RR/SpO2 continue to decline; do not let airway lapse",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Advance notification of decompensation and ETA",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

@@ -1,0 +1,478 @@
+{
+  "meta": {
+    "id": "medical-hypoglycemia-mvc-001",
+    "name": "Hypoglycemic Driver — Single-Vehicle MVC with Head Trauma",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Medical/Trauma",
+    "protocols": [
+      "medical-hypoglycemia",
+      "medical-altered-mental-status",
+      "trauma-head-injury",
+      "trauma-general"
+    ],
+    "totalTimeSeconds": 1500,
+    "createdAt": "2026-05-03T00:00:00Z",
+    "tags": [
+      "hypoglycemia",
+      "diabetic emergency",
+      "MVC",
+      "head injury",
+      "altered mental status",
+      "dextrose",
+      "trauma triage",
+      "advanced"
+    ]
+  },
+  "patient": {
+    "name": "Marcus Reynolds",
+    "age": 54,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 88,
+    "weightLbs": 194,
+    "height": 178,
+    "chiefComplaint": "Single-vehicle motor vehicle crash with the driver still in the vehicle, confused and combative, with a 1-inch laceration over the left eyebrow from striking the steering wheel and column. Bystander reports he 'looked weird' before driving off the road.",
+    "history": {
+      "hpi": "54-year-old male insulin-dependent type 1 diabetic was driving home from his evening shift at the warehouse when he reportedly drifted across the centerline, struck a curb, and came to rest against a road-sign post at low speed (~25 mph). A passing driver who happened to be a coworker witnessed the event and reports the patient 'looked weird and pale' approximately a block before the crash. He remembers the patient mentioning at work that he had 'skipped dinner.' Patient is conscious but confused, combative, diaphoretic, and has a 1-inch forehead laceration with bony bruising; airbag deployed. Witness called 911. Per his MedicAlert tag he is a type 1 diabetic on an insulin pump (visible on the abdomen).",
+      "pastMedical": [
+        "Type 1 diabetes mellitus on continuous subcutaneous insulin pump",
+        "Hypertension (mild)",
+        "History of one prior severe hypoglycemic episode with seizure (5 years ago)"
+      ],
+      "medications": [
+        "Insulin via pump (basal + meal boluses)",
+        "Lisinopril 10 mg PO daily"
+      ],
+      "allergies": [
+        "NKDA"
+      ],
+      "lastOralIntake": "Per coworker — only coffee at start of shift; skipped dinner",
+      "events": "Single-vehicle low-speed MVC after witness reports patient 'looked weird and pale' — collapsed/swerved off road, struck curb and sign post; airbag deployment; forehead laceration; confusion at scene."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: Single-vehicle MVC, low speed, driver conscious but confused with head laceration, 1 patient. Engine and PD en route. Wet pavement, daylight.",
+    "location": "Two-lane suburban road, vehicle off the right shoulder against a road-sign post. Adequate room to work. PD on scene controlling traffic.",
+    "time": "Friday, 18:15, dusk, dry pavement",
+    "safety": "Scene safe. PD controlling traffic. Engine company stabilizing vehicle. Sufficient daylight.",
+    "bystanders": "Coworker who witnessed the event is on scene; provides clear pre-crash history, mentions skipped dinner, identifies patient as a type 1 diabetic.",
+    "visualCues": [
+      "Sedan against road-sign post; minor front-end damage; airbag deployed",
+      "Driver in the seat, confused, combative, swatting at responders",
+      "1-inch forehead laceration above left eyebrow with active bleeding",
+      "MedicAlert bracelet visible on left wrist: 'TYPE 1 DIABETIC'",
+      "Insulin pump visible on abdomen; tubing intact",
+      "Coffee cup spilled on the floor of the vehicle"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives to a low-speed single-vehicle MVC with a 54-year-old male driver who is confused, combative, and diaphoretic with a forehead laceration. The pre-crash history (skipped dinner, T1DM on insulin pump, witness saying patient 'looked weird' before the crash) and the diaphoretic combative presentation point strongly to hypoglycemia AS THE CAUSE of the crash. The teaching point is to do BOTH at once: check the glucose AND protect the trauma airway / cervical spine / head-injury pathway. Do not treat one at the expense of the other.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 3,
+          "verbal": 3,
+          "motor": 5
+        },
+        "airway": "Patent — patient is talking (combatively) but slurred",
+        "breathing": "RR 22, lungs clear, no chest wall instability",
+        "circulation": "Strong rapid radial pulse; cool, pale, profusely diaphoretic; no obvious external hemorrhage other than scalp laceration",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "profusely diaphoretic"
+        },
+        "pupils": "Equal at 4 mm, reactive — no anisocoria (yet)",
+        "motorFunction": "Moves all extremities; combative but symmetric strength",
+        "otherFindings": [
+          "1-inch forehead laceration with bony bruising; controlled with pressure",
+          "MedicAlert bracelet: 'TYPE 1 DIABETIC'",
+          "Insulin pump visible on abdomen, tubing intact",
+          "No tongue bite, no urinary incontinence, no posturing",
+          "Profuse diaphoresis disproportionate to the trauma",
+          "Witness gives history of skipped dinner and pre-crash 'weird' appearance"
+        ],
+        "patientSpeech": "Get … off … me … (slurred, swatting hands away)"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 118,
+        "bpSys": 152,
+        "bpDia": 96,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.6,
+        "tempF": 97.9,
+        "obstruction": 0,
+        "glucose": 38,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "scene-safety-c-spine",
+          "shortAction": "Scene safety; manual c-spine; primary survey (MARCH); recognize trauma + AMS",
+          "priority": "critical",
+          "rationale": "MATC Trauma General — MARCH primary survey; maintain c-spine; head-injury pathway active.",
+          "protocolReference": "MATC: General Trauma Management",
+          "protocolExcerpt": "Primary survey (Use 'MARCH' algorithm): Massive Hemorrhage; Airway; Respiratory/Breathing; Circulation; Head injury/Hypothermia. Perform initial neurologic status assessment of GCS/AVPU and pupillary size and responsiveness. Assume concomitant cervical spine injury in patients with moderate/severe head injury."
+        },
+        {
+          "id": "blood-glucose-now",
+          "shortAction": "Check blood glucose IMMEDIATELY — diaphoretic combative T1DM (BGL = 38)",
+          "priority": "critical",
+          "rationale": "MATC AMS step 9 + Hypoglycemia Inclusion + Trauma Head Injury 4a — check glucose during transport / for AMS; T1DM with diaphoresis is hypoglycemia until proven otherwise.",
+          "protocolReference": "MATC: Hypoglycemia",
+          "protocolExcerpt": "Inclusion Criteria: Patients with blood glucose less than 60 mg/dL with symptoms of hypoglycemia. Patients with altered level of consciousness. Patients with seizure. Patients with history of diabetes and other medical symptoms. Patients who appear to be intoxicated. Pertinent Assessment Findings: Diaphoresis or hypothermia may be associated with hypoglycemia. Concomitant trauma."
+        },
+        {
+          "id": "high-flow-o2",
+          "shortAction": "High-flow O2 via NRB (head-injury pathway prophylaxis vs desaturation)",
+          "priority": "critical",
+          "rationale": "MATC Head Injury Treatment 1a — high-flow O2 via NRB as a precaution against unanticipated deterioration.",
+          "protocolReference": "MATC: Head Injury",
+          "protocolExcerpt": "Airway: Administer high-flow oxygen via NRB (non-rebreather) as a precaution against unanticipated deterioration."
+        },
+        {
+          "id": "hemorrhage-control",
+          "shortAction": "Direct pressure to forehead laceration; gauze dressing",
+          "priority": "important",
+          "rationale": "MATC Head Injury Treatment 3a — control bleeding with direct pressure if no suspected open skull injury.",
+          "protocolReference": "MATC: Head Injury",
+          "protocolExcerpt": "Wound care: Control bleeding with direct pressure if no suspected open skull injury. Moist sterile dressing to any potential open skull wound."
+        },
+        {
+          "id": "secondary-trauma-survey",
+          "shortAction": "Secondary survey — head/neck/torso/pelvis/extremities for occult injury",
+          "priority": "critical",
+          "rationale": "MATC Trauma General Secondary Assessment — head-to-toe physical exam.",
+          "protocolReference": "MATC: General Trauma Management",
+          "protocolExcerpt": "Secondary survey: Head to toe physical exam including re-assessment of interventions from primary survey. Head/Face: Palpate head and scalp and face and evaluate for soft tissue injury or bony crepitus indicating injury to skull or facial bones."
+        },
+        {
+          "id": "pupils-baseline",
+          "shortAction": "Baseline pupils, GCS, motor exam — reassess with any change",
+          "priority": "critical",
+          "rationale": "MATC Head Injury Monitoring 3c-d — baseline neurologic exam, reassess pupils with mentation change.",
+          "protocolReference": "MATC: Head Injury",
+          "protocolExcerpt": "Monitoring: Initial neurologic status assessment and reassessment with any change in mentation. Eyes: Evaluate pupil size and reaction to light to establish baseline; Reassess pupils if decrease in mentation."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "iv-d10-corrected",
+          "if": "BGL low; IV D10 given; AMS resolves",
+          "condition": "BGL confirmed at 38; IV access established; D10 250 mL (25 g) infused incrementally; mental status improves; trauma evaluation continues uninterrupted.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["blood-glucose-now"]
+        },
+        {
+          "targetPhaseId": "branch-bgl-missed",
+          "if": "BGL not checked; treated only as head injury",
+          "condition": "Crew approaches the patient as a closed-head-injury / combative trauma patient and does not check glucose; AMS persists or worsens; possible chemical sedation pursued without addressing the underlying hypoglycemia.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": ["blood-glucose-now"]
+        }
+      ]
+    },
+    {
+      "id": "iv-d10-corrected",
+      "name": "IV D10 given; mentation improves",
+      "description": "IV access established. Crew administers 25 g of dextrose as 250 mL of D10% IV infused incrementally. Within 2–3 minutes the patient's mentation clears: he becomes oriented, no longer combative, embarrassed, and remembers driving home. He admits he 'didn't eat dinner because I was running late.' Trauma assessment continues — head injury risk remains because of the mechanism and the laceration, even though the AMS turned out to be metabolic in origin. Crew continues spine precautions and transports to a trauma-capable receiving facility.",
+      "triggerCondition": "BGL confirmed low; IV dextrose given (D10 preferred per protocol safety considerations); mental status improving; trauma evaluation continues with head injury and spine precautions.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 18, comfortable, lungs clear",
+        "circulation": "Strong regular pulse; warmer; less diaphoretic",
+        "skin": {
+          "color": "pink",
+          "temperature": "warm",
+          "moisture": "drying out"
+        },
+        "pupils": "Equal at 3 mm, briskly reactive",
+        "motorFunction": "Intact, symmetric, follows commands appropriately",
+        "otherFindings": [
+          "BGL repeat: 112",
+          "Mentation cleared; oriented ×4",
+          "Embarrassed about combativeness",
+          "Forehead laceration controlled with pressure dressing",
+          "No new neurologic deficit; pupils unchanged"
+        ],
+        "patientSpeech": "I'm so sorry. I haven't eaten since lunch. I felt off and then I don't really remember. Am I in trouble?"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 88,
+        "bpSys": 142,
+        "bpDia": 88,
+        "respRate": 18,
+        "spo2": 98,
+        "etco2": 38,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 112,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "iv-d10",
+          "shortAction": "D10% 250 mL IV (= 25 g) infused incrementally — D10 preferred over D50 per Safety #2",
+          "priority": "critical",
+          "rationale": "MATC Hypoglycemia Treatment 2b + Patient Safety #1, #2 — adult max 25 g; D10 preferred (D50 carries extravasation risk).",
+          "protocolReference": "MATC: Hypoglycemia",
+          "protocolExcerpt": "Unconscious patient, or patients who are unable to protect their own airway: Dextrose IV – administer in incremental doses until mental status improves or maximum field dosing is reached (if available, D10% is preferred). Maximum field adult dosing: 25 g of 10–50% dextrose IV: 50 mL of 50% dextrose; 100 mL of 25% dextrose; 250 mL of 10% dextrose. Patient Safety: Dextrose 50% can cause local tissue damage if it extravasates from vein and may cause hyperglycemia. Dextrose 50% carries risk for little clinical gain. EMS systems may consider carrying no more than 25% concentration of dextrose for treating hypoglycemia in adults."
+        },
+        {
+          "id": "stop-pump",
+          "shortAction": "Stop / disconnect insulin pump — known T1DM pump patient with hypoglycemia",
+          "priority": "important",
+          "rationale": "MATC Hypoglycemia Treatment 2b — for patients with insulin pump and hypoglycemia with AMS, stop or disconnect pump.",
+          "protocolReference": "MATC: Hypoglycemia",
+          "protocolExcerpt": "For patients with an insulin pump who are hypoglycemic with associated altered mental status (GCS less than 15): Stop the pump, disconnect, or remove at insertion site if patient cannot ingest oral glucose or ALS is not available."
+        },
+        {
+          "id": "repeat-bgl",
+          "shortAction": "Repeat blood glucose 5–10 min after dextrose; document response",
+          "priority": "critical",
+          "rationale": "MATC Hypoglycemia step 3b + Documentation — repeat glucose if mental status has not normalized; document reassessment.",
+          "protocolReference": "MATC: Hypoglycemia",
+          "protocolExcerpt": "Reassess patient: Reassess vital signs (pulse, blood pressure, respiratory rate, neurologic status assessment) and mental status. Repeat check of blood glucose level if previous hypoglycemia and mental status has not returned to normal. Key Documentation Elements: Document reassessment of vital signs and mental status after administration of glucose/dextrose/glucagon."
+        },
+        {
+          "id": "do-not-release",
+          "shortAction": "Transport — does NOT meet release criteria (concomitant trauma, head injury)",
+          "priority": "critical",
+          "rationale": "MATC Hypoglycemia Disposition 4c — release requires NO major comorbid symptoms; concomitant head trauma disqualifies; transport mandatory.",
+          "protocolReference": "MATC: Hypoglycemia",
+          "protocolExcerpt": "If symptoms of hypoglycemia resolve after treatment, release without transport should only be considered if all the following are true: Repeat glucose is greater than 80 mg/dL; Patient takes insulin or metformin to control diabetes and does not take long-acting oral sulphunylurea agents; Patient returns to normal mental status, with no focal neurologic signs/symptoms after receiving glucose/dextrose; Patient can promptly obtain and will eat a carbohydrate meal; Patient or legal guardian refuses transport and EMS clinicians agree transport not indicated; A reliable adult will be staying with patient; No major co-morbid symptoms exist, like chest pain, shortness of breath, seizures, intoxication; A clear cause of the hypoglycemia is identified."
+        },
+        {
+          "id": "spine-precautions",
+          "shortAction": "Maintain spine precautions; transport to trauma-capable receiving facility",
+          "priority": "critical",
+          "rationale": "MATC Head Injury Transport — preferential transport to highest level of care for moderate/severe head injury or significant mechanism; spine precautions per Spinal Care Guideline.",
+          "protocolReference": "MATC: Head Injury",
+          "protocolExcerpt": "Disability: Spinal assessment and management, per Spinal Care Guideline. Transport destination specific to head trauma: Preferential transport to highest level of care within trauma system: GCS 3–13, P (pain) or U (unresponsive) on AVPU scale; Penetrating head trauma; Open or depressed skull fracture."
+        },
+        {
+          "id": "head-injury-bp-target",
+          "shortAction": "Avoid hypotension — target SBP > 110 in head injury; no hyperventilation",
+          "priority": "critical",
+          "rationale": "MATC Head Injury Circulation 3b + Patient Safety #1 — adult head-injury target SBP > 110; do not hyperventilate (EtCO2 35–45).",
+          "protocolReference": "MATC: Head Injury",
+          "protocolExcerpt": "Moderate/severe closed head injury: Blood pressure: avoid hypotension. Adult (age greater than 10 years): maintain SBP greater than or equal to 110 mmHg. Patient Safety Considerations: Do not hyperventilate patients: Maintain all patients in EtCO2 range of 35–45 mmHg."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "transport-trauma-center",
+          "if": "Stable; transport to trauma center",
+          "condition": "Mentation cleared, BGL corrected, hemorrhage controlled, spine precautions in place; transport to trauma-capable hospital with full picture (hypoglycemia → MVC → forehead laceration).",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["iv-d10", "spine-precautions"]
+        }
+      ]
+    },
+    {
+      "id": "transport-trauma-center",
+      "name": "Transport to trauma center",
+      "description": "Patient transported on the cot in spinal motion restriction with cervical collar, head injury precautions, oxygen targeted to 94–98%, IV in place, and continuous monitoring. Crew provides bedside handoff using AT-MIST framework: 54M, ~30 minutes ago, low-speed MVC, 1-inch forehead laceration with mechanism for closed head injury, hypoglycemia identified as cause (BGL 38 → 112 after D10), insulin pump stopped.",
+      "triggerCondition": "Patient corrected and stabilized, en route to trauma-capable hospital with continued monitoring for occult injury and recurrent hypoglycemia.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 16, lungs clear",
+        "circulation": "Strong, regular; warm; dry",
+        "skin": {
+          "color": "pink",
+          "temperature": "warm",
+          "moisture": "dry"
+        },
+        "pupils": "Equal, briskly reactive — unchanged from baseline",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "BGL 112; mentation cleared",
+          "Forehead dressing dry, no expanding hematoma",
+          "No new neuro deficit; no posturing; no vomiting"
+        ],
+        "patientSpeech": "I really feel a lot better. I think I'm okay. Are they going to keep me?"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 84,
+        "bpSys": 138,
+        "bpDia": 86,
+        "respRate": 16,
+        "spo2": 98,
+        "etco2": 38,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 112,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "serial-neuro-exam",
+          "shortAction": "Serial GCS, pupils, motor en route — every 5 min and with any change",
+          "priority": "critical",
+          "rationale": "MATC Head Injury Disability 4c — perform and trend neurologic status assessment; early signs of deterioration include confusion, agitation, drowsiness, vomiting, severe headache.",
+          "protocolReference": "MATC: Head Injury",
+          "protocolExcerpt": "Disability: Perform and trend neurologic status assessment (GCS or AVPU scale). Early signs of deterioration: Confusion; Agitation; Drowsiness; Vomiting; Severe headache."
+        },
+        {
+          "id": "watch-recurrent-hypoglycemia",
+          "shortAction": "Recheck BGL en route; watch for recurrent hypoglycemia (insulin pump still on board)",
+          "priority": "important",
+          "rationale": "MATC Hypoglycemia Patient Safety #5 + Notes — sulfonylureas long half-life; insulin pump basal continues; reassess.",
+          "protocolReference": "MATC: Hypoglycemia",
+          "protocolExcerpt": "Patient Safety Considerations: Sulfonylureas (e.g., glyburide, glipizide) have long half-lives ranging from 12–60 hrs. Patients with corrected hypoglycemia who are taking these agents are at particular risk for recurrent symptoms and frequently require hospital admission."
+        },
+        {
+          "id": "atmist-handoff",
+          "shortAction": "Bedside AT-MIST handoff: hypoglycemia → MVC → head laceration → cleared with D10",
+          "priority": "important",
+          "rationale": "MATC Trauma General Notes #5 — structured handoff (AT-MIST) at trauma center.",
+          "protocolReference": "MATC: General Trauma Management",
+          "protocolExcerpt": "Use structured communication tool for patient handoff to higher level care such as AT-MIST: Age; Time of incident or onset of symptoms; Mechanism; Injuries noted; Symptoms/Signs; Treatments provided."
+        }
+      ]
+    },
+    {
+      "id": "branch-bgl-missed",
+      "name": "BGL not checked; treated only as head injury",
+      "description": "Crew labels the patient as a 'combative head injury' and does not check glucose. Combativeness is escalated rather than diagnosed — restraints applied, possibly chemical sedation considered. AMS persists. The forehead laceration is dressed, but the underlying driver of the AMS — a BGL of 38 — is missed and the patient continues to be hypoglycemic en route. This is the classic miss the AMS protocol explicitly warns about: 'Hypoglycemic and hypoxic patients can be irritable and violent.' Crew must rescue by checking BGL now and giving D10.",
+      "triggerCondition": "Hypoglycemia driver of AMS not identified; combative trauma patient treated symptomatically (restraints/sedation) instead of correcting the underlying metabolic cause.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 3,
+          "verbal": 3,
+          "motor": 5
+        },
+        "airway": "Patent but combative",
+        "breathing": "RR 24, lungs clear",
+        "circulation": "Strong rapid pulse; cool, profusely diaphoretic",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "profusely diaphoretic"
+        },
+        "pupils": "Equal at 4 mm, reactive",
+        "motorFunction": "Combative, swatting; symmetric strength",
+        "otherFindings": [
+          "Continues confused and combative",
+          "Profuse diaphoresis disproportionate to closed head injury",
+          "BGL never checked",
+          "Insulin pump still running"
+        ],
+        "patientSpeech": "Stop … get … off … (slurred)"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 122,
+        "bpSys": 156,
+        "bpDia": 100,
+        "respRate": 24,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.6,
+        "tempF": 97.9,
+        "obstruction": 0,
+        "glucose": 34,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "bgl-now-rescue",
+          "shortAction": "Check blood glucose NOW (combative + diaphoretic + T1DM = hypoglycemia until proven otherwise)",
+          "priority": "critical",
+          "rationale": "MATC AMS Patient Safety + Hypoglycemia Inclusion — hypoglycemic/hypoxic patients can be combative; BGL is mandatory for AMS or trauma with AMS.",
+          "protocolReference": "MATC: Altered Mental Status",
+          "protocolExcerpt": "Patient Safety Considerations: Hypoglycemic and hypoxic patients can be irritable and violent. Performance Measures: Hypoglycemia considered and treated appropriately. Blood glucose level obtained."
+        },
+        {
+          "id": "iv-d10-rescue",
+          "shortAction": "D10% 250 mL IV (= 25 g) infused incrementally; reassess; recheck BGL",
+          "priority": "critical",
+          "rationale": "MATC Hypoglycemia Treatment 2b + Patient Safety — D10 preferred for adult unconscious/AMS patient.",
+          "protocolReference": "MATC: Hypoglycemia",
+          "protocolExcerpt": "Unconscious patient, or patients who are unable to protect their own airway: Dextrose IV – administer in incremental doses until mental status improves or maximum field dosing is reached (if available, D10% is preferred). Maximum field adult dosing: 25 g of 10–50% dextrose IV."
+        },
+        {
+          "id": "stop-insulin-pump",
+          "shortAction": "Stop / disconnect insulin pump",
+          "priority": "important",
+          "rationale": "MATC Hypoglycemia Treatment — for hypoglycemic AMS pump patient, stop or disconnect pump.",
+          "protocolReference": "MATC: Hypoglycemia",
+          "protocolExcerpt": "For patients with an insulin pump who are hypoglycemic with associated altered mental status (GCS less than 15): Stop the pump, disconnect, or remove at insertion site if patient cannot ingest oral glucose or ALS is not available."
+        },
+        {
+          "id": "avoid-sedation-without-bgl",
+          "shortAction": "Do NOT chemically sedate without checking BGL first — sedation could mask continuing hypoglycemia",
+          "priority": "critical",
+          "rationale": "MATC AMS Patient Safety + Performance — naloxone (and by analogy, other interventions) should be therapeutic, not diagnostic; BGL is the cheap, fast, mandatory check.",
+          "protocolReference": "MATC: Altered Mental Status",
+          "protocolExcerpt": "Performance Measures: Hypoglycemia considered and treated appropriately. Blood glucose level obtained. Hypotension appropriately treated. Naloxone is used as therapeutic intervention, not a diagnostic tool."
+        }
+      ]
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

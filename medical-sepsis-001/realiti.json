@@ -1,0 +1,300 @@
+{
+  "scenarioId": "medical-sepsis-001",
+  "scenarioName": "Septic Shock — Nursing Home Resident with Fever, Hypotension, and Altered Mentation",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "75-year-old male nursing home resident with a baseline of mild dementia (oriented to person and place at baseline, ambulatory with walker) developed a fever 48 hours ago to a maximum of 102.6°F, with progressive lethargy, decreased PO intake, and one episode of incontinence today. Nursing staff noticed cloudy, foul-smelling urine in his Foley collection bag yesterday and again this morning. Per staff, his last set of vitals at 06:00 was BP 96/58, HR 108, T 101.8°F, SpO2 94% on RA. Now at 11:00 he is too weak to stand, only opens his eyes to voice, and answers only with single words. No reported chest pain, vomiting, or diarrhea. Tylenol given at 06:00 with no clinical improvement.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find a 75-year-old nursing home resident who has deteriorated over 48 hours from baseline ambulatory dementia to lethargic and unable to stand. He is febrile, tachycardic, hypotensive, and mottled at the extremities with flash capillary refill at the chest — classic distributive (septic) shock pattern. The Foley bag is full of cloudy, sediment-laden urine. The teaching point sets up immediately: recognize sepsis as the cause of his AMS and shock, give early aggressive fluid resuscitation with explicit mL/kg math, and prepare for vasopressor escalation if fluid-refractory. → Fluid resuscitation initiated: First 500 mL bolus of NS pressure-infused. Lungs reassessed — clear, no rales. Second bolus initiated. Crew tracks toward fluid goal of 30 mL/kg (75 kg × 30 = 2250 mL total target) while monitoring for pulmonary edema. Norepinephrine drip is set up alongside fluid in anticipation of fluid-refractory shock — preferred vasopressor in distributive (sepsis) shock. → Fluid-refractory → norepinephrine drip: After approximately 2000 mL of NS the patient remains hypotensive (MAP ~58). Lungs still clear. Crew starts norepinephrine drip at 0.1 mcg/kg/min (75 kg × 0.1 = 7.5 mcg/min) titrated upward q3 min to MAP > 65. Push-dose epinephrine 10 mcg available as bridge while drip is set up. Patient transported to ED with advance sepsis alert."
+  },
+  "patientInformation": {
+    "patientName": "Harold Brennan",
+    "patientCondition": "Two-day history of fever, increasing confusion, and decreased oral intake; nursing home staff report he is now too weak to stand and 'just isn't himself.'",
+    "patientAge": 75,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 175,
+    "patientWeight": 75,
+    "patientPhotoId": 90,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 75-year-old nursing home resident who has deteriorated over 48 hours from baseline ambulatory dementia to lethargic and unable to stand. He is febrile, tachycardic, hypotensive, and mottled at the extremities with flash capillary refill at the chest — classic distributive (septic) shock pattern. The Foley bag is full of cloudy, sediment-laden urine. The teaching point sets up immediately: recognize sepsis as the cause of his AMS and shock, give early aggressive fluid resuscitation with explicit mL/kg math, and prepare for vasopressor escalation if fluid-refractory.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 124,
+        "bpSys": 78,
+        "bpDia": 44,
+        "respRate": 26,
+        "spo2": 92,
+        "etco2": 28,
+        "temp": 39.1,
+        "obstruction": 0,
+        "custMeasure1": 168,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize septic shock (fever + hypotension + AMS + warm-flushed/mottled pattern)",
+        "Position; titrate O2 NC → NRB to target SpO2 94–98%",
+        "Cardiac monitor; SpO2 + EtCO2 (low EtCO2 = poor perfusion)",
+        "Check blood glucose; correct if < 60 mg/dL (current 168 — within range)",
+        "12-lead EKG to rule out concurrent ischemia in tachycardic septic patient",
+        "IV access ×2 large-bore; if 2 attempts/<90 sec fail → place IO"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Fluid resuscitation initiated",
+      "description": "First 500 mL bolus of NS pressure-infused. Lungs reassessed — clear, no rales. Second bolus initiated. Crew tracks toward fluid goal of 30 mL/kg (75 kg × 30 = 2250 mL total target) while monitoring for pulmonary edema. Norepinephrine drip is set up alongside fluid in anticipation of fluid-refractory shock — preferred vasopressor in distributive (sepsis) shock.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 116,
+        "bpSys": 86,
+        "bpDia": 52,
+        "respRate": 24,
+        "spo2": 95,
+        "etco2": 32,
+        "temp": 39.1,
+        "obstruction": 0,
+        "custMeasure1": 168,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "NS 500 mL boluses pressure-infused; total goal 2250 mL (75 kg × 30 mL/kg) or until MAP > 65 / pulmonary edema",
+        "Auscultate lungs after each bolus; stop if rales develop",
+        "Set up norepinephrine drip 0.05–0.5 mcg/kg/min; preferred vasopressor in sepsis",
+        "Advance notification of receiving hospital — 'septic shock, fluid resuscitating'",
+        "Acetaminophen 1000 mg PO/PR if able (per Shock step 15a)"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Fluid-refractory → norepinephrine drip",
+      "description": "After approximately 2000 mL of NS the patient remains hypotensive (MAP ~58). Lungs still clear. Crew starts norepinephrine drip at 0.1 mcg/kg/min (75 kg × 0.1 = 7.5 mcg/min) titrated upward q3 min to MAP > 65. Push-dose epinephrine 10 mcg available as bridge while drip is set up. Patient transported to ED with advance sepsis alert.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 108,
+        "bpSys": 102,
+        "bpDia": 64,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 39,
+        "obstruction": 0,
+        "custMeasure1": 168,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Norepinephrine 0.05–0.5 mcg/kg/min; start 0.1 mcg/kg/min (7.5 mcg/min) titrate to MAP > 65",
+        "Push-dose epi 10 mcg IV q3–5 min as bridge while norepi drip is mixed (10 mcg/mL prep)",
+        "Continue fluid alongside vasopressor; reassess lungs each 250 mL",
+        "Full vital signs q5 min; document fluid total, pressor dose, response"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Undertreated; deeper shock and AMS",
+      "description": "Crew gave only one 250 mL bolus and proceeded to transport without committing to a volume resuscitation strategy or vasopressor planning. En route the patient deteriorates: BP 64/38, GCS drops to 7, respiratory pattern becomes irregular. Crew must now rescue: open both IV lines wide, continue fluid toward 30 mL/kg, start norepinephrine, manage airway with BVM as needed, advance notify the receiving hospital.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 134,
+        "bpSys": 64,
+        "bpDia": 38,
+        "respRate": 30,
+        "spo2": 90,
+        "etco2": 22,
+        "temp": 39.2,
+        "obstruction": 0,
+        "custMeasure1": 168,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Rescue airway: NPA + BVM 10–12/min for declining mentation; reassess",
+        "Open both IVs/IO; pressure-infuse 1 L NS now; continue toward 30 mL/kg total",
+        "Norepinephrine 0.1 mcg/kg/min (7.5 mcg/min); titrate up; push-dose epi as bridge",
+        "Advance notification of decompensation and ETA"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize septic shock (fever + hypotension + AMS + warm-flushed/mottled pattern)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Position; titrate O2 NC → NRB to target SpO2 94–98%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cardiac monitor; SpO2 + EtCO2 (low EtCO2 = poor perfusion)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose; correct if < 60 mg/dL (current 168 — within range)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "12-lead EKG to rule out concurrent ischemia in tachycardic septic patient",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "IV access ×2 large-bore; if 2 attempts/<90 sec fail → place IO",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "NS 500 mL boluses pressure-infused; total goal 2250 mL (75 kg × 30 mL/kg) or until MAP > 65 / pulmonary edema",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Auscultate lungs after each bolus; stop if rales develop",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Set up norepinephrine drip 0.05–0.5 mcg/kg/min; preferred vasopressor in sepsis",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Advance notification of receiving hospital — 'septic shock, fluid resuscitating'",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acetaminophen 1000 mg PO/PR if able (per Shock step 15a)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Norepinephrine 0.05–0.5 mcg/kg/min; start 0.1 mcg/kg/min (7.5 mcg/min) titrate to MAP > 65",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Push-dose epi 10 mcg IV q3–5 min as bridge while norepi drip is mixed (10 mcg/mL prep)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Continue fluid alongside vasopressor; reassess lungs each 250 mL",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Full vital signs q5 min; document fluid total, pressor dose, response",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Rescue airway: NPA + BVM 10–12/min for declining mentation; reassess",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Open both IVs/IO; pressure-infuse 1 L NS now; continue toward 30 mL/kg total",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Norepinephrine 0.1 mcg/kg/min (7.5 mcg/min); titrate up; push-dose epi as bridge",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Advance notification of decompensation and ETA",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

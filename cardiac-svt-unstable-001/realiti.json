@@ -1,37 +1,37 @@
 {
   "scenarioId": "cardiac-svt-unstable-001",
-  "scenarioName": "Unstable SVT - Failed Vagal and Adenosine, Synchronized Cardioversion",
+  "scenarioName": "Unstable Supraventricular Tachycardia — Synchronized Cardioversion with Procedural Sedation",
   "scenarioType": "Vital Signs",
   "scenarioVersion": 2,
-  "scenarioTime": 1500,
+  "scenarioTime": 1200,
   "scenarioMonitorType": 2,
   "scenarioDefaultEnergy": 100,
   "scenarioDefaultPacerThreshold": 55,
   "isDemo": false,
   "isALSILegacy": false,
   "scenarioStory": {
-    "history": "48-year-old female was sitting at her home office desk when she felt her heart suddenly start racing approximately 30 minutes ago. She describes a 'fluttering, pounding' sensation in her chest. Within a few minutes she became lightheaded, weak, and developed central chest pressure rated 5/10. Her husband noticed she looked pale and was struggling to put words together coherently. She has had two prior similar episodes over the past 2 years - one resolved spontaneously after breath-holding, and one required an ED visit where she was reportedly told she had 'a fast rhythm called SVT' and discharged with a follow-up plan she has not yet kept. No prior cardioversion or ablation. No new medications, no caffeine binge today, no decongestants, no recreational drugs, no recent illness. Denies pregnancy (verified - currently menstruating).",
-    "discussion": "Differentiate stable from unstable tachycardia using the unstable criteria: hypotension, altered mental status, chest pain, signs of shock, acute heart failure. Apply the SVT algorithm: vagal -> adenosine 6 mg -> adenosine 12 mg -> if stable, calcium channel blocker or beta-blocker; if unstable, synchronized cardioversion. Use the modified Valsalva maneuver (15 sec forced expiration against syringe + supine with passive leg raise) for higher conversion rates. Administer adenosine via the most proximal IV possible with rapid 20 mL flush due to its 10-second half-life. Verify SYNCHRONIZED mode before every cardioversion and re-engage SYNC after each shock if escalating. Use 100 J biphasic as the typical first-shock energy for unstable SVT (escalate to 150, 200 J as needed). Provide procedural sedation (midazolam) and analgesia (fentanyl) for any conscious patient receiving synchronized cardioversion. Identify post-conversion ECG findings: pre-excitation (delta waves) implies WPW and changes future therapy. Recognize iatrogenic VF from asynchronous shock as a preventable error of missed SYNC verification",
-    "course": "Initial Presentation - Borderline Unstable SVT: Crew arrives to a 48-year-old female with rapid narrow-complex tachycardia at 210, hypotension (SBP 86), and early hemodynamic compromise (lightheadedness, central chest pressure, mild altered mental status, diaphoresis). Patient meets criteria for 'unstable' tachycardia per the protocol (chest pain, hemodynamic compromise). However, she is still conversant and the team has time for one focused vagal maneuver attempt and a single adenosine push while preparing synchronized cardioversion in parallel. → Vagal and Adenosine Failed - Patient Decompensating: Vagal maneuver produced a brief change on the monitor but no conversion. Adenosine 6 mg IV with rapid flush produced a few seconds of asystole on the monitor (expected), then the SVT immediately resumed at the same rate. The crew gave a second dose of Adenosine 12 mg IV - again no sustained conversion. Patient blood pressure has now dropped further (SBP 78) and her mental status is worsening. She is clearly unstable and requires immediate synchronized cardioversion. The pads are already on, sedation/analgesia drawn up, and the device is in SYNC mode at 100 J. → Conversion to Sinus Rhythm - Stabilization and Transport: Synchronized cardioversion at 100 J converted the SVT to sinus rhythm at 92 bpm. Blood pressure recovers to SBP 118, mental status clears within 1-2 minutes, and the patient reports the chest pressure has resolved. The crew reassesses, leaves pads in place, acquires a post-conversion 12-lead, transports to the closest hospital with cardiac/EP capability, and provides early notification."
+    "history": "45-year-old male was on the treadmill at his neighborhood gym when he suddenly felt his heart 'go off' — palpitations he describes as 'something jumped inside my chest' followed by a sustained very rapid heart rate. He sat down, but unlike his prior episodes, this one is not stopping on its own. Within 15 minutes he became diaphoretic, light-headed, developed substernal chest pressure rated 5/10, and once nearly fainted when trying to walk to the lobby. Patient has had two prior episodes diagnosed as PSVT in the past 4 years that resolved with vagal maneuvers. He is otherwise healthy, no known structural heart disease, no medications.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find a 45-year-old male in clear distress: pale, diaphoretic, with substernal chest pressure and lightheadedness. Initial monitor connection shows a regular narrow complex tachycardia at 190 — supraventricular tachycardia. Importantly, his blood pressure is 78/52 with worsening mentation and chest pain — this is unstable SVT. The teaching point is the rapid pivot from any pharmacologic plan straight to synchronized cardioversion, with procedural sedation/analgesia for the responsive patient. → Procedural sedation → sync cardioversion: Crew explains the procedure. Procedural sedation given: fentanyl 85 mcg IV (85 kg × 1 mcg/kg = 85 mcg, max 100 mcg) for analgesia, plus midazolam 2 mg IV slow push for amnesia/anxiolysis (small dose given hemodynamic instability — half the typical max). Pre-oxygenated, monitored, and synchronized cardioversion delivered at biphasic 100 J. Rhythm converts to sinus rhythm at 86 bpm with prompt restoration of BP and resolution of chest pain. → Sinus rhythm; transport: Patient transported to cardiology-capable receiving hospital with continuous monitoring. Mentation clearing as sedation wears off. SpO2 and EtCO2 monitored continuously for opioid/benzo-induced respiratory depression. Watch for SVT recurrence en route. Bedside handoff includes initial rhythm, sedation given, joules delivered, conversion documented."
   },
   "patientInformation": {
-    "patientName": "Diana Ramirez-Walsh",
-    "patientCondition": "Sudden onset of rapid heart rate, palpitations, lightheadedness, chest pressure, and feeling like she might pass out",
-    "patientAge": 48,
+    "patientName": "Marcus Webb",
+    "patientCondition": "Sudden onset of palpitations 30 minutes ago at the gym, now with chest pressure, severe lightheadedness, near-syncope, and inability to stand without holding the wall.",
+    "patientAge": 45,
     "patientAgeUnit": "years",
     "patientAgeCategory": 0,
-    "patientSex": 2,
-    "patientHeight": 165,
-    "patientWeight": 70,
-    "patientPhotoId": 58,
+    "patientSex": 1,
+    "patientHeight": 180,
+    "patientWeight": 85,
+    "patientPhotoId": 54,
     "patientAdmitted": 1
   },
   "labs": [],
   "scenarioEvents": [
     {
       "type": "ScenarioEvent",
-      "name": "Initial Presentation - Borderline Unstable SVT",
-      "description": "Crew arrives to a 48-year-old female with rapid narrow-complex tachycardia at 210, hypotension (SBP 86), and early hemodynamic compromise (lightheadedness, central chest pressure, mild altered mental status, diaphoresis). Patient meets criteria for 'unstable' tachycardia per the protocol (chest pain, hemodynamic compromise). However, she is still conversant and the team has time for one focused vagal maneuver attempt and a single adenosine push while preparing synchronized cardioversion in parallel.",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 45-year-old male in clear distress: pale, diaphoretic, with substernal chest pressure and lightheadedness. Initial monitor connection shows a regular narrow complex tachycardia at 190 — supraventricular tachycardia. Importantly, his blood pressure is 78/52 with worsening mentation and chest pain — this is unstable SVT. The teaching point is the rapid pivot from any pharmacologic plan straight to synchronized cardioversion, with procedural sedation/analgesia for the responsive patient.",
       "monitorType": 0,
       "trendTime": 0,
       "jumpTime": 0,
@@ -39,10 +39,10 @@
       "defibDisarm": true,
       "parameters": {
         "ecgWaveform": 4,
-        "hr": 210,
-        "bpSys": 86,
-        "bpDia": 56,
-        "respRate": 24,
+        "hr": 190,
+        "bpSys": 78,
+        "bpDia": 52,
+        "respRate": 26,
         "spo2": 95,
         "etco2": 32,
         "temp": 36.8,
@@ -58,58 +58,31 @@
       "relatedMedia": [],
       "relatedLabs": [],
       "relatedChecklist": [
-        "Check blood glucose"
+        "Primary survey; assess stability — chest pain + AMS + hypotension = UNSTABLE",
+        "O2 NC → NRB titrate to SpO2 94–98%",
+        "Cardiac monitor; defib pads on (sync mode pre-armed); 12-lead EKG",
+        "IV access (large-bore proximal — for sedation + post-conversion meds)",
+        "Check blood glucose — rule out hypoglycemia driver",
+        "Classify rhythm: regular narrow complex = SVT; unstable → cardiovert (skip pharmacology)"
       ],
       "relatedSounds": []
     },
     {
       "type": "ScenarioEvent",
-      "name": "Vagal and Adenosine Failed - Patient Decompensating",
-      "description": "Vagal maneuver produced a brief change on the monitor but no conversion. Adenosine 6 mg IV with rapid flush produced a few seconds of asystole on the monitor (expected), then the SVT immediately resumed at the same rate. The crew gave a second dose of Adenosine 12 mg IV - again no sustained conversion. Patient blood pressure has now dropped further (SBP 78) and her mental status is worsening. She is clearly unstable and requires immediate synchronized cardioversion. The pads are already on, sedation/analgesia drawn up, and the device is in SYNC mode at 100 J.",
+      "name": "Procedural sedation → sync cardioversion",
+      "description": "Crew explains the procedure. Procedural sedation given: fentanyl 85 mcg IV (85 kg × 1 mcg/kg = 85 mcg, max 100 mcg) for analgesia, plus midazolam 2 mg IV slow push for amnesia/anxiolysis (small dose given hemodynamic instability — half the typical max). Pre-oxygenated, monitored, and synchronized cardioversion delivered at biphasic 100 J. Rhythm converts to sinus rhythm at 86 bpm with prompt restoration of BP and resolution of chest pain.",
       "monitorType": 0,
       "trendTime": 30,
       "jumpTime": 0,
       "defibShock": false,
       "defibDisarm": true,
       "parameters": {
-        "ecgWaveform": 4,
-        "hr": 208,
-        "bpSys": 78,
-        "bpDia": 50,
-        "respRate": 26,
-        "spo2": 94,
-        "etco2": 30,
-        "temp": 36.8,
-        "obstruction": 0,
-        "custMeasure1": 108,
-        "custMeasureLabel1": "mg/dL",
-        "spo2Visible": true,
-        "spo2Attached": true,
-        "rrVisible": true,
-        "etco2Visible": true,
-        "cvpVisible": false
-      },
-      "relatedMedia": [],
-      "relatedLabs": [],
-      "relatedChecklist": [],
-      "relatedSounds": []
-    },
-    {
-      "type": "ScenarioEvent",
-      "name": "Conversion to Sinus Rhythm - Stabilization and Transport",
-      "description": "Synchronized cardioversion at 100 J converted the SVT to sinus rhythm at 92 bpm. Blood pressure recovers to SBP 118, mental status clears within 1-2 minutes, and the patient reports the chest pressure has resolved. The crew reassesses, leaves pads in place, acquires a post-conversion 12-lead, transports to the closest hospital with cardiac/EP capability, and provides early notification.",
-      "monitorType": 0,
-      "trendTime": 25,
-      "jumpTime": 0,
-      "defibShock": false,
-      "defibDisarm": true,
-      "parameters": {
         "ecgWaveform": 9,
-        "hr": 92,
-        "bpSys": 118,
-        "bpDia": 74,
+        "hr": 86,
+        "bpSys": 124,
+        "bpDia": 76,
         "respRate": 18,
-        "spo2": 97,
+        "spo2": 98,
         "etco2": 38,
         "temp": 36.8,
         "obstruction": 0,
@@ -123,26 +96,32 @@
       },
       "relatedMedia": [],
       "relatedLabs": [],
-      "relatedChecklist": [],
+      "relatedChecklist": [
+        "Fentanyl 85 mcg IV (85 kg × 1 mcg/kg; max 100 mcg) — analgesia",
+        "Midazolam 2 mg slow IV push — amnesia/anxiolysis (small dose given hypotension)",
+        "Allergies, BP, SpO2 confirmed; capnography on (capno predicts hypoventilation early)",
+        "Synchronized cardioversion 100 J biphasic; reassess pulse/rhythm post-shock",
+        "Post-shock: confirm rhythm, pulse, BP; serial reassessment of mentation and pain"
+      ],
       "relatedSounds": []
     },
     {
       "type": "ScenarioEvent",
-      "name": "Branch - Treated as Stable SVT, Continued with Diltiazem",
-      "description": "After adenosine failed, the crew elected to treat the patient as stable SVT and gave diltiazem. The patient was not stable - she had hypotension, chest pain, and altered mental status. Diltiazem in a hypotensive SVT patient further drops the blood pressure precipitously due to its negative inotropic and vasodilatory effects. The patient is now severely hypotensive and obtunded, approaching peri-arrest. The crew must recognize the error and proceed to immediate synchronized cardioversion with vasopressor support.",
+      "name": "Sinus rhythm; transport",
+      "description": "Patient transported to cardiology-capable receiving hospital with continuous monitoring. Mentation clearing as sedation wears off. SpO2 and EtCO2 monitored continuously for opioid/benzo-induced respiratory depression. Watch for SVT recurrence en route. Bedside handoff includes initial rhythm, sedation given, joules delivered, conversion documented.",
       "monitorType": 0,
-      "trendTime": 30,
+      "trendTime": 50,
       "jumpTime": 0,
       "defibShock": false,
       "defibDisarm": true,
       "parameters": {
-        "ecgWaveform": 4,
-        "hr": 200,
-        "bpSys": 60,
-        "bpDia": 38,
-        "respRate": 28,
-        "spo2": 90,
-        "etco2": 26,
+        "ecgWaveform": 9,
+        "hr": 82,
+        "bpSys": 126,
+        "bpDia": 78,
+        "respRate": 16,
+        "spo2": 98,
+        "etco2": 38,
         "temp": 36.8,
         "obstruction": 0,
         "custMeasure1": 108,
@@ -155,141 +134,156 @@
       },
       "relatedMedia": [],
       "relatedLabs": [],
-      "relatedChecklist": [],
+      "relatedChecklist": [
+        "Continuous monitor for SVT recurrence; pads stay on; pre-arm sync mode",
+        "Continuous SpO2 + capnography during sedation wear-off; reassess pain/RR q5 min",
+        "Transport to cardiology-capable hospital; bedside handoff with strips + dose timeline"
+      ],
       "relatedSounds": []
     },
     {
       "type": "ScenarioEvent",
-      "name": "Branch - Asynchronous Shock Induced VF",
-      "description": "The defibrillator was inadvertently left in defib mode (not SYNC) when the shock was delivered. The shock landed on the T wave (relative refractory period) and induced ventricular fibrillation. The patient is now in cardiac arrest. The crew must immediately recognize the new rhythm, initiate compressions, and defibrillate (now appropriately in defib mode at maximum energy 200 J) following the cardiac arrest algorithm.",
+      "name": "Cardioversion without sedation",
+      "description": "Crew cardioverted without giving any procedural sedation or analgesia. The shock was effective and the rhythm converted to sinus, but the alert patient experienced the full pain of the shock. He yells, becomes anxious and tearful, and the experience leaves a lasting psychological imprint that may affect his willingness to seek care for future episodes. The protocol explicitly says 'For responsive patients, consider sedation and analgesia' — this is the moment to do it, not after.",
       "monitorType": 0,
-      "trendTime": 15,
+      "trendTime": 20,
       "jumpTime": 0,
-      "defibShock": true,
-      "defibDisarm": false,
+      "defibShock": false,
+      "defibDisarm": true,
       "parameters": {
-        "ecgWaveform": 18,
-        "hr": 0,
-        "bpSys": 0,
-        "bpDia": 0,
-        "respRate": 0,
-        "spo2": 0,
-        "etco2": 18,
+        "ecgWaveform": 9,
+        "hr": 88,
+        "bpSys": 134,
+        "bpDia": 86,
+        "respRate": 22,
+        "spo2": 98,
+        "etco2": 36,
         "temp": 36.8,
         "obstruction": 0,
         "custMeasure1": 108,
         "custMeasureLabel1": "mg/dL",
-        "spo2Visible": false,
-        "spo2Attached": false,
-        "rrVisible": false,
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
         "etco2Visible": true,
         "cvpVisible": false
       },
       "relatedMedia": [],
       "relatedLabs": [],
-      "relatedChecklist": [],
+      "relatedChecklist": [
+        "Fentanyl 85 mcg IV NOW (85 kg × 1 mcg/kg; max 100 mcg) for residual chest wall pain",
+        "Verbal reassurance; explain procedure and outcome; non-pharmacologic measures",
+        "Encourage transport for cardiology evaluation despite distress",
+        "Document plan: pre-shock sedation/analgesia in future cardioversions; QI moment"
+      ],
       "relatedSounds": []
     }
   ],
   "checklist": [
     {
-      "title": "Recognize regular narrow-complex tachycardia at 210 with hemodynamic compromise (hypotension, AMS, chest pain) as unstable SVT",
+      "title": "Primary survey; assess stability — chest pain + AMS + hypotension = UNSTABLE",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Establish proximal large-bore IV (antecubital) for adenosine delivery",
+      "title": "O2 NC → NRB titrate to SpO2 94–98%",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Acquire 12-lead ECG to confirm SVT (rule out wide-complex tachycardia)",
+      "title": "Cardiac monitor; defib pads on (sync mode pre-armed); 12-lead EKG",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Perform a vagal maneuver (modified Valsalva preferred)",
+      "title": "IV access (large-bore proximal — for sedation + post-conversion meds)",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Administer Adenosine 6 mg IV with rapid 20 mL NS flush; if no conversion, repeat with Adenosine 12 mg IV with rapid flush",
+      "title": "Check blood glucose — rule out hypoglycemia driver",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Recognize when adenosine fails in an unstable patient: proceed to synchronized cardioversion, NOT diltiazem or metoprolol",
+      "title": "Classify rhythm: regular narrow complex = SVT; unstable → cardiovert (skip pharmacology)",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Provide procedural sedation (Midazolam 2 mg IV) and analgesia (Fentanyl 50 mcg IV) before synchronized cardioversion when patient is conscious",
+      "title": "Fentanyl 85 mcg IV (85 kg × 1 mcg/kg; max 100 mcg) — analgesia",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Verify SYNCHRONIZED mode is active (look for marker over each R wave) before pressing shock",
+      "title": "Midazolam 2 mg slow IV push — amnesia/anxiolysis (small dose given hypotension)",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Deliver synchronized cardioversion at 100 J biphasic; press and HOLD the shock button until the device delivers on the next R wave",
+      "title": "Allergies, BP, SpO2 confirmed; capnography on (capno predicts hypoventilation early)",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "After conversion: leave pads on, acquire post-conversion 12-lead, monitor for recurrence",
+      "title": "Synchronized cardioversion 100 J biphasic; reassess pulse/rhythm post-shock",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Transport to a hospital with cardiology/EP capability and provide early notification",
+      "title": "Post-shock: confirm rhythm, pulse, BP; serial reassessment of mentation and pain",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Apply oxygen titrated to SpO2 94-98%",
+      "title": "Continuous monitor for SVT recurrence; pads stay on; pre-arm sync mode",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Check blood glucose",
+      "title": "Continuous SpO2 + capnography during sedation wear-off; reassess pain/RR q5 min",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Position the patient supine to support preload and facilitate Valsalva",
+      "title": "Transport to cardiology-capable hospital; bedside handoff with strips + dose timeline",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Confirm there is no pre-excitation (delta waves) on the post-conversion 12-lead, as it changes future medication selection",
+      "title": "Fentanyl 85 mcg IV NOW (85 kg × 1 mcg/kg; max 100 mcg) for residual chest wall pain",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "If SBP remains < 100 after conversion, give a 250-500 mL NS bolus",
+      "title": "Verbal reassurance; explain procedure and outcome; non-pharmacologic measures",
       "type": "Check",
       "value": 0,
       "icon": 1
     },
     {
-      "title": "Document time of onset of SVT, duration, vagal/adenosine attempts, sedation/analgesia given, energy and time of cardioversion, time of conversion to sinus",
+      "title": "Encourage transport for cardiology evaluation despite distress",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document plan: pre-shock sedation/analgesia in future cardioversions; QI moment",
       "type": "Check",
       "value": 0,
       "icon": 1

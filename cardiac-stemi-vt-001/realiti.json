@@ -1,0 +1,300 @@
+{
+  "scenarioId": "cardiac-stemi-vt-001",
+  "scenarioName": "Anterior STEMI with Runs of Ventricular Tachycardia — On-Scene Arrest Risk",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "60-year-old male was carrying a load of laundry up from the basement when he developed sudden crushing substernal pressure radiating into the left arm. He sat down on the top step, became diaphoretic and nauseated, and felt the room 'gray-out' briefly. His wife found him pale, sweating, and 'looking like he was about to die,' and called 911. Patient describes pain as 9/10 with associated shortness of breath. He has hypertension and hyperlipidemia, smoked one pack a day for 35 years until quitting last year, and his older brother died suddenly at age 64 of presumed MI.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find a 60-year-old male seated at the top of the basement stairs, pale and profoundly diaphoretic, in obvious distress. Pain has been ongoing 45 minutes and he had a brief presyncopal episode at onset. Initial monitor connection reveals sinus rhythm at 96 with frequent multifocal PVCs and a 6-beat run of monomorphic ventricular tachycardia within the first minute of monitoring — high-risk substrate for cardiac arrest. → STEMI confirmed; VT runs continue: 12-lead confirms anterior STEMI with 3–4 mm ST elevation V1–V4. Patient continues to have frequent PVCs and short (3–8 beat) runs of monomorphic VT. Hemodynamically still tolerating these. Crew calls STEMI alert, gives prophylactic amiodarone, and prepares for sustained VT or arrest. Cautious nitrate considered; opiate alternative if BP becomes marginal. → Sustained VT — synchronized cardioversion: VT becomes sustained at 180 bpm with SBP dropping to 78 and patient becoming confused. This is now an unstable regular wide complex tachycardia. Crew delivers synchronized cardioversion at biphasic 100 J with brief sedation if time permits, restores sinus rhythm, and continues toward STEMI care and PCI transport."
+  },
+  "patientInformation": {
+    "patientName": "Anthony Castellano",
+    "patientCondition": "Crushing substernal chest pressure with diaphoresis and presyncope, onset approximately 45 minutes ago while walking up the basement stairs.",
+    "patientAge": 60,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 178,
+    "patientWeight": 96,
+    "patientPhotoId": 72,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 60-year-old male seated at the top of the basement stairs, pale and profoundly diaphoretic, in obvious distress. Pain has been ongoing 45 minutes and he had a brief presyncopal episode at onset. Initial monitor connection reveals sinus rhythm at 96 with frequent multifocal PVCs and a 6-beat run of monomorphic ventricular tachycardia within the first minute of monitoring — high-risk substrate for cardiac arrest.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 96,
+        "bpSys": 138,
+        "bpDia": 84,
+        "respRate": 22,
+        "spo2": 95,
+        "etco2": 36,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 124,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize ACS with high-risk dysrhythmia",
+        "Cardiac monitor; defib pads on now; configure VT/VF auto-alert",
+        "12-lead EKG within 10 min; transmit to PCI center",
+        "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+        "Two large-bore IVs (18 ga); set up amiodarone in case of sustained VT",
+        "Focused SAMPLE; screen for PDE5 use prior to nitrates"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "STEMI confirmed; VT runs continue",
+      "description": "12-lead confirms anterior STEMI with 3–4 mm ST elevation V1–V4. Patient continues to have frequent PVCs and short (3–8 beat) runs of monomorphic VT. Hemodynamically still tolerating these. Crew calls STEMI alert, gives prophylactic amiodarone, and prepares for sustained VT or arrest. Cautious nitrate considered; opiate alternative if BP becomes marginal.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 23,
+        "hr": 100,
+        "bpSys": 124,
+        "bpDia": 76,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 34,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 124,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Activate STEMI alert; transmit to PCI center; flag 'frequent VT runs'",
+        "Amiodarone 150 mg IV over 10 min for non-sustained monomorphic VT (may repeat ×1)",
+        "Nitroglycerin 0.4 mg SL (SBP 124, no PDE5); reassess BP each dose",
+        "Minimize scene time; rapid transport to PCI center; pre-load pacer",
+        "Use only one antidysrhythmic at a time; document each push"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Sustained VT — synchronized cardioversion",
+      "description": "VT becomes sustained at 180 bpm with SBP dropping to 78 and patient becoming confused. This is now an unstable regular wide complex tachycardia. Crew delivers synchronized cardioversion at biphasic 100 J with brief sedation if time permits, restores sinus rhythm, and continues toward STEMI care and PCI transport.",
+      "monitorType": 0,
+      "trendTime": 15,
+      "jumpTime": 0,
+      "defibShock": true,
+      "defibDisarm": false,
+      "parameters": {
+        "ecgWaveform": 12,
+        "hr": 180,
+        "bpSys": 78,
+        "bpDia": 50,
+        "respRate": 26,
+        "spo2": 92,
+        "etco2": 28,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 124,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Synchronized cardioversion 100 J biphasic; reassess pulse/rhythm post-shock",
+        "If responsive: brief pre-shock sedation (e.g., midazolam 2 mg IV or fentanyl)",
+        "After ROSR: continue/finish amiodarone 150 mg IV over 10 min; transport to PCI",
+        "Early notify receiving hospital of unstable VT cardioverted"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Pulseless VT / VFib arrest on scene",
+      "description": "VT degenerates to pulseless VT then VFib. Patient is in cardiac arrest. Crew must immediately recognize, begin high-quality CPR, and defibrillate per Cardiac Arrest protocol. ACLS continues with epinephrine and amiodarone per arrest algorithm. The teaching point is that the STEMI patient is at extremely high risk for arrest — defib pads must go on early and the team must be ready to convert without delay.",
+      "monitorType": 0,
+      "trendTime": 15,
+      "jumpTime": 0,
+      "defibShock": true,
+      "defibDisarm": false,
+      "parameters": {
+        "ecgWaveform": 18,
+        "hr": 0,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 18,
+        "temp": 36.8,
+        "obstruction": 0,
+        "custMeasure1": 124,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": false,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Confirm pulselessness; immediate high-quality CPR",
+        "Defibrillate 200 J biphasic; resume CPR immediately",
+        "Epinephrine 1 mg IV/IO q3–5 min per ACLS",
+        "Amiodarone 300 mg IV/IO push after 2nd shock; consider 150 mg ×1 after 4th"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize ACS with high-risk dysrhythmia",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cardiac monitor; defib pads on now; configure VT/VF auto-alert",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "12-lead EKG within 10 min; transmit to PCI center",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Two large-bore IVs (18 ga); set up amiodarone in case of sustained VT",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Focused SAMPLE; screen for PDE5 use prior to nitrates",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Activate STEMI alert; transmit to PCI center; flag 'frequent VT runs'",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Amiodarone 150 mg IV over 10 min for non-sustained monomorphic VT (may repeat ×1)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Nitroglycerin 0.4 mg SL (SBP 124, no PDE5); reassess BP each dose",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Minimize scene time; rapid transport to PCI center; pre-load pacer",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Use only one antidysrhythmic at a time; document each push",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Synchronized cardioversion 100 J biphasic; reassess pulse/rhythm post-shock",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If responsive: brief pre-shock sedation (e.g., midazolam 2 mg IV or fentanyl)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "After ROSR: continue/finish amiodarone 150 mg IV over 10 min; transport to PCI",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early notify receiving hospital of unstable VT cardioverted",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm pulselessness; immediate high-quality CPR",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Defibrillate 200 J biphasic; resume CPR immediately",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Epinephrine 1 mg IV/IO q3–5 min per ACLS",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Amiodarone 300 mg IV/IO push after 2nd shock; consider 150 mg ×1 after 4th",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

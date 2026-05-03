@@ -1,0 +1,482 @@
+{
+  "meta": {
+    "id": "cardiac-stemi-vt-001",
+    "name": "Anterior STEMI with Runs of Ventricular Tachycardia — On-Scene Arrest Risk",
+    "version": 1,
+    "difficulty": "advanced",
+    "category": "Cardiac",
+    "protocols": [
+      "cv-chest-pain-acs-stemi",
+      "cv-tachycardia",
+      "resus-cardiac-arrest"
+    ],
+    "totalTimeSeconds": 1500,
+    "createdAt": "2026-05-03T00:00:00Z",
+    "tags": [
+      "STEMI",
+      "anterior MI",
+      "ventricular tachycardia",
+      "VT runs",
+      "cardiac arrest risk",
+      "amiodarone",
+      "defibrillation",
+      "advanced"
+    ]
+  },
+  "patient": {
+    "name": "Anthony Castellano",
+    "age": 60,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 96,
+    "weightLbs": 212,
+    "height": 178,
+    "chiefComplaint": "Crushing substernal chest pressure with diaphoresis and presyncope, onset approximately 45 minutes ago while walking up the basement stairs.",
+    "history": {
+      "hpi": "60-year-old male was carrying a load of laundry up from the basement when he developed sudden crushing substernal pressure radiating into the left arm. He sat down on the top step, became diaphoretic and nauseated, and felt the room 'gray-out' briefly. His wife found him pale, sweating, and 'looking like he was about to die,' and called 911. Patient describes pain as 9/10 with associated shortness of breath. He has hypertension and hyperlipidemia, smoked one pack a day for 35 years until quitting last year, and his older brother died suddenly at age 64 of presumed MI.",
+      "pastMedical": [
+        "Hypertension (15 years)",
+        "Hyperlipidemia",
+        "Former 1-pack-per-day smoker, quit 1 year ago",
+        "Family history: brother sudden death at 64; father MI at 71"
+      ],
+      "medications": [
+        "Lisinopril 20 mg PO daily",
+        "Atorvastatin 80 mg PO at bedtime",
+        "Aspirin 81 mg PO daily (took today)"
+      ],
+      "allergies": [
+        "NKDA"
+      ],
+      "lastOralIntake": "Lunch (sandwich, chips) about 2 hours ago",
+      "events": "Onset of crushing substernal chest pain with brief presyncope while climbing stairs ~45 minutes ago. Wife called 911 when patient looked 'gray.'"
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 60-year-old male, chest pain with near-syncope, conscious. Wife on scene at single-family home.",
+    "location": "Single-family home, top of basement stairs / kitchen landing. Patient seated on the top step. Adequate lighting. Clear path to front door.",
+    "time": "Saturday, 13:45, mild spring afternoon",
+    "safety": "Scene safe. Pets contained. Wife is anxious but cooperative. Adequate space to work.",
+    "bystanders": "Wife present. Confirms no PDE5 inhibitor use in the household. Brings medication bottles.",
+    "visualCues": [
+      "Patient seated at top of basement stairs, leaning back against wall",
+      "Pale, profusely diaphoretic, shirt visibly damp",
+      "Hand pressed over mid-sternum",
+      "Laundry basket spilled on stairs below him",
+      "Wife pacing, holding cordless phone"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find a 60-year-old male seated at the top of the basement stairs, pale and profoundly diaphoretic, in obvious distress. Pain has been ongoing 45 minutes and he had a brief presyncopal episode at onset. Initial monitor connection reveals sinus rhythm at 96 with frequent multifocal PVCs and a 6-beat run of monomorphic ventricular tachycardia within the first minute of monitoring — high-risk substrate for cardiac arrest.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent, self-maintained",
+        "breathing": "RR 22, lungs clear bilaterally, mild dyspnea",
+        "circulation": "Strong, regular radial pulse at 96 with frequent palpable irregularities; cool, pale, diaphoretic; cap refill 2 sec",
+        "skin": {
+          "color": "ashen-pale",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 3 mm, briskly reactive",
+        "motorFunction": "Intact and symmetric",
+        "otherFindings": [
+          "Frequent multifocal PVCs and a witnessed 6-beat run of monomorphic VT on initial monitor",
+          "Patient describes 'palpitations' along with chest pressure",
+          "Brief presyncope at onset; remains alert now",
+          "No JVD; no peripheral edema; lungs clear"
+        ],
+        "patientSpeech": "Something is really wrong. It feels like an elephant on my chest and my heart is doing flip-flops."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 96,
+        "bpSys": 138,
+        "bpDia": 84,
+        "respRate": 22,
+        "spo2": 95,
+        "etco2": 36,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 124,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "primary-survey",
+          "shortAction": "Primary survey; recognize ACS with high-risk dysrhythmia",
+          "priority": "critical",
+          "rationale": "MATC ACS Goal #1 + step 2 — identify STEMI quickly and immediately address symptomatic dysrhythmia.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Patient Care Goals: Identify ST-elevation myocardial infarction (STEMI) quickly. Monitor vital signs and cardiac rhythm and be prepared to provide CPR and defibrillation if needed. Assess the patient's cardiac rhythm and immediately address pulseless rhythms, symptomatic tachycardia, or symptomatic bradycardia."
+        },
+        {
+          "id": "monitor-defib-pads-vtvf-alert",
+          "shortAction": "Cardiac monitor; defib pads on now; configure VT/VF auto-alert",
+          "priority": "critical",
+          "rationale": "MATC ACS Patient Safety #3, #4 — defib pads on high-risk patients; configure automatic VT/VF alert.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Patient Safety Considerations: Consider placing defibrillator pads on high-risk patients. Consider configuring monitor/defibrillator to allow automatic VT/VF alert. Consider configuring monitor/defibrillator to allow ST-segment trending if available."
+        },
+        {
+          "id": "twelve-lead-early",
+          "shortAction": "12-lead EKG within 10 min; transmit to PCI center",
+          "priority": "critical",
+          "rationale": "MATC ACS step 4 + Performance Measure — 12-lead within 10 minutes; transmit/notify.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "The 12-lead EKG is the primary diagnostic tool that identifies a STEMI; it is imperative that EMS clinicians routinely acquire a 12-lead EKG within 10 minutes for all patients exhibiting signs and symptoms of ACS. The EKG may be transmitted for remote interpretation by a physician or screened for STEMI by properly trained EMS clinicians or other healthcare providers."
+        },
+        {
+          "id": "aspirin",
+          "shortAction": "Aspirin 324 mg PO chewed (4 × 81 mg chewable, non-enteric)",
+          "priority": "critical",
+          "rationale": "MATC ACS step 5 — chewable, non-enteric ASA 162–325 mg.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Administer aspirin; chewable, non-enteric-coated aspirin preferred (162–325 mg)."
+        },
+        {
+          "id": "iv-access-large-bore",
+          "shortAction": "Two large-bore IVs (18 ga); set up amiodarone in case of sustained VT",
+          "priority": "critical",
+          "rationale": "MATC ACS step 6 — IV access; preparation for antidysrhythmic given monitor finding.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Establish IV access."
+        },
+        {
+          "id": "history-pde5",
+          "shortAction": "Focused SAMPLE; screen for PDE5 use prior to nitrates",
+          "priority": "critical",
+          "rationale": "MATC ACS step 7 — PDE5 screen mandatory before nitrate.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "The use of nitrates should be avoided in any patient who has used a phosphodiesterase inhibitor within the past 48 hours. Examples include sildenafil (Viagra®, Revatio®), vardenafil (Levitra®, Staxyn®), tadalafil (Cialis®, Adcirca®)."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "stemi-with-vt-runs",
+          "if": "Anterior STEMI + VT runs identified",
+          "condition": "12-lead acquired showing anterior STEMI; multiple short runs of monomorphic VT documented; STEMI alert called and amiodarone considered prophylactically.",
+          "conditionType": "action_taken",
+          "triggerActionIds": ["twelve-lead-early", "monitor-defib-pads-vtvf-alert"]
+        },
+        {
+          "targetPhaseId": "branch-sustained-vt-arrest",
+          "if": "Sustained VT → loses pulse → arrest",
+          "condition": "Crew did not place defib pads early and did not pre-arm for cardioversion; VT runs lengthen, become sustained, and patient loses pulses (pulseless VT / VFib arrest).",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": ["monitor-defib-pads-vtvf-alert"]
+        }
+      ]
+    },
+    {
+      "id": "stemi-with-vt-runs",
+      "name": "STEMI confirmed; VT runs continue",
+      "description": "12-lead confirms anterior STEMI with 3–4 mm ST elevation V1–V4. Patient continues to have frequent PVCs and short (3–8 beat) runs of monomorphic VT. Hemodynamically still tolerating these. Crew calls STEMI alert, gives prophylactic amiodarone, and prepares for sustained VT or arrest. Cautious nitrate considered; opiate alternative if BP becomes marginal.",
+      "triggerCondition": "Anterior STEMI confirmed; non-sustained VT continues but patient maintains pulse and consciousness; high arrest risk warrants antidysrhythmic and full readiness to defibrillate.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "RR 22, mild dyspnea, lungs clear",
+        "circulation": "Pulse with each VT run lost briefly then returns; otherwise regular at 96",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Intact",
+        "otherFindings": [
+          "12-lead: ST elevation 3–4 mm V1–V4 with reciprocal depression II, III, aVF",
+          "Frequent multifocal PVCs and 4–8 beat runs of monomorphic VT",
+          "Pads on; sync mode and defib mode available",
+          "Pain still 8/10"
+        ],
+        "patientSpeech": "It keeps doing that flip thing. I feel like I might pass out again."
+      },
+      "monitorState": {
+        "ecgRhythm": "STEMI Anterior",
+        "ecgWaveform": 23,
+        "hr": 100,
+        "bpSys": 124,
+        "bpDia": 76,
+        "respRate": 22,
+        "spo2": 96,
+        "etco2": 34,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 124,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "stemi-alert",
+          "shortAction": "Activate STEMI alert; transmit to PCI center; flag 'frequent VT runs'",
+          "priority": "critical",
+          "rationale": "MATC ACS Goal #3 + step 4 — STEMI activation drives door-to-balloon; advance notification.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Activate hospital-based STEMI system of care. Advance notification should be provided to the receiving hospital for patients identified as having a STEMI. All EKGs should be made available to treating personnel at the receiving hospital, whether hand delivered as hard copy or transmitted from the field."
+        },
+        {
+          "id": "amiodarone-stable-wide",
+          "shortAction": "Amiodarone 150 mg IV over 10 min for non-sustained monomorphic VT (may repeat ×1)",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Regular Wide Stable step 1 — amiodarone 150 mg IV over 10 min as first-line antidysrhythmic; addresses high-risk substrate before sustained VT.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Regular Wide Complex Tachycardia – Stable (ventricular tachycardia, supraventricular tachycardia, atrial fibrillation/flutter with aberrancy, accelerated idioventricular rhythms, pre-excited tachycardias with accessory pathways): Amiodarone 150 mg IV over 10 minutes. May repeat once as needed."
+        },
+        {
+          "id": "ntg-cautious",
+          "shortAction": "Nitroglycerin 0.4 mg SL (SBP 124, no PDE5); reassess BP each dose",
+          "priority": "important",
+          "rationale": "MATC ACS step 7 — NTG with PDE5 screen and SBP > 100; care with marginal BP.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Nitroglycerin 0.4 mg sublingual (SL), can repeat q (quaque, every) 3–5 minutes if SBP greater than 100 mmHg. Care should always be taken when giving nitroglycerin when the patient's blood pressure is marginal. If used in this setting, the clinician should weigh the risk and benefit of nitrate administration over the administration of an opiate analgesic and be ready to respond to hypotension with fluid bolus or pressor."
+        },
+        {
+          "id": "rapid-transport",
+          "shortAction": "Minimize scene time; rapid transport to PCI center; pre-load pacer",
+          "priority": "critical",
+          "rationale": "MATC ACS Educational Pearl — ischemic burden time drives morbidity; pre-loading on cot with pads/pacer reduces time-to-shock if arrest.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Key Considerations: Acute coronary syndrome may present with atypical pain, vague or only generalized complaints. Ischemic burden time is a risk for morbidity and mortality, EMS can help decrease first medical contact to intervention time/reflow by efficient scripting/training of safely minimizing scene time."
+        },
+        {
+          "id": "single-antidysrhythmic",
+          "shortAction": "Use only one antidysrhythmic at a time; document each push",
+          "priority": "important",
+          "rationale": "MATC Tachycardia Patient Safety #1 — only one antidysrhythmic at a time.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Patient Safety Considerations: Only use one antidysrhythmic at a time."
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "sustained-vt-cardiovert",
+          "if": "Sustained VT with pulse, becomes unstable",
+          "condition": "Brief run becomes sustained monomorphic VT with hypotension and AMS — unstable wide-complex tachycardia indicated for synchronized cardioversion.",
+          "conditionType": "vital_threshold",
+          "triggerActionIds": ["amiodarone-stable-wide"]
+        },
+        {
+          "targetPhaseId": "branch-sustained-vt-arrest",
+          "if": "VT degenerates to pulseless VT/VFib",
+          "condition": "Without timely antidysrhythmic and pad placement, sustained VT degenerates to pulseless VT or VFib arrest on scene.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": ["amiodarone-stable-wide"]
+        }
+      ]
+    },
+    {
+      "id": "sustained-vt-cardiovert",
+      "name": "Sustained VT — synchronized cardioversion",
+      "description": "VT becomes sustained at 180 bpm with SBP dropping to 78 and patient becoming confused. This is now an unstable regular wide complex tachycardia. Crew delivers synchronized cardioversion at biphasic 100 J with brief sedation if time permits, restores sinus rhythm, and continues toward STEMI care and PCI transport.",
+      "triggerCondition": "Sustained monomorphic VT with hypotension and altered mentation; synchronized cardioversion indicated per Regular Wide Complex Unstable algorithm.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 3,
+          "verbal": 4,
+          "motor": 5
+        },
+        "airway": "Patent",
+        "breathing": "RR 26, shallow",
+        "circulation": "Weak rapid central pulse; cool, ashen, diaphoretic",
+        "skin": {
+          "color": "ashen",
+          "temperature": "cold",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Sluggish but symmetric",
+        "otherFindings": [
+          "Sustained monomorphic VT at 180 bpm",
+          "SBP 78, AMS — unstable wide-complex tachycardia",
+          "Sync mode armed; defib pads in place",
+          "Pre-shock sedation considered"
+        ],
+        "patientSpeech": "I … can't … (slurring)"
+      },
+      "monitorState": {
+        "ecgRhythm": "Ventricular Tachycardia (Monomorphic)",
+        "ecgWaveform": 12,
+        "hr": 180,
+        "bpSys": 78,
+        "bpDia": 50,
+        "respRate": 26,
+        "spo2": 92,
+        "etco2": 28,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 124,
+        "trendTimeSeconds": 15,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "sync-cardiovert",
+          "shortAction": "Synchronized cardioversion 100 J biphasic; reassess pulse/rhythm post-shock",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Regular Wide Unstable — synchronized shock per manufacturer.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Regular Wide Complex Tachycardia – Unstable: Deliver a synchronized shock based on manufacturer's recommendation. For responsive patients, consider sedation."
+        },
+        {
+          "id": "sedation-pre-shock",
+          "shortAction": "If responsive: brief pre-shock sedation (e.g., midazolam 2 mg IV or fentanyl)",
+          "priority": "important",
+          "rationale": "MATC Tachycardia Patient Safety #3 + Regular Wide Unstable step 2 — sedation/analgesia for responsive patients.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "For responsive patients, consider sedation. Patient Safety Considerations: If using cardioversion, consider sedation and pain control."
+        },
+        {
+          "id": "post-shock-amio",
+          "shortAction": "After ROSR: continue/finish amiodarone 150 mg IV over 10 min; transport to PCI",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia Regular Wide Stable step 1 — amiodarone after restoration of organized rhythm to reduce VT recurrence.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Amiodarone 150 mg IV over 10 minutes. May repeat once as needed."
+        },
+        {
+          "id": "early-notification",
+          "shortAction": "Early notify receiving hospital of unstable VT cardioverted",
+          "priority": "critical",
+          "rationale": "MATC ACS step 11 — early notification of any change.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Early notification to receiving facility of any changes in patient condition or serial EKGs."
+        }
+      ]
+    },
+    {
+      "id": "branch-sustained-vt-arrest",
+      "name": "Pulseless VT / VFib arrest on scene",
+      "description": "VT degenerates to pulseless VT then VFib. Patient is in cardiac arrest. Crew must immediately recognize, begin high-quality CPR, and defibrillate per Cardiac Arrest protocol. ACLS continues with epinephrine and amiodarone per arrest algorithm. The teaching point is that the STEMI patient is at extremely high risk for arrest — defib pads must go on early and the team must be ready to convert without delay.",
+      "triggerCondition": "Sustained VT degenerated to pulseless VT / VFib; cardiac arrest now requires immediate CPR and defibrillation per Cardiac Arrest algorithm.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {
+          "eye": 1,
+          "verbal": 1,
+          "motor": 1
+        },
+        "airway": "Requires positioning and BVM",
+        "breathing": "Agonal then apneic",
+        "circulation": "Pulseless",
+        "skin": {
+          "color": "ashen-cyanotic",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Dilated, sluggishly reactive",
+        "motorFunction": "Flaccid",
+        "otherFindings": [
+          "VFib on monitor; pulseless",
+          "Defib pads in place — proceed straight to shock",
+          "EtCO2 dropped abruptly with arrest"
+        ],
+        "patientSpeech": "None — pulseless"
+      },
+      "monitorState": {
+        "ecgRhythm": "Ventricular Fibrillation (Coarse)",
+        "ecgWaveform": 18,
+        "hr": 0,
+        "bpSys": 0,
+        "bpDia": 0,
+        "respRate": 0,
+        "spo2": 0,
+        "etco2": 18,
+        "temp": 36.8,
+        "tempF": 98.2,
+        "obstruction": 0,
+        "glucose": 124,
+        "trendTimeSeconds": 15,
+        "visibility": {
+          "spo2Visible": false,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "begin-cpr",
+          "shortAction": "Confirm pulselessness; immediate high-quality CPR",
+          "priority": "critical",
+          "rationale": "Cardiac Arrest protocol — high-quality CPR is foundational; resume immediately after each shock.",
+          "protocolReference": "MATC: Chest Pain/Acute Coronary Syndrome (ACS)/STEMI",
+          "protocolExcerpt": "Patient Care Goals: Monitor vital signs and cardiac rhythm and be prepared to provide CPR and defibrillation if needed."
+        },
+        {
+          "id": "defibrillate",
+          "shortAction": "Defibrillate 200 J biphasic; resume CPR immediately",
+          "priority": "critical",
+          "rationale": "VFib — defibrillation is the only rhythm-converting intervention.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Regular Wide Complex Tachycardia – Unstable: Deliver a synchronized shock based on manufacturer's recommendation."
+        },
+        {
+          "id": "epi-acls",
+          "shortAction": "Epinephrine 1 mg IV/IO q3–5 min per ACLS",
+          "priority": "critical",
+          "rationale": "Cardiac arrest pharmacology — epi every 3–5 min during arrest.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Patient Care Goals: Maintain adequate oxygenation, ventilation, and perfusion. Restore regular sinus rhythm in unstable patient."
+        },
+        {
+          "id": "amio-after-shocks",
+          "shortAction": "Amiodarone 300 mg IV/IO push after 2nd shock; consider 150 mg ×1 after 4th",
+          "priority": "critical",
+          "rationale": "MATC Tachycardia + ACLS — amiodarone for shock-refractory VFib/pulseless VT.",
+          "protocolReference": "MATC: Tachycardia with a Pulse",
+          "protocolExcerpt": "Amiodarone 150 mg IV over 10 minutes. May repeat once as needed."
+        }
+      ]
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

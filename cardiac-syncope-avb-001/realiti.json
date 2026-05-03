@@ -1,0 +1,321 @@
+{
+  "scenarioId": "cardiac-syncope-avb-001",
+  "scenarioName": "Syncope Workup → Bradycardia → 2:1 AV Block — TCP with Morphine Analgesia",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 80,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "70-year-old female was making dinner in the kitchen when she suddenly 'felt the room go away' and woke up on the floor approximately 30 seconds later. Her husband heard a thud and found her on the floor. She struck the left side of her face on the counter on the way down — a small bruise but no laceration and no LOC after the fall (per husband). She remembers feeling 'a little woozy' for a few minutes before but does not remember any prodrome. She denies chest pain, palpitations, dyspnea, headache, focal weakness, or seizure activity. She has had two prior 'almost passed out' episodes over the past month that she did not seek care for. She has hypertension and hyperlipidemia and is on amlodipine and atorvastatin; recently started on metoprolol 25 mg by her PCP for 'irregular heartbeat noted on a routine visit.'",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to a 70-year-old female on the kitchen floor after a witnessed syncopal episode ~20 minutes ago with a strike to the left face on the counter. She is now alert and embarrassed but feels lightheaded when she tries to sit up. Initial monitor connection reveals a slow rhythm in the high 30s. The teaching arc moves from a 'syncope work-up' through 'bradycardia recognition' to 'high-grade AV block on 12-lead' — and then a TCP with morphine analgesia + non-pharmacologic measures (an alternative to the fentanyl/midazolam path). → Atropine partial → TCP + morphine analgesia: Atropine 1 mg IV given. HR briefly bumps to 50 with brief BP improvement to 102 then drops back to high 30s — limited response, expected with high-grade AV block on a beta-blocker. TCP indicated. For analgesia, crew uses morphine 6.8 mg IV (68 kg × 0.1 mg/kg = 6.8 mg, capped at 10 mg max) BEFORE starting pacing — pacing pain and pectoral/intercostal muscle contraction can be substantial. Position of comfort and verbal reassurance also offered. → TCP capture; comfortable transport: TCP at rate 70, output 80 mA, demonstrates electrical capture with mechanical capture confirmed by palpable pulse with each pacer spike. BP improves to 122/74, mentation clear, no recurrent near-syncope. Patient describes the pacing as 'thumping' but tolerable thanks to morphine. Crew transports to cardiology / electrophysiology-capable hospital with continued monitoring of pacing parameters and respiratory status during opioid wear-off."
+  },
+  "patientInformation": {
+    "patientName": "Patricia Bowman",
+    "patientCondition": "Brief loss of consciousness with loss of postural tone in the kitchen approximately 20 minutes ago; struck the side of her face on the counter on the way down; now alert and embarrassed but feels lightheaded when she tries to sit up.",
+    "patientAge": 70,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 162,
+    "patientWeight": 68,
+    "patientPhotoId": 84,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to a 70-year-old female on the kitchen floor after a witnessed syncopal episode ~20 minutes ago with a strike to the left face on the counter. She is now alert and embarrassed but feels lightheaded when she tries to sit up. Initial monitor connection reveals a slow rhythm in the high 30s. The teaching arc moves from a 'syncope work-up' through 'bradycardia recognition' to 'high-grade AV block on 12-lead' — and then a TCP with morphine analgesia + non-pharmacologic measures (an alternative to the fentanyl/midazolam path).",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 40,
+        "hr": 38,
+        "bpSys": 92,
+        "bpDia": 58,
+        "respRate": 18,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize witnessed syncope with possible cardiac etiology",
+        "Screen for fall-related trauma — face strike, c-spine, occipital impact",
+        "Cardiac monitor; defib + pacer pads on early; 12-lead EKG",
+        "IV access (large-bore proximal)",
+        "Check blood glucose — rule out hypoglycemia as syncope driver",
+        "Document recently started metoprolol (4 wks) — likely contributor to bradycardia",
+        "Recognize 2:1 AV block / high-grade block on 12-lead — explains syncope"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Atropine partial → TCP + morphine analgesia",
+      "description": "Atropine 1 mg IV given. HR briefly bumps to 50 with brief BP improvement to 102 then drops back to high 30s — limited response, expected with high-grade AV block on a beta-blocker. TCP indicated. For analgesia, crew uses morphine 6.8 mg IV (68 kg × 0.1 mg/kg = 6.8 mg, capped at 10 mg max) BEFORE starting pacing — pacing pain and pectoral/intercostal muscle contraction can be substantial. Position of comfort and verbal reassurance also offered.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 40,
+        "hr": 42,
+        "bpSys": 96,
+        "bpDia": 60,
+        "respRate": 18,
+        "spo2": 96,
+        "etco2": 36,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Atropine 1 mg IV (may repeat q3–5 min, max 3 mg total) — limited efficacy on β-blocker / high-grade block",
+        "Explain TCP to patient: 'You'll feel thumping; we'll give pain medicine first'",
+        "Morphine 6.8 mg IV (68 kg × 0.1 mg/kg; max 10 mg) BEFORE TCP",
+        "Position of comfort; verbal reassurance; coach through pacing",
+        "Allergies, BP, SpO2 confirmed; capnography on (capno predicts hypoventilation early)",
+        "TCP rate 70; output 60 mA → titrate up to electrical + mechanical capture"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "TCP capture; comfortable transport",
+      "description": "TCP at rate 70, output 80 mA, demonstrates electrical capture with mechanical capture confirmed by palpable pulse with each pacer spike. BP improves to 122/74, mentation clear, no recurrent near-syncope. Patient describes the pacing as 'thumping' but tolerable thanks to morphine. Crew transports to cardiology / electrophysiology-capable hospital with continued monitoring of pacing parameters and respiratory status during opioid wear-off.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 70,
+        "bpSys": 122,
+        "bpDia": 74,
+        "respRate": 16,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Confirm mechanical capture by palpating pulse with each pacer spike; document",
+        "Reassess pain score, RR, SpO2, EtCO2 q5 min after morphine (capnography earlier predictor of hypoventilation)",
+        "If TCP fails or BP drops: epi push-dose 10–20 mcg q2 min OR epi drip 0.02–0.2 mcg/kg/min",
+        "Transport to cardiology / EP-capable hospital; bedside handoff with strips + dose timeline",
+        "Document presenting rhythm, rhythm at time of syncope/near-syncope, all changes"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Discharged as 'vasovagal' — no monitor",
+      "description": "Crew accepts the patient's narrative of 'just got dizzy' and treats this as a low-acuity transport without applying cardiac monitor or 12-lead. En route, the patient has another syncopal episode in the ambulance — this time witnessed by the crew. Now they must rapidly recognize the underlying high-grade AV block, place the monitor and pacer pads, and proceed with TCP. The teaching point is that the protocol's Patient Safety guidance is explicit — syncope due to arrhythmia may recur, and ALL syncope patients should be on a monitor.",
+      "monitorType": 0,
+      "trendTime": 20,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 40,
+        "hr": 32,
+        "bpSys": 76,
+        "bpDia": 48,
+        "respRate": 14,
+        "spo2": 92,
+        "etco2": 32,
+        "temp": 36.7,
+        "obstruction": 0,
+        "custMeasure1": 108,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Apply cardiac monitor + pacer pads NOW; 12-lead EKG en route",
+        "Atropine 1 mg IV (limited response expected on β-blocker) and prep TCP",
+        "TCP with morphine 6.8 mg IV (68 kg × 0.1 mg/kg) for analgesia; titrate to capture",
+        "Advance notification of recurrent syncope and new high-grade block; ETA"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize witnessed syncope with possible cardiac etiology",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Screen for fall-related trauma — face strike, c-spine, occipital impact",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cardiac monitor; defib + pacer pads on early; 12-lead EKG",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "IV access (large-bore proximal)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose — rule out hypoglycemia as syncope driver",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document recently started metoprolol (4 wks) — likely contributor to bradycardia",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize 2:1 AV block / high-grade block on 12-lead — explains syncope",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Atropine 1 mg IV (may repeat q3–5 min, max 3 mg total) — limited efficacy on β-blocker / high-grade block",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Explain TCP to patient: 'You'll feel thumping; we'll give pain medicine first'",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Morphine 6.8 mg IV (68 kg × 0.1 mg/kg; max 10 mg) BEFORE TCP",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Position of comfort; verbal reassurance; coach through pacing",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Allergies, BP, SpO2 confirmed; capnography on (capno predicts hypoventilation early)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "TCP rate 70; output 60 mA → titrate up to electrical + mechanical capture",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Confirm mechanical capture by palpating pulse with each pacer spike; document",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reassess pain score, RR, SpO2, EtCO2 q5 min after morphine (capnography earlier predictor of hypoventilation)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If TCP fails or BP drops: epi push-dose 10–20 mcg q2 min OR epi drip 0.02–0.2 mcg/kg/min",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to cardiology / EP-capable hospital; bedside handoff with strips + dose timeline",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document presenting rhythm, rhythm at time of syncope/near-syncope, all changes",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply cardiac monitor + pacer pads NOW; 12-lead EKG en route",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Atropine 1 mg IV (limited response expected on β-blocker) and prep TCP",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "TCP with morphine 6.8 mg IV (68 kg × 0.1 mg/kg) for analgesia; titrate to capture",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Advance notification of recurrent syncope and new high-grade block; ETA",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}
