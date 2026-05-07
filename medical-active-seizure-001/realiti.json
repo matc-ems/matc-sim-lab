@@ -1,0 +1,300 @@
+{
+  "scenarioId": "medical-active-seizure-001",
+  "scenarioName": "Active Generalized Tonic-Clonic Seizure on Arrival (Status Epilepticus)",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1200,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "28-year-old female with a 10-year history of generalized epilepsy collapsed at her work desk in the middle of a meeting. Coworkers describe an abrupt loss of consciousness followed by full-body stiffening and rhythmic jerking with eye deviation to the left. The seizure was confirmed by a coworker's wristwatch to be ongoing for approximately 4 minutes when EMS arrived, with no break between convulsive activity. Patient ran out of her levetiracetam two days ago and has not yet picked up the refill. No reported recent illness, head injury, fever, alcohol use, or drug use. No known pregnancy. She is still actively convulsing on EMS arrival.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives to find the patient still actively seizing on the conference room floor with coworkers timing the duration. The seizure has now been ongoing for approximately 4 minutes — meeting status epilepticus criteria per the MATC guideline (active on EMS arrival or >5 minutes). Protective airway reflexes are absent and ventilation is irregular. This is the initial contact phase: dispatch, SAMPLE history, scene findings, and primary survey drive the immediate response. → Seizure broken: Two minutes after IM midazolam, convulsive activity ceases. The patient is now flaccid and post-ictal with snoring respirations, but heart rate, oxygenation, and ventilation are improving with ongoing airway support. Crew now manages a typical post-ictal patient en route. → Transport to ED: Patient is transported to a community ED with continuous monitoring. Mental status slowly improves toward baseline; no recurrence en route. Crew gives a complete handoff including duration of seizure, medications administered, and AED non-adherence."
+  },
+  "patientInformation": {
+    "patientName": "Megan Holloway",
+    "patientCondition": "Witnessed generalized tonic-clonic seizure, still actively seizing on EMS arrival, total duration now 4+ minutes",
+    "patientAge": 28,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 2,
+    "patientHeight": 165,
+    "patientWeight": 65,
+    "patientPhotoId": 34,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find the patient still actively seizing on the conference room floor with coworkers timing the duration. The seizure has now been ongoing for approximately 4 minutes — meeting status epilepticus criteria per the MATC guideline (active on EMS arrival or >5 minutes). Protective airway reflexes are absent and ventilation is irregular. This is the initial contact phase: dispatch, SAMPLE history, scene findings, and primary survey drive the immediate response.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 132,
+        "bpSys": 158,
+        "bpDia": 96,
+        "respRate": 26,
+        "spo2": 88,
+        "etco2": 52,
+        "temp": 37.3,
+        "obstruction": 30,
+        "custMeasure1": 92,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Pad area, protect from injury, ensure scene safety",
+        "Recognize status epilepticus (active on EMS arrival, >4 min)",
+        "Position airway, suction secretions, NPA if no gag",
+        "Apply high-flow O2; assist ventilation with BVM if SpO2 stays low",
+        "Midazolam 10 mg IM (65 kg × 0.2 mg/kg = 13 mg → cap at 10 mg max)",
+        "Check blood glucose; if <60 mg/dL, treat per Hypoglycemia Guideline",
+        "Apply pulse ox + waveform capnography; trend during/after benzo",
+        "Get duration, focality, eye deviation, AED compliance, prior history"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Seizure broken",
+      "description": "Two minutes after IM midazolam, convulsive activity ceases. The patient is now flaccid and post-ictal with snoring respirations, but heart rate, oxygenation, and ventilation are improving with ongoing airway support. Crew now manages a typical post-ictal patient en route.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 138,
+        "bpDia": 84,
+        "respRate": 14,
+        "spo2": 96,
+        "etco2": 42,
+        "temp": 37.3,
+        "obstruction": 10,
+        "custMeasure1": 92,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Maintain NPA, lateral recovery position, suction available",
+        "Monitor for seizure recurrence and benzo respiratory depression",
+        "Establish IV access en route for further treatment if needed",
+        "Serial GCS, pupil, focal deficit checks",
+        "Transport to ED; early notification of treated status epilepticus"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Transport to ED",
+      "description": "Patient is transported to a community ED with continuous monitoring. Mental status slowly improves toward baseline; no recurrence en route. Crew gives a complete handoff including duration of seizure, medications administered, and AED non-adherence.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 92,
+        "bpSys": 128,
+        "bpDia": 78,
+        "respRate": 14,
+        "spo2": 98,
+        "etco2": 38,
+        "temp": 37.2,
+        "obstruction": 0,
+        "custMeasure1": 92,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "12-lead EKG to evaluate for cardiac cause",
+        "Document seizure duration, eye deviation, medication, response"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Ongoing status — IV delay",
+      "description": "Crew bypasses the no-IV (IM) pathway and attempts IV access while the patient continues to seize. Seizure activity persists past 8 minutes total. SpO2 falls into the low 80s, EtCO2 climbs, and the patient is now in true refractory status epilepticus with worsening hypoxia. The crew must recover by giving IM/IN midazolam now and aggressively managing airway/oxygenation. Risk of post-ictal apnea and need for advanced airway is high.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 148,
+        "bpSys": 168,
+        "bpDia": 102,
+        "respRate": 30,
+        "spo2": 82,
+        "etco2": 62,
+        "temp": 38,
+        "obstruction": 50,
+        "custMeasure1": 92,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Give midazolam 10 mg IM now (do not wait for IV)",
+        "Two-person BVM with PEEP, suction, NPA",
+        "Prepare second benzo dose; weigh airway risk before third",
+        "Initiate emergent transport with pre-arrival notification"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Pad area, protect from injury, ensure scene safety",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize status epilepticus (active on EMS arrival, >4 min)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Position airway, suction secretions, NPA if no gag",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply high-flow O2; assist ventilation with BVM if SpO2 stays low",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Midazolam 10 mg IM (65 kg × 0.2 mg/kg = 13 mg → cap at 10 mg max)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose; if <60 mg/dL, treat per Hypoglycemia Guideline",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply pulse ox + waveform capnography; trend during/after benzo",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Get duration, focality, eye deviation, AED compliance, prior history",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Maintain NPA, lateral recovery position, suction available",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Monitor for seizure recurrence and benzo respiratory depression",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish IV access en route for further treatment if needed",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Serial GCS, pupil, focal deficit checks",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Transport to ED; early notification of treated status epilepticus",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "12-lead EKG to evaluate for cardiac cause",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document seizure duration, eye deviation, medication, response",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Give midazolam 10 mg IM now (do not wait for IV)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Two-person BVM with PEEP, suction, NPA",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Prepare second benzo dose; weigh airway risk before third",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Initiate emergent transport with pre-arrival notification",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

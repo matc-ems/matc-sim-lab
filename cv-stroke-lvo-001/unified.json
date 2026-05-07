@@ -1,0 +1,399 @@
+{
+  "meta": {
+    "id": "cv-stroke-lvo-001",
+    "name": "Suspected LVO Stroke — Right-Sided Weakness with Global Aphasia, LKW 45 Minutes",
+    "version": 1,
+    "difficulty": "intermediate",
+    "category": "Cardiovascular",
+    "protocols": [
+      "cv-stroke-tia",
+      "medical-hypoglycemia",
+      "medical-altered-mental-status"
+    ],
+    "totalTimeSeconds": 1200,
+    "createdAt": "2026-05-06T00:00:00Z",
+    "tags": [
+      "stroke",
+      "LVO",
+      "thrombectomy",
+      "stroke scale",
+      "last known well",
+      "transport decision",
+      "intermediate"
+    ]
+  },
+  "patient": {
+    "name": "Harold Pemberton",
+    "age": 72,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 88,
+    "weightLbs": 194,
+    "height": 178,
+    "chiefComplaint": "Sudden right-sided weakness and inability to speak; last known well 45 minutes ago",
+    "history": {
+      "hpi": "72-year-old retired engineer was eating breakfast with his wife and reading the newspaper at 09:15 when she observed him drop his coffee cup, develop an obvious right facial droop, and stop responding when she spoke to him. She helped him to the couch, called 911 within 2 minutes, and EMS is on scene now (45 minutes after symptom onset). Patient is awake, follows simple commands by gesture, but cannot produce intelligible speech and cannot move his right arm or leg. No reported headache, seizure activity, vomiting, head trauma, or recent illness. Patient takes warfarin for atrial fibrillation and his last INR (yesterday) was 2.4 per his wife. Wife was sitting across from him the entire time and is certain of the time of onset.",
+      "pastMedical": [
+        "Atrial fibrillation (on warfarin)",
+        "Hypertension",
+        "Hyperlipidemia",
+        "Type 2 diabetes mellitus",
+        "Coronary artery disease (stent x 2 in 2019)",
+        "Prior TIA in 2022 (no residual deficit)"
+      ],
+      "medications": [
+        "Warfarin 5 mg PO daily (last INR 2.4 yesterday)",
+        "Metoprolol succinate 50 mg PO daily",
+        "Atorvastatin 80 mg PO at bedtime",
+        "Metformin 1000 mg PO BID",
+        "Aspirin 81 mg PO daily",
+        "Lisinopril 20 mg PO daily"
+      ],
+      "allergies": [
+        "Sulfa drugs (rash)"
+      ],
+      "lastOralIntake": "Coffee and a few bites of toast at 09:00, dropped at 09:15",
+      "events": "Wife witnessed sudden right-sided weakness and loss of speech at 09:15 while patient was reading the paper. 911 called immediately. EMS arrival 45 minutes after symptom onset."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 72-year-old male, possible stroke, right-sided weakness and trouble speaking. Wife on scene, time of onset known.",
+    "location": "Single-family home, dining room. Patient now seated on couch in adjacent living room. Adequate lighting and access; clear path to stretcher.",
+    "time": "Saturday, 10:00, weekend morning",
+    "safety": "Scene secure. No environmental hazards. Wife is composed and an excellent historian.",
+    "bystanders": "Wife (primary historian) was directly across from patient at the breakfast table. She is certain symptoms began at exactly 09:15 — she looked at the wall clock immediately. No prior episodes today. Patient on warfarin with recent INR of 2.4. No known recent trauma, surgery, or bleeding.",
+    "visualCues": [
+      "Patient seated on couch, leaning slightly to the right",
+      "Obvious right facial droop on resting observation",
+      "Right arm hanging limp at his side",
+      "Newspaper and overturned coffee cup with spill on the table",
+      "Patient making frustrated facial expressions and grunting attempts at speech",
+      "Pill organizer visible on counter labeled with the days of the week",
+      "Wall clock visible in dining area"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives 45 minutes after a witnessed sudden onset of right-sided weakness and aphasia in a 72-year-old anticoagulated male. He is awake but unable to speak, with dense right hemiparesis and a marked facial droop. Wife provides a precise last-known-well time. This is the initial contact phase: dispatch, SAMPLE history, scene findings, and a focused stroke assessment drive the response.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 1,
+          "motor": 6
+        },
+        "airway": "Patent and self-maintained",
+        "breathing": "Regular, unlabored respirations; clear bilateral lung sounds",
+        "circulation": "Irregularly irregular radial pulse; warm, dry skin; no peripheral edema",
+        "skin": {
+          "color": "pink",
+          "temperature": "warm",
+          "moisture": "dry"
+        },
+        "pupils": "Equal at 3 mm, briskly reactive; conjugate gaze with mild forced left gaze deviation (cannot voluntarily cross midline to the right)",
+        "motorFunction": "Dense right hemiparesis: right arm drifts and falls immediately when raised; right leg cannot lift off bed against gravity (0/5); left side 5/5 strength. Right facial droop with obvious nasolabial flattening.",
+        "otherFindings": [
+          "Global aphasia: cannot follow two-step verbal commands; cannot name objects; cannot repeat phrases",
+          "Sensory neglect of the right side suspected",
+          "No headache reported by gesture (patient shakes head 'no' to head pain)",
+          "No tongue laceration, no incontinence, no recent fall",
+          "Pulse irregularly irregular consistent with known atrial fibrillation"
+        ],
+        "patientSpeech": "Unable to produce intelligible speech; grunts and makes one-word attempts only ('no... no...')."
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 96,
+        "bpSys": 184,
+        "bpDia": 102,
+        "respRate": 16,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.9,
+        "tempF": 98.4,
+        "obstruction": 0,
+        "glucose": 118,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "lkw-time",
+          "shortAction": "Establish exact last known well time (09:15 — wall clock)",
+          "protocolExcerpt": "Treatment and Interventions: Determine 'last known well' time. Key Documentation Elements: 'Last known well' must be specific. If the patient was last known well prior to bedtime the night before, this is the time to be documented (not time the patient woke up with symptoms present).",
+          "priority": "critical",
+          "rationale": "LKW determines thrombolytic and thrombectomy eligibility — the single most consequential data point in stroke care.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "stroke-scale",
+          "shortAction": "Perform validated stroke scale (Cincinnati: face, arm, speech)",
+          "protocolExcerpt": "Use a validated prehospital stroke scale that may include, but is not limited to: Facial smile/grimace – ask patient to smile; Arm drift – close eyes and hold out arms for count of 10 seconds; Speech – ask patient to say 'You can't teach an old dog new tricks'.",
+          "priority": "critical",
+          "rationale": "Documents positive findings (face droop, arm drift, aphasia) that activate the stroke alert.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "lvo-severity-scale",
+          "shortAction": "Stroke severity scale: assess vision, neglect, aphasia (LVO suspected)",
+          "protocolExcerpt": "Use a validated prehospital stroke severity scale that may include, but is not limited to: Vision changes; Sensory neglect; Aphasia.",
+          "priority": "critical",
+          "rationale": "LVO findings (forced gaze, dense hemiparesis, global aphasia, neglect) drive thrombectomy-capable destination decision.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "glucose-check",
+          "shortAction": "Check blood glucose (rule out hypoglycemia mimic)",
+          "protocolExcerpt": "Treatment and Interventions: Check blood glucose level (BGL). Treat only if glucose less than 60 mg/dL.",
+          "priority": "critical",
+          "rationale": "Hypoglycemia is the classic stroke mimic and must be excluded before stroke alert.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "anticoagulant-history",
+          "shortAction": "Document warfarin use, last INR, allergies, recent trauma/surgery/bleed",
+          "protocolExcerpt": "Pertinent historical data includes: Patient is taking warfarin or any anticoagulant medication; History of recent trauma; History of recent seizure; History of recent surgery; History of recent hemorrhage (e.g., GI bleed).",
+          "priority": "critical",
+          "rationale": "Anticoagulation status changes thrombolytic eligibility and changes hospital management priority.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "oxygen",
+          "shortAction": "Oxygen as appropriate to maintain SpO2 94-98%",
+          "protocolExcerpt": "Treatment and Interventions: Administer oxygen as appropriate with a target of achieving 94–98% saturation.",
+          "priority": "important",
+          "rationale": "SpO2 is currently 96% — no supplemental O2 required, but apply nasal cannula prophylactically and titrate.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "12-lead",
+          "shortAction": "Acquire 12-lead EKG (afib confirmed; rule out STEMI mimics)",
+          "protocolExcerpt": "Acquire 12-lead EKG, if possible.",
+          "priority": "important",
+          "rationale": "Atrial fibrillation is the likely embolic source; also rules out concurrent STEMI.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "do-not-treat-htn",
+          "shortAction": "Do NOT treat the elevated BP (184/102)",
+          "protocolExcerpt": "Notes/Educational Pearls: Do not treat hypertension.",
+          "priority": "critical",
+          "rationale": "Common error: aggressively lowering BP in acute stroke worsens penumbral ischemia. Hospital decides any BP management.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "head-of-bed",
+          "shortAction": "Elevate head of stretcher 15-30° (BP allows)",
+          "protocolExcerpt": "Patient Safety Considerations: Prevent aspiration – elevate head of stretcher 15–30 degrees if systolic BP greater than 100 mmHg. Maintain head and neck in neutral alignment, without flexing the neck.",
+          "priority": "important",
+          "rationale": "Reduces aspiration risk in dysphagic stroke patient while preserving cerebral perfusion.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "stroke-alert",
+          "shortAction": "Early stroke alert with LVO findings to thrombectomy-capable center",
+          "protocolExcerpt": "Treatment and Interventions: Early hospital notification per local stroke plan that should include any suspected large vessel occlusion (LVO) stroke.",
+          "priority": "critical",
+          "rationale": "Pre-arrival activation directly reduces door-to-needle and door-to-groin times.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "lvo-recognized-transport",
+          "if": "LVO recognized; transport to thrombectomy center",
+          "condition": "Crew completes stroke and severity assessments, recognizes positive LVO findings (forced gaze, global aphasia, dense hemiparesis), and elects to bypass the closer Primary Stroke Center for the Comprehensive/Thrombectomy-capable Stroke Center 22 minutes away with early notification.",
+          "conditionType": "action_taken",
+          "triggerActionIds": [
+            "lvo-severity-scale",
+            "stroke-alert"
+          ]
+        },
+        {
+          "targetPhaseId": "wrong-destination",
+          "if": "Transport to closest non-thrombectomy hospital",
+          "condition": "Crew transports to the closest Primary Stroke Center without recognizing or communicating LVO severity findings. Patient will require secondary transfer for thrombectomy, losing valuable time.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": [
+            "lvo-severity-scale",
+            "stroke-alert"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lvo-recognized-transport",
+      "name": "LVO recognized; transport",
+      "description": "Crew has identified LVO features and elected to bypass the closest hospital for the thrombectomy-capable Comprehensive Stroke Center, with early notification. Patient is transported with HOB elevated, on continuous monitoring, with no aggressive BP intervention. Symptoms remain stable en route.",
+      "triggerCondition": "Crew identified LVO severity findings, made a destination decision to bypass to a thrombectomy-capable center, and gave early hospital notification with the suspected LVO designation.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 1,
+          "motor": 6
+        },
+        "airway": "Patent and self-maintained; head of stretcher elevated 30°",
+        "breathing": "Regular, unlabored",
+        "circulation": "Irregularly irregular pulse; warm dry skin",
+        "skin": {
+          "color": "pink",
+          "temperature": "warm",
+          "moisture": "dry"
+        },
+        "pupils": "Equal, reactive; left gaze deviation persists",
+        "motorFunction": "Right hemiparesis unchanged; left side 5/5",
+        "otherFindings": [
+          "Aphasia unchanged",
+          "Patient cooperative with stretcher movement and turn",
+          "No new symptoms en route"
+        ],
+        "patientSpeech": "Continues with one-word attempts only"
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 92,
+        "bpSys": 178,
+        "bpDia": 98,
+        "respRate": 16,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 36.9,
+        "tempF": 98.4,
+        "obstruction": 0,
+        "glucose": 118,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "iv-access-careful",
+          "shortAction": "Single IV attempt, large-bore (avoid multiple attempts)",
+          "protocolExcerpt": "Patient Safety Considerations: Avoid multiple IV attempts.",
+          "priority": "important",
+          "rationale": "Multiple IV attempts cause hematomas that interfere with thrombolytic therapy decision-making.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "minimize-scene-time",
+          "shortAction": "Minimize on-scene time; expedite to receiving hospital",
+          "protocolExcerpt": "Performance Measures: Minimize EMS scene time.",
+          "priority": "critical",
+          "rationale": "Time is brain — every minute lost reduces salvageable tissue and worsens outcome.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "serial-neuro",
+          "shortAction": "Serial neuro reassessments for deterioration",
+          "protocolExcerpt": "Pertinent historical data includes: Neurologic status assessment.",
+          "priority": "important",
+          "rationale": "Identifies hemorrhagic conversion (sudden BP rise, vomiting, decreased LOC) requiring change in destination if needed.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "protect-paralyzed-limb",
+          "shortAction": "Protect the paretic right arm/leg from injury during moves",
+          "protocolExcerpt": "Patient Safety Considerations: Protect paralyzed limbs from injury.",
+          "priority": "supplemental",
+          "rationale": "Flaccid limbs are easily injured during stretcher transfers.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "wrong-destination",
+      "name": "Closest hospital — no LVO triage",
+      "description": "Crew transports to the closer Primary Stroke Center, missing the LVO findings or not communicating them. The patient will need a secondary transfer for thrombectomy, costing 60-90 minutes of door-to-puncture time and reducing the chance of meaningful recovery. This phase exists to teach the consequence of skipping the severity scale.",
+      "triggerCondition": "Crew did not perform a stroke severity scale (or did not act on positive LVO findings) and transported to the nearest stroke-ready center. Receiving facility will need to arrange a secondary transfer; time-to-thrombectomy is now significantly delayed.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 1,
+          "motor": 6
+        },
+        "airway": "Patent and self-maintained",
+        "breathing": "Regular, unlabored",
+        "circulation": "Irregularly irregular pulse; warm dry skin",
+        "skin": {
+          "color": "pink",
+          "temperature": "warm",
+          "moisture": "dry"
+        },
+        "pupils": "Equal, reactive; left gaze deviation persists",
+        "motorFunction": "Right hemiparesis unchanged",
+        "otherFindings": [
+          "Symptoms unchanged on arrival at the closer hospital",
+          "Receiving ED begins immediate workup but cannot provide thrombectomy",
+          "Secondary transfer process initiated; estimated 60-90 minute delay to thrombectomy-capable center"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Atrial Fibrillation",
+        "ecgWaveform": 38,
+        "hr": 94,
+        "bpSys": 182,
+        "bpDia": 100,
+        "respRate": 16,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 36.9,
+        "tempF": 98.4,
+        "obstruction": 0,
+        "glucose": 118,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "recovery-severity-assessment",
+          "shortAction": "Perform severity scale and notify receiving of LVO suspicion",
+          "protocolExcerpt": "Use a validated prehospital stroke severity scale that may include, but is not limited to: Vision changes; Sensory neglect; Aphasia.",
+          "priority": "critical",
+          "rationale": "Even after arrival at the wrong center, communicating LVO findings expedites the secondary transfer process.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        },
+        {
+          "id": "debrief-destination",
+          "shortAction": "Recognize destination decision: thrombectomy-capable bypass was indicated",
+          "protocolExcerpt": "Notes/Educational Pearls: Transport and destination decisions should be based on local resources and stroke system of care. Destination hospitals may include: Stroke Ready; Primary Stroke Center; Thrombectomy-capable Stroke Center; Comprehensive Stroke Center. Positive stroke severity scale with time of onset or last known well less than 24 hours may be eligible for mechanical thrombectomy.",
+          "priority": "important",
+          "rationale": "Closing the loop with the crew on the destination decision is the entire teaching point of this branch.",
+          "protocolReference": "MATC: Suspected Stroke/Transient Ischemic Attack"
+        }
+      ],
+      "transitions": []
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

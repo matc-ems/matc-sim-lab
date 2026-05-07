@@ -1,0 +1,253 @@
+{
+  "scenarioId": "medical-surgical-abdomen-001",
+  "scenarioName": "Surgical Abdomen — Suspected Perforated Viscus with Distributive Shock",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1200,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "55-year-old male with a long history of NSAID use for chronic low back pain (daily ibuprofen 800 mg three times daily for 'as long as he can remember') developed sudden, knife-like, generalized upper abdominal pain about 2 hours ago that he rates 10/10. He was leaning over to tie his shoes when the pain hit and 'felt like he'd been stabbed.' He vomited once after onset (clear emesis, no blood). He has had no bowel movement in 24 hours and has not passed gas since the pain started. He moves as little as possible because any movement makes the pain dramatically worse. He has dyspepsia symptoms most days but never sought workup. No fever reported, but he 'has been feeling warm' for a few hours. No prior abdominal surgery. No known AAA. No recent trauma.",
+    "discussion": "",
+    "course": "Initial Contact: EMS finds a 55-year-old male in a fetal position with diffuse severe abdominal pain, signs of peritonitis (rigidity, guarding, immobility), and early shock (tachycardia, hypotension, pallor, diaphoresis). Long-term high-dose NSAID use with no protective therapy raises concern for perforated peptic ulcer. This is the initial contact phase: dispatch, SAMPLE history, scene findings, and primary survey drive the response. → Fluids given; improving: After 1 L of NS, MAP has risen, EtCO2 is improving, and patient is more comfortable on fentanyl. Pain remains severe but he is talking in sentences and appears better-perfused. Transport is underway to a surgical-capable hospital with the trauma/surgical team alerted."
+  },
+  "patientInformation": {
+    "patientName": "David Marquez",
+    "patientCondition": "Sudden severe diffuse abdominal pain, rigid abdomen, hypotension and tachycardia",
+    "patientAge": 55,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 175,
+    "patientWeight": 82,
+    "patientPhotoId": 66,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS finds a 55-year-old male in a fetal position with diffuse severe abdominal pain, signs of peritonitis (rigidity, guarding, immobility), and early shock (tachycardia, hypotension, pallor, diaphoresis). Long-term high-dose NSAID use with no protective therapy raises concern for perforated peptic ulcer. This is the initial contact phase: dispatch, SAMPLE history, scene findings, and primary survey drive the response.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 124,
+        "bpSys": 86,
+        "bpDia": 58,
+        "respRate": 26,
+        "spo2": 96,
+        "etco2": 30,
+        "temp": 38.4,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey; recognize shock (HR 124, BP 86/58, EtCO2 30)",
+        "Assess for perforated bowel and AAA (palpate, femoral pulses)",
+        "Apply O2 to maintain SpO2 94-98%",
+        "Two large-bore IVs; IO if no IV in 2 attempts/<90 sec",
+        "NS 500 mL bolus rapid; reassess; goal MAP 65 (up to 30 mL/kg total)",
+        "Cardiac monitor + 12-lead (rule out inferior MI mimicking abdominal pain)",
+        "Use waveform EtCO2 to track perfusion (current 30 mmHg = poor perfusion)",
+        "Fentanyl 80 mcg IV (82 kg × 1 mcg/kg; max 100 mcg) — avoid ketorolac (NSAID + hypotension)",
+        "Ondansetron 4 mg IV/SL for nausea/vomiting",
+        "Rapid transport to surgical-capable receiving facility with notification"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Fluids given; improving",
+      "description": "After 1 L of NS, MAP has risen, EtCO2 is improving, and patient is more comfortable on fentanyl. Pain remains severe but he is talking in sentences and appears better-perfused. Transport is underway to a surgical-capable hospital with the trauma/surgical team alerted.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 102,
+        "bpDia": 64,
+        "respRate": 20,
+        "spo2": 98,
+        "etco2": 36,
+        "temp": 38.5,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Reassess vitals q5min and after each bolus",
+        "Stop fluids if rales/hepatomegaly develop (cardiogenic component)",
+        "Early notification with full picture (perforation suspected, on pressors-watch)"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Shock progressing — fluids delayed",
+      "description": "Fluid resuscitation was deferred or delayed in favor of pain control or prolonged IV attempts. The patient has become hypotensive, increasingly diaphoretic, with declining mental status and a falling EtCO2 — uncompensated distributive shock. Crew now needs aggressive simultaneous resuscitation and emergent transport, and may need to consider IO and vasopressor preparation.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 138,
+        "bpSys": 72,
+        "bpDia": 46,
+        "respRate": 32,
+        "spo2": 92,
+        "etco2": 22,
+        "temp": 38.6,
+        "obstruction": 0,
+        "custMeasure1": 142,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Place IO immediately if no IV; begin rapid fluid resuscitation",
+        "Pressure-infuse 500 mL boluses; up to 30 mL/kg total (≈2.5 L)",
+        "Prepare push-dose epinephrine if MAP <65 after fluids",
+        "Emergent transport now; minimal additional scene time"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey; recognize shock (HR 124, BP 86/58, EtCO2 30)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Assess for perforated bowel and AAA (palpate, femoral pulses)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply O2 to maintain SpO2 94-98%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Two large-bore IVs; IO if no IV in 2 attempts/<90 sec",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "NS 500 mL bolus rapid; reassess; goal MAP 65 (up to 30 mL/kg total)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Cardiac monitor + 12-lead (rule out inferior MI mimicking abdominal pain)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Use waveform EtCO2 to track perfusion (current 30 mmHg = poor perfusion)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Fentanyl 80 mcg IV (82 kg × 1 mcg/kg; max 100 mcg) — avoid ketorolac (NSAID + hypotension)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Ondansetron 4 mg IV/SL for nausea/vomiting",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Rapid transport to surgical-capable receiving facility with notification",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Reassess vitals q5min and after each bolus",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Stop fluids if rales/hepatomegaly develop (cardiogenic component)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early notification with full picture (perforation suspected, on pressors-watch)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Place IO immediately if no IV; begin rapid fluid resuscitation",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Pressure-infuse 500 mL boluses; up to 30 mL/kg total (≈2.5 L)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Prepare push-dose epinephrine if MAP <65 after fluids",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Emergent transport now; minimal additional scene time",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

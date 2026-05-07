@@ -1,0 +1,408 @@
+{
+  "meta": {
+    "id": "medical-surgical-abdomen-001",
+    "name": "Surgical Abdomen — Suspected Perforated Viscus with Distributive Shock",
+    "version": 1,
+    "difficulty": "intermediate",
+    "category": "Medical",
+    "protocols": [
+      "medical-abdominal-pain",
+      "medical-shock",
+      "medical-pain-management",
+      "medical-nausea-vomiting"
+    ],
+    "totalTimeSeconds": 1200,
+    "createdAt": "2026-05-06T00:00:00Z",
+    "tags": [
+      "abdominal pain",
+      "perforation",
+      "peritonitis",
+      "shock",
+      "fluid resuscitation",
+      "surgical center",
+      "intermediate"
+    ]
+  },
+  "patient": {
+    "name": "David Marquez",
+    "age": 55,
+    "ageUnit": "years",
+    "sex": "male",
+    "weight": 82,
+    "weightLbs": 181,
+    "height": 175,
+    "chiefComplaint": "Sudden severe diffuse abdominal pain, rigid abdomen, hypotension and tachycardia",
+    "history": {
+      "hpi": "55-year-old male with a long history of NSAID use for chronic low back pain (daily ibuprofen 800 mg three times daily for 'as long as he can remember') developed sudden, knife-like, generalized upper abdominal pain about 2 hours ago that he rates 10/10. He was leaning over to tie his shoes when the pain hit and 'felt like he'd been stabbed.' He vomited once after onset (clear emesis, no blood). He has had no bowel movement in 24 hours and has not passed gas since the pain started. He moves as little as possible because any movement makes the pain dramatically worse. He has dyspepsia symptoms most days but never sought workup. No fever reported, but he 'has been feeling warm' for a few hours. No prior abdominal surgery. No known AAA. No recent trauma.",
+      "pastMedical": [
+        "Chronic low back pain",
+        "Hypertension",
+        "GERD with intermittent dyspepsia (no formal workup)",
+        "Hyperlipidemia",
+        "Tobacco use (1 pack/day x 30 years)"
+      ],
+      "medications": [
+        "Ibuprofen 800 mg PO TID (chronic, self-administered)",
+        "Lisinopril 20 mg PO daily",
+        "Atorvastatin 40 mg PO at bedtime",
+        "Omeprazole 20 mg PO PRN heartburn (uses sporadically)"
+      ],
+      "allergies": [
+        "NKDA"
+      ],
+      "lastOralIntake": "Coffee and toast about 4 hours ago; vomited once after pain onset",
+      "events": "Sudden severe upper abdominal pain ~2 hours ago while bending over. Patient eventually called 911 when the pain failed to resolve and he began feeling weak and dizzy on attempts to stand."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 55-year-old male, severe abdominal pain, possibly going to pass out. Single-family residence.",
+    "location": "Single-family home, master bedroom upstairs. Patient on his bed in a tightly drawn fetal position.",
+    "time": "Sunday, 16:20, weekend afternoon",
+    "safety": "Scene secure. No environmental hazards. Wife present and cooperative. Single flight of stairs to the bedroom — plan extrication accordingly.",
+    "bystanders": "Wife (primary historian) reports patient's pain came on suddenly while he bent over. He has been getting paler and sweatier over the past hour. Wife denies any black or bloody stools, hematemesis, or recent fever. She has urged him to stop the chronic ibuprofen for years.",
+    "visualCues": [
+      "Patient lying very still in fetal position, eyes closed",
+      "Pale and diaphoretic",
+      "Vomit basin at bedside with small amount of clear emesis",
+      "Refuses to move; grimaces with any contact",
+      "Empty 800 mg ibuprofen bottle on the nightstand alongside several others",
+      "No abdominal scars visible on initial inspection"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS finds a 55-year-old male in a fetal position with diffuse severe abdominal pain, signs of peritonitis (rigidity, guarding, immobility), and early shock (tachycardia, hypotension, pallor, diaphoresis). Long-term high-dose NSAID use with no protective therapy raises concern for perforated peptic ulcer. This is the initial contact phase: dispatch, SAMPLE history, scene findings, and primary survey drive the response.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent and self-maintained",
+        "breathing": "Shallow, splinted respirations to limit abdominal movement; clear bilateral lung sounds",
+        "circulation": "Weak, rapid radial pulse; cool clammy skin; cap refill ~3 sec; equal femoral pulses bilaterally; no pulsatile abdominal mass",
+        "skin": {
+          "color": "pale",
+          "temperature": "cool",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 4 mm, reactive",
+        "motorFunction": "Moves all four extremities to command but resists any abdominal movement",
+        "otherFindings": [
+          "Abdomen rigid (board-like) with diffuse tenderness, worst in epigastrium",
+          "Marked involuntary guarding and rebound tenderness",
+          "No abdominal distension or pulsatile mass",
+          "No bowel sounds appreciated in 30 seconds",
+          "No back pain, no flank pain, no scrotal pain",
+          "No melena or hematemesis reported",
+          "Femoral pulses equal and present bilaterally"
+        ],
+        "patientSpeech": "'Don't touch me... please... just don't touch me.' Speaking in short sentences only."
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 124,
+        "bpSys": 86,
+        "bpDia": 58,
+        "respRate": 26,
+        "spo2": 96,
+        "etco2": 30,
+        "temp": 38.4,
+        "tempF": 101.1,
+        "obstruction": 0,
+        "glucose": 142,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "primary-survey",
+          "shortAction": "Primary survey; recognize shock (HR 124, BP 86/58, EtCO2 30)",
+          "protocolExcerpt": "Inclusion Criteria: Signs of poor perfusion (due to a medical cause) such as one or more of the following: Altered mental status; Delayed capillary refill (> 3 seconds); Decreased urine output; Respiratory rate greater than 20 breaths per minute in adults; Hypotension for age; Tachycardia; Weak, decreased or bounding pulses; Cool/mottled or flushed/ruddy skin.",
+          "priority": "critical",
+          "rationale": "Crew must immediately recognize this is shock + surgical abdomen, not 'just' abdominal pain — drives parallel resuscitation and rapid transport.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "assess-life-threat",
+          "shortAction": "Assess for perforated bowel and AAA (palpate, femoral pulses)",
+          "protocolExcerpt": "Assess for life-threatening causes of abdominal pain, which may include: Signs and symptoms of ischemic, necrotic, or perforated bowel: Severe tenderness; Abdominal pain with motion or palpation of the abdomen; Fever; Bloody stool; Nausea and vomiting; Absence of passage of stool or gas; Abdominal distention, with tympany to percussion. Signs and symptoms of dissecting or ruptured abdominal aortic aneurysm (AAA): Unequal femoral or distal lower extremity pulses; 'Pulsatile' abdominal mass; Associated back pain and/or chest pain; Known history of abdominal aortic aneurysm.",
+          "priority": "critical",
+          "rationale": "Surgical etiologies (perforation, AAA, ischemia) require different transport destinations and can't be missed.",
+          "protocolReference": "MATC: Abdominal Pain"
+        },
+        {
+          "id": "supplemental-o2",
+          "shortAction": "Apply O2 to maintain SpO2 94-98%",
+          "protocolExcerpt": "Treatment and Interventions: Administer oxygen as appropriate with a target of achieving 94–98% saturation.",
+          "priority": "important",
+          "rationale": "Trend SpO2 and provide reserve as shock evolves; current SpO2 96% requires only nasal cannula.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "iv-or-io",
+          "shortAction": "Two large-bore IVs; IO if no IV in 2 attempts/<90 sec",
+          "protocolExcerpt": "Treatment and Interventions: Establish IV access. If unable to obtain within two attempts or less than 90 seconds, place an IO needle.",
+          "priority": "critical",
+          "rationale": "IV access is the gateway to fluids, analgesics, and antiemetics in this hypotensive patient.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "fluid-bolus",
+          "shortAction": "NS 500 mL bolus rapid; reassess; goal MAP 65 (up to 30 mL/kg total)",
+          "protocolExcerpt": "Adult: Physiologic target: MAP goal 65 mmHg. Fluid goal of up to 30 mL/kg of isotonic fluid by administering rapid, predetermined boluses (e.g., 500 mL) unless the MAP goal is achieved, or pulmonary edema develops.",
+          "priority": "critical",
+          "rationale": "Distributive (third-spacing) shock from peritonitis demands aggressive volume; titrate to MAP, not BP alone.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "monitor-ecg",
+          "shortAction": "Cardiac monitor + 12-lead (rule out inferior MI mimicking abdominal pain)",
+          "protocolExcerpt": "Treatment and Interventions: Cardiac monitor. EKG.",
+          "priority": "important",
+          "rationale": "Inferior wall MI presents with epigastric pain; must be excluded.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "etco2-perfusion",
+          "shortAction": "Use waveform EtCO2 to track perfusion (current 30 mmHg = poor perfusion)",
+          "protocolExcerpt": "Pulse oximetry and EtCO2 (reading of less than 25 mmHg may be sign of poor perfusion).",
+          "priority": "important",
+          "rationale": "EtCO2 trend is the earliest indicator of fluid responsiveness in shock.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "analgesia",
+          "shortAction": "Fentanyl 80 mcg IV (82 kg × 1 mcg/kg; max 100 mcg) — avoid ketorolac (NSAID + hypotension)",
+          "protocolExcerpt": "For Moderate to Severe pain, analgesics include: Fentanyl: 1 mcg/kg IN, IM, IV or IO (maximum initial dose of 100 mcg). Patient Safety Considerations: Ketorolac should not be used in patients with hypotension (due to renal toxicity). Avoid non-steroidal anti-inflammatory medications such as ibuprofen and ketorolac in patients with NSAID allergy, aspirin-sensitive asthma, renal insufficiency, pregnancy, or known peptic ulcer disease.",
+          "priority": "important",
+          "rationale": "Pain management for severe surgical abdomen does not mask diagnosis; opioid is preferred over NSAIDs given hypotension and possible PUD.",
+          "protocolReference": "MATC: Pain Management"
+        },
+        {
+          "id": "antiemetic",
+          "shortAction": "Ondansetron 4 mg IV/SL for nausea/vomiting",
+          "protocolExcerpt": "Ondansetron (contraindicated for suspected or known diagnosis of prolonged QT syndrome). Adult: 4 mg IV/PO/SL OR 4 or 8 mg SL of the ODT formulation.",
+          "priority": "important",
+          "rationale": "Reduces aspiration risk in patient with nausea, severe pain, and altered mental status risk from analgesia.",
+          "protocolReference": "MATC: Nausea-Vomiting"
+        },
+        {
+          "id": "transport-surgical",
+          "shortAction": "Rapid transport to surgical-capable receiving facility with notification",
+          "protocolExcerpt": "Provide transport to an appropriate receiving facility. Consider specialty destination centers for conditions such as suspected abdominal aortic aneurysm and aortic dissection. Notes/Educational Pearls: Consider transport to a specialty surgical center if aortic aneurysm or aortic dissection is suspected.",
+          "priority": "critical",
+          "rationale": "Surgical abdomen requires OR-capable destination; pre-arrival notification expedites surgical consultation and OR readiness.",
+          "protocolReference": "MATC: Abdominal Pain"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "fluids-given-improving",
+          "if": "Fluids given; transport to surgical center initiated",
+          "condition": "Crew has established two large-bore IVs, given a rapid 500 mL fluid bolus, applied oxygen, given fentanyl and ondansetron, and is transporting emergently to a surgical-capable facility with pre-arrival notification.",
+          "conditionType": "action_taken",
+          "triggerActionIds": [
+            "fluid-bolus",
+            "transport-surgical"
+          ]
+        },
+        {
+          "targetPhaseId": "shock-progressing",
+          "if": "No fluids; on-scene delay for IV/pain control",
+          "condition": "Crew prolongs scene time chasing IV attempts or focusing on analgesia before fluid resuscitation. Hypotension worsens, mental status changes, and patient is now in uncompensated shock.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": [
+            "fluid-bolus",
+            "transport-surgical"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fluids-given-improving",
+      "name": "Fluids given; improving",
+      "description": "After 1 L of NS, MAP has risen, EtCO2 is improving, and patient is more comfortable on fentanyl. Pain remains severe but he is talking in sentences and appears better-perfused. Transport is underway to a surgical-capable hospital with the trauma/surgical team alerted.",
+      "triggerCondition": "Crew gave a rapid 500 mL bolus, then a second 500 mL bolus, with the patient responding (improved BP, better mental status, EtCO2 climbing toward 35). Transport is underway to a surgical-capable facility.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Alert",
+        "gcs": {
+          "eye": 4,
+          "verbal": 5,
+          "motor": 6
+        },
+        "airway": "Patent and self-maintained",
+        "breathing": "Less splinted, deeper respirations on 4 LPM nasal cannula",
+        "circulation": "Stronger radial pulse, cap refill 2 sec, skin warming",
+        "skin": {
+          "color": "pale-pink",
+          "temperature": "cool to warm",
+          "moisture": "less diaphoretic"
+        },
+        "pupils": "Equal, briskly reactive",
+        "motorFunction": "Moves all extremities; abdomen still rigid and tender",
+        "otherFindings": [
+          "Pain rating now 7/10 (was 10/10) after fentanyl",
+          "No vomiting since ondansetron",
+          "Continues to refuse abdominal palpation",
+          "Reassessment shows continuing peritoneal signs"
+        ],
+        "patientSpeech": "'A little better. Still really bad. Are we almost there?'"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 102,
+        "bpDia": 64,
+        "respRate": 20,
+        "spo2": 98,
+        "etco2": 36,
+        "temp": 38.5,
+        "tempF": 101.3,
+        "obstruction": 0,
+        "glucose": 142,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "reassess-vitals",
+          "shortAction": "Reassess vitals q5min and after each bolus",
+          "protocolExcerpt": "Reassess vital signs and response to therapeutic interventions throughout transport.",
+          "priority": "critical",
+          "rationale": "Frequent reassessment catches re-emergence of shock or pulmonary edema from over-resuscitation.",
+          "protocolReference": "MATC: Abdominal Pain"
+        },
+        {
+          "id": "watch-overload",
+          "shortAction": "Stop fluids if rales/hepatomegaly develop (cardiogenic component)",
+          "protocolExcerpt": "Patient Safety Considerations: Recognition of cardiogenic shock - If the patient condition deteriorates after fluid administration, rales or hepatomegaly develop, then consider cardiogenic shock and withholding further fluid administration.",
+          "priority": "important",
+          "rationale": "Older patient with HTN history may have a mixed shock picture; auscultate before each subsequent bolus.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "early-notification",
+          "shortAction": "Early notification with full picture (perforation suspected, on pressors-watch)",
+          "protocolExcerpt": "Provide advanced notification to the hospital. Performance Measures: Percentage of patients with suspected shock for whom advanced notification to the hospital was provided.",
+          "priority": "important",
+          "rationale": "Pre-arrival notification primes surgical and ED resources; reduces door-to-OR time.",
+          "protocolReference": "MATC: Shock"
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "shock-progressing",
+      "name": "Shock progressing — fluids delayed",
+      "description": "Fluid resuscitation was deferred or delayed in favor of pain control or prolonged IV attempts. The patient has become hypotensive, increasingly diaphoretic, with declining mental status and a falling EtCO2 — uncompensated distributive shock. Crew now needs aggressive simultaneous resuscitation and emergent transport, and may need to consider IO and vasopressor preparation.",
+      "triggerCondition": "Crew did not initiate the first rapid fluid bolus within ~10 minutes of patient contact, or delayed scene time pursuing repeated peripheral IVs. The patient is now hypotensive with mental status decline and falling EtCO2.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 3,
+          "verbal": 4,
+          "motor": 6
+        },
+        "airway": "Patent",
+        "breathing": "Tachypneic, shallow",
+        "circulation": "Weak, thready radial pulse barely palpable; cap refill 4 sec",
+        "skin": {
+          "color": "ashen",
+          "temperature": "cold",
+          "moisture": "drenched diaphoresis"
+        },
+        "pupils": "Equal, reactive",
+        "motorFunction": "Moves spontaneously but slowly to commands",
+        "otherFindings": [
+          "Patient now intermittently confused, asking the same question repeatedly",
+          "Marked deterioration over ~10 minutes",
+          "Abdomen unchanged on exam — board-like rigidity persists"
+        ],
+        "patientSpeech": "Confused, mumbling: 'Where... where am I going?'"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 138,
+        "bpSys": 72,
+        "bpDia": 46,
+        "respRate": 32,
+        "spo2": 92,
+        "etco2": 22,
+        "temp": 38.6,
+        "tempF": 101.5,
+        "obstruction": 0,
+        "glucose": 142,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "rescue-io",
+          "shortAction": "Place IO immediately if no IV; begin rapid fluid resuscitation",
+          "protocolExcerpt": "Establish IV access. If unable to obtain within two attempts or less than 90 seconds, place an IO needle.",
+          "priority": "critical",
+          "rationale": "Recovery action — IO must not be deferred any longer; restore preload now.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "rescue-fluid-bolus",
+          "shortAction": "Pressure-infuse 500 mL boluses; up to 30 mL/kg total (≈2.5 L)",
+          "protocolExcerpt": "Fluid volume goal attained by giving boluses that are pressure infused over less than 15 minutes each based on patient's condition and clinical impression. Fluid goal of up to 30 mL/kg of isotonic fluid by administering rapid, predetermined boluses (e.g., 500 mL) unless the MAP goal is achieved, or pulmonary edema develops.",
+          "priority": "critical",
+          "rationale": "Pressure-infusion delivers fluid faster than gravity in profound hypotension.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "prep-vasopressor",
+          "shortAction": "Prepare push-dose epinephrine if MAP <65 after fluids",
+          "protocolExcerpt": "Vasopressors (shock unresponsive to IV fluids) titrated to physiologic targets. Norepinephrine 0.05–0.5 mcg/kg/minute. Preference in both neurogenic and infectious (sepsis) causes of distributive shock. Epinephrine, 0.05–0.3 mcg/kg/minute. Alternative to a drip, push dose epinephrine may be administered: Prepare 10 mcg/mL by diluting 1 mL of epinephrine 0.1 mg/mL (1:10,000) in 9 mL of normal saline.",
+          "priority": "important",
+          "rationale": "If 30 mL/kg fluids fail to bring MAP to 65, vasopressors are next per protocol.",
+          "protocolReference": "MATC: Shock"
+        },
+        {
+          "id": "expedite-transport",
+          "shortAction": "Emergent transport now; minimal additional scene time",
+          "protocolExcerpt": "Provide advanced notification to the hospital.",
+          "priority": "critical",
+          "rationale": "This patient needs an OR. No further scene actions help; transport is the intervention.",
+          "protocolReference": "MATC: Shock"
+        }
+      ],
+      "transitions": []
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

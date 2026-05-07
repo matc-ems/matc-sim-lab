@@ -1,0 +1,267 @@
+{
+  "scenarioId": "medical-ams-mixed-001",
+  "scenarioName": "Altered Mental Status — Mixed Etiology Workup (UTI, Polypharmacy, Hypoglycemia)",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1500,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "65-year-old male with extensive comorbidities was found by his daughter this morning sitting on the edge of his bed, confused, slow to respond, and unable to recognize her at first. Daughter says he was 'normal' last night when she said goodnight. Yesterday afternoon he complained of urinary frequency and burning with urination but refused to go to the doctor. He has glyburide, oxycodone (recently increased for back pain), gabapentin, and several other medications. The pill organizer for today is empty (he may have taken meds early this morning before becoming confused). No reported witnessed seizure, no fall, no chest pain. Daughter denies alcohol or illicit drug use. Daughter denies head trauma. Patient is intermittently responsive but cannot give a coherent history.",
+    "discussion": "",
+    "course": "Initial Contact: EMS finds a 65-year-old male with multiple competing causes of altered mental status: urinary symptoms suggesting UTI/sepsis, sulfonylurea use with a missed meal (hypoglycemia), recent opioid up-titration (overdose), and baseline dementia. The case is built to teach the AEIOU-TIPS systematic workup. This is the initial contact phase: dispatch, SAMPLE history, scene findings, and a structured AMS evaluation drive the response. → D10 given; second cause identified: After D10%, glucose rises to 96 mg/dL and the patient is more responsive but still lethargic and warm to touch. Repeat temperature confirms 38.6°C. Tachycardia and borderline hypotension persist. Crew recognizes this is a multi-hit picture (corrected hypoglycemia + likely urosepsis) and begins fluid resuscitation while maintaining the AMS workup."
+  },
+  "patientInformation": {
+    "patientName": "Wendell Hopkins",
+    "patientCondition": "Family found him confused, lethargic, and 'not himself' this morning",
+    "patientAge": 65,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 175,
+    "patientWeight": 84,
+    "patientPhotoId": 78,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS finds a 65-year-old male with multiple competing causes of altered mental status: urinary symptoms suggesting UTI/sepsis, sulfonylurea use with a missed meal (hypoglycemia), recent opioid up-titration (overdose), and baseline dementia. The case is built to teach the AEIOU-TIPS systematic workup. This is the initial contact phase: dispatch, SAMPLE history, scene findings, and a structured AMS evaluation drive the response.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 112,
+        "bpSys": 102,
+        "bpDia": 64,
+        "respRate": 12,
+        "spo2": 95,
+        "etco2": 36,
+        "temp": 38.7,
+        "obstruction": 0,
+        "custMeasure1": 48,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Primary survey ABC; ensure patent airway, support as needed",
+        "Apply AEIOU-TIPS differential systematically",
+        "Check blood glucose (finds 48 mg/dL — hypoglycemia)",
+        "D10% 100 mL IV (10 g) — preferred concentration; reassess",
+        "Recognize sulfonylurea (glyburide) — recurrence likely; mandatory transport",
+        "Consider naloxone if respiratory depression (RR <12, SpO2 falling, miosis)",
+        "Do NOT give naloxone as a diagnostic 'shotgun' if breathing is adequate",
+        "Establish large-bore IV access for fluids, glucose, meds",
+        "Take temperature (finds 38.7°C — fever; sepsis on differential)",
+        "12-lead EKG to evaluate for cardiac dysrhythmia/MI as cause",
+        "Survey medications, pill organizer, environment for clues"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "D10 given; second cause identified",
+      "description": "After D10%, glucose rises to 96 mg/dL and the patient is more responsive but still lethargic and warm to touch. Repeat temperature confirms 38.6°C. Tachycardia and borderline hypotension persist. Crew recognizes this is a multi-hit picture (corrected hypoglycemia + likely urosepsis) and begins fluid resuscitation while maintaining the AMS workup.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 116,
+        "bpSys": 98,
+        "bpDia": 60,
+        "respRate": 18,
+        "spo2": 97,
+        "etco2": 32,
+        "temp": 38.6,
+        "obstruction": 0,
+        "custMeasure1": 96,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Recognize sepsis: fever + tachycardia + low BP + AMS source",
+        "NS 500 mL bolus; reassess; up to 30 mL/kg if not improved",
+        "Trend EtCO2 (low values reflect poor perfusion); lactate if available",
+        "Mandatory transport — sulfonylurea + suspected urosepsis",
+        "Early notification: AMS, hypoglycemia + suspected urosepsis"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Anchored on hypoglycemia",
+      "description": "Crew gave dextrose, mental status improved transiently, and the crew accepted that as the entire diagnosis without continuing the workup. Patient is offered the option to refuse transport. Returning to baseline glucose has not addressed the underlying urosepsis or the sulfonylurea recurrence risk; in 30-60 minutes the patient will be hypoglycemic again, and meanwhile the urosepsis is progressing. This is the teaching branch: anchoring bias kills.",
+      "monitorType": 0,
+      "trendTime": 40,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 9,
+        "hr": 112,
+        "bpSys": 100,
+        "bpDia": 62,
+        "respRate": 18,
+        "spo2": 97,
+        "etco2": 34,
+        "temp": 38.6,
+        "obstruction": 0,
+        "custMeasure1": 96,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Take temperature, ask about urinary symptoms, complete the AEIOU-TIPS",
+        "Refuse to accept refusal — sulfonylurea + abnormal vitals = transport",
+        "If refusal sought, document capacity assessment, risks, family involvement"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Primary survey ABC; ensure patent airway, support as needed",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Apply AEIOU-TIPS differential systematically",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose (finds 48 mg/dL — hypoglycemia)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "D10% 100 mL IV (10 g) — preferred concentration; reassess",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize sulfonylurea (glyburide) — recurrence likely; mandatory transport",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Consider naloxone if respiratory depression (RR <12, SpO2 falling, miosis)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT give naloxone as a diagnostic 'shotgun' if breathing is adequate",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Establish large-bore IV access for fluids, glucose, meds",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Take temperature (finds 38.7°C — fever; sepsis on differential)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "12-lead EKG to evaluate for cardiac dysrhythmia/MI as cause",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Survey medications, pill organizer, environment for clues",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize sepsis: fever + tachycardia + low BP + AMS source",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "NS 500 mL bolus; reassess; up to 30 mL/kg if not improved",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Trend EtCO2 (low values reflect poor perfusion); lactate if available",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Mandatory transport — sulfonylurea + suspected urosepsis",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early notification: AMS, hypoglycemia + suspected urosepsis",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Take temperature, ask about urinary symptoms, complete the AEIOU-TIPS",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Refuse to accept refusal — sulfonylurea + abnormal vitals = transport",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "If refusal sought, document capacity assessment, risks, family involvement",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}

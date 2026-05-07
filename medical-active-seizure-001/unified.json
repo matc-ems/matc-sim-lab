@@ -1,0 +1,479 @@
+{
+  "meta": {
+    "id": "medical-active-seizure-001",
+    "name": "Active Generalized Tonic-Clonic Seizure on Arrival (Status Epilepticus)",
+    "version": 1,
+    "difficulty": "intermediate",
+    "category": "Medical",
+    "protocols": [
+      "medical-seizures",
+      "resp-airway-management",
+      "medical-hypoglycemia"
+    ],
+    "totalTimeSeconds": 1200,
+    "createdAt": "2026-05-06T00:00:00Z",
+    "tags": [
+      "seizure",
+      "status epilepticus",
+      "midazolam",
+      "IM benzodiazepine",
+      "airway",
+      "glucometry",
+      "intermediate"
+    ]
+  },
+  "patient": {
+    "name": "Megan Holloway",
+    "age": 28,
+    "ageUnit": "years",
+    "sex": "female",
+    "weight": 65,
+    "weightLbs": 143,
+    "height": 165,
+    "chiefComplaint": "Witnessed generalized tonic-clonic seizure, still actively seizing on EMS arrival, total duration now 4+ minutes",
+    "history": {
+      "hpi": "28-year-old female with a 10-year history of generalized epilepsy collapsed at her work desk in the middle of a meeting. Coworkers describe an abrupt loss of consciousness followed by full-body stiffening and rhythmic jerking with eye deviation to the left. The seizure was confirmed by a coworker's wristwatch to be ongoing for approximately 4 minutes when EMS arrived, with no break between convulsive activity. Patient ran out of her levetiracetam two days ago and has not yet picked up the refill. No reported recent illness, head injury, fever, alcohol use, or drug use. No known pregnancy. She is still actively convulsing on EMS arrival.",
+      "pastMedical": [
+        "Epilepsy (generalized tonic-clonic, diagnosed at age 18)",
+        "Migraine with aura",
+        "Anxiety"
+      ],
+      "medications": [
+        "Levetiracetam 1000 mg PO BID (out of medication x 2 days)",
+        "Sumatriptan 50 mg PO PRN migraine",
+        "Sertraline 50 mg PO daily"
+      ],
+      "allergies": [
+        "NKDA"
+      ],
+      "lastOralIntake": "Lunch (sandwich and water) approximately 2 hours ago",
+      "events": "Coworker witnessed sudden loss of consciousness during a meeting followed by generalized tonic-clonic seizure. 911 called immediately. Seizure has been ongoing for approximately 4 minutes when EMS reaches the patient and is meeting status epilepticus criteria."
+    }
+  },
+  "scene": {
+    "dispatch": "Dispatch: 28-year-old female, witnessed seizure at office building, still seizing per caller. Coworkers on scene.",
+    "location": "Mid-rise office building, 4th-floor conference room. Carpeted floor; coworkers have moved chairs and tables aside to create space. Adequate lighting.",
+    "time": "Wednesday, 13:08, weekday afternoon",
+    "safety": "Scene secured by building security and coworkers. No environmental hazards. Bystanders are calm and have cleared the area around the patient. Adequate space for stretcher access and airway management.",
+    "bystanders": "Coworker (primary historian) reports the patient suddenly slumped, then began full-body convulsions with eye deviation to the left. Watched the seizure on her wristwatch — duration confirmed ~4 minutes at EMS arrival. No prior bystander medication. Patient mentioned earlier in the day she had run out of her seizure medicine.",
+    "visualCues": [
+      "Patient supine on the carpeted floor, actively convulsing with rhythmic generalized tonic-clonic activity",
+      "Eyes deviated to the left, conjugate gaze",
+      "Frothy saliva at the corner of the mouth with bloody-tinged sputum",
+      "Visible lateral tongue laceration",
+      "Urinary incontinence (damp clothing)",
+      "Empty levetiracetam (Keppra) bottle visible in patient's purse on a nearby chair",
+      "Coworker timing the seizure on a wristwatch"
+    ]
+  },
+  "phases": [
+    {
+      "id": "initial-contact",
+      "name": "Initial Contact",
+      "description": "EMS arrives to find the patient still actively seizing on the conference room floor with coworkers timing the duration. The seizure has now been ongoing for approximately 4 minutes — meeting status epilepticus criteria per the MATC guideline (active on EMS arrival or >5 minutes). Protective airway reflexes are absent and ventilation is irregular. This is the initial contact phase: dispatch, SAMPLE history, scene findings, and primary survey drive the immediate response.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {
+          "eye": 1,
+          "verbal": 1,
+          "motor": 3
+        },
+        "airway": "Compromised — copious frothy oral secretions; rhythmic clenching of jaw with intermittent posterior tongue displacement; clear OPA placement not possible during convulsive activity",
+        "breathing": "Irregular, ineffective tidal volumes during clonic phase; periods of apnea during tonic phase; mild perioral cyanosis",
+        "circulation": "Strong, regular radial pulse, tachycardic; warm and diaphoretic skin; no obvious external hemorrhage",
+        "skin": {
+          "color": "flushed with mild perioral cyanosis",
+          "temperature": "warm",
+          "moisture": "diaphoretic"
+        },
+        "pupils": "Equal at 5 mm, reactive; conjugate left gaze deviation",
+        "motorFunction": "Generalized rhythmic tonic-clonic activity of all four extremities, symmetric",
+        "otherFindings": [
+          "Lateral tongue laceration with active oozing",
+          "Urinary incontinence",
+          "No external signs of head trauma",
+          "No medication patches; no needle tracks; no overdose paraphernalia"
+        ],
+        "patientSpeech": "Unable to vocalize; frothy moaning during clonic phase"
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 132,
+        "bpSys": 158,
+        "bpDia": 96,
+        "respRate": 26,
+        "spo2": 88,
+        "etco2": 52,
+        "temp": 37.3,
+        "tempF": 99.1,
+        "obstruction": 30,
+        "glucose": 92,
+        "trendTimeSeconds": 0,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "scene-safety",
+          "shortAction": "Pad area, protect from injury, ensure scene safety",
+          "protocolExcerpt": "Patient Safety Considerations: Many airway/breathing issues in seizing patients can be managed without intubation or placement of an advanced airway. Reserve these measures for patients that fail less invasive maneuvers as noted above.",
+          "priority": "critical",
+          "rationale": "Protect patient from blunt injury during ongoing convulsions while preparing rapid intervention.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "recognize-status",
+          "shortAction": "Recognize status epilepticus (active on EMS arrival, >4 min)",
+          "protocolExcerpt": "Inclusion Criteria: Seizure activity upon arrival of prehospital personnel or new/recurrent seizure activity lasting greater than 5 minutes.",
+          "priority": "critical",
+          "rationale": "Identifying status epilepticus drives immediate benzodiazepine administration without delay for IV access.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "airway-positioning-suction",
+          "shortAction": "Position airway, suction secretions, NPA if no gag",
+          "protocolExcerpt": "Treatment and Interventions: If signs of airway obstruction are present and a chin-lift, jaw thrust, positioning, and/or suctioning does not alleviate it, place oropharyngeal airway (if gag reflex is absent) or nasopharyngeal airway.",
+          "priority": "critical",
+          "rationale": "Active convulsive activity makes OPA placement difficult; NPA tolerated and protects from soft tissue obstruction.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "oxygen-bvm",
+          "shortAction": "Apply high-flow O2; assist ventilation with BVM if SpO2 stays low",
+          "protocolExcerpt": "Treatment and Interventions: Place pulse oximeter and/or waveform capnography to monitor oxygenation/ventilation. Administer oxygen as appropriate with a target of achieving 94–98% saturation. Use bag-valve-mask (BVM) ventilation if oxygenation/ventilation are compromised.",
+          "priority": "critical",
+          "rationale": "Hypoxia (SpO2 88%) demands immediate oxygenation and ventilatory support during the seizure.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "midazolam-im",
+          "shortAction": "Midazolam 10 mg IM (65 kg × 0.2 mg/kg = 13 mg → cap at 10 mg max)",
+          "protocolExcerpt": "Anticonvulsant Treatment — If vascular access is absent: Midazolam 0.2 mg/kg (maximum dose 10 mg), IM preferred, or IN. Routes for treatment: IN/IM routes are preferred over IV or IO routes (if not already established).",
+          "priority": "critical",
+          "rationale": "IM midazolam without delay for IV is the protocol-preferred first-line anticonvulsant in active seizure; equivalent or superior to IV lorazepam in prehospital studies.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "glucometry",
+          "shortAction": "Check blood glucose; if <60 mg/dL, treat per Hypoglycemia Guideline",
+          "protocolExcerpt": "Glucometry: If still actively seizing, check blood glucose level. If less than 60 mg/dL, treat per the Hypoglycemia Guideline.",
+          "priority": "important",
+          "rationale": "Hypoglycemia is a treatable cause that must be ruled out — required performance measure for any seizing patient.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "monitor-spo2-etco2",
+          "shortAction": "Apply pulse ox + waveform capnography; trend during/after benzo",
+          "protocolExcerpt": "Place pulse oximeter and/or waveform capnography to monitor oxygenation/ventilation.",
+          "priority": "important",
+          "rationale": "Capnography is the earliest indicator of post-benzo respiratory depression.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "history-pertinent",
+          "shortAction": "Get duration, focality, eye deviation, AED compliance, prior history",
+          "protocolExcerpt": "History: Duration of current seizure; Prior history of seizures, diabetes, or hypoglycemia; Focality of onset, direction of eye deviation; Current medications, including anticonvulsants; Recent dose changes or non-compliance with anticonvulsants.",
+          "priority": "supplemental",
+          "rationale": "Drives diagnosis (idiopathic vs new-onset), informs hospital and rules out alternative causes.",
+          "protocolReference": "MATC: Seizures"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "seizure-broken",
+          "if": "IM midazolam given within 2 minutes",
+          "condition": "Crew recognizes status epilepticus, supports airway, and administers midazolam 10 mg IM (the protocol max via the no-IV pathway). Convulsive activity ceases within 2-3 minutes; patient becomes flaccid and post-ictal.",
+          "conditionType": "action_taken",
+          "triggerActionIds": [
+            "midazolam-im",
+            "recognize-status"
+          ]
+        },
+        {
+          "targetPhaseId": "ongoing-status",
+          "if": "Benzo delayed >5 min for IV access",
+          "condition": "Crew attempts to establish IV access first instead of administering IM midazolam, or otherwise delays anticonvulsant >5 minutes. Convulsive activity continues; the patient drops further into hypoxia and hypercarbia.",
+          "conditionType": "action_not_taken",
+          "triggerActionIds": [
+            "midazolam-im"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seizure-broken",
+      "name": "Seizure broken",
+      "description": "Two minutes after IM midazolam, convulsive activity ceases. The patient is now flaccid and post-ictal with snoring respirations, but heart rate, oxygenation, and ventilation are improving with ongoing airway support. Crew now manages a typical post-ictal patient en route.",
+      "triggerCondition": "After IM midazolam at the protocol max for the no-IV pathway, generalized tonic-clonic activity stops within 2 minutes. The patient is post-ictal with snoring respirations but is no longer hypoxic with NPA and supplemental oxygen.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Pain",
+        "gcs": {
+          "eye": 1,
+          "verbal": 2,
+          "motor": 4
+        },
+        "airway": "Snoring respirations relieved with NPA and jaw thrust; copious oral secretions cleared by suction; gag reflex absent",
+        "breathing": "Slow, deep, regular respirations; symmetrical chest rise; clear bilateral lung sounds",
+        "circulation": "Strong, regular radial pulse; warm dry skin; cap refill <2 sec",
+        "skin": {
+          "color": "pink",
+          "temperature": "warm",
+          "moisture": "drying diaphoresis"
+        },
+        "pupils": "Equal at 4 mm, sluggishly reactive; gaze midline",
+        "motorFunction": "Generalized flaccidity; withdraws from pain (M4); no further convulsive activity",
+        "otherFindings": [
+          "Lateral tongue laceration, no active bleeding",
+          "Patient remains unresponsive to verbal stimuli but responds to noxious stimulus",
+          "No recurrence of seizure activity"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 108,
+        "bpSys": 138,
+        "bpDia": 84,
+        "respRate": 14,
+        "spo2": 96,
+        "etco2": 42,
+        "temp": 37.3,
+        "tempF": 99.1,
+        "obstruction": 10,
+        "glucose": 92,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "post-ictal-airway",
+          "shortAction": "Maintain NPA, lateral recovery position, suction available",
+          "protocolExcerpt": "Treatment and Interventions: If signs of airway obstruction are present and a chin-lift, jaw thrust, positioning, and/or suctioning does not alleviate it, place oropharyngeal airway (if gag reflex is absent) or nasopharyngeal airway.",
+          "priority": "critical",
+          "rationale": "Post-ictal patient still has compromised airway reflexes; aspiration risk is the leading post-benzo complication.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "monitor-recurrence",
+          "shortAction": "Monitor for seizure recurrence and benzo respiratory depression",
+          "protocolExcerpt": "Patient Safety Considerations: Trained personnel should be able to give medication without contacting medical direction, however, more than two doses of benzodiazepines are associated with high-risk of airway compromise.",
+          "priority": "critical",
+          "rationale": "Highest-yield reassessment after benzo: looking for both seizure return and iatrogenic respiratory depression.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "iv-access",
+          "shortAction": "Establish IV access en route for further treatment if needed",
+          "protocolExcerpt": "Routes for treatment: IV placement is not necessary for treatment of seizures, but could be obtained if needed for other reasons.",
+          "priority": "important",
+          "rationale": "Allows IV benzo for any recurrence and IV fluids; not required up front but appropriate now that the seizure is broken.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "neuro-reassess",
+          "shortAction": "Serial GCS, pupil, focal deficit checks",
+          "protocolExcerpt": "Exam: Neurologic status (GCS, nystagmus, pupil size, focal neurologic deficit, or signs of stroke).",
+          "priority": "important",
+          "rationale": "Trends in mental status drive transport decisions and identify post-ictal Todd's paralysis vs an evolving CNS process.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "transport-notify",
+          "shortAction": "Transport to ED; early notification of treated status epilepticus",
+          "protocolExcerpt": "Patient Safety Considerations: Hypoglycemic patients who are treated in the field for seizure should be transported to hospital, regardless of whether they return to baseline mental status after treatment.",
+          "priority": "important",
+          "rationale": "All status epilepticus patients require ED workup including AED levels, imaging, and ongoing observation.",
+          "protocolReference": "MATC: Seizures"
+        }
+      ],
+      "transitions": [
+        {
+          "targetPhaseId": "transport",
+          "if": "Patient stable, transport initiated",
+          "condition": "Airway is supported, vitals are stable, patient is loaded for transport with continuous monitoring.",
+          "conditionType": "action_taken",
+          "triggerActionIds": [
+            "transport-notify",
+            "post-ictal-airway"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "transport",
+      "name": "Transport to ED",
+      "description": "Patient is transported to a community ED with continuous monitoring. Mental status slowly improves toward baseline; no recurrence en route. Crew gives a complete handoff including duration of seizure, medications administered, and AED non-adherence.",
+      "triggerCondition": "Crew has stabilized the airway, controlled the seizure, and initiated transport with monitoring.",
+      "isDefault": true,
+      "clinicalPresentation": {
+        "avpu": "Verbal",
+        "gcs": {
+          "eye": 3,
+          "verbal": 3,
+          "motor": 5
+        },
+        "airway": "Self-maintaining; NPA removed when gag returned; no further suctioning required",
+        "breathing": "Regular, unlabored respirations on 4 LPM nasal cannula",
+        "circulation": "Strong regular radial pulse, normalizing rate; warm dry skin",
+        "skin": {
+          "color": "pink",
+          "temperature": "warm",
+          "moisture": "dry"
+        },
+        "pupils": "Equal at 4 mm, briskly reactive; midline gaze",
+        "motorFunction": "Moves all four extremities to command; no focal deficit",
+        "otherFindings": [
+          "Patient confused and disoriented but able to answer simple yes/no questions",
+          "Tongue laceration noted, no active bleeding"
+        ],
+        "patientSpeech": "Confused; says 'Where am I?' and asks for husband"
+      },
+      "monitorState": {
+        "ecgRhythm": "Normal Sinus Rhythm",
+        "ecgWaveform": 9,
+        "hr": 92,
+        "bpSys": 128,
+        "bpDia": 78,
+        "respRate": 14,
+        "spo2": 98,
+        "etco2": 38,
+        "temp": 37.2,
+        "tempF": 99.0,
+        "obstruction": 0,
+        "glucose": 92,
+        "trendTimeSeconds": 40,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "12-lead",
+          "shortAction": "12-lead EKG to evaluate for cardiac cause",
+          "protocolExcerpt": "Treatment and Interventions: Consider acquiring a 12-lead EKG following cessation of seizure in patients without a history of seizure to determine possible cardiac cause.",
+          "priority": "supplemental",
+          "rationale": "Routine practice in any first-time seizure or unclear etiology; less critical here given known epilepsy with non-adherence, but still appropriate.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "documentation",
+          "shortAction": "Document seizure duration, eye deviation, medication, response",
+          "protocolExcerpt": "Key Documentation Elements: Actively seizing during transport and time of seizure onset/cessation; Onset, focality, direction of eye deviation; Medication amounts/routes given by bystanders or prehospital clinicians; Neurologic status (GCS, nystagmus, pupil size, focal neurologic deficit, or signs of stroke); Blood glucose level.",
+          "priority": "important",
+          "rationale": "Duration and focality are the data points that change ED management; AED compliance status guides admission decisions.",
+          "protocolReference": "MATC: Seizures"
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "ongoing-status",
+      "name": "Ongoing status — IV delay",
+      "description": "Crew bypasses the no-IV (IM) pathway and attempts IV access while the patient continues to seize. Seizure activity persists past 8 minutes total. SpO2 falls into the low 80s, EtCO2 climbs, and the patient is now in true refractory status epilepticus with worsening hypoxia. The crew must recover by giving IM/IN midazolam now and aggressively managing airway/oxygenation. Risk of post-ictal apnea and need for advanced airway is high.",
+      "triggerCondition": "Crew prioritized IV placement before any benzodiazepine administration. Seizure activity has continued past 8 minutes total. Hypoxia and hypercarbia are now severe; the patient is clinically deteriorating and the window for simple management has closed.",
+      "isDefault": false,
+      "clinicalPresentation": {
+        "avpu": "Unresponsive",
+        "gcs": {
+          "eye": 1,
+          "verbal": 1,
+          "motor": 2
+        },
+        "airway": "Severely compromised — copious frothy secretions, masseter clenching, suction unable to keep up",
+        "breathing": "Ineffective tidal volumes; prolonged apnea between clonic bursts; obvious central cyanosis",
+        "circulation": "Tachycardic, bounding radial pulse; very diaphoretic",
+        "skin": {
+          "color": "central cyanosis with peripheral pallor",
+          "temperature": "hot",
+          "moisture": "drenched diaphoresis"
+        },
+        "pupils": "Equal at 6 mm, sluggish; conjugate left gaze persists",
+        "motorFunction": "Continued generalized rhythmic tonic-clonic activity",
+        "otherFindings": [
+          "More than 8 minutes of continuous convulsive activity",
+          "Obvious deterioration since EMS arrival"
+        ]
+      },
+      "monitorState": {
+        "ecgRhythm": "Sinus Tachycardia",
+        "ecgWaveform": 9,
+        "hr": 148,
+        "bpSys": 168,
+        "bpDia": 102,
+        "respRate": 30,
+        "spo2": 82,
+        "etco2": 62,
+        "temp": 38.0,
+        "tempF": 100.4,
+        "obstruction": 50,
+        "glucose": 92,
+        "trendTimeSeconds": 30,
+        "visibility": {
+          "spo2Visible": true,
+          "spo2Attached": true,
+          "rrVisible": true,
+          "etco2Visible": true,
+          "cvpVisible": false
+        }
+      },
+      "expectedActions": [
+        {
+          "id": "rescue-im-midazolam",
+          "shortAction": "Give midazolam 10 mg IM now (do not wait for IV)",
+          "protocolExcerpt": "Routes for treatment: IN/IM routes are preferred over IV or IO routes (if not already established) and rectal (PR) route as an alternative. Anticonvulsant Treatment — If vascular access is absent: Midazolam 0.2 mg/kg (maximum dose 10 mg), IM preferred, or IN.",
+          "priority": "critical",
+          "rationale": "Recovery action: protocol explicitly preferences IM/IN over delayed IV. Do not wait for an IV to give the first benzo dose.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "aggressive-airway",
+          "shortAction": "Two-person BVM with PEEP, suction, NPA",
+          "protocolExcerpt": "Use bag-valve-mask (BVM) ventilation in the setting of respiratory failure or arrest. Two-person, two-thumbs-up BVM ventilation is preferred. PEEP should be used with BVM.",
+          "priority": "critical",
+          "rationale": "Severe hypoxia with rising EtCO2 — needs maximal noninvasive ventilatory support immediately.",
+          "protocolReference": "MATC: Airway Management (Includes RSI)"
+        },
+        {
+          "id": "anticipate-second-dose",
+          "shortAction": "Prepare second benzo dose; weigh airway risk before third",
+          "protocolExcerpt": "Patient Safety Considerations: Trained personnel should be able to give medication without contacting medical direction, however, more than two doses of benzodiazepines are associated with high-risk of airway compromise. Use caution, weigh risks/benefits of deferring treatment until hospital, and/or consider consultation with medical direction if patient has received two doses of benzodiazepines.",
+          "priority": "important",
+          "rationale": "After two doses, airway compromise risk dominates and medical direction consultation is appropriate.",
+          "protocolReference": "MATC: Seizures"
+        },
+        {
+          "id": "expedite-transport",
+          "shortAction": "Initiate emergent transport with pre-arrival notification",
+          "protocolExcerpt": "Patient Safety Considerations: Hypoglycemic patients who are treated in the field for seizure should be transported to hospital, regardless of whether they return to baseline mental status after treatment.",
+          "priority": "critical",
+          "rationale": "Refractory status epilepticus needs hospital-based management (additional anticonvulsants, intubation, ICU); minimize on-scene time.",
+          "protocolReference": "MATC: Seizures"
+        }
+      ],
+      "transitions": []
+    }
+  ],
+  "realiti": {
+    "scenarioMonitorType": 2,
+    "scenarioDefaultEnergy": 200,
+    "scenarioDefaultPacerThreshold": 55
+  }
+}

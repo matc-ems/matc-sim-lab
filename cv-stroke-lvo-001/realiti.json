@@ -1,0 +1,246 @@
+{
+  "scenarioId": "cv-stroke-lvo-001",
+  "scenarioName": "Suspected LVO Stroke — Right-Sided Weakness with Global Aphasia, LKW 45 Minutes",
+  "scenarioType": "Vital Signs",
+  "scenarioVersion": 2,
+  "scenarioTime": 1200,
+  "scenarioMonitorType": 2,
+  "scenarioDefaultEnergy": 200,
+  "scenarioDefaultPacerThreshold": 55,
+  "isDemo": false,
+  "isALSILegacy": false,
+  "scenarioStory": {
+    "history": "72-year-old retired engineer was eating breakfast with his wife and reading the newspaper at 09:15 when she observed him drop his coffee cup, develop an obvious right facial droop, and stop responding when she spoke to him. She helped him to the couch, called 911 within 2 minutes, and EMS is on scene now (45 minutes after symptom onset). Patient is awake, follows simple commands by gesture, but cannot produce intelligible speech and cannot move his right arm or leg. No reported headache, seizure activity, vomiting, head trauma, or recent illness. Patient takes warfarin for atrial fibrillation and his last INR (yesterday) was 2.4 per his wife. Wife was sitting across from him the entire time and is certain of the time of onset.",
+    "discussion": "",
+    "course": "Initial Contact: EMS arrives 45 minutes after a witnessed sudden onset of right-sided weakness and aphasia in a 72-year-old anticoagulated male. He is awake but unable to speak, with dense right hemiparesis and a marked facial droop. Wife provides a precise last-known-well time. This is the initial contact phase: dispatch, SAMPLE history, scene findings, and a focused stroke assessment drive the response. → LVO recognized; transport: Crew has identified LVO features and elected to bypass the closest hospital for the thrombectomy-capable Comprehensive Stroke Center, with early notification. Patient is transported with HOB elevated, on continuous monitoring, with no aggressive BP intervention. Symptoms remain stable en route."
+  },
+  "patientInformation": {
+    "patientName": "Harold Pemberton",
+    "patientCondition": "Sudden right-sided weakness and inability to speak; last known well 45 minutes ago",
+    "patientAge": 72,
+    "patientAgeUnit": "years",
+    "patientAgeCategory": 0,
+    "patientSex": 1,
+    "patientHeight": 178,
+    "patientWeight": 88,
+    "patientPhotoId": 87,
+    "patientAdmitted": 1
+  },
+  "labs": [],
+  "scenarioEvents": [
+    {
+      "type": "ScenarioEvent",
+      "name": "Initial Contact",
+      "description": "EMS arrives 45 minutes after a witnessed sudden onset of right-sided weakness and aphasia in a 72-year-old anticoagulated male. He is awake but unable to speak, with dense right hemiparesis and a marked facial droop. Wife provides a precise last-known-well time. This is the initial contact phase: dispatch, SAMPLE history, scene findings, and a focused stroke assessment drive the response.",
+      "monitorType": 0,
+      "trendTime": 0,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 96,
+        "bpSys": 184,
+        "bpDia": 102,
+        "respRate": 16,
+        "spo2": 96,
+        "etco2": 38,
+        "temp": 36.9,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Establish exact last known well time (09:15 — wall clock)",
+        "Perform validated stroke scale (Cincinnati: face, arm, speech)",
+        "Stroke severity scale: assess vision, neglect, aphasia (LVO suspected)",
+        "Check blood glucose (rule out hypoglycemia mimic)",
+        "Document warfarin use, last INR, allergies, recent trauma/surgery/bleed",
+        "Oxygen as appropriate to maintain SpO2 94-98%",
+        "Acquire 12-lead EKG (afib confirmed; rule out STEMI mimics)",
+        "Do NOT treat the elevated BP (184/102)",
+        "Elevate head of stretcher 15-30° (BP allows)",
+        "Early stroke alert with LVO findings to thrombectomy-capable center"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "LVO recognized; transport",
+      "description": "Crew has identified LVO features and elected to bypass the closest hospital for the thrombectomy-capable Comprehensive Stroke Center, with early notification. Patient is transported with HOB elevated, on continuous monitoring, with no aggressive BP intervention. Symptoms remain stable en route.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 92,
+        "bpSys": 178,
+        "bpDia": 98,
+        "respRate": 16,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 36.9,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Single IV attempt, large-bore (avoid multiple attempts)",
+        "Minimize on-scene time; expedite to receiving hospital",
+        "Serial neuro reassessments for deterioration",
+        "Protect the paretic right arm/leg from injury during moves"
+      ],
+      "relatedSounds": []
+    },
+    {
+      "type": "ScenarioEvent",
+      "name": "Closest hospital — no LVO triage",
+      "description": "Crew transports to the closer Primary Stroke Center, missing the LVO findings or not communicating them. The patient will need a secondary transfer for thrombectomy, costing 60-90 minutes of door-to-puncture time and reducing the chance of meaningful recovery. This phase exists to teach the consequence of skipping the severity scale.",
+      "monitorType": 0,
+      "trendTime": 30,
+      "jumpTime": 0,
+      "defibShock": false,
+      "defibDisarm": true,
+      "parameters": {
+        "ecgWaveform": 38,
+        "hr": 94,
+        "bpSys": 182,
+        "bpDia": 100,
+        "respRate": 16,
+        "spo2": 97,
+        "etco2": 38,
+        "temp": 36.9,
+        "obstruction": 0,
+        "custMeasure1": 118,
+        "custMeasureLabel1": "mg/dL",
+        "spo2Visible": true,
+        "spo2Attached": true,
+        "rrVisible": true,
+        "etco2Visible": true,
+        "cvpVisible": false
+      },
+      "relatedMedia": [],
+      "relatedLabs": [],
+      "relatedChecklist": [
+        "Perform severity scale and notify receiving of LVO suspicion",
+        "Recognize destination decision: thrombectomy-capable bypass was indicated"
+      ],
+      "relatedSounds": []
+    }
+  ],
+  "checklist": [
+    {
+      "title": "Establish exact last known well time (09:15 — wall clock)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Perform validated stroke scale (Cincinnati: face, arm, speech)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Stroke severity scale: assess vision, neglect, aphasia (LVO suspected)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Check blood glucose (rule out hypoglycemia mimic)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Document warfarin use, last INR, allergies, recent trauma/surgery/bleed",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Oxygen as appropriate to maintain SpO2 94-98%",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Acquire 12-lead EKG (afib confirmed; rule out STEMI mimics)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Do NOT treat the elevated BP (184/102)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Elevate head of stretcher 15-30° (BP allows)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Early stroke alert with LVO findings to thrombectomy-capable center",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Single IV attempt, large-bore (avoid multiple attempts)",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Minimize on-scene time; expedite to receiving hospital",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Serial neuro reassessments for deterioration",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Protect the paretic right arm/leg from injury during moves",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Perform severity scale and notify receiving of LVO suspicion",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    },
+    {
+      "title": "Recognize destination decision: thrombectomy-capable bypass was indicated",
+      "type": "Check",
+      "value": 0,
+      "icon": 1
+    }
+  ],
+  "media": []
+}
