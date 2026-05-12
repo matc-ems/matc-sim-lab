@@ -147,6 +147,57 @@
   .card-open .arrow { transition:transform .16s ease; display:inline-block; }
   .card:hover .card-open .arrow { transform:translateX(3px); }
 
+  /* ============ colour: clinical domain hue + tier weight ============ */
+  .domain[data-domain="C"], .card[data-domain="C"], .chip[data-filter="domain"][data-value="C"] { --dom:#b23a2e; --dom-soft:#f5e9e6; }
+  .domain[data-domain="R"], .card[data-domain="R"], .chip[data-filter="domain"][data-value="R"] { --dom:#157079; --dom-soft:#e4eeef; }
+  .domain[data-domain="M"], .card[data-domain="M"], .chip[data-filter="domain"][data-value="M"] { --dom:#6a4ba6; --dom-soft:#ede8f3; }
+  .domain[data-domain="P"], .card[data-domain="P"], .chip[data-filter="domain"][data-value="P"] { --dom:#9a610d; --dom-soft:#f4eedd; }
+  .domain[data-domain="B"], .card[data-domain="B"], .chip[data-filter="domain"][data-value="B"] { --dom:#4c7a3e; --dom-soft:#eaf0e6; }
+  .tier[data-tier="1"], .chip[data-filter="tier"][data-value="1"] { --tier-n:1; }
+  .tier[data-tier="2"], .chip[data-filter="tier"][data-value="2"] { --tier-n:2; }
+  .tier[data-tier="3"], .chip[data-filter="tier"][data-value="3"] { --tier-n:3; }
+
+  /* domain header */
+  .domain-name { color:var(--dom, var(--ink)); }
+  .domain-head { border-bottom-color:var(--dom, var(--ink)); border-bottom-width:2px; }
+  .domain-code {
+    color:var(--dom, var(--faint)); background:var(--dom-soft, var(--paper-2));
+    padding:.3em .7em; border-radius:999px;
+  }
+
+  /* tier header: a colour bar that lengthens with the tier */
+  .tier-head::before {
+    content:""; flex:0 0 auto; align-self:center; margin-right:.35rem;
+    height:5px; width:calc(9px * var(--tier-n, 1)); border-radius:999px;
+    background:var(--dom, var(--faint));
+  }
+
+  /* cards: coloured left edge whose weight ramps with the tier */
+  .card { border-left:5px solid var(--dom, var(--ink-2)); }
+  .card[data-tier="1"] { border-left-width:3px; }
+  .card[data-tier="2"] { border-left-width:5px; }
+  .card[data-tier="3"] { border-left-width:8px; }
+  .card-id { color:var(--dom, var(--faint)); }
+  .card:hover {
+    border-color:var(--dom, var(--ink));
+    box-shadow:0 14px 30px -16px color-mix(in srgb, var(--dom, #1c1917) 55%, transparent);
+  }
+
+  /* filter chips: domain = colour dot, tier = colour bar */
+  .chip[data-filter="domain"]:not([data-value="all"])::before {
+    content:""; display:inline-block; width:7px; height:7px; border-radius:50%;
+    background:var(--dom); vertical-align:middle; position:relative; top:-1px; margin-right:.5em;
+  }
+  .chip[data-filter="tier"]:not([data-value="all"])::before {
+    content:""; display:inline-block; height:4px; width:calc(7px * var(--tier-n, 1)); border-radius:999px;
+    background:var(--muted); vertical-align:middle; margin-right:.5em;
+  }
+  .chip[data-filter="domain"]:not([data-value="all"]).is-active {
+    background:var(--dom); border-color:var(--dom); color:#fff;
+  }
+  .chip[data-filter="domain"]:not([data-value="all"]).is-active::before { background:#fff; }
+  .chip[data-filter="tier"].is-active::before { background:rgba(255,255,255,.85); }
+
   .empty {
     display:none; padding:3rem 0; color:var(--muted); font-size:.95rem;
   }
