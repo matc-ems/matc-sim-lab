@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="EMS simulation scenario library for the MATC Paramedic Program — 64 scenarios organized by clinical domain and tier of complexity.">
+<title>Scenario Index &middot; EMS Simulation Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#1c1917; --ink-2:#44403c; --muted:#78716c; --faint:#a8a29e;
+    --line:#e7e5e0; --line-2:#d6d3d0; --paper:#faf9f7; --paper-2:#f3f1ec;
+    --card:#ffffff;
+    --serif:'DM Serif Display', Georgia, 'Times New Roman', serif;
+    --sans:'IBM Plex Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-weight:300; line-height:1.55;
+    font-feature-settings:"liga","kern"; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1140px; margin:0 auto; padding:0 clamp(1.25rem, 4vw, 3.5rem); }
+
+  /* ---- header ---- */
+  header { padding-top:clamp(2.5rem, 7vw, 5rem); }
+  .kicker {
+    font-family:var(--mono); font-size:.72rem; font-weight:500; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  h1 {
+    font-family:var(--serif); font-weight:400; line-height:1.02;
+    font-size:clamp(2.8rem, 8vw, 5.2rem); margin:.32em 0 .18em; letter-spacing:-.01em;
+  }
+  .lede {
+    font-size:clamp(1rem, 1.4vw, 1.2rem); color:var(--ink-2); max-width:46ch;
+    font-weight:300; margin:0 0 clamp(1.6rem, 3.5vw, 2.4rem);
+  }
+  .lede b { font-weight:500; color:var(--ink); }
+  header .rule { border:0; border-top:1px solid var(--line-2); margin:0; }
+
+  /* ---- filters ---- */
+  .filterbar {
+    position:sticky; top:0; z-index:20; background:rgba(250,249,247,.92);
+    backdrop-filter:saturate(1.2) blur(8px); border-bottom:1px solid var(--line-2);
+  }
+  .filterbar .wrap { padding-top:1rem; padding-bottom:1rem; }
+  .frow { display:flex; align-items:baseline; gap:.85rem; flex-wrap:wrap; }
+  .frow + .frow { margin-top:.6rem; }
+  .frow-label {
+    font-family:var(--mono); font-size:.66rem; font-weight:500; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--faint); min-width:3.6rem;
+  }
+  .chips { display:flex; gap:.4rem; flex-wrap:wrap; }
+  .chip {
+    font-family:var(--sans); font-size:.82rem; font-weight:400; color:var(--ink-2);
+    background:transparent; border:1px solid var(--line-2); border-radius:999px;
+    padding:.3rem .8rem; cursor:pointer; transition:border-color .15s, background-color .15s, color .15s;
+    line-height:1.3; white-space:nowrap;
+  }
+  .chip:hover { border-color:var(--muted); color:var(--ink); }
+  .chip.is-active { background:var(--ink); border-color:var(--ink); color:var(--paper); }
+  .chip:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
+  .frow-count {
+    margin-left:auto; font-family:var(--mono); font-size:.72rem; letter-spacing:.04em;
+    color:var(--muted); white-space:nowrap;
+  }
+
+  /* ---- domains ---- */
+  main { padding-bottom:clamp(3rem, 8vw, 6rem); }
+  .domain { padding-top:clamp(2.4rem, 6vw, 4rem); }
+  .domain.is-hidden, .tier.is-hidden, .card.is-hidden { display:none; }
+  .domain-head {
+    display:flex; align-items:baseline; gap:1rem; padding-bottom:1.1rem;
+    border-bottom:1px solid var(--ink); margin-bottom:1.6rem;
+  }
+  .domain-name {
+    font-family:var(--serif); font-weight:400; font-size:clamp(1.7rem, 3.4vw, 2.5rem);
+    margin:0; letter-spacing:-.01em; line-height:1;
+  }
+  .domain-count { font-size:.85rem; color:var(--muted); font-weight:300; }
+  .domain-code {
+    margin-left:auto; font-family:var(--mono); font-size:.7rem; font-weight:500;
+    letter-spacing:.22em; color:var(--faint);
+  }
+
+  /* ---- tiers ---- */
+  .tier + .tier { margin-top:2.2rem; }
+  .tier-head {
+    display:flex; align-items:baseline; gap:.55rem; margin-bottom:.95rem;
+  }
+  .tier-name {
+    font-family:var(--mono); font-size:.72rem; font-weight:500; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--ink);
+  }
+  .tier-sep { color:var(--faint); }
+  .tier-desc {
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; color:var(--muted);
+    text-transform:uppercase;
+  }
+  .tier-count {
+    margin-left:auto; font-family:var(--mono); font-size:.72rem; color:var(--faint);
+  }
+
+  /* ---- grid + cards ---- */
+  .grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 322px), 1fr));
+    gap:1rem;
+  }
+  .card {
+    display:flex; flex-direction:column; background:var(--card);
+    border:1px solid var(--line); border-radius:3px; padding:1.15rem 1.25rem 1rem;
+    transition:border-color .16s ease, transform .16s ease, box-shadow .16s ease;
+    min-height:11.5rem;
+  }
+  .card:hover {
+    border-color:var(--ink); transform:translateY(-2px);
+    box-shadow:0 12px 28px -16px rgba(28,25,23,.35);
+  }
+  .card:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
+  .card-id {
+    font-family:var(--mono); font-size:.66rem; font-weight:500; letter-spacing:.13em;
+    color:var(--faint); text-transform:uppercase;
+  }
+  .card-title {
+    font-family:var(--serif); font-weight:400; font-size:1.18rem; line-height:1.18;
+    margin:.4rem 0 .45rem; letter-spacing:-.005em; color:var(--ink);
+  }
+  .card-blurb {
+    font-size:.84rem; line-height:1.5; color:var(--ink-2); font-weight:300; margin:0;
+    flex:1;
+  }
+  .card-pt { font-weight:500; color:var(--ink); }
+  .card-dot { margin:0 .4em; color:var(--faint); }
+  .card-foot {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top:.95rem; padding-top:.7rem; border-top:1px solid var(--line);
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.04em;
+  }
+  .card-mins { color:var(--muted); }
+  .card-open { color:var(--ink); display:inline-flex; align-items:center; gap:.4em; }
+  .card-open .arrow { transition:transform .16s ease; display:inline-block; }
+  .card:hover .card-open .arrow { transform:translateX(3px); }
+
+  .empty {
+    display:none; padding:3rem 0; color:var(--muted); font-size:.95rem;
+  }
+  .empty.is-visible { display:block; }
+
+  /* ---- footer ---- */
+  footer { border-top:1px solid var(--line-2); }
+  .footer-row {
+    padding:1.6rem 0 2.4rem;
+    font-family:var(--mono); font-size:.7rem; letter-spacing:.06em; color:var(--faint);
+    text-transform:uppercase; display:flex; gap:.65rem 1.4rem; flex-wrap:wrap;
+  }
+
+  @media (max-width:560px) {
+    .frow-label { min-width:auto; width:100%; }
+    .frow-count { margin-left:0; width:100%; }
+    .card { min-height:auto; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    * { transition:none !important; }
+  }
+  @media print {
+    .filterbar { position:static; backdrop-filter:none; background:#fff; }
+    .card { break-inside:avoid; }
+    .card:hover { transform:none; box-shadow:none; }
+    body { background:#fff; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="kicker">EMS &middot; Simulation Library</p>
+    <h1>Scenario&nbsp;Index</h1>
+    <p class="lede"><b>64 scenarios</b> organized by clinical domain and tier of complexity. Pick one to open the interactive briefing.</p>
+  </div>
+  <hr class="rule">
+</header>
+
+<nav class="filterbar" aria-label="Filter scenarios">
+  <div class="wrap">
+    <div class="frow">
+      <span class="frow-label">Domain</span>
+      <div class="chips" role="group" aria-label="Domain">
+              <button class="chip is-active" data-filter="domain" data-value="all" aria-pressed="true">All</button>
+              <button class="chip" data-filter="domain" data-value="C" aria-pressed="false">Cardiac</button>
+              <button class="chip" data-filter="domain" data-value="R" aria-pressed="false">Respiratory</button>
+              <button class="chip" data-filter="domain" data-value="M" aria-pressed="false">Medical / Tox</button>
+              <button class="chip" data-filter="domain" data-value="P" aria-pressed="false">Pediatric / PALS</button>
+              <button class="chip" data-filter="domain" data-value="B" aria-pressed="false">Behavioral / Env.</button>
+      </div>
+    </div>
+    <div class="frow">
+      <span class="frow-label">Tier</span>
+      <div class="chips" role="group" aria-label="Tier">
+              <button class="chip is-active" data-filter="tier" data-value="all" aria-pressed="true">All</button>
+              <button class="chip" data-filter="tier" data-value="1" aria-pressed="false">Tier 1</button>
+              <button class="chip" data-filter="tier" data-value="2" aria-pressed="false">Tier 2</button>
+              <button class="chip" data-filter="tier" data-value="3" aria-pressed="false">Tier 3</button>
+      </div>
+      <span class="frow-count" id="count" aria-live="polite">64 of 64 scenarios</span>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+      <section class="domain" data-domain="C" id="domain-C">
+        <div class="domain-head">
+          <h3 class="domain-name">Cardiac</h3>
+          <span class="domain-count">20 scenarios</span>
+          <span class="domain-code">CARD</span>
+        </div>
+        <div class="tier" data-tier="1">
+          <div class="tier-head">
+            <span class="tier-name">Tier 1</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Foundational</span>
+            <span class="tier-count">7</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T1-01" data-domain="C" data-tier="1">
+            <span class="card-id">C-T1-01</span>
+            <h4 class="card-title">Stable Angina vs. ACS — Resolved Exertional Chest Pain</h4>
+            <p class="card-blurb"><span class="card-pt">64 y/o male</span><span class="card-dot">·</span>Chest discomfort that started during a brisk walk approximately 25 minutes ago and resolved on its own after he sat down to rest</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T1-02" data-domain="C" data-tier="1">
+            <span class="card-id">C-T1-02</span>
+            <h4 class="card-title">New-Onset Atrial Fibrillation with Adequate Rate</h4>
+            <p class="card-blurb"><span class="card-pt">68 y/o male</span><span class="card-dot">·</span>Palpitations and lightheadedness</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T1-03" data-domain="C" data-tier="1">
+            <span class="card-id">C-T1-03</span>
+            <h4 class="card-title">Hypertensive Crisis without End-Organ Symptoms</h4>
+            <p class="card-blurb"><span class="card-pt">62 y/o male</span><span class="card-dot">·</span>Headache for 3 hours; &#x27;pressure behind my eyes&#x27;</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T1-04" data-domain="C" data-tier="1">
+            <span class="card-id">C-T1-04</span>
+            <h4 class="card-title">Syncope with Cardiac Etiology</h4>
+            <p class="card-blurb"><span class="card-pt">28 y/o male</span><span class="card-dot">·</span>Witnessed brief loss of consciousness; alert on EMS arrival</p>
+            <span class="card-foot"><span class="card-mins">~15 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T1-05" data-domain="C" data-tier="1">
+            <span class="card-id">C-T1-05</span>
+            <h4 class="card-title">CHF Exacerbation, Early Presentation</h4>
+            <p class="card-blurb"><span class="card-pt">72 y/o male</span><span class="card-dot">·</span>Progressive shortness of breath over several days, worse tonight</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T1-06" data-domain="C" data-tier="1">
+            <span class="card-id">C-T1-06</span>
+            <h4 class="card-title">Symptomatic Bradycardia, Medication-Induced</h4>
+            <p class="card-blurb"><span class="card-pt">78 y/o female</span><span class="card-dot">·</span>Dizziness and a near-fainting episode when she stood up from the kitchen table about 20 minutes ago</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T1-07" data-domain="C" data-tier="1">
+            <span class="card-id">C-T1-07</span>
+            <h4 class="card-title">Chest Pain with Non-Cardiac Cause</h4>
+            <p class="card-blurb"><span class="card-pt">32 y/o male</span><span class="card-dot">·</span>Sharp left-sided chest pain that started this morning, worse with deep breathing and movement; recovering from a head cold this past week</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+        <div class="tier" data-tier="2">
+          <div class="tier-head">
+            <span class="tier-name">Tier 2</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Intermediate</span>
+            <span class="tier-count">8</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T2-01" data-domain="C" data-tier="2">
+            <span class="card-id">C-T2-01</span>
+            <h4 class="card-title">STEMI with Complicating History — Anaphylactic ASA Allergy</h4>
+            <p class="card-blurb"><span class="card-pt">58 y/o male</span><span class="card-dot">·</span>Crushing, heavy substernal chest pressure that woke him from sleep approximately 40 minutes ago, now 9/10, radiating to the left jaw and arm…</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T2-02" data-domain="C" data-tier="2">
+            <span class="card-id">C-T2-02</span>
+            <h4 class="card-title">SVT Not Responding to Vagal Maneuvers</h4>
+            <p class="card-blurb"><span class="card-pt">32 y/o male</span><span class="card-dot">·</span>Palpitations and racing heart</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T2-03" data-domain="C" data-tier="2">
+            <span class="card-id">C-T2-03</span>
+            <h4 class="card-title">Acute Pulmonary Edema Requiring Aggressive Management</h4>
+            <p class="card-blurb"><span class="card-pt">74 y/o female</span><span class="card-dot">·</span>Severe shortness of breath that began about 90 minutes ago and has rapidly worsened</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T2-04" data-domain="C" data-tier="2">
+            <span class="card-id">C-T2-04</span>
+            <h4 class="card-title">Unstable A-Fib with RVR</h4>
+            <p class="card-blurb"><span class="card-pt">66 y/o male</span><span class="card-dot">·</span>Palpitations, chest pressure, lightheadedness</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T2-05" data-domain="C" data-tier="2">
+            <span class="card-id">C-T2-05</span>
+            <h4 class="card-title">Acute Inferior STEMI with Right-Sided Involvement</h4>
+            <p class="card-blurb"><span class="card-pt">58 y/o male</span><span class="card-dot">·</span>Substernal chest pressure for 30 minutes</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T2-06" data-domain="C" data-tier="2">
+            <span class="card-id">C-T2-06</span>
+            <h4 class="card-title">Second-Degree Type II Progressing to Third-Degree Block</h4>
+            <p class="card-blurb"><span class="card-pt">78 y/o female</span><span class="card-dot">·</span>Feeling really faint and weak all morning; nearly passed out walking to the bathroom</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T2-07" data-domain="C" data-tier="2">
+            <span class="card-id">C-T2-07</span>
+            <h4 class="card-title">Post-ROSC Management</h4>
+            <p class="card-blurb"><span class="card-pt">62 y/o male</span><span class="card-dot">·</span>Post-cardiac arrest, ROSC achieved on scene</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T2-08" data-domain="C" data-tier="2">
+            <span class="card-id">C-T2-08</span>
+            <h4 class="card-title">Cocaine-Associated Chest Pain</h4>
+            <p class="card-blurb"><span class="card-pt">26 y/o male</span><span class="card-dot">·</span>Chest pain, can&#x27;t sit still</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+        <div class="tier" data-tier="3">
+          <div class="tier-head">
+            <span class="tier-name">Tier 3</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Advanced / High-acuity</span>
+            <span class="tier-count">5</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T3-01" data-domain="C" data-tier="3">
+            <span class="card-id">C-T3-01</span>
+            <h4 class="card-title">Witnessed V-Fib Arrest — Shock First</h4>
+            <p class="card-blurb"><span class="card-pt">58 y/o male</span><span class="card-dot">·</span>Sudden onset substernal chest pressure with diaphoresis and a vague &#x27;I just don&#x27;t feel right&#x27; that progressed to witnessed collapse with cardiac…</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T3-02" data-domain="C" data-tier="3">
+            <span class="card-id">C-T3-02</span>
+            <h4 class="card-title">V-Tach Deterioration to V-Fib Arrest</h4>
+            <p class="card-blurb"><span class="card-pt">68 y/o male</span><span class="card-dot">·</span>Found unresponsive after complaining of palpitations and near-syncope</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T3-03" data-domain="C" data-tier="3">
+            <span class="card-id">C-T3-03</span>
+            <h4 class="card-title">PEA Arrest with Reversible Cause</h4>
+            <p class="card-blurb"><span class="card-pt">62 y/o male</span><span class="card-dot">·</span>Unresponsive, pulseless — found collapsed in living room</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T3-04" data-domain="C" data-tier="3">
+            <span class="card-id">C-T3-04</span>
+            <h4 class="card-title">Cardiogenic Shock with Deterioration to Arrest</h4>
+            <p class="card-blurb"><span class="card-pt">71 y/o male</span><span class="card-dot">·</span>Trouble breathing, weakness, altered mentation</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/C-T3-05" data-domain="C" data-tier="3">
+            <span class="card-id">C-T3-05</span>
+            <h4 class="card-title">Asystole/Agonal Rhythm with DNR Confusion</h4>
+            <p class="card-blurb"><span class="card-pt">84 y/o female</span><span class="card-dot">·</span>Unresponsive, apneic, pulseless 84-year-old female found in bed by adult daughter</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+      </section>
+      <section class="domain" data-domain="R" id="domain-R">
+        <div class="domain-head">
+          <h3 class="domain-name">Respiratory</h3>
+          <span class="domain-count">14 scenarios</span>
+          <span class="domain-code">RESP</span>
+        </div>
+        <div class="tier" data-tier="1">
+          <div class="tier-head">
+            <span class="tier-name">Tier 1</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Foundational</span>
+            <span class="tier-count">5</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T1-01" data-domain="R" data-tier="1">
+            <span class="card-id">R-T1-01</span>
+            <h4 class="card-title">Asthma Exacerbation, Moderate — Adult Responds to DuoNeb</h4>
+            <p class="card-blurb"><span class="card-pt">47 y/o male</span><span class="card-dot">·</span>Shortness of breath with audible wheezing for ~90 minutes, not relieved by home rescue inhaler</p>
+            <span class="card-foot"><span class="card-mins">~15 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T1-02" data-domain="R" data-tier="1">
+            <span class="card-id">R-T1-02</span>
+            <h4 class="card-title">COPD Exacerbation vs. CHF — 72yo with Dual History</h4>
+            <p class="card-blurb"><span class="card-pt">72 y/o female</span><span class="card-dot">·</span>Worsening shortness of breath over 3 days; productive cough with green sputum; can no longer walk to the bathroom without stopping</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T1-03" data-domain="R" data-tier="1">
+            <span class="card-id">R-T1-03</span>
+            <h4 class="card-title">Upper Airway Obstruction, Partial — Evolving Allergic Airway Edema</h4>
+            <p class="card-blurb"><span class="card-pt">28 y/o female</span><span class="card-dot">·</span>Trouble breathing and trouble swallowing about 25 minutes after dinner; throat feels tight and &#x27;thick.&#x27;</p>
+            <span class="card-foot"><span class="card-mins">~15 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T1-04" data-domain="R" data-tier="1">
+            <span class="card-id">R-T1-04</span>
+            <h4 class="card-title">Hyperventilation with Underlying Cause — Early DKA Masquerading as Panic Attack</h4>
+            <p class="card-blurb"><span class="card-pt">24 y/o female</span><span class="card-dot">·</span>Rapid deep breathing for ~3 hours; feels anxious, nauseated, and &#x27;can&#x27;t catch a normal breath.&#x27; Coworker called 911 thinking she was having a panic…</p>
+            <span class="card-foot"><span class="card-mins">~18 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T1-05" data-domain="R" data-tier="1">
+            <span class="card-id">R-T1-05</span>
+            <h4 class="card-title">Pneumonia Presentation — Adult with Early Sepsis</h4>
+            <p class="card-blurb"><span class="card-pt">68 y/o female</span><span class="card-dot">·</span>Three days of productive cough, fever, and progressive weakness; feeling &#x27;really sick&#x27; since this morning</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+        <div class="tier" data-tier="2">
+          <div class="tier-head">
+            <span class="tier-name">Tier 2</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Intermediate</span>
+            <span class="tier-count">5</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T2-01" data-domain="R" data-tier="2">
+            <span class="card-id">R-T2-01</span>
+            <h4 class="card-title">Severe Asthma, Failing First-Line Treatment</h4>
+            <p class="card-blurb"><span class="card-pt">28 y/o female</span><span class="card-dot">·</span>Severe shortness of breath, can only speak in 1-2 word phrases</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T2-02" data-domain="R" data-tier="2">
+            <span class="card-id">R-T2-02</span>
+            <h4 class="card-title">COPD with Respiratory Acidosis</h4>
+            <p class="card-blurb"><span class="card-pt">72 y/o male</span><span class="card-dot">·</span>Worsening shortness of breath, can&#x27;t catch my breath</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T2-03" data-domain="R" data-tier="2">
+            <span class="card-id">R-T2-03</span>
+            <h4 class="card-title">Anaphylaxis with Airway Compromise</h4>
+            <p class="card-blurb"><span class="card-pt">32 y/o female</span><span class="card-dot">·</span>Difficulty breathing after bee sting</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T2-04" data-domain="R" data-tier="2">
+            <span class="card-id">R-T2-04</span>
+            <h4 class="card-title">Aspiration Event in Altered Patient</h4>
+            <p class="card-blurb"><span class="card-pt">58 y/o male</span><span class="card-dot">·</span>Unresponsive with vomiting and noisy breathing</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T2-05" data-domain="R" data-tier="2">
+            <span class="card-id">R-T2-05</span>
+            <h4 class="card-title">Acute Asthma Progressing to Quiet Chest</h4>
+            <p class="card-blurb"><span class="card-pt">34 y/o female</span><span class="card-dot">·</span>Severe shortness of breath, can&#x27;t catch her breath</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+        <div class="tier" data-tier="3">
+          <div class="tier-head">
+            <span class="tier-name">Tier 3</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Advanced / High-acuity</span>
+            <span class="tier-count">4</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T3-01" data-domain="R" data-tier="3">
+            <span class="card-id">R-T3-01</span>
+            <h4 class="card-title">Respiratory Failure Requiring Advanced Airway</h4>
+            <p class="card-blurb"><span class="card-pt">58 y/o female</span><span class="card-dot">·</span>Severe difficulty breathing, becoming unresponsive</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T3-02" data-domain="R" data-tier="3">
+            <span class="card-id">R-T3-02</span>
+            <h4 class="card-title">Failed First Airway Attempt — Septic Pneumonia with Predicted Difficult Airway</h4>
+            <p class="card-blurb"><span class="card-pt">64 y/o male</span><span class="card-dot">·</span>Severe respiratory failure from septic pneumonia</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T3-03" data-domain="R" data-tier="3">
+            <span class="card-id">R-T3-03</span>
+            <h4 class="card-title">Severe Anaphylaxis Progressing to Arrest</h4>
+            <p class="card-blurb"><span class="card-pt">42 y/o male</span><span class="card-dot">·</span>Severe allergic reaction with airway swelling and shock after peanut exposure</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/R-T3-04" data-domain="R" data-tier="3">
+            <span class="card-id">R-T3-04</span>
+            <h4 class="card-title">Submersion/Drowning with Hypothermic Cardiac Arrest</h4>
+            <p class="card-blurb"><span class="card-pt">34 y/o male</span><span class="card-dot">·</span>Apneic, pulseless adult male just pulled from a frozen lake after falling through the ice approximately 15 minutes ago; submerged at least 10 minutes…</p>
+            <span class="card-foot"><span class="card-mins">~40 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+      </section>
+      <section class="domain" data-domain="M" id="domain-M">
+        <div class="domain-head">
+          <h3 class="domain-name">Medical / Tox</h3>
+          <span class="domain-count">14 scenarios</span>
+          <span class="domain-code">MED</span>
+        </div>
+        <div class="tier" data-tier="1">
+          <div class="tier-head">
+            <span class="tier-name">Tier 1</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Foundational</span>
+            <span class="tier-count">5</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T1-01" data-domain="M" data-tier="1">
+            <span class="card-id">M-T1-01</span>
+            <h4 class="card-title">Hypoglycemia Presenting as Altered Mental Status</h4>
+            <p class="card-blurb"><span class="card-pt">67 y/o male</span><span class="card-dot">·</span>Altered mental status — confusion and slurred speech</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T1-02" data-domain="M" data-tier="1">
+            <span class="card-id">M-T1-02</span>
+            <h4 class="card-title">CVA/Stroke with Clear Onset Time</h4>
+            <p class="card-blurb"><span class="card-pt">67 y/o female</span><span class="card-dot">·</span>Sudden right-sided weakness and difficulty speaking</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T1-03" data-domain="M" data-tier="1">
+            <span class="card-id">M-T1-03</span>
+            <h4 class="card-title">Simple Febrile Seizure (Adult), Post-Ictal</h4>
+            <p class="card-blurb"><span class="card-pt">34 y/o male</span><span class="card-dot">·</span>Witnessed generalized seizure, now post-ictal with fever</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T1-04" data-domain="M" data-tier="1">
+            <span class="card-id">M-T1-04</span>
+            <h4 class="card-title">Allergic Reaction without Anaphylaxis</h4>
+            <p class="card-blurb"><span class="card-pt">38 y/o male</span><span class="card-dot">·</span>Hives and itching after eating at a family barbecue</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T1-05" data-domain="M" data-tier="1">
+            <span class="card-id">M-T1-05</span>
+            <h4 class="card-title">Diabetic Ketoacidosis, Early Recognition</h4>
+            <p class="card-blurb"><span class="card-pt">19 y/o female</span><span class="card-dot">·</span>Diffuse abdominal pain with nausea and vomiting</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+        <div class="tier" data-tier="2">
+          <div class="tier-head">
+            <span class="tier-name">Tier 2</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Intermediate</span>
+            <span class="tier-count">5</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T2-01" data-domain="M" data-tier="2">
+            <span class="card-id">M-T2-01</span>
+            <h4 class="card-title">Opioid Overdose with Complicated Airway</h4>
+            <p class="card-blurb"><span class="card-pt">27 y/o male</span><span class="card-dot">·</span>Unresponsive, shallow breathing, vomit at mouth</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T2-02" data-domain="M" data-tier="2">
+            <span class="card-id">M-T2-02</span>
+            <h4 class="card-title">Stroke Mimic</h4>
+            <p class="card-blurb"><span class="card-pt">64 y/o female</span><span class="card-dot">·</span>Right-sided weakness and slurred speech</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T2-03" data-domain="M" data-tier="2">
+            <span class="card-id">M-T2-03</span>
+            <h4 class="card-title">Seizure Progressing to Status Epilepticus</h4>
+            <p class="card-blurb"><span class="card-pt">38 y/o male</span><span class="card-dot">·</span>Witnessed generalized tonic-clonic seizure</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T2-04" data-domain="M" data-tier="2">
+            <span class="card-id">M-T2-04</span>
+            <h4 class="card-title">Tricyclic Antidepressant Overdose</h4>
+            <p class="card-blurb"><span class="card-pt">28 y/o female</span><span class="card-dot">·</span>Unresponsive — found at home by roommate; suspected intentional overdose</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T2-05" data-domain="M" data-tier="2">
+            <span class="card-id">M-T2-05</span>
+            <h4 class="card-title">Sepsis with Ambiguous Source</h4>
+            <p class="card-blurb"><span class="card-pt">82 y/o female</span><span class="card-dot">·</span>Generalized weakness and &#x27;not acting like herself&#x27; per daughter</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+        <div class="tier" data-tier="3">
+          <div class="tier-head">
+            <span class="tier-name">Tier 3</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Advanced / High-acuity</span>
+            <span class="tier-count">4</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T3-01" data-domain="M" data-tier="3">
+            <span class="card-id">M-T3-01</span>
+            <h4 class="card-title">Polysubstance Overdose with Hemodynamic Collapse</h4>
+            <p class="card-blurb"><span class="card-pt">31 y/o female</span><span class="card-dot">·</span>Unresponsive, suspected polysubstance overdose</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T3-02" data-domain="M" data-tier="3">
+            <span class="card-id">M-T3-02</span>
+            <h4 class="card-title">Status Epilepticus Refractory to Benzodiazepines</h4>
+            <p class="card-blurb"><span class="card-pt">28 y/o female</span><span class="card-dot">·</span>Active generalized tonic-clonic seizure that will not stop</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T3-03" data-domain="M" data-tier="3">
+            <span class="card-id">M-T3-03</span>
+            <h4 class="card-title">Severe Sepsis Progressing to Septic Shock</h4>
+            <p class="card-blurb"><span class="card-pt">72 y/o female</span><span class="card-dot">·</span>Weakness, fever, &#x27;not herself&#x27; per daughter; sick x3 days</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/M-T3-04" data-domain="M" data-tier="3">
+            <span class="card-id">M-T3-04</span>
+            <h4 class="card-title">Beta-Blocker/Calcium Channel Blocker Overdose</h4>
+            <p class="card-blurb"><span class="card-pt">38 y/o male</span><span class="card-dot">·</span>Intentional overdose with prescription medications, found altered by spouse</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+      </section>
+      <section class="domain" data-domain="P" id="domain-P">
+        <div class="domain-head">
+          <h3 class="domain-name">Pediatric / PALS</h3>
+          <span class="domain-count">10 scenarios</span>
+          <span class="domain-code">PEDS</span>
+        </div>
+        <div class="tier" data-tier="1">
+          <div class="tier-head">
+            <span class="tier-name">Tier 1</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Foundational</span>
+            <span class="tier-count">3</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/P-T1-01" data-domain="P" data-tier="1">
+            <span class="card-id">P-T1-01</span>
+            <h4 class="card-title">Febrile Seizure in a Toddler</h4>
+            <p class="card-blurb"><span class="card-pt">2 y/o male</span><span class="card-dot">·</span>Witnessed generalized seizure, now post-ictal with fever</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/P-T1-02" data-domain="P" data-tier="1">
+            <span class="card-id">P-T1-02</span>
+            <h4 class="card-title">Pediatric Asthma Exacerbation — 7yo Responds to DuoNeb</h4>
+            <p class="card-blurb"><span class="card-pt">7 y/o male</span><span class="card-dot">·</span>Wheezing and increased work of breathing for ~90 minutes; mom gave home neb 30 minutes ago with only partial relief</p>
+            <span class="card-foot"><span class="card-mins">~15 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/P-T1-03" data-domain="P" data-tier="1">
+            <span class="card-id">P-T1-03</span>
+            <h4 class="card-title">Infant with RSV / Bronchiolitis — Assessment-Driven Supportive Care</h4>
+            <p class="card-blurb"><span class="card-pt">6 mo female</span><span class="card-dot">·</span>3 days of cough and congestion, now working harder to breathe — nasal flaring, grunting, mild retractions</p>
+            <span class="card-foot"><span class="card-mins">~15 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+        <div class="tier" data-tier="2">
+          <div class="tier-head">
+            <span class="tier-name">Tier 2</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Intermediate</span>
+            <span class="tier-count">4</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/P-T2-01" data-domain="P" data-tier="2">
+            <span class="card-id">P-T2-01</span>
+            <h4 class="card-title">Croup with Worsening Stridor</h4>
+            <p class="card-blurb"><span class="card-pt">3 y/o male</span><span class="card-dot">·</span>Barky cough and noisy breathing — inspiratory stridor at rest</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/P-T2-02" data-domain="P" data-tier="2">
+            <span class="card-id">P-T2-02</span>
+            <h4 class="card-title">Pediatric Dehydration with Compensated Shock</h4>
+            <p class="card-blurb"><span class="card-pt">5 y/o male</span><span class="card-dot">·</span>Three days of vomiting and diarrhea, now lethargic and won&#x27;t drink</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/P-T2-03" data-domain="P" data-tier="2">
+            <span class="card-id">P-T2-03</span>
+            <h4 class="card-title">Pediatric SVT</h4>
+            <p class="card-blurb"><span class="card-pt">8 mo female</span><span class="card-dot">·</span>Mom says she has been &#x27;breathing fast and looking pale&#x27; and &#x27;won&#x27;t take a bottle&#x27; for the past 4 hours</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/P-T2-04" data-domain="P" data-tier="2">
+            <span class="card-id">P-T2-04</span>
+            <h4 class="card-title">Foreign Body Airway Obstruction, Progressing</h4>
+            <p class="card-blurb"><span class="card-pt">2 y/o male</span><span class="card-dot">·</span>Witnessed choking on a grape ~5 minutes ago</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+        <div class="tier" data-tier="3">
+          <div class="tier-head">
+            <span class="tier-name">Tier 3</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Advanced / High-acuity</span>
+            <span class="tier-count">3</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/P-T3-01" data-domain="P" data-tier="3">
+            <span class="card-id">P-T3-01</span>
+            <h4 class="card-title">Pediatric Cardiac Arrest, Shockable Rhythm</h4>
+            <p class="card-blurb"><span class="card-pt">8 y/o male</span><span class="card-dot">·</span>Pulseless and apneic; collapsed at soccer practice</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/P-T3-02" data-domain="P" data-tier="3">
+            <span class="card-id">P-T3-02</span>
+            <h4 class="card-title">Pediatric Respiratory Failure to Arrest</h4>
+            <p class="card-blurb"><span class="card-pt">4 y/o female</span><span class="card-dot">·</span>Severe respiratory distress progressing to respiratory failure in a 4-year-old with known asthma…</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/P-T3-03" data-domain="P" data-tier="3">
+            <span class="card-id">P-T3-03</span>
+            <h4 class="card-title">Critically Ill Neonate/Infant, Undiagnosed</h4>
+            <p class="card-blurb"><span class="card-pt">5 wk male</span><span class="card-dot">·</span>~4 kg, full-term, brought to floor by parents after two days of progressively poor feeding and increasing sleepiness</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+      </section>
+      <section class="domain" data-domain="B" id="domain-B">
+        <div class="domain-head">
+          <h3 class="domain-name">Behavioral / Env.</h3>
+          <span class="domain-count">6 scenarios</span>
+          <span class="domain-code">BEH</span>
+        </div>
+        <div class="tier" data-tier="1">
+          <div class="tier-head">
+            <span class="tier-name">Tier 1</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Foundational</span>
+            <span class="tier-count">2</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/B-T1-01" data-domain="B" data-tier="1">
+            <span class="card-id">B-T1-01</span>
+            <h4 class="card-title">Excited Delirium with Occult Hypoglycemia</h4>
+            <p class="card-blurb"><span class="card-pt">42 y/o male</span><span class="card-dot">·</span>Agitation, combativeness, acting &#x27;not himself&#x27; for the past 20 minutes</p>
+            <span class="card-foot"><span class="card-mins">~20 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/B-T1-02" data-domain="B" data-tier="1">
+            <span class="card-id">B-T1-02</span>
+            <h4 class="card-title">Hypothermia, Mild to Moderate</h4>
+            <p class="card-blurb"><span class="card-pt">58 y/o male</span><span class="card-dot">·</span>Found confused on park bench in cold weather</p>
+            <span class="card-foot"><span class="card-mins">~15 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+        <div class="tier" data-tier="2">
+          <div class="tier-head">
+            <span class="tier-name">Tier 2</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Intermediate</span>
+            <span class="tier-count">2</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/B-T2-01" data-domain="B" data-tier="2">
+            <span class="card-id">B-T2-01</span>
+            <h4 class="card-title">Agitated Patient with Occult Head Injury</h4>
+            <p class="card-blurb"><span class="card-pt">48 y/o male</span><span class="card-dot">·</span>Combative, intoxicated-appearing male after a bar fight; witnessed strike to right side of head</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/B-T2-02" data-domain="B" data-tier="2">
+            <span class="card-id">B-T2-02</span>
+            <h4 class="card-title">Heat Stroke Requiring Aggressive Cooling</h4>
+            <p class="card-blurb"><span class="card-pt">28 y/o male</span><span class="card-dot">·</span>Collapsed near marathon finish line, altered and confused</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+        <div class="tier" data-tier="3">
+          <div class="tier-head">
+            <span class="tier-name">Tier 3</span>
+            <span class="tier-sep">&middot;</span>
+            <span class="tier-desc">Advanced / High-acuity</span>
+            <span class="tier-count">2</span>
+          </div>
+          <div class="grid">
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/B-T3-01" data-domain="B" data-tier="3">
+            <span class="card-id">B-T3-01</span>
+            <h4 class="card-title">Hypothermic Cardiac Arrest</h4>
+            <p class="card-blurb"><span class="card-pt">52 y/o male</span><span class="card-dot">·</span>Unresponsive, pulseless after prolonged cold exposure</p>
+            <span class="card-foot"><span class="card-mins">~30 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          <a class="card" href="https://matc-ems.github.io/scenarios/sim-lab/B-T3-02" data-domain="B" data-tier="3">
+            <span class="card-id">B-T3-02</span>
+            <h4 class="card-title">Excited Delirium Progressing to Sudden Cardiac Arrest</h4>
+            <p class="card-blurb"><span class="card-pt">34 y/o male</span><span class="card-dot">·</span>Severe agitation, naked in street, suspected stimulant intoxication</p>
+            <span class="card-foot"><span class="card-mins">~25 min</span><span class="card-open">Open<span class="arrow">&#8594;</span></span></span>
+          </a>
+          </div>
+        </div>
+      </section>
+    <p class="empty" id="empty">No scenarios match those filters.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>MATC Paramedic Program</span>
+    <span>EMS Simulation Library</span>
+    <span>64 scenarios</span>
+    <span>Updated 2026-05-12</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var state = { domain: "all", tier: "all" };
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+  var cards = Array.prototype.slice.call(document.querySelectorAll(".card"));
+  var tiers = Array.prototype.slice.call(document.querySelectorAll(".tier"));
+  var domains = Array.prototype.slice.call(document.querySelectorAll(".domain"));
+  var countEl = document.getElementById("count");
+  var emptyEl = document.getElementById("empty");
+  var TOTAL = cards.length;
+
+  function syncChips() {
+    chips.forEach(function (c) {
+      var on = state[c.dataset.filter] === c.dataset.value;
+      c.classList.toggle("is-active", on);
+      c.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+
+  function apply() {
+    var shown = 0;
+    cards.forEach(function (card) {
+      var ok = (state.domain === "all" || card.dataset.domain === state.domain) &&
+               (state.tier === "all" || card.dataset.tier === state.tier);
+      card.classList.toggle("is-hidden", !ok);
+      if (ok) shown++;
+    });
+    tiers.forEach(function (t) {
+      var any = t.querySelector(".card:not(.is-hidden)");
+      t.classList.toggle("is-hidden", !any);
+    });
+    domains.forEach(function (d) {
+      var any = d.querySelector(".tier:not(.is-hidden)");
+      d.classList.toggle("is-hidden", !any);
+    });
+    countEl.textContent = (shown === TOTAL ? TOTAL + " of " + TOTAL : shown + " of " + TOTAL) + " scenarios";
+    emptyEl.classList.toggle("is-visible", shown === 0);
+  }
+
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      state[c.dataset.filter] = c.dataset.value;
+      syncChips();
+      apply();
+    });
+  });
+
+  syncChips();
+  apply();
+})();
+</script>
+</body>
+</html>
