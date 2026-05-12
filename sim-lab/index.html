@@ -37,11 +37,39 @@
     font-family:var(--serif); font-weight:400; line-height:1.02;
     font-size:clamp(2.8rem, 8vw, 5.2rem); margin:.32em 0 .18em; letter-spacing:-.01em;
   }
-  .lede {
-    font-size:clamp(1rem, 1.4vw, 1.2rem); color:var(--ink-2);
-    font-weight:300; margin:0 0 clamp(1.6rem, 3.5vw, 2.4rem);
+  .guide {
+    margin:0 0 clamp(1.6rem, 3.5vw, 2.4rem);
+    border-left:2px solid var(--line-2); padding-left:clamp(1rem, 2.2vw, 1.6rem);
   }
-  .lede b { font-weight:500; color:var(--ink); }
+  .guide b { font-weight:500; color:var(--ink); }
+  .guide-lede {
+    font-size:clamp(1rem, 1.3vw, 1.15rem); color:var(--ink-2); font-weight:300; margin:0;
+  }
+  .guide-step-label {
+    font-family:var(--mono); font-size:.7rem; font-weight:500; letter-spacing:.17em;
+    text-transform:uppercase; color:var(--muted); margin:1.15rem 0 0;
+  }
+  .guide-seq {
+    font-family:var(--mono); font-size:clamp(.82rem, 1.05vw, .95rem); color:var(--ink);
+    letter-spacing:.01em; margin:.45rem 0 0;
+  }
+  .guide-seq .e { color:var(--faint); }
+  .guide-seq-sub { font-size:.82rem; color:var(--muted); font-weight:300; margin:.3rem 0 0; }
+  .guide-note {
+    font-size:.92rem; line-height:1.6; color:var(--ink-2); font-weight:300; margin:1.15rem 0 0;
+  }
+  .guide-links {
+    list-style:none; padding:0; margin:1.2rem 0 0;
+    font-size:.88rem; color:var(--muted); line-height:1.55;
+  }
+  .guide-links li + li { margin-top:.4rem; }
+  .guide-links a {
+    color:var(--ink); font-weight:500; border-bottom:1px solid var(--line-2);
+    transition:border-color .15s;
+  }
+  .guide-links a:hover { border-color:var(--ink); }
+  .guide-links a:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
+  .guide-links .ext { font-size:.82em; }
   header .rule { border:0; border-top:1px solid var(--line-2); margin:0; }
 
   /* ---- filters ---- */
@@ -232,7 +260,17 @@
 <header>
   <div class="wrap">
     <h1>Sim&nbsp;Lab Scenario&nbsp;Index</h1>
-    <p class="lede"><b>64 scenarios</b> organized by clinical domain and tier of complexity. Pick one to open the interactive briefing.</p>
+    <div class="guide">
+      <p class="guide-lede"><b>64 scenarios</b> across five clinical domains and three tiers &mdash; use this index to pick each student's next one.</p>
+      <p class="guide-step-label">Run a student's scenarios by tier, in this order</p>
+      <p class="guide-seq">Tier&nbsp;1 &middot; Tier&nbsp;1 &middot; Tier&nbsp;2 &middot; Tier&nbsp;2 &middot; Tier&nbsp;3 &middot; Tier&nbsp;2 &middot; Tier&nbsp;3 &middot; Tier&nbsp;2 <span class="e">&hellip;</span></p>
+      <p class="guide-seq-sub">two Tier&nbsp;1, then two Tier&nbsp;2, then alternating Tier&nbsp;3&nbsp;/&nbsp;Tier&nbsp;2</p>
+      <p class="guide-note">Within that tier, never assign a scenario the student has <b>led or been a team member in</b>, and <b>keep their categories balanced</b> &mdash; if they're heavy on one domain and light on another, pick from the lighter one (e.g. Respiratory over a third Cardiac).</p>
+      <ul class="guide-links">
+        <li><a href="https://docs.google.com/spreadsheets/d/1DgqnRAN44Rbfzr4Pp599x0N09Y6ifdu5yU-d0b3Ls6g/edit" target="_blank" rel="noopener noreferrer">Student progress tracker&nbsp;<span class="ext">&#8599;</span></a> &mdash; what each student has led and been part of.</li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdHfX-BsmeiGcHP0_Nh-y4h-Mdk35DrleX7_qvhRB1jx4On-Q/viewform" target="_blank" rel="noopener noreferrer">Scenario log form&nbsp;<span class="ext">&#8599;</span></a> &mdash; the leading instructor fills this out after every scenario; submitting it updates the tracker.</li>
+      </ul>
+    </div>
   </div>
   <hr class="rule">
 </header>
