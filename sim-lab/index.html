@@ -70,6 +70,31 @@
   .guide-links a:hover { border-color:var(--ink); }
   .guide-links a:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
   .guide-links .ext { font-size:.82em; }
+  .guide-rules {
+    list-style:none; padding:0; margin:.45rem 0 0;
+    font-size:.92rem; line-height:1.55; color:var(--ink-2); font-weight:300;
+  }
+  .guide-rules li { padding-left:1rem; position:relative; }
+  .guide-rules li + li { margin-top:.3rem; }
+  .guide-rules li::before {
+    content:""; position:absolute; left:0; top:.62em;
+    width:.45rem; height:1px; background:var(--faint);
+  }
+  .guide-pills {
+    list-style:none; padding:0; margin:.55rem 0 0;
+    display:flex; flex-wrap:wrap; gap:.4rem;
+  }
+  .guide-pills a {
+    display:inline-flex; align-items:center; gap:.5em;
+    font-family:var(--sans); font-size:.82rem; font-weight:400; color:var(--ink-2);
+    background:transparent; border:1px solid var(--line-2); border-radius:3px;
+    padding:.35rem .75rem; line-height:1.25; white-space:nowrap;
+    transition:border-color .15s, background-color .15s, color .15s;
+  }
+  .guide-pills a:hover { border-color:var(--ink); background:var(--ink); color:var(--paper); }
+  .guide-pills a:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
+  .guide-pills .ext { font-size:.82em; color:var(--faint); }
+  .guide-pills a:hover .ext { color:var(--paper); }
   header .rule { border:0; border-top:1px solid var(--line-2); margin:0; }
 
   /* ---- filters ---- */
@@ -262,13 +287,23 @@
     <h1>Sim&nbsp;Lab Scenario&nbsp;Index</h1>
     <div class="guide">
       <p class="guide-lede"><b>64 scenarios</b> across five clinical domains and three tiers &mdash; use this index to pick each student's next one.</p>
-      <p class="guide-step-label">Run a student's scenarios by tier, in this order</p>
+
+      <p class="guide-step-label">1 &middot; Pick the tier</p>
       <p class="guide-seq">Tier&nbsp;1 &middot; Tier&nbsp;1 &middot; Tier&nbsp;2 &middot; Tier&nbsp;2 &middot; Tier&nbsp;3 &middot; Tier&nbsp;2 &middot; Tier&nbsp;3 &middot; Tier&nbsp;2 <span class="e">&hellip;</span></p>
       <p class="guide-seq-sub">two Tier&nbsp;1, then two Tier&nbsp;2, then alternating Tier&nbsp;3&nbsp;/&nbsp;Tier&nbsp;2</p>
-      <p class="guide-note">Within that tier, never assign a scenario the student has <b>led or been a team member in</b>, and <b>keep their categories balanced</b> &mdash; if they're heavy on one domain and light on another, pick from the lighter one (e.g. Respiratory over a third Cardiac).</p>
-      <ul class="guide-links">
-        <li><a href="https://docs.google.com/spreadsheets/d/1DgqnRAN44Rbfzr4Pp599x0N09Y6ifdu5yU-d0b3Ls6g/edit" target="_blank" rel="noopener noreferrer">Student progress tracker&nbsp;<span class="ext">&#8599;</span></a> &mdash; what each student has led and been part of.</li>
-        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdHfX-BsmeiGcHP0_Nh-y4h-Mdk35DrleX7_qvhRB1jx4On-Q/viewform" target="_blank" rel="noopener noreferrer">Scenario log form&nbsp;<span class="ext">&#8599;</span></a> &mdash; the leading instructor fills this out after every scenario; submitting it updates the tracker.</li>
+
+      <p class="guide-step-label">2 &middot; Pick a scenario in that tier</p>
+      <ul class="guide-rules">
+        <li>Never one they've <b>led or been a team member in</b>.</li>
+        <li>Keep <b>categories balanced</b> &mdash; favor the lighter domain.</li>
+      </ul>
+
+      <p class="guide-step-label">3 &middot; Log it &mdash; leading instructor, after every scenario</p>
+      <ul class="guide-pills">
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdobtt6b1v2QQShIs9ddjc_eV-aW8HBTgSAfNMSDO7s99AlnA/viewform?usp=header" target="_blank" rel="noopener noreferrer">Cohort&nbsp;1<span class="ext">&#8599;</span></a></li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSe1N66MtLsQTdnwyrSol1aa-RduHDzrQJM-gJeXp-bsWiXf9Q/viewform?usp=header" target="_blank" rel="noopener noreferrer">Cohort&nbsp;2<span class="ext">&#8599;</span></a></li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScBnMaCRsEmpYolDuF0jmJjFUtj3loPrNEI_IFpGOAiB7RTJA/viewform?usp=header" target="_blank" rel="noopener noreferrer">Cohort&nbsp;3<span class="ext">&#8599;</span></a></li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdxdt3isqcYXL9-k93ZcgJd810YkZgy74fQNaADyg_rHgSGPg/viewform?usp=header" target="_blank" rel="noopener noreferrer">Cohort&nbsp;4<span class="ext">&#8599;</span></a></li>
       </ul>
     </div>
   </div>
